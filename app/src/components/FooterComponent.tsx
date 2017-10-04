@@ -1,19 +1,28 @@
 import * as React from "react";
 
-export function FooterComponent() {
+export function FooterComponent(props: { links: FooterComponentLink[] }) {
   return (
-    <footer className="footer" style={{backgroundColor:"white"}}>
+    <footer className="footer" style={{backgroundColor: "white"}}>
       <div className="container">
         <div className="content has-text-centered">
           <p>
-            <a href="http://cyber.fund/">Home</a>
-            {" - "}
-            <a href="https://github.com/cyberFund/cyber-ui">Github</a>
-            {" - "}
-            <a href="http://company.cyber.fund/">About us</a>
+            {props.links.map((link, index, array) => {
+                return (
+                  <span key={link.url}>
+                    <a href={link.url}>{link.name}</a>
+                    {(index !== array.length - 1) && " - "}
+                  </span>
+                );
+              }
+            )}
           </p>
         </div>
       </div>
     </footer>
   );
+}
+
+export interface FooterComponentLink {
+  readonly url: string;
+  readonly name: string;
 }

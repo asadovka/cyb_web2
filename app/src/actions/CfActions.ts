@@ -8,15 +8,17 @@ export interface SearchPayload {
 }
 
 export interface SearchResponse {
-  readonly query: string,
-  readonly page: number,
-  readonly pageSize: number,
+  readonly query?: string,
+  readonly page?: number,
+  readonly pageSize?: number,
+  readonly totalPages?: number,
 
-  readonly totalHits: number,
-  readonly searchTime: number, // ms
-  readonly items: SearchResponseItem[]
+  readonly totalHits?: number,
+  readonly searchTime?: number, // ms
+  readonly items?: SearchResponseItem[]
 }
 
 export interface SearchResponseItem {
   type: string;
+  data: string;
 }

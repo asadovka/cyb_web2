@@ -26,7 +26,7 @@ export class Injector {
 }
 
 if (process.env.NODE_ENV === EnvironmentConstants.development) {
-  const injector = Injector.of();
+  const injector = Injector.of("dev");
   // Overwrite Services for development without real server
   injector.setService("searchApi", new MockSearchApi(injector.http));
 }

@@ -1,10 +1,10 @@
-/*
- * todo: looks like this fields pretty common, so make sense to move it to some basic interface
- */
+import {SearchResponse} from "../actions/CfActions";
+
 export interface SearchState {
   loading?: boolean;
   error?: boolean;
   success?: boolean;
+  data?: SearchResponse;
 }
 
 

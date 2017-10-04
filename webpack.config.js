@@ -8,7 +8,7 @@ module.exports = function (options = {}) {
   // --env.NODE_ENV root --env.SOURCE_MAP source-map ...
   const NODE_ENV = options.NODE_ENV || "development"; // "production"
   const SOURCE_MAP = options.SOURCE_MAP || "eval-source-map"; // "source-map"
-  const API_ROOT = options.API_ROOT || "http://localhost:8081/api/"; // "http://cyber.fund/api/"
+  const API_ROOT = options.API_ROOT || "http://search-api.cyber.fund"; // "http://cyber.fund/api/"
   const APP_VERSION = options.APP_VERSION || "DEV";
 
   console.log(`
@@ -101,7 +101,13 @@ Build started with following configuration:
         colors: true
       },
       historyApiFallback: true,
-      inline: false
+      inline: false,
+      proxy: {
+        "/api": {
+          target: "http://search-api.cyber.fund",
+          pathRewrite: {"^/api": ""}
+        }
+      }
     }
   }
 };

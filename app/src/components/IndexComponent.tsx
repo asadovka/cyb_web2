@@ -5,6 +5,8 @@ import {PageContainer} from "./PageContainer";
 import {FooterComponent} from "./FooterComponent";
 import {TopMenu} from "./TopMenu";
 import {SearchFormComponent} from "./SearchFormComponent";
+import {SearchForm} from "../containers/SearchForm";
+import {Data} from "../data/Data";
 
 export function IndexComponent() {
   return (
@@ -17,13 +19,12 @@ export function IndexComponent() {
 
         <div className="hero-body">
           <div className="container">
-            <SearchFormComponent/>
+            <SearchForm/>
           </div>
         </div>
 
         <div className="hero-footer">
-
-          <FooterComponent/>
+          <FooterComponent links={Data.links}/>
         </div>
       </div>
 
