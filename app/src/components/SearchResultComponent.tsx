@@ -75,6 +75,8 @@ function renderByType(type, data) {
     return bitcoin_block(data);
   } else if (type === "bitcoin_tx") {
     return bitcoin_tx(data);
+  } else if (type === "ethereum_block") {
+    return ethereum_block(data);
   } else {
     return plain(data);
   }
@@ -112,6 +114,20 @@ function bitcoin_tx(data) {
         <li>{`block_hash: ${data.block_hash}`}</li>
         <li>{`block_number: ${data.block_number}`}</li>
         <li>{`txid: ${data.txid}`}</li>
+      </ul>
+    </div>
+  );
+}
+
+function ethereum_block(data) {
+  return (
+    <div>
+      <ul>
+        <li>{`number: ${data.number}`}</li>
+        <li>{`size: ${data.size}`}</li>
+        <li>{`tx_number: ${data.tx_number}`}</li>
+        <li>{`hash: ${data.hash}`}</li>
+        <li>{`timestamp: ${data.timestamp}`}</li>
       </ul>
     </div>
   );
