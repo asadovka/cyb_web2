@@ -45,11 +45,11 @@ function results(items, loading, error, success) {
       </div>
     );
   } else if (items.length) {
-    return items.map(item => {
+    return items.map((item, index) => {
       return (
-        <div key={item.data} className="tile is-child box">
+        <div key={index} className="tile is-child box">
           <ul>
-            <li>{`Type: ${item.type}`}</li>
+            <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
             <li>{`Data: `}{renderByType(item.type, item.data)}</li>
           </ul>
         </div>
@@ -64,7 +64,7 @@ function results(items, loading, error, success) {
   } else if (success && !items.length) {
     return (
       <div className="tile is-child box">
-        <h1 className="title">Nothing found.</h1>
+        <h1 className="title">Nothing found in cyber•Space.</h1>
       </div>
     );
   }
@@ -77,6 +77,8 @@ function renderByType(type, data) {
     return bitcoin_tx(data);
   } else if (type === "ethereum_block") {
     return ethereum_block(data);
+  } else if (type === "ethereum_tx") {
+    return ethereum_tx(data);
   } else {
     return plain(data);
   }
@@ -94,11 +96,11 @@ function bitcoin_block(data) {
   return (
     <div>
       <ul>
-        <li>{`total_outputs_value: ${data.total_outputs_value}`}</li>
-        <li>{`time: ${data.time}`}</li>
-        <li>{`tx_number: ${data.tx_number}`}</li>
-        <li>{`hash: ${data.hash}`}</li>
-        <li>{`height: ${data.height}`}</li>
+        <li>{`Hash: ${data.hash}`}</li>
+        <li>{`Height: ${data.height}`}</li>
+        <li>{`Total outputs value: ${data.total_outputs_value}`}</li>
+        <li>{`Time: ${data.time}`}</li>
+        <li>{`Tx number: ${data.tx_number}`}</li>
       </ul>
     </div>
   );
@@ -107,27 +109,43 @@ function bitcoin_block(data) {
 function bitcoin_tx(data) {
   return (
     <div>
-      <ul>
-        <li>{`block_time: ${data.block_time}`}</li>
-        <li>{`total_output: ${data.total_output}`}</li>
-        <li>{`fee: ${data.fee}`}</li>
-        <li>{`block_hash: ${data.block_hash}`}</li>
-        <li>{`block_number: ${data.block_number}`}</li>
-        <li>{`txid: ${data.txid}`}</li>
+        <ul>
+        <li>{`Tx Id: ${data.txid}`}</li>
+        <li>{`Block hash: ${data.block_hash}`}</li>
+        <li>{`Block number: ${data.block_number}`}</li>
+        <li>{`Block time: ${data.block_time}`}</li>
+        <li>{`Total output: ${data.total_output}`}</li>
+        <li>{`Fee: ${data.fee}`}</li>
+        <li>{`Size: ${data.size}`}</li>
       </ul>
     </div>
   );
 }
 
 function ethereum_block(data) {
+ return (
+   <div>
+     <ul>
+       <li>{`Block hash: ${data.hash}`}</li>
+       <li>{`Block number: ${data.number}`}</li>
+       <li>{`Transactions count: ${data.tx_number}`}</li>
+       <li>{`Block time: ${data.timestamp}`}</li>
+       <li>{`Block size: ${data.size}`}</li>
+     </ul>
+   </div>
+ );
+}
+
+function ethereum_tx(data) {
   return (
     <div>
       <ul>
-        <li>{`number: ${data.number}`}</li>
-        <li>{`size: ${data.size}`}</li>
-        <li>{`tx_number: ${data.tx_number}`}</li>
-        <li>{`hash: ${data.hash}`}</li>
-        <li>{`timestamp: ${data.timestamp}`}</li>
+        <li>{`Hash: ${data.hash}`}</li>
+        <li>{`Block hash: ${data.block_hash}`}</li>
+        <li>{`Block number: ${data.block_number}`}</li>
+        <li>{`Block time: ${data.timestamp}`}</li>
+        <li>{`Value: ${data.value} ETH`}</li>
+        <li>{`Fee: ${data.fee} ETH`}</li>
       </ul>
     </div>
   );
