@@ -18,9 +18,9 @@ const {
 function createSearchEpic(actionType) {
   return (action$, store: Store<CfState>) => action$
     .ofType(actionType)
-    .mergeMap(({payload: {query}}: CfAction<SearchPayload>) => {
+    .mergeMap(({payload: {query, page}}: CfAction<SearchPayload>) => {
       return Observable
-        .fromPromise(searchApi.search(query))
+        .fromPromise(searchApi.search(query, page))
         .map(mapPayload(actionType))
         .catch(mapError(actionType));
     });

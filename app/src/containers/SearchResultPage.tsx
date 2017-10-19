@@ -5,19 +5,19 @@ import {CfState} from "../model/CfState";
 import {CfActions, SearchResponse} from "../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 
-class SearchResultPageComponent extends React.Component<{ search, query, searchResult: SearchResponse }, {}> {
+class SearchResultPageComponent extends React.Component<{ search, query, page, searchResult: SearchResponse }, {}> {
 
   componentDidMount() {
-    const {search, query} = this.props;
+    const {search, query, page} = this.props;
 
-    search(query);
+    search(query, page);
   }
 
   render() {
-    const {searchResult} = this.props;
+    const {searchResult, search} = this.props;
 
     return (
-      <SearchResultComponent searchResult={searchResult}/>
+      <SearchResultComponent search={search} searchResult={searchResult}/>
     );
   }
 }
@@ -27,16 +27,17 @@ export const SearchResultPage = withRouter(connect(mapStateToProps, mapDispatchT
 function mapStateToProps(state: CfState, ownProps) {
   return {
     searchResult: state.search,
-    query: ownProps.location.query.q
+    query: ownProps.location.query.q,
+    page: ownProps.location.query.page || 0
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    search: (query: string) => {
+    search: (query: string, page: number) => {
       dispatch({
         type: CfActions.SEARCH,
-        payload: {query}
+        payload: {query, page}
       });
     }
   };

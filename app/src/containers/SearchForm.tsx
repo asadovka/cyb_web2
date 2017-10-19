@@ -13,8 +13,9 @@ export const SearchForm = withRouter(connect(mapStateToProps, mapDispatchToProps
 
 function mapStateToProps(state: CfState, ownProps) {
   return {
+    page: ownProps.location.query.page,
     initialValues: {
-      query: ownProps.location.query.q
+      query: ownProps.location.query.q,
     }
   };
 }
@@ -24,7 +25,10 @@ function mapDispatchToProps(dispatch) {
     search: (query: string) => {
       dispatch({
         type: CfActions.SEARCH,
-        payload: {query}
+        payload: {
+          query,
+          page: 0
+        }
       });
     }
   };

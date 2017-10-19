@@ -5,12 +5,15 @@ export function SearchFormComponent(props) {
   const {handleSubmit, submitting, dirty, router, search, location} = props;
 
   return (
-    <form onSubmit={handleSubmit(values => {
+    <form className="container" onSubmit={handleSubmit(values => {
       const {query} = values;
 
       router.push({
         pathname: "/search",
-        query: {q: query}
+        query: {
+          q: query,
+          page: 0
+        }
       });
 
       if (location.pathname === "/search") {
@@ -18,7 +21,7 @@ export function SearchFormComponent(props) {
       }
     })}>
       <div className="field has-addons has-addons-centered">
-        <div className="control">
+        <div className="control" style={{width:800}}>
           <Field
             name="query"
             className="input is-medium"

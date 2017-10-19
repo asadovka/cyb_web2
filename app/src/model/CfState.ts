@@ -2,10 +2,12 @@
  * Root of redux state object.
  */
 import {SearchState} from "./SearchState";
+import {DataState} from "./DataState";
 
 export interface CfState {
   readonly form: CfStateForm;
   readonly search: SearchState;
+  readonly data: DataState;
 }
 
 export interface CfStateForm {

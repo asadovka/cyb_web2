@@ -5,11 +5,12 @@ import {FooterComponent} from "./FooterComponent";
 import {SearchForm} from "../containers/SearchForm";
 import {TopMenu} from "./TopMenu";
 import {PageContainer} from "./PageContainer";
-import {SearchResponse} from "../actions/CfActions";
 import {SearchState} from "../model/SearchState";
+import {Pagination} from "./Pagination";
+import {SearchTime} from "./SearchTime";
 
 export function SearchResultComponent(props) {
-  const {searchResult}: { searchResult: SearchState } = props;
+  const {searchResult, search}: { search, searchResult: SearchState } = props;
 
   return (
     <PageContainer>
@@ -18,6 +19,10 @@ export function SearchResultComponent(props) {
         <div className="hero-head">
           <TopMenu/>
           <SearchForm/>
+          {searchResult.success && <SearchTime
+            time={searchResult.data.searchTime}
+            results={searchResult.data.totalHits}
+          />}
         </div>
 
         <div className="hero-body">
@@ -25,6 +30,15 @@ export function SearchResultComponent(props) {
             <div className="tile is-ancestor is-vertical">
               {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
             </div>
+            <Pagination
+              loading={searchResult.loading || searchResult.error}
+              page={searchResult.data.page}
+              query={searchResult.data.query}
+              total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
+              onClick={(query, page) => {
+                search(query, page)
+              }}
+            />
           </div>
         </div>
 
@@ -47,7 +61,7 @@ function results(items, loading, error, success) {
   } else if (items.length) {
     return items.map((item, index) => {
       return (
-        <div key={index} className="tile is-child box">
+        <div key={JSON.stringify(item)} className="tile is-child box">
           <ul>
             <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
             <li>{`Data: `}{renderByType(item.type, item.data)}</li>
@@ -102,6 +116,10 @@ function bitcoin_block(data) {
         <li>{`Time: ${data.time}`}</li>
         <li>{`Tx number: ${data.tx_number}`}</li>
       </ul>
+
+      <Link to={`/bitcoin/block/${data.height}`}>
+        View block
+      </Link>
     </div>
   );
 }
@@ -118,6 +136,10 @@ function bitcoin_tx(data) {
         <li>{`Fee: ${data.fee}`}</li>
         <li>{`Size: ${data.size}`}</li>
       </ul>
+
+      <Link to={`/bitcoin/tx/${data.txid}`}>
+        View transaction
+      </Link>
     </div>
   );
 }
@@ -132,6 +154,10 @@ function ethereum_block(data) {
        <li>{`Block time: ${data.timestamp}`}</li>
        <li>{`Block size: ${data.size}`}</li>
      </ul>
+
+     <Link to={`/ethereum/block/${data.number}`}>
+       View block
+     </Link>
    </div>
  );
 }
@@ -147,6 +173,10 @@ function ethereum_tx(data) {
         <li>{`Value: ${data.value} ETH`}</li>
         <li>{`Fee: ${data.fee} ETH`}</li>
       </ul>
+
+      <Link to={`/ethereum/tx/${data.hash}`}>
+        View transaction
+      </Link>
     </div>
   );
 }

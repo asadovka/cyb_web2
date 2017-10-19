@@ -3,10 +3,12 @@ import {EnvironmentConstants} from "./config/EnvironmentConstants";
 import {DefaultHttpService, HttpService} from "./http/HttpService";
 import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
 import {MockSearchApi} from "./api/mock/MockSearchApi";
+import {DataApi, DefaultDataApi} from "./api/DataApi";
 
 export class Injector {
   readonly http: HttpService = new DefaultHttpService();
   readonly searchApi: SearchApi = new DefaultSearchApi(this.http);
+  readonly dataApi: DataApi = new DefaultDataApi(this.http);
 
   setService<T extends Injector[K], K extends keyof Injector>(name: K, service: T) {
     assignIn(this[name], service);

@@ -4,7 +4,6 @@ import {Logo} from "./logo/Logo";
 import {PageContainer} from "./PageContainer";
 import {FooterComponent} from "./FooterComponent";
 import {TopMenu} from "./TopMenu";
-import {SearchFormComponent} from "./SearchFormComponent";
 import {SearchForm} from "../containers/SearchForm";
 import {Data} from "../data/Data";
 

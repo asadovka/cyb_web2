@@ -1,14 +1,12 @@
 import * as React from "react";
-import {Link} from "react-router";
+import JSONViewer from "react-json-view";
 import {Data} from "../data/Data";
 import {FooterComponent} from "./FooterComponent";
 import {SearchForm} from "../containers/SearchForm";
 import {TopMenu} from "./TopMenu";
 import {PageContainer} from "./PageContainer";
 
-const blocks = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export function BlockComponent() {
+export function BlockComponent({title, data, blockView} : {title: string, data: any, blockView: any}) {
   return (
     <PageContainer>
 
@@ -22,10 +20,8 @@ export function BlockComponent() {
           <div className="container">
             <div className="tile is-ancestor is-vertical">
               <div className="tile is-child box">
-                <h1 className="title">Block Title</h1>
-                <p>
-                  Block description
-                </p>
+                <h1 className="title">{title}</h1>
+                {blockView(data)}
               </div>
             </div>
           </div>
