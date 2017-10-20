@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Field} from "redux-form";
+var ReactGA = require("react-ga");
 
 export function SearchFormComponent(props) {
   const {handleSubmit, submitting, dirty, router, search, location} = props;
@@ -18,7 +19,12 @@ export function SearchFormComponent(props) {
 
       if (location.pathname === "/search") {
         search(query);
-      }
+      };
+
+      ReactGA.event({
+        category: 'Search',
+        action: 'Query',
+      });
     })}>
       <div className="field has-addons has-addons-centered">
         <div className="control" style={{width:800}}>
@@ -27,7 +33,7 @@ export function SearchFormComponent(props) {
             className="input is-medium"
             component="input"
             type="text"
-            placeholder="Find a block"
+            placeholder="Multi-Blockchain explorer for Bitcoin & Ethereum"
           />
         </div>
         <div className="control">

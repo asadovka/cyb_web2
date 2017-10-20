@@ -10,6 +10,14 @@ import {BitcoinTxPage} from "./containers/chains/BitcoinTxPage";
 import {EthereumTxPage} from "./containers/chains/EthereumTxPage";
 import {EthereumBlockPage} from "./containers/chains/EthereumBlockPage";
 
+var ReactGA = require('react-ga');
+ReactGA.initialize('UA-49238979-2');
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname + window.location.search });
+  ReactGA.pageview(window.location.pathname + window.location.search);
+}
+
 function onSearchEnter(state, replace) {
   if ((state.location.query.q || "").length <= 2) {
     getLogger("Search onEnter").debug("Query string length less than three charters.");
@@ -19,9 +27,9 @@ function onSearchEnter(state, replace) {
 
 export function Root() {
   return (
-    <Router history={browserHistory}>
+    <Router onUpdate={logPageView} history={browserHistory}>
       <Route path={"/"} component={IndexPage}/>
-      <Route path={"/search"} component={SearchResultPage} onEnter={onSearchEnter}/>
+      <Route path={"/search"} component={SearchResultPage}/>
       <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
       <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
       <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
