@@ -64,7 +64,7 @@ function results(items, loading, error, success) {
         <div key={JSON.stringify(item)} className="tile is-child box">
           <ul>
             <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
-            <li>{`Data: `}{renderByType(item.type, item.data)}</li>
+            <li>{renderByType(item.type, item.data)}</li>
           </ul>
         </div>
       );
@@ -78,7 +78,7 @@ function results(items, loading, error, success) {
   } else if (success && !items.length) {
     return (
       <div className="tile is-child box">
-        <h1 className="title">Nothing found in cyber•Space.</h1>
+        <h1 className="title">Nothing is found in cyber•Space.</h1>
       </div>
     );
   }
@@ -89,6 +89,8 @@ function renderByType(type, data) {
     return bitcoin_block(data);
   } else if (type === "bitcoin_tx") {
     return bitcoin_tx(data);
+  } else if (type === "bitcoin_address") {
+    return bitcoin_address(data);
   } else if (type === "ethereum_block") {
     return ethereum_block(data);
   } else if (type === "ethereum_tx") {
@@ -140,6 +142,19 @@ function bitcoin_tx(data) {
       <Link to={`/bitcoin/tx/${data.txid}`}>
         View transaction
       </Link>
+    </div>
+  );
+}
+
+function bitcoin_address(data) {
+  return (
+    <div>
+      <ul>
+        <li>{`Balance: ${data.balance}` + " BTC"}</li>
+        <li>{`Address: ${data.id}`}</li>
+        <li>{`No. Transactions: ${data.tx_number}`}</li>
+        <li>{`Total Received: ${data.total_received}` + " BTC"}</li>
+      </ul>
     </div>
   );
 }

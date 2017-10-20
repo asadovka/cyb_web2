@@ -10,7 +10,7 @@ export class Data {
       url: "https://github.com/cyberFund",
       name: "Github"
     }, {
-      url: "https://docs.google.com/document/d/1O64cvqaRq5E9zLAcYrpuIbqQ9thnVJISk_sUrZpbR6s/edit?usp=sharing",
+      url: "https://github.com/cyberFund/cyber-ui/blob/master/tos.md",
       name: "Terms"
     }, {
       url: "https://t.me/CyberFundDev",
