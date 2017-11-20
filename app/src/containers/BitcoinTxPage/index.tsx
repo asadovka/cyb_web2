@@ -1,10 +1,12 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {CfState} from "../../model/CfState";
-import {CfActions, BitcoinTxResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
 import Title from "../../components/title/";
+
+import { getBitcoinTx } from '../../modules/search';
+
 
 class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId }, {}> {
   componentDidMount() {
@@ -24,7 +26,7 @@ class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId 
   }
 }
 
-export const BitcoinTxPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(BitcoinTxPageComponent));
+export const BitcoinTxPage = withRouter(connect(mapStateToProps, { getData: getBitcoinTx })(BitcoinTxPageComponent));
 
 function mapStateToProps(state: CfState, ownProps) {
   return {
@@ -33,14 +35,4 @@ function mapStateToProps(state: CfState, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getData: (txId: string) => {
-      dispatch({
-        type: CfActions.GET_BITCOIN_TX,
-        payload: {txId}
-      });
-    }
-  };
-}
 

@@ -9,27 +9,13 @@ const SearchFormReduxForm = reduxForm({
   form: "search"
 })(SearchFormComponent);
 
-export const SearchForm = withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchFormReduxForm));
+import { search } from '../modules/search';
 
-function mapStateToProps(state: CfState, ownProps) {
-  return {
+export const SearchForm = withRouter(connect((state, ownProps) => ({
     page: ownProps.location.query.page,
     initialValues: {
       query: ownProps.location.query.q,
-    }
-  };
-}
+    }  
+}), { search })(SearchFormReduxForm));
 
-function mapDispatchToProps(dispatch) {
-  return {
-    search: (query: string) => {
-      dispatch({
-        type: CfActions.SEARCH,
-        payload: {
-          query,
-          page: 0
-        }
-      });
-    }
-  };
-}
+

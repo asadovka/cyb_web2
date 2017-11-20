@@ -8,6 +8,21 @@ export function mapPayload<T>(actionType: string): (T) => IAction<T> {
   };
 }
 
+export const mapAndDispatchPayload = (actionType, dispatch) => (payload) => {
+  dispatch({
+    type: FULFILLED(actionType),
+    payload
+  });
+}
+
+export const mapAndDispatchError = (actionType, dispatch) => (payload) => {
+  dispatch({
+    type: REJECTED(actionType),
+    payload
+  });
+}
+
+
 export function mapError<T>(actionType: string): (T) => Observable<IAction<T>> {
   return function (payload: T): Observable<IAction<T>> {
     return Observable.of(iAction<T>(REJECTED(actionType))(payload));

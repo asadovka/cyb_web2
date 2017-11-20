@@ -6,6 +6,8 @@ import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
 import Title from "../../components/title/";
 
+import { getEthereumTx } from '../../modules/search';
+
 class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txHash }, {}> {
   componentDidMount() {
     const {txHash, getData} = this.props;
@@ -24,7 +26,7 @@ class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txH
   }
 }
 
-export const EthereumTxPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(EthereumTxPageComponent));
+export const EthereumTxPage = withRouter(connect(mapStateToProps, { getData: getEthereumTx })(EthereumTxPageComponent));
 
 function mapStateToProps(state: CfState, ownProps) {
   return {
@@ -33,14 +35,4 @@ function mapStateToProps(state: CfState, ownProps) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getData: (txHash: string) => {
-      dispatch({
-        type: CfActions.GET_ETHEREUM_TX,
-        payload: {txHash}
-      });
-    }
-  };
-}
 

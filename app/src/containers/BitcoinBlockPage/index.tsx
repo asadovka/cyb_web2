@@ -5,6 +5,7 @@ import {CfActions, BitcoinBlockResponse} from "../../actions/CfActions";
 import JSONTree from "../../components/JSONTree/";
 import withRouter from "react-router/es/withRouter";
 import Title from "../../components/title/";
+import { getBitcoinBlock } from '../../modules/search';
 
 
 class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData, blockNumber }, {}> {
@@ -25,23 +26,12 @@ class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData,
   }
 }
 
-export const BitcoinBlockPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(BitcoinBlockPageComponent));
+export const BitcoinBlockPage = withRouter(connect(mapStateToProps, { getData: getBitcoinBlock })(BitcoinBlockPageComponent));
 
 function mapStateToProps(state: CfState, ownProps) {
   return {
     blockNumber: ownProps.routeParams.blockNumber,
     bitcoinBlock: state.data.bitcoinBlock.data
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getData: (blockNumber: string) => {
-      dispatch({
-        type: CfActions.GET_BITCOIN_BLOCK,
-        payload: {blockNumber}
-      });
-    }
   };
 }
 

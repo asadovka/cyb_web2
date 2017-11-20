@@ -6,6 +6,8 @@ import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
 import Title from "../../components/title/";
 
+import { getEthereumBlock } from '../../modules/search';
+
 class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getData, blockNumber }, {}> {
   componentDidMount() {
     const {blockNumber, getData} = this.props;
@@ -24,7 +26,7 @@ class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getDat
   }
 }
 
-export const EthereumBlockPage = withRouter(connect(mapStateToProps, mapDispatchToProps)(EthereumBlockPageComponent));
+export const EthereumBlockPage = withRouter(connect(mapStateToProps, { getData: getEthereumBlock })(EthereumBlockPageComponent));
 
 function mapStateToProps(state: CfState, ownProps) {
   return {
@@ -32,15 +34,3 @@ function mapStateToProps(state: CfState, ownProps) {
     ethereumBlock: state.data.ethereumBlock.data
   };
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getData: (blockNumber: string) => {
-      dispatch({
-        type: CfActions.GET_ETHEREUM_BLOCK,
-        payload: {blockNumber}
-      });
-    }
-  };
-}
-
