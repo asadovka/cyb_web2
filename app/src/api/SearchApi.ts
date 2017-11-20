@@ -11,11 +11,11 @@ export class DefaultSearchApi implements SearchApi {
   ) {
   }
 
-  search(query: string, page: number = 0): Promise<SearchResponse> {
+  search(query: string, page: number = 0, coins: string, type: string): Promise<SearchResponse> {
     return this.http.GET(
       `/api/search`,
       {
-        params: {query, page}
+        params: {query, page, coins, type}
       }
     );
   }

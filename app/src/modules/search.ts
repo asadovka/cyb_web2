@@ -8,9 +8,9 @@ const {
   searchApi
 } = Injector.of();
 
-export const search = (query, page) => (dispatch, getStore) => {
+export const search = (query, page, coins, type) => (dispatch, getStore) => {
   dispatch({ type: CfActions.SEARCH, payload: {query, page} });
-  searchApi.search(query, page)
+  searchApi.search(query, page, coins, type)
     .then(mapAndDispatchPayload(CfActions.SEARCH, dispatch))
     .catch(mapAndDispatchError(CfActions.SEARCH, dispatch))
 }
