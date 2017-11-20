@@ -1,11 +1,10 @@
 import * as React from "react";
-import {BlockComponent} from "../../components/BlockComponent";
 import {connect} from "react-redux";
 import {CfState} from "../../model/CfState";
 import {CfActions, BitcoinTxResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
-import JSONTree from "react-json-tree";
-import {reactJsonTreeTheme} from "./common";
+import JSONTree from "../../components/JSONTree/";
+import Title from "../../components/title/";
 
 class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId }, {}> {
   componentDidMount() {
@@ -18,19 +17,9 @@ class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId 
     const {bitcoinTx} = this.props;
 
     return (
-      <BlockComponent
-        title={"Bitcoin Transaction"}
-        data={bitcoinTx}
-        blockView={(data: BitcoinTxResponse) => {
-          return (
-            <JSONTree
-              data={data}
-              theme={reactJsonTreeTheme}
-              invertTheme={true}
-            />
-          );
-        }}
-      />
+      <Title title='Bitcoin Transaction'>
+        <JSONTree data={bitcoinTx} />
+      </Title>
     );
   }
 }

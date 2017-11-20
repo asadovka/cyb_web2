@@ -1,53 +1,52 @@
 import * as React from "react";
 import {Link} from "react-router";
-import {Data} from "../data/Data";
-import {FooterComponent} from "./FooterComponent";
-import {SearchForm} from "../containers/SearchForm";
-import {TopMenu} from "./TopMenu";
-import {PageContainer} from "./PageContainer";
-import {SearchState} from "../model/SearchState";
-import {Pagination} from "./Pagination";
-import {SearchTime} from "./SearchTime";
+import {Data} from "../../data/Data";
+import {FooterComponent} from "../../components/FooterComponent/";
+import {SearchForm} from "../SearchForm";
+import {TopMenu} from "../../components/TopMenu";
+import {PageContainer} from "../../components/PageContainer";
+import {SearchState} from "../../model/SearchState";
+import {Pagination} from "../../components/Pagination";
+import {SearchTime} from "../../components/SearchTime";
+import Layout from "../../components/layout";
 
 export function SearchResultComponent(props) {
   const {searchResult, search}: { search, searchResult: SearchState } = props;
 
-  return (
-    <PageContainer>
+  const head = (
+    <div>
+      <TopMenu/>
+      <SearchForm/>
+      {searchResult.success && <SearchTime
+        time={searchResult.data.searchTime}
+        results={searchResult.data.totalHits}
+      />}
+    </div>
+  );
 
-      <div className="hero is-fullheight">
-        <div className="hero-head">
-          <TopMenu/>
-          <SearchForm/>
-          {searchResult.success && <SearchTime
-            time={searchResult.data.searchTime}
-            results={searchResult.data.totalHits}
-          />}
-        </div>
-
-        <div className="hero-body">
-          <div className="container">
-            <div className="tile is-ancestor is-vertical">
-              {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
-            </div>
-            <Pagination
-              loading={searchResult.loading || searchResult.error}
-              page={searchResult.data.page}
-              query={searchResult.data.query}
-              total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
-              onClick={(query, page) => {
-                search(query, page)
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="hero-footer">
-          <FooterComponent links={Data.links}/>
-        </div>
+  const body = (
+    <div>
+      <div className="tile is-ancestor is-vertical">
+        {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
       </div>
+      <Pagination
+        loading={searchResult.loading || searchResult.error}
+        page={searchResult.data.page}
+        query={searchResult.data.query}
+        total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
+        onClick={(query, page) => {
+          search(query, page)
+        }}
+      />    
+    </div>
+  );
 
-    </PageContainer>
+  return (
+    <Layout
+      head={head}
+      body={body}
+      footer={<FooterComponent links={Data.links}/>}
+    />
   );
 }
 

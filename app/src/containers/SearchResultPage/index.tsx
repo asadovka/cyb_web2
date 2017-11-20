@@ -1,8 +1,8 @@
 import * as React from "react";
-import {SearchResultComponent} from "../components/SearchResultComponent";
+import {SearchResultComponent} from "./SearchResultComponent";
 import {connect} from "react-redux";
-import {CfState} from "../model/CfState";
-import {CfActions, SearchResponse} from "../actions/CfActions";
+import {CfState} from "../../model/CfState";
+import {CfActions, SearchResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 
 class SearchResultPageComponent extends React.Component<{ search, query, page, searchResult: SearchResponse }, {}> {

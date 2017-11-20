@@ -1,11 +1,10 @@
 import * as React from "react";
-import {BlockComponent} from "../../components/BlockComponent";
 import {connect} from "react-redux";
 import {CfState} from "../../model/CfState";
 import {CfActions, EthereumBlockResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
-import JSONTree from "react-json-tree";
-import {reactJsonTreeTheme} from "./common";
+import JSONTree from "../../components/JSONTree/";
+import Title from "../../components/title/";
 
 class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getData, blockNumber }, {}> {
   componentDidMount() {
@@ -18,19 +17,9 @@ class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getDat
     const {ethereumBlock} = this.props;
 
     return (
-      <BlockComponent
-        title={"Ethereum Block"}
-        data={ethereumBlock}
-        blockView={(data: EthereumBlockResponse) => {
-          return (
-            <JSONTree
-              data={data}
-              theme={reactJsonTreeTheme}
-              invertTheme={true}
-            />
-          );
-        }}
-      />
+      <Title title='Ethereum Block'>
+        <JSONTree data={ethereumBlock} />
+      </Title>
     );
   }
 }

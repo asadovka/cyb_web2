@@ -1,11 +1,10 @@
 import * as React from "react";
-import {BlockComponent} from "../../components/BlockComponent";
 import {connect} from "react-redux";
 import {CfState} from "../../model/CfState";
 import {CfActions, EthereumBlockResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
-import JSONTree from "react-json-tree";
-import {reactJsonTreeTheme} from "./common";
+import JSONTree from "../../components/JSONTree/";
+import Title from "../../components/title/";
 
 class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txHash }, {}> {
   componentDidMount() {
@@ -18,19 +17,9 @@ class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txH
     const {ethereumTx} = this.props;
 
     return (
-      <BlockComponent
-        title={"Ethereum Transaction"}
-        data={ethereumTx}
-        blockView={(data: EthereumBlockResponse) => {
-          return (
-            <JSONTree
-              data={data}
-              theme={reactJsonTreeTheme}
-              invertTheme={true}
-            />
-          );
-        }}
-      />
+      <Title title='Ethereum Transaction'>
+        <JSONTree data={ethereumTx} />
+      </Title>
     );
   }
 }
