@@ -10,6 +10,7 @@ import {BitcoinTxPage} from "./containers/BitcoinTxPage/";
 import {EthereumTxPage} from "./containers/EthereumTxPage/";
 import {EthereumBlockPage} from "./containers/EthereumBlockPage/";
 import { DetailsPage } from "./containers/DetailsPage/"
+import Analitics from './containers/Analitics/';
 
 var ReactGA = require('react-ga');
 ReactGA.initialize('UA-49238979-2');
@@ -31,6 +32,7 @@ export function Root() {
     <Router onUpdate={logPageView} history={browserHistory}>
       <Route path={"/"} component={IndexPage}/>
       <Route path={"/search"} component={SearchResultPage}/>
+      <Route path={"/analitics"} component={Analitics}/>
       <Route component={DetailsPage}>
         <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
         <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
