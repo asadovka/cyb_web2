@@ -1,54 +1,31 @@
 import * as React from "react";
-import {Link} from "react-router";
-import {Data} from "../../data/Data";
-import {FooterComponent} from "../../components/FooterComponent/";
-import {SearchForm} from "../SearchForm";
-import {TopMenu} from "../../components/TopMenu";
-import {PageContainer} from "../../components/PageContainer";
-import {SearchState} from "../../model/SearchState";
+import { Link } from 'react-router';
+import {connect} from "react-redux";
+
 import {Pagination} from "../../components/Pagination";
-import {SearchTime} from "../../components/SearchTime";
-import Layout from "../../components/layout";
+import withRouter from "react-router/es/withRouter";
 
-export function SearchResultComponent(props) {
-  const {searchResult, search}: { search, searchResult: SearchState } = props;
-
-  const head = (
+const Content = ({
+  searchResult,
+  coins,
+  type,
+  search
+}) => (
+  <div>
     <div>
-      <TopMenu/>
-      <SearchForm/>
-      {searchResult.success && <SearchTime
-        time={searchResult.data.searchTime}
-        results={searchResult.data.totalHits}
-      />}
+    {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
     </div>
-  );
-
-  const body = (
-    <div>
-      <div className="tile is-ancestor is-vertical">
-        {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
-      </div>
-      <Pagination
-        loading={searchResult.loading || searchResult.error}
-        page={searchResult.data.page}
-        query={searchResult.data.query}
-        total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
-        onClick={(query, page) => {
-          search(query, page)
-        }}
-      />    
-    </div>
-  );
-
-  return (
-    <Layout
-      head={head}
-      body={body}
-      footer={<FooterComponent links={Data.links}/>}
-    />
-  );
-}
+    <Pagination
+      loading={searchResult.loading || searchResult.error}
+      page={searchResult.data.page}
+      query={searchResult.data.query}
+      total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
+      onClick={(query, page) => {
+        search(query, page, coins, type)
+      }}
+    /> 
+  </div>
+);
 
 function results(items, loading, error, success) {
   if (loading) {
@@ -57,31 +34,40 @@ function results(items, loading, error, success) {
         <h1 className="title">Loading...</h1>
       </div>
     );
-  } else if (items.length) {
-    return items.map((item, index) => {
-      return (
-        <div key={JSON.stringify(item)} className="tile is-child box">
-          <ul>
-            <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
-            <li>{renderByType(item.type, item.data)}</li>
-          </ul>
-        </div>
-      );
-    });
-  } else if (error) {
+  } 
+
+  if (error) {
     return (
       <div className="tile is-child box">
         <h1 className="title">Some error occurred, please try later.</h1>
       </div>
     );
-  } else if (success && !items.length) {
+  }
+
+  if (success && !items.length) {
     return (
       <div className="tile is-child box">
         <h1 className="title">Nothing is found in cyber•Space.</h1>
       </div>
     );
   }
+  
+  return (
+    <div className='columns is-multiline'>
+    {items.map((item, index) => (
+      <div key={JSON.stringify(item)} className="column is-one-third">
+        <ul style={{ overflow: 'hidden' }}>
+          <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
+          <li>{renderByType(item.type, item.data)}</li>
+        </ul>
+      </div>
+    ))}
+    </div>
+   ); 
 }
+
+
+
 
 function renderByType(type, data) {
   if (type === "bitcoin_block") {
@@ -194,3 +180,13 @@ function ethereum_tx(data) {
     </div>
   );
 }
+
+
+export default withRouter(connect(((state, ownProps) => ({
+    searchResult: state.search,
+    query: ownProps.location.query.q,
+    page: ownProps.location.query.page || 0,
+    coins: ownProps.location.query.coins,
+    type: ownProps.location.query.type  
+})))(Content));
+
