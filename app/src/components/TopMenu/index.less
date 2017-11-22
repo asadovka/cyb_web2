@@ -1,0 +1,31 @@
+
+.topMenu {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+
+.topMenuLink {
+  font-size: 16px;
+  font-family: 'Roboto Mono', monospace;
+  color: #3c3c3c;
+  margin-right: 30px;
+  position: relative;
+}
+
+.topMenuLink:last-child {
+  margin-right: 0;
+}
+
+.topMenuLinkActive {
+}
+
+.topMenuLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background-color: #082def;
+}

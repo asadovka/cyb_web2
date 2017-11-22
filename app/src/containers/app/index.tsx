@@ -8,11 +8,11 @@ import TopMenu from '../app/TopMenu';
 const App = ({ children }) => (
   <div>
     <div className='container'>
-    <div className='navbar-menu'>
-      <div className="navbar-start">
+    <div>
+      <div>
         <Logo />
       </div>
-      <div className='navbar-end'>
+      <div>
         <TopMenu />
       </div>
     </div>
