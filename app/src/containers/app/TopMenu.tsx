@@ -5,12 +5,12 @@ import { TopMenu, TopMenuLink } from '../../components/TopMenu/'
 
 const TopMenuContainer = () => (
   <TopMenu>
-    <TopMenuLink to='/'>Assets</TopMenuLink>
-    <TopMenuLink to='/'>Funds</TopMenuLink>
-    <TopMenuLink to='/'>Crowdsales</TopMenuLink>
+    <TopMenuLink to='/assets'>Assets</TopMenuLink>
+    <TopMenuLink to='/funds'>Funds</TopMenuLink>
+    <TopMenuLink to='/crowdsales'>Crowdsales</TopMenuLink>
     <TopMenuLink to='/search?q=42'>Blockchains</TopMenuLink>
     <TopMenuLink to='/analitics'>Analytics</TopMenuLink>
-    <TopMenuLink to='/'>Cybernode</TopMenuLink>                           
+    <TopMenuLink to='/cybernode'>Cybernode</TopMenuLink>                           
   </TopMenu>
 );
 
