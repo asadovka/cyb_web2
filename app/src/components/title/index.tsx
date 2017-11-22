@@ -1,12 +1,13 @@
 import * as React from "react";
 
-const Title = ({ title, children }) => (
-  <div className="tile is-ancestor is-vertical">
-    <div className="tile is-child box">
-      <h1 className="title">{title}</h1>
-      {children}
-    </div>
-  </div>
-)
+const styles = require("./Title.less");
 
-export default Title;
+
+
+export const Title = ({ children }) => (
+  <h2 className={styles.title}>{children}</h2>
+);
+
+export const BigLogo = () => (
+  <span className={styles.bigLogo}>cyber<span>•</span>Fund</span>
+);

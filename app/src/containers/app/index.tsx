@@ -4,22 +4,22 @@ import { Logo } from '../../components/logo/Logo';
 import Footer from '../app/Footer';
 import TopMenu from '../app/TopMenu';
 
+import { Header } from '../../components/Header/';
+import { AppContainer } from '../../components/AppContainer/';
 
 const App = ({ children }) => (
   <div>
-    <div className='container'>
-    <div>
+    <Header>
       <div>
         <Logo />
       </div>
       <div>
         <TopMenu />
       </div>
-    </div>
-    <div>
+    </Header>
+    <AppContainer>
       {children}
-    </div>
-    </div>
+    </AppContainer>
     <div>
       <Footer />
     </div>

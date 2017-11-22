@@ -11,16 +11,20 @@ import BlockchainStatics from './BlockchainStatics';
 
 import CentredContainer from '../../components/CentredContainer/';
 
+import { Header } from '../../components/Header/';
+
+import { Title, BigLogo } from '../../components/Title/';
+
 export function IndexPage() {
   return (
     <div>
-      <div className='container'>
+      <Header>
         <Logo />
-      </div>
+      </Header>
 
       <CentredContainer>
-        <h2>Blockchain search</h2>
-        <span>cyber <span>•</span> Fund</span>
+        <Title>Blockchain search</Title>
+        <BigLogo />
         <TopMenu/>
         <SearchForm/>
         <BlockchainStatics />

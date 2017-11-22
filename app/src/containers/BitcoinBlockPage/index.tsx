@@ -4,7 +4,6 @@ import {CfState} from "../../model/CfState";
 import {CfActions, BitcoinBlockResponse} from "../../actions/CfActions";
 import JSONTree from "../../components/JSONTree/";
 import withRouter from "react-router/es/withRouter";
-import Title from "../../components/title/";
 import { getBitcoinBlock } from '../../modules/search';
 
 
@@ -19,9 +18,10 @@ class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData,
     const {bitcoinBlock} = this.props;
 
     return (
-      <Title title='Bitcoin Block'>
+      <div>
+        <h2>Bitcoin Block</h2>
         <JSONTree data={bitcoinBlock} />
-      </Title>
+      </div>
     );
   }
 }

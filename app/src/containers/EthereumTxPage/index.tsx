@@ -4,7 +4,6 @@ import {CfState} from "../../model/CfState";
 import {CfActions, EthereumBlockResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
-import Title from "../../components/title/";
 
 import { getEthereumTx } from '../../modules/search';
 
@@ -19,9 +18,10 @@ class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txH
     const {ethereumTx} = this.props;
 
     return (
-      <Title title='Ethereum Transaction'>
+      <div>
+        <h2>Ethereum Transaction</h2>
         <JSONTree data={ethereumTx} />
-      </Title>
+      </div>
     );
   }
 }

@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {CfState} from "../../model/CfState";
 import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
-import Title from "../../components/title/";
 
 import { getBitcoinTx } from '../../modules/search';
 
@@ -19,9 +18,10 @@ class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId 
     const {bitcoinTx} = this.props;
 
     return (
-      <Title title='Bitcoin Transaction'>
+      <div>
+        <h2>Bitcoin Transaction</h2>
         <JSONTree data={bitcoinTx} />
-      </Title>
+      </div>
     );
   }
 }
