@@ -6,6 +6,8 @@ import * as React from "react";
 import {Field} from "redux-form";
 var ReactGA = require("react-ga");
 
+import { SearchField, Button, Container } from '../../components/SearchForm/';
+
 export function SearchFormComponent(props) {
   const {handleSubmit, submitting, dirty, router, search, location} = props;
   const submit = values => {
@@ -30,23 +32,18 @@ export function SearchFormComponent(props) {
   }
 
   return (
-    <form className="container" onSubmit={handleSubmit(submit)}>
-      <div className="field has-addons has-addons-centered">
-        <div className="control" style={{width:800}}>
-          <Field
+    <form  onSubmit={handleSubmit(submit)}>
+      <Container>
+          <SearchField
             name="query"
-            className="input is-medium"
             component="input"
             type="text"
-            placeholder="Multi-Blockchain explorer for Bitcoin & Ethereum"
+            placeholder="Blockchains grow here"
           />
-        </div>
-        <div className="control">
-          <button disabled={submitting} className="button is-info is-medium">
+          <Button disabled={submitting} >
             Search
-          </button>
-        </div>
-      </div>
+          </Button>
+      </Container>
     </form>
   );
 }

@@ -9,17 +9,23 @@ import Footer from '../app/Footer';
 
 import BlockchainStatics from './BlockchainStatics';
 
+import CentredContainer from '../../components/CentredContainer/';
+
 export function IndexPage() {
   return (
     <div>
       <div className='container'>
-      <Logo />
-      <h2>Blockchain search</h2>
-      <span>cyber <span>•</span> Fund</span>
-      <TopMenu/>
-      <SearchForm/>
-      <BlockchainStatics />
+        <Logo />
       </div>
+
+      <CentredContainer>
+        <h2>Blockchain search</h2>
+        <span>cyber <span>•</span> Fund</span>
+        <TopMenu/>
+        <SearchForm/>
+        <BlockchainStatics />
+      </CentredContainer>
+
       <Footer />
     </div>
   );
