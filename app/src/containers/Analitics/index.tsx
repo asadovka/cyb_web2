@@ -51,15 +51,15 @@ class Analitics extends React.Component {
     // socket.on('event', function(data){
     //   debugger
     // });
-    var socket = new WebSocket("ws://localhost:18080");
+    // var socket = new WebSocket("ws://localhost:18080");
 
-    socket.onmessage = function(event) {
-      console.log("Получены данные " + event.data);
-    };
+    // socket.onmessage = function(event) {
+    //   console.log("Получены данные " + event.data);
+    // };
 
-    socket.onopen = function() {
-      alert("Соединение установлено.");
-    };
+    // socket.onopen = function() {
+    //   alert("Соединение установлено.");
+    // };
   }
   render() {
     return (
