@@ -11,13 +11,15 @@ import BlockchainStatics from './BlockchainStatics';
 
 export function IndexPage() {
   return (
-    <div className='container'>
+    <div>
+      <div className='container'>
       <Logo />
       <h2>Blockchain search</h2>
       <span>cyber <span>•</span> Fund</span>
       <TopMenu/>
       <SearchForm/>
       <BlockchainStatics />
+      </div>
       <Footer />
     </div>
   );

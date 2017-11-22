@@ -6,7 +6,8 @@ import TopMenu from '../app/TopMenu';
 
 
 const App = ({ children }) => (
-  <div className='container'>
+  <div>
+    <div className='container'>
     <div className='navbar-menu'>
       <div className="navbar-start">
         <Logo />
@@ -17,6 +18,7 @@ const App = ({ children }) => (
     </div>
     <div>
       {children}
+    </div>
     </div>
     <div>
       <Footer />
