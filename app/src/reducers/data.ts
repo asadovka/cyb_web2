@@ -21,8 +21,8 @@ export const dataReducer = combineReducers<DataState>({
   bitcoinTx: createDateReducer(CfActions.GET_BITCOIN_TX),
   ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
   ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX),
+  statistics: createDateReducer(CfActions.GET_STATISTICS)
 });
-
 
 function createDateReducer(type: string) {
   return function bitcoinBlockReducer(
@@ -36,7 +36,7 @@ function createDateReducer(type: string) {
           loading: true,
           data: {}
         };
-      case FULFILLED(type):
+      case FULFILLED(type): 
         return {
           success: true,
           loading: false,

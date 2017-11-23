@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Router, Route, browserHistory} from "react-router";
-import {IndexPage} from "./containers/IndexPage/";
+import IndexPage from "./containers/IndexPage/";
 
 import "./bulma-root.sass"
 import {SearchResultPage} from "./containers/SearchResultPage/";

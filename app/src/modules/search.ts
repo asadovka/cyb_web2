@@ -5,7 +5,8 @@ import {mapAndDispatchError, mapAndDispatchPayload } from "../epics/EpicsUtils";
 
 import {Injector} from "../injector";
 const {
-  searchApi
+  searchApi,
+  http
 } = Injector.of();
 
 export const search = (query, page, coins, type) => (dispatch, getStore) => {
@@ -40,5 +41,22 @@ export const getEthereumTx = (txHash) => (dispatch) => {
   dispatch({
     type: CfActions.GET_ETHEREUM_TX,
     payload: {txHash}
+  });
+}
+
+export const getStatistics = () => (dispatch) => {
+  dispatch({ type: CfActions.GET_STATISTICS })
+  Promise.all([
+    http.GET('https://api.coinmarketcap.com/v1/ticker/bitcoin/'),
+    http.GET('https://api.coinmarketcap.com/v1/global/?convert=EUR')
+  ]).then(data => {
+    console.log(' >> ', data)
+    dispatch({
+      type: CfActions.GET_STATISTICS + '_FULFILLED',
+      payload: {
+        total_24h_volume_usd: data[1].total_24h_volume_usd,
+        total_24h_volume_bit: data[1].total_24h_volume_usd / data[0][0].price_usd
+      }
+    })
   });
 }

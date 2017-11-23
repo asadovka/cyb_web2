@@ -6,15 +6,18 @@ import {
   Delta
 } from '../../components/BlockchainStatics/';
 
-const BlockchainStatics = () => (
+import { connect } from 'react-redux';
+var numeral = require('numeral');
+
+const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
   <Container>
     <Item>
       <Title icon='cap'>Cybernomics cap</Title>
       <DataContainer>
         <List>
-          <li><Value>$168,804,051,901</Value></li>
+          <li><Value>{numeral(total_24h_volume_usd).format('$0,0,0.00')}</Value></li>
           <li><Delta value={1.7} /></li>
-          <li><Value>35,322,488</Value></li>
+          <li><Value>{numeral(total_24h_volume_bit).format('0,0,0.00')}</Value></li>
           <li><Delta value={-2.78} /></li>
           <li><Label>24h changes</Label></li>
         </List>
@@ -69,4 +72,11 @@ const BlockchainStatics = () => (
   </Container>
 );
 
-export default BlockchainStatics;
+export default connect(
+  state => {
+    return ({
+      total_24h_volume_usd: state.data.statistics.data.total_24h_volume_usd,
+      total_24h_volume_bit: state.data.statistics.data.total_24h_volume_bit
+    })
+  }
+)(BlockchainStatics);

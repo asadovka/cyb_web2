@@ -15,22 +15,37 @@ import { Header } from '../../components/Header/';
 
 import { Title, BigLogo } from '../../components/Title/';
 
-export function IndexPage() {
-  return (
-    <div>
-      <Header>
-        <Logo />
-      </Header>
+import { connect } from 'react-redux';
 
-      <CentredContainer>
-        <Title>Blockchain search</Title>
-        <BigLogo />
-        <TopMenu/>
-        <SearchForm/>
-        <BlockchainStatics />
-      </CentredContainer>
+class IndexPage extends React.Component {
+  componentDidMount() {
+    this.props.getStatistics();
+  }
+  
+  render() {
+    return (
+      <div>
+        <Header>
+          <Logo />
+        </Header>
 
-      <Footer />
-    </div>
-  );
+        <CentredContainer>
+          <Title>Blockchain search</Title>
+          <BigLogo />
+          <TopMenu/>
+          <SearchForm/>
+          <BlockchainStatics />
+        </CentredContainer>
+
+        <Footer />
+      </div>
+    );    
+  }
 }
+
+import { getStatistics } from '../../modules/search';
+
+export default connect(
+  null,
+  { getStatistics }
+)(IndexPage);
