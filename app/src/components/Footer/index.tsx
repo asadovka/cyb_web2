@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Link } from 'react-router';
 
-const styles = require("./index.less");
+const styles = require("./Footer.less");
 
 export const Container = ({ children }) => (
   <footer className={styles.footer}>

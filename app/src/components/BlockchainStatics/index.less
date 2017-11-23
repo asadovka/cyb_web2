@@ -9,4 +9,142 @@
   width: 30%;
   text-align: center;
   border: 1px solid #000;
+  min-height: 280px;
+}
+
+
+.title {
+  border-bottom: 1px solid #000;
+  position: relative;
+  text-align: left;
+  padding-left: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Space Mono', monospace;
+}
+
+.title span {
+  position: relative;
+}
+
+.title span::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  right: 0;
+  bottom: 3px;
+  height: 4px;
+  background-color: #fdd100;
+  z-index: -1;
+}
+
+.cap::before {
+  background: url(./../BlockchainStatics/cap.png);
+}
+
+.search::before {
+  background: url(./../BlockchainStatics/search.png);
+}
+
+.portfolio::before {
+  background: url(./../BlockchainStatics/portfolio.png);
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  border-right: 1px solid #000;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.table {
+  width: 100%;
+  font-size: 14px;
+  line-height: 40px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  color: #0e4890;
+}
+
+.table td {
+  padding: 0 10px;
+  vertical-align: bottom;
+}
+
+.table td:first-child {
+  border-right: 1px solid #000;
+}
+
+.table tr:first-child td {
+  padding-top: 40px;
+}
+
+.table tr:last-child td {
+  padding-bottom: 50px;
+}
+
+.dataContainer {
+  padding-bottom: 50px;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.value {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  color: #0e4890;
+  font-size: 18px;
+}
+
+
+.label {
+  color: #535353;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+}
+
+.list {
+  list-style: none;
+}
+
+.list li {
+  margin-bottom: 5px;
+}
+
+
+.delta {
+  text-align: right;
+  padding-right: 50px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  font-size: 16px;
+  color: #4bae9f;
+}
+
+.delta span {
+  position: relative;
+}
+
+.negative {
+  color: #e03d4a;
+}
+
+.delta span::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: -25px;
+  top: 4px;
+  background: url(../BlockchainStatics/up.png) no-repeat center;
+}
+
+.delta.negative span::before {
+  background: url(../BlockchainStatics/down.png) no-repeat center;
 }

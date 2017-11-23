@@ -1,29 +1,70 @@
 import * as React from "react";
 
-import { Container, Item } from '../../components/BlockchainStatics/';
+import {
+  Container, Item, Title, Table, DataContainer, Value,
+  Label, List,
+  Delta
+} from '../../components/BlockchainStatics/';
 
 const BlockchainStatics = () => (
   <Container>
     <Item>
-      <h3>Cybernomics cap</h3>
-      <p>$168,804,051,901</p>
-      <p>+1.7%</p>
-      <p>35,322,488</p>
-      <p>-2.78%</p>
-      <p>24h changes</p>
+      <Title icon='cap'>Cybernomics cap</Title>
+      <DataContainer>
+        <List>
+          <li><Value>$168,804,051,901</Value></li>
+          <li><Delta value={1.7} /></li>
+          <li><Value>35,322,488</Value></li>
+          <li><Delta value={-2.78} /></li>
+          <li><Label>24h changes</Label></li>
+        </List>
+      </DataContainer>
     </Item>
     <Item>
-      <h3>Search Statistics</h3>
-      <p>Blocks Indexed:         80M</p>
-      <p>Transactions Indexed:  900M</p>
-      <p>Database Size:          1TB</p>
+      <Title icon='search'>Search Statistics</Title>
+      <div>
+        <Table>
+          <tbody>
+            <tr>
+              <td>Blocks Indexed:</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Blocks Indexed:</td>
+              <td>80M</td>
+            </tr>
+            <tr>
+              <td>Transactions Indexed:</td>
+              <td>900M</td>
+            </tr>
+            <tr>
+              <td>Database Size:</td>
+              <td>1TB</td>
+            </tr>
+          </tbody>
+        </Table>
+      </div>
     </Item>
     <Item>
-      <h3>Portfolio</h3>
-      <p>Tokens:     24</p>
-      <p>Value:      50BTC/200000 $</p>
-      <p>Perfonance </p>
-      <p>(24):       +24%</p>
+      <Title icon='portfolio'>Portfolio</Title>
+      <div>
+        <Table>
+          <tbody>
+            <tr>
+              <td>Tokens:</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <td>Value:</td>
+              <td>50BTC/200000$</td>
+            </tr>
+            <tr>
+              <td>Perfonance (24):</td>
+              <td>+24%</td>
+            </tr>
+          </tbody>
+        </Table>
+      </div>
     </Item>
   </Container>
 );
