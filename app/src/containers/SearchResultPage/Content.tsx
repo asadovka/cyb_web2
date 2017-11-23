@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import {Pagination} from "../../components/Pagination";
 import withRouter from "react-router/es/withRouter";
 
+import { BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, EthereumBlock, EthereumTx } from '../../components/SearchItems/';
+
 const Content = ({
   searchResult,
   coins,
@@ -57,8 +59,7 @@ function results(items, loading, error, success) {
     {items.map((item, index) => (
       <div key={JSON.stringify(item)} className="column is-one-third">
         <ul style={{ overflow: 'hidden' }}>
-          <li>{`Type: ${item.type.toUpperCase().replace(/_/g , " ")}`}</li>
-          <li>{renderByType(item.type, item.data)}</li>
+          <li><RenderByType type={item.type} data={item.data} /></li>
         </ul>
       </div>
     ))}
@@ -67,120 +68,23 @@ function results(items, loading, error, success) {
 }
 
 
+const items = {
+  bitcoin_block: BitcoinBlock,
+  bitcoin_tx: BitcoinTx, 
+  bitcoin_address: BitcoinAddress, 
+  ethereum_block: EthereumBlock, 
+  ethereum_tx: EthereumTx
+}
 
-
-function renderByType(type, data) {
-  if (type === "bitcoin_block") {
-    return bitcoin_block(data);
-  } else if (type === "bitcoin_tx") {
-    return bitcoin_tx(data);
-  } else if (type === "bitcoin_address") {
-    return bitcoin_address(data);
-  } else if (type === "ethereum_block") {
-    return ethereum_block(data);
-  } else if (type === "ethereum_tx") {
-    return ethereum_tx(data);
-  } else {
-    return plain(data);
+function RenderByType({ type, data} ) {§
+  const Component = items[type];
+  if (Component) {
+    return (<Component {...data} />)
   }
-}
-
-function plain(data) {
   return (
-    <div>
-      {JSON.stringify(data)}
-    </div>
+    <Plain {...data}/>
   );
 }
-
-function bitcoin_block(data) {
-  return (
-    <div>
-      <ul>
-        <li>{`Hash: ${data.hash}`}</li>
-        <li>{`Height: ${data.height}`}</li>
-        <li>{`Total outputs value: ${data.total_outputs_value}`}</li>
-        <li>{`Time: ${data.time}`}</li>
-        <li>{`Tx number: ${data.tx_number}`}</li>
-      </ul>
-
-      <Link to={`/bitcoin/block/${data.height}`}>
-        View block
-      </Link>
-    </div>
-  );
-}
-
-function bitcoin_tx(data) {
-  return (
-    <div>
-        <ul>
-        <li>{`Tx Id: ${data.txid}`}</li>
-        <li>{`Block hash: ${data.block_hash}`}</li>
-        <li>{`Block number: ${data.block_number}`}</li>
-        <li>{`Block time: ${data.block_time}`}</li>
-        <li>{`Total output: ${data.total_output}`}</li>
-        <li>{`Fee: ${data.fee}`}</li>
-        <li>{`Size: ${data.size}`}</li>
-      </ul>
-
-      <Link to={`/bitcoin/tx/${data.txid}`}>
-        View transaction
-      </Link>
-    </div>
-  );
-}
-
-function bitcoin_address(data) {
-  return (
-    <div>
-      <ul>
-        <li>{`Balance: ${data.balance}` + " BTC"}</li>
-        <li>{`Address: ${data.id}`}</li>
-        <li>{`No. Transactions: ${data.tx_number}`}</li>
-        <li>{`Total Received: ${data.total_received}` + " BTC"}</li>
-      </ul>
-    </div>
-  );
-}
-
-function ethereum_block(data) {
- return (
-   <div>
-     <ul>
-       <li>{`Block hash: ${data.hash}`}</li>
-       <li>{`Block number: ${data.number}`}</li>
-       <li>{`Transactions count: ${data.tx_number}`}</li>
-       <li>{`Block time: ${data.timestamp}`}</li>
-       <li>{`Block size: ${data.size}`}</li>
-     </ul>
-
-     <Link to={`/ethereum/block/${data.number}`}>
-       View block
-     </Link>
-   </div>
- );
-}
-
-function ethereum_tx(data) {
-  return (
-    <div>
-      <ul>
-        <li>{`Hash: ${data.hash}`}</li>
-        <li>{`Block hash: ${data.block_hash}`}</li>
-        <li>{`Block number: ${data.block_number}`}</li>
-        <li>{`Block time: ${data.timestamp}`}</li>
-        <li>{`Value: ${data.value} ETH`}</li>
-        <li>{`Fee: ${data.fee} ETH`}</li>
-      </ul>
-
-      <Link to={`/ethereum/tx/${data.hash}`}>
-        View transaction
-      </Link>
-    </div>
-  );
-}
-
 
 export default withRouter(connect(((state, ownProps) => ({
     searchResult: state.search,
