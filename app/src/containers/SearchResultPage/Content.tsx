@@ -7,6 +7,8 @@ import withRouter from "react-router/es/withRouter";
 
 import { BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, EthereumBlock, EthereumTx } from '../../components/SearchItems/';
 
+import { SectionTitle, SectionsContainer } from '../../components/SectionTitle/';
+
 const Content = ({
   searchResult,
   coins,
@@ -54,16 +56,38 @@ function results(items, loading, error, success) {
     );
   }
   
+  const blocks = items.filter(item => item.type === 'bitcoin_block' || item.type === 'ethereum_block');
+  const transactions = items.filter(item => item.type === 'bitcoin_tx' || item.type === 'ethereum_tx');
+
+
   return (
-    <div className='columns is-multiline'>
-    {items.map((item, index) => (
-      <div key={JSON.stringify(item)} className="column is-one-third">
-        <ul style={{ overflow: 'hidden' }}>
-          <li><RenderByType type={item.type} data={item.data} /></li>
-        </ul>
-      </div>
-    ))}
-    </div>
+    <SectionsContainer>
+      {blocks.length > 0 && (<div>
+        <SectionTitle>Blocks</SectionTitle>
+        <div className='columns is-multiline'>
+        {blocks.map((item, index) => (
+          <div key={JSON.stringify(item)} className="column is-one-third">
+            <ul style={{ overflow: 'hidden' }}>
+              <li><RenderByType type={item.type} data={item.data} /></li>
+            </ul>
+          </div>
+        ))}
+        </div>
+      </div>)}
+
+      {transactions.length > 0 && (<div>
+        <SectionTitle>Transactions</SectionTitle>
+        <div className='columns is-multiline'>
+        {transactions.map((item, index) => (
+          <div key={JSON.stringify(item)} className="column is-one-third">
+            <ul style={{ overflow: 'hidden' }}>
+              <li><RenderByType type={item.type} data={item.data} /></li>
+            </ul>
+          </div>
+        ))}
+        </div>
+      </div>)}
+    </SectionsContainer>
    ); 
 }
 
