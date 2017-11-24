@@ -20,7 +20,7 @@ function createSearchEpic(actionType) {
     .ofType(actionType)
     .mergeMap(({payload: {query, page}}: CfAction<SearchPayload>) => {
       return Observable
-        .fromPromise(searchApi.search(query, page))
+        .fromPromise(searchApi.search(query, page, '', ''))
         .map(mapPayload(actionType))
         .catch(mapError(actionType));
     });

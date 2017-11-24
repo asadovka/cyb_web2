@@ -13,9 +13,9 @@ const LeftMenu = ({
   type
 }) => (
   <Tabs>
-      <Tab isActive={!coins} to={{ pathname:"/search", query: { q: query, type } }}>All</Link>
-      <Tab isActive={coins === 'bitcoin'} to={{ pathname:"/search", query: { q: query, coins: 'bitcoin', type } }}>Bitcoin</Link>
-      <Tab isActive={coins === 'etherium'} to={{ pathname:"/search", query: { q: query, coins: 'etherium', type } }}>Etherium</Link>
+      <Tab isActive={!coins} to={{ pathname:"/search", query: { q: query, type } }}>All</Tab>
+      <Tab isActive={coins === 'bitcoin'} to={{ pathname:"/search", query: { q: query, coins: 'bitcoin', type } }}>Bitcoin</Tab>
+      <Tab isActive={coins === 'etherium'} to={{ pathname:"/search", query: { q: query, coins: 'etherium', type } }}>Etherium</Tab>
   </Tabs>
 )
 

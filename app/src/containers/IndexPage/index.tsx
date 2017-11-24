@@ -17,7 +17,7 @@ import { Title, BigLogo } from '../../components/Title/';
 
 import { connect } from 'react-redux';
 
-class IndexPage extends React.Component {
+class IndexPage extends React.Component<any, any> {
   componentDidMount() {
     this.props.getStatistics();
   }

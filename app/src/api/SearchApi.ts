@@ -2,7 +2,7 @@ import {HttpService} from "../http/HttpService";
 import {SearchResponse} from "../actions/CfActions";
 
 export interface SearchApi {
-  search(query: string, page: number): Promise<SearchResponse>;
+  search(query: string, page: number, coins: string, type: string): Promise<SearchResponse>;
 }
 
 export class DefaultSearchApi implements SearchApi {

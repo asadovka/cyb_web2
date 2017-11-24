@@ -21,12 +21,16 @@ This compiles all UI assets into static website, copied in `dist/`dir
 and ready to be deployed to remote side.
 
 
-    docker exec -t -i ddd /bin/bash
+#### build and run container
 
-    docker run  --name ddd -d -p 7000:80 andrey/test4
+    docker build -t andrey/frontend-image .
+    docker run  --name frontend -d -p 7000:80 andrey/frontend-image
 
-    docker rm ddd
 
-    docker stop ddd
+#### check container and remove if need
+    docker exec -t -i frontend /bin/bash
 
-    docker build -t andrey/test4 .
+    docker rm frontend
+
+    docker stop frontend
+

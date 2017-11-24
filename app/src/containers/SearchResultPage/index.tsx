@@ -16,7 +16,7 @@ import App from '../app/';
 
 
 
-class SearchResultPageComponent extends React.Component {
+class SearchResultPageComponent extends React.Component<any, any> {
 
   componentDidMount() {
     const { query, page, coins, type } = this.props;

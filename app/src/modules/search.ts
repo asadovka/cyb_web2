@@ -49,7 +49,7 @@ export const getStatistics = () => (dispatch) => {
   Promise.all([
     http.GET('https://api.coinmarketcap.com/v1/ticker/bitcoin/'),
     http.GET('https://api.coinmarketcap.com/v1/global/?convert=EUR')
-  ]).then(data => {
+  ]).then((data: any) => {
     console.log(' >> ', data)
     dispatch({
       type: CfActions.GET_STATISTICS + '_FULFILLED',
