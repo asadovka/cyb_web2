@@ -23,7 +23,7 @@ and ready to be deployed to remote side.
 
 #### build and run container
 
-    docker build -t cyber-ui/frontend-image .
+    docker build -t cyber-ui/frontend-image -f ./devops/Dockerfile ./
     docker run -e API_ROOT=http://search-api.cyber.fund  --name frontend -d -p 7000:80 cyber-ui/frontend-image
 
 
