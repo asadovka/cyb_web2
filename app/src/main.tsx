@@ -18,3 +18,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+// alert(1)

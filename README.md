@@ -23,8 +23,8 @@ and ready to be deployed to remote side.
 
 #### build and run container
 
-    docker build -t andrey/frontend-image .
-    docker run  --name frontend -d -p 7000:80 andrey/frontend-image
+    docker build -t cyber-ui/frontend-image .
+    docker run -e API_ROOT=http://search-api.cyber.fund  --name frontend -d -p 7000:80 cyber-ui/frontend-image
 
 
 #### check container and remove if need
@@ -34,3 +34,4 @@ and ready to be deployed to remote side.
 
     docker stop frontend
 
+https://thepracticalsysadmin.com/templated-nginx-configuration-with-bash-and-docker/

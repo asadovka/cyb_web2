@@ -1,3 +1,5 @@
+#FROM andrey/node_module as webpack
+#WORKDIR /src
 FROM node:8.5.0 as webpack
 COPY ./ /src
 WORKDIR /src
@@ -7,5 +9,12 @@ RUN npm run build
 FROM nginx
 RUN mkdir /dist
 COPY --from=webpack /src/dist /dist
+
 RUN rm /etc/nginx/conf.d/*
-COPY nginx.conf /etc/nginx/conf.d/
+COPY devops/nginx.tmpl /etc/nginx/conf.d/
+COPY devops/run_nginx.sh run_nginx.sh
+#RUN chmod +x /run_nginx.sh
+CMD /run_nginx.sh
+#CMD /bin/sh -c "nginx -g 'daemon off;'"
+
+

@@ -3,7 +3,7 @@ server {
 
 
   location /api/ {
-    proxy_pass http://search-api.cyber.fund/;
+   proxy_pass ${API_ROOT};
   }
 
   # location / {
@@ -13,12 +13,12 @@ server {
     root /dist;
 
      # Any route containing a file extension (e.g. /devicesfile.js)
-    location ~ ^.+\..+$ {
-        try_files $uri =404;
+    location ~ ^.+\..+${DOLLAR} {
+        try_files ${DOLLAR}uri =404;
     }
 
     # Any route that doesn't have a file extension (e.g. /devices)
     location / {
-        try_files $uri /index.html;
+        try_files ${DOLLAR}uri /index.html;
     }
 }
