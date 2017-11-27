@@ -6,6 +6,10 @@ server {
    proxy_pass ${API_ROOT};
   }
 
+  location /logos/ {
+   proxy_pass ${API_ROOT};
+  }
+
   # location / {
   #   root /src/dist;
   # }
@@ -13,9 +17,9 @@ server {
     root /dist;
 
      # Any route containing a file extension (e.g. /devicesfile.js)
-    location ~ ^.+\..+${DOLLAR} {
-        try_files ${DOLLAR}uri =404;
-    }
+    #location ~ ^.+\..+${DOLLAR} {
+    #    try_files ${DOLLAR}uri =404;
+    #}
 
     # Any route that doesn't have a file extension (e.g. /devices)
     location / {
