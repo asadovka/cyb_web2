@@ -12,8 +12,8 @@ export const Tabs = (props) => (
 )
 
 
-export const Tab = ({ isActive, ...props }) => (
-  <li className={styles.tab + ' ' + (isActive ? styles.isActive : ' ')}>
+export const Tab = (props: any) => (
+  <li className={styles.tab + ' ' + (props.isActive ? styles.isActive : ' ')}>
     <Link
       {...props}      
     />

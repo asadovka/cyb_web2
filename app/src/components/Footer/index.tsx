@@ -13,8 +13,8 @@ export const Container = ({ children }) => (
 )
 
 
-export const Title = ({ children, inline }) => (
-  <h3 className={styles.title + ' ' + (inline ? styles.titleInline : '')}>{children}</h3>
+export const Title = (props: any) => (
+  <h3 className={styles.title + ' ' + (props.inline ? styles.titleInline : '')}>{props.children}</h3>
 );
 
 export const Text = ({ children }) => (

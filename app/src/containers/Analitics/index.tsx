@@ -20,7 +20,7 @@ const SimpleLineChart = ({ data }) => {
   );
 }     
 
-class Analitics extends React.Component {
+class Analitics extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {

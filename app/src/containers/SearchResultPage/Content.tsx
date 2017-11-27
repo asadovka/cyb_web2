@@ -100,7 +100,7 @@ const items = {
   ethereum_tx: EthereumTx
 }
 
-function RenderByType({ type, data} ) {§
+function RenderByType({ type, data} ) {
   const Component = items[type];
   if (Component) {
     return (<Component {...data} />)
