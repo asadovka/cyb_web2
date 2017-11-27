@@ -9,7 +9,8 @@ const {
 
 class Assets extends React.Component {
   componentDidMount() {
-    http.GET('https://raw.githubusercontent.com/cyberFund/chaingear/gh-pages/chaingear.json')
+    //https://raw.githubusercontent.com/cyberFund/chaingear/gh-pages/chaingear.json
+    http.GET('/api/tokens')
       .then(data => {
         console.log(data)
       })
