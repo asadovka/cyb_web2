@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const autoprefixer = require("autoprefixer");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = function (options = {}) {
   // Settings
@@ -10,15 +11,19 @@ module.exports = function (options = {}) {
   const SOURCE_MAP = options.SOURCE_MAP || "eval-source-map"; // "source-map"
   const API_ROOT = options.API_ROOT || "http://search-api.cyber.fund"; // "http://cyber.fund/api/"
   const APP_VERSION = options.APP_VERSION || "DEV";
+  const CYBER_CHAINGEAR_API = process.env.CYBER_CHAINGEAR_API || 'localhost:8000';
 
-  console.log(`
-Build started with following configuration:
-===========================================
-→ API_ROOT: ${API_ROOT}
-→ NODE_ENV: ${NODE_ENV}
-→ SOURCE_MAP: ${SOURCE_MAP}
-→ APP_VERSION: ${APP_VERSION}
-`);
+  //console.log(' process.env ', process.env.CYBER_CHAINGEAR_API);
+
+//   console.log(`
+// Build started with following configuration:
+// ===========================================
+// → API_ROOT: ${API_ROOT}
+// → NODE_ENV: ${NODE_ENV}
+// → SOURCE_MAP: ${SOURCE_MAP}
+// → APP_VERSION: ${APP_VERSION}
+// → CYBER_CHAINGEAR_API: ${CYBER_CHAINGEAR_API}
+// `);
 
   return {
     entry: {
@@ -41,7 +46,10 @@ Build started with following configuration:
     },
     bail: false,
     devtool: SOURCE_MAP,
-    module: {
+    externals: {
+      './config.js': "env"
+    },
+      module: {
       rules: [{
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -94,7 +102,7 @@ Build started with following configuration:
         }
       }]
     },
-    plugins: createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT}),
+    plugins: createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_API}),
     devServer: {
       stats: {
         chunkModules: false,
@@ -112,7 +120,7 @@ Build started with following configuration:
   }
 };
 
-function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT}) {
+function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_API}) {
   const plugins = [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "app", "index.html"),
@@ -123,9 +131,15 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT}) {
       "process.env": {
         "NODE_ENV": JSON.stringify(NODE_ENV)
       },
+      dev: JSON.stringify(NODE_ENV) !== 'production',
       _API_ROOT: JSON.stringify(API_ROOT),
-      _APP_VERSION: JSON.stringify(APP_VERSION)
-    })
+      _APP_VERSION: JSON.stringify(APP_VERSION),
+     _CYBER_CHAINGEAR_API: JSON.stringify(CYBER_CHAINGEAR_API)
+    }),
+    new CopyWebpackPlugin([
+      // Copy directory contents to {output}/
+      { from: 'config.js' }
+    ]) 
   ];
 
   if (NODE_ENV === "production") {

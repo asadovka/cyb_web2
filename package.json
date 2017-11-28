@@ -9,6 +9,8 @@
     "babel-polyfill": "6.26.0",
     "bulma": "0.5.3",
     "classnames": "2.2.5",
+    "copy-webpack-plugin": "4.2.3",
+    "json-loader": "0.5.7",
     "jsx-loader": "0.13.2",
     "lodash": "4.17.4",
     "moment": "2.19.2",
