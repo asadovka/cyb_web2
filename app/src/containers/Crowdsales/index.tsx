@@ -17,6 +17,8 @@ const cgSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
   return CYBER_CHAINGEAR_API + icon + ".png";
 };
 
+import { CardList, Card } from '../../components/Cards/';
+
 class Crowdsales extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -34,23 +36,18 @@ class Crowdsales extends React.Component<any, any> {
       })    
   }
   render() {
-    const rows = this.state.items.map(item => (
-      <tr>
-        <td>
-          <img width={150} src={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>
-        </td>
-        <td>
-          {item.system}
-        </td>
-      </tr>
+    const cards = this.state.items.map(item => (
+      <Card
+        logo={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}
+        name={item.system}
+        descriptions={item.descriptions && item.descriptions.headline}
+      />
     ))
     return (
       <App>
-         <table>
-           <tbody>
-             {rows}
-           </tbody>
-         </table>
+         <CardList>
+           {cards}
+         </CardList>
       </App>
     );    
   }

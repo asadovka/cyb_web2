@@ -11,6 +11,8 @@ import {ConfigConstants} from "../../config/ConfigConstants";
 var config = require('./config.js')
 
 
+import { Table } from '../../components/AssetTable/'
+
 const cgSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
   var icon = (that.icon ? that.icon : that.system) || '';
   icon = icon.toString().toLowerCase();
@@ -46,11 +48,11 @@ class Assets extends React.Component<any, any> {
     ))
     return (
       <App>
-         <table>
+         <Table>
            <tbody>
              {rows}
            </tbody>
-         </table>
+         </Table>
       </App>
     );    
   }
