@@ -6,6 +6,8 @@ import {
   EthereumTxResponse
 } from "../actions/CfActions";
 
+var config = require('./config.js')
+
 export interface DataApi {
   getBitcoinBlock(blockNumber: string): Promise<BitcoinBlockResponse>;
 
@@ -24,25 +26,25 @@ export class DefaultDataApi implements DataApi {
 
   getBitcoinBlock(blockNumber: string): Promise<BitcoinBlockResponse> {
     return this.http.GET(
-      `/api/bitcoin/block/${blockNumber}`
+      `${config.CYBER_SEARCH_API}/api/bitcoin/block/${blockNumber}`
     );
   }
 
   getBitcoinTx(txId: string): Promise<BitcoinTxResponse> {
     return this.http.GET(
-      `/api/bitcoin/tx/${txId}`
+      `${config.CYBER_SEARCH_API}/api/bitcoin/tx/${txId}`
     );
   }
 
   getEthereumBlock(blockNumber: string): Promise<EthereumBlockResponse> {
     return this.http.GET(
-      `/api/ethereum/block/${blockNumber}`
+      `${config.CYBER_SEARCH_API}/api/ethereum/block/${blockNumber}`
     );
   }
 
   getEthereumTx(txHash: string): Promise<EthereumTxResponse> {
     return this.http.GET(
-      `/api/ethereum/tx/${txHash}`
+      `${config.CYBER_SEARCH_API}/api/ethereum/tx/${txHash}`
     );
   }
 }

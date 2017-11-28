@@ -19,4 +19,3 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// alert(1)

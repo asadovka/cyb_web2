@@ -7,6 +7,9 @@ const {
   http
 } = Injector.of();
 
+import {ConfigConstants} from "../../config/ConfigConstants";
+var config = require('./config.js')
+
 class Assets extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -16,12 +19,14 @@ class Assets extends React.Component<any, any> {
   }
   componentDidMount() {
     //https://raw.githubusercontent.com/cyberFund/chaingear/gh-pages/chaingear.json
-    http.GET('/api/tokens')
+    http.GET(`${config.CYBER_CHAINGEAR_API}/api/tokens`)
       .then(data => {
         this.setState({
           items: data
         })
       })
+
+//   console.log('CYBER_CHAINGEAR_API> ', window.env.CYBER_CHAINGEAR_API)
     
   }
   render() {

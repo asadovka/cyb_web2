@@ -1,6 +1,8 @@
 import {HttpService} from "../http/HttpService";
 import {SearchResponse} from "../actions/CfActions";
 
+var config = require('./config.js')
+
 export interface SearchApi {
   search(query: string, page: number, coins: string, type: string): Promise<SearchResponse>;
 }
@@ -13,7 +15,7 @@ export class DefaultSearchApi implements SearchApi {
 
   search(query: string, page: number = 0, coins: string, type: string): Promise<SearchResponse> {
     return this.http.GET(
-      `/api/search`,
+      `${config.CYBER_SEARCH_API}/api/search`,
       {
         params: {query, page, coins, type}
       }

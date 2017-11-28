@@ -12,9 +12,8 @@ COPY --from=webpack /src/dist /dist
 
 RUN rm /etc/nginx/conf.d/*
 COPY devops/nginx.tmpl /etc/nginx/conf.d/
+COPY devops/config.tmpl config.tmpl
 COPY devops/run_nginx.sh run_nginx.sh
-#RUN chmod +x /run_nginx.sh
 CMD /run_nginx.sh
-#CMD /bin/sh -c "nginx -g 'daemon off;'"
 
 
