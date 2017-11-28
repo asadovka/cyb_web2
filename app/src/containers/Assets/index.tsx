@@ -10,6 +10,13 @@ const {
 import {ConfigConstants} from "../../config/ConfigConstants";
 var config = require('./config.js')
 
+
+const cgSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
+  var icon = (that.icon ? that.icon : that.system) || '';
+  icon = icon.toString().toLowerCase();
+  return CYBER_CHAINGEAR_API + icon + ".png";
+};
+
 class Assets extends React.Component<any, any> {
   constructor(props) {
     super(props);
@@ -18,22 +25,19 @@ class Assets extends React.Component<any, any> {
     };
   }
   componentDidMount() {
-    //https://raw.githubusercontent.com/cyberFund/chaingear/gh-pages/chaingear.json
     http.GET(`${config.CYBER_CHAINGEAR_API}/api/tokens`)
       .then(data => {
+        console.log(' data ', data);
         this.setState({
           items: data
         })
-      })
-
-//   console.log('CYBER_CHAINGEAR_API> ', window.env.CYBER_CHAINGEAR_API)
-    
+      })    
   }
   render() {
     const rows = this.state.items.map(item => (
       <tr>
         <td>
-          <img src={item.icon}/>
+          <img width={50} src={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>
         </td>
         <td>
           {item.system}
