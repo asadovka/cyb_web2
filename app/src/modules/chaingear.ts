@@ -1,6 +1,6 @@
 import {Injector} from "../injector";
 const {
-  http,
+  chaingearApi,
   marketApi
 } = Injector.of();
 
@@ -36,7 +36,7 @@ export const getSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
 
 export const showAllTokens = () => (dispatch, getState) => {
   Promise.all([
-    http.GET(`${config.CYBER_CHAINGEAR_API}/api/tokens`), // TODO: create HAINGEAR api service
+    chaingearApi.getAllTokens(), 
     marketApi.getTokensStatistics()
   ]).then(data => {
     dispatch({

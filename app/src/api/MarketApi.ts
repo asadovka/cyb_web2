@@ -12,8 +12,8 @@ export class DefaultMarketApi implements MarketApi {
   constructor(
     private readonly http: HttpService
   ) {
-  }
 
+  }
 
   test() {
     return this.http.GET(
