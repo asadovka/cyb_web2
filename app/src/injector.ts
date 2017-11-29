@@ -1,11 +1,11 @@
 import * as assignIn from "lodash/assignIn";
 import {EnvironmentConstants} from "./config/EnvironmentConstants";
 import {DefaultHttpService, HttpService} from "./http/HttpService";
-import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
-import {DefaultMarketApi, MarketApi } from './api/MarketApi';
 import {MockSearchApi} from "./api/mock/MockSearchApi";
 import {DataApi, DefaultDataApi} from "./api/DataApi";
 import {ChaingearApi, DefaulChaingearApi } from './api/ChaingearApi';
+import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
+import {DefaultMarketApi, MarketApi } from './api/MarketApi';
 
 export class Injector {
   readonly http: HttpService = new DefaultHttpService();

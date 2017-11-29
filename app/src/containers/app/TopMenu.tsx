@@ -5,7 +5,7 @@ import { TopMenu, TopMenuLink } from '../../components/TopMenu/'
 
 const TopMenuContainer = () => (
   <TopMenu>
-    <TopMenuLink to='/assets'>Assets</TopMenuLink>
+    <TopMenuLink to='/tokens'>Tokens</TopMenuLink>
     <TopMenuLink to='/funds'>Funds</TopMenuLink>
     <TopMenuLink to='/crowdsales'>Crowdsales</TopMenuLink>
     <TopMenuLink to='/search?q=42'>Blockchains</TopMenuLink>
