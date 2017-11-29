@@ -11,7 +11,7 @@ import {EthereumTxPage} from "./containers/EthereumTxPage/";
 import {EthereumBlockPage} from "./containers/EthereumBlockPage/";
 import { DetailsPage } from "./containers/DetailsPage/"
 
-import Assets from './containers/Assets/';
+import Tokens from './containers/Tokens/';
 import Funds from './containers/Funds/';
 import Crowdsales from './containers/Crowdsales/';
 import Analitics from './containers/Analitics/';
@@ -37,7 +37,7 @@ export function Root() {
     <Router onUpdate={logPageView} history={browserHistory}>
       <Route path={"/"} component={IndexPage}/>
       <Route path={"/search"} component={SearchResultPage}/>
-      <Route path={"/assets"} component={Assets}/>
+      <Route path={"/tokens"} component={Tokens}/>
       <Route path={"/funds"} component={Funds}/>
       <Route path={"/crowdsales"} component={Crowdsales}/>
       <Route path={"/analitics"} component={Analitics}/>
