@@ -2,56 +2,34 @@ import * as React from "react";
 
 import App from '../app/';
 
-
-import {Injector} from "../../injector";
-const {
-  http,
-  marketApi
-} = Injector.of();
-
-import {ConfigConstants} from "../../config/ConfigConstants";
 var config = require('./config.js')
 
-import {
+import { // TODO: move to seporate block
   Delta
 } from '../../components/BlockchainStatics/';
 import { Table, Logo, PriceInfo, NoInfo, PriceChart } from '../../components/AssetTable/';
 
-
-const cgSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
-  var icon = (that.icon ? that.icon : that.system) || '';
-  icon = icon.toString().toLowerCase();
-  return CYBER_CHAINGEAR_API + icon + ".png";
-};
+import { connect } from 'react-redux';
+import { getSystemLogoUrl, showAllTokens, TIKER_INTERVAL } from './../../modules/chaingear';
 
 class TokensPages extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tokens: [],
-      statistics: []
-    };
-  }
   componentDidMount() {
-    Promise.all([
-      http.GET(`${config.CYBER_CHAINGEAR_API}/api/tokens`),
-      marketApi.getTokensStatistics()
-    ]).then(data => {
-      this.setState({
-        tokens: data[0],
-        statistics: data[1]
-      })
-    })
+    this.props.showAllTokens();
   }
-  render() {
-    const rows = this.state.tokens.map(item => {
 
-      const statisticsRow = this.state.statistics.find(s => s.system === item.system);
+  render() {
+    const {
+      tokens,
+      statistics,
+    } = this.props;
+
+    const rows = tokens.map(item => {
+      const statisticsRow = statistics.find(s => s.system === item.system);
       return (
         <tr key={item.system}>
           <td>
             <Logo>
-              <img width={50} src={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>            
+              <img width={50} src={getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>            
               <span>{item.system}</span>
             </Logo>
           </td>
@@ -60,7 +38,7 @@ class TokensPages extends React.Component<any, any> {
               <div>
                 <PriceChart
                   price_history={statisticsRow.price_history}
-                  tiker_interval={1000 * 60 * 60 * 24 * 1 /*1 day*/}
+                  tiker_interval={TIKER_INTERVAL}
                 />
               </div>
               <div>
@@ -96,4 +74,10 @@ class TokensPages extends React.Component<any, any> {
   }
 }
 
-export default TokensPages;
+export default connect(
+  state => ({
+    tokens: state.chaingear.tokens,
+    statistics: state.chaingear.statistics
+  }),
+  { showAllTokens }
+)(TokensPages);
