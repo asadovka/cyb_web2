@@ -4,46 +4,36 @@ import App from '../app/';
      
 var config = require('./config.js')
 
-const s = {
-    width: 20,
-    height: 20,
-    border: '1px solid #000',
-    display: 'block',
-    borderRadius: '50%',
-    background: 'red'
-}
+import { Table, Indicator, Title } from '../../components/ApiIndicator/';
 
-const r = {
-  paddingRight: 20
-}
 
 class Cybernode extends React.Component {
 
   render() {
     return (
       <App>
-        <h2>API status:</h2>
-        <table>
+        <Title>API status:</Title>
+        <Table>
           <tbody>
             <tr>
-              <td style={r}>CYBER_CHAINGEAR_API</td>
-              <td style={r}>{config.CYBER_CHAINGEAR_API}</td>
-              <td style={r}>
-                <span style={s}/>
+              <td>CYBER_CHAINGEAR_API</td>
+              <td>{config.CYBER_CHAINGEAR_API}</td>
+              <td>
+                <Indicator available={false}/>
               </td>
             </tr>
             <tr>
-              <td style={r}>CYBER_SEARCH_API</td>
-              <td style={r}>{config.CYBER_SEARCH_API}</td>
-              <td><span style={s}/></td>
+              <td>CYBER_SEARCH_API</td>
+              <td>{config.CYBER_SEARCH_API}</td>
+              <td><Indicator available={false}/></td>
             </tr>
             <tr>
-              <td style={r}>CYBER_MARKETS_API</td>
-              <td style={r}>{config.CYBER_MARKETS_API}</td>
-              <td><span style={s}/></td>
+              <td>CYBER_MARKETS_API</td>
+              <td>{config.CYBER_MARKETS_API}</td>
+              <td><Indicator available={true} /></td>
             </tr>
           </tbody>
-        </table>
+        </Table>
       </App>
     );    
   }
