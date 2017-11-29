@@ -1,31 +1,23 @@
 var config = require('./config.js')
 
-const initState = {
-  chaingearApiAvailable: false,
-  searchApiAvailable: false,
-  marketApiAvailable: false
-}
+import {combineReducers} from "redux";
 
-export const reducer = (state = initState, action) => {
+const Avalible = (actionType) => (state = false, action) => {
   switch (action.type) {
-    case "CHECK_API":
-        return { ...initState };
-    case "SEARCH_API_AVAILABLE":
-      return { searchApiAvailable: true }
-    case "SEARCH_API_NOT_AVAILABLE":
-      return { searchApiAvailable: true }
-    case "MARKET_API_AVAILABLE":
-      return { marketApiAvailable: true }
-    case "MARKET_API_NOT_AVAILABLE":
-      return { marketApiAvailable: false }
-    case "CHAINGEAR_API_AVAILABLE":
-      return { chaingearApiAvailable: true }
-    case "CHAINGEAR_API_NOT_AVAILABLE":
-      return { chaingearApiAvailable: false }
-    default:
-      return state
+    case `${actionType}_AVAILABLE`: return true;
+    case `${actionType}_NOT_AVAILABLE`: return false;
+    case `${actionType}_RESET`: return false;
+    
+    default:  
+      return state;
   }
 }
+
+export const reducer = combineReducers({
+  chaingearApiAvailable: Avalible("CHAINGEAR_API"),
+  searchApiAvailable: Avalible("SEARCH_API"),
+  marketApiAvailable: Avalible("MARKET_API")
+}) 
 
 import {Injector} from "../injector";
 const {
@@ -34,20 +26,15 @@ const {
   chaingearApi
 } = Injector.of();
 
+const checkApiCall = (testMethod, API_TYPE, dispatch) => {
+  dispatch({ type: `${API_TYPE}_RESET`});
+  testMethod()
+    .then(() => dispatch({ type: `${API_TYPE}_AVAILABLE`}))
+    .catch(() => dispatch({ type: `${API_TYPE}_NOT_AVAILABLE`}))
+}
+
 export const checkApi = () => (dispatch, getState) => {
-  dispatch({ type: 'CHECK_API' });
-
-  searchApi.test()
-    .then(() => dispatch({ type: 'SEARCH_API_AVAILABLE'}))
-    .catch(() => dispatch({ type: 'SEARCH_API_NOT_AVAILABLE'}))
-
-  marketApi.test()
-    .then(() => dispatch({ type: 'MARKET_API_AVAILABLE'}))
-    .catch(() => dispatch({ type: 'MARKET_API_NOT_AVAILABLE'}))
-
-
-  chaingearApi.test()
-    .then(() => dispatch({ type: 'CHAINGEAR_API_AVAILABLE'}))
-    .catch(() => dispatch({ type: 'CHAINGEAR_API_NOT_AVAILABLE'}))
-
+  checkApiCall(() => searchApi.test(), 'SEARCH_API', dispatch);
+  checkApiCall(() => marketApi.test(), 'MARKET_API', dispatch);
+  checkApiCall(() => chaingearApi.test(), 'CHAINGEAR_API', dispatch);
 };
