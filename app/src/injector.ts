@@ -1,16 +1,18 @@
 import * as assignIn from "lodash/assignIn";
 import {EnvironmentConstants} from "./config/EnvironmentConstants";
 import {DefaultHttpService, HttpService} from "./http/HttpService";
-import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
 import {MockSearchApi} from "./api/mock/MockSearchApi";
 import {DataApi, DefaultDataApi} from "./api/DataApi";
-import {MarketApi, DefaultMarketApi} from "./api/MarketApi";
+import {ChaingearApi, DefaulChaingearApi } from './api/ChaingearApi';
+import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
+import {DefaultMarketApi, MarketApi } from './api/MarketApi';
 
 export class Injector {
   readonly http: HttpService = new DefaultHttpService();
   readonly searchApi: SearchApi = new DefaultSearchApi(this.http);
-  readonly dataApi: DataApi = new DefaultDataApi(this.http);
   readonly marketApi: MarketApi = new DefaultMarketApi(this.http);
+  readonly chaingearApi: ChaingearApi = new DefaulChaingearApi(this.http);
+  readonly dataApi: DataApi = new DefaultDataApi(this.http);
 
   setService<T extends Injector[K], K extends keyof Injector>(name: K, service: T) {
     assignIn(this[name], service);

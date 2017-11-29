@@ -2,51 +2,57 @@ import * as React from "react";
 
 import App from '../app/';
      
+import { Table, Indicator, Title } from '../../components/ApiIndicator/';
+
+import { checkApi } from '../../modules/cybernode';
+import { connect } from 'react-redux';
 var config = require('./config.js')
 
-const s = {
-    width: 20,
-    height: 20,
-    border: '1px solid #000',
-    display: 'block',
-    borderRadius: '50%',
-    background: 'red'
-}
-
-const r = {
-  paddingRight: 20
-}
-
-class Cybernode extends React.Component {
-
+class Cybernode extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.checkApi();
+  }
   render() {
+    const {
+      chaingearApiAvailable,
+      searchApiAvailable,
+      marketApiAvailable
+    } = this.props;
+
     return (
       <App>
-        <h2>API status:</h2>
-        <table>
+        <Title>API status:</Title>
+        <Table>
           <tbody>
             <tr>
-              <td style={r}>CYBER_CHAINGEAR_API</td>
-              <td style={r}>{config.CYBER_CHAINGEAR_API}</td>
-              <td style={r}>
-                <span style={s}/>
+              <td>CYBER_CHAINGEAR_API</td>
+              <td>{config.CYBER_CHAINGEAR_API}</td>
+              <td>
+                <Indicator available={chaingearApiAvailable}/>
               </td>
             </tr>
             <tr>
-              <td style={r}>CYBER_SEARCH_API</td>
-              <td style={r}>{config.CYBER_SEARCH_API}</td>
-              <td><span style={s}/></td>
+              <td>CYBER_SEARCH_API</td>
+              <td>{config.CYBER_SEARCH_API}</td>
+              <td><Indicator available={searchApiAvailable}/></td>
             </tr>
             <tr>
-              <td style={r}>CYBER_MARKETS_API</td>
-              <td style={r}>{config.CYBER_MARKETS_API}</td>
-              <td><span style={s}/></td>
+              <td>CYBER_MARKETS_API</td>
+              <td>{config.CYBER_MARKETS_API}</td>
+              <td><Indicator available={marketApiAvailable} /></td>
             </tr>
           </tbody>
-        </table>
+        </Table>
       </App>
     );    
   }
 }
 
-export default Cybernode;
+export default connect(
+  state => ({
+    chaingearApiAvailable: state.cybernode.chaingearApiAvailable,
+    searchApiAvailable: state.cybernode.searchApiAvailable,
+    marketApiAvailable: state.cybernode.marketApiAvailable
+  }),
+  { checkApi }
+)(Cybernode);
