@@ -5,6 +5,7 @@ var config = require('./config.js')
 
 export interface SearchApi {
   search(query: string, page: number, coins: string, type: string): Promise<SearchResponse>;
+  test(): Promise<any>;
 }
 
 export class DefaultSearchApi implements SearchApi {
@@ -18,6 +19,15 @@ export class DefaultSearchApi implements SearchApi {
       `${config.CYBER_SEARCH_API}/api/search`,
       {
         params: {query, page, coins, type}
+      }
+    );
+  }
+
+  test() {
+    return this.http.GET(
+      `${config.CYBER_SEARCH_API}/api/search`,
+      {
+        params: {query: 'test' }
       }
     );
   }

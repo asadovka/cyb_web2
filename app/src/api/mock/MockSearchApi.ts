@@ -15,4 +15,8 @@ export class MockSearchApi implements SearchApi {
       }, 1000);
     });
   }
+
+  test() {
+    return Promise.resolve();
+  }
 }

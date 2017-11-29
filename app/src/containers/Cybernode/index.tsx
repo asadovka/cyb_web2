@@ -2,14 +2,23 @@ import * as React from "react";
 
 import App from '../app/';
      
-var config = require('./config.js')
-
 import { Table, Indicator, Title } from '../../components/ApiIndicator/';
 
+import { checkApi } from '../../modules/cybernode';
+import { connect } from 'react-redux';
+var config = require('./config.js')
 
-class Cybernode extends React.Component {
-
+class Cybernode extends React.Component<any, any> {
+  componentDidMount() {
+    this.props.checkApi();
+  }
   render() {
+    const {
+      chaingearApiAvailable,
+      searchApiAvailable,
+      marketApiAvailable
+    } = this.props;
+
     return (
       <App>
         <Title>API status:</Title>
@@ -19,18 +28,18 @@ class Cybernode extends React.Component {
               <td>CYBER_CHAINGEAR_API</td>
               <td>{config.CYBER_CHAINGEAR_API}</td>
               <td>
-                <Indicator available={false}/>
+                <Indicator available={chaingearApiAvailable}/>
               </td>
             </tr>
             <tr>
               <td>CYBER_SEARCH_API</td>
               <td>{config.CYBER_SEARCH_API}</td>
-              <td><Indicator available={false}/></td>
+              <td><Indicator available={searchApiAvailable}/></td>
             </tr>
             <tr>
               <td>CYBER_MARKETS_API</td>
               <td>{config.CYBER_MARKETS_API}</td>
-              <td><Indicator available={true} /></td>
+              <td><Indicator available={marketApiAvailable} /></td>
             </tr>
           </tbody>
         </Table>
@@ -39,4 +48,11 @@ class Cybernode extends React.Component {
   }
 }
 
-export default Cybernode;
+export default connect(
+  state => ({
+    chaingearApiAvailable: state.cybernode.chaingearApiAvailable,
+    searchApiAvailable: state.cybernode.searchApiAvailable,
+    marketApiAvailable: state.cybernode.marketApiAvailable
+  }),
+  { checkApi }
+)(Cybernode);
