@@ -1,0 +1,43 @@
+version: 2
+
+
+defaults:
+
+  container: &default_container
+    working_directory: ~/build
+    docker:
+      - image: circleci/openjdk:8-jdk
+
+  release_filter: &release_filter
+    filters:
+      tags:
+        only: /^release-.*/
+      branches:
+        ignore: /.*/
+
+
+jobs:
+
+  deploy_cui-browser_image:
+     <<: *default_container
+     steps:
+       - checkout
+       - setup_remote_docker:
+           version: 17.05.0-ce
+       - run:
+           name: Deploy cui-browser docker image
+           command: |
+             docker build -t build/cui-browser -f ./devops/Dockerfile ./
+             docker login -u $DOCKER_USER -p $DOCKER_PASS
+             docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
+             docker push cybernode/cui-browser:$CIRCLE_TAG
+             docker tag build/cui-browser cybernode/cui-browser:latest
+             docker push cybernode/cui-browser:latest
+
+workflows:
+  version: 2
+
+  ui_build:
+    jobs:
+      - deploy_cui-browser_image:
+          <<: *release_filter

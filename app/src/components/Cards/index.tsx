@@ -8,14 +8,24 @@ export const CardList = ({ children }) => (
   </div>
 );
 
-export const Card = ({ logo, name, descriptions }) => (
+export const Card = ({ logo, name, descriptions, tokens_sold }) => (
   <div className={styles.card}>
-    <div className={styles.imageContainer}>
-      <img width={150} src={logo}/>
-    </div>
-    <h3>{name}</h3>
-    <p>
-      {descriptions}
-    </p>
+    <a href='#'>
+        <div className={styles.imageContainer}>
+          <img width={150} src={logo}/>
+        </div>
+        <h3>{name}</h3>
+        <p>
+          {descriptions}
+        </p>
+        <div className={styles.dateAndTokens}>
+          <div>
+            21 days left
+          </div>
+          <div>
+            {tokens_sold}
+          </div>
+        </div>
+    </a>
   </div>
 )

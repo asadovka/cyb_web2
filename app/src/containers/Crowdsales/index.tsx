@@ -41,6 +41,7 @@ class Crowdsales extends React.Component<any, any> {
         logo={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}
         name={item.system}
         descriptions={item.descriptions && item.descriptions.headline}
+        tokens_sold={item.crowdsales.tokens_sold}
       />
     ))
     return (
