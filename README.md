@@ -45,9 +45,6 @@ To attach to container and/or remove it if needed:
     docker stop frontend
     docker rm frontend
 
-To understand how do we pass environment params to stateless frontend, see
-https://thepracticalsysadmin.com/templated-nginx-configuration-with-bash-and-docker/
-
 #### Roadmap
 
 * https://github.com/facebook/jest
