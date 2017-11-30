@@ -17,7 +17,7 @@ export class DefaultMarketApi implements MarketApi {
 
   test() {
     return this.http.GET(
-      `${config.CYBER_MARKETS_API}/`
+      `${config.CYBER_MARKETS_API}/ping`
     );
   }
 

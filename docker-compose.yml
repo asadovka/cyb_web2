@@ -8,7 +8,9 @@ services:
     ports:
       - 7000:80
     environment:
-       API_ROOT: http://chaingear-api:8090
+       CYBER_CHAINGEAR_API: http://chaingear-api:8090
+       CYBER_SEARCH_API: http://chaingear-api:8090
+       CYBER_MARKETS_API: http://35.198.187.186:8085
 
   chaingear-api:
     container_name: chaingear
