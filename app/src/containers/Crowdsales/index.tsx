@@ -4,37 +4,33 @@ import App from '../app/';
      
 import {Injector} from "../../injector";
 const {
-  http
+  chaingearApi
 } = Injector.of();
-
-import {ConfigConstants} from "../../config/ConfigConstants";
-var config = require('./config.js')
 
 
 import { getSystemLogoUrl } from '../../modules/chaingear';
 
 import { CardList, Card } from '../../components/Cards/';
 
+import { connect } from 'react-redux';
+
+import { showAllCrowdsales } from '../../modules/chaingear';
+
 class Crowdsales extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
-    };
-  }
+
   componentDidMount() {
-    http.GET(`${config.CYBER_CHAINGEAR_API}/api/crowdsales`)
-      .then(data => {
-        console.log(' data ', data);
-        this.setState({
-          items: data
-        })
-      })    
+    this.props.showAllCrowdsales();   
   }
+
   render() {
-    const cards = this.state.items.map(item => (
+    const {
+      items
+    } = this.props;
+
+    const cards = items.map(item => (
       <Card
-        logo={getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}
+        key={item.system}
+        logo={getSystemLogoUrl(item, chaingearApi.imageUrl())}
         name={item.system}
         system={item.system}
         descriptions={item.descriptions && item.descriptions.headline}
@@ -51,4 +47,9 @@ class Crowdsales extends React.Component<any, any> {
   }
 }
 
-export default Crowdsales;
+export default connect(
+  state => ({
+    items: state.chaingear.crowdsales.data
+  }),
+  { showAllCrowdsales }
+)(Crowdsales);

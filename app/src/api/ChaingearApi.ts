@@ -6,6 +6,8 @@ var config = require('./config.js')
 export interface ChaingearApi {
   test(): Promise<any>;
   getAllTokens(): Promise<any>;
+  getAllCrowdsales(): Promise<any>;
+  imageUrl(): string;
 }
 
 export class DefaulChaingearApi implements ChaingearApi {
@@ -23,5 +25,13 @@ export class DefaulChaingearApi implements ChaingearApi {
 
   getAllTokens() {
     return this.http.GET(`${config.CYBER_CHAINGEAR_API}/api/tokens`)
+  }
+
+  getAllCrowdsales() {
+    return this.http.GET(`${config.CYBER_CHAINGEAR_API}/api/crowdsales`)
+  }
+
+  imageUrl() {
+    return `${config.CYBER_CHAINGEAR_API}/logos/`;
   }
 }

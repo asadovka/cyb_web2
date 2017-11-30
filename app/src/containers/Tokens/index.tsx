@@ -76,8 +76,8 @@ class TokensPages extends React.Component<any, any> {
 
 export default connect(
   state => ({
-    tokens: state.chaingear.tokens,
-    statistics: state.chaingear.statistics
+    tokens: state.chaingear.tokens.tokens,
+    statistics: state.chaingear.tokens.statistics
   }),
   { showAllTokens }
 )(TokensPages);
