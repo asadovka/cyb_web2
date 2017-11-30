@@ -23,8 +23,9 @@ and ready to be deployed to remote side.
 
 #### build and run container
 
-    docker build -t cyber-ui/frontend-image -f ./devops/Dockerfile ./
-    docker run -e CYBER_CHAINGEAR_API=http://localhost:8000  -e CYBER_SEARCH_API=http://search-api.cyber.fund  -e CYBER_MARKETS_API=http://localhost:9000  --name frontend -d -p 7000:80 cyber-ui/frontend-image
+
+    docker build -t cybernode/cui-browser -f ./devops/Dockerfile ./
+    docker run -e CYBER_CHAINGEAR_API=http://localhost:8000  -e CYBER_SEARCH_API=http://search-api.cyber.fund  -e CYBER_MARKETS_API=http://localhost:9000  --name frontend -d -p 7000:80 cybernode/cui-browser
 
 
 #### check container and remove if need

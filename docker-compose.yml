@@ -4,7 +4,7 @@ version: '3.3'
 services:
 
   cyber-ui:
-    image: cyber-ui/frontend-image
+    image: cybernode/cui-browser:latest
     ports:
       - 7000:80
     environment:
@@ -13,9 +13,9 @@ services:
        CYBER_MARKETS_API: http://35.198.187.186:8085
 
   chaingear-api:
-    container_name: chaingear
-    image: cyber-fund/chaingear-api
+    container_name: chaingear-api
+    image: cybernode/chaingear-api:latest
     ports:
       - 8090:8090
     environment:
-      ADV_HOST: chaingear
+      ADV_HOST: chaingear-api
