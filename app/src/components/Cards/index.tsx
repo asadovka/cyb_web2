@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { Link } from 'react-router';
+
 const styles = require("./Cards.less");
 
 export const CardList = ({ children }) => (
@@ -8,9 +10,9 @@ export const CardList = ({ children }) => (
   </div>
 );
 
-export const Card = ({ logo, name, descriptions, tokens_sold }) => (
+export const Card = ({ logo, name, descriptions, tokens_sold, system }) => (
   <div className={styles.card}>
-    <a href='#'>
+    <Link to={`/crowdsales/${system}`}>
         <div className={styles.imageContainer}>
           <img width={150} src={logo}/>
         </div>
@@ -26,6 +28,6 @@ export const Card = ({ logo, name, descriptions, tokens_sold }) => (
             {tokens_sold}
           </div>
         </div>
-    </a>
+    </Link>
   </div>
 )

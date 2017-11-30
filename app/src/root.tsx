@@ -14,6 +14,7 @@ import { DetailsPage } from "./containers/DetailsPage/"
 import Tokens from './containers/Tokens/';
 import Funds from './containers/Funds/';
 import Crowdsales from './containers/Crowdsales/';
+import CrowdsalesDetails from './containers/CrowdsalesDetails';
 import Analitics from './containers/Analitics/';
 import Cybernode from './containers/Cybernode/';
 
@@ -40,6 +41,8 @@ export function Root() {
       <Route path={"/tokens"} component={Tokens}/>
       <Route path={"/funds"} component={Funds}/>
       <Route path={"/crowdsales"} component={Crowdsales}/>
+      <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
+
       <Route path={"/analitics"} component={Analitics}/>
       <Route path={"/cybernode"} component={Cybernode}/>
 

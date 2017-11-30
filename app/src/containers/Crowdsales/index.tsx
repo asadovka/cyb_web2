@@ -11,11 +11,7 @@ import {ConfigConstants} from "../../config/ConfigConstants";
 var config = require('./config.js')
 
 
-const cgSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
-  var icon = (that.icon ? that.icon : that.system) || '';
-  icon = icon.toString().toLowerCase();
-  return CYBER_CHAINGEAR_API + icon + ".png";
-};
+import { getSystemLogoUrl } from '../../modules/chaingear';
 
 import { CardList, Card } from '../../components/Cards/';
 
@@ -38,8 +34,9 @@ class Crowdsales extends React.Component<any, any> {
   render() {
     const cards = this.state.items.map(item => (
       <Card
-        logo={cgSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}
+        logo={getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}
         name={item.system}
+        system={item.system}
         descriptions={item.descriptions && item.descriptions.headline}
         tokens_sold={item.crowdsales.tokens_sold}
       />
