@@ -1,6 +1,5 @@
 import {AxiosInstance, AxiosRequestConfig} from "axios";
 import axios from "axios";
-import {ConfigConstants} from "../config/ConfigConstants";
 
 export interface HttpService {
   GET<T>(path: string, config?: AxiosRequestConfig): Promise<T>;

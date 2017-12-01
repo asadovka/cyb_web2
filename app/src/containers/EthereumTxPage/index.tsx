@@ -1,6 +1,5 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {CfState} from "../../model/CfState";
 import {CfActions, EthereumBlockResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
@@ -28,10 +27,10 @@ class EthereumTxPageComponent extends React.Component<{ ethereumTx, getData, txH
 
 export const EthereumTxPage = withRouter(connect(mapStateToProps, { getData: getEthereumTx })(EthereumTxPageComponent));
 
-function mapStateToProps(state: CfState, ownProps) {
+function mapStateToProps(state, ownProps) {
   return {
     txHash: ownProps.routeParams.txHash,
-    ethereumTx: state.data.ethereumTx.data
+    ethereumTx: state.search.ethereumTx.data
   };
 }
 

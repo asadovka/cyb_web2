@@ -111,7 +111,7 @@ function RenderByType({ type, data} ) {
 }
 
 export default withRouter(connect(((state, ownProps) => ({
-    searchResult: state.search,
+    searchResult: state.search.searchResults,
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
     coins: ownProps.location.query.coins,

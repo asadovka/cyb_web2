@@ -10,5 +10,5 @@ const ResultCount = ({ searchResult }) => (
 );
 
 export default connect(state => ({
-  searchResult: state.search,
+  searchResult: state.search.searchResults,
 }))(ResultCount)

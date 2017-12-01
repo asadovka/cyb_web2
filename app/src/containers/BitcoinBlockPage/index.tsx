@@ -28,10 +28,10 @@ class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData,
 
 export const BitcoinBlockPage = withRouter(connect(mapStateToProps, { getData: getBitcoinBlock })(BitcoinBlockPageComponent));
 
-function mapStateToProps(state: CfState, ownProps) {
+function mapStateToProps(state, ownProps) {
   return {
     blockNumber: ownProps.routeParams.blockNumber,
-    bitcoinBlock: state.data.bitcoinBlock.data
+    bitcoinBlock: state.search.bitcoinBlock.data
   };
 }
 

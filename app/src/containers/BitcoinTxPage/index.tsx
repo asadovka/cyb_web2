@@ -1,6 +1,5 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {CfState} from "../../model/CfState";
 import withRouter from "react-router/es/withRouter";
 import JSONTree from "../../components/JSONTree/";
 
@@ -28,10 +27,10 @@ class BitcoinTxPageComponent extends React.Component<{ bitcoinTx, getData, txId 
 
 export const BitcoinTxPage = withRouter(connect(mapStateToProps, { getData: getBitcoinTx })(BitcoinTxPageComponent));
 
-function mapStateToProps(state: CfState, ownProps) {
+function mapStateToProps(state, ownProps) {
   return {
     txId: ownProps.routeParams.txId,
-    bitcoinTx: state.data.bitcoinTx.data
+    bitcoinTx: state.search.bitcoinTx.data
   };
 }
 

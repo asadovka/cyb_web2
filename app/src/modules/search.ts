@@ -1,7 +1,8 @@
 import {CfActions} from "../actions/CfActions";
+import {combineReducers} from "redux";
+import {combineEpics} from "redux-observable";
 
 import {FULFILLED, REJECTED} from "../actions/ActionsUtils";
-import {mapAndDispatchError, mapAndDispatchPayload } from "../epics/EpicsUtils";
 
 import {Injector} from "../injector";
 const {
@@ -9,40 +10,69 @@ const {
   http
 } = Injector.of();
 
-export const search = (query, page, coins, type) => (dispatch, getStore) => {
-  dispatch({ type: CfActions.SEARCH, payload: {query, page} });
-  searchApi.search(query, page, coins, type)
-    .then(mapAndDispatchPayload(CfActions.SEARCH, dispatch))
-    .catch(mapAndDispatchError(CfActions.SEARCH, dispatch))
-}
+import { createDateReducer, mapPayload, mapError, loadDataEpic } from '../utils/redux'
 
-export const getBitcoinTx = (txId) => (dispatch) => {
-  dispatch({
-    type: CfActions.GET_BITCOIN_TX,
-    payload: {txId}
-  });
-} 
 
-export const getBitcoinBlock = (blockNumber) => (dispatch) => {
-  dispatch({
-    type: CfActions.GET_BITCOIN_BLOCK,
-    payload: {blockNumber}
-  });
-}
+export const reducer = combineReducers({
+  searchResults: createDateReducer('SEARCH'),
+  bitcoinBlock: createDateReducer(CfActions.GET_BITCOIN_BLOCK),
+  bitcoinTx: createDateReducer(CfActions.GET_BITCOIN_TX),
+  ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
+  ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX)
+})
 
-export const getEthereumBlock = (blockNumber) => (dispatch) => {
-  dispatch({
-    type: CfActions.GET_ETHEREUM_BLOCK,
-    payload: {blockNumber}
-  });
-}
+export const search = (query, page, coins, type) => ({
+  type: 'SEARCH',
+  payload: { query, page, coins, type }
+})
 
-export const getEthereumTx = (txHash) => (dispatch) => {
-  dispatch({
-    type: CfActions.GET_ETHEREUM_TX,
-    payload: {txHash}
-  });
-}
+const searchItems = loadDataEpic(
+  'SEARCH',
+  ({ query, page, coins, type }) => searchApi.search(query, page, coins, type)
+)
+
+
+
+export const getBitcoinBlock = (blockNumber) => ({
+  type: CfActions.GET_BITCOIN_BLOCK,
+  payload: {blockNumber}
+})
+
+const getBitcoinBlockEpic = loadDataEpic(
+  CfActions.GET_BITCOIN_BLOCK,
+  ({blockNumber}) => searchApi.getBitcoinBlock(blockNumber)
+)
+
+
+export const getBitcoinTx = (txId) => ({
+  type: CfActions.GET_BITCOIN_TX,
+  payload: {txId}
+});
+
+const getBitcoinTxEpic = loadDataEpic(
+  CfActions.GET_BITCOIN_TX,
+  ({txId}) => searchApi.getBitcoinTx(txId)
+)
+
+export const getEthereumBlock = (blockNumber) => ({
+  type: CfActions.GET_ETHEREUM_BLOCK,
+  payload: {blockNumber}
+})
+
+const getEthereumBlockEpic = loadDataEpic(
+  CfActions.GET_ETHEREUM_BLOCK,
+  ({ blockNumber }) => searchApi.getEthereumBlock(blockNumber)
+)
+
+export const getEthereumTx = (txHash) => ({
+  type: CfActions.GET_ETHEREUM_TX,
+  payload: {txHash}
+})
+
+const getEthereumTxEpic = loadDataEpic(
+  CfActions.GET_ETHEREUM_TX,
+  ({txHash}) => searchApi.getEthereumTx(txHash)
+);
 
 export const getStatistics = () => (dispatch) => {
   dispatch({ type: CfActions.GET_STATISTICS })
@@ -60,3 +90,11 @@ export const getStatistics = () => (dispatch) => {
     })
   });
 }
+
+export const searchEpic = combineEpics(
+  searchItems,
+  getBitcoinBlockEpic,
+  getBitcoinTxEpic,
+  getEthereumBlockEpic,
+  getEthereumTxEpic
+);

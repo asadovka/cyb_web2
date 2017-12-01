@@ -17,7 +17,22 @@ const {
 } = Injector.of();
 
 
+export const getSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
+  var icon = (that.icon ? that.icon : that.system) || '';
+  icon = icon.toString().toLowerCase();
+  return CYBER_CHAINGEAR_API + icon + ".png";
+};
+
 export const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
+
+
+export const showAllTokens = () => ({
+  type: 'TOKENS'
+})
+
+export const showAllCrowdsales = () => ({
+  type: 'CROWDSALES'
+})
 
 
 export const reducer = combineReducers({
@@ -25,40 +40,22 @@ export const reducer = combineReducers({
   crowdsales: createDateReducer('CROWDSALES', [])
 })
 
-export const getSystemLogoUrl = function (that, CYBER_CHAINGEAR_API) {
-  var icon = (that.icon ? that.icon : that.system) || '';
-  icon = icon.toString().toLowerCase();
-  return CYBER_CHAINGEAR_API + icon + ".png";
-};
 
-
-export const showAllTokens = () => ({
-  type: 'TOKENS'
-})
-
-const loadCrowdsales = loadDataEpic(
-  'CROWDSALES',
-  () => chaingearApi.getAllCrowdsales()
-);
-
-
-export const showAllCrowdsales = () => ({
-  type: 'CROWDSALES'
-})
-
-const loadTokens = loadDataEpic(
-  'TOKENS', 
-  () => Promise.all([
-    chaingearApi.getAllTokens(), 
-    marketApi.getTokensStatistics()
-  ]),
-  data => ({
-    tokens: data[0],
-    statistics: data[1]
-  })
-);
 
 export const chaingearEpic = combineEpics(
-  loadCrowdsales,
-  loadTokens
+  loadDataEpic(
+    'CROWDSALES',
+    () => chaingearApi.getAllCrowdsales()
+  ),
+  loadDataEpic(
+    'TOKENS', 
+    () => Promise.all([
+      chaingearApi.getAllTokens(), 
+      marketApi.getTokensStatistics()
+    ]),
+    data => ({
+      tokens: data[0],
+      statistics: data[1]
+    })
+  )
 ) 

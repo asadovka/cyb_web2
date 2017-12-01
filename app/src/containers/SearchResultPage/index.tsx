@@ -36,8 +36,6 @@ class SearchResultPageComponent extends React.Component<any, any> {
   }
 
   render() {
-    const {searchResult, query, page, coins, type } = this.props;
-    
     return (
       <App>
         <SearchForm />
@@ -62,7 +60,6 @@ export const SearchResultPage = withRouter(connect(mapStateToProps, { search })(
 
 function mapStateToProps(state, ownProps) {
   return {
-    searchResult: state.search,
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
     coins: ownProps.location.query.coins,

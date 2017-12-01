@@ -25,23 +25,22 @@ export interface SearchResponse {
 
 export interface SearchResponseItem {
   type: string;
-  data: string;
+  data: any;
 }
 
 export interface BitcoinBlockResponse {
   readonly hash: string;
-  readonly height: string; // long
+  readonly height: number; // long
   readonly time: string;
-  readonly nonce: string; // long
+  readonly nonce: number; // long
   readonly merkleroot: string;
   readonly size: number;
   readonly version: number;
   readonly weight: number;
   readonly bits: string;
-  readonly difficulty: string; // big decimal
+  readonly difficulty: number; // big decimal
   readonly tx_number: number;
   readonly total_outputs_value: string;
-  readonly txs: BitcoinBlockTransaction[];
 }
 
 interface BitcoinBlockTransaction {
