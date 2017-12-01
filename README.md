@@ -1,7 +1,5 @@
 Frontend UI for cyber-markets and cyber-search (blockchain browser).
 
-**Image**: `cui-browser`
-
 #### Local development
 
     npm start
@@ -26,15 +24,17 @@ API endpoints are configured in [config.js](https://github.com/cyberFund/cyber-u
 
     docker build -t cybernode/cui-browser -f ./devops/Dockerfile ./
     
-To check that container works correctly, you need to bring up backend API and
-pass endpoint addresses as environment variables:
+To check that container works correctly, bring up backend API, pass
+their endpoint URLs as environment variables and run container:
     
-    export CYBER_CHAINGEAR_API=http://localhost:8000
-    export CYBER_SEARCH_API=http://search-api.cyber.fund
-    export CYBER_MARKETS_API=http://localhost:9000
+    export CYBER_CHAINGEAR_API=http://127.0.0.1:32600
+    export CYBER_SEARCH_API=http://127.0.0.1:32700
+    export CYBER_MARKETS_API=http://127.0.0.1:32800
     
-    docker run -e CYBER_CHAINGEAR_API -e CYBER_SEARCH_API -e CYBER_MARKETS_API --name frontend -d -p 7000:80 cybernode/cui-browser
-    
+    docker run -e CYBER_CHAINGEAR_API -e CYBER_SEARCH_API -e CYBER_MARKETS_API --name frontend -d -p 127.0.0.1:32500:80 cybernode/cui-browser
+
+This command starts server on http://127.0.0.1:32500
+
 Checking container logs:
 
     docker logs frontend
@@ -45,7 +45,12 @@ To attach to container and/or remove it if needed:
     docker stop frontend
     docker rm frontend
 
-#### Roadmap
+### Cybernode settings
+
+* **Image**: `cui-browser`
+* **Portmap**: 32500
+
+### Roadmap
 
 * https://github.com/facebook/jest
 * https://github.com/zeit/next.js/
