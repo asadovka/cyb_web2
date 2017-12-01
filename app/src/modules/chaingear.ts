@@ -38,12 +38,18 @@ export const showAllCrowdsales = () => ({
 export const reducer = combineReducers({
   tokens: createDateReducer('TOKENS', { tokens: [], statistics: [] }),
   crowdsales: createDateReducer('CROWDSALES', []),
-  crowdsalesDetails: createDateReducer('CROWDSALES_DETAILS')
+  crowdsalesDetails: createDateReducer('CROWDSALES_DETAILS'),
+  tokensDetails: createDateReducer('TOKEN_DETAILS')
 })
 
-export const showCrowdsalesDetails = ({ system }) => ({
+export const showCrowdsalesDetails = (system) => ({
   type: 'CROWDSALES_DETAILS',
   payload: { system }
+})
+
+export const showTokensDetails = (system) => ({
+  type: 'TOKEN_DETAILS',
+  payload: { system }  
 })
 
 
@@ -66,5 +72,9 @@ export const chaingearEpic = combineEpics(
   loadDataEpic(
      'CROWDSALES_DETAILS',
      ({ system }) => chaingearApi.crowdsalesDetails(system)
+  ),
+  loadDataEpic(
+     'TOKEN_DETAILS',
+     ({ system }) => chaingearApi.tokensDetails(system)
   )
 ) 

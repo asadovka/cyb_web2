@@ -75,8 +75,8 @@ const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
 export default connect(
   state => {
     return ({
-      total_24h_volume_usd: state.data.statistics.data.total_24h_volume_usd,
-      total_24h_volume_bit: state.data.statistics.data.total_24h_volume_bit
+      total_24h_volume_usd: '????',
+      total_24h_volume_bit: '????'
     })
   }
 )(BlockchainStatics);

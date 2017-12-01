@@ -51,7 +51,7 @@ export const loadDataEpic = (actionType, promise, mapData = defaultMapData) => a
   action$
     .ofType(actionType)
     .mergeMap((data) => Observable
-      .fromPromise(promise(data))
+      .fromPromise(promise(data.payload))
     )
     .map(mapPayload(actionType, mapData))
     .catch(mapError(actionType));
