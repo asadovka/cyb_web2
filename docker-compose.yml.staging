@@ -8,9 +8,9 @@ services:
     ports:
       - 32500:80
     environment:
-       CYBER_CHAINGEAR_API: http://127.0.0.1:32600
-       CYBER_SEARCH_API: http://127.0.0.1:32700
-       CYBER_MARKETS_API: http://127.0.0.1:32800
+       CYBER_CHAINGEAR_API: http://staging.cyber.fund:32600
+       CYBER_SEARCH_API: http://staging.cyber.fund:32700
+       CYBER_MARKETS_API: http://staging.cyber.fund:32800
 
   chaingear-api:
     container_name: chaingear-api
@@ -21,11 +21,11 @@ services:
       ADV_HOST: chaingear-api
 
   search-api:
-    image: cybernode/cs-rest-api:latest
+    image: cybernode/cm-rest-api:latest
     ports:
       - 32700:8085
 
   markets-api:
-    image: cybernode/cm-rest-api:latest
+    image: cybernode/cs-rest-api:latest
     ports:
       - 32800:8085
