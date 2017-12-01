@@ -12,6 +12,7 @@ import {EthereumBlockPage} from "./containers/EthereumBlockPage/";
 import { DetailsPage } from "./containers/DetailsPage/"
 
 import Tokens from './containers/Tokens/';
+import TokensDetails from './containers/TokensDetails/';
 import Funds from './containers/Funds/';
 import Crowdsales from './containers/Crowdsales/';
 import CrowdsalesDetails from './containers/CrowdsalesDetails';
@@ -39,6 +40,7 @@ export function Root() {
       <Route path={"/"} component={IndexPage}/>
       <Route path={"/search"} component={SearchResultPage}/>
       <Route path={"/tokens"} component={Tokens}/>
+      <Route path={"/tokens/:system"} component={TokensDetails}/>
       <Route path={"/funds"} component={Funds}/>
       <Route path={"/crowdsales"} component={Crowdsales}/>
       <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>

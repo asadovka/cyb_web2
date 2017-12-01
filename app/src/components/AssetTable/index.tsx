@@ -2,6 +2,8 @@ import * as React from "react";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import * as moment from 'moment'
 
+import { Link } from 'react-router';
+
 const styles = require("./AssetTable.less");
 
 export const Table = ({ children }) => (
@@ -10,10 +12,12 @@ export const Table = ({ children }) => (
   </table>
 );
 
-export const Logo = ({ children }) => (
-  <div className={styles.logo}>
-    {children}
-  </div>
+export const Logo = ({ children, to }) => (
+  <Link to={to}>
+    <div className={styles.logo}>
+      {children}
+    </div>
+  </Link>
 )
 
 export const PriceInfo = ({ children }) => (

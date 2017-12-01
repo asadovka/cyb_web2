@@ -28,7 +28,7 @@ class TokensPages extends React.Component<any, any> {
       return (
         <tr key={item.system}>
           <td>
-            <Logo>
+            <Logo to={`/tokens/${item.system}`}>
               <img width={50} src={getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>            
               <span>{item.system}</span>
             </Logo>
@@ -76,8 +76,8 @@ class TokensPages extends React.Component<any, any> {
 
 export default connect(
   state => ({
-    tokens: state.chaingear.tokens.tokens,
-    statistics: state.chaingear.tokens.statistics
+    tokens: state.chaingear.tokens.data.tokens,
+    statistics: state.chaingear.tokens.data.statistics
   }),
   { showAllTokens }
 )(TokensPages);
