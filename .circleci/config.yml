@@ -6,7 +6,7 @@ defaults:
   container: &default_container
     working_directory: ~/build
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/build-image
 
   release_filter: &release_filter
     filters:
@@ -14,6 +14,12 @@ defaults:
         only: /^release-.*/
       branches:
         ignore: /.*/
+
+  master_commits: &master_commits
+    filters:
+      branches:
+        only:
+          - master
 
 
 jobs:
@@ -40,4 +46,4 @@ workflows:
   ui_build:
     jobs:
       - deploy_cui-browser_image:
-          <<: *release_filter
+          <<: *master_commits
