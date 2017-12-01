@@ -21,11 +21,11 @@ services:
       ADV_HOST: chaingear-api
 
   search-api:
-    image: cybernode/cm-rest-api:latest
+    image: cybernode/cs-search-api:latest
     ports:
       - 32700:8085
 
   markets-api:
-    image: cybernode/cs-rest-api:latest
+    image: cybernode/cm-rest-api:latest
     ports:
       - 32800:8085
