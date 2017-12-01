@@ -7,6 +7,7 @@ export interface ChaingearApi {
   test(): Promise<any>;
   getAllTokens(): Promise<any>;
   getAllCrowdsales(): Promise<any>;
+  crowdsalesDetails(system: string): Promise<any>;
   imageUrl(): string;
 }
 
@@ -33,5 +34,9 @@ export class DefaulChaingearApi implements ChaingearApi {
 
   imageUrl() {
     return `${config.CYBER_CHAINGEAR_API}/logos/`;
+  }
+
+  crowdsalesDetails(system) {
+    return this.http.GET(`${config.CYBER_CHAINGEAR_API}/api/crowdsales/${system}`)
   }
 }
