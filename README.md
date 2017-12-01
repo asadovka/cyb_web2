@@ -1,6 +1,6 @@
 Frontend UI for cyber-markets and cyber-search (blockchain browser).
 
-Image: `cui-browser`
+**Image**: `cui-browser`
 
 #### Local development
 
@@ -15,12 +15,12 @@ UI uses API endpoints, specified by the following environment variables:
 * [cyber-markets](https://github.com/cyberFund/cyber-markets) `CYBER_SEARCH_API`
 * [chaingear](https://github.com/cyberFund//chaingear-api) `CYBER_CHAINGEAR_API`
 
-#### Building static site version
+#### Building raw static site
 
     npm run build
 
-This compiles all UI assets into static website, copied in `dist/`dir
-and ready to be executed or packed into Docker container for deployment.
+This compiles all UI assets into static website, copied in `dist/`dir.
+API endpoints are configured in [config.js](https://github.com/cyberFund/cyber-ui/blob/master/config.js).
 
 #### Building container for deployment
 
