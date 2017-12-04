@@ -148,3 +148,29 @@
 .delta.negative span::before {
   background: url(../BlockchainStatics/down.png) no-repeat center;
 }
+
+.comingSoon {
+  position: relative;
+}
+
+.comingSoon::before {
+  content: '';
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.comingSoon::after {
+  content: 'coming soon';
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 30%;
+  color: red;
+  text-transform: uppercase;
+}

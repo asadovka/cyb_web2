@@ -11,7 +11,7 @@ var numeral = require('numeral');
 
 const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
   <Container>
-    <Item>
+    <Item comingSoon={true}>
       <Title icon='cap'>Cybernomics cap</Title>
       <DataContainer>
         <List>
@@ -23,7 +23,7 @@ const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
         </List>
       </DataContainer>
     </Item>
-    <Item>
+    <Item comingSoon={false}>
       <Title icon='search'>Search Statistics</Title>
       <div>
         <Table>
@@ -48,7 +48,7 @@ const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
         </Table>
       </div>
     </Item>
-    <Item>
+    <Item comingSoon={true}>
       <Title icon='portfolio'>Portfolio</Title>
       <div>
         <Table>

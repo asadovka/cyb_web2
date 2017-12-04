@@ -2,6 +2,7 @@ import * as React from "react";
 
 const styles = require("./index.less");
 
+const cx = require('classnames');
 
 export const Container = ({ children }) => (
   <div className={styles.container}>
@@ -9,8 +10,8 @@ export const Container = ({ children }) => (
   </div>
 )
 
-export const Item = ({ children }) => (
-  <div className={styles.item}>
+export const Item = ({ children, comingSoon }) => (
+  <div className={cx(styles.item, {[styles.comingSoon]: comingSoon })}>
     {children}
   </div>
 )
