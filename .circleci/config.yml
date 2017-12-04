@@ -17,10 +17,10 @@ defaults:
 
 
 jobs:
-  deploy_cui-browser_image:
+  deploy_cui_browser_image:
      working_directory: ~/build
      docker:
-       - image: docker:17.05.0-ce-git
+       - image: docker:17.05.0-ce
      steps:
        - checkout
        - setup_remote_docker
@@ -39,5 +39,5 @@ workflows:
 
   ui_build:
     jobs:
-      - deploy_cui-browser_image:
+      - deploy_cui_browser_image:
           <<: *master_commits
