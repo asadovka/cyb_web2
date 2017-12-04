@@ -24,24 +24,23 @@ class CrowdsalesDetails extends React.Component<any, any> {
          {crowdsalesDetails.system ? (
            <div>
              <div>
-               <h2>{crowdsalesDetails.system}</h2>
-               <h3>{crowdsalesDetails.token.symbol}</h3>
-               <h3>{crowdsalesDetails.descriptions.state}{' '}{crowdsalesDetails.descriptions.system_type}</h3>
                <img width={50} src={getSystemLogoUrl(crowdsalesDetails, chaingearApi.imageUrl())} />
+               <h2 className='title'>{crowdsalesDetails.system}</h2>
+               <h3 className='subtitle'>{crowdsalesDetails.token.symbol}{' '}{crowdsalesDetails.descriptions.state}{' '}{crowdsalesDetails.descriptions.system_type}</h3>
              </div>
              <div>
-               <h2>Links:</h2>
+               <h2 className='title'>Links:</h2>
+               <div className='tags'>
                {crowdsalesDetails.links.map(link => (
-                 <div>
-                 <a href={link.url}>
-                   {link.icon && <img width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
+                 <a className='tag' href={link.url}>
+                   {link.icon && <img style={{ marginRight: 10 }} width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
                  </a>
-                 </div>
                 ))}
+                 </div>
              </div>
              <div>
-               <h2>Crowdsale</h2>
-               <table>
+               <h2 className='title'>Crowdsale</h2>
+               <table className='table is-striped '>
                  <thead>
                    <tr>
                      <td>Property</td>
