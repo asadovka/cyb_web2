@@ -5,12 +5,12 @@ import { TopMenu, TopMenuLink } from '../../components/TopMenu/'
 
 const TopMenuContainer = () => (
   <TopMenu>
-    <TopMenuLink to='/tokens'>Tokens</TopMenuLink>
-    <TopMenuLink to='/funds'>Funds</TopMenuLink>
-    <TopMenuLink to='/crowdsales'>Crowdsales</TopMenuLink>
-    <TopMenuLink to='/blockchains'>Blockchains</TopMenuLink>
-    <TopMenuLink to='/analitics'>Analytics</TopMenuLink>
-    <TopMenuLink to='/cybernode'>Cybernode</TopMenuLink>                           
+    <TopMenuLink isComingSoon={false} to='/tokens'>Tokens</TopMenuLink>
+    <TopMenuLink isComingSoon={true} to='/funds'>Funds</TopMenuLink>
+    <TopMenuLink isComingSoon={false} to='/crowdsales'>Crowdsales</TopMenuLink>
+    <TopMenuLink isComingSoon={false} to='/blockchains'>Blockchains</TopMenuLink>
+    <TopMenuLink isComingSoon={true} to='/analitics'>Analytics</TopMenuLink>
+    <TopMenuLink isComingSoon={false} to='/cybernode'>Cybernode</TopMenuLink>                           
   </TopMenu>
 );
 

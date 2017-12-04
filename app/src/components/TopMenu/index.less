@@ -29,3 +29,28 @@
   right: 0;
   background-color: #082def;
 }
+
+.isComingSoon {
+  position: relative;
+}
+
+.isComingSoon::after {
+  content: 'coming soon';
+  position: absolute;
+  font-size: 10px;
+  top: -15px;
+  left: 0;
+  width: 70px;
+  color: red;
+}
+
+.isComingSoon::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  opacity: 0.8;
+}
