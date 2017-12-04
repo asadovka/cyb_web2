@@ -18,6 +18,8 @@ import Crowdsales from './containers/Crowdsales/';
 import CrowdsalesDetails from './containers/CrowdsalesDetails';
 import Analitics from './containers/Analitics/';
 import Cybernode from './containers/Cybernode/';
+import Blockchains from './containers/Blockchains/';
+
 
 var ReactGA = require('react-ga');
 ReactGA.initialize('UA-49238979-2');
@@ -44,6 +46,7 @@ export function Root() {
       <Route path={"/funds"} component={Funds}/>
       <Route path={"/crowdsales"} component={Crowdsales}/>
       <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
+      <Route path={"/blockchains"} component={Blockchains}/>
 
       <Route path={"/analitics"} component={Analitics}/>
       <Route path={"/cybernode"} component={Cybernode}/>
