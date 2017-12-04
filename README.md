@@ -1,4 +1,6 @@
-Frontend UI for cyber-markets and cyber-search (blockchain browser).
+Frontend (stateless web UI) for cyber-markets and cyber-search (blockchain browser).
+
+[![CircleCI](https://img.shields.io/circleci/project/github/cyberFund/cyber-ui.svg)](https://circleci.com/gh/cyberFund/cyber-ui)
 
 #### Local development
 
