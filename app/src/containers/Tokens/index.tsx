@@ -50,14 +50,14 @@ class TokensPages extends React.Component<any, any> {
             )}
           </td>
           <td>
-            {statisticsRow ? <Delta value={statisticsRow.percent} /> : ' - '}
+            {statisticsRow && <Delta value={statisticsRow.percent} />}
           </td>
         </tr>
       );
     })
     return (
       <App>
-         <Table>
+         <table className='table is-striped is-fullwidth'>
            <thead>
              <tr>
                <th>system</th>
@@ -68,7 +68,7 @@ class TokensPages extends React.Component<any, any> {
            <tbody>
              {rows}
            </tbody>
-         </Table>
+         </table>
       </App>
     );    
   }
