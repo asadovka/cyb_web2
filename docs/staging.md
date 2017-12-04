@@ -32,8 +32,6 @@ Staging runs 4 components:
 
 This uses `docker-compose` to start containers from DockerHub. It doesn't rebuild them.
 
-TODO: Investigate if `docker-compose` up fetches `latest`/updated container versions if containers are already present locally.
-
 #### Rebuilding
 
 TODO: Move stuff out of CircleCI configs into build scripts + conventions.
