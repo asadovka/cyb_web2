@@ -1,5 +1,8 @@
 #!/bin/bash
-
+# show commands as they are executed
 set -x
 
-docker-compose -f ./docker-compose.yml.staging up -d
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+docker-compose -f "$DIR/docker-compose.yml.staging" up -d
+

@@ -26,10 +26,9 @@ Staging runs 4 components:
 
        $ git clone https://github.com/cyberFund/cyber-ui
 
-3. Run everything:
+3. Update running containers on staging:
 
-       $ cd cyber-ui/devops/staging
-       $ ./up.sh
+       $ cd cyber-ui && git pull && ./devops/staging/up.sh
 
 This uses `docker-compose` to start containers from DockerHub. It doesn't rebuild them.
 
