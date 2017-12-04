@@ -13,7 +13,6 @@ services:
        CYBER_MARKETS_API: http://staging.cyber.fund:32800
 
   chaingear-api:
-    container_name: chaingear-api
     image: cybernode/chaingear-api:latest
     ports:
       - 32600:8090

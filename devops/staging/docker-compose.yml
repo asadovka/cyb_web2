@@ -13,7 +13,6 @@ services:
        CYBER_MARKETS_API: http://127.0.0.1:32800
 
   chaingear-api:
-    container_name: chaingear-api
     image: cybernode/chaingear-api:latest
     ports:
       - 32600:8090
