@@ -4,5 +4,6 @@ set -x
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-docker-compose -f "$DIR/docker-compose.yml.staging" up -d
+export COMPOSE_FILE="$DIR/docker-compose.yml.staging"
+docker-compose up -d
 
