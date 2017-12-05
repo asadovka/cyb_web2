@@ -22,6 +22,9 @@ export class DefaultMarketApi implements MarketApi {
   }
 
   getTokensStatistics() {
+    // return this.http.GET(
+    //   `${config.CYBER_MARKETS_API}/tokenstats`
+    // );
     const data = [
         {
           system: 'Agoras',

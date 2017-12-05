@@ -81,6 +81,28 @@ export const BitcoinBlock = (props) => (
   </div>
 )
 
+export const BitcoinCashBlock = (props) => (
+  <div>
+    <Row>
+      <Title>Bitcoin cash</Title>
+      <Number>#{props.tx_number}</Number>
+      <Date value={props.time} format='YYYY-MM-DD hh:mm' />
+    </Row>
+    <Row>
+      <Hash value={props.hash} />
+      <Height>Height:&nbsp;{props.height}</Height>
+    </Row>
+    <Row>
+      <Total>Total outputs value:&nbsp;{props.total_outputs_value}</Total>
+    </Row>
+    <Row>
+      <DetailsLink to={`/bitcoin/block/${props.height}`}>
+        {`seacrh.cyber.fund/bitcoin/block/${props.height}`}
+      </DetailsLink>
+    </Row>
+  </div>
+)
+
 
 export function Plain(data) {
   return (
@@ -132,6 +154,27 @@ export function EthereumBlock(data) {
   <div>
     <Row>
       <Title>Ethereum</Title>
+      <Number>#{data.tx_number}</Number>
+      <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' />
+    </Row>
+    <Row>
+      <Hash value={data.hash} />
+      <Height>Size:&nbsp;{data.size}</Height>
+    </Row>
+    <Row>
+      <DetailsLink to={`/ethereum/block/${data.number}`}>
+        {`seacrh.cyber.fund/ethereum/block/${data.number}`}
+      </DetailsLink>
+    </Row>
+  </div>
+ );
+}
+
+export function EthereumClassicBlock(data) {
+ return (
+  <div>
+    <Row>
+      <Title>Ethereum classic</Title>
       <Number>#{data.tx_number}</Number>
       <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' />
     </Row>

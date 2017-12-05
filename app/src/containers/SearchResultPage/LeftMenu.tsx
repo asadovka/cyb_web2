@@ -8,21 +8,21 @@ var cx = require('classnames');
 import { Tabs, Tab } from '../../components/VerticalTabs/';
 
 const LeftMenu = ({
-  coins,
+  chains,
   query,
-  type
+  entities
 }) => (
   <Tabs>
-      <Tab isActive={!coins} to={{ pathname:"/search", query: { q: query, type } }}>All</Tab>
-      <Tab isActive={coins === 'bitcoin'} to={{ pathname:"/search", query: { q: query, coins: 'bitcoin', type } }}>Bitcoin</Tab>
-      <Tab isActive={coins === 'bitcoin_cash'} to={{ pathname:"/search", query: { q: query, coins: 'bitcoin_cash', type } }}>bitcoin cash</Tab>
-      <Tab isActive={coins === 'ethereum'} to={{ pathname:"/search", query: { q: query, coins: 'ethereum', type } }}>Ethereum</Tab>
-      <Tab isActive={coins === 'ethereum_classic'} to={{ pathname:"/search", query: { q: query, coins: 'ethereum_classic', type } }}>Ethereum classic</Tab>
+      <Tab isActive={!chains} to={{ pathname:"/search", query: { q: query, entities } }}>All</Tab>
+      <Tab isActive={chains === 'bitcoin'} to={{ pathname:"/search", query: { q: query, chains: 'bitcoin', entities } }}>Bitcoin</Tab>
+      <Tab isActive={chains === 'bitcoin_cash'} to={{ pathname:"/search", query: { q: query, chains: 'bitcoin_cash', entities } }}>Bitcoin cash</Tab>
+      <Tab isActive={chains === 'ethereum'} to={{ pathname:"/search", query: { q: query, chains: 'ethereum', entities } }}>Ethereum</Tab>
+      <Tab isActive={chains === 'ethereum_classic'} to={{ pathname:"/search", query: { q: query, chains: 'ethereum_classic', entities } }}>Ethereum classic</Tab>
   </Tabs>
 )
 
 export default withRouter(connect((state, ownProps) => ({
   query: ownProps.location.query.q,
-  coins: ownProps.location.query.coins,
-  type: ownProps.location.query.type
+  chains: ownProps.location.query.chains,
+  entities: ownProps.location.query.entities
 }))(LeftMenu));

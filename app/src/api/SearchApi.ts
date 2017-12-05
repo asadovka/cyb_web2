@@ -4,7 +4,7 @@ import {SearchResponse, SearchResponseItem, BitcoinBlockResponse} from "../actio
 var config = require('./config.js')
 
 export interface SearchApi {
-  search(query: string, page: number, coins: string, type: string): Promise<SearchResponse>;
+  search(query: string, page: number, chains: string, entities: string, pageSize: number): Promise<SearchResponse>;
   test(): Promise<any>;
   getBitcoinBlock(blockNumber: string): Promise<BitcoinBlockResponse>;
   getBitcoinTx(txId: string): Promise<any>;
@@ -19,11 +19,11 @@ export class DefaultSearchApi implements SearchApi {
   ) {
   }
 
-  search(query: string, page: number = 0, coins: string, type: string): Promise<SearchResponse> {
+  search(query: string, page: number = 0, chains: string, entities: string, pageSize: number = 10): Promise<SearchResponse> {
     return this.http.GET(
       `${config.CYBER_SEARCH_API}/search`,
       {
-        params: {query, page, coins, type}
+        params: {query, page, chains, entities, pageSize}
       }
     );
 

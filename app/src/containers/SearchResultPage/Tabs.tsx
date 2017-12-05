@@ -7,23 +7,23 @@ var cx = require('classnames');
 
 import { Tabs, Tab } from '../../components/HorizontTabs/';
 
-const TabsContainer = ({ type, query, coins }) => (
+const TabsContainer = ({ entities, query, coins }) => (
   <Tabs>   
     <Tab
-      isActive={!type}
+      isActive={!entities}
       to={{ pathname:"/search", query: { q: query, coins } }}
     >All</Tab>
     <Tab
-      isActive={type === 'blocks'}
-      to={{ pathname:"/search", query: { q: query, coins, type: "blocks" } }}
+      isActive={entities === 'BLOCK'}
+      to={{ pathname:"/search", query: { q: query, coins, entities: "BLOCK" } }}
     >Blocks</Tab>
     <Tab
-      isActive={type === 'transactions'}
-      to={{ pathname:"/search", query: { q: query, coins, type: "transactions" } }}
+      isActive={entities === 'TRANSACTION'}
+      to={{ pathname:"/search", query: { q: query, coins, entities: "TRANSACTION" } }}
     >Transactions</Tab>
     <Tab
-      isActive={type === 'address'}
-      to={{ pathname:"/search", query: { q: query, coins, type: "address" } }}
+      isActive={entities === 'ADDRESS'}
+      to={{ pathname:"/search", query: { q: query, coins, entities: "ADDRESS" } }}
     >Address</Tab>
   </Tabs>
 );
@@ -31,5 +31,5 @@ const TabsContainer = ({ type, query, coins }) => (
 export default withRouter(connect((state, ownProps) => ({
   query: ownProps.location.query.q,
   coins: ownProps.location.query.coins,
-  type: ownProps.location.query.type
+  entities: ownProps.location.query.entities
 }))(TabsContainer));

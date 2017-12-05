@@ -21,14 +21,21 @@ export const reducer = combineReducers({
   ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX)
 })
 
-export const search = (query, page, coins, type) => ({
+
+
+export const showMore = ({ query, page, chains, entities }) => (dispatch, getState) => {
+  const pageSize = getState().search.searchResults.data.pageSize + 10
+  dispatch(search(query, page, chains, entities, pageSize))
+}
+
+export const search = (query, page, chains, entities, pageSize = 10) => ({
   type: 'SEARCH',
-  payload: { query, page, coins, type }
+  payload: { query, page, chains, entities, pageSize }
 })
 
 const searchItems = loadDataEpic(
   'SEARCH',
-  ({ query, page, coins, type }) => searchApi.search(query, page, coins, type)
+  ({ query, page, chains, entities, pageSize }) => searchApi.search(query, page, chains, entities, pageSize)
 )
 
 

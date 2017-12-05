@@ -5,21 +5,30 @@ import {connect} from "react-redux";
 import {Pagination} from "../../components/Pagination";
 import withRouter from "react-router/es/withRouter";
 
-import { BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, EthereumBlock, EthereumTx } from '../../components/SearchItems/';
+import {
+  BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, 
+  EthereumBlock, EthereumTx,
+  EthereumClassicBlock,
+  BitcoinCashBlock
+} from '../../components/SearchItems/';
 
 import { SectionTitle, SectionsContainer } from '../../components/SectionTitle/';
 
 const Content = ({
   searchResult,
-  coins,
-  type,
-  search
+  chains,
+  entities,
+  search,
+  query,
+  showMore
 }) => (
   <div>
     <div>
     {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
     </div>
-    
+    {(searchResult.success && searchResult.data.items.length < searchResult.data.totalHits) && <div style={{ textAlign: 'center', marginTop: 40 }}>
+      <button onClick={() => showMore({ query, chains, entities })} className='button is-large'>show more</button>
+    </div>}
   </div>
 );
 
@@ -59,7 +68,7 @@ function results(items, loading, error, success) {
     );
   }
   
-  const blocks = items.filter(item => item.type === 'bitcoin_block' || item.type === 'ethereum_block');
+  const blocks = items.filter(item => item.type === 'bitcoin_block' || item.type === 'ethereum_block' || item.type === 'ethereum_classic_block' || item.type === 'bitcoin_cash_block');
   const transactions = items.filter(item => item.type === 'bitcoin_tx' || item.type === 'ethereum_tx');
 
 
@@ -101,8 +110,8 @@ const items = {
   bitcoin_address: BitcoinAddress, 
   ethereum_block: EthereumBlock, 
   ethereum_tx: EthereumTx,
-  ethereum_classic_block: EthereumBlock, 
-  bitcoin_cash_block: BitcoinBlock, 
+  ethereum_classic_block: EthereumClassicBlock, 
+  bitcoin_cash_block: BitcoinCashBlock, 
 }
 
 function RenderByType({ type, data} ) {
@@ -115,11 +124,13 @@ function RenderByType({ type, data} ) {
   );
 }
 
+import { showMore } from '../../modules/search';
+
 export default withRouter(connect(((state, ownProps) => ({
     searchResult: state.search.searchResults,
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
-    coins: ownProps.location.query.coins,
-    type: ownProps.location.query.type  
-})))(Content));
+    chains: ownProps.location.query.chains,
+    entities: ownProps.location.query.entities  
+})), { showMore })(Content));
 

@@ -19,19 +19,18 @@ import App from '../app/';
 class SearchResultPageComponent extends React.Component<any, any> {
 
   componentDidMount() {
-    const { query, page, coins, type } = this.props;
-
-    this.props.search(query, page, coins, type);
+    const { query, page, chains, entities } = this.props;
+    this.props.search(query, page, chains, entities);
   }
 
   componentWillReceiveProps(nextPorps) {
-    const { query, page, coins, type } = this.props;
+    const { query, page, chains, entities } = this.props;
 
     if (nextPorps.query !== query || 
         nextPorps.page !== page || 
-        nextPorps.coins !== coins || 
-        nextPorps.type !== type) {
-      this.props.search(query, page, coins, type);    
+        nextPorps.chains !== chains || 
+        nextPorps.entities !== entities) {
+      this.props.search(query, page, chains, entities);    
     }
   }
 
@@ -62,8 +61,8 @@ function mapStateToProps(state, ownProps) {
   return {
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
-    coins: ownProps.location.query.coins,
-    type: ownProps.location.query.type
+    chains: ownProps.location.query.chains,
+    entities: ownProps.location.query.entities
   };
 }
 
