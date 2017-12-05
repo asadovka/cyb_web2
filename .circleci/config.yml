@@ -1,15 +1,5 @@
 version: 2
 
-
-defaults:
-  release_filter: &release_filter
-    filters:
-      tags:
-        only: /^release-.*/
-      branches:
-        ignore: /.*/
-
-
 jobs:
   deploy_image:
      working_directory: ~/build
@@ -26,11 +16,13 @@ jobs:
        - deploy:
            name: Upload :latest image to DockerHub
            command: |
-             # $CIRCLE_TAG is not set when building for `master`
-             #docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
-             #docker push cybernode/cui-browser:$CIRCLE_TAG
              docker tag build/cui-browser cybernode/cui-browser:latest
              docker push cybernode/cui-browser:latest
+             if [[ "$CIRCLE_TAG" != "" ]]; then
+                # $CIRCLE_TAG is only set when building tags
+                docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
+                docker push cybernode/cui-browser:$CIRCLE_TAG
+             fi
 
 workflows:
   version: 2
@@ -39,5 +31,8 @@ workflows:
     jobs:
       - deploy_image:
           filters:
+            # build and deploy for all tags AND commits in master
+            tags:
+              only: /.*/
             branches:
               only: master
