@@ -9,12 +9,6 @@ defaults:
       branches:
         ignore: /.*/
 
-  master_commits: &master_commits
-    filters:
-      branches:
-        only:
-          - master
-
 
 jobs:
   deploy_image:
@@ -41,7 +35,9 @@ jobs:
 workflows:
   version: 2
 
-  ui_build:
+  ui_build_deploy:
     jobs:
       - deploy_image:
-          <<: *master_commits
+          filters:
+            branches:
+              only: master
