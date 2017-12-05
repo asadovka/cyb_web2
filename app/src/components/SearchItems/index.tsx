@@ -62,7 +62,7 @@ const Row = ({ children }) => (
 export const BitcoinBlock = (props) => (
   <div>
     <Row>
-      <Title>Block</Title>
+      <Title>Bitcoin</Title>
       <Number>#{props.tx_number}</Number>
       <Date value={props.time} format='YYYY-MM-DD hh:mm' />
     </Row>
@@ -129,19 +129,22 @@ export function BitcoinAddress(data) {
 
 export function EthereumBlock(data) {
  return (
-   <div>
-     <ul>
-       <li>{`Block hash: ${data.hash}`}</li>
-       <li>{`Block number: ${data.number}`}</li>
-       <li>{`Transactions count: ${data.tx_number}`}</li>
-       <li>{`Block time: ${data.timestamp}`}</li>
-       <li>{`Block size: ${data.size}`}</li>
-     </ul>
-
-     <Link to={`/ethereum/block/${data.number}`}>
-       View block
-     </Link>
-   </div>
+  <div>
+    <Row>
+      <Title>Ethereum</Title>
+      <Number>#{data.tx_number}</Number>
+      <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' />
+    </Row>
+    <Row>
+      <Hash value={data.hash} />
+      <Height>Size:&nbsp;{data.size}</Height>
+    </Row>
+    <Row>
+      <DetailsLink to={`/ethereum/block/${data.number}`}>
+        {`seacrh.cyber.fund/ethereum/block/${data.number}`}
+      </DetailsLink>
+    </Row>
+  </div>
  );
 }
 

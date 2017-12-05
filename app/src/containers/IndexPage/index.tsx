@@ -23,10 +23,6 @@ class IndexPage extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <Header>
-          <Logo />
-        </Header>
-
         <CentredContainer>
           <Title>Blockchain search</Title>
           <BigLogo />

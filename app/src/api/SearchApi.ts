@@ -99,22 +99,24 @@ export class DefaultSearchApi implements SearchApi {
   }
 
   getBitcoinBlock(blockNumber: string): Promise<BitcoinBlockResponse> {
-    const data:BitcoinBlockResponse = {
-      "hash" : "string",
-      "height" : 0,
-      "time" : "2015-07-20T15:49:04-07:00",
-      "nonce" : 0,
-      "merkleroot" : "string",
-      "size" : 0,
-      "version" : 0,
-      "weight" : 0,
-      "bits" : "string",
-      "difficulty" : 1.5,
-      "tx_number" : 0,
-      "total_outputs_value" : "string",      
-    }
+    return this.http.GET(`${config.CYBER_SEARCH_API}/bitcoin/block/${blockNumber}`)
 
-    return Promise.resolve(data);
+    // const data:BitcoinBlockResponse = {
+    //   "hash" : "string",
+    //   "height" : 0,
+    //   "time" : "2015-07-20T15:49:04-07:00",
+    //   "nonce" : 0,
+    //   "merkleroot" : "string",
+    //   "size" : 0,
+    //   "version" : 0,
+    //   "weight" : 0,
+    //   "bits" : "string",
+    //   "difficulty" : 1.5,
+    //   "tx_number" : 0,
+    //   "total_outputs_value" : "string",      
+    // }
+
+    // return Promise.resolve(data);
   }
 
   getBitcoinTx(txId: string): Promise<any> {

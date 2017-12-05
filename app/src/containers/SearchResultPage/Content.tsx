@@ -19,17 +19,20 @@ const Content = ({
     <div>
     {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
     </div>
-    <Pagination
-      loading={searchResult.loading || searchResult.error}
-      page={searchResult.data.page}
-      query={searchResult.data.query}
-      total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
-      onClick={(query, page) => {
-        search(query, page, coins, type)
-      }}
-    /> 
+    
   </div>
 );
+
+
+// <Pagination
+//       loading={searchResult.loading || searchResult.error}
+//       page={searchResult.data.page}
+//       query={searchResult.data.query}
+//       total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
+//       onClick={(query, page) => {
+//         search(query, page, coins, type)
+//       }}
+//     /> 
 
 function results(items, loading, error, success) {
   if (loading) {
@@ -97,7 +100,9 @@ const items = {
   bitcoin_tx: BitcoinTx, 
   bitcoin_address: BitcoinAddress, 
   ethereum_block: EthereumBlock, 
-  ethereum_tx: EthereumTx
+  ethereum_tx: EthereumTx,
+  ethereum_classic_block: EthereumBlock, 
+  bitcoin_cash_block: BitcoinBlock, 
 }
 
 function RenderByType({ type, data} ) {

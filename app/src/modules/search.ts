@@ -76,19 +76,19 @@ const getEthereumTxEpic = loadDataEpic(
 
 export const getStatistics = () => (dispatch) => {
   dispatch({ type: CfActions.GET_STATISTICS })
-  Promise.all([
-    http.GET('https://api.coinmarketcap.com/v1/ticker/bitcoin/'),
-    http.GET('https://api.coinmarketcap.com/v1/global/?convert=EUR')
-  ]).then((data: any) => {
-    console.log(' >> ', data)
-    dispatch({
-      type: CfActions.GET_STATISTICS + '_FULFILLED',
-      payload: {
-        total_24h_volume_usd: data[1].total_24h_volume_usd,
-        total_24h_volume_bit: data[1].total_24h_volume_usd / data[0][0].price_usd
-      }
-    })
-  });
+  // Promise.all([
+  //   http.GET('https://api.coinmarketcap.com/v1/ticker/bitcoin/'),
+  //   http.GET('https://api.coinmarketcap.com/v1/global/?convert=EUR')
+  // ]).then((data: any) => {
+  //   console.log(' >> ', data)
+  //   dispatch({
+  //     type: CfActions.GET_STATISTICS + '_FULFILLED',
+  //     payload: {
+  //       total_24h_volume_usd: data[1].total_24h_volume_usd,
+  //       total_24h_volume_bit: data[1].total_24h_volume_usd / data[0][0].price_usd
+  //     }
+  //   })
+  // });
 }
 
 export const searchEpic = combineEpics(
