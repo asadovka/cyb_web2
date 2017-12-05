@@ -24,9 +24,9 @@ const Content = ({
 }) => (
   <div>
     <div>
-    {results(searchResult.data.items, searchResult.loading, searchResult.error, searchResult.success)}
+    {results(searchResult.items, searchResult.loading, searchResult.error, searchResult.success)}
     </div>
-    {(searchResult.success && searchResult.data.items.length < searchResult.data.totalHits) && <div style={{ textAlign: 'center', marginTop: 40 }}>
+    {(searchResult.showMore) && <div style={{ textAlign: 'center', marginTop: 40 }}>
       <button onClick={() => showMore({ query, chains, entities })} className='button is-large'>show more</button>
     </div>}
   </div>

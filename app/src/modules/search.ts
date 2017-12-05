@@ -10,11 +10,11 @@ const {
   http
 } = Injector.of();
 
-import { createDateReducer, mapPayload, mapError, loadDataEpic } from '../utils/redux'
+import { createDateReducer, mapPayload, mapError, loadDataEpic, ItemsReducer } from '../utils/redux'
 
 
 export const reducer = combineReducers({
-  searchResults: createDateReducer('SEARCH'),
+  searchResults: ItemsReducer('SEARCH'),
   bitcoinBlock: createDateReducer(CfActions.GET_BITCOIN_BLOCK),
   bitcoinTx: createDateReducer(CfActions.GET_BITCOIN_TX),
   ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
@@ -24,8 +24,14 @@ export const reducer = combineReducers({
 
 
 export const showMore = ({ query, page, chains, entities }) => (dispatch, getState) => {
-  const pageSize = getState().search.searchResults.data.pageSize + 10
-  dispatch(search(query, page, chains, entities, pageSize))
+   const next_page = getState().search.searchResults.page;
+   searchApi.search(query, next_page, chains, entities, 10)
+     .then(data => {
+       dispatch({
+         type: 'SEARCH_FULFILLED_MORE',
+         payload: data
+       });
+     })
 }
 
 export const search = (query, page, chains, entities, pageSize = 10) => ({

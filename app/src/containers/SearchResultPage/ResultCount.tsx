@@ -5,7 +5,7 @@ import { Count } from '../../components/ResultCount/'
 
 const ResultCount = ({ searchResult }) => (
   <Count>
-    {searchResult.success && <span>About {searchResult.data.totalHits} results</span> }&nbsp;
+    {searchResult.success && <span>About {searchResult.totalHits} results</span> }&nbsp;
   </Count>
 );
 
