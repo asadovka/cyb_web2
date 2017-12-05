@@ -17,7 +17,7 @@ defaults:
 
 
 jobs:
-  deploy_cui-browser_image:
+  deploy_image:
      working_directory: ~/build
      docker:
        - image: docker:17.05.0-ce-git
@@ -25,12 +25,15 @@ jobs:
        - checkout
        - setup_remote_docker
        - run:
-           name: Deploy cui-browser docker image
+           name: Build docker image
            command: |
              docker build -t build/cui-browser -f ./devops/Dockerfile ./
              docker login -u $DOCKER_USER -p $DOCKER_PASS
-             docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
-             docker push cybernode/cui-browser:$CIRCLE_TAG
+       - deploy:
+           name: Upload :latest image to DockerHub
+             # $CIRCLE_TAG is not set when building for `master`
+             #docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
+             #docker push cybernode/cui-browser:$CIRCLE_TAG
              docker tag build/cui-browser cybernode/cui-browser:latest
              docker push cybernode/cui-browser:latest
 
@@ -39,5 +42,5 @@ workflows:
 
   ui_build:
     jobs:
-      - deploy_cui-browser_image:
+      - deploy_image:
           <<: *master_commits
