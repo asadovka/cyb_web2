@@ -14,12 +14,14 @@ jobs:
              docker build -t build/cui-browser -f ./devops/Dockerfile ./
              docker login -u $DOCKER_USER -p $DOCKER_PASS
        - deploy:
-           name: Upload :latest image to DockerHub
+           name: Uploading images to DockerHub
            command: |
+             echo Uploading :latest image
              docker tag build/cui-browser cybernode/cui-browser:latest
              docker push cybernode/cui-browser:latest
              if [[ "$CIRCLE_TAG" != "" ]]; then
                 # $CIRCLE_TAG is only set when building tags
+                echo Uploading :$CIRCLE_TAG image
                 docker tag build/cui-browser cybernode/cui-browser:$CIRCLE_TAG
                 docker push cybernode/cui-browser:$CIRCLE_TAG
              fi
