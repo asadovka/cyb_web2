@@ -11,7 +11,7 @@ import CentredContainer from '../../components/CentredContainer/';
 
 import { Header } from '../../components/Header/';
 
-// import { Title, BigLogo } from '../../components/Title/';
+import { Title, BigLogo } from '../../components/Title/';
 
 import { connect } from 'react-redux';
 
@@ -28,8 +28,8 @@ class IndexPage extends React.Component<any, any> {
         </Header>
 
         <CentredContainer>
-          {/*<Title>Blockchain search</Title>*/}
-           {/*<BigLogo />*/}
+          <Title>Blockchain search</Title>
+          <BigLogo />
           <TopMenu/>
           <SearchForm/>
           <BlockchainStatics />
