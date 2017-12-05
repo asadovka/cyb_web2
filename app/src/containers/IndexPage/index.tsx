@@ -11,7 +11,7 @@ import CentredContainer from '../../components/CentredContainer/';
 
 import { Header } from '../../components/Header/';
 
-import { Title, BigLogo } from '../../components/Title/';
+import { Title, BigLogo } from '../../components/Hero/';
 
 import { connect } from 'react-redux';
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const styles = require("./Title.less");
+const styles = require("./Hero.less");
 
 
 
