@@ -8,7 +8,7 @@ const TopMenuContainer = () => (
     <TopMenuLink isComingSoon={false} to='/tokens'>Tokens</TopMenuLink>
     <TopMenuLink isComingSoon={true} to='/funds'>Funds</TopMenuLink>
     <TopMenuLink isComingSoon={false} to='/crowdsales'>Crowdsales</TopMenuLink>
-    <TopMenuLink isComingSoon={false} to='/blockchains'>Blockchains</TopMenuLink>
+    <TopMenuLink isComingSoon={true} to='/blockchains'>Blockchains</TopMenuLink>
     <TopMenuLink isComingSoon={true} to='/analitics'>Analytics</TopMenuLink>
     <TopMenuLink isComingSoon={false} to='/cybernode'>Cybernode</TopMenuLink>                           
   </TopMenu>

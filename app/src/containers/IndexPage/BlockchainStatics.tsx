@@ -23,7 +23,7 @@ const BlockchainStatics = ({ total_24h_volume_usd, total_24h_volume_bit }) => (
         </List>
       </DataContainer>
     </Item>
-    <Item comingSoon={false}>
+    <Item comingSoon={true}>
       <Title icon='search'>Search Statistics</Title>
       <div>
         <Table>

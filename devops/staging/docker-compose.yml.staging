@@ -1,5 +1,3 @@
----
-
 version: '3.3'
 services:
 
@@ -24,7 +22,120 @@ services:
     ports:
       - 32700:8085
 
-  markets-api:
+  cn-zoo:
+    image: confluentinc/cp-zookeeper:4.0.0
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_CLIENT_PORT: 2181
+      KAFKA_LOG4J_ROOT_LOGLEVEL: ERROR
+    volumes:
+      - /opt/cyberfund/markets/zoo/data:/var/lib/zookeeper/data
+      - /opt/cyberfund/markets/zoo/log:/var/lib/zookeeper/log
+
+  cn-kafka:
+    image: confluentinc/cp-kafka:4.0.0
+    ports:
+      - "9092:9092"
+      - "1099:1099"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: cn-zoo:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://cn-kafka:9092
+      KAFKA_JMX_PORT: 1099
+      KAFKA_LOG4J_ROOT_LOGLEVEL: ERROR
+    volumes:
+      - /opt/cyberfund/markets/kafka:/var/lib/kafka
+
+  cn-exchange-stream-api:
+    image: cybernode/cm-stream-api:latest
+    ports:
+      - "32801:18080"
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+    links:
+      - cn-kafka
+    labels:
+      kompose.service.type: loadbalancer
+
+  cm-rest-api:
     image: cybernode/cm-rest-api:latest
     ports:
-      - 32800:8085
+      - "32800:8085"
+    labels:
+      kompose.service.type: loadbalancer
+
+  cm-connector-bitstamp:
+    container_name: cm-connector-bitstamp
+    image: cybernode/cm-connectors-bitstamp:latest
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+
+  cm-connectors-hitbtc:
+    container_name: cm-connectors-hitbtc
+    image: cybernode/cm-connectors-hitbtc:latest
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+
+  cm-connectors-poloniex:
+    container_name: cm-connectors-poloniex
+    image: cybernode/cm-connectors-poloniex:latest
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+
+  cm-connectors-bitfinex:
+    container_name: cm-connectors-bitfinex
+    image: cybernode/cm-connectors-bitfinex:latest
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+
+  cm-tickers:
+    container_name: cm-tickers
+    image: cybernode/cm-tickers:latest
+    environment:
+      KAFKA_CONNECTION: cn-kafka:9092
+
+  cs-elassandra:
+    image: strapdata/elassandra:5.5.0.8
+    restart: on-failure
+    volumes:
+      - /cyberdata/cyber-search/elassandra/lib:/var/lib/cassandra
+      - /cyberdata/cyber-search/elassandra/log:/var/log/cassandra
+    environment:
+      CASSANDRA_DC: DEVELOPMENT
+      CASSANDRA_CLUSTER_NAME: CYBER_SEARCH
+    ports:
+      - "9042:9042"
+      - "9200:9200"
+      - "9300:9300"
+
+  cs-chain-pumps-btc:
+      network_mode: host
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M4
+      restart: on-failure
+      environment:
+         CS_CHAINS_TO_PUMP: BITCOIN
+         CASSANDRA_HOSTS: localhost
+         CS_LOG_LEVEL: DEBUG
+
+
+  cs-chain-pumps-eth:
+      network_mode: host
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M4
+      restart: on-failure
+      environment:
+         CS_CHAINS_TO_PUMP: ETHEREUM
+         CASSANDRA_HOSTS: localhost
+         CS_LOG_LEVEL: DEBUG
+
+
+  cs-search-api:
+      network_mode: host
+      image: cybernode/cs-search-api:release-v1.0.0.M4
+      restart: on-failure
+      environment:
+         CASSANDRA_HOSTS: localhost
+         CS_LOG_LEVEL: DEBUG
+         CORS_ALLOWED_ORIGINS: "*"

@@ -13,8 +13,44 @@ import { connect } from 'react-redux';
 import { getSystemLogoUrl, showAllTokens, TIKER_INTERVAL } from './../../modules/chaingear';
 
 class TokensPages extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      avalibleTokens: []
+    };
+  }
+
   componentDidMount() {
     this.props.showAllTokens();
+
+    var socket = new WebSocket("ws://93.125.26.210:32801");
+
+    socket.onopen = function() {
+       socket.send('{"get":"pairs"}');
+      // alert("Соединение установлено.");
+    };
+
+    let count = 0;
+    socket.onmessage = (event) => {
+
+      if (count > 0) {
+        console.log('>>', event)
+        return;
+      }
+      const data = JSON.parse(event.data);
+      const avalibleTokens = data.filter(item => item.quote === 'USD').map(item => item.base);
+      console.log(' avalibleTokens> ', avalibleTokens);
+      this.setState({
+        avalibleTokens
+      })
+      let pairs = avalibleTokens.map(item => `"${item}_USD"`);
+      const msg = `{"subscribe":"tickers","pairs":[${pairs.join(',')}] }`;
+      socket.send(msg);
+      count++;
+      console.log('msg >> ', msg)
+    };
+
+    
   }
 
   render() {
@@ -23,8 +59,14 @@ class TokensPages extends React.Component<any, any> {
       statistics,
     } = this.props;
 
+    const {
+      avalibleTokens
+    } = this.state;
+
     const rows = tokens.map(item => {
-      const statisticsRow = statistics.find(s => s.system === item.system);
+      const statisticsRow = avalibleTokens.find(s => s === item.token.symbol);
+      if (!statisticsRow) return null;
+
       return (
         <tr key={item.system}>
           <td>
@@ -33,7 +75,7 @@ class TokensPages extends React.Component<any, any> {
               <span>{item.system}</span>
             </Logo>
           </td>
-          <td>
+          {/*<td>
             {statisticsRow ? (<PriceInfo>
               <div>
                 <PriceChart
@@ -48,9 +90,9 @@ class TokensPages extends React.Component<any, any> {
             </PriceInfo>) : (
               <NoInfo />
             )}
-          </td>
+          </td>*/}
           <td>
-            {statisticsRow && <Delta value={statisticsRow.percent} />}
+            -
           </td>
         </tr>
       );
@@ -61,8 +103,8 @@ class TokensPages extends React.Component<any, any> {
            <thead>
              <tr>
                <th>system</th>
+               {/*<th>price</th>*/}
                <th>price</th>
-               <th>change per day</th>
              </tr>
            </thead>
            <tbody>
