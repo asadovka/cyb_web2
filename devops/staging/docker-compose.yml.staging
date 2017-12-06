@@ -96,6 +96,8 @@ services:
     image: cybernode/cm-tickers:latest
     environment:
       KAFKA_CONNECTION: cn-kafka:9092
+      WINDOW_DURATIONS_MIN: 1,60
+      WINDOW_HOP_SEC: 5
 
   cs-elassandra:
     image: strapdata/elassandra:5.5.0.8
