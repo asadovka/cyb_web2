@@ -12,87 +12,114 @@ import { Table, Logo, PriceInfo, NoInfo, PriceChart } from '../../components/Ass
 import { connect } from 'react-redux';
 import { getSystemLogoUrl, showAllTokens, TIKER_INTERVAL } from './../../modules/chaingear';
 
+let socket;
+
 class TokensPages extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
-      avalibleTokens: []
+      rows: []
     };
+
+    // this.updateState = this.updateState.bind(this);
+    this.processTickers = this.processTickers.bind(this);
+    this.processPair = this.processPair.bind(this);
+    this.buildInitRows = this.buildInitRows.bind(this);
+  }
+
+
+  processTickers(data) {
+    const rows = this.state.rows
+      .map(item => item.symbol === data.tokensPair.base ? ({
+        ...item,
+        symbol: item.symbol,
+        amount: data.quoteAmount,
+        price: data.price,
+        procent: item.price - data.price
+      }) : item);
+
+    this.setState({
+        rows
+      })
+  }
+
+  buildInitRows(usdPairs, tokens) {
+    const rows = usdPairs.map(symbol => {
+      const item = tokens.find(t => t.token.symbol === symbol);
+      if (!item) return null;
+
+      return {
+          symbol: symbol,
+          system: item.system,
+          logo: getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`),
+          price: 0,
+          amount: 0,
+          procent: 0
+      }
+    }).filter(_ => !!_);
+
+    console.log(' rows >> ', rows)
+    this.setState({
+      rows
+    })
+  }
+
+  processPair(pairs) {
+     // console.log(' pairs ', pairs);
+    const usdPairs = pairs.filter(item => item.quote === 'USD').map(item => item.base);
+    console.log(' usdPairs> ', usdPairs);
+    const _pairs = usdPairs.map(item => `"${item}_USD"`);
+    const msg = `{"subscribe":"tickers","pairs":[${_pairs.join(',')}] }`;
+    socket.send(msg);
+    console.log('get tikers >> ', msg);
+
+
+    setTimeout(() => { //TODO: move all logic in module and use promise
+      this.buildInitRows(usdPairs, this.props.tokens);
+    }, 3000);
   }
 
   componentDidMount() {
     this.props.showAllTokens();
 
-    var socket = new WebSocket("ws://93.125.26.210:32801");
+    socket = new WebSocket("ws://93.125.26.210:32801");
 
-    socket.onopen = function() {
+    socket.onopen = () => {
        socket.send('{"get":"pairs"}');
-      // alert("Соединение установлено.");
     };
 
-    let count = 0;
     socket.onmessage = (event) => {
-
-      if (count > 0) {
-        console.log('>>', event)
-        return;
-      }
       const data = JSON.parse(event.data);
-      const avalibleTokens = data.filter(item => item.quote === 'USD').map(item => item.base);
-      console.log(' avalibleTokens> ', avalibleTokens);
-      this.setState({
-        avalibleTokens
-      })
-      let pairs = avalibleTokens.map(item => `"${item}_USD"`);
-      const msg = `{"subscribe":"tickers","pairs":[${pairs.join(',')}] }`;
-      socket.send(msg);
-      count++;
-      console.log('msg >> ', msg)
+      if (data.type === 'pairs') {
+        this.processPair(data.value)
+      }
+      if (data.type === 'tickers') {
+        this.processTickers(data.value)
+      }
     };
-
     
   }
 
   render() {
-    const {
-      tokens,
-      statistics,
-    } = this.props;
 
-    const {
-      avalibleTokens
-    } = this.state;
-
-    const rows = tokens.map(item => {
-      const statisticsRow = avalibleTokens.find(s => s === item.token.symbol);
-      if (!statisticsRow) return null;
+    const rows = this.state.rows.map((item, index) => {
 
       return (
-        <tr key={item.system}>
+        <tr key={index}>
           <td>
             <Logo to={`/tokens/${item.system}`}>
-              <img width={50} src={getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`)}/>            
+              <img width={50} src={item.logo}/>            
               <span>{item.system}</span>
             </Logo>
           </td>
-          {/*<td>
-            {statisticsRow ? (<PriceInfo>
-              <div>
-                <PriceChart
-                  price_history={statisticsRow.price_history}
-                  tiker_interval={TIKER_INTERVAL}
-                />
-              </div>
-              <div>
-                <p>Price usd: {statisticsRow.price_usd}</p>
-                <p>Price btc: {statisticsRow.price_bit}</p>
-              </div>
-            </PriceInfo>) : (
-              <NoInfo />
-            )}
-          </td>*/}
           <td>
-            -
+            {item.price}
+          </td>
+          <td>
+            {item.amount}
+          </td>
+          <td>
+            {item.procent}
           </td>
         </tr>
       );
@@ -103,8 +130,9 @@ class TokensPages extends React.Component<any, any> {
            <thead>
              <tr>
                <th>system</th>
-               {/*<th>price</th>*/}
                <th>price</th>
+               <th>amount</th>
+               <th>%</th>
              </tr>
            </thead>
            <tbody>
