@@ -115,27 +115,43 @@ services:
 
   cs-chain-pumps-btc:
       network_mode: host
-      image: cybernode/cs-chain-pumps:release-v1.0.0.M4
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M5
       restart: on-failure
       environment:
          CS_CHAINS_TO_PUMP: BITCOIN
          CASSANDRA_HOSTS: localhost
          CS_LOG_LEVEL: DEBUG
 
+  cs-chain-pumps-bth:
+      network_mode: host
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M5
+      restart: on-failure
+      environment:
+         CS_CHAINS_TO_PUMP: BITCOIN_CASH
+         CASSANDRA_HOSTS: localhost
+         CS_LOG_LEVEL: DEBUG
 
   cs-chain-pumps-eth:
       network_mode: host
-      image: cybernode/cs-chain-pumps:release-v1.0.0.M4
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M5
       restart: on-failure
       environment:
          CS_CHAINS_TO_PUMP: ETHEREUM
          CASSANDRA_HOSTS: localhost
          CS_LOG_LEVEL: DEBUG
 
+  cs-chain-pumps-etc:
+      network_mode: host
+      image: cybernode/cs-chain-pumps:release-v1.0.0.M5
+      restart: on-failure
+      environment:
+         CS_CHAINS_TO_PUMP: ETHEREUM_CLASSIC
+         CASSANDRA_HOSTS: localhost
+         CS_LOG_LEVEL: DEBUG
 
   cs-search-api:
       network_mode: host
-      image: cybernode/cs-search-api:release-v1.0.0.M4
+      image: cybernode/cs-search-api:release-v1.0.0.M5
       restart: on-failure
       environment:
          CASSANDRA_HOSTS: localhost
