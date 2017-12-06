@@ -15,20 +15,25 @@ Staging runs 4 components:
 - [cyber-markets](https://github.com/cyberFund/cyber-markets) API - ???
 - [chaingear](https://github.com/cyberFund/chaingear) API - ???
 
-#### Starting
+### Server setup
 
-1. SSH to staging server. Make sure you're in `docker` group (only need to do this once):
+This is only needed to be done once.
+
+1. SSH to staging server. Make sure you're in `docker` group:
 
        $ groups
        anatoli docker wheel cyber
 
-2. Checkout `cyber-ui` repo:
+2. Checkout repos for `cyber-ui` and components:
 
        $ git clone https://github.com/cyberFund/cyber-ui
+       $ git clone https://github.com/cyberFund/cyber-markets
 
-3. Update running containers on staging:
+#### Update running containers
 
-       $ cd cyber-ui && git pull && ./devops/staging/up.sh
+Update running containers:
+
+       $ ./cyber-ui/devops/staging/up.sh
 
 This uses `docker-compose` to start containers from DockerHub. It doesn't rebuild them.
 
