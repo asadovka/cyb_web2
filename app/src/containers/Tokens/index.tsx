@@ -13,121 +13,131 @@ import { connect } from 'react-redux';
 import { getSystemLogoUrl, showAllTokens, TIKER_INTERVAL } from './../../modules/chaingear';
 var numeral = require('numeral');
 
-let socket;
-
+import streemApi from '../../api/MarketStreemApi';
 const calcProcent = (a, b) => a === 0 ? 0 : ((a - b) / a  * 100);
 
-class TokensPages extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rows: []
-    };
 
-    this.processTickers = this.processTickers.bind(this);
-    this.processPair = this.processPair.bind(this);
-    this.buildInitRows = this.buildInitRows.bind(this);
-  }
+const updateTokens = (rows, data) => {
+  return rows
+    .map(item => {
+      if (item.symbol === data.tokensPair.base) {
+        console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price), data)
+      }
 
-
-  processTickers(data) {
-    console.log('processTickers>>', data)
-
-    const rows = this.state.rows
-      .map(item => {
-        if (item.symbol === data.tokensPair.base) {
-          console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price))
-        }
-
-        return item.symbol === data.tokensPair.base ? ({
+      return item.symbol === data.tokensPair.base ? ({
         ...item,
         symbol: item.symbol,
         amount: data.quoteAmount,
         price: data.price,
         procent: calcProcent(item.price, data.price),
-      }) : item
-      });
+      }) : item;
+    });   
+}
 
-    this.setState({
-        rows
-      })
-  }
+const addTokens = (pairs, tokens, rows, currency) => {
+  const _rows = [...rows];
+  pairs.forEach(symbol => {
+    const item = tokens.find(t => t.token.symbol === symbol);
+    console.log(' > item ', symbol, item)
+    if (!item) return null;
 
-  buildInitRows(usdPairs, tokens) {
-    const rows = usdPairs.map(symbol => {
-      const item = tokens.find(t => t.token.symbol === symbol);
-      if (!item) return null;
+    const existToken = _rows.find(r => r.symbol === symbol);
+    if (existToken) return null;
 
-      return {
+    if (!!item && !existToken) {
+      _rows.push({
           symbol: symbol,
           system: item.system,
           logo: getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`),
           price: 0,
           amount: 0,
-          procent: 0
-      }
-    }).filter(_ => !!_);
+          procent: 0,
+          currency
+      })  
+    }
+  })
+ console.log(' pairs ', _rows)
+ 
+  return _rows;
+}
 
-    console.log(' rows >> ', rows)
-    this.setState({
-      rows
-    })
+class TokensPages extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rows: [],
+      BTC: 15000,
+      ETH: 400
+    };
+
+    this.processPair = this.processPair.bind(this);
+    this.initTokens = this.initTokens.bind(this);
   }
 
-  processPair(pairs) {
-     // console.log(' pairs ', pairs);
-    const usdPairs = pairs.filter(item => item.quote === 'USD').map(item => item.base);
-    console.log(' usdPairs> ', usdPairs);
-    const _pairs = usdPairs.map(item => `"${item}_USD"`);
-    //['"BTC_USD"']
-    //usdPairs.map(item => `"${item}_USD"`);
 
 
-    //setTimeout(() => { //TODO: move all logic in module and use promise
-    this.buildInitRows(usdPairs, this.props.tokens);
-    //}, 3000);
 
+  initTokens(pairs, tokens, currency) {
+    const usdPairs = pairs.filter(item => item.quote === currency).map(item => item.base);
+    const _pairs = usdPairs.map(item => `"${item}_${currency}"`);
+
+    this.setState({
+      rows: addTokens(usdPairs, tokens, this.state.rows, currency)
+    })
 
     const msg = `{"subscribe":"tickers","pairs":[${_pairs.join(',')}], "exchanges": ["ALL"], "window_durations": ["${60 * 1000}"] }`;
-    socket.send(msg);
-    console.log('get tikers >> ', msg);
 
+    streemApi.subscribeTickers(data => {
+       this.setState({
+        rows: updateTokens(this.state.rows, data)
+      })
+    }, msg)
+  }
+
+  processPair(pairs, tokens) {
+    this.initTokens(pairs, tokens, 'USD');
+    this.initTokens(pairs, tokens, 'USDT');
+    this.initTokens(pairs, tokens, 'BTC');
+    this.initTokens(pairs, tokens, 'ETH');
   }
 
   componentWillUnmount() {
-    socket.close();
+    streemApi.close();
   }
 
   componentDidMount() {
     this.props.showAllTokens().then(() => {
-
-      socket = new WebSocket("ws://93.125.26.210:32801");
-
-      socket.onopen = () => {
-         socket.send('{"get":"pairs"}');
-      };
-
-      socket.onmessage = (event) => {
-        console.log(' event > ', event);
-
-        const data = JSON.parse(event.data);
-        if (data.type === 'pairs') {
-          this.processPair(data.value)
-        }
-        if (data.type === 'tickers') {
-          this.processTickers(data.value)
-        }
-      };
-
-    });
-
-    
-    
+      streemApi.open("ws://93.125.26.210:32801", () => {
+        streemApi.getPairs(data => this.processPair(data, this.props.tokens))
+      })
+    });    
   }
 
   render() {
+    const {
+      BTC,
+      ETH
+    } = this.state;
+    const _rows = this.state.rows.map(item => {
+      if (item.currency === 'BTC'){
+        return {
+          ...item,
+          price: item.price * BTC,
+          amount: item.amount * BTC
+        }  
+      }
 
-    const rows = [].concat(this.state.rows).sort((a, b) => b.amount - a.amount).map((item, index) => {
+      if (item.currency === 'ETH'){
+        return {
+          ...item,
+          price: item.price * ETH,
+          amount: item.amount * ETH
+        }  
+      }
+      
+      return item;
+    });
+    const rows = [].concat(_rows).sort((a, b) => b.amount - a.amount).map((item, index) => {
       const procent = item.procent;
       return (
         <tr key={index}>
@@ -135,7 +145,11 @@ class TokensPages extends React.Component<any, any> {
             <Logo to={`/tokens/${item.system}`}>
               <img width={50} src={item.logo}/>            
               <span>{item.system}</span>
+              <span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>
+                {item.currency}
+              </span>
             </Logo>
+
           </td>
           <td>
             <span style={{
