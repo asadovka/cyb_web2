@@ -11,8 +11,11 @@ import { Table, Logo, PriceInfo, NoInfo, PriceChart } from '../../components/Ass
 
 import { connect } from 'react-redux';
 import { getSystemLogoUrl, showAllTokens, TIKER_INTERVAL } from './../../modules/chaingear';
+var numeral = require('numeral');
 
 let socket;
+
+const calcProcent = (a, b) => a === 0 ? 0 : ((a - b) / a  * 100);
 
 class TokensPages extends React.Component<any, any> {
   constructor(props) {
@@ -21,7 +24,6 @@ class TokensPages extends React.Component<any, any> {
       rows: []
     };
 
-    // this.updateState = this.updateState.bind(this);
     this.processTickers = this.processTickers.bind(this);
     this.processPair = this.processPair.bind(this);
     this.buildInitRows = this.buildInitRows.bind(this);
@@ -29,14 +31,22 @@ class TokensPages extends React.Component<any, any> {
 
 
   processTickers(data) {
+    console.log('processTickers>>', data)
+
     const rows = this.state.rows
-      .map(item => item.symbol === data.tokensPair.base ? ({
+      .map(item => {
+        if (item.symbol === data.tokensPair.base) {
+          console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price))
+        }
+
+        return item.symbol === data.tokensPair.base ? ({
         ...item,
         symbol: item.symbol,
         amount: data.quoteAmount,
         price: data.price,
-        procent: item.price - data.price
-      }) : item);
+        procent: calcProcent(item.price, data.price),
+      }) : item
+      });
 
     this.setState({
         rows
@@ -69,41 +79,56 @@ class TokensPages extends React.Component<any, any> {
     const usdPairs = pairs.filter(item => item.quote === 'USD').map(item => item.base);
     console.log(' usdPairs> ', usdPairs);
     const _pairs = usdPairs.map(item => `"${item}_USD"`);
-    const msg = `{"subscribe":"tickers","pairs":[${_pairs.join(',')}] }`;
+    //['"BTC_USD"']
+    //usdPairs.map(item => `"${item}_USD"`);
+
+
+    //setTimeout(() => { //TODO: move all logic in module and use promise
+    this.buildInitRows(usdPairs, this.props.tokens);
+    //}, 3000);
+
+
+    const msg = `{"subscribe":"tickers","pairs":[${_pairs.join(',')}], "exchanges": ["ALL"], "window_durations": ["${60 * 1000}"] }`;
     socket.send(msg);
     console.log('get tikers >> ', msg);
 
+  }
 
-    setTimeout(() => { //TODO: move all logic in module and use promise
-      this.buildInitRows(usdPairs, this.props.tokens);
-    }, 3000);
+  componentWillUnmount() {
+    socket.close();
   }
 
   componentDidMount() {
-    this.props.showAllTokens();
+    this.props.showAllTokens().then(() => {
 
-    socket = new WebSocket("ws://93.125.26.210:32801");
+      socket = new WebSocket("ws://93.125.26.210:32801");
 
-    socket.onopen = () => {
-       socket.send('{"get":"pairs"}');
-    };
+      socket.onopen = () => {
+         socket.send('{"get":"pairs"}');
+      };
 
-    socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'pairs') {
-        this.processPair(data.value)
-      }
-      if (data.type === 'tickers') {
-        this.processTickers(data.value)
-      }
-    };
+      socket.onmessage = (event) => {
+        console.log(' event > ', event);
+
+        const data = JSON.parse(event.data);
+        if (data.type === 'pairs') {
+          this.processPair(data.value)
+        }
+        if (data.type === 'tickers') {
+          this.processTickers(data.value)
+        }
+      };
+
+    });
+
+    
     
   }
 
   render() {
 
-    const rows = this.state.rows.map((item, index) => {
-
+    const rows = [].concat(this.state.rows).sort((a, b) => b.amount - a.amount).map((item, index) => {
+      const procent = item.procent;
       return (
         <tr key={index}>
           <td>
@@ -113,13 +138,15 @@ class TokensPages extends React.Component<any, any> {
             </Logo>
           </td>
           <td>
-            {item.price}
+            <span style={{
+              color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
+            }}>{numeral(item.price).format('$0,0,0.00')}</span>
           </td>
           <td>
-            {item.amount}
+            {numeral(item.amount).format('$0,0,0.00')}
           </td>
           <td>
-            {item.procent}
+            {numeral(item.procent).format('0.000%')}
           </td>
         </tr>
       );
