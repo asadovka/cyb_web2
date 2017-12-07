@@ -68,8 +68,8 @@ function results(items, loading, error, success) {
     );
   }
   
-  const blocks = items.filter(item => item.type === 'bitcoin_block' || item.type === 'ethereum_block' || item.type === 'ethereum_classic_block' || item.type === 'bitcoin_cash_block');
-  const transactions = items.filter(item => item.type === 'bitcoin_tx' || item.type === 'ethereum_tx');
+  const blocks = items.filter(item => item.entity === 'BLOCK');
+  const transactions = items.filter(item => item.entity === 'TRANSACTION');
 
 
   return (
@@ -80,7 +80,7 @@ function results(items, loading, error, success) {
         {blocks.map((item, index) => (
           <div key={JSON.stringify(item)} className="column is-one-third">
             <ul style={{ overflow: 'hidden' }}>
-              <li><RenderByType type={item.type} data={item.data} /></li>
+              <li><RenderByType chain={item.chain} entity={item.entity} data={item.data} /></li>
             </ul>
           </div>
         ))}
@@ -93,7 +93,7 @@ function results(items, loading, error, success) {
         {transactions.map((item, index) => (
           <div key={JSON.stringify(item)} className="column is-one-third">
             <ul style={{ overflow: 'hidden' }}>
-              <li><RenderByType type={item.type} data={item.data} /></li>
+              <li><RenderByType chain={item.chain} entity={item.entity} data={item.data} /></li>
             </ul>
           </div>
         ))}
@@ -104,18 +104,25 @@ function results(items, loading, error, success) {
 }
 
 
+
+
 const items = {
-  bitcoin_block: BitcoinBlock,
-  bitcoin_tx: BitcoinTx, 
-  bitcoin_address: BitcoinAddress, 
-  ethereum_block: EthereumBlock, 
-  ethereum_tx: EthereumTx,
-  ethereum_classic_block: EthereumClassicBlock, 
-  bitcoin_cash_block: BitcoinCashBlock, 
+  BLOCK: {
+    BITCOIN: BitcoinBlock,
+    ETHEREUM: EthereumBlock,
+    BITCOIN_CASH: BitcoinCashBlock,
+    ETHEREUM_CLASSIC: EthereumClassicBlock
+  },
+  TRANSACTION: {
+    BITCOIN: BitcoinTx,
+    BITCOIN_CASH: BitcoinTx,
+    ETHEREUM: EthereumTx,
+    ETHEREUM_CLASSIC: EthereumTx
+  }
 }
 
-function RenderByType({ type, data} ) {
-  const Component = items[type];
+function RenderByType({ chain, data , entity} ) {
+  const Component = items[entity][chain];
   if (Component) {
     return (<Component {...data} />)
   }
