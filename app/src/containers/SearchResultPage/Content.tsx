@@ -9,7 +9,9 @@ import {
   BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, 
   EthereumBlock, EthereumTx,
   EthereumClassicBlock,
-  BitcoinCashBlock
+  BitcoinCashBlock,
+  BitcoinCashTx,
+  EthereumClassicTx
 } from '../../components/SearchItems/';
 
 import { SectionTitle, SectionsContainer } from '../../components/SectionTitle/';
@@ -115,9 +117,9 @@ const items = {
   },
   TRANSACTION: {
     BITCOIN: BitcoinTx,
-    BITCOIN_CASH: BitcoinTx,
+    BITCOIN_CASH: BitcoinCashTx,
     ETHEREUM: EthereumTx,
-    ETHEREUM_CLASSIC: EthereumTx
+    ETHEREUM_CLASSIC: EthereumClassicTx
   }
 }
 

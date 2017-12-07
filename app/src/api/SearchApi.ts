@@ -120,50 +120,53 @@ export class DefaultSearchApi implements SearchApi {
   }
 
   getBitcoinTx(txId: string): Promise<any> {
-    const data = {
-      "block_time":"2009-02-28T14:48:40.000Z",
-      "total_output":"0",
-      "fee":"0",
-      "block_hash":"0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
-      "block_number":5885,
-      "txid":"1857b83776aea3ef26f00ed19a50c083b1d369be01b805d50255bef34814928f"
-    };
-    return Promise.resolve(data);
+    // const data = {
+    //   "block_time":"2009-02-28T14:48:40.000Z",
+    //   "total_output":"0",
+    //   "fee":"0",
+    //   "block_hash":"0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
+    //   "block_number":5885,
+    //   "hash":"1857b83776aea3ef26f00ed19a50c083b1d369be01b805d50255bef34814928f"
+    // };
+    // return Promise.resolve(data);
+    return this.http.GET(
+      `${config.CYBER_SEARCH_API}/bitcoin/tx/${txId}`
+    );
   }
 
   getEthereumBlock(blockNumber: string): Promise<any> {
-    // return this.http.GET(
-    //   `${config.CYBER_SEARCH_API}/api/ethereum/block/${blockNumber}`
-    // );
+    return this.http.GET(
+      `${config.CYBER_SEARCH_API}/ethereum/block/${blockNumber}`
+    );
 
-    return Promise.resolve({ 
-       "hash" : "0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
-        "height" : 0,
-        "time" : "2015-07-20T15:49:04-07:00",
-        "nonce" : 0,
-        "merkleroot" : "string",
-        "size" : 0,
-        "version" : 0,
-        "weight" : 0,
-        "bits" : "string",
-        "difficulty" : 1.5,
-        "number" : 4,
-        "total_outputs_value" : "string"
-    })
+    // return Promise.resolve({ 
+    //    "hash" : "0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
+    //     "height" : 0,
+    //     "time" : "2015-07-20T15:49:04-07:00",
+    //     "nonce" : 0,
+    //     "merkleroot" : "string",
+    //     "size" : 0,
+    //     "version" : 0,
+    //     "weight" : 0,
+    //     "bits" : "string",
+    //     "difficulty" : 1.5,
+    //     "number" : 4,
+    //     "total_outputs_value" : "string"
+    // })
   }
 
   getEthereumTx(txHash: string): Promise<any> {
-    // return this.http.GET(
-    //   `${config.CYBER_SEARCH_API}/api/ethereum/tx/${txHash}`
-    // );
-    return Promise.resolve({ 
-      "block_time":"2009-02-28T14:48:40.000Z",
-      "total_output":"0",
-      "fee":"0",
-      "hash":"0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
-      "block_number":5885,
-      "txid":"1857b83776aea3ef26f00ed19a50c083b1d369be01b805d50255bef34814928f"
-     })    
+    return this.http.GET(
+      `${config.CYBER_SEARCH_API}/ethereum/tx/${txHash}`
+    );
+    // return Promise.resolve({ 
+    //   "block_time":"2009-02-28T14:48:40.000Z",
+    //   "total_output":"0",
+    //   "fee":"0",
+    //   "hash":"0000000018920212d4d4dcddb6e24f37d23b35a0078d270227c83051bb350049",
+    //   "block_number":5885,
+    //   "txid":"1857b83776aea3ef26f00ed19a50c083b1d369be01b805d50255bef34814928f"
+    //  })    
   }
 
   test() {

@@ -116,7 +116,7 @@ export function BitcoinTx(props) {
   return (
   <div>
     <Row>
-      <Title>Transaction</Title>
+      <Title>Bitcoin</Title>
       <Number>#{props.block_number}</Number>
       <Date value={props.block_time} format='YYYY-MM-DD hh:mm' />
     </Row>
@@ -128,8 +128,32 @@ export function BitcoinTx(props) {
       <Total>Total outputs value:&nbsp;{props.total_output}</Total>
     </Row>
     <Row>
-      <DetailsLink to={`/bitcoin/tx/${props.txid}`}>
-        {`seacrh.cyber.fund/bitcoin/tx/${props.txid}`}
+      <DetailsLink to={`/bitcoin/tx/${props.hash}`}>
+        {`seacrh.cyber.fund/bitcoin/tx/${props.hash}`}
+      </DetailsLink>
+    </Row>
+  </div>
+  );
+}
+
+export function BitcoinCashTx(props) {
+  return (
+  <div>
+    <Row>
+      <Title>Bitcoin Cash</Title>
+      <Number>#{props.block_number}</Number>
+      <Date value={props.block_time} format='YYYY-MM-DD hh:mm' />
+    </Row>
+    <Row>
+      <Hash value={props.block_hash} />
+      <Height>Fee:&nbsp;{props.fee}</Height>
+    </Row>
+    <Row>
+      <Total>Total outputs value:&nbsp;{props.total_output}</Total>
+    </Row>
+    <Row>
+      <DetailsLink to={`/bitcoin/tx/${props.hash}`}>
+        {`seacrh.cyber.fund/bitcoin/tx/${props.hash}`}
       </DetailsLink>
     </Row>
   </div>
@@ -192,6 +216,25 @@ export function EthereumClassicBlock(data) {
 }
 
 export function EthereumTx(data) {
+  return (
+    <div>
+      <ul>
+        <li>{`Hash: ${data.hash}`}</li>
+        <li>{`Block hash: ${data.block_hash}`}</li>
+        <li>{`Block number: ${data.block_number}`}</li>
+        <li>{`Block time: ${data.timestamp}`}</li>
+        <li>{`Value: ${data.value} ETH`}</li>
+        <li>{`Fee: ${data.fee} ETH`}</li>
+      </ul>
+
+      <Link to={`/ethereum/tx/${data.hash}`}>
+        View transaction
+      </Link>
+    </div>
+  );
+}
+
+export function EthereumClassicTx(data) {
   return (
     <div>
       <ul>
