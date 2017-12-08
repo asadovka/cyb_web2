@@ -2,19 +2,23 @@ import * as React from "react";
 import { Link } from 'react-router';
 import {connect} from "react-redux";
 
-import {Pagination} from "../../components/Pagination";
+import {Pagination} from "../../../components/Pagination";
 import withRouter from "react-router/es/withRouter";
 
 import {
-  BitcoinBlock, Plain, BitcoinTx, BitcoinAddress, 
-  EthereumBlock, EthereumTx,
-  EthereumClassicBlock,
-  BitcoinCashBlock,
-  BitcoinCashTx,
-  EthereumClassicTx
-} from '../../components/SearchItems/';
+  Plain, BitcoinAddress, 
+} from '../../../components/SearchItems/';
 
-import { SectionTitle, SectionsContainer } from '../../components/SectionTitle/';
+import BitcoinCashBlock from './items/BitcoinCashBlock';
+import BitcoinCashTx from './items/BitcoinCashTx';
+import BitcoinTx from './items/BitcoinTx';
+import BitcoinBlock from './items/BitcoinBlock';
+import EthereumBlock from './items/EthereumBlock';
+import EthereumClassicBlock from './items/EthereumClassicBlock';
+import EthereumTx from './items/EthereumTx';
+import EthereumClassicTx from './items/EthereumClassicTx';
+
+import { SectionTitle, SectionsContainer } from '../../../components/SectionTitle/';
 
 const Content = ({
   searchResult,
@@ -35,15 +39,6 @@ const Content = ({
 );
 
 
-// <Pagination
-//       loading={searchResult.loading || searchResult.error}
-//       page={searchResult.data.page}
-//       query={searchResult.data.query}
-//       total={Math.ceil(searchResult.data.totalHits / searchResult.data.pageSize)}
-//       onClick={(query, page) => {
-//         search(query, page, coins, type)
-//       }}
-//     /> 
 
 function results(items, loading, error, success) {
   if (loading) {
@@ -133,7 +128,7 @@ function RenderByType({ chain, data , entity} ) {
   );
 }
 
-import { showMore } from '../../modules/search';
+import { showMore } from '../../../modules/search';
 
 export default withRouter(connect(((state, ownProps) => ({
     searchResult: state.search.searchResults,

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 
-import { Count } from '../../components/ResultCount/'
+import { Count } from '../../../components/ResultCount/'
 
 const ResultCount = ({ searchResult }) => (
   <Count>

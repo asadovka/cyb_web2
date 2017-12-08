@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import withRouter from "react-router/es/withRouter";
 
-import { search } from '../../modules/search';
+import { search } from '../../../modules/search';
 
 
 import { Link } from 'react-router';
@@ -11,8 +11,8 @@ import Content from './Content';
 import LeftMenu from './LeftMenu';
 import Tabs from './Tabs';
 import ResultCount from './ResultCount';
-import SearchForm from '../app/SearchForm';
-import App from '../app/';
+import SearchForm from '../../app/SearchForm';
+import App from '../../app/';
 
 
 

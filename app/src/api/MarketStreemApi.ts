@@ -1,8 +1,11 @@
 let socket;
 
 
-
+/* tslint:disable */
 class Listener {
+  fn: any;
+  ctx: any;
+
   constructor(fn, ctx) {
     this.fn = fn
     this.ctx = ctx
@@ -10,6 +13,8 @@ class Listener {
 }
 
 class Emitter {
+  listeners: any;
+
   listen(fn, ctx) {
     this.listeners.push(new Listener(fn, ctx))
   }
@@ -31,16 +36,15 @@ class Emitter {
 
 function emitter() {
   function action() {
-    action.emit.apply(action, arguments)
+    (action as any).emit.apply(action, arguments)
   }
-
-  action.listeners = []
-  action.__proto__ = Emitter.prototype
+  (action as any).listeners = [];
+  (action as any).__proto__ = Emitter.prototype
 
   return action
 }
 
-
+/* tslint:enable */
 
 let e;
 const open = (url, cb) => {

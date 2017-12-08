@@ -17,6 +17,9 @@ export const reducer = combineReducers({
   searchResults: ItemsReducer('SEARCH'),
   bitcoinBlock: createDateReducer(CfActions.GET_BITCOIN_BLOCK),
   bitcoinTx: createDateReducer(CfActions.GET_BITCOIN_TX),
+  bitcoinCashTx: createDateReducer('GET_BITCOIN_CASH_TX'),
+
+
   ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
   ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX)
 })
@@ -67,6 +70,18 @@ const getBitcoinTxEpic = loadDataEpic(
   ({txId}) => searchApi.getBitcoinTx(txId)
 )
 
+
+export const getBitcoinCashTx = (txId) => ({
+  type: 'GET_BITCOIN_CASH_TX',
+  payload: {txId}
+});
+
+const getBitcoinCashTxEpic = loadDataEpic(
+  'GET_BITCOIN_CASH_TX',
+  ({txId}) => searchApi.getBitcoinTx(txId)
+)
+
+
 export const getEthereumBlock = (blockNumber) => ({
   type: CfActions.GET_ETHEREUM_BLOCK,
   payload: {blockNumber}
@@ -109,5 +124,6 @@ export const searchEpic = combineEpics(
   getBitcoinBlockEpic,
   getBitcoinTxEpic,
   getEthereumBlockEpic,
-  getEthereumTxEpic
+  getEthereumTxEpic,
+  getBitcoinCashTxEpic
 );

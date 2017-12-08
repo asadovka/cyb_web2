@@ -5,7 +5,7 @@ import withRouter from "react-router/es/withRouter";
 import { Link } from 'react-router';
 var cx = require('classnames');
 
-import { Tabs, Tab } from '../../components/VerticalTabs/';
+import { Tabs, Tab } from '../../../components/VerticalTabs/';
 
 const LeftMenu = ({
   chains,

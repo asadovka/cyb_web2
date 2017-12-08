@@ -5,7 +5,7 @@ import withRouter from "react-router/es/withRouter";
 import { Link } from 'react-router';
 var cx = require('classnames');
 
-import { Tabs, Tab } from '../../components/HorizontTabs/';
+import { Tabs, Tab } from '../../../components/HorizontTabs/';
 
 const TabsContainer = ({ entities, query, coins }) => (
   <Tabs>   

@@ -1,15 +1,13 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {CfActions, EthereumBlockResponse} from "../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
-import JSONTree from "../../components/JSONTree/";
 
-import { getEthereumBlock } from '../../modules/search';
+import { getEthereumBlock } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
 import * as moment from 'moment'
 
-class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getData, blockNumber }, {}> {
+class EthereumClassicBlockPage extends React.Component<{ data, getData, blockNumber }, {}> {
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 
@@ -17,46 +15,46 @@ class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getDat
   }
 
   render() {
-    const {ethereumBlock} = this.props;
+    const {data} = this.props;
     return (
       <div>
-        <h2 className='title'>Ethereum Block</h2>
+        <h2 className='title'>Ethereum Classic Block</h2>
         <button className='button' onClick={browserHistory.goBack}>back</button>
          <table className='table is-striped is-fullwidth'>
           <tbody>
             <tr>
               <td>hash</td>
-              <td>{ethereumBlock.hash}</td>
+              <td>{data.hash}</td>
             </tr>
             <tr>
               <td>height</td>
-              <td>{ethereumBlock.height}</td>
+              <td>{data.height}</td>
             </tr>
             <tr>
               <td>size</td>
-              <td>{ethereumBlock.size}</td>
+              <td>{data.size}</td>
             </tr>
             <tr>
               <td>number</td>
-              <td>{ethereumBlock.number}</td>
+              <td>{data.number}</td>
             </tr>
             <tr>
               <td>weight</td>
-              <td>{ethereumBlock.weight}</td>
+              <td>{data.weight}</td>
             </tr>
 
             <tr>
               <td>parent_hash</td>
-              <td>{ethereumBlock.parent_hash}</td>
+              <td>{data.parent_hash}</td>
             </tr>
             <tr>
               <td>timestamp</td>
-              <td>{ethereumBlock.timestamp && moment(ethereumBlock.timestamp.epochSecond).format('YYYY/MM/DD')}</td>
+              <td>{data.timestamp && moment(data.timestamp.epochSecond).format('YYYY/MM/DD')}</td>
             </tr>
           
             <tr>
               <td>miner</td>
-              <td>{ethereumBlock.miner}</td>
+              <td>{data.miner}</td>
             </tr>  
 
             
@@ -69,11 +67,13 @@ class EthereumBlockPageComponent extends React.Component<{ ethereumBlock, getDat
   }
 }
 
-export const EthereumBlockPage = withRouter(connect(mapStateToProps, { getData: getEthereumBlock })(EthereumBlockPageComponent));
+export default withRouter(
+  connect(
+    (state, ownProps) => ({
+      blockNumber: ownProps.routeParams.blockNumber,
+      data: state.search.ethereumBlock.data
+    }),
+    { getData: getEthereumBlock }
+  )(EthereumClassicBlockPage)
+);
 
-function mapStateToProps(state, ownProps) {
-  return {
-    blockNumber: ownProps.routeParams.blockNumber,
-    ethereumBlock: state.search.ethereumBlock.data
-  };
-}

@@ -1,14 +1,12 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {CfState} from "../../model/CfState";
-import {CfActions, BitcoinBlockResponse} from "../../actions/CfActions";
-import JSONTree from "../../components/JSONTree/";
+import {CfActions, BitcoinBlockResponse} from "../../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
-import { getBitcoinBlock } from '../../modules/search';
+import { getBitcoinBlock } from '../../../modules/search';
 
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router'
-class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData, blockNumber }, {}> {
+class BitcoinBlockPageComponent extends React.Component<{ data, getData, blockNumber }, {}> {
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 
@@ -16,7 +14,7 @@ class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData,
   }
 
   render() {
-    const {bitcoinBlock } = this.props;
+    const {data } = this.props;
 
     return (
       <div>
@@ -26,23 +24,23 @@ class BitcoinBlockPageComponent extends React.Component<{ bitcoinBlock, getData,
           <tbody>
             <tr>
               <td>hash</td>
-              <td>{bitcoinBlock.hash}</td>
+              <td>{data.hash}</td>
             </tr>
             <tr>
               <td>height</td>
-              <td>{bitcoinBlock.height}</td>
+              <td>{data.height}</td>
             </tr>
             <tr>
               <td>size</td>
-              <td>{bitcoinBlock.size}</td>
+              <td>{data.size}</td>
             </tr>
             <tr>
               <td>number</td>
-              <td>{bitcoinBlock.tx_number}</td>
+              <td>{data.tx_number}</td>
             </tr>
             <tr>
               <td>weight</td>
-              <td>{bitcoinBlock.weight}</td>
+              <td>{data.weight}</td>
             </tr>
           </tbody>
         </table>
@@ -56,7 +54,7 @@ export const BitcoinBlockPage = withRouter(connect(mapStateToProps, { getData: g
 function mapStateToProps(state, ownProps) {
   return {
     blockNumber: ownProps.routeParams.blockNumber,
-    bitcoinBlock: state.search.bitcoinBlock.data
+    data: state.search.bitcoinBlock.data
   };
 }
 
