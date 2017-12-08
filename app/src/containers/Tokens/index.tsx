@@ -21,7 +21,7 @@ const updateTokens = (rows, data) => {
   return rows
     .map(item => {
       if (item.symbol === data.tokensPair.base) {
-        console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price), data)
+        // console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price), data)
       }
 
       return item.symbol === data.tokensPair.base ? ({
@@ -96,9 +96,9 @@ class TokensPages extends React.Component<any, any> {
 
   processPair(pairs, tokens) {
     this.initTokens(pairs, tokens, 'USD');
-    this.initTokens(pairs, tokens, 'USDT');
-    this.initTokens(pairs, tokens, 'BTC');
-    this.initTokens(pairs, tokens, 'ETH');
+    // this.initTokens(pairs, tokens, 'USDT');
+    // this.initTokens(pairs, tokens, 'BTC');
+    // this.initTokens(pairs, tokens, 'ETH');
   }
 
   componentWillUnmount() {
