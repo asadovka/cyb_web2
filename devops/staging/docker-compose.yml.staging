@@ -146,7 +146,7 @@ services:
     image: cybernode/cm-tickers:latest
     environment:
       KAFKA_CONNECTION: localhost:9092
-      WINDOW_DURATIONS_MIN: 1,60
+      WINDOW_DURATIONS_MIN: 1
       WINDOW_HOP_SEC: 5
 
 
@@ -154,7 +154,7 @@ services:
 
   cs-chain-pumps-btc:
     network_mode: host
-    image: cybernode/cs-chain-pumps:release-v1.0.0.M7
+    image: cybernode/cs-chain-pumps:latest
     restart: on-failure
     environment:
        CS_CHAINS_TO_PUMP: BITCOIN
@@ -162,7 +162,7 @@ services:
 
   cs-chain-pumps-bth:
     network_mode: host
-    image: cybernode/cs-chain-pumps:release-v1.0.0.M7
+    image: cybernode/cs-chain-pumps:latest
     restart: on-failure
     environment:
        CS_CHAINS_TO_PUMP: BITCOIN_CASH
@@ -170,7 +170,7 @@ services:
 
   cs-chain-pumps-eth:
     network_mode: host
-    image: cybernode/cs-chain-pumps:release-v1.0.0.M7
+    image: cybernode/cs-chain-pumps:latest
     restart: on-failure
     environment:
        CS_CHAINS_TO_PUMP: ETHEREUM
@@ -178,7 +178,7 @@ services:
 
   cs-chain-pumps-etc:
     network_mode: host
-    image: cybernode/cs-chain-pumps:release-v1.0.0.M7
+    image: cybernode/cs-chain-pumps:latest
     restart: on-failure
     environment:
        CS_CHAINS_TO_PUMP: ETHEREUM_CLASSIC
@@ -186,7 +186,7 @@ services:
 
   cs-search-api:
     network_mode: host
-    image: cybernode/cs-search-api:release-v1.0.0.M7
+    image: cybernode/cs-search-api:latest
     restart: on-failure
     environment:
        CS_LOG_LEVEL: DEBUG
@@ -194,7 +194,7 @@ services:
 
   cs-address-service:
     network_mode: host
-    image: cybernode/address-service:release-v1.0.0.M7
+    image: cybernode/address-service:latest
     restart: on-failure
     environment:
        CS_LOG_LEVEL: DEBUG
