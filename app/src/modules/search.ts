@@ -15,13 +15,20 @@ import { createDateReducer, mapPayload, mapError, loadDataEpic, ItemsReducer } f
 
 export const reducer = combineReducers({
   searchResults: ItemsReducer('SEARCH'),
+
   bitcoinBlock: createDateReducer(CfActions.GET_BITCOIN_BLOCK),
   bitcoinTx: createDateReducer(CfActions.GET_BITCOIN_TX),
+
+
+  bitcoinCashBlock: createDateReducer('GET_BITCOIN_CASH_BLOCK'),
   bitcoinCashTx: createDateReducer('GET_BITCOIN_CASH_TX'),
 
 
   ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
-  ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX)
+  ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX),
+
+  ethereumClassicBlock: createDateReducer('GET_ETHEREUM_CLASSIC_BLOCK'),
+  ethereumClassicTx: createDateReducer('GET_ETHEREUM_CLASSIC_TX'),
 })
 
 
@@ -78,7 +85,17 @@ export const getBitcoinCashTx = (txId) => ({
 
 const getBitcoinCashTxEpic = loadDataEpic(
   'GET_BITCOIN_CASH_TX',
-  ({txId}) => searchApi.getBitcoinTx(txId)
+  ({txId}) => searchApi.getBitcoinCashTx(txId)
+)
+
+export const getBitcoinCashBlock = (blockNumber) => ({
+  type: 'GET_BITCOIN_CASH_BLOCK',
+  payload: {blockNumber}
+})
+
+const getBitcoinCashBlockEpic = loadDataEpic(
+  'GET_BITCOIN_CASH_BLOCK',
+  ({blockNumber}) => searchApi.getBitcoinCashBlock(blockNumber)
 )
 
 
@@ -92,6 +109,7 @@ const getEthereumBlockEpic = loadDataEpic(
   ({ blockNumber }) => searchApi.getEthereumBlock(blockNumber)
 )
 
+
 export const getEthereumTx = (txHash) => ({
   type: CfActions.GET_ETHEREUM_TX,
   payload: {txHash}
@@ -100,6 +118,28 @@ export const getEthereumTx = (txHash) => ({
 const getEthereumTxEpic = loadDataEpic(
   CfActions.GET_ETHEREUM_TX,
   ({txHash}) => searchApi.getEthereumTx(txHash)
+);
+
+
+export const getEthereumClassicBlock = (blockNumber) => ({
+  type: 'GET_ETHEREUM_CLASSIC_BLOCK',
+  payload: {blockNumber}
+})
+
+const getEthereumClassicBlockEpic = loadDataEpic(
+  'GET_ETHEREUM_CLASSIC_BLOCK',
+  ({ blockNumber }) => searchApi.getEthereumClassicBlock(blockNumber)
+)
+
+
+export const getEthereumClassicTx = (txHash) => ({
+  type: 'GET_ETHEREUM_CLASSIC_TX',
+  payload: {txHash}
+})
+
+const getEthereumClassicTxEpic = loadDataEpic(
+  'GET_ETHEREUM_CLASSIC_TX',
+  ({txHash}) => searchApi.getEthereumClassicTx(txHash)
 );
 
 export const getStatistics = () => (dispatch) => {
@@ -121,9 +161,16 @@ export const getStatistics = () => (dispatch) => {
 
 export const searchEpic = combineEpics(
   searchItems,
+  
   getBitcoinBlockEpic,
   getBitcoinTxEpic,
+  
   getEthereumBlockEpic,
   getEthereumTxEpic,
-  getBitcoinCashTxEpic
+  
+  getBitcoinCashTxEpic,
+  getBitcoinCashBlockEpic,
+
+  getEthereumClassicTxEpic,
+  getEthereumClassicBlockEpic
 );

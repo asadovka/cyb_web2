@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import withRouter from "react-router/es/withRouter";
 
-import { getEthereumTx } from '../../../modules/search';
+import { getEthereumClassicTx } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
 class EthereumClassicTxPage extends React.Component<{ data, getData, txHash }, {}> {
@@ -82,9 +82,9 @@ export default withRouter(
   connect(
     (state, ownProps) => ({
       txHash: ownProps.routeParams.txHash,
-      data: state.search.ethereumTx.data
+      data: state.search.ethereumClassicTx.data
     }),
-    { getData: getEthereumTx }
+    { getData: getEthereumClassicTx }
   )(EthereumClassicTxPage)
 );
 

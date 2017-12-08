@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 import withRouter from "react-router/es/withRouter";
 
-import { getEthereumBlock } from '../../../modules/search';
+import { getEthereumClassicBlock } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
 import * as moment from 'moment'
@@ -73,7 +73,7 @@ export default withRouter(
       blockNumber: ownProps.routeParams.blockNumber,
       data: state.search.ethereumBlock.data
     }),
-    { getData: getEthereumBlock }
+    { getData: getEthereumClassicBlock }
   )(EthereumClassicBlockPage)
 );
 
