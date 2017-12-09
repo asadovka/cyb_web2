@@ -17,6 +17,7 @@ services:
     environment:
       CASSANDRA_HOSTS: elassandra
       CS_CHAINS_TO_PUMP: BITCOIN
+      BITCOIND_URL: http://cyber:cyber@bitcoind:8332
       CS_LOG_LEVEL: INFO
 
   cs-chain-pumps-bth:
@@ -26,6 +27,7 @@ services:
     environment:
       CASSANDRA_HOSTS: elassandra
       CS_CHAINS_TO_PUMP: BITCOIN_CASH
+      ABC_URL: http://bitcoin:password@abc:18332
       CS_LOG_LEVEL: INFO
 
   cs-chain-pumps-eth:
@@ -35,6 +37,7 @@ services:
     environment:
       CASSANDRA_HOSTS: elassandra
       CS_CHAINS_TO_PUMP: ETHEREUM
+      PARITY_ETHEREUM: http://eth:8545
       CS_LOG_LEVEL: INFO
 
   cs-chain-pumps-etc:
@@ -43,6 +46,7 @@ services:
     restart: on-failure
     environment:
       CS_CHAINS_TO_PUMP: ETHEREUM_CLASSIC
+      ETHEREUM_CLASSIC: http://eth_c:18545
       CASSANDRA_HOSTS: elassandra
       CS_LOG_LEVEL: INFO
 
