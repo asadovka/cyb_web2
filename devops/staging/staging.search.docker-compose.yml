@@ -30,25 +30,25 @@ services:
       ABC_URL: http://bitcoin:password@abc:18332
       CS_LOG_LEVEL: INFO
 
-  cs-chain-pumps-eth:
-    container_name: pump-eth
-    image: cybernode/cs-chain-pumps:latest
-    restart: on-failure
-    environment:
-      CASSANDRA_HOSTS: elassandra
-      CS_CHAINS_TO_PUMP: ETHEREUM
-      PARITY_ETHEREUM: http://eth:8545
-      CS_LOG_LEVEL: INFO
-
-  cs-chain-pumps-etc:
-    container_name: pump-etc
-    image: cybernode/cs-chain-pumps:latest
-    restart: on-failure
-    environment:
-      CS_CHAINS_TO_PUMP: ETHEREUM_CLASSIC
-      ETHEREUM_CLASSIC: http://eth_c:18545
-      CASSANDRA_HOSTS: elassandra
-      CS_LOG_LEVEL: INFO
+#  cs-chain-pumps-eth:
+#    container_name: pump-eth
+#    image: cybernode/cs-chain-pumps:latest
+#    restart: on-failure
+#    environment:
+#      CASSANDRA_HOSTS: elassandra
+#      CS_CHAINS_TO_PUMP: ETHEREUM
+#      PARITY_ETH_URL: http://parity_eth:8545
+#      CS_LOG_LEVEL: INFO
+#
+#  cs-chain-pumps-etc:
+#    container_name: pump-etc
+#    image: cybernode/cs-chain-pumps:latest
+#    restart: on-failure
+#   environment:
+#      CS_CHAINS_TO_PUMP: ETHEREUM_CLASSIC
+#      PARITY_ETC_URL: http://parity_etc:18545
+#      CASSANDRA_HOSTS: elassandra
+#      CS_LOG_LEVEL: INFO
 
   cs-search-api:
     container_name: search-api

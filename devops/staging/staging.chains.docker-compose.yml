@@ -1,8 +1,8 @@
 version: '3.3'
 services:
 
-  eth:
-    container_name: eth
+  parity_eth:
+    container_name: parity_eth
     restart: always
     image: parity/parity:stable
     ports:
@@ -11,13 +11,13 @@ services:
     volumes:
       - /cyberdata/eth:/cyberdata
 
-  eth_c:
-    container_name: eth_c
+  parity_etc:
+    container_name: parity_etc
     restart: always
     image: parity/parity:stable
     ports:
       - "18545:8545"
-    command: "--chain=classic --db-path /cyberdata --jsonrpc-hosts all --jsonrpc-interface all --jsonrpc-threads 4"
+    command: "--chain classic --db-path /cyberdata --jsonrpc-hosts all --jsonrpc-interface all --jsonrpc-threads 4"
     volumes:
       - /cyberdata/eth_c:/cyberdata
 
