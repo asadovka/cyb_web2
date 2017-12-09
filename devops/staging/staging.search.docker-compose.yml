@@ -13,9 +13,10 @@ services:
   cs-chain-pumps-btc:
     container_name: pump-btc
     image: cybernode/cs-chain-pumps:latest
-    restart: on-failure
+    restart: unless-stopped
     environment:
       CASSANDRA_HOSTS: elassandra
+      KAFKA_BROKERS: kafka:9092
       CS_CHAINS_TO_PUMP: BITCOIN
       BITCOIND_URL: http://cyber:cyber@bitcoind:8332
       CS_LOG_LEVEL: INFO
@@ -23,9 +24,10 @@ services:
   cs-chain-pumps-bth:
     container_name: pump-bth
     image: cybernode/cs-chain-pumps:latest
-    restart: on-failure
+    restart: unless-stopped
     environment:
       CASSANDRA_HOSTS: elassandra
+      KAFKA_BROKERS: kafka:9092
       CS_CHAINS_TO_PUMP: BITCOIN_CASH
       ABC_URL: http://bitcoin:password@abc:18332
       CS_LOG_LEVEL: INFO
@@ -55,7 +57,7 @@ services:
     ports:
       - 10300:10300
     image: cybernode/cs-search-api:latest
-    restart: on-failure
+    restart: unless-stopped
     environment:
       CASSANDRA_HOSTS: elassandra
       CS_LOG_LEVEL: INFO
@@ -64,7 +66,7 @@ services:
   cs-address-service:
     container_name: address-service
     image: cybernode/address-service:latest
-    restart: on-failure
+    restart: unless-stopped
     environment:
       CASSANDRA_HOSTS: elassandra
       KAFKA_BROKERS: kafka:9092
