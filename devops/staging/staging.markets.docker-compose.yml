@@ -51,6 +51,12 @@ services:
     environment:
       KAFKA_CONNECTION: kafka:9092
 
+  cm-connectors-gdax:
+    container_name: cm-connectors-gdax
+    image: cybernode/cm-connectors-gdax:latest
+    environment:
+      KAFKA_CONNECTION: kafka:9092
+
   cm-tickers:
     container_name: cm-tickers
     image: cybernode/cm-tickers:latest
