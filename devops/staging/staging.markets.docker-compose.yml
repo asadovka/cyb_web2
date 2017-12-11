@@ -1,7 +1,6 @@
 version: '3.3'
 services:
 
-
   chaingear-api:
     image: cybernode/chaingear-api:latest
     ports:
@@ -24,6 +23,9 @@ services:
       - "32800:8085"
     labels:
       kompose.service.type: loadbalancer
+    environment:
+      CASSANDRA_HOSTS: elassandra
+      CORS_ALLOWED_ORIGINS: "*"
 
   cm-connector-bitstamp:
     container_name: cm-connector-bitstamp
@@ -54,5 +56,4 @@ services:
     image: cybernode/cm-tickers:latest
     environment:
       KAFKA_CONNECTION: kafka:9092
-      WINDOW_DURATIONS_MIN: 1
-      WINDOW_HOP_SEC: 5
+      CASSANDRA_HOSTS: elassandra
