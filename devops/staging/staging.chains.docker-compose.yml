@@ -36,7 +36,7 @@ services:
     restart: always
     image: hlebalbau/bitcoin-abc-docker:0.16.1
     ports:
-      - "18332:8332"
-    command: "bitcoind -server -rest -txindex"
+      - "7332:7332"
+    command: "bitcoind -server -rest -txindex -rpcpassword=cyber -rpcuser=cyber -rpcallowip=::/0 -rpcport=7332"
     volumes:
       - /cyberdata/abc:/home/bitcoin/.bitcoin
