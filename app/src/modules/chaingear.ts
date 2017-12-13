@@ -163,13 +163,19 @@ export const showAllTokens = () => (dispatch, getState) => {
       });
 
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
-      streemApi.subscribeTrades(tiker => {
-        const getPriceAndBase = (item) => ({
-          price: item.spotPrice,
-          base: item.pair.base
-        })
+      streemApi.subscribeTickers(tiker => {
+        // const getPriceAndBase = (item) => ({
+        //   price: item.spotPrice,
+        //   base: item.pair.base
+        // })
+
         // console.log(' tiker ', tiker);
   
+        const getPriceAndBase = (item) => ({
+          price: item.price,
+          base: item.tokensPair.base
+        })
+        
         let rows = getState().chaingear.rows;
         if (Array.isArray(tiker)) {
           for(let i =0; i < tiker.length; i++) {
