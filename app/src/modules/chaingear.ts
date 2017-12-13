@@ -31,7 +31,7 @@ const addTokens = (pairs, tokens, rows, currency) => {
   const _rows = [...rows];
   pairs.forEach(symbol => {
     const item = tokens.find(t => t.token.symbol === symbol);
-    console.log(' > item ', symbol, item)
+    // console.log(' > item ', symbol, item)
     if (!item) return null;
 
     const existToken = _rows.find(r => r.symbol === symbol);
@@ -49,22 +49,21 @@ const addTokens = (pairs, tokens, rows, currency) => {
       })  
     }
   })
- console.log(' pairs ', _rows)
+ console.log(' init rows ', _rows)
  
   return _rows;
 }
 
 const calcProcent = (a, b) => a === 0 ? 0 : ((a - b) / a  * 100);
-const updateTokens = (rows, data) => {
+const updateTokens = (rows, data, map) => {
+  // console.log(' data ', data)
   return rows
     .map(item => {
-      const base = data.tokensPair.base;
-      const price = data.price;
-      if (item.symbol === base) {
-        // console.log(item.symbol, item.price, data.price, calcProcent(item.price, data.price), data)
-      }
+      const { base, price } = map(data);
 
-      return item.symbol === base ? ({
+      const update = item.symbol === base;
+
+      return update ? ({
         ...item,
         symbol: item.symbol,
         amount: data.quoteAmount,
@@ -87,27 +86,29 @@ export const closeConnection = () => () => {
 
 const sorByAmmount = (rows) => [].concat(rows).sort((a, b) => b.amount - a.amount);
 
-export const calculateRows = (state) => {
-  const _rows = state.chaingear.rows;
-  const rows = sorByAmmount(_rows); //SORT
 
-  // for BTC ETH base tokens
-  const BTC = 15000;
-  const ETH = 400;
+export const calculateExchangeRate = (state) => state.chaingear.exchangeRate;
+
+export const calculateRows = (state) => {
+
+  const _rows = state.chaingear.rows.filter(row => row.price > 0);
+  const rows = sorByAmmount(_rows); //SORT
+  const { btc_usd, eth_usd } = state.chaingear.exchangeRate;
+
   return rows.map(item => {
       if (item.currency === 'BTC'){
         return {
           ...item,
-          price: item.price * BTC,
-          amount: item.amount * BTC
+          price: item.price * btc_usd,
+          amount: item.amount * btc_usd
         }  
       }
 
       if (item.currency === 'ETH'){
         return {
           ...item,
-          price: item.price * ETH,
-          amount: item.amount * ETH
+          price: item.price * eth_usd,
+          amount: item.amount * eth_usd
         }  
       }
       
@@ -116,15 +117,42 @@ export const calculateRows = (state) => {
 }
 
 
+
+const updateRate = (data, dispatch, map) => {
+  const btc_usd = data.find(row => map(row).base === 'BTC');
+  if (btc_usd) {
+    dispatch({
+      type: 'CHANGE_EXCHANGE_RATE_BTC',
+      payload: map(btc_usd).price
+    })
+  }
+
+  const eth_usd = data.find(row => map(row).base === 'ETH');
+  if (eth_usd) {
+    dispatch({
+      type: 'CHANGE_EXCHANGE_RATE_ETH',
+      payload: map(eth_usd).price
+    })
+  }
+}
+
 export const showAllTokens = () => (dispatch, getState) => {
   chaingearApi.getAllTokens()
     .then(tokens => new Promise(resolve => {
         streemApi.open("ws://93.125.26.210:32801", () => {
           streemApi.getPairs(pairs => resolve({ pairs, tokens }))
         })  
+        // streemApi.open("ws://93.125.26.210:32801", () => {
+        //   resolve({ //
+        //     pairs: [{ base: 'DOGE', quote: 'BTC'}],
+        //     tokens
+        // })
+        // });
       }))
     .then(({ pairs, tokens }) => {
-      let rows = initTokens(pairs, tokens, 'USD', dispatch, []);
+      console.log('pairs>', pairs)
+      let rows = [];
+      rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
       rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);
       rows = initTokens(pairs, tokens, 'BTC', dispatch, rows);
       rows = initTokens(pairs, tokens, 'ETH', dispatch, rows);
@@ -135,11 +163,33 @@ export const showAllTokens = () => (dispatch, getState) => {
       });
 
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
-      streemApi.subscribeTickers(tiker => {
-         dispatch({
-          type: 'SET_TOKEN_ROWS',
-          payload: updateTokens(getState().chaingear.rows, tiker)
+      streemApi.subscribeTrades(tiker => {
+        const getPriceAndBase = (item) => ({
+          price: item.spotPrice,
+          base: item.pair.base
         })
+        // console.log(' tiker ', tiker);
+  
+        let rows = getState().chaingear.rows;
+        if (Array.isArray(tiker)) {
+          for(let i =0; i < tiker.length; i++) {
+            rows = updateTokens(rows, tiker[i], getPriceAndBase)
+          }
+
+        } else {
+          rows = updateTokens(rows, tiker, getPriceAndBase)
+        }
+        dispatch({
+          type: 'SET_TOKEN_ROWS',
+          payload: rows
+        })  
+
+        if (Array.isArray(tiker)) {
+          updateRate(tiker, dispatch, getPriceAndBase)
+        } else {
+          updateRate([tiker], dispatch, getPriceAndBase)
+        }
+        
       }, pairsStr)
     })
 }
@@ -159,8 +209,22 @@ const rowsReducer = (state = [], action) => {
   }
 }
 
+const exchangeRate = (state = { btc_usd: 1, eth_usd: 1}, action) => {
+  switch (action.type) {
+    case "CHANGE_EXCHANGE_RATE":
+      return {...action.payload};    
+    case "CHANGE_EXCHANGE_RATE_BTC":
+      return {...state, btc_usd: action.payload};    
+    case "CHANGE_EXCHANGE_RATE_ETH":
+      return {...state, eth_usd: action.payload};    
+    default:
+      return state;
+  }
+}
+
 export const reducer = combineReducers({
   rows: rowsReducer,
+  exchangeRate,
   crowdsales: createDateReducer('CROWDSALES', []),
   crowdsalesDetails: createDateReducer('CROWDSALES_DETAILS'),
   tokensDetails: createDateReducer('TOKEN_DETAILS')

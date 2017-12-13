@@ -7,8 +7,25 @@ var config = require('./config.js')
 import { Table, Logo, PriceInfo, NoInfo, PriceChart } from '../../components/AssetTable/';
 
 import { connect } from 'react-redux';
-import { showAllTokens, closeConnection, calculateRows } from './../../modules/chaingear';
+import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './../../modules/chaingear';
 var numeral = require('numeral');
+
+const ExchangeRate = ({ btc_usd, eth_usd }) => (
+  <div className='field is-grouped is-grouped-multiline'>
+    <div className='control'>
+    <div className="tags has-addons">
+      <span className="tag">BTC</span>
+      <span className="tag is-primary">{numeral(btc_usd).format('$0,0,0.00')}</span>
+    </div>
+    </div>
+    <div className='control'>
+    <div className="tags has-addons">
+      <span className="tag">ETH</span>
+      <span className="tag is-primary">{numeral(eth_usd).format('$0,0,0.00')}</span>
+    </div>
+    </div>
+  </div>
+)
 
 class TokensPages extends React.Component<any, any> {
 
@@ -22,7 +39,8 @@ class TokensPages extends React.Component<any, any> {
 
   render() {
     const {
-      rows
+      rows,
+      btc_usd, eth_usd
     } = this.props;
 
     const rowsComponents = rows.map((item, index) => {
@@ -42,7 +60,7 @@ class TokensPages extends React.Component<any, any> {
           <td>
             <span style={{
               color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
-            }}>{numeral(item.price).format('$0,0,0.00')}</span>
+            }}>{numeral(item.price).format('$0,0,0.0000')}</span>
           </td>
           <td>
             {numeral(item.amount).format('$0,0,0.00')}
@@ -55,6 +73,10 @@ class TokensPages extends React.Component<any, any> {
     })
     return (
       <App>
+        <ExchangeRate 
+          btc_usd={btc_usd} 
+          eth_usd={eth_usd}
+        />
          <table className='table is-striped is-fullwidth'>
            <thead>
              <tr>
@@ -75,7 +97,9 @@ class TokensPages extends React.Component<any, any> {
 
 export default connect(
   state => ({
-    rows: calculateRows(state)
+    rows: calculateRows(state),
+    btc_usd: calculateExchangeRate(state).btc_usd,
+    eth_usd: calculateExchangeRate(state).eth_usd,
   }),
   { showAllTokens, closeConnection }
 )(TokensPages);
