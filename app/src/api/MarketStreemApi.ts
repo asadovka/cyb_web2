@@ -81,12 +81,14 @@ const getPairs = (cb) => {
   socket.send('{"get":"pairs"}');
 }
 
-const subscribeTickers = (cb, msg) => {
+const subscribeTickers = (cb, pairs) => {
   e.listen(data => {
     if (data.type === 'tickers') {
       cb(data.value)
     }
   });
+  const msg = `{"subscribe":"tickers","pairs":[${pairs}], "exchanges": ["ALL"], "window_durations": ["${60 * 1000}"] }`;
+
   socket.send(msg);
 }
 
