@@ -2,12 +2,15 @@ import * as assignIn from "lodash/assignIn";
 import {EnvironmentConstants} from "./config/EnvironmentConstants";
 import {DefaultHttpService, HttpService} from "./http/HttpService";
 import {ChaingearApi, DefaulChaingearApi } from './api/ChaingearApi';
-import {DefaultSearchApi, SearchApi} from "./api/SearchApi";
 import {DefaultMarketApi, MarketApi } from './api/MarketApi';
+import {DefaultSearchApi, SearchApi} from 'cyber-search-js';
+
+var config = require('./config.js')
+
 
 export class Injector {
   readonly http: HttpService = new DefaultHttpService();
-  readonly searchApi: SearchApi = new DefaultSearchApi(this.http);
+  readonly searchApi: SearchApi = new DefaultSearchApi(config.CYBER_SEARCH_API);
   readonly marketApi: MarketApi = new DefaultMarketApi(this.http);
   readonly chaingearApi: ChaingearApi = new DefaulChaingearApi(this.http);
 

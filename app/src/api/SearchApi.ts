@@ -1,7 +1,6 @@
-import {HttpService} from "../http/HttpService";
+import {HttpService, DefaultHttpService } from "../http/HttpService";
 import {SearchResponse, SearchResponseItem, BitcoinBlockResponse} from "../actions/CfActions";
 
-var config = require('./config.js')
 
 export interface SearchApi {
   search(query: string, page: number, chains: string, entities: string, pageSize: number): Promise<SearchResponse>;
@@ -22,14 +21,18 @@ export interface SearchApi {
 }
 
 export class DefaultSearchApi implements SearchApi {
+  root: string;
+  http: HttpService;
   constructor(
-    private readonly http: HttpService
+    root: string
   ) {
+    this.root = root;
+    this.http = new DefaultHttpService();
   }
 
   search(query: string, page: number = 0, chains: string, entities: string, pageSize: number = 10): Promise<SearchResponse> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/search`,
+      `${this.root}/search`,
       {
         params: {query, page, chains, entities, pageSize}
       }
@@ -37,58 +40,55 @@ export class DefaultSearchApi implements SearchApi {
   }
 
   getBitcoinBlock(blockNumber: string): Promise<BitcoinBlockResponse> {
-    return this.http.GET(`${config.CYBER_SEARCH_API}/bitcoin/block/${blockNumber}`)
+    return this.http.GET(`${this.root}/bitcoin/block/${blockNumber}`)
   }
 
   getBitcoinTx(txId: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/bitcoin/tx/${txId}`
+      `${this.root}/bitcoin/tx/${txId}`
     );
   }
 
 
   getBitcoinCashBlock(blockNumber: string): Promise<BitcoinBlockResponse> {
-    return this.http.GET(`${config.CYBER_SEARCH_API}/bitcoin_cash/block/${blockNumber}`)
+    return this.http.GET(`${this.root}/bitcoin_cash/block/${blockNumber}`)
   }
 
   getBitcoinCashTx(txId: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/bitcoin_cash/tx/${txId}`
+      `${this.root}/bitcoin_cash/tx/${txId}`
     );
   }
 
 
   getEthereumBlock(blockNumber: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/ethereum/block/${blockNumber}`
+      `${this.root}/ethereum/block/${blockNumber}`
     );
   }
 
 
   getEthereumTx(txHash: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/ethereum/tx/${txHash}`
+      `${this.root}/ethereum/tx/${txHash}`
     );
   }
 
   getEthereumClassicBlock(blockNumber: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/ethereum_classic/block/${blockNumber}`
+      `${this.root}/ethereum_classic/block/${blockNumber}`
     );
   }
 
   getEthereumClassicTx(txHash: string): Promise<any> {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/ethereum_classic/tx/${txHash}`
+      `${this.root}/ethereum_classic/tx/${txHash}`
     )
   }
 
   test() {
     return this.http.GET(
-      `${config.CYBER_SEARCH_API}/search`,
-      {
-        params: {query: 'test' }
-      }
+      `${this.root}/ping`
     );
   }
 }
