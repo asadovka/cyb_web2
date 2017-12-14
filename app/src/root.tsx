@@ -53,7 +53,7 @@ export function Root() {
       <Route path={"/"} component={IndexPage}/>
       <Route path={"/search"} component={SearchResultPage}/>
       <Route path={"/tokens"} component={Tokens}/>
-      <Route path={"/tokens/:system"} component={TokensDetails}/>
+      <Route path={"/tokens/:symbol"} component={TokensDetails}/>
       <Route path={"/funds"} component={Funds}/>
       <Route path={"/crowdsales"} component={Crowdsales}/>
       <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>

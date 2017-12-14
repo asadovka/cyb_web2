@@ -233,7 +233,8 @@ export const reducer = combineReducers({
   exchangeRate,
   crowdsales: createDateReducer('CROWDSALES', []),
   crowdsalesDetails: createDateReducer('CROWDSALES_DETAILS'),
-  tokensDetails: createDateReducer('TOKEN_DETAILS')
+  tokensDetails: createDateReducer('TOKEN_DETAILS'),
+  tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART')
 })
 
 export const showCrowdsalesDetails = (system) => ({
@@ -241,13 +242,23 @@ export const showCrowdsalesDetails = (system) => ({
   payload: { system }
 })
 
-export const showTokensDetails = (system) => ({
-  type: 'TOKEN_DETAILS',
-  payload: { system }  
-})
+export const showTokensDetails = (symbol) => (dispatch) => {
+  dispatch({
+    type: 'TOKEN_DETAILS',
+    payload: { symbol }  
+  })
+  dispatch({
+    type: 'TOKEN_DETAILS_CHART',
+    payload: { symbol } 
+  })
+}
 
 
 export const chaingearEpic = combineEpics(
+  loadDataEpic(
+    'TOKEN_DETAILS_CHART',
+    ({ symbol }) => marketApi.getHistoHour(symbol, 'USD')
+  ),
   loadDataEpic(
     'CROWDSALES',
     () => chaingearApi.getAllCrowdsales()
@@ -258,6 +269,6 @@ export const chaingearEpic = combineEpics(
   ),
   loadDataEpic(
      'TOKEN_DETAILS',
-     ({ system }) => chaingearApi.tokensDetails(system)
+     ({ symbol }) => chaingearApi.tokensDetails(symbol)
   )
 ) 

@@ -13,41 +13,12 @@ const {
 import { showTokensDetails, getSystemLogoUrl } from '../../modules/chaingear';
 
 
-import {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-const data = [
-      {name: 'Page A', uv: 4000, pv: 9000},
-      {name: 'Page B', uv: 3000, pv: 7222},
-      {name: 'Page C', uv: 2000, pv: 6222},
-      {name: 'Page D', uv: 1223, pv: 5400},
-      {name: 'Page E', uv: 1890, pv: 3200},
-      {name: 'Page F', uv: 2390, pv: 2500},
-      {name: 'Page G', uv: 3490, pv: 1209},
-];
-const PriceChart = React.createClass({
-  render () {
-    return (
-      <div>
-        <h4>A demo of synchronized AreaCharts</h4>
-
-        <LineChart width={600} height={200} data={data} syncId="anyId"
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-          <XAxis dataKey="name"/>
-          <YAxis/>
-          <CartesianGrid strokeDasharray="3 3"/>
-          <Tooltip/>
-          <Line type='monotone' dataKey='pv' stroke='#82ca9d' fill='#82ca9d' />
-          <Brush />
-        </LineChart>
-
-    </div>
-    );
-  }
-});
+import PriceChart from './PriceChart';
 
 class TokensDetails extends React.Component<any, any> {
   componentDidMount() {
-    const { system } = this.props;
-    this.props.showTokensDetails(system);
+    const { symbol } = this.props;
+    this.props.showTokensDetails(symbol);
   }
   render() {
     const { crowdsalesDetails } = this.props;
@@ -68,14 +39,19 @@ class TokensDetails extends React.Component<any, any> {
                <h2 className='title'>Links:</h2>
                <div className='tags'>
                {crowdsalesDetails.links.map(link => (
-                 <a className='tag' href={link.url}>
+                 <a key={link.url} className='tag' href={link.url}>
                    {link.icon && <img style={{ marginRight: 10 }} width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
                  </a>
                 ))}
                  </div>
              </div>
-             <div>
-               <PriceChart />
+             <div style={{
+              marginTop: 50,
+              marginBottom: 50
+             }}>
+              <PriceChart 
+    
+              />
              </div>
              <div>
                <h2 className='title'>Specification</h2>
@@ -97,9 +73,18 @@ class TokensDetails extends React.Component<any, any> {
   }
 }
 
+      //       width={900}
+      // height={400}
+      // margin={{
+      //   top: 0,
+      //   bottom: 0,
+      //   left: 0,
+      //   right: 0
+      // }}
+
 export default withRouter(connect(
   (state, ownProps) => ({
-    system: ownProps.routeParams.system,
+    symbol: ownProps.routeParams.symbol,
     crowdsalesDetails: state.chaingear.tokensDetails.data
   }),
   { showTokensDetails }

@@ -48,7 +48,7 @@ class TokensPages extends React.Component<any, any> {
       return (
         <tr key={index}>
           <td>
-            <Logo to={`/tokens/${item.system}`}>
+            <Logo to={`/tokens/${item.symbol}`}>
               <img width={50} src={item.logo}/>            
               <span>{item.system}</span>
               <span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>

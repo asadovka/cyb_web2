@@ -6,6 +6,8 @@ var config = require('./config.js')
 export interface MarketApi {
   test(): Promise<any>;
   getTokensStatistics(): Promise<any>;
+  getHistoMinute(fsym: string, tsym: string): Promise<any>;
+  getHistoHour(fsym: string, tsym: string): Promise<any>;
 }
 
 export class DefaultMarketApi implements MarketApi {
@@ -20,7 +22,16 @@ export class DefaultMarketApi implements MarketApi {
       `${config.CYBER_MARKETS_API}/ping`
     );
   }
-
+  getHistoMinute(fsym, tsym){ 
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=1`
+    );
+  }
+  getHistoHour(fsym, tsym){ 
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=1`
+    );
+  }
   getTokensStatistics() {
     // return this.http.GET(
     //   `${config.CYBER_MARKETS_API}/tokenstats`
