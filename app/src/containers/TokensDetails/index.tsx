@@ -14,6 +14,8 @@ import { showTokensDetails, getSystemLogoUrl, closeConnection } from '../../modu
 
 import TradesTable from './TradesTable';
 import PriceChart from './PriceChart';
+import OrderTables from './OrderTables';
+
 
 class TokensDetails extends React.Component<any, any> {
   componentDidMount() {
@@ -59,13 +61,7 @@ class TokensDetails extends React.Component<any, any> {
               />
              </div>
              <TradesTable />
-             
-             <div>
-               <h2 className='title'>Specification</h2>
-             </div>
-             <div>
-               <h2 className='title'>First Price</h2>
-             </div>
+                      
              <div>
                You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${crowdsalesDetails.system}/${crowdsalesDetails.system}.toml`}>{crowdsalesDetails.system}'s</a> page on Github.
              </div>

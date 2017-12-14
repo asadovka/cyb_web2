@@ -230,10 +230,22 @@ const exchangeRate = (state = { btc_usd: 1, eth_usd: 1}, action) => {
 
 const trades = (state = [], action) => {
   switch (action.type) {
-    case "ADD_TRADE":
-      return state.concat([action.payload])    
+    case "ADD_TRADE":{
+      const arr = state.concat([action.payload]);
+      return arr.slice(-10)    
+    }
     case "SET_TRADE":
       return [...state, ...action.payload];    
+    default:
+      return state;
+  }
+}
+
+const orders = (state = [], action) => {
+  switch (action.type) {
+    case "SET_ORDERS":
+      return [...state, ...action.payload]
+    
     default:
       return state;
   }
@@ -247,6 +259,7 @@ export const reducer = combineReducers({
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
   tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
+  orders
 })
 
 export const showCrowdsalesDetails = (system) => ({
@@ -266,6 +279,7 @@ export const showTokensDetails = (symbol) => (dispatch) => {
 
   streemApi.open("ws://93.125.26.210:32801", () => {
     streemApi.subscribeTrades(trade => {
+      // console.log(trade)
       if (Array.isArray(trade)) {
         dispatch({
           type: 'SET_TRADE',
@@ -278,6 +292,13 @@ export const showTokensDetails = (symbol) => (dispatch) => {
         })
       }
     }, `"${symbol}_USD"`);
+
+    // streemApi.subscribeOrders(order => {
+    //   dispatch({
+    //     type: 'SET_ORDERS',
+    //     payload: order
+    //   })
+    // }, `"${symbol}_USD"`)
   })  
 }
 

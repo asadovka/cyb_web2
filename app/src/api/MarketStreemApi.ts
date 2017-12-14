@@ -103,11 +103,23 @@ const subscribeTrades = (cb, pairs) => {
   socket.send(msg);
 }
 
+const subscribeOrders = (cb, pairs) => {
+  e.listen(data => {
+    if (data.type === 'orders') {
+      cb(data.value)
+    }
+  });
+  const msg = `{"subscribe":"orders","pairs":[${pairs}] }`;
+  
+  socket.send(msg);
+}
+
 
 export default {
   open,
   close,
   getPairs,
   subscribeTickers,
-  subscribeTrades
+  subscribeTrades,
+  subscribeOrders
 }

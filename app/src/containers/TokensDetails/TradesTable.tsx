@@ -1,6 +1,7 @@
 
 
 import * as React from 'react';
+var numeral = require('numeral');
 
 const TradesTable = ({ trades }) => {
   console.log(trades)
@@ -17,13 +18,13 @@ const TradesTable = ({ trades }) => {
         {item.tradeId}
       </td>
       <td>
-        {item.quoteAmount}
+        {numeral(item.baseAmount).format('0,0,0.0000')}
       </td>
       <td>
-        {item.spotPrice}
+        {numeral(item.spotPrice).format('$0,0,0.0000')}
       </td>
       <td>
-        {item.baseAmount}
+        {numeral(item.quoteAmount).format('$0,0,0.0000')}
       </td>
     </tr>
   ))
