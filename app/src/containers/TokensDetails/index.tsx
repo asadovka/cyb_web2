@@ -10,9 +10,9 @@ const {
   chaingearApi
 } = Injector.of();
 
-import { showTokensDetails, getSystemLogoUrl } from '../../modules/chaingear';
+import { showTokensDetails, getSystemLogoUrl, closeConnection } from '../../modules/chaingear';
 
-
+import TradesTable from './TradesTable';
 import PriceChart from './PriceChart';
 
 class TokensDetails extends React.Component<any, any> {
@@ -20,6 +20,11 @@ class TokensDetails extends React.Component<any, any> {
     const { symbol } = this.props;
     this.props.showTokensDetails(symbol);
   }
+
+  componentWillUnmount(){
+    this.props.closeConnection();
+  }
+
   render() {
     const { crowdsalesDetails } = this.props;
     console.log(' >> ', crowdsalesDetails)
@@ -53,6 +58,8 @@ class TokensDetails extends React.Component<any, any> {
     
               />
              </div>
+             <TradesTable />
+             
              <div>
                <h2 className='title'>Specification</h2>
              </div>
@@ -87,5 +94,5 @@ export default withRouter(connect(
     symbol: ownProps.routeParams.symbol,
     crowdsalesDetails: state.chaingear.tokensDetails.data
   }),
-  { showTokensDetails }
+  { showTokensDetails, closeConnection }
 )(TokensDetails));
