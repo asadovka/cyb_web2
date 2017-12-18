@@ -5,9 +5,9 @@ import withRouter from "react-router/es/withRouter";
 import { getEthereumClassicBlock } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
-import * as moment from 'moment'
+import moment from 'moment'
 
-class EthereumClassicBlockPage extends React.Component<{ data, getData, blockNumber }, {}> {
+class EthereumClassicBlockPage extends React.Component {
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 

@@ -1,21 +1,22 @@
-import {HttpService} from "../http/HttpService";
-import {SearchResponse} from "../actions/CfActions";
+// import {HttpService} from "../http/HttpService";
+// import {SearchResponse} from "../actions/CfActions";
 
 var config = require('./config.js')
 
-export interface ChaingearApi {
-  test(): Promise<any>;
-  getAllTokens(): Promise<any>;
-  getAllCrowdsales(): Promise<any>;
-  crowdsalesDetails(system: string): Promise<any>;
-  tokensDetails(symbol: string): Promise<any>;
-  imageUrl(): string;
-}
+// export interface ChaingearApi {
+//   test(): Promise<any>;
+//   getAllTokens(): Promise<any>;
+//   getAllCrowdsales(): Promise<any>;
+//   crowdsalesDetails(system: string): Promise<any>;
+//   tokensDetails(symbol: string): Promise<any>;
+//   imageUrl(): string;
+// }
 
-export class DefaulChaingearApi implements ChaingearApi {
+export class DefaulChaingearApi  {
   constructor(
-    private readonly http: HttpService
+    http
   ) {
+    this.http = http;
   }
 
 

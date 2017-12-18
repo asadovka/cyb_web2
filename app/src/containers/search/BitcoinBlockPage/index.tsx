@@ -1,12 +1,11 @@
 import * as React from "react";
 import {connect} from "react-redux";
-import {CfActions, BitcoinBlockResponse} from "../../../actions/CfActions";
 import withRouter from "react-router/es/withRouter";
 import { getBitcoinBlock } from '../../../modules/search';
 
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router'
-class BitcoinBlockPageComponent extends React.Component<{ data, getData, blockNumber }, {}> {
+class BitcoinBlockPageComponent extends React.Component {
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 

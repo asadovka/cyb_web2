@@ -5,7 +5,7 @@ import withRouter from "react-router/es/withRouter";
 import { getEthereumClassicTx } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
-class EthereumClassicTxPage extends React.Component<{ data, getData, txHash }, {}> {
+class EthereumClassicTxPage extends React.Component {
   componentDidMount() {
     const {txHash, getData} = this.props;
 

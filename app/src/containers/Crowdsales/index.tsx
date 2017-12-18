@@ -18,10 +18,10 @@ import { showAllCrowdsales } from '../../modules/chaingear';
 
 import { Logo } from '../../components/AssetTable/';
 var numeral = require('numeral');
-import * as moment from 'moment'
+import moment from 'moment'
 
 
-class Crowdsales extends React.Component<any, any> {
+class Crowdsales extends React.Component {
 
   componentDidMount() {
     this.props.showAllCrowdsales();   

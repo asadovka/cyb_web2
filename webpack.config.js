@@ -8,7 +8,7 @@ module.exports = function (options = {}) {
   // Settings
   // --env.NODE_ENV root --env.SOURCE_MAP source-map ...
   const NODE_ENV = options.NODE_ENV || "development"; // "production"
-  const SOURCE_MAP = options.SOURCE_MAP || "eval-source-map"; // "source-map"
+  const SOURCE_MAP = options.SOURCE_MAP || "source-map";// "eval-source-map"; // "source-map"
   const API_ROOT = options.API_ROOT || "http://search-api.cyber.fund"; // "http://cyber.fund/api/"
   const APP_VERSION = options.APP_VERSION || "DEV";
   const CYBER_CHAINGEAR_API = process.env.CYBER_CHAINGEAR_API || 'localhost:8000';
@@ -52,8 +52,14 @@ module.exports = function (options = {}) {
       module: {
       rules: [{
         test: /\.tsx?$/,
-        exclude: /node_modules/,
-        loader: "ts-loader"
+        // exclude: /node_modules/,
+        // loader: "ts-loader"
+        loader: 'babel-loader',
+        options: {
+            presets: ['es2015', 'stage-2', 'react'],
+            plugins: ['transform-decorators-legacy', 'transform-class-properties'],
+            cacheDirectory: true,
+        },
       }, {
         test: /\.less$/,
         use: [{

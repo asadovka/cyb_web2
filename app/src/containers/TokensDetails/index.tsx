@@ -17,7 +17,7 @@ import PriceChart from './PriceChart';
 import OrderTables from './OrderTables';
 
 
-class TokensDetails extends React.Component<any, any> {
+class TokensDetails extends React.Component {
   componentDidMount() {
     const { symbol } = this.props;
     this.props.showTokensDetails(symbol);

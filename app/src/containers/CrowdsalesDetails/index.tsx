@@ -12,7 +12,7 @@ const {
 
 import { showCrowdsalesDetails, getSystemLogoUrl } from '../../modules/chaingear';
 
-class CrowdsalesDetails extends React.Component<any, any> {
+class CrowdsalesDetails extends React.Component {
   componentDidMount() {
     const { system } = this.props;
     this.props.showCrowdsalesDetails(system);
@@ -32,7 +32,7 @@ class CrowdsalesDetails extends React.Component<any, any> {
                <h2 className='title'>Links:</h2>
                <div className='tags'>
                {crowdsalesDetails.links.map(link => (
-                 <a className='tag' href={link.url}>
+                 <a key={link.url} className='tag' href={link.url}>
                    {link.icon && <img style={{ marginRight: 10 }} width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
                  </a>
                 ))}

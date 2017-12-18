@@ -3,8 +3,6 @@ let socket;
 
 /* tslint:disable */
 class Listener {
-  fn: any;
-  ctx: any;
 
   constructor(fn, ctx) {
     this.fn = fn
@@ -36,10 +34,10 @@ class Emitter {
 
 function emitter() {
   function action() {
-    (action as any).emit.apply(action, arguments)
+    action.emit.apply(action, arguments)
   }
-  (action as any).listeners = [];
-  (action as any).__proto__ = Emitter.prototype
+  action.listeners = [];
+  action.__proto__ = Emitter.prototype
 
   return action
 }

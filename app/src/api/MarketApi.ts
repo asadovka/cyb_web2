@@ -1,20 +1,18 @@
-import {HttpService} from "../http/HttpService";
-import {SearchResponse} from "../actions/CfActions";
 
 var config = require('./config.js')
 
-export interface MarketApi {
-  test(): Promise<any>;
-  getTokensStatistics(): Promise<any>;
-  getHistoMinute(fsym: string, tsym: string): Promise<any>;
-  getHistoHour(fsym: string, tsym: string): Promise<any>;
-}
+// export interface MarketApi {
+//   test(): Promise<any>;
+//   getTokensStatistics(): Promise<any>;
+//   getHistoMinute(fsym: string, tsym: string): Promise<any>;
+//   getHistoHour(fsym: string, tsym: string): Promise<any>;
+// }
 
-export class DefaultMarketApi implements MarketApi {
+export class DefaultMarketApi {
   constructor(
-    private readonly http: HttpService
+    http
   ) {
-
+    this.http = http;
   }
 
   test() {

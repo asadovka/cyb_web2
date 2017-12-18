@@ -5,17 +5,17 @@ import {createStore, applyMiddleware, GenericStoreEnhancer} from "redux";
 import {combinedReducers} from "./reducers/reducers";
 import {EnvironmentConstants} from "./config/EnvironmentConstants";
 import {rootEpic} from "./epics/rootEpic";
-import {CfState} from "./model/CfState";
+// import {CfState} from "./model/CfState";
 import thunk from 'redux-thunk';
 
-export function configureStore(): Store<CfState> {
+export function configureStore() {
   return createStore(
     combinedReducers,
     getMiddlewares()
   );
 }
 
-function getMiddlewares(): GenericStoreEnhancer {
+function getMiddlewares() {
   const logger = createLogger({
     collapsed: true
   });

@@ -4,7 +4,7 @@ import App from '../app/';
 
 var config = require('./config.js')
 
-import { Table, Logo, PriceInfo, NoInfo, PriceChart } from '../../components/AssetTable/';
+import { Table, Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
 
 import { connect } from 'react-redux';
 import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './../../modules/chaingear';
@@ -27,7 +27,7 @@ const ExchangeRate = ({ btc_usd, eth_usd }) => (
   </div>
 )
 
-class TokensPages extends React.Component<any, any> {
+class TokensPages extends React.Component {
 
   componentWillUnmount() {
     this.props.closeConnection();

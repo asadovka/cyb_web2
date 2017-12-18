@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from 'react-router';
 
-import * as moment from 'moment'
+import moment from 'moment'
 
 const styles = require("./SearchItems.less");
 

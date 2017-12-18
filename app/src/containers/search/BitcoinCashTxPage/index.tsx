@@ -6,7 +6,7 @@ import { getBitcoinCashTx } from '../../../modules/search';
 
 import { browserHistory } from 'react-router'
 
-class BitcoinCashTxPage extends React.Component<{ data, getData, txId }, {}> {
+class BitcoinCashTxPage extends React.Component {
   componentDidMount() {
     const {txId, getData} = this.props;
 

@@ -1,6 +1,6 @@
-declare const _API_ROOT: string;
-declare const _APP_VERSION: string;
-declare const _CYBER_CHAINGEAR_API: string;
+const _API_ROOT;
+const _APP_VERSION;
+const _CYBER_CHAINGEAR_API;
 
 export class ConfigConstants {
   static API_ROOT = _API_ROOT;

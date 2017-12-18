@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from 'react-router';
 import {connect} from "react-redux";
 
-import {Pagination} from "../../../components/Pagination";
+// import {Pagination} from "../../../components/Pagination";
 import withRouter from "react-router/es/withRouter";
 
 import {
