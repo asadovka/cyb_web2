@@ -7,7 +7,6 @@ import Footer from '../app/Footer';
 
 import BlockchainStatics from './BlockchainStatics';
 
-import CentredContainer from '../../components/CentredContainer/';
 
 import { Header } from '../../components/Header/';
 
@@ -20,18 +19,18 @@ class IndexPage extends React.Component {
     this.props.getStatistics();
   }
   
+   // <Title>Blockchain search</Title>
+   //        <BigLogo />
+   //        <TopMenu/>
+   //        <SearchForm/>
   render() {
     return (
       <div>
-        <CentredContainer>
-          <Title>Blockchain search</Title>
-          <BigLogo />
-          <TopMenu/>
-          <SearchForm/>
+               
           <BlockchainStatics />
-        </CentredContainer>
+        
 
-        <Footer />
+        {/*<Footer />*/}
       </div>
     );    
   }

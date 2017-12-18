@@ -11,6 +11,9 @@ const {
 } = Injector.of();
 
 import { showCrowdsalesDetails, getSystemLogoUrl } from '../../modules/chaingear';
+import Paper from 'material-ui/Paper';
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 class CrowdsalesDetails extends React.Component {
   componentDidMount() {
@@ -20,9 +23,12 @@ class CrowdsalesDetails extends React.Component {
   render() {
     const { crowdsalesDetails } = this.props;
     return (
-      <App>
+      <div>
          {crowdsalesDetails.system ? (
            <div>
+             <Paper>
+             <Card>
+             <CardContent>
              <div>
                <img width={50} src={getSystemLogoUrl(crowdsalesDetails, chaingearApi.imageUrl())} />
                <h2 className='title'>{crowdsalesDetails.system}</h2>
@@ -38,8 +44,13 @@ class CrowdsalesDetails extends React.Component {
                 ))}
                  </div>
              </div>
+             </CardContent>
+             </Card>
+             </Paper>
              <div>
-               <h2 className='title'>Crowdsale</h2>
+               <h2 style={{ marginTop: '1.5rem' }} className='title'>Crowdsale</h2>
+               <Card>
+               <CardContent>
                <table className='table is-striped '>
                  <thead>
                    <tr>
@@ -82,8 +93,10 @@ class CrowdsalesDetails extends React.Component {
                    </tr>  
                 </tbody>
                </table>
+               </CardContent>
+               </Card>
              </div>
-             <div>
+             <div style={{ marginTop: 20 }}>
                You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${crowdsalesDetails.system}/${crowdsalesDetails.system}.toml`}>{crowdsalesDetails.system}'s</a> page on Github.
              </div>
            </div>
@@ -92,7 +105,7 @@ class CrowdsalesDetails extends React.Component {
              loading...
            </div>
          )}
-      </App>
+      </div>
     );    
   }
 }

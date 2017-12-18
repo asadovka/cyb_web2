@@ -2,11 +2,13 @@ import * as React from "react";
 
 import App from '../app/';
      
-import { Table, Indicator, Title } from '../../components/ApiIndicator/';
+import { IndicatorTable, Indicator, Title } from '../../components/ApiIndicator/';
 
 import { checkApi } from '../../modules/cybernode';
 import { connect } from 'react-redux';
 var config = require('./config.js')
+import Paper from 'material-ui/Paper';
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 class Cybernode extends React.Component<any, any> {
   componentDidMount() {
@@ -20,30 +22,29 @@ class Cybernode extends React.Component<any, any> {
     } = this.props;
 
     return (
-      <App>
-        <Title>API status:</Title>
-        <Table>
-          <tbody>
-            <tr>
-              <td>CYBER_CHAINGEAR_API</td>
-              <td>{config.CYBER_CHAINGEAR_API}</td>
-              <td>
-                <Indicator available={chaingearApiAvailable}/>
-              </td>
-            </tr>
-            <tr>
-              <td>CYBER_SEARCH_API</td>
-              <td>{config.CYBER_SEARCH_API}</td>
-              <td><Indicator available={searchApiAvailable}/></td>
-            </tr>
-            <tr>
-              <td>CYBER_MARKETS_API</td>
-              <td>{config.CYBER_MARKETS_API}</td>
-              <td><Indicator available={marketApiAvailable} /></td>
-            </tr>
-          </tbody>
-        </Table>
-      </App>
+      <Paper>
+      <IndicatorTable>
+        <TableBody>
+          <TableRow>
+            <TableCell>CYBER_CHAINGEAR_API</TableCell>
+            <TableCell>{config.CYBER_CHAINGEAR_API}</TableCell>
+            <TableCell>
+              <Indicator available={chaingearApiAvailable}/>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>CYBER_SEARCH_API</TableCell>
+            <TableCell>{config.CYBER_SEARCH_API}</TableCell>
+            <TableCell><Indicator available={searchApiAvailable}/></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>CYBER_MARKETS_API</TableCell>
+            <TableCell>{config.CYBER_MARKETS_API}</TableCell>
+            <TableCell><Indicator available={marketApiAvailable} /></TableCell>
+          </TableRow>
+        </TableBody>
+      </IndicatorTable>
+      </Paper>
     );    
   }
 }

@@ -20,6 +20,8 @@ import { Logo } from '../../components/AssetTable/';
 var numeral = require('numeral');
 import moment from 'moment'
 
+import Paper from 'material-ui/Paper';
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 class Crowdsales extends React.Component {
 
@@ -46,40 +48,40 @@ class Crowdsales extends React.Component {
     //        {cards}
     //      </CardList>
     const rows = items.map(item => (
-      <tr>
-        <td>
+      <TableRow>
+        <TableCell>
           <Logo to={`/crowdsales/${item.system}`}>
             <img width={50} src={getSystemLogoUrl(item, chaingearApi.imageUrl())}/>            
             <span>{item.system}</span>
           </Logo>
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           {item.descriptions && item.descriptions.headline}
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           {moment(item.crowdsales.end_date).format('YYYY.MM.DD')}
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           {numeral(item.crowdsales.tokens_sold).format('0,0,0.00')}
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     ))
     return (
-      <App>
-         <table className='table is-striped is-fullwidth'>
-           <thead>
-             <tr>
-               <th>system</th>
-               <th>descriptions</th>
-               <th>crowdsales</th>
-               <th>tokens sold</th>
-             </tr>
-           </thead>
-           <tbody>
-             {rows}
-           </tbody>
-         </table>
-      </App>
+      <Paper>
+       <Table>
+         <TableHead>
+           <TableRow>
+             <TableCell>system</TableCell>
+             <TableCell>descriptions</TableCell>
+             <TableCell>crowdsales</TableCell>
+             <TableCell>tokens sold</TableCell>
+           </TableRow>
+         </TableHead>
+         <TableBody>
+           {rows}
+         </TableBody>
+       </Table>
+      </Paper>
     );    
   }
 }

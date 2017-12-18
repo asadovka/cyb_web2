@@ -3,49 +3,55 @@
 import * as React from 'react';
 var numeral = require('numeral');
 
+import Paper from 'material-ui/Paper';
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
+
+
 const TradesTable = ({ trades }) => {
   console.log(trades)
   const rows = trades.map(item => (
-    <tr>
-      <td>
+    <TableRow>
+      <TableCell>
         {item.exchange}
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         
       <span className={`tag ${item.type === 'SELL' ? 'is-success' : 'is-warning'}`} >{item.type}</span>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         {item.tradeId}
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         {numeral(item.baseAmount).format('0,0,0.0000')}
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         {numeral(item.spotPrice).format('$0,0,0.0000')}
-      </td>
-      <td>
+      </TableCell>
+      <TableCell>
         {numeral(item.quoteAmount).format('$0,0,0.0000')}
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   ))
   return (
     <div>
       <h2 className='title'>Trades</h2>
-              <table className='table is-striped is-fullwidth'>
-          <thead>
-            <tr>
-              <th>Market</th>
-              <th>Type</th>
-              <th>ID</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Paper>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Market</TableCell>
+              <TableCell>Type</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Quantity</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>Total</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {rows}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
+        </Paper>
     </div>
   )
 }

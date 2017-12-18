@@ -1,7 +1,10 @@
 import * as React from "react";
 
-import * as moment from 'moment';
+import moment from 'moment';
 import { ComposedChart, LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from 'recharts';
+
+import Paper from 'material-ui/Paper';
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 const PriceChart = React.createClass({
   render () {
@@ -30,8 +33,9 @@ let data = [
 
     return (
       <div>
-        <h4>Price change:</h4>
+        <h4 className='title'>Price change:</h4>
 
+        <Paper>
         <ComposedChart width={900} height={300} data={data} syncId="anyId"
               margin={{top: 10, right: 30, left: 0, bottom: 0}}>
           <XAxis dataKey="name"/>
@@ -41,7 +45,7 @@ let data = [
           {/*<Bar dataKey='volumeTo' barSize={10} fill='#413ea0'/>*/}
           <Brush />
         </ComposedChart>
-
+        </Paper>
     </div>
     );
   }

@@ -4,28 +4,36 @@ import App from '../app/';
 
 var config = require('./config.js')
 
-import { Table, Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
+import { Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
 
 import { connect } from 'react-redux';
 import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './../../modules/chaingear';
 var numeral = require('numeral');
+import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
 
 const ExchangeRate = ({ btc_usd, eth_usd }) => (
   <div className='field is-grouped is-grouped-multiline'>
     <div className='control'>
-    <div className="tags has-addons">
+    {/*<div className="tags has-addons">
       <span className="tag">BTC</span>
       <span className="tag is-primary">{numeral(btc_usd).format('$0,0,0.00')}</span>
-    </div>
+    </div>*/}
+    <Chip avatar={<Avatar>BTC</Avatar>} label={numeral(btc_usd).format('$0,0,0.00')}/>
     </div>
     <div className='control'>
-    <div className="tags has-addons">
+    {/*<div className="tags has-addons">
       <span className="tag">ETH</span>
       <span className="tag is-primary">{numeral(eth_usd).format('$0,0,0.00')}</span>
-    </div>
+    </div>*/}
+    <Chip avatar={<Avatar>ETH</Avatar>} label={numeral(eth_usd).format('$0,0,0.00')}/>
     </div>
   </div>
 )
+
+import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
+
+import Paper from 'material-ui/Paper';
 
 class TokensPages extends React.Component {
 
@@ -46,8 +54,8 @@ class TokensPages extends React.Component {
     const rowsComponents = rows.map((item, index) => {
       const procent = item.procent;
       return (
-        <tr key={index}>
-          <td>
+        <TableRow key={index}>
+          <TableCell>
             <Logo to={`/tokens/${item.symbol}`}>
               <img width={50} src={item.logo}/>            
               <span>{item.system}</span>
@@ -56,41 +64,44 @@ class TokensPages extends React.Component {
               </span>
             </Logo>
 
-          </td>
-          <td>
+          </TableCell>
+          <TableCell>
             <span style={{
               color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
             }}>{numeral(item.price).format('$0,0,0.0000')}</span>
-          </td>
-          <td>
+          </TableCell>
+          <TableCell>
             {numeral(item.amount).format('$0,0,0.00')}
-          </td>
-          <td>
+          </TableCell>
+          <TableCell>
             {numeral(item.procent).format('0.000%')}
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     })
     return (
-      <App>
+      <div>
         <ExchangeRate 
-          btc_usd={btc_usd} 
-          eth_usd={eth_usd}
-        />
-         <table className='table is-striped is-fullwidth'>
-           <thead>
-             <tr>
-               <th>system</th>
-               <th>price</th>
-               <th>amount</th>
-               <th>%</th>
-             </tr>
-           </thead>
-           <tbody>
-             {rowsComponents}
-           </tbody>
-         </table>
-      </App>
+            btc_usd={btc_usd} 
+            eth_usd={eth_usd}
+          />
+        <Paper>
+          
+           <Table>
+             <TableHead>
+               <TableRow>
+                 <TableCell>system</TableCell>
+                 <TableCell>price</TableCell>
+                 <TableCell>amount</TableCell>
+                 <TableCell>%</TableCell>
+               </TableRow>
+             </TableHead>
+             <TableBody>
+               {rowsComponents}
+             </TableBody>
+           </Table>
+        </Paper>
+      </div>
     );    
   }
 }

@@ -283,20 +283,19 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Ta
 // const mailFolderListItems = 'mailFolderListItems';
 // const otherMailFolderListItems = ' otherMailFolderListItem';
 
+import { Link } from 'react-router';
+
 const mailFolderListItems = (
   <div>
     <ListItem button>
-      <ListItemText primary="Inbox" />
+      <Link to='/tokens' style={{ color: '#000', width: '100%' }}>Tokens</Link>
     </ListItem>
     <ListItem button>
-      <ListItemText primary="Starred" />
+      <Link to='/crowdsales' style={{ color: '#000', width: '100%' }}>Crowdsales</Link>
     </ListItem>
     <ListItem button>
-      <ListItemText primary="Send mail" />
-    </ListItem>
-    <ListItem button>
-      <ListItemText primary="Drafts" />
-    </ListItem>
+      <Link to='/cybernode' style={{ color: '#000', width: '100%' }}>Cybernode</Link>
+    </ListItem>    
   </div>
 );
 
@@ -322,6 +321,7 @@ const otherMailFolderListItems = (
     </ListItem>
   </div>
 );
+import { fade } from 'material-ui/styles/colorManipulator';
 
 const drawerWidth = 240;
 
@@ -366,11 +366,9 @@ const styles = theme => ({
   // hide: {
   //   display: 'none',
   // },
-  // drawerPaper: {
-  //   position: 'relative' as any,
-  //   height: '100%',
-  //   width: drawerWidth,
-  // },
+  drawerPaper: {
+    width: 200,
+  },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
@@ -378,6 +376,11 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
+
+  appTitle: {
+    flex: 1
+  },
+
   content: {
     width: '100%',
     minHeight: '100vh',
@@ -392,6 +395,8 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+
+
     // height: 'calc(100% - 56px)',
     // marginTop: 56,
     // [theme.breakpoints.up('sm')]: {
@@ -417,7 +422,81 @@ const styles = theme => ({
   // 'contentShift-right': {
   //   marginRight: 0,
   // },
+
+  wrapper: {
+    fontFamily: theme.typography.fontFamily,
+    position: 'relative',
+    marginRight: 16,
+    borderRadius: 2,
+    background: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      background: fade(theme.palette.common.white, 0.25),
+    },
+    '& $input': {
+      transition: theme.transitions.create('width'),
+      width: 200,
+      '&:focus': {
+        width: 250,
+      },
+    },
+  },
+  search: {
+    width: theme.spacing.unit * 9,
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    font: 'inherit',
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px ${theme
+      .spacing.unit * 9}px`,
+    border: 0,
+    display: 'block',
+    verticalAlign: 'middle',
+    whiteSpace: 'normal',
+    background: 'none',
+    margin: 0, // Reset for Safari
+    color: 'inherit',
+    width: '100%',
+    '&:focus': {
+      outline: 0,
+    },
+  },
 });
+import SearchIcon from 'material-ui-icons/Search';
+import { browserHistory } from 'react-router'
+
+function AppSearch(props) {
+  const { classes, width } = props;
+
+  // if (!isWidthUp('sm', width)) {
+  //   removeDocsearch();
+  //   return null;
+  // }
+
+//  initDocsearch();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    browserHistory.push('/search?q=' + input.value);
+  }
+  let input;
+  return (
+    <form onSubmit={onSubmit}>
+      <div className={classes.wrapper}>
+        <div className={classes.search}>
+          <SearchIcon />
+        </div>
+        <input ref={node => input = node } id="docsearch-input" className={classes.input} />
+      </div>
+    </form>
+  );
+}
+
+const AppSearchComponent = withStyles(styles, { withTheme: true })(AppSearch);
 
 class PersistentDrawer extends React.Component<any, any> {
   constructor(props){
@@ -461,35 +540,61 @@ class PersistentDrawer extends React.Component<any, any> {
           </div>
           <Divider />
           <List className={classes.list}>{mailFolderListItems}</List>
-          <Divider />
-          <List className={classes.list}>{otherMailFolderListItems}</List>
         </div>
       </Drawer>
     );
 
-    const data = [
-      {
-        id: 1,
-        name: 'name',
-        calories: 'calories',
-        fat: 'fat',
-        carbs: 'carbs',
-        protein: 'protein'
-      },
-      {
-        id: 2,
-        name: 'name',
-        calories: 'calories',
-        fat: 'fat',
-        carbs: 'carbs',
-        protein: 'protein'
-      }
-    ];
+//     const data = [
+//       {
+//         id: 1,
+//         name: 'name',
+//         calories: 'calories',
+//         fat: 'fat',
+//         carbs: 'carbs',
+//         protein: 'protein'
+//       },
+//       {
+//         id: 2,
+//         name: 'name',
+//         calories: 'calories',
+//         fat: 'fat',
+//         carbs: 'carbs',
+//         protein: 'protein'
+//       }
+//     ];
 
+// <Paper>
+//               test
+//             </Paper>
+//             <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+
+//             <Table className={classes.table}>
+//         <TableHead>
+//           <TableRow>
+//             <TableCell>Dessert (100g serving)</TableCell>
+//             <TableCell numeric>Calories</TableCell>
+//             <TableCell numeric>Fat (g)</TableCell>
+//             <TableCell numeric>Carbs (g)</TableCell>
+//             <TableCell numeric>Protein (g)</TableCell>
+//           </TableRow>
+//         </TableHead>
+//         <TableBody>
+//           {data.map(n => {
+//             return (
+//               <TableRow key={n.id}>
+//                 <TableCell>{n.name}</TableCell>
+//                 <TableCell numeric>{n.calories}</TableCell>
+//                 <TableCell numeric>{n.fat}</TableCell>
+//                 <TableCell numeric>{n.carbs}</TableCell>
+//                 <TableCell numeric>{n.protein}</TableCell>
+//               </TableRow>
+//             );
+//           })}
+//         </TableBody>
+//       </Table>
 
     return (
       <div>
-      1
         <AppBar>
             <Toolbar >
               <IconButton
@@ -500,43 +605,18 @@ class PersistentDrawer extends React.Component<any, any> {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography type="title" color="inherit" noWrap>
-                Cyber search
+              <Typography className={classes.appTitle} type="title" color="inherit" noWrap>
+                <Link to='/' style={{ color: '#fff'}}>Cyber search</Link>
               </Typography>
+              <div>
+                <AppSearchComponent />
+              </div>
             </Toolbar>
         </AppBar>
         {drawer}
         <main className={classes.content}>
           <div className='container'>
-            <Paper>
-              test
-            </Paper>
-            <Typography>{'You think water moves fast? You should see ice.'}</Typography>
-
-            <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell numeric>Calories</TableCell>
-            <TableCell numeric>Fat (g)</TableCell>
-            <TableCell numeric>Carbs (g)</TableCell>
-            <TableCell numeric>Protein (g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map(n => {
-            return (
-              <TableRow key={n.id}>
-                <TableCell>{n.name}</TableCell>
-                <TableCell numeric>{n.calories}</TableCell>
-                <TableCell numeric>{n.fat}</TableCell>
-                <TableCell numeric>{n.carbs}</TableCell>
-                <TableCell numeric>{n.protein}</TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
+            {this.props.children}
           </div>
         </main>
       </div>
@@ -599,5 +679,5 @@ const Test = () => {
 
 
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawer);
+export const App = withStyles(styles, { withTheme: true })(PersistentDrawer);
 

@@ -32,7 +32,7 @@ import CrowdsalesDetails from './containers/CrowdsalesDetails';
 // import Analitics from './containers/Analitics/';
 import Cybernode from './containers/Cybernode/';
 // import Blockchains from './containers/Blockchains/';
-import Test from './containers/Test/';
+import { App } from './containers/Test/';
 
 
 var ReactGA = require('react-ga');
@@ -68,32 +68,34 @@ function logPageView() {
 export function Root() {
   return (
     <Router onUpdate={logPageView} history={browserHistory}>
-      <Route path={"/"} component={IndexPage}/>
-      <Route path={"/search"} component={SearchResultPage}/>
-      
-      <Route component={DetailsPage}>
-        <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
-        <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
+      <Route component={App} >
+        <Route path={"/"} component={IndexPage}/>
+  
+        <Route path={"/search"} component={SearchResultPage}/>
+        
+        <Route component={DetailsPage}>
+          <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
+          <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
 
-        <Route path={"/bitcoin_cash/block/:blockNumber"} component={BitcoinCashBlockPage}/>
-        <Route path={"/bitcoin_cash/tx/:txId"} component={BitcoinCashTxPage}/>
+          <Route path={"/bitcoin_cash/block/:blockNumber"} component={BitcoinCashBlockPage}/>
+          <Route path={"/bitcoin_cash/tx/:txId"} component={BitcoinCashTxPage}/>
 
-        <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
-        <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
+          <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
+          <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
 
-        <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
-        <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
+          <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
+          <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
+        </Route>
+
+        <Route path={"/cybernode"} component={Cybernode}/>
+
+        <Route path={"/tokens"} component={Tokens}/>
+        <Route path={"/tokens/:symbol"} component={TokensDetails}/>
+
+        <Route path={"/crowdsales"} component={Crowdsales}/>
+        <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
+
       </Route>
-
-      <Route path={"/cybernode"} component={Cybernode}/>
-
-      <Route path={"/tokens"} component={Tokens}/>
-      <Route path={"/tokens/:symbol"} component={TokensDetails}/>
-
-      <Route path={"/crowdsales"} component={Crowdsales}/>
-      <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
-
-      <Route path={'/test'} component={Test} />
     </Router>
   );
 }
