@@ -241,14 +241,59 @@ const trades = (state = [], action) => {
   }
 }
 
+// const groupBy = (items, key) => items.reduce(
+//   (result, item) => ({
+//     ...result,
+//     [item[key]]: [
+//       ...(result[item[key]] || []),
+//       item,
+//     ],
+//   }), 
+//   {},
+// );
+
+function groupBy(list, keyGetter) {
+    const map = {};
+    list.forEach((item) => {
+        const key = keyGetter(item);
+        const collection = map[key];
+        if (!collection) {
+            map[key] = [item];
+        } else {
+            collection.push(item);
+        }
+    });
+    return map;
+}
+
 const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
   switch (action.type) {
     case "SET_ORDERS":
+
       const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY'));
       const sellOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'SELL'));
+
+      const _buyOrders = groupBy(buyOrders, item => item.spotPrice);
+      const buyOrdersResult = [];
+      for(var key in _buyOrders) {
+        buyOrdersResult.push({
+          spotPrice: +key,
+          amount: _buyOrders[key].reduce((a, b) => a + b.amount, 0)
+        })
+      }
+
+      const _sellOrders = groupBy(sellOrders, item => item.spotPrice);
+      const sellOrdersResult = [];
+      for(var key in _sellOrders) {
+        sellOrdersResult.push({
+          spotPrice: +key,
+          amount: _sellOrders[key].reduce((a, b) => a + b.amount, 0)
+        })
+      }
+
       return {
-        buyOrders,
-        sellOrders
+        buyOrders: buyOrdersResult,
+        sellOrders: sellOrdersResult
       };
     
     default:
