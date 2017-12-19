@@ -11,6 +11,7 @@ services:
        CYBER_CHAINGEAR_API: http://127.0.0.1:32600
        CYBER_SEARCH_API: http://127.0.0.1:32700
        CYBER_MARKETS_API: http://127.0.0.1:32800
+       CYBER_MARKETS_STREAM_API: http://127.0.0.1:32801
 
   chaingear-api:
     image: cybernode/chaingear-api:latest

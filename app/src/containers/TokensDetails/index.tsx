@@ -33,7 +33,7 @@ class TokensDetails extends React.Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { success, data } = this.props;
     return (
       <div>
         <TokenDetails />
@@ -41,9 +41,11 @@ class TokensDetails extends React.Component {
         <PriceChart />
         
         <TradesTable />
+
+        <OrderTables />
                   
-        {!loading && <div style={{ marginTop: 20 }}>
-           You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${crowdsalesDetails.system}/${crowdsalesDetails.system}.toml`}>{crowdsalesDetails.system}'s</a> page on Github.
+        {success && <div style={{ marginTop: 20 }}>
+           You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${data.system}/${data.system}.toml`}>{data.system}'s</a> page on Github.
         </div>}
        </div>
     );    

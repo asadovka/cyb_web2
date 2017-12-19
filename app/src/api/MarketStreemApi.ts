@@ -67,7 +67,6 @@ const subscribeOrders = (cb, pairs) => {
     }
   });
   const msg = `{"subscribe":"orders","pairs":[${pairs}] }`;
-  
   socket.send(msg);
 }
 

@@ -5,10 +5,14 @@ echo "################################## Set app config"
 CYBER_CHAINGEAR_API=${CYBER_CHAINGEAR_API:-"http://localhost:9000"} 
 CYBER_SEARCH_API=${CYBER_SEARCH_API:-"http://localhost:8000"} 
 CYBER_MARKETS_API=${CYBER_MARKETS_API:-"http://localhost:5000"} 
+CYBER_MARKETS_STREAM_API=${CYBER_MARKETS_STREAM_API:-"http://localhost:5001"} 
 
 echo "→ CYBER_CHAINGEAR_API: $CYBER_CHAINGEAR_API" 
 echo "→ CYBER_SEARCH_API: $CYBER_SEARCH_API" 
 echo "→ CYBER_MARKETS_API: $CYBER_MARKETS_API" 
+echo "→ CYBER_MARKETS_STREAM_API: $CYBER_MARKETS_STREAM_API" 
+
+
 
 export DOLLAR='$'
 

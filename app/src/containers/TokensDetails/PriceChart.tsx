@@ -7,30 +7,42 @@ import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 const PriceChart = React.createClass({
+  getInitialState(){
+    return {
+      type: 'step'
+    }
+  },
+  change(e) {
+    this.setState({
+      type: e.target.value
+    })
+  },
   render () {
     const {
       tokensPriceChart
     } = this.props;
 
 let data = [
-      // {name: 'Page A', uv: 4000, pv: 9000},
-      // {name: 'Page B', uv: 3000, pv: 7222},
-      // {name: 'Page C', uv: 2000, pv: 6222},
-      // {name: 'Page D', uv: 1223, pv: 5400},
-      // {name: 'Page E', uv: 1890, pv: 3200},
-      // {name: 'Page F', uv: 2390, pv: 2500},
-      // {name: 'Page G', uv: 3490, pv: 1209},
+      {name: 'Page A', uv: 4000, price: 9000},
+      {name: 'Page B', uv: 3000, price: 7222},
+      {name: 'Page C', uv: 2000, price: 6222},
+      {name: 'Page D', uv: 1223, price: 5400},
+      {name: 'Page E', uv: 1890, price: 3200},
+      {name: 'Page F', uv: 2390, price: 2500},
+      {name: 'Page G', uv: 3490, price: 1209},
 ];
 
-    if (tokensPriceChart.success) {
-      data = tokensPriceChart.data.data.map(item => ({
-        name: moment(item.time).format("hh:mm"),
-        uv: item.time,
-        price: item.high,
-        volumeTo: item.volumeTo
-      }))
-    }
+    // if (tokensPriceChart.success) {
+    //   data = tokensPriceChart.data.data.map(item => ({
+    //     name: moment(item.time).format("hh:mm"),
+    //     uv: item.time,
+    //     price: item.high,
+    //     volumeTo: item.volumeTo
+    //   }))
+    // }
 
+    const types = ['basis' , 'basisClosed' , 'basisOpen' , 'linear' , 'linearClosed' , 'natural' , 'monotoneX' , 'monotoneY' , 'monotone' , 'step' , 'stepBefore' , 'stepAfter' ]
+    const { type } = this.state;
     return (
       <div style={{
               marginTop: 50,
@@ -38,16 +50,19 @@ let data = [
              }}>
       <div>
         <h4 className='title'>Price change:</h4>
-
+        <select onChange={this.change}>
+          {types.map(t => (
+            <option key={t}>
+              {t}
+            </option>
+           ))}
+        </select>
         <Paper>
         <ComposedChart width={900} height={300} data={data} syncId="anyId"
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
-          <XAxis dataKey="name"/>
+              margin={{top: 10, right: 0, left: 0, bottom: 0}}>
+          <XAxis />
           <YAxis/>
-          <Tooltip/>
-          <Line type='monotone' dataKey='price' stroke='#82ca9d' fill='#82ca9d' />
-          {/*<Bar dataKey='volumeTo' barSize={10} fill='#413ea0'/>*/}
-          <Brush />
+          <Line dataKey='price' type={type} legendType='square' />
         </ComposedChart>
         </Paper>
     </div>

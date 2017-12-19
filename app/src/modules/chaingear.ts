@@ -241,10 +241,15 @@ const trades = (state = [], action) => {
   }
 }
 
-const orders = (state = [], action) => {
+const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
   switch (action.type) {
     case "SET_ORDERS":
-      return [...state, ...action.payload]
+      const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY'));
+      const sellOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'SELL'));
+      return {
+        buyOrders,
+        sellOrders
+      };
     
     default:
       return state;
@@ -277,7 +282,7 @@ export const showTokensDetails = (symbol) => (dispatch) => {
     payload: { symbol } 
   })
 
-  streemApi.open("ws://93.125.26.210:32801", () => {
+  streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
     streemApi.subscribeTrades(trade => {
       // console.log(trade)
       if (Array.isArray(trade)) {
@@ -293,12 +298,13 @@ export const showTokensDetails = (symbol) => (dispatch) => {
       }
     }, `"${symbol}_USD"`);
 
-    // streemApi.subscribeOrders(order => {
-    //   dispatch({
-    //     type: 'SET_ORDERS',
-    //     payload: order
-    //   })
-    // }, `"${symbol}_USD"`)
+    streemApi.subscribeOrders(order => {
+      //console.log('>>', JSON.stringify(order))
+      dispatch({
+        type: 'SET_ORDERS',
+        payload: order
+      })
+    }, `"${symbol}_USD"`)
   })  
 }
 
