@@ -8,12 +8,14 @@ To avoid conflicts with other services on the same ports, we run our services on
     cyber-search-api :32700
     cyber-markets-api :32800
 
-Staging runs 4 components:
+Staging runs 4 **components**:
 
-- [cyber-ui](https://github.com/cyberFund/cyber-ui) (cui-browser)
-- [cyber-search](https://github.com/cyberFund/cyber-search) API - up with `docker-compose.yml` at https://github.com/cyberFund/cyber-search/tree/chain_pump/devops/pumps
-- [cyber-markets](https://github.com/cyberFund/cyber-markets) API - ???
-- [chaingear](https://github.com/cyberFund/chaingear) API - ???
+- [cyber-ui](https://github.com/cyberFund/cyber-ui)
+- [cyber-search](https://github.com/cyberFund/cyber-search)
+- [cyber-markets](https://github.com/cyberFund/cyber-markets)
+- [chaingear](https://github.com/cyberFund/chaingear)
+
+Each component is composed from different **containers**. Some containers are shared to save resources.
 
 ### Server setup
 
@@ -24,16 +26,16 @@ This is only needed to be done once.
        $ groups
        anatoli docker wheel cyber
 
-2. Checkout repos for `cyber-ui` and components:
+2. Checkout `cyber-ui` repo with staging setup:
 
        $ git clone https://github.com/cyberFund/cyber-ui
-       $ git clone https://github.com/cyberFund/cyber-markets
 
 #### Update running containers
 
 Update running containers:
 
-       $ ./cyber-ui/devops/staging/up.sh
+       $ cd cyber-ui && git pull
+       $ ./devops/staging/up.sh
 
 This uses `docker-compose` to start containers from DockerHub. It doesn't rebuild them.
 
