@@ -3,7 +3,6 @@ import * as ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import {Root} from "./root";
 import {configureStore} from "./configureStore";
-// import {getLogger} from "./http/Logger";
 
 import "./global.less";
 

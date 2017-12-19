@@ -4,32 +4,46 @@ import withRouter from "react-router/es/withRouter";
 
 import { Link } from 'react-router';
 var cx = require('classnames');
+import Tabs, { Tab } from 'material-ui/Tabs';
 
-import { Tabs, Tab } from '../../../components/HorizontTabs/';
+import { browserHistory } from 'react-router'
 
-const TabsContainer = ({ entities, query, coins }) => (
-  <Tabs>   
-    <Tab
-      isActive={!entities}
-      to={{ pathname:"/search", query: { q: query, coins } }}
-    >All</Tab>
-    <Tab
-      isActive={entities === 'BLOCK'}
-      to={{ pathname:"/search", query: { q: query, coins, entities: "BLOCK" } }}
-    >Blocks</Tab>
-    <Tab
-      isActive={entities === 'TRANSACTION'}
-      to={{ pathname:"/search", query: { q: query, coins, entities: "TRANSACTION" } }}
-    >Transactions</Tab>
-    <Tab
-      isActive={entities === 'ADDRESS'}
-      to={{ pathname:"/search", query: { q: query, coins, entities: "ADDRESS" } }}
-    >Address</Tab>
-  </Tabs>
-);
+const TabsContainer = ({ entities, query, chains }) => {
+  let tabIndex = 0;
+
+  if (entities === 'BLOCK') tabIndex = 1;
+  if (entities === 'TRANSACTION') tabIndex = 2;
+
+  const tabChange = (event, value) => {
+    let newEntities = 'TRANSACTION';
+    let url = `/search?q=${query}`;
+    if (chains) {
+      url += `&chains=${chains}`;
+    }
+    if (value === 1) {
+      url += '&entities=BLOCK';        
+    }
+    if (value === 2) {
+      url += '&entities=TRANSACTION';        
+    }
+    browserHistory.push(url);
+  }
+  return (
+    <Tabs
+      value={tabIndex}
+      indicatorColor="primary"
+      textColor="primary"
+      onChange={tabChange}
+    >
+      <Tab label="All" />
+      <Tab label="Blocks" />
+      <Tab label="Transactions" />
+    </Tabs>
+  );
+}
 
 export default withRouter(connect((state, ownProps) => ({
   query: ownProps.location.query.q,
-  coins: ownProps.location.query.coins,
+  chains: ownProps.location.query.chains,
   entities: ownProps.location.query.entities
 }))(TabsContainer));

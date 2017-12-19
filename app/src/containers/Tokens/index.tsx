@@ -9,27 +9,8 @@ import { Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
 import { connect } from 'react-redux';
 import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './../../modules/chaingear';
 var numeral = require('numeral');
-import Chip from 'material-ui/Chip';
-import Avatar from 'material-ui/Avatar';
 
-const ExchangeRate = ({ btc_usd, eth_usd }) => (
-  <div className='field is-grouped is-grouped-multiline'>
-    <div className='control'>
-    {/*<div className="tags has-addons">
-      <span className="tag">BTC</span>
-      <span className="tag is-primary">{numeral(btc_usd).format('$0,0,0.00')}</span>
-    </div>*/}
-    <Chip avatar={<Avatar>BTC</Avatar>} label={numeral(btc_usd).format('$0,0,0.00')}/>
-    </div>
-    <div className='control'>
-    {/*<div className="tags has-addons">
-      <span className="tag">ETH</span>
-      <span className="tag is-primary">{numeral(eth_usd).format('$0,0,0.00')}</span>
-    </div>*/}
-    <Chip avatar={<Avatar>ETH</Avatar>} label={numeral(eth_usd).format('$0,0,0.00')}/>
-    </div>
-  </div>
-)
+import ExchangeRate from './ExchangeRate';
 
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
@@ -48,7 +29,6 @@ class TokensPages extends React.Component {
   render() {
     const {
       rows,
-      btc_usd, eth_usd
     } = this.props;
 
     const rowsComponents = rows.map((item, index) => {
@@ -81,10 +61,7 @@ class TokensPages extends React.Component {
     })
     return (
       <div>
-        <ExchangeRate 
-            btc_usd={btc_usd} 
-            eth_usd={eth_usd}
-          />
+        <ExchangeRate />
         <Paper>
           
            <Table>
@@ -109,8 +86,6 @@ class TokensPages extends React.Component {
 export default connect(
   state => ({
     rows: calculateRows(state),
-    btc_usd: calculateExchangeRate(state).btc_usd,
-    eth_usd: calculateExchangeRate(state).eth_usd,
   }),
   { showAllTokens, closeConnection }
 )(TokensPages);

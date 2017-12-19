@@ -139,7 +139,7 @@ const updateRate = (data, dispatch, map) => {
 export const showAllTokens = () => (dispatch, getState) => {
   chaingearApi.getAllTokens()
     .then(tokens => new Promise(resolve => {
-        streemApi.open("ws://93.125.26.210:32801", () => {
+        streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
           streemApi.getPairs(pairs => resolve({ pairs, tokens }))
         })  
         // streemApi.open("ws://93.125.26.210:32801", () => {
@@ -303,7 +303,7 @@ export const showTokensDetails = (symbol) => (dispatch) => {
 }
 
 
-export const chaingearEpic = combineEpics(
+export const epic = combineEpics(
   loadDataEpic(
     'TOKEN_DETAILS_CHART',
     ({ symbol }) => marketApi.getHistoHour(symbol, 'USD')

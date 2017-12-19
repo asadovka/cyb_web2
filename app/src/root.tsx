@@ -2,7 +2,6 @@ import * as React from "react";
 import {Router, Route, browserHistory} from "react-router";
 
 import "./bulma-root.sass"
-// import {getLogger} from "./http/Logger";
 
 
 import IndexPage from "./containers/IndexPage/";
@@ -32,7 +31,7 @@ import CrowdsalesDetails from './containers/CrowdsalesDetails';
 // import Analitics from './containers/Analitics/';
 import Cybernode from './containers/Cybernode/';
 // import Blockchains from './containers/Blockchains/';
-import { App } from './containers/Test/';
+import App from './containers/app/';
 
 
 var ReactGA = require('react-ga');
@@ -42,26 +41,6 @@ function logPageView() {
   ReactGA.set({ page: window.location.pathname + window.location.search });
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
-
-// function onSearchEnter(state, replace) {
-//   if ((state.location.query.q || "").length <= 2) {
-//     getLogger("Search onEnter").debug("Query string length less than three charters.");
-//     replace("/");
-//   }
-// }
-
- // <Route path={"/"} component={IndexPage}/>
- //      <Route path={"/search"} component={SearchResultPage}/>
- //      <Route path={"/tokens"} component={Tokens}/>
- //      <Route path={"/tokens/:symbol"} component={TokensDetails}/>
- //      <Route path={"/funds"} component={Funds}/>
- //      <Route path={"/crowdsales"} component={Crowdsales}/>
- //      <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
- //      <Route path={"/blockchains"} component={Blockchains}/>
-
- //      <Route path={"/analitics"} component={Analitics}/>
- //      <Route path={"/cybernode"} component={Cybernode}/>
-
 
       
 

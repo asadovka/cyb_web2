@@ -1,12 +1,4 @@
-// import {AxiosInstance, AxiosRequestConfig} from "axios";
 import axios from "axios";
-
-// export interface HttpService {
-//   GET<T>(path: string, config?: AxiosRequestConfig): Promise<T>;
-//   POST<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
-//   PUT<T>(path: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
-//   DELETE<T>(path: string, config?: AxiosRequestConfig): Promise<T>;
-// }
 
 export class DefaultHttpService {
   constructor(client = axios.create()) {

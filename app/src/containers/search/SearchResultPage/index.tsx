@@ -9,18 +9,13 @@ import { Link } from 'react-router';
 
 import Content from './Content';
 import LeftMenu from './LeftMenu';
-// import Tabs from './Tabs';
-import ResultCount from './ResultCount';
-import SearchForm from '../../app/SearchForm';
+import Tabs from './Tabs';
 import App from '../../app/';
 
 import Paper from 'material-ui/Paper';
-import Tabs, { Tab } from 'material-ui/Tabs';
-import Typography from 'material-ui/Typography';
 
-import { browserHistory } from 'react-router'
 
-class SearchResultPageComponent extends React.Component<any, any> {
+class SearchResultPageComponent extends React.Component {
 
   componentDidMount() {
     const { query, page, chains, entities } = this.props;
@@ -45,31 +40,10 @@ class SearchResultPageComponent extends React.Component<any, any> {
       chains,
     } = this.props;
 
-    let tabIndex = 0;
 
-    if (entities === 'BLOCK') tabIndex = 1;
-    if (entities === 'TRANSACTION') tabIndex = 2;
-
-    const tabChange = (event, value) => {
-      let newEntities = 'TRANSACTION';
-      let url = `/search?q=${query}`;
-      if (chains) {
-        url += `&chains=${chains}`;
-      }
-      if (value === 1) {
-        url += '&entities=BLOCK';        
-      }
-      if (value === 2) {
-        url += '&entities=TRANSACTION';        
-      }
-      browserHistory.push(url);
-    }
 
     return (
       <div>
-        {/*<SearchForm />*/}
-        {/*<Tabs />*/}
-        {/*<ResultCount />*/}
         <div className='columns'>
           <div className='column is-narrow'>
             <Paper>
@@ -78,18 +52,9 @@ class SearchResultPageComponent extends React.Component<any, any> {
           </div>
           <div className='column'>
             <Paper>
-            <Tabs
-          value={tabIndex}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={tabChange}
-        >
-          <Tab label="All" />
-          <Tab label="Blocks" />
-          <Tab label="Transactions" />
-        </Tabs>
-             <Content />
-             </Paper>
+              <Tabs />
+              <Content />
+            </Paper>
           </div>
         </div>
       </div>

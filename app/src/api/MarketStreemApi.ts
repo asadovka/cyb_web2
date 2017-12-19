@@ -112,6 +112,17 @@ const subscribeOrders = (cb, pairs) => {
   socket.send(msg);
 }
 
+const test = (url) => {
+  return new Promise(resolve => {
+    open(url, () => {
+      getPairs(pairs => {
+        close();
+        resolve();
+      })
+    })  
+  })
+  
+}
 
 export default {
   open,
@@ -119,5 +130,6 @@ export default {
   getPairs,
   subscribeTickers,
   subscribeTrades,
-  subscribeOrders
+  subscribeOrders,
+  test
 }

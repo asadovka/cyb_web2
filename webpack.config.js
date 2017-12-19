@@ -42,7 +42,7 @@ module.exports = function (options = {}) {
       publicPath: "/"
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js"]
+      extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
     bail: false,
     devtool: SOURCE_MAP,
@@ -52,7 +52,7 @@ module.exports = function (options = {}) {
       module: {
       rules: [{
         test: /\.tsx?$/,
-        // exclude: /node_modules/,
+        exclude: /node_modules/,
         // loader: "ts-loader"
         loader: 'babel-loader',
         options: {
@@ -60,7 +60,7 @@ module.exports = function (options = {}) {
             plugins: ['transform-decorators-legacy', 'transform-class-properties'],
             cacheDirectory: true,
         },
-      }, {
+      },{
         test: /\.less$/,
         use: [{
           loader: "style-loader"

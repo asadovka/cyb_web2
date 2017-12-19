@@ -1,13 +1,6 @@
 
 var config = require('./config.js')
 
-// export interface MarketApi {
-//   test(): Promise<any>;
-//   getTokensStatistics(): Promise<any>;
-//   getHistoMinute(fsym: string, tsym: string): Promise<any>;
-//   getHistoHour(fsym: string, tsym: string): Promise<any>;
-// }
-
 export class DefaultMarketApi {
   constructor(
     http

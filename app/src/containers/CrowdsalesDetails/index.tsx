@@ -26,7 +26,6 @@ class CrowdsalesDetails extends React.Component {
       <div>
          {crowdsalesDetails.system ? (
            <div>
-             <Paper>
              <Card>
              <CardContent>
              <div>
@@ -46,7 +45,6 @@ class CrowdsalesDetails extends React.Component {
              </div>
              </CardContent>
              </Card>
-             </Paper>
              <div>
                <h2 style={{ marginTop: '1.5rem' }} className='title'>Crowdsale</h2>
                <Card>

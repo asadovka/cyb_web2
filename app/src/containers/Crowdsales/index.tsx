@@ -10,7 +10,6 @@ const {
 
 import { getSystemLogoUrl } from '../../modules/chaingear';
 
-import { CardList, Card } from '../../components/Cards/';
 
 import { connect } from 'react-redux';
 

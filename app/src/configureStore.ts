@@ -2,11 +2,26 @@ import {Store} from "react-redux";
 import {createEpicMiddleware} from "redux-observable";
 import {createLogger} from "redux-logger";
 import {createStore, applyMiddleware, GenericStoreEnhancer} from "redux";
-import {combinedReducers} from "./reducers/reducers";
-import {EnvironmentConstants} from "./config/EnvironmentConstants";
-import {rootEpic} from "./epics/rootEpic";
-// import {CfState} from "./model/CfState";
 import thunk from 'redux-thunk';
+import {combineReducers} from "redux";
+import {combineEpics} from "redux-observable";
+
+import { reducer as formReducer } from "redux-form";
+import { reducer as cybernode } from './modules/cybernode';
+import { reducer as chaingear, epic as chaingearEpic } from './modules/chaingear';
+import { reducer as searchReducer, epic as searchEpic  } from './modules/search';
+
+export const combinedReducers = combineReducers({
+  cybernode,
+  chaingear,
+  search: searchReducer,
+  form: formReducer
+});
+
+const rootEpic = combineEpics(
+  chaingearEpic,
+  searchEpic,
+);
 
 export function configureStore() {
   return createStore(
@@ -23,7 +38,7 @@ function getMiddlewares() {
   /**
    * Split middlewares which we using in development and in production.
    */
-  if (process.env.NODE_ENV === EnvironmentConstants.development) {
+  if (process.env.NODE_ENV === "production") {
     return applyMiddleware(createEpicMiddleware(rootEpic), logger, thunk);
   } else {
     return applyMiddleware(createEpicMiddleware(rootEpic), thunk);

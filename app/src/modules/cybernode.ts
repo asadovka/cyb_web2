@@ -1,6 +1,7 @@
 var config = require('./config.js')
 
 import {combineReducers} from "redux";
+import streemApi from '../api/MarketStreemApi';
 
 const Avalible = (actionType) => (state = false, action) => {
   switch (action.type) {
@@ -16,7 +17,8 @@ const Avalible = (actionType) => (state = false, action) => {
 export const reducer = combineReducers({
   chaingearApiAvailable: Avalible("CHAINGEAR_API"),
   searchApiAvailable: Avalible("SEARCH_API"),
-  marketApiAvailable: Avalible("MARKET_API")
+  marketApiAvailable: Avalible("MARKET_API"),
+  marketStreamApiAvailable: Avalible('CYBER_MARKETS_STREAM_API')
 }) 
 
 import {Injector} from "../injector";
@@ -37,4 +39,5 @@ export const checkApi = () => (dispatch, getState) => {
   checkApiCall(() => searchApi.test(), 'SEARCH_API', dispatch);
   checkApiCall(() => marketApi.test(), 'MARKET_API', dispatch);
   checkApiCall(() => chaingearApi.test(), 'CHAINGEAR_API', dispatch);
+  checkApiCall(() => streemApi.test(config.CYBER_MARKETS_STREAM_API), 'CYBER_MARKETS_STREAM_API', dispatch);
 };

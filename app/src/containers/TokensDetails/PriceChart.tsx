@@ -32,6 +32,10 @@ let data = [
     }
 
     return (
+      <div style={{
+              marginTop: 50,
+              marginBottom: 50
+             }}>
       <div>
         <h4 className='title'>Price change:</h4>
 
@@ -46,6 +50,7 @@ let data = [
           <Brush />
         </ComposedChart>
         </Paper>
+    </div>
     </div>
     );
   }
