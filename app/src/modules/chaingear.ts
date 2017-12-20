@@ -308,13 +308,11 @@ const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
       }
 
       buyOrdersResult =  _.orderBy(
-        buyOrdersResult
-          .filter(item => item.amount), ['spotPrice'], ['asc']
+        buyOrdersResult, ['spotPrice'], ['asc']
       ).slice(-50)
 
     sellOrdersResult = _.orderBy(
-      sellOrdersResult
-      .filter(item => item.amount), ['spotPrice'], ['asc']
+      sellOrdersResult, ['spotPrice'], ['asc']
     ).slice(-50)
 
       return {

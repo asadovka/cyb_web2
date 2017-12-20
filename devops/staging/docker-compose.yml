@@ -8,24 +8,24 @@ services:
     ports:
       - 32500:80
     environment:
-       CYBER_CHAINGEAR_API: http://127.0.0.1:32600
-       CYBER_SEARCH_API: http://127.0.0.1:32700
-       CYBER_MARKETS_API: http://127.0.0.1:32800
-       CYBER_MARKETS_STREAM_API: http://127.0.0.1:32801
+       CYBER_CHAINGEAR_API: http://93.125.26.210:32600
+       CYBER_SEARCH_API: http://api.search.cyber.fund
+       CYBER_MARKETS_API: http://93.125.26.210:32800
+       CYBER_MARKETS_STREAM_API: http://93.125.26.210:32801
 
-  chaingear-api:
-    image: cybernode/chaingear-api:latest
-    ports:
-      - 32600:8090
-    environment:
-      ADV_HOST: chaingear-api
+  # chaingear-api:
+  #   image: cybernode/chaingear-api:latest
+  #   ports:
+  #     - 32600:8090
+  #   environment:
+  #     ADV_HOST: chaingear-api
 
-  search-api:
-    image: cybernode/cs-search-api:latest
-    ports:
-      - 32700:8085
+  # search-api:
+  #   image: cybernode/cs-search-api:latest
+  #   ports:
+  #     - 32700:8085
 
-  markets-api:
-    image: cybernode/cm-rest-api:latest
-    ports:
-      - 32800:8085
+  # markets-api:
+  #   image: cybernode/cm-rest-api:latest
+  #   ports:
+  #     - 32800:8085
