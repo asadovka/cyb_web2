@@ -11,6 +11,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
       <td>{order.amount}</td>
       <td>{order.spotPrice * order.amount}</td>
       <td>{order.amount}</td>
+      <td>{order.count}</td>
     </tr>
   ));
 
@@ -20,6 +21,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
       <td>{order.amount}</td>
       <td>{order.spotPrice * order.amount}</td>
       <td>{order.amount}</td>
+      <td>{order.count}</td>
     </tr>
   ));
 
@@ -35,6 +37,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
                <th>BTC?</th>
                <th>USD</th>
                <th>Sum(USD)</th>
+               <th>count</th>
              </tr>
            </thead>
            <tbody>
@@ -53,6 +56,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
                <th>BTC?</th>
                <th>USD</th>
                <th>Sum(USD)</th>
+               <th>count</th>
              </tr>
            </thead>
            <tbody>

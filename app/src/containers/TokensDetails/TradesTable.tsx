@@ -8,9 +8,8 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from '../../componen
 
 
 const TradesTable = ({ trades }) => {
-  console.log(trades)
   const rows = trades.map(item => (
-    <TableRow>
+    <TableRow key={item.tradeId}>
       <TableCell>
         {item.exchange}
       </TableCell>

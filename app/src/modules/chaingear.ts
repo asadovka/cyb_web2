@@ -286,15 +286,19 @@ const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
   switch (action.type) {
     case "SET_ORDERS":
 
-      const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY'));
+      const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY' ));
       const sellOrders = state.sellOrders.concat(action.payload.filter(o => o.type == 'SELL'));
+
+
+      console.log(' >> ', buyOrders)
 
       const _buyOrders = groupBy(buyOrders, item => item.spotPrice);
       let buyOrdersResult = [];
       for(var key in _buyOrders) {
         buyOrdersResult.push({
           spotPrice: +key,
-          amount: _buyOrders[key].reduce((a, b) => a + b.amount, 0)
+          amount: _buyOrders[key].reduce((a, b) => a + b.amount, 0),
+          count: _buyOrders[key].length
         })
       }
 
@@ -303,17 +307,18 @@ const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
       for(var key in _sellOrders) {
         sellOrdersResult.push({
           spotPrice: +key,
-          amount: _sellOrders[key].reduce((a, b) => a + b.amount, 0)
+          amount: _sellOrders[key].reduce((a, b) => a + b.amount, 0),
+          count: _sellOrders[key].length
         })
       }
 
       buyOrdersResult =  _.orderBy(
         buyOrdersResult, ['spotPrice'], ['asc']
-      ).slice(-50)
+      );//.slice(-50)
 
     sellOrdersResult = _.orderBy(
       sellOrdersResult, ['spotPrice'], ['asc']
-    ).slice(-50)
+    );//.slice(-50)
 
       return {
         buyOrders: buyOrdersResult,
@@ -367,8 +372,13 @@ export const showTokensDetails = (symbol) => (dispatch) => {
       }
     }, `"${symbol}_USD"`);
 
+    let count = 0;
     streemApi.subscribeOrders(order => {
-      console.log('>>', JSON.stringify(order))
+      if (count === 0) {
+        count++;
+        return;
+      }
+
       dispatch({
         type: 'SET_ORDERS',
         payload: order
