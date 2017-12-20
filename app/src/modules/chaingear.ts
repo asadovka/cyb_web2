@@ -266,15 +266,31 @@ function groupBy(list, keyGetter) {
     return map;
 }
 
+import _ from 'lodash';
+
+export const calculateBuyOrders = (state) => 
+  state.chaingear.orders.buyOrders
+  // _.orderBy(
+  //   state.chaingear.orders.buyOrders
+  //     .filter(item => item.amount), ['spotPrice'], ['asc']
+  // ).slice(-20)
+
+export const calculateSellOrders = (state) => state.chaingear.orders.sellOrders
+  // _.orderBy(
+  //   state.chaingear.orders.sellOrders
+  //   .filter(item => item.amount), ['spotPrice'], ['asc']
+  // ).slice(-20)
+
+
 const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
   switch (action.type) {
     case "SET_ORDERS":
 
       const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY'));
-      const sellOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'SELL'));
+      const sellOrders = state.sellOrders.concat(action.payload.filter(o => o.type == 'SELL'));
 
       const _buyOrders = groupBy(buyOrders, item => item.spotPrice);
-      const buyOrdersResult = [];
+      let buyOrdersResult = [];
       for(var key in _buyOrders) {
         buyOrdersResult.push({
           spotPrice: +key,
@@ -283,13 +299,23 @@ const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
       }
 
       const _sellOrders = groupBy(sellOrders, item => item.spotPrice);
-      const sellOrdersResult = [];
+      let sellOrdersResult = [];
       for(var key in _sellOrders) {
         sellOrdersResult.push({
           spotPrice: +key,
           amount: _sellOrders[key].reduce((a, b) => a + b.amount, 0)
         })
       }
+
+      buyOrdersResult =  _.orderBy(
+        buyOrdersResult
+          .filter(item => item.amount), ['spotPrice'], ['asc']
+      ).slice(-50)
+
+    sellOrdersResult = _.orderBy(
+      sellOrdersResult
+      .filter(item => item.amount), ['spotPrice'], ['asc']
+    ).slice(-50)
 
       return {
         buyOrders: buyOrdersResult,

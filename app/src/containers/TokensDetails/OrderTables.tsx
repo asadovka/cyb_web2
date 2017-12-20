@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import Paper from 'material-ui/Paper';
-import _ from 'lodash';
 var numeral = require('numeral');
 
 const OrderTables = ({ buyOrders, sellOrders }) => {
@@ -17,7 +16,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
 
   const sellOrdersRows = sellOrders.map(order => (
     <tr key={order.spotPrice}>
-      <td>{order.spotPrice}</td>
+      <td>{numeral(order.spotPrice).format('$0,0,0.0000')}</td>
       <td>{order.amount}</td>
       <td>{order.spotPrice * order.amount}</td>
       <td>{order.amount}</td>
@@ -66,16 +65,18 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
   );
 }
 
-const sorByPrice = (rows) => [].concat(rows).sort((a, b) => b.spotPrice - a.spotPrice);
-
+import {
+  calculateBuyOrders,
+  calculateSellOrders
+} from '../../modules/chaingear';
 
 import { connect } from 'react-redux';
 export default connect(
   state => {
     // console.log('state.chaingear.orders.buyOrders', state.chaingear.orders.buyOrders)
     return {
-      buyOrders: _.orderBy(state.chaingear.orders.buyOrders.filter(item => item.amount), ['spotPrice'], ['asc']).slice(-20),
-      sellOrders: _.orderBy(state.chaingear.orders.sellOrders.filter(item => item.amount), ['spotPrice'], ['asc']).slice(-20)
+      buyOrders: calculateBuyOrders(state),
+      sellOrders: calculateSellOrders(state)
     }
   }
 )(OrderTables);
