@@ -368,7 +368,7 @@ export const showTokensDetails = (symbol) => (dispatch) => {
     }, `"${symbol}_USD"`);
 
     streemApi.subscribeOrders(order => {
-      //console.log('>>', JSON.stringify(order))
+      console.log('>>', JSON.stringify(order))
       dispatch({
         type: 'SET_ORDERS',
         payload: order

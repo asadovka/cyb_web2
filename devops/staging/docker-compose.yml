@@ -13,12 +13,12 @@ services:
        CYBER_MARKETS_API: http://93.125.26.210:32800
        CYBER_MARKETS_STREAM_API: ws://93.125.26.210:32801
 
-  # chaingear-api:
-  #   image: cybernode/chaingear-api:latest
-  #   ports:
-  #     - 32600:8090
-  #   environment:
-  #     ADV_HOST: chaingear-api
+  chaingear-api:
+    image: cybernode/chaingear-api:latest
+    ports:
+      - 32600:8090
+    environment:
+      ADV_HOST: chaingear-api
 
   # search-api:
   #   image: cybernode/cs-search-api:latest
