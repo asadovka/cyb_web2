@@ -314,11 +314,11 @@ const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
 
       buyOrdersResult =  _.orderBy(
         buyOrdersResult, ['spotPrice'], ['asc']
-      );//.slice(-50)
+      ).slice(-50)
 
     sellOrdersResult = _.orderBy(
       sellOrdersResult, ['spotPrice'], ['asc']
-    );//.slice(-50)
+    ).slice(-50)
 
       return {
         buyOrders: buyOrdersResult,
