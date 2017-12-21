@@ -66,7 +66,7 @@ const subscribeOrders = (cb, pairs) => {
       cb(data.value)
     }
   });
-  const msg = `{"subscribe":"orders","pairs":[${pairs}] }`;
+  const msg = `{"subscribe":"orders","pairs":[${pairs}], "exchanges": "HitBtc" }`;
   socket.send(msg);
 }
 

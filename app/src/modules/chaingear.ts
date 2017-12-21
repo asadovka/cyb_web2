@@ -285,44 +285,59 @@ export const calculateSellOrders = (state) => state.chaingear.orders.sellOrders
 const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
   switch (action.type) {
     case "SET_ORDERS":
+      let buyOrders = action.payload
+        .filter(o => o.type == 'BUY' )
+        .map(item => ({ ...item, count: 1}));
 
-      const buyOrders = state.buyOrders.concat(action.payload.filter(o => o.type == 'BUY' ));
-      const sellOrders = state.sellOrders.concat(action.payload.filter(o => o.type == 'SELL'));
+      buyOrders = state.buyOrders.concat(buyOrders);
 
-
-      console.log(' >> ', buyOrders)
-
-      const _buyOrders = groupBy(buyOrders, item => item.spotPrice);
-      let buyOrdersResult = [];
-      for(var key in _buyOrders) {
-        buyOrdersResult.push({
-          spotPrice: +key,
-          amount: _buyOrders[key].reduce((a, b) => a + b.amount, 0),
-          count: _buyOrders[key].length
+      buyOrders = _.chain(buyOrders)
+        //.groupBy(x => +(x.spotPrice / 5) )
+        .groupBy(x => x.spotPrice  )
+        .map((items, key) => {
+          const amount = items.reduce((a, b) => a + b.amount, 0);
+          const count = items.reduce((a, b) => a + b.count, 0);
+          const spotPrice = +key;
+          return {
+            spotPrice: spotPrice, 
+            amount: amount,
+            sum: spotPrice * amount,
+            count: count
+          }
         })
-      }
+        .orderBy(x => x.spotPrice, ['desc'])
+        .value()
 
-      const _sellOrders = groupBy(sellOrders, item => item.spotPrice);
-      let sellOrdersResult = [];
-      for(var key in _sellOrders) {
-        sellOrdersResult.push({
-          spotPrice: +key,
-          amount: _sellOrders[key].reduce((a, b) => a + b.amount, 0),
-          count: _sellOrders[key].length
+
+      buyOrders = buyOrders.slice(-50);
+
+
+      let sellOrders = action.payload.filter(o => o.type == 'SELL' ).map(item => ({ ...item, count: 1}));//.filter(item => item.spotPrice > 16700 && item.spotPrice < 17000);//.map(item => item.spotPrice + "-"+ item.amount);
+
+      sellOrders = state.sellOrders.concat(sellOrders);
+
+      sellOrders = _.chain(sellOrders)
+        .groupBy(x => x.spotPrice)
+        .map((value, key) => {
+          const amount = value.reduce((a, b) => a + b.amount, 0);
+          const spotPrice = +key;
+          return {
+            spotPrice: spotPrice, 
+            amount: amount, 
+            items: value,
+            sum: spotPrice * amount,
+            count: value.reduce((a, b) => a + b.count, 0)
+          }
         })
-      }
+        .orderBy(x => x.spotPrice, ['asc'])
+        .value()
 
-      buyOrdersResult =  _.orderBy(
-        buyOrdersResult, ['spotPrice'], ['asc']
-      ).slice(-50)
 
-    sellOrdersResult = _.orderBy(
-      sellOrdersResult, ['spotPrice'], ['asc']
-    ).slice(-50)
+      sellOrders = sellOrders.slice(-50);
 
       return {
-        buyOrders: buyOrdersResult,
-        sellOrders: sellOrdersResult
+        buyOrders: buyOrders,
+        sellOrders: sellOrders
       };
     
     default:
@@ -374,6 +389,7 @@ export const showTokensDetails = (symbol) => (dispatch) => {
 
     let count = 0;
     streemApi.subscribeOrders(order => {
+      console.log(order)
       if (count === 0) {
         count++;
         return;

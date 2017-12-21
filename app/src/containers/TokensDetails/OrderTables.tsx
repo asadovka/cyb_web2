@@ -5,15 +5,16 @@ var numeral = require('numeral');
 
 const OrderTables = ({ buyOrders, sellOrders }) => {
   // console.log(buyOrders)
-  const buyOrdersRows = buyOrders.map(order => (
-    <tr key={order.spotPrice}>
+  const buyOrdersRows = buyOrders.map((order, indx) => (
+    <tr key={indx}>
       <td>{numeral(order.spotPrice).format('$0,0,0.0000')}</td>
       <td>{order.amount}</td>
-      <td>{order.spotPrice * order.amount}</td>
+      <td>{order.sum}</td>
       <td>{order.amount}</td>
       <td>{order.count}</td>
     </tr>
   ));
+  // const buyOrdersRows = [];
 
   const sellOrdersRows = sellOrders.map(order => (
     <tr key={order.spotPrice}>
@@ -79,8 +80,8 @@ export default connect(
   state => {
     // console.log('state.chaingear.orders.buyOrders', state.chaingear.orders.buyOrders)
     return {
-      buyOrders: calculateBuyOrders(state),
-      sellOrders: calculateSellOrders(state)
+      buyOrders: calculateBuyOrders(state), //.slice(-50),
+      sellOrders: calculateSellOrders(state) //.slice(-50)
     }
   }
 )(OrderTables);

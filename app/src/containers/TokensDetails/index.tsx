@@ -16,6 +16,7 @@ import TradesTable from './TradesTable';
 import PriceChart from './PriceChart';
 import OrderTables from './OrderTables';
 import TokenDetails from './TokenDetails';
+import OrderBookChart from './OrderBookChart';
 
 import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
@@ -40,6 +41,8 @@ class TokensDetails extends React.Component {
          
         <PriceChart />
         
+        <OrderBookChart />
+
         <TradesTable />
 
         <OrderTables />
