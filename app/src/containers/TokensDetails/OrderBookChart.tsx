@@ -43,16 +43,20 @@ const OrderBookChart = React.createClass({
       sellOrders
     } = this.props;
 
-    let data = buyOrders.map(item => ({
-      buy: item.sum,
-      spotPrice: item.spotPrice,
-    }));
+    let data = [];
 
-    data = data.concat(sellOrders.map(item => ({
-      sell: item.sum,
-      spotPrice: item.spotPrice,
-    })))
+    // let data = buyOrders.map(item => ({
+    //   buy: item.sum,
+    //   spotPrice: item.spotPrice,
+    // }));
 
+    // data = data.concat(sellOrders.map(item => ({
+    //   sell: item.sum,
+    //   spotPrice: item.spotPrice,
+    // })))
+
+    data  = [...data, ...buyOrders];
+    data  = [...data, ...sellOrders];
 
 
     const types = ['basis' , 'basisClosed' , 'basisOpen' , 'linear' , 'linearClosed' , 'natural' , 'monotoneX' , 'monotoneY' , 'monotone' , 'step' , 'stepBefore' , 'stepAfter' ]
@@ -83,13 +87,15 @@ const OrderBookChart = React.createClass({
 import { connect } from 'react-redux'
 import {
   calculateBuyOrders,
-  calculateSellOrders
+  calculateSellOrders,
+  calculateBuyOrdersTotal,
+  calculateSellOrdersTotal
 } from '../../modules/chaingear';
 
 export default connect(
   state => ({
-    buyOrders: calculateBuyOrders(state),
-    sellOrders: calculateSellOrders(state)
+    buyOrders: calculateBuyOrdersTotal(state),
+    sellOrders: calculateSellOrdersTotal(state)
   })
 )(OrderBookChart);
 

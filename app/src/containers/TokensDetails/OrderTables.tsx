@@ -8,10 +8,10 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
   const buyOrdersRows = buyOrders.map((order, indx) => (
     <tr key={indx}>
       <td>{numeral(order.spotPrice).format('$0,0,0.0000')}</td>
-      <td>{order.amount}</td>
-      <td>{order.sum}</td>
-      <td>{order.amount}</td>
+      <td>{numeral(order.amount).format('0,0,0.0000')}</td>
+      <td>{numeral(order.sum).format('0,0,0.0000')}</td>
       <td>{order.count}</td>
+      <td>{numeral(order.buy).format('0,0,0.0000')}</td>
     </tr>
   ));
   // const buyOrdersRows = [];
@@ -19,10 +19,10 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
   const sellOrdersRows = sellOrders.map(order => (
     <tr key={order.spotPrice}>
       <td>{numeral(order.spotPrice).format('$0,0,0.0000')}</td>
-      <td>{order.amount}</td>
-      <td>{order.spotPrice * order.amount}</td>
-      <td>{order.amount}</td>
+      <td>{numeral(order.amount).format('0,0,0.0000')}</td>
+      <td>{numeral(order.sum).format('0,0,0.0000')}</td>
       <td>{order.count}</td>
+      <td>{numeral(order.sell).format('0,0,0.0000')}</td>
     </tr>
   ));
 
@@ -36,9 +36,9 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
              <tr>
                <th>Price</th>
                <th>BTC?</th>
-               <th>USD</th>
                <th>Sum(USD)</th>
                <th>count</th>
+               <th>total</th>
              </tr>
            </thead>
            <tbody>
@@ -55,9 +55,9 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
              <tr>
                <th>Price</th>
                <th>BTC?</th>
-               <th>USD</th>
                <th>Sum(USD)</th>
                <th>count</th>
+               <th>total</th>
              </tr>
            </thead>
            <tbody>
@@ -72,7 +72,9 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
 
 import {
   calculateBuyOrders,
-  calculateSellOrders
+  calculateSellOrders,
+  calculateBuyOrdersTotal,
+  calculateSellOrdersTotal
 } from '../../modules/chaingear';
 
 import { connect } from 'react-redux';
@@ -80,8 +82,8 @@ export default connect(
   state => {
     // console.log('state.chaingear.orders.buyOrders', state.chaingear.orders.buyOrders)
     return {
-      buyOrders: calculateBuyOrders(state), //.slice(-50),
-      sellOrders: calculateSellOrders(state) //.slice(-50)
+      buyOrders: calculateBuyOrdersTotal(state),
+      sellOrders: calculateSellOrdersTotal(state)
     }
   }
 )(OrderTables);
