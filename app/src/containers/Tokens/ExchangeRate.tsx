@@ -3,7 +3,7 @@ var numeral = require('numeral');
 import Chip from 'material-ui/Chip';
 import Avatar from 'material-ui/Avatar';
 import { connect } from 'react-redux';
-import { calculateExchangeRate } from './../../modules/chaingear';
+import { calculateExchangeRate } from './module';
 
 const ExchangeRate = ({ btc_usd, eth_usd }) => (
   <div className='field is-grouped is-grouped-multiline'>

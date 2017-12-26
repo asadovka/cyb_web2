@@ -23,7 +23,6 @@ const labelFormatter = (a, b) => {
 }
 
 function formatAxis(tickItem) {
-  console.log('>>> ', tickItem);
   return moment(tickItem).format('DD MMM')
 }
 

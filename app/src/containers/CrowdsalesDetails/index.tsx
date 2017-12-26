@@ -10,7 +10,8 @@ const {
   chaingearApi
 } = Injector.of();
 
-import { showCrowdsalesDetails, getSystemLogoUrl } from '../../modules/chaingear';
+import { showCrowdsalesDetails } from '../../modules/chaingear';
+import { getSystemLogoUrl } from '../Tokens/module'
 import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 import Card, { CardActions, CardContent } from 'material-ui/Card';

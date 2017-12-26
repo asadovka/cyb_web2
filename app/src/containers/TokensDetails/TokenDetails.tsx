@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
-import { getSystemLogoUrl } from '../../modules/chaingear';
+import { getSystemLogoUrl } from '../Tokens/module';
 import { CircularProgress } from 'material-ui/Progress';
 
 import {Injector} from "../../injector";
@@ -37,6 +37,6 @@ const TokenDetails = ({ tokensDetails }) => {
 
 export default connect(
   (state, ownProps) => ({
-    tokensDetails: state.chaingear.tokensDetails
+    tokensDetails: state.tokensDetails.tokensDetails
   })
 )(TokenDetails);

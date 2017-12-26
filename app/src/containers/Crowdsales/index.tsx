@@ -8,7 +8,7 @@ const {
 } = Injector.of();
 
 
-import { getSystemLogoUrl } from '../../modules/chaingear';
+import { getSystemLogoUrl } from '../Tokens/module';
 
 
 import { connect } from 'react-redux';

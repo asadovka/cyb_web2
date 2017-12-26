@@ -38,7 +38,7 @@ const getPairs = (cb) => {
   socket.send('{"get":"pairs"}');
 }
 
-const subscribeTickers = (cb, pairs) => {
+const subscribeTickers = (cb, pairs, window_durations = 60 * 1000) => {
   e.listen(data => {
     if (data.type === 'tickers') {
       cb(data.value)
@@ -49,13 +49,13 @@ const subscribeTickers = (cb, pairs) => {
   socket.send(msg);
 }
 
-const subscribeTrades = (cb, pairs) => {
+const subscribeTrades = (cb, pairs, window_durations = 60 * 1000) => {
   e.listen(data => {
     if (data.type === 'trades') {
       cb(data.value)
     }
   });
-  const msg = `{"subscribe":"trades","pairs":[${pairs}], "window_durations": ["${60 * 1000}"] }`;
+  const msg = `{"subscribe":"trades","pairs":[${pairs}], "window_durations": ["${window_durations}"] }`;
 
   socket.send(msg);
 }

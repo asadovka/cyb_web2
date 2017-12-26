@@ -74,9 +74,11 @@ const OrderBookChart = React.createClass({
               margin={{top: 10, right: 0, left: 0, bottom: 0}}>
           <XAxis  dataKey="spotPrice"/>
           <YAxis   />
-          <Line dataKey="sell" type='stepBefore' stroke="#82ca9d" />
-          <Line dataKey="buy" type='stepBefore' stroke="#8884d8" />
+          <Line dataKey="sell" type='stepBefore' dot={false} stroke="#82ca9d" />
+          <Line dataKey="buy" type='stepBefore' dot={false} stroke="#8884d8" />
         </ComposedChart>
+        <button>+</button>
+        <button>-</button>
         </Paper>
     </div>
     </div>
@@ -90,12 +92,12 @@ import {
   calculateSellOrders,
   calculateBuyOrdersTotal,
   calculateSellOrdersTotal
-} from '../../modules/chaingear';
+} from './module';
 
 export default connect(
   state => ({
-    buyOrders: calculateBuyOrdersTotal(state),
-    sellOrders: calculateSellOrdersTotal(state)
+    buyOrders: calculateBuyOrdersTotal(state, 10),
+    sellOrders: calculateSellOrdersTotal(state, 10)
   })
 )(OrderBookChart);
 

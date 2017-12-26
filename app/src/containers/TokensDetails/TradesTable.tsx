@@ -59,6 +59,6 @@ import { connect } from 'react-redux';
 
 export default connect(
   state => ({
-    trades: state.chaingear.trades
+    trades: state.tokensDetails.trades
   })
 )(TradesTable);

@@ -75,15 +75,15 @@ import {
   calculateSellOrders,
   calculateBuyOrdersTotal,
   calculateSellOrdersTotal
-} from '../../modules/chaingear';
+} from './module';
 
 import { connect } from 'react-redux';
 export default connect(
   state => {
     // console.log('state.chaingear.orders.buyOrders', state.chaingear.orders.buyOrders)
     return {
-      buyOrders: calculateBuyOrdersTotal(state),
-      sellOrders: calculateSellOrdersTotal(state)
+      buyOrders: calculateBuyOrdersTotal(state, 100),
+      sellOrders: calculateSellOrdersTotal(state, 100)
     }
   }
 )(OrderTables);

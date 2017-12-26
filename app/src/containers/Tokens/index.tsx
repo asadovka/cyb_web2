@@ -7,7 +7,7 @@ var config = require('./config.js')
 import { Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
 
 import { connect } from 'react-redux';
-import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './../../modules/chaingear';
+import { showAllTokens, closeConnection, calculateRows, calculateExchangeRate } from './module';
 var numeral = require('numeral');
 
 import ExchangeRate from './ExchangeRate';
@@ -59,11 +59,11 @@ class TokensPages extends React.Component {
         </TableRow>
       );
     })
+
     return (
       <div>
         <ExchangeRate />
-        <Paper>
-          
+        <Paper>          
            <Table>
              <TableHead>
                <TableRow>
@@ -82,6 +82,8 @@ class TokensPages extends React.Component {
     );    
   }
 }
+
+import _ from 'lodash';
 
 export default connect(
   state => ({
