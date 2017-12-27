@@ -43,7 +43,7 @@ class TokensTable extends React.Component {
             {numeral(item.amount).format('$0,0,0.00')}
           </TableCell>
           <TableCell>
-            {numeral(item.procent).format('0.000%')}
+            {numeral(item.procent).format('0.00000%')}
           </TableCell>
         </TableRow>
       );
@@ -56,7 +56,7 @@ class TokensTable extends React.Component {
              <TableRow>
                <TableCell>system</TableCell>
                <TableCell>price</TableCell>
-               <TableCell>amount</TableCell>
+               <TableCell>amount</TableCell>               
                <TableCell>%</TableCell>
              </TableRow>
            </TableHead>

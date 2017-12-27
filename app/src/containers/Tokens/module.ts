@@ -2,6 +2,7 @@ import {Injector} from "../../injector";
 import {Observable} from "rxjs";
 import {combineReducers} from "redux";
 import {combineEpics} from "redux-observable";
+import _ from 'lodash';
 
 const {
   chaingearApi,
@@ -52,23 +53,7 @@ const addTokens = (pairs, tokens, rows, currency) => {
 }
 
 const calcProcent = (a, b) => a === 0 ? 0 : ((a - b) / a  * 100);
-const updateTokens = (rows, data, map) => {
-  // console.log(' data ', data)
-  return rows
-    .map(item => {
-      const { base, price } = map(data);
 
-      const update = item.symbol === base;
-
-      return update ? ({
-        ...item,
-        symbol: item.symbol,
-        amount: data.quoteAmount,
-        price: price,
-        procent: calcProcent(item.price, price),
-      }) : item;
-    });   
-}
 
 const initTokens = (pairs, tokens, currency, dispatch, rows) => {
   const usdPairs = pairs.filter(item => item.quote === currency).map(item => item.base);
@@ -87,12 +72,10 @@ const sorByAmmount = (rows) => [].concat(rows).sort((a, b) => b.amount - a.amoun
 export const calculateExchangeRate = (state) => state.tokens.exchangeRate;
 
 export const calculateRows = (state) => {
-
   const _rows = state.tokens.rows.filter(row => row.price > 0);
-  const rows = sorByAmmount(_rows); //SORT
   const { btc_usd, eth_usd } = state.tokens.exchangeRate;
-
-  return rows.map(item => {
+ 
+  const rows =  _rows.map(item => {
       if (item.currency === 'BTC'){
         return {
           ...item,
@@ -111,6 +94,8 @@ export const calculateRows = (state) => {
       
       return item;
     });
+
+  return _.orderBy(rows, ['amount'], ['desc']);
 }
 
 
@@ -132,6 +117,18 @@ const updateRate = (data, dispatch, map) => {
     })
   }
 }
+
+
+const newTikers = {};
+
+
+const updateRows = _.throttle((dispatch, getState) => {
+  console.log(' newTikers ', newTikers);
+  dispatch({
+    type: 'UPDATE_TOKENS',
+    payload: newTikers
+  })
+}, 2000)
 
 export const showAllTokens = () => (dispatch, getState) => {
   chaingearApi.getAllTokens()
@@ -168,25 +165,36 @@ export const showAllTokens = () => (dispatch, getState) => {
         // })
 
         // console.log(' tiker ', tiker);
+
   
         const getPriceAndBase = (item) => ({
           price: item.price,
           base: item.tokensPair.base
         })
         
-        let rows = getState().tokens.rows;
+        newTikers[tiker.tokensPair.base] = {
+          symbol: tiker.tokensPair.base,
+          amount: tiker.baseAmount,
+          price: tiker.price,
+        };
+
+
+        updateRows(dispatch, getState);
+        // let rows = getState().tokens.rows;
         // if (Array.isArray(tiker)) {
         //   for(let i =0; i < tiker.length; i++) {
         //     rows = updateTokens(rows, tiker[i], getPriceAndBase)
         //   }
 
         // } else {
-         rows = updateTokens(rows, tiker, getPriceAndBase)
+         //rows = updateTokens(rows, tiker, getPriceAndBase);
+
+
         // }
-        dispatch({
-          type: 'SET_TOKEN_ROWS',
-          payload: rows
-        })  
+        // dispatch({
+        //   type: 'SET_TOKEN_ROWS',
+        //   payload: rows
+        // })  
 
         // if (Array.isArray(tiker)) {
         //   updateRate(tiker, dispatch, getPriceAndBase)
@@ -205,6 +213,26 @@ const rowsReducer = (state = [], action) => {
   switch (action.type) {
     case "SET_TOKEN_ROWS":
       return [...action.payload];    
+
+     case "UPDATE_TOKENS": {
+       const data = action.payload;
+       return state
+        .map(item => {
+
+          if (data[item.symbol]) {
+            console.log(' update ', item.symbol, data[item.symbol].price);
+            return {
+              ...item,
+              symbol: item.symbol,
+              amount: data[item.symbol].amount,
+              price: data[item.symbol].price,
+              procent: calcProcent(item.price, data[item.symbol].price)
+            }
+          }
+
+          return item;
+        });
+     }
     default:
       return state;
   }
