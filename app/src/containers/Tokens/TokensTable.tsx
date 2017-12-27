@@ -32,7 +32,6 @@ class TokensTable extends React.Component {
                 {item.currency}
               </span>
             </Logo>
-
           </TableCell>
           <TableCell>{numeral(item.price * item.supply).format('$0,0,0,0.0000')}</TableCell>
           <TableCell>
@@ -46,7 +45,7 @@ class TokensTable extends React.Component {
           <TableCell>
             {numeral(item.supply).format('0,0,0,0.00') }
           </TableCell>
-          <TableCell>
+          <TableCell style={{ width: '10%'}}>
             {numeral(item.procent).format('0.00000%')}
           </TableCell>
         </TableRow>
@@ -61,7 +60,7 @@ class TokensTable extends React.Component {
                <TableCell>system</TableCell>
                <TableCell>market cap</TableCell>
                <TableCell>price</TableCell>
-               <TableCell><TableSortLabel active={true}/>amount</TableCell>               
+               <TableCell><TableSortLabel active={true}>amount</TableSortLabel></TableCell>               
                <TableCell>supply</TableCell>               
                <TableCell>%(1d)</TableCell>
              </TableRow>
