@@ -43,7 +43,7 @@ class TokensTable extends React.Component {
             {numeral(item.amount).format('$0,0,0.00')}
           </TableCell>
           <TableCell>
-            {numeral(item.supply).format('0,0,0,0.00') }
+            {numeral(item.supply).format('0,0,0,0.00') }&nbsp;{item.symbol}
           </TableCell>
           <TableCell style={{ width: '10%'}}>
             {numeral(item.procent).format('0.00000%')}
@@ -62,7 +62,7 @@ class TokensTable extends React.Component {
                <TableCell>price</TableCell>
                <TableCell><TableSortLabel active={true}>amount</TableSortLabel></TableCell>               
                <TableCell>supply</TableCell>               
-               <TableCell>%(1d)</TableCell>
+               <TableCell>%&nbsp;(1day)</TableCell>
              </TableRow>
            </TableHead>
            <TableBody>

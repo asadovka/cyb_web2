@@ -67,13 +67,11 @@ export const closeConnection = () => () => {
 }
 
 
-const sorByAmmount = (rows) => [].concat(rows).sort((a, b) => b.amount - a.amount);
-
 
 export const calculateExchangeRate = (state) => state.tokens.exchangeRate;
 
 export const calculateRows = (state) => {
-  const _rows = state.tokens.rows.filter(row => row.price > 0);
+  const _rows = state.tokens.rows;//.filter(row => row.price > 0);
   const { btc_usd, eth_usd } = state.tokens.exchangeRate;
  
   const rows =  _rows.map(item => {
@@ -100,27 +98,43 @@ export const calculateRows = (state) => {
 }
 
 
-
-const updateRate = (data, dispatch, map) => {
-  const btc_usd = data.find(row => map(row).base === 'BTC');
-  if (btc_usd) {
+const newTikers = {};
+const updateRate = (data, dispatch) => {
+  const price = data.price;
+  const base = data.tokensPair.base;
+  if (base === 'BTC') {
     dispatch({
       type: 'CHANGE_EXCHANGE_RATE_BTC',
-      payload: map(btc_usd).price
+      payload: price
     })
   }
 
-  const eth_usd = data.find(row => map(row).base === 'ETH');
-  if (eth_usd) {
+  if (base === 'ETH') {
     dispatch({
       type: 'CHANGE_EXCHANGE_RATE_ETH',
-      payload: map(eth_usd).price
+      payload: price
     })
   }
 }
 
+// const updateRate = _.throttle((data, dispatch) => {
+//   if (newTikers['BTC']) {
+//     dispatch({
+//       type: 'CHANGE_EXCHANGE_RATE_BTC',
+//       payload: newTikers['BTC'].price
+//     })
+//   }
 
-const newTikers = {};
+//   if (newTikers['ETH']) {
+//     dispatch({
+//       type: 'CHANGE_EXCHANGE_RATE_ETH',
+//       payload: newTikers['ETH'].price
+//     })
+//   }
+// }, 10)
+
+
+
 
 
 const updateRows = _.throttle((dispatch, getState) => {
@@ -159,20 +173,7 @@ export const showAllTokens = () => (dispatch, getState) => {
 
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
       const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
-      streemApi.subscribeTickers(tiker => {
-        // const getPriceAndBase = (item) => ({
-        //   price: item.spotPrice,
-        //   base: item.pair.base
-        // })
-
-        // console.log(' tiker ', tiker);
-
-  
-        const getPriceAndBase = (item) => ({
-          price: item.price,
-          base: item.tokensPair.base
-        })
-        
+      streemApi.subscribeTickers(tiker => {        
         newTikers[tiker.tokensPair.base] = {
           symbol: tiker.tokensPair.base,
           amount: tiker.baseAmount,
@@ -181,27 +182,7 @@ export const showAllTokens = () => (dispatch, getState) => {
 
 
         updateRows(dispatch, getState);
-        // let rows = getState().tokens.rows;
-        // if (Array.isArray(tiker)) {
-        //   for(let i =0; i < tiker.length; i++) {
-        //     rows = updateTokens(rows, tiker[i], getPriceAndBase)
-        //   }
-
-        // } else {
-         //rows = updateTokens(rows, tiker, getPriceAndBase);
-
-
-        // }
-        // dispatch({
-        //   type: 'SET_TOKEN_ROWS',
-        //   payload: rows
-        // })  
-
-        // if (Array.isArray(tiker)) {
-        //   updateRate(tiker, dispatch, getPriceAndBase)
-        // } else {
-          updateRate([tiker], dispatch, getPriceAndBase)
-        // }
+        updateRate(tiker, dispatch)
         
       }, pairsStr, TIKER_INTERVAL)
     })
