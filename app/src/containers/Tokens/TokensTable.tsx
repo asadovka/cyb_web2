@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 var numeral = require('numeral');
 
 
-import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
+import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '../../components/Table/';
 
 import { calculateRows } from './module';
 
@@ -34,6 +34,7 @@ class TokensTable extends React.Component {
             </Logo>
 
           </TableCell>
+          <TableCell>{numeral(item.price * item.supply).format('$0,0,0,0.0000')}</TableCell>
           <TableCell>
             <span style={{
               color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
@@ -41,6 +42,9 @@ class TokensTable extends React.Component {
           </TableCell>
           <TableCell>
             {numeral(item.amount).format('$0,0,0.00')}
+          </TableCell>
+          <TableCell>
+            {numeral(item.supply).format('0,0,0,0.00') }
           </TableCell>
           <TableCell>
             {numeral(item.procent).format('0.00000%')}
@@ -55,9 +59,11 @@ class TokensTable extends React.Component {
            <TableHead>
              <TableRow>
                <TableCell>system</TableCell>
+               <TableCell>market cap</TableCell>
                <TableCell>price</TableCell>
-               <TableCell>amount</TableCell>               
-               <TableCell>%</TableCell>
+               <TableCell><TableSortLabel active={true}/>amount</TableCell>               
+               <TableCell>supply</TableCell>               
+               <TableCell>%(1d)</TableCell>
              </TableRow>
            </TableHead>
            <TableBody>

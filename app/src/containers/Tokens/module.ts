@@ -39,6 +39,7 @@ const addTokens = (pairs, tokens, rows, currency) => {
       _rows.push({
           symbol: symbol,
           system: item.system,
+          supply: item.specs ? item.specs.supply : 0,
           logo: getSystemLogoUrl(item, `${config.CYBER_CHAINGEAR_API}/logos/`),
           price: 0,
           amount: 0,
