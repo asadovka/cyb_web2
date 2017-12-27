@@ -13,6 +13,7 @@ import { reducer as tokens } from './containers/Tokens/module';
 import { reducer as searchReducer, epic as searchEpic  } from './modules/search';
 
 import { reducer as tokensDetails, epic as tokensDetailsEpic } from './containers/TokensDetails/module';
+import { reducer as test } from './containers/Test/module';
 
 export const combinedReducers = combineReducers({
   cybernode,
@@ -20,7 +21,8 @@ export const combinedReducers = combineReducers({
   search: searchReducer,
   form: formReducer,
   tokens,
-  tokensDetails
+  tokensDetails,
+  test
 });
 
 const rootEpic = combineEpics(

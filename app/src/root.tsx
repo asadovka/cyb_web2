@@ -27,6 +27,8 @@ import TokensDetails from './containers/TokensDetails/';
 import Crowdsales from './containers/Crowdsales/';
 import CrowdsalesDetails from './containers/CrowdsalesDetails';
 
+import Test from './containers/Test/'
+
 // import Funds from './containers/Funds/';
 // import Analitics from './containers/Analitics/';
 import Cybernode from './containers/Cybernode/';
@@ -51,6 +53,7 @@ export function Root() {
         <Route path={"/"} component={IndexPage}/>
   
         <Route path={"/search"} component={SearchResultPage}/>
+        <Route path={"/test"} component={Test}/>
         
         <Route component={DetailsPage}>
           <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
