@@ -48,7 +48,7 @@ const addTokens = (pairs, tokens, rows, currency) => {
       })  
     }
   })
- console.log(' init rows ', _rows)
+ // console.log(' init rows ', _rows)
  
   return _rows;
 }
@@ -71,7 +71,7 @@ export const closeConnection = () => () => {
 export const calculateExchangeRate = (state) => state.tokens.exchangeRate;
 
 export const calculateRows = (state) => {
-  const _rows = state.tokens.rows;//.filter(row => row.price > 0);
+  const _rows = state.tokens.rows.filter(row => row.price > 0);
   const { btc_usd, eth_usd } = state.tokens.exchangeRate;
  
   const rows =  _rows.map(item => {
@@ -94,7 +94,8 @@ export const calculateRows = (state) => {
       return item;
     });
 
-  return _.orderBy(rows, ['amount'], ['desc']);
+  return rows;
+  // return _.orderBy(rows, ['price'], ['desc']);
 }
 
 
@@ -119,7 +120,7 @@ const updateRate = (data, dispatch) => {
 
 
 const updateRows = _.throttle((dispatch, getState) => {
-  console.log(' newTikers ', newTikers);
+  // console.log(' newTikers ', newTikers);
   dispatch({
     type: 'UPDATE_TOKENS',
     payload: newTikers
@@ -138,13 +139,13 @@ export const showAllTokens = () => (dispatch, getState) => {
         })  
       }))
     .then(({ pairs, tokens }) => {
-      console.log('pairs>', pairs)
+      // console.log('pairs>', pairs)
       let rows = [];
       rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
       rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);
       rows = initTokens(pairs, tokens, 'BTC', dispatch, rows);
       rows = initTokens(pairs, tokens, 'ETH', dispatch, rows);
-
+      
       dispatch({
         type: 'SET_TOKEN_ROWS',
         payload: rows
@@ -186,7 +187,7 @@ const rowsReducer = (state = [], action) => {
         .map(item => {
 
           if (data[item.symbol]) {
-            console.log(' update ', item.symbol, data[item.symbol].price);
+            // console.log(' update ', item.symbol, data[item.symbol].price);
             return {
               ...item,
               symbol: item.symbol,

@@ -13,14 +13,14 @@ export class DefaultMarketApi {
       `${config.CYBER_MARKETS_API}/ping`
     );
   }
-  getHistoMinute(fsym, tsym){ 
+  getHistoMinute(fsym, tsym, toTs=1){ 
     return this.http.GET(
-      `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=1`
+      `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}`
     );
   }
-  getHistoHour(fsym, tsym){ 
+  getHistoHour(fsym, tsym, toTs=1){ 
     return this.http.GET(
-      `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=1`
+      `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}`
     );
   }
   getTokensStatistics() {

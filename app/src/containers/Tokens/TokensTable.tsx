@@ -11,6 +11,8 @@ import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from
 
 import { calculateRows } from './module';
 
+import PriceChart from './PriceChart';
+
 import Paper from 'material-ui/Paper';
 
 class TokensTable extends React.Component {
@@ -45,8 +47,14 @@ class TokensTable extends React.Component {
           <TableCell>
             {numeral(item.supply).format('0,0,0,0.00') }&nbsp;{item.symbol}
           </TableCell>
-          <TableCell style={{ width: '10%'}}>
+          <TableCell padding='none'>
             {numeral(item.procent).format('0.00000%')}
+          </TableCell>
+          <TableCell padding='none'>
+            <PriceChart
+              symbol={item.symbol} 
+              currency={item.currency}
+            />
           </TableCell>
         </TableRow>
       );
@@ -62,7 +70,8 @@ class TokensTable extends React.Component {
                <TableCell>price</TableCell>
                <TableCell><TableSortLabel active={true}>volume by pair</TableSortLabel></TableCell>               
                <TableCell>supply</TableCell>               
-               <TableCell>%&nbsp;(24h)</TableCell>
+               <TableCell style={{ width: '10%'}}>%&nbsp;(24h)</TableCell>
+               <TableCell style={{ width: '20%'}}>price graph (7d)</TableCell>
              </TableRow>
            </TableHead>
            <TableBody>
