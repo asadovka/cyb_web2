@@ -44,7 +44,7 @@ const subscribeTickers = (cb, pairs, window_durations = 60 * 1000) => {
       cb(data.value)
     }
   });
-  const msg = `{"subscribe":"tickers","pairs":[${pairs}], "exchanges": ["ALL"], "window_durations": ["${60 * 1000}"] }`;
+  const msg = `{"subscribe":"tickers","pairs":[${pairs}], "exchanges": ["ALL"], "window_durations": ["${window_durations}"] }`;
 
   socket.send(msg);
 }

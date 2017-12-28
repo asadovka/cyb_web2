@@ -94,29 +94,27 @@ export const calculateRows = (state) => {
       return item;
     });
 
-  return rows;
-  // return _.orderBy(rows, ['price'], ['desc']);
+  // return rows;
+  return _.orderBy(rows, ['amount'], ['desc']);
 }
 
 
 const newTikers = {};
-const updateRate = (data, dispatch) => {
-  const price = data.price;
-  const base = data.tokensPair.base;
-  if (base === 'BTC') {
+const updateRate = _.throttle((dispatch) => {
+  if (newTikers['BTC']) {
     dispatch({
       type: 'CHANGE_EXCHANGE_RATE_BTC',
-      payload: price
+      payload: newTikers['BTC'].price
     })
   }
 
-  if (base === 'ETH') {
+  if (newTikers['ETH'] ) {
     dispatch({
       type: 'CHANGE_EXCHANGE_RATE_ETH',
-      payload: price
+      payload: newTikers['ETH'].price
     })
   }
-}
+}, 1000)
 
 
 const updateRows = _.throttle((dispatch, getState) => {
@@ -152,17 +150,20 @@ export const showAllTokens = () => (dispatch, getState) => {
       });
 
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
-      const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
-      streemApi.subscribeTickers(tiker => {        
-        newTikers[tiker.tokensPair.base] = {
-          symbol: tiker.tokensPair.base,
+      const TIKER_INTERVAL = 1000 * 60; //1000 * 60 * 60 * 24 * 1; /*1 day*/
+      streemApi.subscribeTickers(tiker => {   
+        console.log(' tiker ', tiker);     
+        newTikers[tiker.pair.base] = {
+          symbol: tiker.pair.base,
           amount: tiker.baseAmount,
-          price: tiker.price,
+          price: tiker.close,
+          close: tiker.close,
+          open: tiker.open
         };
 
 
         updateRows(dispatch, getState);
-        updateRate(tiker, dispatch)
+        updateRate(dispatch)
         
       }, pairsStr, TIKER_INTERVAL)
 
@@ -193,7 +194,7 @@ const rowsReducer = (state = [], action) => {
               symbol: item.symbol,
               amount: data[item.symbol].amount,
               price: data[item.symbol].price,
-              procent: calcProcent(item.price, data[item.symbol].price)
+              procent: calcProcent(data[item.symbol].open, data[item.symbol].close)
             }
           }
 
