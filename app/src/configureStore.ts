@@ -47,7 +47,7 @@ function getMiddlewares() {
    * Split middlewares which we using in development and in production.
    */
   if (process.env.NODE_ENV === "production") {
-    return applyMiddleware(createEpicMiddleware(rootEpic), logger, thunk);
+    return applyMiddleware(createEpicMiddleware(rootEpic), thunk);
   } else {
     return applyMiddleware(createEpicMiddleware(rootEpic), thunk);
   }

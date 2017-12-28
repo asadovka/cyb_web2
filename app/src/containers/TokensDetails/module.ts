@@ -26,7 +26,8 @@ export const showAllCrowdsales = () => ({
 const trades = (state = [], action) => {
   switch (action.type) {
     case "ADD_TRADE":{
-      const arr = state.concat([action.payload]);
+       // return state.concat([action.payload]);
+      const arr = state.concat(action.payload);
       return arr.slice(-10)    
     }
     case "SET_TRADE":
@@ -163,7 +164,16 @@ export const showCrowdsalesDetails = (system) => ({
   payload: { system }
 })
 
-export const showTokensDetails = (symbol) => (dispatch) => {
+
+let _trades = [];
+const updateTrades = _.throttle((dispatch) => {
+  dispatch({
+    type: 'ADD_TRADE',
+    payload: _trades
+  });
+  _trades = [];
+}, 1000)
+export const showTokensDetails = (symbol) => (dispatch, getState) => {
   dispatch({
     type: 'TOKEN_DETAILS',
     payload: { symbol }  
@@ -175,17 +185,16 @@ export const showTokensDetails = (symbol) => (dispatch) => {
 
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
     streemApi.subscribeTrades(trade => {
-      console.log(trade)
       if (Array.isArray(trade)) {
         dispatch({
           type: 'SET_TRADE',
           payload: trade
         })
       } else {
-        dispatch({
-          type: 'ADD_TRADE',
-          payload: trade
-        })
+        _trades = _trades.concat([trade]);
+
+        updateTrades(dispatch)
+        
       }
     }, `"${symbol}_USD"`);
 
