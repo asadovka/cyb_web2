@@ -30,7 +30,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
     <div className='columns' style={{ marginTop: 50 }}>
       <div className='column'>
         <h2 className='title'>Buy orders</h2>
-        <Paper style={{ minHeight: 600 }}>
+        <div style={{ minHeight: 400 }}>
          <table style={{ fontSize: '12px' }} className='table is-striped is-fullwidth'>
            <thead>
              <tr>
@@ -45,11 +45,11 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
              {buyOrdersRows}
            </tbody>
          </table>
-         </Paper>
+         </div>
       </div>
       <div className='column'>
         <h2 className='title'>Sell orders</h2>
-        <Paper style={{ minHeight: 600 }}>
+        <div style={{ minHeight: 400 }}>
          <table style={{ fontSize: '12px' }} className='table is-striped is-fullwidth'>
            <thead>
              <tr>
@@ -64,7 +64,7 @@ const OrderTables = ({ buyOrders, sellOrders }) => {
              {sellOrdersRows}
            </tbody>
          </table>
-         </Paper>
+         </div>
       </div>
     </div>
   );

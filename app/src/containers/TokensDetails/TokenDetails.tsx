@@ -17,15 +17,7 @@ const TokenDetails = ({ tokensDetails }) => {
 
      <img width={50} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
      <h2 className='title'>{data.system}</h2>
-     <h3 className='subtitle'>{data.token.symbol}{' '}{data.descriptions.state}{' '}{data.descriptions.system_type}</h3>
-     <h2 className='title'>Links:</h2>
-     <div className='tags'>
-     {data.links.map(link => (
-       <a key={link.url} className='tag' href={link.url}>
-         {link.icon && <img style={{ marginRight: 10 }} width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
-       </a>
-      ))}
-     </div> 
+     <h3 className='subtitle'>{data.token.symbol}{' '}{data.descriptions.state}{' '}{data.descriptions.system_type}</h3>     
      </CardContent> : <CardContent style={{ textAlign: 'center'}}>
        <CircularProgress />
      </CardContent>}

@@ -55,22 +55,18 @@ const PriceChart = React.createClass({
 
     const types = ['basis' , 'basisClosed' , 'basisOpen' , 'linear' , 'linearClosed' , 'natural' , 'monotoneX' , 'monotoneY' , 'monotone' , 'step' , 'stepBefore' , 'stepAfter' ]
     return (
-      <div style={{
-              marginTop: 50,
-              marginBottom: 50
-             }}>
       <div>
-        <h4 className='title'>Price change:</h4>
+      <div>
 
-        <Paper>
+        <div>
         <ComposedChart width={900} height={300} data={data} syncId="anyId"
               margin={{top: 10, right: 0, left: 0, bottom: 0}}>
           <XAxis tickFormatter={formatAxis} dataKey="uv"/>
           <YAxis  />
-          <Line dataKey='price' type='monotone' legendType='square' />
+          <Line dataKey='price' type='monotone' dot={false} />
           <Tooltip labelFormatter={labelFormatter} />
         </ComposedChart>
-        </Paper>
+        </div>
     </div>
     </div>
     );

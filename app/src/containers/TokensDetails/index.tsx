@@ -10,9 +10,23 @@ import PriceChart from './PriceChart';
 import OrderTables from './OrderTables';
 import TokenDetails from './TokenDetails';
 import OrderBookChart from './OrderBookChart';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import { getSystemLogoUrl } from '../Tokens/module';
+import { CircularProgress } from 'material-ui/Progress';
+
+import CoinLinks from './CoinLinks';
+import Tabs, { Tab } from 'material-ui/Tabs';
 
 
 class TokensDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   componentDidMount() {
     const { symbol } = this.props;
     this.props.showTokensDetails(symbol);
@@ -22,21 +36,43 @@ class TokensDetails extends React.Component {
     this.props.closeConnection();
   }
 
+  handleChange(event, value) {
+    this.setState({ value });
+  }
+
   render() {
     const { success, data } = this.props;
+    const { value } = this.state;
     return (
       <div>
         <TokenDetails />
          
-        <PriceChart />
-        <TradesTable />
-
-        <OrderBookChart />
-
-        <OrderTables />
-
+        <Tabs value={value} onChange={this.handleChange}>
+          <Tab label='Price' />
+          <Tab label='Markets' />
+          <Tab label='Spec' />
+          <Tab label='Link' />
+        </Tabs>
+        <Card>
+          <CardContent>
+        {value === 0 && <div>
+          <PriceChart />
+        </div>}
+        {value === 1 && <div>  
+          <OrderBookChart />
+          <OrderTables />
+          <TradesTable />
+        </div>}
         
+        {value === 2 && <div>  
+           spec
+        </div>}
 
+        {value === 3 && <div>  
+           <CoinLinks />
+        </div>}
+          </CardContent>
+        </Card>
                   
         {success && <div style={{ marginTop: 20 }}>
            You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${data.system}/${data.system}.toml`}>{data.system}'s</a> page on Github.

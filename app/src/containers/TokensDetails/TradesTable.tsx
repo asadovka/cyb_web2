@@ -34,7 +34,7 @@ const TradesTable = ({ trades }) => {
   return (
     <div>
       <h2 className='title'>Trades</h2>
-        <Paper>
+        <div>
         <Table>
           <TableHead>
             <TableRow>
@@ -50,7 +50,7 @@ const TradesTable = ({ trades }) => {
             {rows}
           </TableBody>
         </Table>
-        </Paper>
+        </div>
     </div>
   )
 }

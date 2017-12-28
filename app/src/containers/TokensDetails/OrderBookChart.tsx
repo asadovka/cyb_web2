@@ -67,9 +67,9 @@ const OrderBookChart = React.createClass({
               marginBottom: 50
              }}>
       <div>
-        <h4 className='title'>Order book:</h4>
+        <h4 className='title'>Market depth:</h4>
 
-        <Paper>
+        <div>
         <ComposedChart width={900} height={300} data={data} syncId="OrderBookChart"
               margin={{top: 10, right: 0, left: 0, bottom: 0}}>
           <XAxis  dataKey="spotPrice"/>
@@ -79,7 +79,7 @@ const OrderBookChart = React.createClass({
         </ComposedChart>
         <button>+</button>
         <button>-</button>
-        </Paper>
+        </div>
     </div>
     </div>
     );
