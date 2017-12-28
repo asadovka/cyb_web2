@@ -174,20 +174,20 @@ export const showTokensDetails = (symbol) => (dispatch) => {
   })
 
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
-    // streemApi.subscribeTrades(trade => {
-    //   // console.log(trade)
-    //   if (Array.isArray(trade)) {
-    //     dispatch({
-    //       type: 'SET_TRADE',
-    //       payload: trade
-    //     })
-    //   } else {
-    //     dispatch({
-    //       type: 'ADD_TRADE',
-    //       payload: trade
-    //     })
-    //   }
-    // }, `"${symbol}_USD"`);
+    streemApi.subscribeTrades(trade => {
+      // console.log(trade)
+      if (Array.isArray(trade)) {
+        dispatch({
+          type: 'SET_TRADE',
+          payload: trade
+        })
+      } else {
+        dispatch({
+          type: 'ADD_TRADE',
+          payload: trade
+        })
+      }
+    }, `"${symbol}_USD"`);
 
     let count = 0;
     streemApi.subscribeOrders(order => {

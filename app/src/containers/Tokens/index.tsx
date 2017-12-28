@@ -10,6 +10,7 @@ import { showAllTokens, closeConnection, } from './module';
 import ExchangeRate from './ExchangeRate';
 import TokensTable from './TokensTable';
 
+import { CircularProgress } from 'material-ui/Progress';
 
 class TokensPages extends React.Component {
 
@@ -22,6 +23,16 @@ class TokensPages extends React.Component {
   }
 
   render() {
+    const { loading } = this.props;
+
+    if (loading) {
+      return (
+        <div style={{ textAlign: 'center', marginTop: 100 }}>
+          <CircularProgress  size={50} />
+        </div>
+      );
+    }
+
     return (
       <div>
         <ExchangeRate />
@@ -34,6 +45,8 @@ class TokensPages extends React.Component {
 import _ from 'lodash';
 
 export default connect(
-  null,
+  state => ({
+    loading: state.tokens.loading
+  }),
   { showAllTokens, closeConnection }
 )(TokensPages);

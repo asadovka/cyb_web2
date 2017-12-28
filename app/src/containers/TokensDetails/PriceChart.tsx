@@ -87,7 +87,7 @@ import {
 
 export default connect(
   state => ({
-    tokensPriceChart: state.chaingear.tokensPriceChart
+    tokensPriceChart: state.tokensDetails.tokensPriceChart
   })
 )(PriceChart);
 

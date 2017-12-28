@@ -117,25 +117,6 @@ const updateRate = (data, dispatch) => {
   }
 }
 
-// const updateRate = _.throttle((data, dispatch) => {
-//   if (newTikers['BTC']) {
-//     dispatch({
-//       type: 'CHANGE_EXCHANGE_RATE_BTC',
-//       payload: newTikers['BTC'].price
-//     })
-//   }
-
-//   if (newTikers['ETH']) {
-//     dispatch({
-//       type: 'CHANGE_EXCHANGE_RATE_ETH',
-//       payload: newTikers['ETH'].price
-//     })
-//   }
-// }, 10)
-
-
-
-
 
 const updateRows = _.throttle((dispatch, getState) => {
   console.log(' newTikers ', newTikers);
@@ -146,17 +127,15 @@ const updateRows = _.throttle((dispatch, getState) => {
 }, 2000)
 
 export const showAllTokens = () => (dispatch, getState) => {
+  dispatch({
+    type: 'SET_TOKENS_LOADING',
+    payload: true
+  })
   chaingearApi.getAllTokens()
     .then(tokens => new Promise(resolve => {
         streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
           streemApi.getPairs(pairs => resolve({ pairs, tokens }))
         })  
-        // streemApi.open("ws://93.125.26.210:32801", () => {
-        //   resolve({ //
-        //     pairs: [{ base: 'DOGE', quote: 'BTC'}],
-        //     tokens
-        // })
-        // });
       }))
     .then(({ pairs, tokens }) => {
       console.log('pairs>', pairs)
@@ -185,6 +164,11 @@ export const showAllTokens = () => (dispatch, getState) => {
         updateRate(tiker, dispatch)
         
       }, pairsStr, TIKER_INTERVAL)
+
+        dispatch({
+          type: 'SET_TOKENS_LOADING',
+          payload: false
+        })
     })
 }
 
@@ -233,10 +217,19 @@ const exchangeRate = (state = { btc_usd: 1, eth_usd: 1}, action) => {
   }
 }
 
+const loading = (state = false, action) => {
+  switch (action.type) {
+    case "SET_TOKENS_LOADING":
+      return action.payload;    
 
+    default:
+      return state;
+  }
+}
 
 
 export const reducer = combineReducers({
+  loading,
   rows: rowsReducer,
   exchangeRate,
 })

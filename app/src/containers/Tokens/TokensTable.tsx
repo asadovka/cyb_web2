@@ -60,9 +60,9 @@ class TokensTable extends React.Component {
                <TableCell>system</TableCell>
                <TableCell>market cap</TableCell>
                <TableCell>price</TableCell>
-               <TableCell><TableSortLabel active={true}>amount</TableSortLabel></TableCell>               
+               <TableCell><TableSortLabel active={true}>volume by pair</TableSortLabel></TableCell>               
                <TableCell>supply</TableCell>               
-               <TableCell>%&nbsp;(1day)</TableCell>
+               <TableCell>%&nbsp;(24h)</TableCell>
              </TableRow>
            </TableHead>
            <TableBody>

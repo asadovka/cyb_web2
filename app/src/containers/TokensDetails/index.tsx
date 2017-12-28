@@ -26,10 +26,10 @@ class TokensDetails extends React.Component {
     const { success, data } = this.props;
     return (
       <div>
-        {/*<TokenDetails />
+        <TokenDetails />
          
         <PriceChart />
-        <TradesTable />*/}
+        <TradesTable />
 
         <OrderBookChart />
 
