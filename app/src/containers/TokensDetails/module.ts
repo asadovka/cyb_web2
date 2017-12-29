@@ -59,10 +59,11 @@ function byInterval(arr, min, max, step, sumBy) {
 }
 
 export const calculateBuyOrders = (state, step) => {
-  const buyOrders = state.tokensDetails.orders.buyOrders;
-  const item = _.max(buyOrders, x => x.spotPrice);
-  const max = item ? item.spotPrice : 0;
-  if (!max) return [];
+  const buyOrders = state.tokensDetails.buyOrders;
+  // const item = _.max(buyOrders, x => x.spotPrice);
+  // const max = item ? item.spotPrice : 0;
+  // if (!max) return [];
+  const max = state.tokensDetails.bayValue;
 
   return byInterval(buyOrders, max - (step * 10), max, step, x => x.amount * x.spotPrice).map(x => ({
     count: x.count,
@@ -107,11 +108,8 @@ export const calculateSellOrdersTotal = (state, step) => {
 
 
 export const calculateSellOrders = (state, step) => {
-  const sellOrders = state.tokensDetails.orders.sellOrders
-  const item = _.min(sellOrders, x => x.spotPrice);
-  const min = item ? item.spotPrice : 0;
-  if (!min) return [];
-
+  const sellOrders = state.tokensDetails.sellOrders
+  const min = state.tokensDetails.sellValue;
 
   return byInterval(sellOrders, min, min + (step * 10), step, x => x.amount * x.spotPrice).map(x => ({
     count: x.count,
@@ -123,26 +121,19 @@ export const calculateSellOrders = (state, step) => {
 
 
 
-const orders = (state = { buyOrders: [], sellOrders: []}, action) => {
+const orderReducer = type => (state = [], action) => {
   switch (action.type) {
-    case "SET_ORDERS":
+    case "CLEAN_ORDERS":
+      return [];
+
+    case "ADD_ORDERS": {
       let buyOrders = action.payload
-        .filter(o => o.type == 'BUY' )
+        .filter(o => o.type == type )
         .map(item => ({ ...item, count: 1}));
 
-      buyOrders = state.buyOrders.concat(buyOrders);
+      return state.concat(buyOrders);
+    }
 
-      let sellOrders = action.payload
-        .filter(o => o.type == 'SELL' )
-        .map(item => ({ ...item, count: 1}));
-
-      sellOrders = state.sellOrders.concat(sellOrders);
-
-      return {
-        buyOrders: buyOrders,
-        sellOrders: sellOrders
-      };
-    
     default:
       return state;
   }
@@ -152,11 +143,44 @@ export const closeConnection = () => () => {
   streemApi.close();
 }
 
+const sellValue = (state = 0, action) => {
+  switch (action.type) {
+    case "ADD_TRADE": {
+      const sellTrads = action.payload.filter(t => t.type === 'SELL');
+
+      if (sellTrads.length === 0) return state;
+
+      return _.max(sellTrads, x => x.spotPrice).spotPrice;
+    }
+          
+    default:
+      return state;
+  }
+}
+
+const bayValue = (state = 0, action) => {
+  switch (action.type) {
+    case "ADD_TRADE": {
+      const sellTrads = action.payload.filter(t => t.type === 'BUY');
+
+      if (sellTrads.length === 0) return state;
+
+      return _.max(sellTrads, x => x.spotPrice).spotPrice;
+    }
+          
+    default:
+      return state;
+  }
+}
+
 export const reducer = combineReducers({
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
   tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
-  orders
+  buyOrders: orderReducer('BUY'),
+  sellOrders: orderReducer('SELL'),
+  sellValue,
+  bayValue
 })
 
 export const showCrowdsalesDetails = (system) => ({
@@ -173,6 +197,16 @@ const updateTrades = _.throttle((dispatch) => {
   });
   _trades = [];
 }, 1000)
+
+let _orders = [];
+const updateOrders = _.throttle(dispatch => {
+  dispatch({
+    type: 'ADD_ORDERS',
+    payload: _orders
+  })
+  _orders= [];
+}, 1000);
+
 export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
   dispatch({
     type: 'TOKEN_DETAILS',
@@ -198,20 +232,11 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
       }
     }, `"${symbol}_${base}"`);
 
-    let count = 0;
+    dispatch({ type: 'CLEAN_ORDERS' })
     streemApi.subscribeOrders(order => {
-      // console.log(' >>> ', order)
-      if (count > 0) {
-        return;
-      }
+      _orders = _orders.concat(order);
+      updateOrders(dispatch);
 
-      count++;
-      // console.log(order)
-
-      dispatch({
-        type: 'SET_ORDERS',
-        payload: order
-      })
     }, `"${symbol}_${base}"`)
   })  
 }

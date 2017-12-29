@@ -7,7 +7,7 @@ import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 
-const TradesTable = ({ trades }) => {
+const TradesTable = ({ trades, btc_usd, eth_usd }) => {
   const rows = trades.map(item => (
     <TableRow key={item.tradeId + item.exchange}>
       <TableCell>
@@ -27,7 +27,7 @@ const TradesTable = ({ trades }) => {
         {numeral(item.spotPrice).format('$0,0,0.0000')}
       </TableCell>
       <TableCell>
-        {numeral(item.quoteAmount).format('$0,0,0.0000')}
+        {numeral(item.quoteAmount).format('$0,0,0.0000000')}
       </TableCell>
     </TableRow>
   ))
@@ -56,9 +56,12 @@ const TradesTable = ({ trades }) => {
 }
 
 import { connect } from 'react-redux';
+import { calculateExchangeRate } from '../Tokens/module';
 
 export default connect(
   state => ({
+    btc_usd: calculateExchangeRate(state).btc_usd,
+    eth_usd: calculateExchangeRate(state).eth_usd,
     trades: state.tokensDetails.trades
   })
 )(TradesTable);
