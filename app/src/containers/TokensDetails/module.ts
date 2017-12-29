@@ -173,14 +173,14 @@ const updateTrades = _.throttle((dispatch) => {
   });
   _trades = [];
 }, 1000)
-export const showTokensDetails = (symbol) => (dispatch, getState) => {
+export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
   dispatch({
     type: 'TOKEN_DETAILS',
     payload: { symbol }  
   })
   dispatch({
     type: 'TOKEN_DETAILS_CHART',
-    payload: { symbol } 
+    payload: { symbol, base } 
   })
 
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
@@ -196,7 +196,7 @@ export const showTokensDetails = (symbol) => (dispatch, getState) => {
         updateTrades(dispatch)
         
       }
-    }, `"${symbol}_USD"`);
+    }, `"${symbol}_${base}"`);
 
     let count = 0;
     streemApi.subscribeOrders(order => {
@@ -212,7 +212,7 @@ export const showTokensDetails = (symbol) => (dispatch, getState) => {
         type: 'SET_ORDERS',
         payload: order
       })
-    }, `"${symbol}_USD"`)
+    }, `"${symbol}_${base}"`)
   })  
 }
 
@@ -220,7 +220,7 @@ export const showTokensDetails = (symbol) => (dispatch, getState) => {
 export const epic = combineEpics(
   loadDataEpic(
     'TOKEN_DETAILS_CHART',
-    ({ symbol }) => marketApi.getHistoHour(symbol, 'USD')
+    ({ symbol, base }) => marketApi.getHistoHour(symbol, base)
   ),
   loadDataEpic(
      'TOKEN_DETAILS',

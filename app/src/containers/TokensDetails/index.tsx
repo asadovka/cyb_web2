@@ -28,8 +28,8 @@ class TokensDetails extends React.Component {
   }
 
   componentDidMount() {
-    const { symbol } = this.props;
-    this.props.showTokensDetails(symbol);
+    const { symbol, base } = this.props;
+    this.props.showTokensDetails(symbol, base);
   }
 
   componentWillUnmount(){
@@ -41,17 +41,17 @@ class TokensDetails extends React.Component {
   }
 
   render() {
-    const { success, data } = this.props;
+    const { success, data, crowdsalesDetails } = this.props;
     const { value } = this.state;
     return (
       <div>
         <TokenDetails />
          
         <Tabs value={value} onChange={this.handleChange}>
-          <Tab label='Price' />
-          <Tab label='Markets' />
-          <Tab label='Spec' />
-          <Tab label='Link' />
+          <Tab label='Price' value={0}/>
+          <Tab label='Markets' value={1}/>
+          {crowdsalesDetails.success && crowdsalesDetails.data.specs && <Tab label='Spec' value={2}/>}
+          <Tab label='Link' value={3}/>
         </Tabs>
         <Card>
           <CardContent>
@@ -65,7 +65,7 @@ class TokensDetails extends React.Component {
         </div>}
         
         {value === 2 && <div>  
-           spec
+           {(crowdsalesDetails.success && crowdsalesDetails.data.specs) ? JSON.stringify(crowdsalesDetails.data.specs): null}
         </div>}
 
         {value === 3 && <div>  
@@ -86,6 +86,7 @@ class TokensDetails extends React.Component {
 export default withRouter(connect(
   (state, ownProps) => ({
     symbol: ownProps.routeParams.symbol,
+    base: ownProps.routeParams.base,
     crowdsalesDetails: state.tokensDetails.tokensDetails
   }),
   { showTokensDetails, closeConnection }

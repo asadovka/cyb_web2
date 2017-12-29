@@ -8,7 +8,6 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from '../../componen
 
 
 const TradesTable = ({ trades }) => {
-  console.log(' render ');
   const rows = trades.map(item => (
     <TableRow key={item.tradeId + item.exchange}>
       <TableCell>

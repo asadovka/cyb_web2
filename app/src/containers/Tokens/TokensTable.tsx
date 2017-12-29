@@ -27,7 +27,7 @@ class TokensTable extends React.Component {
       return (
         <TableRow key={item.symbol}>
           <TableCell>
-            <Logo to={`/tokens/${item.symbol}`}>
+            <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
               <img width={50} src={item.logo}/>            
               <span>{item.system}</span>
               <span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>

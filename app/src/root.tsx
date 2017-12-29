@@ -72,7 +72,7 @@ export function Root() {
         <Route path={"/cybernode"} component={Cybernode}/>
 
         <Route path={"/tokens"} component={Tokens}/>
-        <Route path={"/tokens/:symbol"} component={TokensDetails}/>
+        <Route path={"/tokens/:symbol-:base"} component={TokensDetails}/>
 
         <Route path={"/crowdsales"} component={Crowdsales}/>
         <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>

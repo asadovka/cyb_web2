@@ -43,7 +43,7 @@ class PriceChart extends React.Component {
       .then(response => {
         this.setState({
           loading: false,
-          data: response.data.map(item => ({ time: item.time, price: item.price }))
+          data: response.data.map(item => ({ time: item.time, price: item.close }))
         })
       })
       .catch(() => {

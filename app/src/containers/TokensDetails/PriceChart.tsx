@@ -48,7 +48,7 @@ const PriceChart = React.createClass({
       data = tokensPriceChart.data.data.map(item => ({
         name: moment(item.time).format("hh:mm"),
         uv: item.time,
-        price: item.high,
+        price: item.close,
         volumeTo: item.volumeTo
       }))
     }
