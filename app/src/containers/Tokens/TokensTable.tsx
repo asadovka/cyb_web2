@@ -25,7 +25,7 @@ class TokensTable extends React.Component {
     const rowsComponents = rows.map((item, index) => {
       const procent = item.procent;
       return (
-        <TableRow key={index}>
+        <TableRow key={item.symbol}>
           <TableCell>
             <Logo to={`/tokens/${item.symbol}`}>
               <img width={50} src={item.logo}/>            

@@ -90,9 +90,9 @@ export const mapPayload = (type, mapData) => data => ({
     payload: mapData(data)
 })
 
-export const mapError = type => () => ({
-  type: `${type}_REJECTED`
-})
+export const mapError = type => 
+  (payload) => Observable.of({ type: `${type}_REJECTED` })
+
 
 const defaultMapData = (data) => data;
 
@@ -101,6 +101,6 @@ export const loadDataEpic = (actionType, promise, mapData = defaultMapData) => a
     .ofType(actionType)
     .mergeMap((data) => Observable
       .fromPromise(promise(data.payload))
+      .map(mapPayload(actionType, mapData))
+      .catch(mapError(actionType))
     )
-    .map(mapPayload(actionType, mapData))
-    .catch(mapError(actionType));

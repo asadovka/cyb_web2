@@ -200,12 +200,13 @@ export const showTokensDetails = (symbol) => (dispatch, getState) => {
 
     let count = 0;
     streemApi.subscribeOrders(order => {
+      // console.log(' >>> ', order)
       if (count > 0) {
         return;
       }
 
       count++;
-      console.log(order)
+      // console.log(order)
 
       dispatch({
         type: 'SET_ORDERS',

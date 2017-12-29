@@ -38,12 +38,12 @@ class PriceChart extends React.Component {
       currency
     } = this.props;
 
-    const from = moment().add(-7, 'day').valueOf()
+    const from = moment().add(-7, 'day').valueOf();
     marketApi.getHistoHour(symbol, currency, from)
       .then(response => {
         this.setState({
           loading: false,
-          data: response.data
+          data: response.data.map(item => ({ time: item.time, price: item.price }))
         })
       })
       .catch(() => {
@@ -64,6 +64,14 @@ class PriceChart extends React.Component {
     if (error) {
       return <div>error</div>;
     } 
+
+    if (currency === 'BTC' && btc_usd) {
+      cdata = data.map(item => ({ ...item, price: item.price * btc_usd }))
+    }
+
+    if (currency === 'ETH' && btc_usd) {
+      cdata = data.map(item => ({ ...item, price: item.price * eth_usd }))
+    }
 
     return (
       <div style={{ width: 150, height: 100}}>

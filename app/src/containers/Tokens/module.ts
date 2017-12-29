@@ -152,7 +152,7 @@ export const showAllTokens = () => (dispatch, getState) => {
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
       const TIKER_INTERVAL = 1000 * 60; //1000 * 60 * 60 * 24 * 1; /*1 day*/
       streemApi.subscribeTickers(tiker => {   
-        console.log(' tiker ', tiker);     
+        // console.log(' tiker ', tiker);     
         newTikers[tiker.pair.base] = {
           symbol: tiker.pair.base,
           amount: tiker.baseAmount,
