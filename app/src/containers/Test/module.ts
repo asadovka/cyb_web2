@@ -4,7 +4,11 @@ import {combineEpics} from "redux-observable";
 import _ from 'lodash';
 
 export const getRows = state => {
-  return _.orderBy(state.test.orders, ['amount'], ['desc']);
+  const myTokens = state.test.myTokens;
+  const search = state.test.search;
+  const myItems = _.orderBy(state.test.orders.filter(x => myTokens.indexOf(x.symbol) !== -1), ['symbol'], ['desc']);
+  const otherItems = state.test.orders.filter(x => myTokens.indexOf(x.symbol) === -1 && (search ? x.symbol.toLowerCase().indexOf(search.toLowerCase()) !== -1 : true));
+  return myItems.concat(_.orderBy(otherItems, ['amount'], ['desc']));
 }
 
 const items = [
@@ -52,6 +56,20 @@ function generateRandomTiker() {
   }  
 }
 
+export  const toggleMyToken = (symbol, checked) => {
+  if (!checked){
+    return {
+      type: 'REMOVE_MY_TOKENS',
+      payload: symbol
+    }
+  } else {
+    return {
+      type: 'ADD_MY_TOKENS',
+      payload: symbol
+    }
+  }
+}
+
 export const showTokens = () => (dispatch, getState) => {
 
   dispatch({
@@ -61,7 +79,7 @@ export const showTokens = () => (dispatch, getState) => {
 
   setInterval(() => {
     const tiker = generateRandomTiker();
-    console.log(' event > ', tiker);
+    // console.log(' event > ', tiker);
     data[tiker.symbol] = tiker;
     updateTokens(tiker, dispatch, getState)
   }, 10);
@@ -110,10 +128,42 @@ const orders = (state =[], action) => {
       return state;
   }
 }
+
+const myTokens = (state = ['DASH'], action) => {
+  switch (action.type) {
+    case "ADD_MY_TOKENS":{
+      return state.concat(action.payload);    
+    }
+
+    case "REMOVE_MY_TOKENS":
+      return state.filter(item => item !== action.payload);    
+
+    default:
+      return state;
+  }
+}
+
+export const changeSearch = (value) => ({
+  type: 'CHANGE_SEARCH',
+  payload: value
+})
+
+const search = (state = '', action) => {
+  switch (action.type) {
+    case "CHANGE_SEARCH":
+      return action.payload;
+
+    default:
+      return state;
+  }
+}
+
 import {Observable} from "rxjs";
 
 export const reducer = combineReducers({
-  orders
+  orders,
+  myTokens,
+  search
 })
 
 // export const test = action$ =>

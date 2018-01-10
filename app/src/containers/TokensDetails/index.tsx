@@ -60,7 +60,7 @@ class TokensDetails extends React.Component {
         </div>}
         {value === 1 && <div>  
           <OrderBookChart />
-          <OrderTables />
+          {/*<OrderTables />*/}
           <TradesTable />
         </div>}
         

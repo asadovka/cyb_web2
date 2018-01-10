@@ -40,7 +40,10 @@ const OrderBookChart = React.createClass({
   render () {
     const {
       buyOrders,
-      sellOrders
+      sellOrders,
+
+      buyOrdersGDAX,
+      sellOrdersGDAX
     } = this.props;
 
     let data = [];
@@ -57,10 +60,57 @@ const OrderBookChart = React.createClass({
 
     data  = [...data, ...buyOrders];
     data  = [...data, ...sellOrders];
+    // data = [...data, ...buyOrdersGDAX.map(item => ({ spotPrice: item.spotPrice, sellGDAX: item.buy }))];
+    // data = [...data, ...sellOrdersGDAX.map(item => ({ spotPrice: item.spotPrice, buyGDAX: item.sell }))];
+
+    console.log(data)
+
+
+          // <Line dataKey="sell" type='stepAfter' data={sellOrdersGDAX} name='GDAX' dot={false} stroke="red" />
+          // <Line dataKey="buy" type='stepAfter' data={buyOrdersGDAX} name='GDAX' dot={false} stroke="green" />
 
 
     const types = ['basis' , 'basisClosed' , 'basisOpen' , 'linear' , 'linearClosed' , 'natural' , 'monotoneX' , 'monotoneY' , 'monotone' , 'step' , 'stepBefore' , 'stepAfter' ]
     const { type } = this.state;
+
+    const exchanges = [
+      { 
+        name: 'HitBtc', 
+        stroke: 'red',
+        field: 'buy',
+        data: [
+          ...buyOrders,
+          ...sellOrders
+        ]
+      },
+      { 
+        name: 'HitBtc', 
+        stroke: 'green',
+        field: 'sell',
+        data: [
+          ...buyOrders,
+          ...sellOrders
+        ]
+      },
+      { 
+        name: 'GDAX', 
+        stroke: 'yellow',
+        field: 'buy',
+        data: [
+          ...buyOrdersGDAX,
+          ...sellOrdersGDAX
+        ]
+      },
+      { 
+        name: 'GDAX', 
+        stroke: 'blue',
+        field: 'sell',
+        data: [
+          ...buyOrdersGDAX,
+          ...sellOrdersGDAX
+        ]
+      }
+    ]
     return (
       <div style={{
               marginTop: 50,
@@ -70,13 +120,21 @@ const OrderBookChart = React.createClass({
         <h4 className='title'>Market depth:</h4>
 
         <div>
-        <ComposedChart width={900} height={300} data={data} syncId="OrderBookChart"
-              margin={{top: 10, right: 0, left: 0, bottom: 0}}>
-          <XAxis  dataKey="spotPrice"/>
-          <YAxis   />
-          <Line dataKey="sell" type='stepBefore' dot={false} stroke="#82ca9d" />
-          <Line dataKey="buy" type='stepBefore' dot={false} stroke="#8884d8" />
-        </ComposedChart>
+        <LineChart width={900} height={300} >
+          <XAxis  data={exchanges[0].data} dataKey="spotPrice"  domain={['dataMin', 'dataMax']}/>
+          <YAxis  />
+          {exchanges.map(exchange => (
+            <Line 
+              dataKey={exchange.field} 
+              type='stepAfter' 
+              data={exchange.data} 
+              name={exchange.name} 
+              key={exchange.name + exchange.field} 
+              stroke={exchange.stroke}
+              dot={false}  
+            />
+          ))}
+        </LineChart>
         <button>+</button>
         <button>-</button>
         </div>
@@ -96,8 +154,11 @@ import {
 
 export default connect(
   state => ({
-    buyOrders: calculateBuyOrdersTotal(state, 10),
-    sellOrders: calculateSellOrdersTotal(state, 10)
+    buyOrders: calculateBuyOrdersTotal(state, 10, 'HitBtc'),
+    sellOrders: calculateSellOrdersTotal(state, 10, 'HitBtc'),
+
+    buyOrdersGDAX: calculateBuyOrdersTotal(state, 10, 'GDAX'),
+    sellOrdersGDAX: calculateSellOrdersTotal(state, 10, 'GDAX')      
   })
 )(OrderBookChart);
 

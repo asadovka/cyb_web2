@@ -58,14 +58,15 @@ function byInterval(arr, min, max, step, sumBy) {
    return result;
 }
 
-export const calculateBuyOrders = (state, step) => {
-  const buyOrders = state.tokensDetails.buyOrders;
+export const calculateBuyOrders = (state, step, exchange) => {
+  const buyOrders = state.tokensDetails[exchange].buyOrders;
   // const item = _.max(buyOrders, x => x.spotPrice);
   // const max = item ? item.spotPrice : 0;
   // if (!max) return [];
-  const max = state.tokensDetails.bayValue;
+  const max = state.tokensDetails[exchange].bayValue;
+  const oneProcent = max == 0 ? 1 :  max / 100; 
 
-  return byInterval(buyOrders, max - (step * 10), max, step, x => x.amount * x.spotPrice).map(x => ({
+  return byInterval(buyOrders, max - (oneProcent * 20), max, oneProcent, x => x.amount * x.spotPrice).map(x => ({
     count: x.count,
     amount: x.amountSum,
     sum: x.sum,
@@ -73,8 +74,8 @@ export const calculateBuyOrders = (state, step) => {
   }))
 }
 
-export const calculateBuyOrdersTotal = (state, step) => {
-  const items = calculateBuyOrders(state, step);
+export const calculateBuyOrdersTotal = (state, step, exchange) => {
+  const items = calculateBuyOrders(state, step, exchange);
   const gbuyTotal = [];  
   for(var i = 0; i < items.length; i++) {
     const buy = items.reduce((a, b, index) => index >= i ? a + b.sum : a, 0);
@@ -89,8 +90,8 @@ export const calculateBuyOrdersTotal = (state, step) => {
   return gbuyTotal;
 }
 
-export const calculateSellOrdersTotal = (state, step) => {
-    const items = calculateSellOrders(state, step);
+export const calculateSellOrdersTotal = (state, step, exchange) => {
+    const items = calculateSellOrders(state, step, exchange);
     const gsellTotal = [];      
     for(var i = 0; i < items.length; i++) {
       const sell = items.reduce((a, b, index) => index <= i ? a + b.sum : a, 0);
@@ -107,11 +108,13 @@ export const calculateSellOrdersTotal = (state, step) => {
 }
 
 
-export const calculateSellOrders = (state, step) => {
-  const sellOrders = state.tokensDetails.sellOrders
-  const min = state.tokensDetails.sellValue;
-
-  return byInterval(sellOrders, min, min + (step * 10), step, x => x.amount * x.spotPrice).map(x => ({
+export const calculateSellOrders = (state, step, exchange) => {
+  const sellOrders = state.tokensDetails[exchange].sellOrders
+  const min = state.tokensDetails[exchange].sellValue;
+  // console.log(min, min + (step * 10), step)
+  const oneProcent = min == 0 ? 1 :  min / 100 ; 
+ // console.log(min, )
+  return byInterval(sellOrders, min, min + (oneProcent * 20), oneProcent, x => x.amount * x.spotPrice).map(x => ({
     count: x.count,
     amount: x.amountSum,
     sum: x.sum,
@@ -121,14 +124,14 @@ export const calculateSellOrders = (state, step) => {
 
 
 
-const orderReducer = type => (state = [], action) => {
+const orderReducer = (type, exchange) => (state = [], action) => {
   switch (action.type) {
     case "CLEAN_ORDERS":
       return [];
 
     case "ADD_ORDERS": {
       let buyOrders = action.payload
-        .filter(o => o.type == type )
+        .filter(o => o.type == type && o.exchange == exchange)
         .map(item => ({ ...item, count: 1}));
 
       return state.concat(buyOrders);
@@ -143,10 +146,10 @@ export const closeConnection = () => () => {
   streemApi.close();
 }
 
-const sellValue = (state = 0, action) => {
+const sellValue = exchange => (state = 0, action) => {
   switch (action.type) {
     case "ADD_TRADE": {
-      const sellTrads = action.payload.filter(t => t.type === 'SELL');
+      const sellTrads = action.payload.filter(t => t.type === 'SELL' && t.exchange === exchange);
 
       if (sellTrads.length === 0) return state;
 
@@ -158,10 +161,10 @@ const sellValue = (state = 0, action) => {
   }
 }
 
-const bayValue = (state = 0, action) => {
+const bayValue = exchange => (state = 0, action) => {
   switch (action.type) {
     case "ADD_TRADE": {
-      const sellTrads = action.payload.filter(t => t.type === 'BUY');
+      const sellTrads = action.payload.filter(t => t.type === 'BUY' && t.exchange === exchange);
 
       if (sellTrads.length === 0) return state;
 
@@ -177,10 +180,18 @@ export const reducer = combineReducers({
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
   tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
-  buyOrders: orderReducer('BUY'),
-  sellOrders: orderReducer('SELL'),
-  sellValue,
-  bayValue
+  HitBtc: combineReducers({
+    buyOrders: orderReducer('BUY', 'HitBtc'),
+    sellOrders: orderReducer('SELL', 'HitBtc'),
+    sellValue: sellValue('HitBtc'),
+    bayValue: bayValue('HitBtc')    
+  }),
+  GDAX: combineReducers({
+    buyOrders: orderReducer('BUY', 'GDAX'),
+    sellOrders: orderReducer('SELL', 'GDAX'),
+    sellValue: sellValue('GDAX'),
+    bayValue: bayValue('GDAX')    
+  })
 })
 
 export const showCrowdsalesDetails = (system) => ({
@@ -233,6 +244,7 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
     }, `"${symbol}_${base}"`);
 
     dispatch({ type: 'CLEAN_ORDERS' })
+
     streemApi.subscribeOrders(order => {
       _orders = _orders.concat(order);
       updateOrders(dispatch);
