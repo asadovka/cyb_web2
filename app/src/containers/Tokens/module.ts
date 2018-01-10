@@ -141,7 +141,7 @@ export const showAllTokens = () => (dispatch, getState) => {
     type: 'SET_TOKENS_LOADING',
     payload: true
   })
-  const myTokens = JSON.parse(localStorage.getItem('my-tokens'));
+  const myTokens = JSON.parse(localStorage.getItem('my-tokens') || []);
   dispatch({
     type: 'SET_MY_TOKENS',
     payload: myTokens
