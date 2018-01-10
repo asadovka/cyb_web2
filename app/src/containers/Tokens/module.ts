@@ -71,7 +71,9 @@ export const closeConnection = () => () => {
 export const calculateExchangeRate = (state) => state.tokens.exchangeRate;
 
 export const calculateRows = (state) => {
-  const _rows = state.tokens.rows.filter(row => row.price > 0);
+  const search = state.tokens.search;
+  const myTokens = state.tokens.myTokens;
+  const _rows = state.tokens.rows.filter(row => row.price > 0 );
   const { btc_usd, eth_usd } = state.tokens.exchangeRate;
  
   const rows =  _rows.map(item => {
@@ -95,7 +97,16 @@ export const calculateRows = (state) => {
     });
 
   // return rows;
-  return _.orderBy(rows, ['amount'], ['desc']);
+  // return _.orderBy(rows, ['amount'], ['desc']);
+
+  const items = rows.filter(x => myTokens.indexOf(x.symbol) === -1 && (search ? x.system.toLowerCase().indexOf(search.toLowerCase()) !== -1 : true));
+  const myItems = rows.filter(x => myTokens.indexOf(x.symbol) !== -1).sort((a, b) => {
+    const aIndex = myTokens.indexOf(a.symbol);
+    const bIndex = myTokens.indexOf(b.symbol);
+    return aIndex > bIndex ? 1 : -1;
+  }) 
+
+  return myItems.concat(_.orderBy(items, ['amount'], ['desc']));
 }
 
 
@@ -130,6 +141,11 @@ export const showAllTokens = () => (dispatch, getState) => {
     type: 'SET_TOKENS_LOADING',
     payload: true
   })
+  const myTokens = JSON.parse(localStorage.getItem('my-tokens'));
+  dispatch({
+    type: 'SET_MY_TOKENS',
+    payload: myTokens
+  });
   chaingearApi.getAllTokens()
     .then(tokens => new Promise(resolve => {
         streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
@@ -230,10 +246,61 @@ const loading = (state = false, action) => {
 }
 
 
+export const changeSearch = (value) => ({
+  type: 'CHANGE_TOKENS_SEARCH',
+  payload: value
+})
+
+const search = (state = '', action) => {
+  switch (action.type) {
+    case "CHANGE_TOKENS_SEARCH":
+      return action.payload;
+
+    default:
+      return state;
+  }
+}
+
+export  const toggleMyToken = (symbol, checked) => (dispatch, getState) => {
+  if (!checked){
+    dispatch({
+      type: 'REMOVE_MY_TOKENS',
+      payload: symbol
+    })
+  } else {
+    dispatch({
+      type: 'ADD_MY_TOKENS',
+      payload: symbol
+    })
+  }
+  const tokens = getState().test.myTokens;
+  localStorage.setItem('my-tokens', JSON.stringify(tokens));
+}
+
+const myTokens = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_MY_TOKENS":{
+      return state.concat(action.payload);    
+    }
+
+    case "REMOVE_MY_TOKENS":
+      return state.filter(item => item !== action.payload);    
+
+    case "SET_MY_TOKENS":{
+      return action.payload;
+    }
+
+    default:
+      return state;
+  }
+}
+
 export const reducer = combineReducers({
   loading,
   rows: rowsReducer,
   exchangeRate,
+  search,
+  myTokens
 })
 
 

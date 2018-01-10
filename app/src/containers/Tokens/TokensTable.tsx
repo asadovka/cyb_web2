@@ -9,23 +9,39 @@ var numeral = require('numeral');
 
 import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '../../components/Table/';
 
-import { calculateRows } from './module';
+import { calculateRows, changeSearch, toggleMyToken } from './module';
 
 import PriceChart from './PriceChart';
 
 import Paper from 'material-ui/Paper';
+
+import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
+
 
 class TokensTable extends React.Component {
 
   render() {
     const {
       rows,
+      search,
+      changeSearch,
+      myTokens,
+      toggleMyToken,
     } = this.props;
+
+    console.log('myTokens', myTokens)
 
     const rowsComponents = rows.map((item, index) => {
       const procent = item.procent;
       return (
         <TableRow key={item.symbol}>
+          <TableCell padding="checkbox">
+            <Checkbox 
+              checked={myTokens.indexOf(item.symbol) !== -1}
+              onChange={(event, checked) => toggleMyToken(item.symbol, checked)}
+            />
+          </TableCell>
           <TableCell>
             <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
               <img width={50} src={item.logo}/>            
@@ -65,6 +81,12 @@ class TokensTable extends React.Component {
          <Table>
            <TableHead>
              <TableRow>
+               <TableCell padding="checkbox">
+                <TextField 
+                  value={search}
+                  onChange={(e) => changeSearch(e.target.value)} 
+                />
+               </TableCell>
                <TableCell>system</TableCell>
                <TableCell>market cap</TableCell>
                <TableCell>price</TableCell>
@@ -88,5 +110,8 @@ import _ from 'lodash';
 export default connect(
   state => ({
     rows: calculateRows(state),
-  })
+    search: state.tokens.search,
+    myTokens: state.tokens.myTokens,
+  }),
+  { changeSearch, toggleMyToken }
 )(TokensTable);
