@@ -6,7 +6,14 @@ import _ from 'lodash';
 export const getRows = state => {
   const myTokens = state.test.myTokens;
   const search = state.test.search;
-  const myItems = _.orderBy(state.test.orders.filter(x => myTokens.indexOf(x.symbol) !== -1), ['symbol'], ['desc']);
+
+  const items = state.test.orders.filter(x => myTokens.indexOf(x.symbol) !== -1);
+  const myItems = items.sort((a, b) => {
+    const aIndex = myTokens.indexOf(a.symbol);
+    const bIndex = myTokens.indexOf(b.symbol);
+    return aIndex > bIndex ? 1 : -1;
+  }) 
+
   const otherItems = state.test.orders.filter(x => myTokens.indexOf(x.symbol) === -1 && (search ? x.symbol.toLowerCase().indexOf(search.toLowerCase()) !== -1 : true));
   return myItems.concat(_.orderBy(otherItems, ['amount'], ['desc']));
 }
