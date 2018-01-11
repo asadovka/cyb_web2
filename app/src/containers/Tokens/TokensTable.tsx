@@ -12,6 +12,7 @@ import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from
 import { calculateRows, changeSearch, toggleMyToken } from './module';
 
 import PriceChart from './PriceChart';
+import Search from './Search';
 
 import Paper from 'material-ui/Paper';
 
@@ -24,13 +25,9 @@ class TokensTable extends React.Component {
   render() {
     const {
       rows,
-      search,
-      changeSearch,
       myTokens,
       toggleMyToken,
     } = this.props;
-
-    console.log('myTokens', myTokens)
 
     const rowsComponents = rows.map((item, index) => {
       const procent = item.procent;
@@ -39,7 +36,9 @@ class TokensTable extends React.Component {
           <TableCell padding="checkbox">
             <Checkbox 
               checked={myTokens.indexOf(item.symbol) !== -1}
-              onChange={(event, checked) => toggleMyToken(item.symbol, checked)}
+              onChange={(event, checked) => {
+                toggleMyToken(item.symbol, checked);
+              }}
             />
           </TableCell>
           <TableCell>
@@ -51,16 +50,18 @@ class TokensTable extends React.Component {
               </span>
             </Logo>
           </TableCell>
-          <TableCell>{numeral(item.price * item.supply).format('$0,0,0,0.0000')}</TableCell>
-          <TableCell>
+          <TableCell padding="none">
+            {numeral(item.price * item.supply).format('$0,0,0,0.0000')}
+          </TableCell>
+          <TableCell padding="none">
             <span style={{
               color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
             }}>{numeral(item.price).format('$0,0,0.0000')}</span>
           </TableCell>
-          <TableCell>
+          <TableCell padding="none">
             {numeral(item.amount).format('$0,0,0.00')}
           </TableCell>
-          <TableCell>
+          <TableCell padding="none">
             {numeral(item.supply).format('0,0,0,0.00') }&nbsp;{item.symbol}
           </TableCell>
           <TableCell padding='none'>
@@ -82,13 +83,10 @@ class TokensTable extends React.Component {
            <TableHead>
              <TableRow>
                <TableCell padding="checkbox">
-                <TextField 
-                  value={search}
-                  onChange={(e) => changeSearch(e.target.value)} 
-                />
+                
                </TableCell>
-               <TableCell>system</TableCell>
-               <TableCell>market cap</TableCell>
+               <TableCell style={{ textAlign: 'center'}}>system</TableCell>
+               <TableCell>market&nbsp;cap</TableCell>
                <TableCell>price</TableCell>
                <TableCell><TableSortLabel active={true}>volume by pair</TableSortLabel></TableCell>               
                <TableCell>supply</TableCell>               
@@ -109,9 +107,8 @@ import _ from 'lodash';
 
 export default connect(
   state => ({
-    rows: calculateRows(state),
-    search: state.tokens.search,
+    rows: calculateRows(state),    
     myTokens: state.tokens.myTokens,
   }),
-  { changeSearch, toggleMyToken }
+  { toggleMyToken }
 )(TokensTable);

@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {combineReducers} from "redux";
 import {combineEpics} from "redux-observable";
 import _ from 'lodash';
+import moment from 'moment'
 
 const {
   chaingearApi,
@@ -66,11 +67,22 @@ export const closeConnection = () => () => {
   streemApi.close();
 }
 
-
+export const getPriceData = (state, symbol, currency) => {
+  const prices = state.tokens.prices;
+  if (!prices[symbol]) {
+    return {
+      data: [],
+      loading: true,
+      error: false
+    }    
+  }
+  return prices[symbol];
+}
 
 export const calculateExchangeRate = (state) => state.tokens.exchangeRate;
 
 export const calculateRows = (state) => {
+
   const search = state.tokens.search;
   const myTokens = state.tokens.myTokens;
   const _rows = state.tokens.rows.filter(row => row.price > 0 );
@@ -106,26 +118,11 @@ export const calculateRows = (state) => {
     return aIndex > bIndex ? 1 : -1;
   }) 
 
-  return myItems.concat(_.orderBy(items, ['amount'], ['desc']));
+  return myItems.concat(items);//_.orderBy(items, ['amount'], ['desc']));
 }
 
 
 const newTikers = {};
-const updateRate = _.throttle((dispatch) => {
-  if (newTikers['BTC']) {
-    dispatch({
-      type: 'CHANGE_EXCHANGE_RATE_BTC',
-      payload: newTikers['BTC'].price
-    })
-  }
-
-  if (newTikers['ETH'] ) {
-    dispatch({
-      type: 'CHANGE_EXCHANGE_RATE_ETH',
-      payload: newTikers['ETH'].price
-    })
-  }
-}, 1000)
 
 
 const updateRows = _.throttle((dispatch, getState) => {
@@ -178,15 +175,48 @@ export const showAllTokens = () => (dispatch, getState) => {
         };
 
 
-        updateRows(dispatch, getState);
-        updateRate(dispatch)
-        
+        updateRows(dispatch, getState);        
       }, pairsStr, TIKER_INTERVAL)
 
-        dispatch({
-          type: 'SET_TOKENS_LOADING',
-          payload: false
-        })
+      dispatch({
+        type: 'SET_TOKENS_LOADING',
+        payload: false
+      })
+
+
+      const from = moment().add(-7, 'day').valueOf();
+      rows.forEach(row => {
+        marketApi.getHistoHour(row.symbol, row.currency, from)
+          .then(response => {
+              const data = response.data.map(item => ({ time: item.time, price: item.close }));
+              dispatch({
+                type: 'SET_TOKEN_PRICE_CHART',
+                payload: { data, symbol: row.symbol }
+              })
+          })
+          .catch(() => {
+            dispatch({
+              type: 'SET_TOKEN_PRICE_CHART_ERROR',
+              payload: row.symbol
+            })
+          })
+      })
+      // marketApi.getHistoHour(symbol, currency, from)
+      //   .then(response => {
+      //     // this.setState({
+      //     //   loading: false,
+      //     //   data: response.data.map(item => ({ time: item.time, price: item.close }))
+      //     // })
+      //   })
+        // .catch(() => {
+        //   this.setState({
+        //     loading: false,
+        //     error: true
+        //   })
+        // })
+      // dispatch({
+      //   type: 'SET_TOKEN_PRICE_CHART',
+      // })
     })
 }
 
@@ -224,12 +254,11 @@ const rowsReducer = (state = [], action) => {
 
 const exchangeRate = (state = { btc_usd: 1, eth_usd: 1}, action) => {
   switch (action.type) {
-    case "CHANGE_EXCHANGE_RATE":
-      return {...action.payload};    
-    case "CHANGE_EXCHANGE_RATE_BTC":
-      return {...state, btc_usd: action.payload};    
-    case "CHANGE_EXCHANGE_RATE_ETH":
-      return {...state, eth_usd: action.payload};    
+    case "UPDATE_TOKENS": {
+       const btc_usd = newTikers['BTC'] ? newTikers['BTC'].price : state.btc_usd;
+       const eth_usd = newTikers['ETH'] ? newTikers['ETH'].price : state.btc_usd;
+       return { ...state, btc_usd, eth_usd };
+    }
     default:
       return state;
   }
@@ -273,7 +302,7 @@ export  const toggleMyToken = (symbol, checked) => (dispatch, getState) => {
       payload: symbol
     })
   }
-  const tokens = getState().test.myTokens;
+  const tokens = getState().tokens.myTokens;
   localStorage.setItem('my-tokens', JSON.stringify(tokens));
 }
 
@@ -295,12 +324,40 @@ const myTokens = (state = [], action) => {
   }
 }
 
+const prices = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_TOKEN_PRICE_CHART": {
+      const { symbol, data } = action.payload;
+      return {
+        ...state,
+        [symbol]: {
+          error: false,
+          data
+        }
+      }
+    }          
+    case "SET_TOKEN_PRICE_CHART_ERROR": {
+      const symbol = action.payload;
+      return {
+        ...state,
+        [symbol]: {
+          error: false
+        }
+      }
+    }
+    default:
+      return state;
+  }
+}
+
+
 export const reducer = combineReducers({
   loading,
   rows: rowsReducer,
   exchangeRate,
   search,
-  myTokens
+  myTokens,
+  prices
 })
 
 

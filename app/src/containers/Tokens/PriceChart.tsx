@@ -18,44 +18,12 @@ const labelFormatter = (a, b) => {
 }
 
 const formatter = (a, b) => {
-  console.log(a, b, numeral(a).format('$0,0.0000'))
   return numeral(a).format('0,0.0000')
 }
 
 class PriceChart extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loading: true,
-      error: false,
-      data: []
-    };
-  }
-
-  componentDidMount() {
-    const {
-      symbol,
-      currency
-    } = this.props;
-
-    const from = moment().add(-7, 'day').valueOf();
-    marketApi.getHistoHour(symbol, currency, from)
-      .then(response => {
-        this.setState({
-          loading: false,
-          data: response.data.map(item => ({ time: item.time, price: item.close }))
-        })
-      })
-      .catch(() => {
-        this.setState({
-          loading: false,
-          error: true
-        })
-      })
-  }
   render() {
-    const { symbol, currency, btc_usd, eth_usd } = this.props;
-    const { loading, data, error } = this.state;
+    const { loading, data, error, symbol, currency, btc_usd, eth_usd } = this.props;
     let cdata = data;
 
     if (loading) {
@@ -69,7 +37,7 @@ class PriceChart extends React.Component {
       cdata = data.map(item => ({ ...item, price: item.price * btc_usd }))
     }
 
-    if (currency === 'ETH' && btc_usd) {
+    if (currency === 'ETH' && eth_usd) {
       cdata = data.map(item => ({ ...item, price: item.price * eth_usd }))
     }
 
@@ -78,7 +46,7 @@ class PriceChart extends React.Component {
         <ComposedChart width={150} height={100} data={cdata} syncId={`${symbol}_anyId`}
           margin={{top: 0, right: 0, left: 0, bottom: 0}}>
           <XAxis dataKey="time" hide={true}/>
-          <Line dataKey='price' type='monotone' dot={false}/>
+          <Line isAnimationActive={false} dataKey='price' type='monotone' dot={false}/>
           <Tooltip formatter={formatter} labelFormatter={labelFormatter}/>
         </ComposedChart>
       </div>
@@ -86,12 +54,16 @@ class PriceChart extends React.Component {
   }
 }
 
-import { calculateExchangeRate } from './module';
+import { calculateExchangeRate, getPriceData } from './module';
 import { connect } from 'react-redux';
 
 export default connect(
-  state => ({
-    btc_usd: calculateExchangeRate(state).btc_usd,
-    eth_usd: calculateExchangeRate(state).eth_usd,
-  })
+  (state, { symbol, currency }) => {
+    const { loading, data, error } = getPriceData(state, symbol, currency);
+    return {
+      loading, data, error,
+      btc_usd: calculateExchangeRate(state).btc_usd,
+      eth_usd: calculateExchangeRate(state).eth_usd,
+    }
+  }
 )(PriceChart);
