@@ -121,6 +121,13 @@ export const calculateRows = (state) => {
   return _.orderBy(items, ['amount'], ['desc']);// myItems.concat(_.orderBy(items, ['amount'], ['desc']));
 }
 
+export const resetTokens = () => (dispatch) => {
+  localStorage.setItem('my-tokens', JSON.stringify([]));
+  dispatch({
+    type: 'RESET_MY_TOKENS'
+  })
+}
+
 export const getMyTokens = (state) => {
 
   const search = state.tokens.search;
@@ -357,6 +364,10 @@ const myTokens = (state = [], action) => {
 
     case "SET_MY_TOKENS":{
       return action.payload;
+    }
+
+    case "RESET_MY_TOKENS": {
+      return [];
     }
 
     default:

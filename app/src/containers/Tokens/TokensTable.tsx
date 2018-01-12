@@ -9,7 +9,7 @@ var numeral = require('numeral');
 
 import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '../../components/Table/';
 
-import { calculateRows, changeSearch, toggleMyToken, getMyTokens } from './module';
+import { calculateRows, changeSearch, toggleMyToken, getMyTokens, resetTokens } from './module';
 
 import PriceChart from './PriceChart';
 import Search from './Search';
@@ -68,10 +68,11 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
   );
 }
 
-const TableHeader = () => (
+const TableHeader = ({ onReset }) => (
   <TableHead>
      <TableRow>
        <TableCell padding="checkbox">                
+         {onReset && <button onClick={onReset}>reset</button>}
        </TableCell>
        <TableCell style={{ textAlign: 'center'}}>token</TableCell>
        <TableCell>market&nbsp;cap</TableCell>
@@ -91,7 +92,8 @@ class TokensTable extends React.Component {
       rows,
       myTokens,
       toggleMyToken,
-      myTokensRows
+      myTokensRows,
+      resetTokens
     } = this.props;
 
     const rowsComponents = rows.map((item, index) => (
@@ -114,7 +116,7 @@ class TokensTable extends React.Component {
     return (
       <Paper>          
         <Table>
-          <TableHeader /> 
+          <TableHeader onReset={resetTokens}/> 
           <TableBody>
              {myRowsComponents}
           </TableBody>
@@ -140,5 +142,5 @@ export default connect(
     myTokens: state.tokens.myTokens,
     myTokensRows: getMyTokens(state)
   }),
-  { toggleMyToken }
+  { toggleMyToken, resetTokens }
 )(TokensTable);
