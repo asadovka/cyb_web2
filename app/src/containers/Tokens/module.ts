@@ -118,7 +118,47 @@ export const calculateRows = (state) => {
     return aIndex > bIndex ? 1 : -1;
   }) 
 
-  return myItems.concat(items);//_.orderBy(items, ['amount'], ['desc']));
+  return _.orderBy(items, ['amount'], ['desc']);// myItems.concat(_.orderBy(items, ['amount'], ['desc']));
+}
+
+export const getMyTokens = (state) => {
+
+  const search = state.tokens.search;
+  const myTokens = state.tokens.myTokens;
+  const _rows = state.tokens.rows.filter(row => row.price > 0 );
+  const { btc_usd, eth_usd } = state.tokens.exchangeRate;
+ 
+  const rows =  _rows.map(item => {
+      if (item.currency === 'BTC'){
+        return {
+          ...item,
+          price: item.price * btc_usd,
+          amount: item.amount * btc_usd
+        }  
+      }
+
+      if (item.currency === 'ETH'){
+        return {
+          ...item,
+          price: item.price * eth_usd,
+          amount: item.amount * eth_usd
+        }  
+      }
+      
+      return item;
+    });
+
+  // return rows;
+  // return _.orderBy(rows, ['amount'], ['desc']);
+
+  const items = rows.filter(x => myTokens.indexOf(x.symbol) === -1 && (search ? x.system.toLowerCase().indexOf(search.toLowerCase()) !== -1 : true));
+  const myItems = rows.filter(x => myTokens.indexOf(x.symbol) !== -1).sort((a, b) => {
+    const aIndex = myTokens.indexOf(a.symbol);
+    const bIndex = myTokens.indexOf(b.symbol);
+    return aIndex > bIndex ? 1 : -1;
+  }) 
+
+  return myItems;
 }
 
 
