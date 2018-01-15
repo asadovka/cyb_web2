@@ -127,6 +127,10 @@ const getEthereumTxEpic = loadDataEpic(
 );
 
 
+export const getEthereumAddress = (hash) => () => {
+
+}
+
 export const getEthereumClassicBlock = (blockNumber) => ({
   type: 'GET_ETHEREUM_CLASSIC_BLOCK',
   payload: {blockNumber}

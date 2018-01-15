@@ -15,6 +15,7 @@ import BitcoinCashTxPage from "./containers/search/BitcoinCashTxPage/";
 
 import {EthereumBlockPage} from "./containers/search/EthereumBlockPage/";
 import EthereumTxPage from "./containers/search/EthereumTxPage/";
+import EthereumAddressPage from "./containers/search/EthereumAddressPage/";
 
 import EthereumClassicTxPage from "./containers/search/EthereumClassicTxPage/";
 import EthereumClassicBlockPage from './containers/search/EthereumClassicBlockPage/';
@@ -64,6 +65,8 @@ export function Root() {
 
           <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
           <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
+          <Route path={"/ethereum/address/:hash"} component={EthereumAddressPage}/>
+
 
           <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
           <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
