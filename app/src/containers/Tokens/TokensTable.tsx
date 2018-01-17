@@ -6,7 +6,7 @@ import { Logo, PriceInfo, NoInfo } from '../../components/AssetTable/';
 import { connect } from 'react-redux';
 var numeral = require('numeral');
 
-
+import Button from 'material-ui/Button';
 import Table, { TableBody, TableCell, TableHead, TableRow, TableSortLabel } from '../../components/Table/';
 
 import { calculateRows, changeSearch, toggleMyToken, getMyTokens, resetTokens } from './module';
@@ -24,7 +24,7 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
   const procent = item.procent;
   return (
     <TableRow >
-      <TableCell style={{ borderBottom: 'none' }} padding="checkbox">
+      <TableCell style={{ borderBottom: 'none', width: '10%' }} padding="checkbox">
         <Checkbox 
           checked={myTokens.indexOf(item.symbol) !== -1}
           onChange={(event, checked) => {
@@ -32,7 +32,7 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
           }}
         />
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '15%'}} padding="none">
         <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
           <img width={30} src={item.logo}/>            
           <span>{item.system}</span>
@@ -41,24 +41,24 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
           </span>
         </Logo>
       </TableCell >
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right', paddingRight: 20}} padding="none">
-        {numeral(item.price * item.supply).format('$0,0,0,0')}
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', paddingRight: 20, width: '10%'}} padding="none">
+        {numeral(item.price * item.supply).format('$0,0,0,0').replace(/,/g,' ')}
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '10%'}} padding="none">
         <span style={{
           color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
-        }}>{item.price > 1 ? numeral(item.price).format('$0,0,0.00') : numeral(item.price).format('$0,0,0.0000')}</span>
+        }}>{item.price > 1 ? numeral(item.price).format('$0,0,0.00').replace(/,/g,' ') : numeral(item.price).format('$0,0,0.0000').replace(/,/g,' ')}</span>
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
-        {numeral(item.amount).format('$0,0,0.00')}
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '15%'}} padding="none">
+        {numeral(item.amount).format('$0,0,0.00').replace(/,/g,' ')}
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
-        {numeral(item.supply).format('0,0,0,0') }&nbsp;{item.symbol}
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '10%'}} padding="none">
+        {numeral(item.supply).format('0,0,0,0').replace(/,/g,' ') }&nbsp;{item.symbol}
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding='none'>
-        {numeral(item.procent).format('0.0000')}%
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '10%'}} padding='none'>
+        {numeral(item.procent).format('0.00')}%
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding='none'>
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%'}} padding='none'>
         <PriceChart
           symbol={item.symbol} 
           currency={item.currency}
@@ -71,16 +71,16 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
 const TableHeader = ({ onReset }) => (
   <TableHead>
      <TableRow>
-       <TableCell padding="checkbox" style={{ textAlign: 'left'}} >                
-         {onReset && <button onClick={onReset}>reset</button>}
+       <TableCell padding="checkbox" style={{ textAlign: 'left', width: '10%'}} >                
+         {onReset && <Button onClick={onReset}>reset</Button>}
        </TableCell>
-       <TableCell padding='none' style={{ textAlign: 'left'}}>Token</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20 }}>Market&nbsp;cap</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right'}}>Price</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right'}}><TableSortLabel active={true}>Volume by pair</TableSortLabel></TableCell>               
-       <TableCell padding='none' style={{ textAlign: 'right'}}>Supply</TableCell>               
+       <TableCell padding='none' style={{ textAlign: 'left', width: '15%'}}>Token</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;cap</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Price</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', width: '15%'}}><TableSortLabel active={true}>Volume by pair</TableSortLabel></TableCell>               
+       <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Supply</TableCell>               
        <TableCell padding='none' style={{ width: '10%', textAlign: 'right'}}>%&nbsp;(24h)</TableCell>
-       <TableCell padding='none' style={{ width: '20%', textAlign: 'center'}}>Price graph (7d)</TableCell>
+       <TableCell padding='none' style={{ width: '30%', textAlign: 'center'}}>Price graph (7d)</TableCell>
      </TableRow>
    </TableHead>
 )

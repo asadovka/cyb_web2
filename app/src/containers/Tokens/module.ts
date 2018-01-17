@@ -198,7 +198,6 @@ export const showAllTokens = () => (dispatch, getState) => {
         })  
       }))
     .then(({ pairs, tokens }) => {
-      // console.log('pairs>', pairs)
       let rows = [];
       rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
       rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);
@@ -302,11 +301,12 @@ const rowsReducer = (state = [], action) => {
   }
 }
 
-const exchangeRate = (state = { btc_usd: 1, eth_usd: 1}, action) => {
+const exchangeRate = (state = { btc_usd: 1, eth_usd: 1, usdt_usd: 5}, action) => {
   switch (action.type) {
     case "UPDATE_TOKENS": {
        const btc_usd = newTikers['BTC'] ? newTikers['BTC'].price : state.btc_usd;
        const eth_usd = newTikers['ETH'] ? newTikers['ETH'].price : state.btc_usd;
+       const usdt_usd = newTikers['USDT'] ? newTikers['USDT'].price : state.usdt_usd;
        return { ...state, btc_usd, eth_usd };
     }
     default:
@@ -395,7 +395,8 @@ const prices = (state = {}, action) => {
       return {
         ...state,
         [symbol]: {
-          error: false
+          error: true,
+          data: []
         }
       }
     }
