@@ -56,7 +56,9 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
         {numeral(item.supply).format('0,0,0,0').replace(/,/g,' ') }&nbsp;{item.symbol}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '10%'}} padding='none'>
-        {numeral(item.procent).format('0.00')}%
+        {numeral(item.procent).format('0.00')}%<br/>
+        {item.open}<br/>
+        {item.close}<br/>
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%'}} padding='none'>
         <PriceChart
@@ -75,12 +77,12 @@ const TableHeader = ({ onReset }) => (
          {onReset && <Button raised color="default" onClick={onReset}>reset</Button>}
        </TableCell>
        <TableCell padding='none' style={{ textAlign: 'left', width: '15%'}}>Token</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;cap</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Price</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', width: '15%'}}><TableSortLabel active={true}>Volume by pair</TableSortLabel></TableCell>               
+       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;Cap</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Weighted Price</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', width: '15%'}}><TableSortLabel active={false}>Volume&nbsp;24h</TableSortLabel></TableCell>               
        <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Supply</TableCell>               
-       <TableCell padding='none' style={{ width: '10%', textAlign: 'right'}}>%&nbsp;(24h)</TableCell>
-       <TableCell padding='none' style={{ width: '30%', textAlign: 'center'}}>Price graph (7d)</TableCell>
+       <TableCell padding='none' style={{ width: '10%', textAlign: 'right'}}>Change&nbsp;(24h)</TableCell>
+       <TableCell padding='none' style={{ width: '30%', textAlign: 'center'}}>Price Graph&nbsp;(7d)</TableCell>
      </TableRow>
    </TableHead>
 )

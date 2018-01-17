@@ -22,7 +22,7 @@ class TokensDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 1
+      value: 0
     }
     this.handleChange = this.handleChange.bind(this);
   }

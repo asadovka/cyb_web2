@@ -45,7 +45,7 @@ const PriceChart = React.createClass({
 // ];
 
     if (tokensPriceChart.success) {
-      data = tokensPriceChart.data.data.map(item => ({
+      data = tokensPriceChart.data.data.reverse().map(item => ({
         name: moment(item.time).format("hh:mm"),
         uv: item.time,
         price: item.close,
