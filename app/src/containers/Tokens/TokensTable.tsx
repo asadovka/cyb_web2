@@ -72,7 +72,7 @@ const TableHeader = ({ onReset }) => (
   <TableHead>
      <TableRow>
        <TableCell padding="checkbox" style={{ textAlign: 'left', width: '10%'}} >                
-         {onReset && <Button onClick={onReset}>reset</Button>}
+         {onReset && <Button raised color="default" onClick={onReset}>reset</Button>}
        </TableCell>
        <TableCell padding='none' style={{ textAlign: 'left', width: '15%'}}>Token</TableCell>
        <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;cap</TableCell>
