@@ -24,7 +24,7 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
   const procent = item.procent;
   return (
     <TableRow >
-      <TableCell padding="checkbox">
+      <TableCell style={{ borderBottom: 'none' }} padding="checkbox">
         <Checkbox 
           checked={myTokens.indexOf(item.symbol) !== -1}
           onChange={(event, checked) => {
@@ -32,33 +32,33 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
           }}
         />
       </TableCell>
-      <TableCell>
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
         <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
-          <img width={50} src={item.logo}/>            
+          <img width={30} src={item.logo}/>            
           <span>{item.system}</span>
           <span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>
             {item.currency}
           </span>
         </Logo>
+      </TableCell >
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', paddingRight: 20}} padding="none">
+        {numeral(item.price * item.supply).format('$0,0,0,0')}
       </TableCell>
-      <TableCell padding="none">
-        {numeral(item.price * item.supply).format('$0,0,0,0.0000')}
-      </TableCell>
-      <TableCell padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
         <span style={{
           color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
-        }}>{numeral(item.price).format('$0,0,0.0000')}</span>
+        }}>{item.price > 1 ? numeral(item.price).format('$0,0,0.00') : numeral(item.price).format('$0,0,0.0000')}</span>
       </TableCell>
-      <TableCell padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
         {numeral(item.amount).format('$0,0,0.00')}
       </TableCell>
-      <TableCell padding="none">
-        {numeral(item.supply).format('0,0,0,0.00') }&nbsp;{item.symbol}
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding="none">
+        {numeral(item.supply).format('0,0,0,0') }&nbsp;{item.symbol}
       </TableCell>
-      <TableCell padding='none'>
-        {numeral(item.procent).format('0.00000%')}
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding='none'>
+        {numeral(item.procent).format('0.0000')}%
       </TableCell>
-      <TableCell padding='none'>
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right'}} padding='none'>
         <PriceChart
           symbol={item.symbol} 
           currency={item.currency}
@@ -71,16 +71,16 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
 const TableHeader = ({ onReset }) => (
   <TableHead>
      <TableRow>
-       <TableCell padding="checkbox">                
+       <TableCell padding="checkbox" style={{ textAlign: 'left'}} >                
          {onReset && <button onClick={onReset}>reset</button>}
        </TableCell>
-       <TableCell style={{ textAlign: 'center'}}>token</TableCell>
-       <TableCell>market&nbsp;cap</TableCell>
-       <TableCell>price</TableCell>
-       <TableCell><TableSortLabel active={true}>volume by pair</TableSortLabel></TableCell>               
-       <TableCell>supply</TableCell>               
-       <TableCell style={{ width: '10%'}}>%&nbsp;(24h)</TableCell>
-       <TableCell style={{ width: '20%'}}>price graph (7d)</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'left'}}>Token</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20 }}>Market&nbsp;cap</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right'}}>Price</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right'}}><TableSortLabel active={true}>Volume by pair</TableSortLabel></TableCell>               
+       <TableCell padding='none' style={{ textAlign: 'right'}}>Supply</TableCell>               
+       <TableCell padding='none' style={{ width: '10%', textAlign: 'right'}}>%&nbsp;(24h)</TableCell>
+       <TableCell padding='none' style={{ width: '20%', textAlign: 'center'}}>Price graph (7d)</TableCell>
      </TableRow>
    </TableHead>
 )
@@ -114,22 +114,19 @@ class TokensTable extends React.Component {
     ))
 
     return (
-      <Paper>          
+      <div>
         <Table>
           <TableHeader onReset={resetTokens}/> 
           <TableBody>
              {myRowsComponents}
           </TableBody>
         </Table>
-          <Divider />
-
         <Table>
-          <TableHeader /> 
           <TableBody>
             {rowsComponents}
           </TableBody>
          </Table>         
-      </Paper>
+      </div>
     );    
   }
 }

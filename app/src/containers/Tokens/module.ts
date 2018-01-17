@@ -54,7 +54,8 @@ const addTokens = (pairs, tokens, rows, currency) => {
   return _rows;
 }
 
-const calcProcent = (a, b) => a === 0 ? 0 : ((a - b) / a  * 100);
+
+const calcProcent = (open, close) => open === 0 ? 0 : ((open - close) / open  * 100);
 
 
 const initTokens = (pairs, tokens, currency, dispatch, rows) => {
@@ -210,13 +211,13 @@ export const showAllTokens = () => (dispatch, getState) => {
       });
 
       const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
-      const TIKER_INTERVAL = 1000 * 60; //1000 * 60 * 60 * 24 * 1; /*1 day*/
+      const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
       streemApi.subscribeTickers(tiker => {   
         // console.log(' tiker ', tiker);     
         newTikers[tiker.pair.base] = {
           symbol: tiker.pair.base,
           amount: tiker.baseAmount,
-          price: tiker.close,
+          price: tiker.avgPrice,
           close: tiker.close,
           open: tiker.open
         };
@@ -287,6 +288,8 @@ const rowsReducer = (state = [], action) => {
               symbol: item.symbol,
               amount: data[item.symbol].amount,
               price: data[item.symbol].price,
+              open: data[item.symbol].open,
+              close: data[item.symbol].close,
               procent: calcProcent(data[item.symbol].open, data[item.symbol].close)
             }
           }
