@@ -13,7 +13,7 @@ export const Table = ({ children }) => (
 );
 
 export const Logo = ({ children, to }) => (
-  <Link to={to}>
+  <Link to={to} style={{ color: '#000'}}>
     <div className={styles.logo}>
       {children}
     </div>

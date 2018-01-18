@@ -37,7 +37,7 @@ class TokensPages extends React.Component {
 
     return (
       <div>
-        <div style={{ display: 'flex', paddingBottom: 10}}>
+        <div style={{ display: 'flex', paddingBottom: 10, justifyContent: 'space-between'}}>
           <Search/>
           <ExchangeRate />
         </div>
