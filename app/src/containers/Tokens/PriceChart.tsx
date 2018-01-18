@@ -42,8 +42,8 @@ class PriceChart extends React.Component {
     }
 
     return (
-      <div style={{ width: 150, height: 100, margin: '0 auto'}}>
-        <ComposedChart width={150} height={100} data={cdata} syncId={`${symbol}_anyId`}
+      <div style={{ width: 150, height: 50, margin: '0 auto', border: '1px solid #ccc'}}>
+        <ComposedChart width={150} height={50} data={cdata} syncId={`${symbol}_anyId`}
           margin={{top: 0, right: 0, left: 0, bottom: 0}}>
           <XAxis dataKey="time" hide={true}/>
           <Line isAnimationActive={false} dataKey='price' type='monotone' dot={false}/>

@@ -48,7 +48,7 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
         {item.price > 1 ? numeral(item.price).format('$0,0,0.00').replace(/,/g,' ') : numeral(item.price).format('$0,0,0.0000').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '20%'}} padding="none">
-        {numeral(item.amount).format('$0,0,0.00').replace(/,/g,' ')}
+        {numeral(item.amount).format('$0,0,0').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '13%'}} padding="none">
         {numeral(item.supply).format('0,0,0,0').replace(/,/g,' ') }&nbsp;{item.symbol}
@@ -58,7 +58,7 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
           color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
         }}>{numeral(item.procent).format('0.00')}%</span>
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%'}} padding='none'>
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%', height: 100 }} padding='none'>
         <PriceChart
           symbol={item.symbol} 
           currency={item.currency}
