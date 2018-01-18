@@ -18,9 +18,9 @@ export class DefaultMarketApi {
       `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}`
     );
   }
-  getHistoHour(fsym, tsym, toTs=1){ 
+  getHistoHour(fsym, tsym, toTs=1, e=null){ 
     return this.http.GET(
-      `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}`
+      `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}${e ? '&e=' + e : ''}`
     );
   }
   getTokensStatistics() {

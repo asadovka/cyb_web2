@@ -18,7 +18,8 @@ const CustomeTooltip = ({ active, payload, label }) => {
   )
 }
 
-const labelFormatter = (a, b) => {
+const labelFormatter = (a, b, c) => {
+  // console.log(a, b, c)
   return moment(a).format('DD.MM.YYYY')
 }
 
@@ -30,7 +31,9 @@ const PriceChart = React.createClass({
 
   render () {
     const {
-      tokensPriceChart
+      tokensPriceChart,
+      tokensPriceChartGDAX,
+      tokensPriceChartHitBtc
     } = this.props;
 
     let data = [];
@@ -43,27 +46,57 @@ const PriceChart = React.createClass({
 //       // {name: 'Page F', uv: 2390, price: 2500},
 //       // {name: 'Page G', uv: 3490, price: 1209},
 // ];
-
-    if (tokensPriceChart.success) {
-      data = tokensPriceChart.data.data.reverse().map(item => ({
-        name: moment(item.time).format("hh:mm"),
-        uv: item.time,
-        price: item.close,
-        volumeTo: item.volumeTo
+    let gdax = [];
+    let HitBtc = [];
+    if (tokensPriceChart.success && tokensPriceChartGDAX.success && tokensPriceChartHitBtc.success) {
+      // data = tokensPriceChart.data.data.reverse().map(item => ({
+      //   time: item.time,
+      //   price: item.close,
+      // }))
+      data = tokensPriceChartGDAX.data.data.reverse().map(item => ({
+        time: item.time,
+        gdax: item.close,
+        hitBtc: null,
       }))
+
+      // gdax = tokensPriceChartGDAX.data.data.reverse().map(item => ({
+      //   time: item.time,
+      //   price: item.close,
+      // }))
+
+      tokensPriceChartHitBtc.data.data.reverse().forEach((item, i) => {
+        if (i < data.length) {
+          data[i].hitBtc = item.close;
+        } else {
+          data.push({
+            time: item.time,
+            gdax: null,
+            hitBtc: item.close,
+          })
+        }
+      })
+        
+        console.log(data)
+      // HitBtc = tokensPriceChartHitBtc.data.data.reverse().map(item => ({
+      //   time: item.time,
+      //   price: item.close,
+      // }))
+
+      // console.log(, tokensPriceChartHitBtc.data.data);
     }
 
-    const types = ['basis' , 'basisClosed' , 'basisOpen' , 'linear' , 'linearClosed' , 'natural' , 'monotoneX' , 'monotoneY' , 'monotone' , 'step' , 'stepBefore' , 'stepAfter' ]
     return (
       <div>
       <div>
 
         <div>
         <ComposedChart width={900} height={300} data={data} syncId="anyId"
-              margin={{top: 10, right: 0, left: 0, bottom: 0}}>
-          <XAxis tickFormatter={formatAxis} dataKey="uv"/>
-          <YAxis  />
-          <Line dataKey='price' type='monotone' dot={false} />
+              margin={{top: 10, right: 0, left: 100, bottom: 0}}>
+          <XAxis tickFormatter={formatAxis} dataKey="time"/>
+          <YAxis  domain={['dataMin', 'dataMax']} />
+          {/*<Line dataKey='price' type='monotone' dot={false} data={data} />*/}
+          <Line dataKey='gdax' type='monotone' dot={false}  stroke="#82ca9d" />
+          <Line dataKey='hitBtc' type='monotone' dot={false}  stroke="#8884d8"/>
           <Tooltip labelFormatter={labelFormatter} />
         </ComposedChart>
         </div>
@@ -83,7 +116,9 @@ import {
 
 export default connect(
   state => ({
-    tokensPriceChart: state.tokensDetails.tokensPriceChart
+    tokensPriceChart: state.tokensDetails.tokensPriceChart,
+    tokensPriceChartGDAX: state.tokensDetails.tokensPriceChartGDAX,
+    tokensPriceChartHitBtc: state.tokensDetails.tokensPriceChartHitBtc
   })
 )(PriceChart);
 

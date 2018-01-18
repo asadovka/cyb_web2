@@ -176,8 +176,25 @@ const bayValue = exchange => (state = 0, action) => {
   }
 }
 
+export const getLinksByTag = (data, tag, splice = -1) => {
+  if (!data.links || !_.isArray(data.links)) {
+    return [];
+  }
+
+  const links = data.links.filter(function(link) {
+    return (link.tags && _.isArray(link.tags) && link.tags.indexOf(tag) > -1);
+  })
+
+  if (splice === -1) return links;
+
+  return links.splice(0, splice)
+}
+
+
 export const reducer = combineReducers({
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
+  tokensPriceChartGDAX: createDateReducer('TOKEN_DETAILS_CHART_GDAX'),
+  tokensPriceChartHitBtc: createDateReducer('TOKEN_DETAILS_CHART_HitBtc'),
   tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
   HitBtc: combineReducers({
@@ -228,6 +245,16 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
     payload: { symbol, base } 
   })
 
+  dispatch({
+    type: 'TOKEN_DETAILS_CHART_GDAX',
+    payload: { symbol, base } 
+  })
+
+  dispatch({
+    type: 'TOKEN_DETAILS_CHART_HitBtc',
+    payload: { symbol, base } 
+  })
+
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
     streemApi.subscribeTrades(trade => {
       if (Array.isArray(trade)) {
@@ -258,6 +285,14 @@ export const epic = combineEpics(
   loadDataEpic(
     'TOKEN_DETAILS_CHART',
     ({ symbol, base }) => marketApi.getHistoHour(symbol, base)
+  ),
+  loadDataEpic(
+    'TOKEN_DETAILS_CHART_GDAX',
+    ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'GDAX')
+  ),
+  loadDataEpic(
+    'TOKEN_DETAILS_CHART_HitBtc',
+    ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'HitBtc')
   ),
   loadDataEpic(
      'TOKEN_DETAILS',

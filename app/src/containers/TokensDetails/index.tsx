@@ -49,8 +49,8 @@ class TokensDetails extends React.Component {
          
         <Tabs value={value} onChange={this.handleChange}>
           <Tab label='Price' value={0}/>
-          <Tab label='Markets' value={1}/>
-          {crowdsalesDetails.success && crowdsalesDetails.data.specs && <Tab label='Spec' value={2}/>}
+          {/*<Tab label='Markets' value={1}/>
+          {crowdsalesDetails.success && crowdsalesDetails.data.specs && <Tab label='Spec' value={2}/>}*/}
           <Tab label='Link' value={3}/>
         </Tabs>
         <Card>
@@ -58,15 +58,15 @@ class TokensDetails extends React.Component {
         {value === 0 && <div>
           <PriceChart />
         </div>}
-        {value === 1 && <div>  
+        {/*value === 1 && <div>  
           <OrderBookChart />
-          {/*<OrderTables />*/}
+          <OrderTables />
           <TradesTable />
-        </div>}
+        </div>*/}
         
-        {value === 2 && <div>  
+        {/*value === 2 && <div>  
            {(crowdsalesDetails.success && crowdsalesDetails.data.specs) ? JSON.stringify(crowdsalesDetails.data.specs): null}
-        </div>}
+        </div>*/}
 
         {value === 3 && <div>  
            <CoinLinks />
@@ -87,7 +87,9 @@ export default withRouter(connect(
   (state, ownProps) => ({
     symbol: ownProps.routeParams.symbol,
     base: ownProps.routeParams.base,
-    crowdsalesDetails: state.tokensDetails.tokensDetails
+    crowdsalesDetails: state.tokensDetails.tokensDetails,
+    tokensPriceChartGDAX: state.tokensDetails.tokensPriceChartGDAX,
+    tokensPriceChartHitBtc: state.tokensDetails.tokensPriceChartHitBtc
   }),
   { showTokensDetails, closeConnection }
 )(TokensDetails));
