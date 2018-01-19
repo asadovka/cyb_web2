@@ -203,7 +203,7 @@ const avgPriceChart = (state = [], action) => {
 const multiPriceChart = (state = [], action) => {
   switch (action.type) {
     case "SET_MULTI_PRICE_CHART":
-      return action.payload;
+      return [...calculateMultyPriceChart(action.payload)];
     
     default:
       return state;
@@ -211,37 +211,48 @@ const multiPriceChart = (state = [], action) => {
 }
 
 
-
-export const getMultiPriceChart = (state) => {
-  const multiPriceChart = state.tokensDetails.multiPriceChart;
+const calculateMultyPriceChart = (data) => {
   const result = [];
-  for(let key in multiPriceChart) {
-    for(let i = 0; i < multiPriceChart[key].length; i++) {
+
+  for(let key in data) {
+    for(let i = 0; i < data[key].length; i++) {
       if (i < result.length) {
-        result[i][key] = multiPriceChart[key][i].close;
+        result[i][key] = data[key][i].close;
       } else {
         result.push({
-          time: multiPriceChart[key][i].time,
-          [key]: multiPriceChart[key][i].close
+          time: data[key][i].time,
+          [key]: data[key][i].close
         })
       }
     }
   }
+
   return result;
 }
 
+export const getMultiPriceChart = (state) => {
+  return state.tokensDetails.multiPriceChart;
+}
+
 export const getExchanges = (state) => {
-  const multiPriceChart = state.tokensDetails.multiPriceChart;
-  return Object.keys(multiPriceChart);
+  return state.tokensDetails.exchanges;
+}
+
+const exchanges = (state = [], action) => {
+  switch (action.type) {
+    case "SET_MULTI_PRICE_CHART":
+      return Object.keys(action.payload);
+    
+    default:
+      return state;
+  }
 }
 
 export const reducer = combineReducers({
   avgPriceChart,
   multiPriceChart,
+  exchanges,
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
-  // tokensPriceChartGDAX: createDateReducer('TOKEN_DETAILS_CHART_GDAX'),
-  // tokensPriceChartHitBtc: createDateReducer('TOKEN_DETAILS_CHART_HitBtc'),
-  // tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
   HitBtc: combineReducers({
     buyOrders: orderReducer('BUY', 'HitBtc'),
@@ -328,23 +339,7 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
       payload: data
     })
   })
-  
-  // SET_AVG_PRICE_CHART
 
-  // dispatch({
-  //   type: 'TOKEN_DETAILS_CHART',
-  //   payload: { symbol, base } 
-  // })
-
-  // dispatch({
-  //   type: 'TOKEN_DETAILS_CHART_GDAX',
-  //   payload: { symbol, base } 
-  // })
-
-  // dispatch({
-  //   type: 'TOKEN_DETAILS_CHART_HitBtc',
-  //   payload: { symbol, base } 
-  // })
 
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
     streemApi.subscribeTrades(trade => {
@@ -373,18 +368,6 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
 
 
 export const epic = combineEpics(
-  // loadDataEpic(
-  //   'TOKEN_DETAILS_CHART',
-  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base)
-  // ),
-  // loadDataEpic(
-  //   'TOKEN_DETAILS_CHART_GDAX',
-  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'GDAX')
-  // ),
-  // loadDataEpic(
-  //   'TOKEN_DETAILS_CHART_HitBtc',
-  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'HitBtc')
-  // ),
   loadDataEpic(
      'TOKEN_DETAILS',
      ({ symbol }) => chaingearApi.tokensDetails(symbol)

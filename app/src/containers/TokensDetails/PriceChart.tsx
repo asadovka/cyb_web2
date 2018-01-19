@@ -12,7 +12,7 @@ var numeral = require('numeral');
 
 const labelFormatter = (a, b, c) => {
   // console.log(a, b, c)
-  return moment(a).format('DD.MM.YYYY')
+  return moment(a).format('DD.MM.YYYY hh:mm')
 }
 
 function formatAxis(tickItem) {
