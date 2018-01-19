@@ -51,7 +51,7 @@ class PriceChart extends React.Component {
       chart = (
         <div>
           <div>
-          <ComposedChart width={900} height={300} data={avgPriceChart} syncId="anyId"
+          <ComposedChart width={1100} height={300} data={avgPriceChart} syncId="anyId"
                 margin={{top: 10, right: 0, left: 100, bottom: 0}}>
             <XAxis tickFormatter={formatAxis} dataKey="time"/>
             <YAxis   />
@@ -65,7 +65,7 @@ class PriceChart extends React.Component {
       chart = (
         <div>
           <div>
-          <ComposedChart width={900} height={300} data={multiPriceChart} syncId="anyId"
+          <ComposedChart width={1100} height={300} data={multiPriceChart} syncId="anyId"
                 margin={{top: 10, right: 0, left: 100, bottom: 0}}>
             <XAxis tickFormatter={formatAxis} dataKey="time"/>
             <YAxis   />
