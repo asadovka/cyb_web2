@@ -9,7 +9,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ''
+      search: props.search
     }
 
     this.makeSearch = _.debounce(this.makeSearch.bind(this), 500);

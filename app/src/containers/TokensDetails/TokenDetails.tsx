@@ -4,6 +4,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 import { getSystemLogoUrl } from '../Tokens/module';
 import { CircularProgress } from 'material-ui/Progress';
 import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 
 import { getLinksByTag } from './module'
 var numeral = require('numeral');
@@ -54,7 +55,52 @@ const TokenDetails = ({
   return (
     <div>
         <Grid container spacing={16}>
-          <Grid item xs={1} style={{ textAlign: 'center'}}>
+          <Grid item xs={5} >
+            <Paper style={{ padding: 20 }}>
+              <Grid container spacing={0}>
+                <Grid item xs={6} style={{ textAlign: 'center'}}>
+                  <img width={70} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
+                  <h2 className='title is-5'>{data.system}&nbsp;{data.token.symbol}</h2>
+                </Grid>
+                <Grid item xs={6} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                  <h2 className="title is-5" style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <span>{priceFormat(price_usd)} USD</span>
+                    <span style={{ color: 'green'}}>{procentFormat(price_change_usd)}%</span>
+                  </h2>
+                  <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <span>{priceFormat(price_btc)} BTC</span>
+                    <span style={{ color: 'green'}}>{procentFormat(price_change_btc)}%</span>            
+                  </h3>
+                  <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <span>{priceFormat(price_eth)} ETH</span>
+                    <span style={{ color: 'green'}}>{procentFormat(price_change_eth)}%</span> 
+                  </h3>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid item xs={7}>
+            <Paper style={{ padding: 20 }}>
+              <Grid container spacing={0}>
+                <Grid item xs={4}>
+                  <h2 className="title is-5">Capitalization</h2>
+                  <h3 className="title is-6">{format(price_usd * supply)} USD</h3>
+                  <h3 className="title is-6">{format(price_btc * supply)} BTC</h3>
+                </Grid>
+                <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                  <h2 className="title is-5">Volume (24h)</h2>
+                  <h3 className="title is-6">{format(voluem * price_usd)} USD</h3>
+                  <h3 className="title is-6">{format(voluem)} {data.token.symbol}</h3>
+                </Grid>
+                <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                  <h2 className="title is-5">Supply</h2>
+                  <h3 className="title is-6">Maximum: {format(supply)} {data.token.symbol}</h3>
+                  <h3 className="title is-6">Circulationg: {format(supply_circ)} {data.token.symbol}</h3>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          {/*<Grid item xs={1} style={{ textAlign: 'center'}}>
             <img width={70} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
           </Grid>
           <Grid item xs={2}>
@@ -89,15 +135,15 @@ const TokenDetails = ({
             <h2 className="title is-5">Supply</h2>
             <h3 className="title is-6">Maximum: {format(supply)} {data.token.symbol}</h3>
             <h3 className="title is-6">Circulationg: {format(supply_circ)} {data.token.symbol}</h3>
-          </Grid>
+          </Grid>*/}
         </Grid>    
-       <div style={{ marginTop: 20, marginBottom: 20 }}>
+       <Paper style={{ marginTop: 20, marginBottom: 20, padding: 20, display: 'flex' }}>
         {getLinksByTag(data, "Main", 4).map(link => (
-          <div key={link.name}>
+          <div key={link.name} style={{ marginRight: 20 }}>
           <a style={{ color: '#000'}} target="_blank" href={link.url}>{link.name}</a>
           </div>
         ))}
-        </div>
+        </Paper>
      </div>
   );
 }
