@@ -190,12 +190,58 @@ export const getLinksByTag = (data, tag, splice = -1) => {
   return links.splice(0, splice)
 }
 
+const avgPriceChart = (state = [], action) => {
+  switch (action.type) {
+    case "SET_AVG_PRICE_CHART":
+      return action.payload;
+    
+    default:
+      return state;
+  }
+}
+
+const multiPriceChart = (state = [], action) => {
+  switch (action.type) {
+    case "SET_MULTI_PRICE_CHART":
+      return action.payload;
+    
+    default:
+      return state;
+  }
+}
+
+
+
+export const getMultiPriceChart = (state) => {
+  const multiPriceChart = state.tokensDetails.multiPriceChart;
+  const result = [];
+  for(let key in multiPriceChart) {
+    for(let i = 0; i < multiPriceChart[key].length; i++) {
+      if (i < result.length) {
+        result[i][key] = multiPriceChart[key][i].close;
+      } else {
+        result.push({
+          time: multiPriceChart[key][i].time,
+          [key]: multiPriceChart[key][i].close
+        })
+      }
+    }
+  }
+  return result;
+}
+
+export const getExchanges = (state) => {
+  const multiPriceChart = state.tokensDetails.multiPriceChart;
+  return Object.keys(multiPriceChart);
+}
 
 export const reducer = combineReducers({
+  avgPriceChart,
+  multiPriceChart,
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
-  tokensPriceChartGDAX: createDateReducer('TOKEN_DETAILS_CHART_GDAX'),
-  tokensPriceChartHitBtc: createDateReducer('TOKEN_DETAILS_CHART_HitBtc'),
-  tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
+  // tokensPriceChartGDAX: createDateReducer('TOKEN_DETAILS_CHART_GDAX'),
+  // tokensPriceChartHitBtc: createDateReducer('TOKEN_DETAILS_CHART_HitBtc'),
+  // tokensPriceChart: createDateReducer('TOKEN_DETAILS_CHART'),
   trades,
   HitBtc: combineReducers({
     buyOrders: orderReducer('BUY', 'HitBtc'),
@@ -240,20 +286,65 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
     type: 'TOKEN_DETAILS',
     payload: { symbol }  
   })
-  dispatch({
-    type: 'TOKEN_DETAILS_CHART',
-    payload: { symbol, base } 
+
+  marketApi.getHistoMinute(symbol, base)
+    .then(responce => {
+      const payload = responce.data.reverse().map(item => ({
+        time: item.time,
+        price: item.close
+      }))
+      dispatch({
+        type: 'SET_AVG_PRICE_CHART',
+        payload
+      })
+    })
+
+  const exchanges = [
+    "Bitstamp",  
+    "Bitfinex",
+    "Etherdelta",  
+    "GDAX",
+    "HitBtc",
+    "Poloniex"
+  ];
+
+  const data = {
+
+  };
+  const promises = exchanges.map(e => {
+    return marketApi.getHistoMinute(symbol, base, 1, e)
+      .then(response => {
+        data[e] = response.data.reverse();
+        return response.data.reverse();
+      })
+      .catch(err => {
+
+      }) 
   })
 
-  dispatch({
-    type: 'TOKEN_DETAILS_CHART_GDAX',
-    payload: { symbol, base } 
+  Promise.all(promises).then(response => {
+    dispatch({
+      type: 'SET_MULTI_PRICE_CHART',
+      payload: data
+    })
   })
+  
+  // SET_AVG_PRICE_CHART
 
-  dispatch({
-    type: 'TOKEN_DETAILS_CHART_HitBtc',
-    payload: { symbol, base } 
-  })
+  // dispatch({
+  //   type: 'TOKEN_DETAILS_CHART',
+  //   payload: { symbol, base } 
+  // })
+
+  // dispatch({
+  //   type: 'TOKEN_DETAILS_CHART_GDAX',
+  //   payload: { symbol, base } 
+  // })
+
+  // dispatch({
+  //   type: 'TOKEN_DETAILS_CHART_HitBtc',
+  //   payload: { symbol, base } 
+  // })
 
   streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
     streemApi.subscribeTrades(trade => {
@@ -282,18 +373,18 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
 
 
 export const epic = combineEpics(
-  loadDataEpic(
-    'TOKEN_DETAILS_CHART',
-    ({ symbol, base }) => marketApi.getHistoHour(symbol, base)
-  ),
-  loadDataEpic(
-    'TOKEN_DETAILS_CHART_GDAX',
-    ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'GDAX')
-  ),
-  loadDataEpic(
-    'TOKEN_DETAILS_CHART_HitBtc',
-    ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'HitBtc')
-  ),
+  // loadDataEpic(
+  //   'TOKEN_DETAILS_CHART',
+  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base)
+  // ),
+  // loadDataEpic(
+  //   'TOKEN_DETAILS_CHART_GDAX',
+  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'GDAX')
+  // ),
+  // loadDataEpic(
+  //   'TOKEN_DETAILS_CHART_HitBtc',
+  //   ({ symbol, base }) => marketApi.getHistoHour(symbol, base, 1, 'HitBtc')
+  // ),
   loadDataEpic(
      'TOKEN_DETAILS',
      ({ symbol }) => chaingearApi.tokensDetails(symbol)

@@ -13,9 +13,9 @@ export class DefaultMarketApi {
       `${config.CYBER_MARKETS_API}/ping`
     );
   }
-  getHistoMinute(fsym, tsym, toTs=1){ 
+  getHistoMinute(fsym, tsym, toTs=1, e=null){ 
     return this.http.GET(
-      `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}`
+      `${config.CYBER_MARKETS_API}/histominute?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}${e ? '&e=' + e : ''}`
     );
   }
   getHistoHour(fsym, tsym, toTs=1, e=null){ 
