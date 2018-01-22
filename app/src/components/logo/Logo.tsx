@@ -7,7 +7,7 @@ export function Logo() {
   return (
     <span className={styles.logo}>
       <Link to={"/"}>
-        cyber <span className={styles.dot}>•</span> Fund
+        <img src={require('./logo_search.svg')}/>
       </Link>
     </span>
   );

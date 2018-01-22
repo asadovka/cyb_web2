@@ -29,7 +29,9 @@ import AppSearch from './AppSearch';
 import Drawer from './Drawer';
 
 import { Link } from 'react-router';
+import Tabs, { Tab } from 'material-ui/Tabs';
 
+import Header from './Header';
 
 const styles = theme => ({
   appTitle: {
@@ -42,9 +44,9 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 3 + 56,
+    paddingTop: theme.spacing.unit * 3 + 86,
     [theme.breakpoints.up('sm')]: {
-        paddingTop: theme.spacing.unit * 3 + 64,
+        paddingTop: theme.spacing.unit * 3 + 94,
     },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -80,7 +82,7 @@ class PersistentDrawer extends React.Component {
 
     return (
       <div>
-        <AppBar>
+        {/*<AppBar>
             <Toolbar >
               <IconButton
                 color="contrast"
@@ -101,7 +103,10 @@ class PersistentDrawer extends React.Component {
         <Drawer
           open={open}
           handleDrawerClose={this.handleDrawerClose}
-        />
+        />*/}
+        <div style={{ position: 'fixed', left: 0, right: 0, zIndex: 1}}>
+        <Header />
+        </div>
         <main className={classes.content}>
           <div className='container'>
             {this.props.children}
