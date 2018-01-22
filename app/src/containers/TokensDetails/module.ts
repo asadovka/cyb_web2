@@ -326,7 +326,7 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
     return marketApi.getHistoMinute(symbol, base, 1, e)
       .then(response => {
         data[e] = response.data.reverse();
-        return response.data.reverse();
+        return response.data;
       })
       .catch(err => {
 
