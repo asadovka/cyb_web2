@@ -2,6 +2,7 @@ import {Injector} from "../../injector";
 import {Observable} from "rxjs";
 import {combineReducers} from "redux";
 import {combineEpics} from "redux-observable";
+import moment from 'moment'
 
 import { createDateReducer, mapPayload, mapError, loadDataEpic } from '../../utils/redux'
 
@@ -298,7 +299,9 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
     payload: { symbol }  
   })
 
-  marketApi.getHistoMinute(symbol, base)
+  const from = moment().add(-7, 'day').valueOf();
+
+  marketApi.getHistoMinute(symbol, base, from)
     .then(responce => {
       const payload = responce.data.reverse().map(item => ({
         time: item.time,
@@ -323,7 +326,7 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
 
   };
   const promises = exchanges.map(e => {
-    return marketApi.getHistoMinute(symbol, base, 1, e)
+    return marketApi.getHistoMinute(symbol, base, from, e)
       .then(response => {
         data[e] = response.data.reverse();
         return response.data;
