@@ -70,10 +70,10 @@ class Crowdsales extends React.Component {
        <Table>
          <TableHead>
            <TableRow>
-             <TableCell>system</TableCell>
-             <TableCell>descriptions</TableCell>
-             <TableCell>crowdsales</TableCell>
-             <TableCell>tokens sold</TableCell>
+             <TableCell>System</TableCell>
+             <TableCell>Descriptions</TableCell>
+             <TableCell>Crowdsales</TableCell>
+             <TableCell>Tokens sold</TableCell>
            </TableRow>
          </TableHead>
          <TableBody>

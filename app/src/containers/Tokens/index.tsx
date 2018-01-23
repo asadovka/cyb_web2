@@ -13,6 +13,7 @@ import TokensTable from './TokensTable';
 import { CircularProgress } from 'material-ui/Progress';
 import TextField from 'material-ui/TextField';
 import Search from './Search';
+import Paper from 'material-ui/Paper';
 
 class TokensPages extends React.Component {
 
@@ -37,10 +38,12 @@ class TokensPages extends React.Component {
 
     return (
       <div>
-        <div style={{ display: 'flex', paddingBottom: 10, justifyContent: 'space-between'}}>
+        <Paper style={{ padding: '15px 25px', marginBottom: 10 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
           <Search/>
           <ExchangeRate />
         </div>
+        </Paper>
         <TokensTable />
       </div>
     );    

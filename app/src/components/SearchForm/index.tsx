@@ -17,7 +17,7 @@ const theme = createMuiTheme({
     MuiInput: {
       inkbar: {
         '&:after': {
-          backgroundColor: '#00ff00'
+          backgroundColor: '#00e676'
         }
       },
       underline: {

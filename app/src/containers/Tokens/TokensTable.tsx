@@ -19,8 +19,16 @@ import Paper from 'material-ui/Paper';
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
+import { withStyles } from 'material-ui/styles';
+import green from 'material-ui/colors/green';
 
-const TokenRows = ({ item, myTokens, toggleMyToken }) => {
+const styles = {
+  checked: {
+    color: green[500],
+  },
+};
+
+const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }) => {
   const procent = item.procent;
   return (
     <TableRow >
@@ -29,6 +37,9 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
           checked={myTokens.indexOf(item.symbol) !== -1}
           onChange={(event, checked) => {
             toggleMyToken(item.symbol, checked);
+          }}
+          classes={{
+            checked: classes.checked,
           }}
         />
       </TableCell>
@@ -66,13 +77,19 @@ const TokenRows = ({ item, myTokens, toggleMyToken }) => {
       </TableCell>
     </TableRow>
   );
-}
+})
+
+const buttonStyle = {
+  borderRadius: 290486,
+  paddingLeft: '1em',
+  paddingRight: '1em',
+};
 
 const TableHeader = ({ onReset, myTokens }) => (
   <TableHead>
      <TableRow>
        <TableCell padding="checkbox" style={{ textAlign: 'center', width: '7%'}} >                
-         {onReset && <button disabled={myTokens.length === 0} style={{ borderRadius: 15, boxShadow: '2px 2px 2px rgba(0,0,0,0.5)'}} className="button is-success is-small" onClick={onReset}>Reset</button>}
+         {onReset && <button disabled={myTokens.length === 0} style={buttonStyle} className="button is-small is-rounded is-light" onClick={onReset}>Clean</button>}
        </TableCell>
        <TableCell padding='none' style={{ textAlign: 'left', width: '10%'}}>Token</TableCell>
        <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;Cap</TableCell>
@@ -114,7 +131,7 @@ class TokensTable extends React.Component {
     ))
 
     return (
-      <div>
+      <Paper>
         <Table>
           <TableHeader onReset={resetTokens} myTokens={myTokens}/> 
           <TableBody>
@@ -126,7 +143,7 @@ class TokensTable extends React.Component {
             {rowsComponents}
           </TableBody>
          </Table>         
-      </div>
+      </Paper>
     );    
   }
 }
