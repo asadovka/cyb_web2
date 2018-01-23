@@ -18,6 +18,7 @@ import { showAllCrowdsales } from '../../modules/chaingear';
 import { Logo } from '../../components/AssetTable/';
 var numeral = require('numeral');
 import moment from 'moment'
+import { CircularProgress } from 'material-ui/Progress';
 
 import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
@@ -30,9 +31,16 @@ class Crowdsales extends React.Component {
 
   render() {
     const {
-      items
+      crowdsales: { data, loading }
     } = this.props;
 
+    if (loading) {
+      return (
+        <div style={{ textAlign: 'center', marginTop: 100 }}>
+          <CircularProgress  size={50} />
+        </div>
+      );
+    }
     // const cards = items.map(item => (
     //   <Card
     //     key={item.system}
@@ -46,8 +54,8 @@ class Crowdsales extends React.Component {
     // <CardList>
     //        {cards}
     //      </CardList>
-    const rows = items.map(item => (
-      <TableRow>
+    const rows = data.map(item => (
+      <TableRow key={item.system}>
         <TableCell>
           <Logo to={`/crowdsales/${item.system}`}>
             <img width={50} src={getSystemLogoUrl(item, chaingearApi.imageUrl())}/>            
@@ -87,7 +95,7 @@ class Crowdsales extends React.Component {
 
 export default connect(
   state => ({
-    items: state.chaingear.crowdsales.data
+    crowdsales: state.chaingear.crowdsales
   }),
   { showAllCrowdsales }
 )(Crowdsales);
