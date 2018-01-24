@@ -55,7 +55,7 @@ const addTokens = (pairs, tokens, rows, currency) => {
 }
 
 
-const calcProcent = (open, close) => open === 0 ? 0 : ((open - close) / open  * 100);
+const calcProcent = (open, close) => open === 0 ? 0 : ((close - open) / open  * 100);
 
 
 const initTokens = (pairs, tokens, currency, dispatch, rows) => {

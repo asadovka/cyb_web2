@@ -24,9 +24,23 @@ import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
 class Crowdsales extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      elevation: 1
+    }
 
+    this.change = this.change.bind(this)
+  }
+  
   componentDidMount() {
     this.props.showAllCrowdsales();   
+  }
+  
+  change(e) {
+    this.setState({
+      elevation: parseInt(e.target.value)
+    })
   }
 
   render() {
@@ -73,7 +87,16 @@ class Crowdsales extends React.Component {
         </TableCell>
       </TableRow>
     ))
+
+    const { elevation } = this.state;
+
+    // todo: elevation => 3 color => 0.1
     return (
+      <div>
+      {/*<div style={{ marginBottom: 20 }}>
+        <Paper elevation={elevation} style={{ padding: 20 }}>{elevation}</Paper>
+      </div>
+      <input value={elevation} onChange={this.change}/>*/}
       <Paper>
        <Table>
          <TableHead>
@@ -89,6 +112,7 @@ class Crowdsales extends React.Component {
          </TableBody>
        </Table>
       </Paper>
+      </div>
     );    
   }
 }
