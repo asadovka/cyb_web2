@@ -29,7 +29,7 @@ class SearchResultPageComponent extends React.Component {
         nextPorps.page !== page || 
         nextPorps.chains !== chains || 
         nextPorps.entities !== entities) {
-      this.props.search(query, page, chains, entities);    
+      this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.entities);    
     }
   }
 

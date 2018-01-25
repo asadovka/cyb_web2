@@ -25,7 +25,6 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import ReportIcon from 'material-ui-icons/Report';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
-import AppSearch from './AppSearch';
 import Drawer from './Drawer';
 
 import { Link } from 'react-router';

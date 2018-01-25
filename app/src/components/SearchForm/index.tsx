@@ -9,6 +9,9 @@ import green from 'material-ui/colors/green';
 import Input, { InputLabel } from 'material-ui/Input';
 import purple from 'material-ui/colors/purple';
 import red from 'material-ui/colors/red';
+import withRouter from "react-router/es/withRouter";
+
+
 const styles = theme => ({
 })
 
@@ -33,12 +36,16 @@ const theme = createMuiTheme({
   },
 });
 
+
+
 let input; //TODO: fix
-function SearchForm({ classes }) {
+function SearchForm({ classes, location: { query : { q } } }) {
   const onSubmit = (e) => {
     e.preventDefault();
     browserHistory.push('/search?q=' + input.value);
   }
+  
+
   return (
     <MuiThemeProvider theme={theme}>
     <form onSubmit={onSubmit}>
@@ -47,6 +54,7 @@ function SearchForm({ classes }) {
           <SearchIcon />
         </div>
         <Input 
+          defaultValue={q}
           inputRef={node => {
             input = node 
           }} 
@@ -58,4 +66,4 @@ function SearchForm({ classes }) {
   );
 }
 
-export default withStyles(styles)(SearchForm);
+export default withRouter(withStyles(styles)(SearchForm));
