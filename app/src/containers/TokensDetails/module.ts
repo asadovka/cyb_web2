@@ -228,6 +228,7 @@ const calculateMultyPriceChart = (data) => {
     }
   }
 
+
   return result;
 }
 
@@ -293,25 +294,25 @@ const updateOrders = _.throttle(dispatch => {
   _orders= [];
 }, 1000);
 
-export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
+
+export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, getState) => {
   dispatch({
     type: 'TOKEN_DETAILS',
     payload: { symbol }  
   })
 
-  const from = moment().add(-7, 'day').valueOf();
 
-  marketApi.getHistoMinute(symbol, base, from)
-    .then(responce => {
-      const payload = responce.data.reverse().map(item => ({
-        time: item.time,
-        price: item.close
-      }))
-      dispatch({
-        type: 'SET_AVG_PRICE_CHART',
-        payload
-      })
-    })
+  // marketApi.getHistoMinute(symbol, base, from)
+  //   .then(responce => {
+  //     const payload = responce.Data.reverse().map(item => ({
+  //       time: item.time * 1000,
+  //       price: item.close
+  //     }))
+  //     dispatch({
+  //       type: 'SET_AVG_PRICE_CHART',
+  //       payload
+  //     })
+  //   })
 
   const exchanges = [
     "Bitstamp",  
@@ -326,14 +327,68 @@ export const showTokensDetails = (symbol, base) => (dispatch, getState) => {
 
   };
   const promises = exchanges.map(e => {
-    return marketApi.getHistoMinute(symbol, base, from, e)
-      .then(response => {
-        data[e] = response.data.reverse();
-        return response.data;
+    // if (interval === '1d') {
+    //   const from = moment().add(-1, 'day').valueOf();
+    //   return marketApi.getHistoMinute(symbol, base, from, e)
+    //     .then(response => {
+    //       data[e] = response.data.map(item => ({
+    //       time: item.time,
+    //       close: item.close
+    //     }))
+    //       return response.Data;
+    //     })
+    //     .catch(err => {
+
+    //     })      
+    // }
+
+    // //7d
+    // const from = moment().add(-7, 'day').valueOf();
+    // return marketApi.getHistoHour(symbol, base, from, e)
+    //   .then(response => {
+    //     data[e] = response.data.map(item => ({
+    //     time: item.time ,
+    //     close: item.close
+    //   }))
+    //     return response.Data;
+    //   })
+    //   .catch(err => {
+
+    //   })
+
+    if (interval === '1d') {
+      const from = moment().add(-1, 'day').valueOf();
+      //return marketApi.getHistoMinute(symbol, base, from, e)
+      return marketApi.http.GET(
+      `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+      ).then(response => {
+          data[e] = response.Data.map(item => ({
+          time: item.time * 1000,
+          close: item.close
+        }))
+          return response.Data;
+        })
+        .catch(err => {
+
+        })      
+    }
+
+    //7d
+    const from = moment().add(-7, 'day').valueOf();
+    // return marketApi.getHistoHour(symbol, base, from, e)
+    return marketApi.http.GET(
+      `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+      ).then(response => {
+        data[e] = response.Data.map(item => ({
+        time: item.time * 1000,
+        close: item.close
+      }))
+        return response.Data;
       })
       .catch(err => {
 
-      }) 
+      })
+ 
   })
 
   Promise.all(promises).then(response => {
