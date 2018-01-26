@@ -24,7 +24,7 @@ const labelFormatter = (a, b, c) => {
 }
 
 const  formatAxis = (interval) => (tickItem) =>{
-  if (interval === '7d') return moment(tickItem).format('DD MMM');
+  if (interval === '1m' || interval === '3m') return moment(tickItem).format('D MMM');
 
   var str = moment(tickItem).format('HH:mm');
   if (str === '00:00') {
@@ -47,15 +47,61 @@ const  formatAxis = (interval) => (tickItem) =>{
 
 const getTicks = (interval) => {
   const ticks = [];
-  const now = moment();
-  const lastHour = now.startOf('hour').hour();
-  let d = lastHour % 2 == 0 ? now.startOf('hour') : now.startOf('hour').add(-1, 'hour');
-  while(d > (interval === '1d' ? moment().add(-1, 'day') : moment().add(-7, 'day'))) {
-   // console.log(d)
-    ticks.unshift(d.valueOf());
-    d = d.add(interval === '1d' ? -2 : -24, 'hour');
+  if (interval === '1d') {
+    const now = moment();
+    const lastHour = now.startOf('hour').hour();
+    let d = lastHour % 2 == 0 ? now.startOf('hour') : now.startOf('hour').add(-1, 'hour');
+    while(d >  moment().add(-1, 'day')) {
+      ticks.unshift(d.valueOf());
+      d = d.add(-2, 'hour');
+    }   
   }
-  console.log(ticks)
+  if (interval === '7d') {
+    const now = moment();
+    let lastDay = now.startOf('day');
+    let d = now.startOf('day');
+    while(d > moment().add(-7, 'day')) {
+      ticks.unshift(d.valueOf());
+      d = d.add(-12, 'hour');
+    }
+    
+    d = now.startOf('day');
+    while(d < moment()) {
+      d = d.add(12, 'hour');
+      ticks.push(d.valueOf());
+    }
+  }
+
+  if (interval === '1m') {
+    let before = moment().startOf('M');
+    while(before > moment().add(-1, 'M')) {
+      ticks.unshift(before.valueOf());
+      before = before.add(-2, 'day');
+    }
+    
+    let after = moment().startOf('M');
+    while(after < moment()) {
+      ticks.push(after.valueOf());
+      after = after.add(2, 'day');
+    }
+  }
+
+  // if (interval === '3m') {
+  //   let before = moment().startOf('M').add(3, 'hour');
+  //   console.log(before.valueOf(), before.utc().valueOf());
+  //   while(before > moment().add(-1, 'M')) {
+  //     ticks.unshift(before.valueOf());
+  //     before = before.add(-2, 'day').add(3, 'hour');
+  //   }
+    
+  //   let after = moment().startOf('M').add(3, 'hour');
+  //   while(after < moment()) {
+  //     ticks.push(after.valueOf());
+  //     after = after.add(2, 'day');
+  //   }
+  // }
+ console.log(ticks);
+
   return ticks;
 }
 
@@ -72,6 +118,7 @@ class PriceChart extends React.Component {
     super(props);
     this.state = {
       avgPrice: false,
+      scale: "auto",
       interval: '1d'
     }
     this.changeInterval = this.changeInterval.bind(this);
@@ -93,7 +140,8 @@ class PriceChart extends React.Component {
     } = this.props;
 
     const {
-      avgPrice
+      avgPrice,
+      scale
     } = this.state;
 
     let chart;
@@ -124,6 +172,7 @@ class PriceChart extends React.Component {
               ticks={getTicks(interval)}
               tickFormatter={formatAxis(interval)} 
               dataKey="time"
+              scale={scale}
               interval="preserveStartEnd"
             />
             <YAxis 
@@ -156,11 +205,15 @@ class PriceChart extends React.Component {
         <div>
           <button className={`button ${interval == '1d' ? 'is-success' : ''}`} onClick={() => this.changeInterval('1d')}>1d</button>
           <button className={`button ${interval == '7d' ? 'is-success' : ''}`} onClick={() => this.changeInterval('7d')}>7d</button>
-          {/*<button className={`button ${interval == '1m' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1m')}>1m</button>
+          <button className={`button ${interval == '1m' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1m')}>1m</button>
           <button className={`button ${interval == '3m' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('3m')}>3m</button>
-          <button className={`button ${interval == '1y' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1y')}>1y</button>
+          {/*<button className={`button ${interval == '1y' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1y')}>1y</button>
           <button className={`button ${interval == 'all' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('all')}>ALL</button>*/}
         </div>
+        {/*<div>
+          <button className={`button ${scale == 'auto' ? 'is-success' : ''}`}  onClick={() => this.setState({scale : 'auto'})}>line</button>
+          <button className={`button ${scale == 'log' ? 'is-success' : ''}`}  onClick={() => this.setState({scale : 'log'})}>log</button>        
+        </div>*/}
         {chart}
         <div>
           <FormControlLabel control={<Checkbox
@@ -181,7 +234,6 @@ import { getMultiPriceChart, getExchanges, showTokensDetails } from './module';
 
 export default withRouter(connect(
   (state, ownProps) => {
-    console.log(ownProps)
     return ({
       avgPriceChart: state.tokensDetails.avgPriceChart,
       multiPriceChart: getMultiPriceChart(state),

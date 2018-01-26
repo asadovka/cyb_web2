@@ -374,10 +374,29 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
     }
 
     //7d
-    const from = moment().add(-7, 'day').valueOf();
-    // return marketApi.getHistoHour(symbol, base, from, e)
-    return marketApi.http.GET(
-      `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+    if (interval === '7d') {
+      const from = moment().add(-7, 'day').valueOf();
+      // return marketApi.getHistoHour(symbol, base, from, e)
+      return marketApi.http.GET(
+        `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+        ).then(response => {
+          data[e] = response.Data.map(item => ({
+          time: item.time * 1000,
+          close: item.close
+        }))
+          return response.Data;
+        })
+        .catch(err => {
+
+        })
+    }
+   
+    //1m
+    if (interval === '1m') {
+      const from = moment().add(-1, 'M').valueOf(); 
+      const limit = moment().diff(from, 'hours');
+      return marketApi.http.GET(
+      `https://min-api.cryptocompare.com/data/histohour?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
       ).then(response => {
         data[e] = response.Data.map(item => ({
         time: item.time * 1000,
@@ -388,7 +407,22 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
       .catch(err => {
 
       })
- 
+    }
+
+    const from = moment().add(-3, 'M').valueOf(); 
+    const limit = moment().diff(from, 'days');
+    return marketApi.http.GET(
+    `https://min-api.cryptocompare.com/data/histoday?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+    ).then(response => {
+      data[e] = response.Data.map(item => ({
+      time: item.time * 1000,
+      close: item.close
+    }))
+      return response.Data;
+    })
+    .catch(err => {
+
+    })
   })
 
   Promise.all(promises).then(response => {
