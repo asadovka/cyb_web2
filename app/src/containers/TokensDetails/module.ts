@@ -361,7 +361,9 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
       //return marketApi.getHistoMinute(symbol, base, from, e)
       return marketApi.http.GET(
       `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
-      ).then(response => {
+      )
+      // return marketApi.getHistoMinute(symbol, base, from, e)
+        .then(response => {
           data[e] = response.Data.map(item => ({
           time: item.time * 1000,
           close: item.close

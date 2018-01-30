@@ -45,7 +45,13 @@ class PriceChart extends React.Component {
       <div style={{ width: 150, height: 50, margin: '0 auto', border: '1px solid #ccc'}}>
         <ComposedChart width={150} height={50} data={cdata} syncId={`${symbol}_anyId`}
           margin={{top: 0, right: 0, left: 0, bottom: 0}}>
-          <XAxis dataKey="time" hide={true}/>
+          <XAxis dataKey="time" hide={true} />
+          <YAxis 
+              type="number"  
+              dataKey="price"
+              hide={true}
+              domain={[dataMin => (dataMin - (dataMin/100*5)), dataMax => (dataMax + (dataMax/100 * 5))]}
+            />
           <Line isAnimationActive={false} dataKey='price' type='monotone' dot={false}/>
           <Tooltip formatter={formatter} labelFormatter={labelFormatter}/>
         </ComposedChart>
