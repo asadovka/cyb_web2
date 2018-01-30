@@ -36,6 +36,7 @@ import Cybernode from './containers/Cybernode/';
 // import Blockchains from './containers/Blockchains/';
 import App from './containers/app/';
 
+import FAQ from './containers/faq/';
 
 var ReactGA = require('react-ga');
 ReactGA.initialize('UA-49238979-2');
@@ -57,6 +58,8 @@ export function Root() {
         <Route path={"/test"} component={Test}/>
         
         <Route component={DetailsPage}>
+          <Route path={"/faq"} component={FAQ}/>
+
           <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
           <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
 
