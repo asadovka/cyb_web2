@@ -1,0 +1,70 @@
+
+.label {
+  color: #7a7a7a;
+  font-size: 14px;
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #969696;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  background: #000;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  right: -15px;
+  top: 5px;
+  border-radius: 50%;
+}
+
+.title.title_orange::after {
+  background: #f79e36;  
+}
+
+.title.title_green::after {
+  background: #53b164;  
+}
+
+.title.title_blue::after {
+  background: #008ef9;  
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.priceChange {
+  color: green;
+  font-size: 12px;
+}
+
+.priceValue {
+  color: #7a7a7a;
+  font-size: 14px;
+  display: block;
+  font-weight: bold;  
+}
+
+.coinLogoContainer {
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+
+.coinSystem {
+  font-size: 16px;
+  color: #7a7a7a;
+  text-transform: uppercase;
+}

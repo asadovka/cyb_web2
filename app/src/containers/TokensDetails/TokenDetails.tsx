@@ -9,6 +9,13 @@ import Paper from 'material-ui/Paper';
 import { getLinksByTag } from './module'
 var numeral = require('numeral');
 
+import { 
+  LinkList, LinkListItem,
+  Label, Title,
+  Price, PriceChange, PriceValue,
+  CoinLogoContainer, CoinSystem
+} from './../../components/TokenDetails/';
+
 import {Injector} from "../../injector";
 const {
   chaingearApi
@@ -55,95 +62,68 @@ const TokenDetails = ({
   return (
     <div>
         <Grid container spacing={16}>
-          <Grid item xs={5} >
-            <Paper style={{ padding: 20 }}>
+          <Grid item xs={4} >
+            <Paper style={{ padding: 40 }}>
               <Grid container spacing={0}>
-                <Grid item xs={6} style={{ textAlign: 'center'}}>
-                  <img width={70} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
-                  <h2 className='title is-5'>{data.system}&nbsp;{data.token.symbol}</h2>
+                <Grid item xs={6} >
+                  <CoinLogoContainer>
+                  <img width={65} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
+                  <CoinSystem>
+                    {data.system}
+                  </CoinSystem>
+                  <CoinSystem>
+                    {data.token.symbol}
+                  </CoinSystem>
+                  </CoinLogoContainer>
                 </Grid>
                 <Grid item xs={6} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
-                  <h2 className="title is-5" style={{ display: 'flex', justifyContent: 'space-between'}}>
-                    <span>{priceFormat(price_usd)} USD</span>
-                    <span style={{ color: 'green'}}>{procentFormat(price_change_usd)}%</span>
-                  </h2>
-                  <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
-                    <span>{priceFormat(price_btc)} BTC</span>
-                    <span style={{ color: 'green'}}>{procentFormat(price_change_btc)}%</span>            
-                  </h3>
-                  <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
-                    <span>{priceFormat(price_eth)} ETH</span>
-                    <span style={{ color: 'green'}}>{procentFormat(price_change_eth)}%</span> 
-                  </h3>
+                  <Price>
+                    <PriceValue>{priceFormat(price_usd)} USD</PriceValue>
+                    <PriceChange>{procentFormat(price_change_usd)}%</PriceChange>
+                  </Price>
+                  <Price>
+                    <PriceValue>{priceFormat(price_btc)} BTC</PriceValue>
+                    <PriceChange>{procentFormat(price_change_btc)}%</PriceChange>            
+                  </Price>
+                  <Price>
+                    <PriceValue>{priceFormat(price_eth)} ETH</PriceValue>
+                    <PriceChange>{procentFormat(price_change_eth)}%</PriceChange> 
+                  </Price>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={7}>
-            <Paper style={{ padding: 20 }}>
+          <Grid item xs={8}>
+            <Paper style={{ padding: 40 }}>
               <Grid container spacing={0}>
                 <Grid item xs={4}>
-                  <h2 className="title is-5">Capitalization</h2>
-                  <h3 className="title is-6">{format(price_usd * supply)} USD</h3>
-                  <h3 className="title is-6">{format(price_btc * supply)} BTC</h3>
+                  <Title>Capitalization</Title>
+                  <Label>{format(price_usd * supply)} USD</Label>
+                  <Label>{format(price_btc * supply)} BTC</Label>
                 </Grid>
                 <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
-                  <h2 className="title is-5">Volume (24h)</h2>
-                  <h3 className="title is-6">{format(voluem * price_usd)} USD</h3>
-                  <h3 className="title is-6">{format(voluem)} {data.token.symbol}</h3>
+                  <Title color="green">Volume (24)</Title>
+                  <Label>{format(voluem * price_usd)} USD</Label>
+                  <Label>{format(voluem)} {data.token.symbol}</Label>
                 </Grid>
                 <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
-                  <h2 className="title is-5">Supply</h2>
-                  <h3 className="title is-6">Maximum: {format(supply)} {data.token.symbol}</h3>
-                  <h3 className="title is-6">Circulationg: {format(supply_circ)} {data.token.symbol}</h3>
+                  <Title color="blue">Supply</Title>
+                  <Label>Maximum: {format(supply)} {data.token.symbol}</Label>
+                  <Label>Circulationg: {format(supply_circ)} {data.token.symbol}</Label>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
-          {/*<Grid item xs={1} style={{ textAlign: 'center'}}>
-            <img width={70} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
-          </Grid>
-          <Grid item xs={2}>
-            <h2 className='title is-2'>{data.system}</h2>
-            <h3 className='subtitle is-3'>{data.token.symbol}</h3>     
-          </Grid>
-          <Grid item xs={2}>
-            <h2 className="title is-5" style={{ display: 'flex', justifyContent: 'space-between'}}>
-              <span>{priceFormat(price_usd)} USD</span>
-              <span style={{ color: 'green'}}>{procentFormat(price_change_usd)}%</span>
-            </h2>
-            <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
-              <span>{priceFormat(price_btc)} BTC</span>
-              <span style={{ color: 'green'}}>{procentFormat(price_change_btc)}%</span>            
-            </h3>
-            <h3 className="title is-6" style={{ display: 'flex', justifyContent: 'space-between'}}>
-              <span>{priceFormat(price_eth)} ETH</span>
-              <span style={{ color: 'green'}}>{procentFormat(price_change_eth)}%</span> 
-            </h3>
-          </Grid>
-          <Grid item xs={2}>
-            <h2 className="title is-5">Capitalization</h2>
-            <h3 className="title is-6">{format(price_usd * supply)} USD</h3>
-            <h3 className="title is-6">{format(price_btc * supply)} BTC</h3>
-          </Grid>
-          <Grid item xs={2}>
-            <h2 className="title is-5">Volume (24h)</h2>
-            <h3 className="title is-6">{format(voluem * price_usd)} USD</h3>
-            <h3 className="title is-6">{format(voluem)} {data.token.symbol}</h3>
-          </Grid>
-          <Grid item xs={3}>
-            <h2 className="title is-5">Supply</h2>
-            <h3 className="title is-6">Maximum: {format(supply)} {data.token.symbol}</h3>
-            <h3 className="title is-6">Circulationg: {format(supply_circ)} {data.token.symbol}</h3>
-          </Grid>*/}
         </Grid>    
-       <Paper style={{ marginTop: 20, marginBottom: 20, padding: 20, display: 'flex' }}>
+       <LinkList>
         {getLinksByTag(data, "Main", 4).map(link => (
-          <div key={link.name} style={{ marginRight: 20 }}>
-          <a style={{ color: '#000'}} target="_blank" href={link.url}>{link.name}</a>
-          </div>
+          <LinkListItem 
+            key={link.name} 
+            url={link.url}
+            name={link.name}
+          />
         ))}
-        </Paper>
+        </LinkList>
      </div>
   );
 }
