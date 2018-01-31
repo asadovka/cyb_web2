@@ -198,6 +198,7 @@ export const showAllTokens = () => (dispatch, getState) => {
         })  
       }))
     .then(({ pairs, tokens }) => {
+      console.log(pairs.map(x => x.base).join(','))
       let rows = [];
       rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
       rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);

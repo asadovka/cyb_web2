@@ -32,6 +32,16 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 
 import Header from './Header';
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import createPalette from 'material-ui/styles/createPalette';
+import createTypography from 'material-ui/styles/createTypography';
+
+const theme = createMuiTheme({
+  typography: createTypography(createPalette({}), {
+    fontFamily: '"Play", sans-serif',
+  })
+});
+
 const styles = theme => ({
   appTitle: {
     flex: 1
@@ -80,6 +90,7 @@ class PersistentDrawer extends React.Component {
     const { open } = this.state;
 
     return (
+        <MuiThemeProvider theme={theme}>
       <div>
         {/*<AppBar>
             <Toolbar >
@@ -112,6 +123,7 @@ class PersistentDrawer extends React.Component {
           </div>
         </main>
       </div>
+        </MuiThemeProvider>
     );
   }
 }
