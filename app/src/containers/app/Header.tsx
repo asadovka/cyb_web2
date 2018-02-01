@@ -16,7 +16,7 @@ const HeaderContainer = () => (
         <SearchForm />
         <Menu>
           <MenuLint to='/tokens'>Tokens</MenuLint>
-          <MenuLint to='/crowdsales'>Crowdsales</MenuLint>
+          <MenuLint to='/icos'>icos</MenuLint>
           <MenuLint to='/cybernode'>Cybernode</MenuLint>
           <MenuLint to='/faq'>FAQ</MenuLint>
         </Menu>

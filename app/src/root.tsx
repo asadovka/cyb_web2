@@ -25,8 +25,8 @@ import { DetailsPage } from "./containers/DetailsPage/"
 import Tokens from './containers/Tokens/';
 import TokensDetails from './containers/TokensDetails/';
 
-import Crowdsales from './containers/Crowdsales/';
-import CrowdsalesDetails from './containers/CrowdsalesDetails';
+import icos from './containers/icos/';
+import icosDetails from './containers/icoDetails';
 
 import Test from './containers/Test/'
 
@@ -80,8 +80,8 @@ export function Root() {
         <Route path={"/tokens"} component={Tokens}/>
         <Route path={"/tokens/:symbol-:base"} component={TokensDetails}/>
 
-        <Route path={"/crowdsales"} component={Crowdsales}/>
-        <Route path={"/crowdsales/:system"} component={CrowdsalesDetails}/>
+        <Route path={"/icos"} component={icos}/>
+        <Route path={"/icos/:system"} component={icosDetails}/>
 
       </Route>
     </Router>

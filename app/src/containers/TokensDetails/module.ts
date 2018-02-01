@@ -333,19 +333,6 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
     payload: { symbol }  
   })
 
-
-  // marketApi.getHistoMinute(symbol, base, from)
-  //   .then(responce => {
-  //     const payload = responce.Data.reverse().map(item => ({
-  //       time: item.time * 1000,
-  //       price: item.close
-  //     }))
-  //     dispatch({
-  //       type: 'SET_AVG_PRICE_CHART',
-  //       payload
-  //     })
-  //   })
-
   getChartData(symbol, base, interval, null)
     .then(responce => {
       const payload = responce.Data.map(item => ({

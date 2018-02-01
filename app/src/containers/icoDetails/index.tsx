@@ -9,6 +9,8 @@ import {Injector} from "../../injector";
 const {
   chaingearApi
 } = Injector.of();
+import { CircularProgress } from 'material-ui/Progress';
+
 
 import { showCrowdsalesDetails } from '../../modules/chaingear';
 import { getSystemLogoUrl } from '../Tokens/module'
@@ -16,7 +18,7 @@ import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 
-class CrowdsalesDetails extends React.Component {
+class IcoDetails extends React.Component {
   componentDidMount() {
     const { system } = this.props;
     this.props.showCrowdsalesDetails(system);
@@ -100,9 +102,11 @@ class CrowdsalesDetails extends React.Component {
              </div>
            </div>
          ) : (
-           <div>
-             loading...
-           </div>
+            <Card>
+              <CardContent style={{ textAlign: 'center'}}>
+               <CircularProgress />
+              </CardContent>
+            </Card>
          )}
       </div>
     );    
@@ -115,4 +119,4 @@ export default withRouter(connect(
     crowdsalesDetails: state.chaingear.crowdsalesDetails.data
   }),
   { showCrowdsalesDetails }
-)(CrowdsalesDetails));
+)(IcoDetails));

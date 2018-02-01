@@ -23,7 +23,7 @@ import { CircularProgress } from 'material-ui/Progress';
 import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
-class Crowdsales extends React.Component {
+class Icos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +71,7 @@ class Crowdsales extends React.Component {
     const rows = data.map(item => (
       <TableRow key={item.system}>
         <TableCell>
-          <Logo to={`/crowdsales/${item.system}`}>
+          <Logo to={`/icos/${item.system}`}>
             <img width={50} src={getSystemLogoUrl(item, chaingearApi.imageUrl())}/>            
             <span>{item.system}</span>
           </Logo>
@@ -101,7 +101,7 @@ class Crowdsales extends React.Component {
        <Table>
          <TableHead>
            <TableRow>
-             <TableCell>System</TableCell>
+             <TableCell>System2</TableCell>
              <TableCell>Descriptions</TableCell>
              <TableCell>Crowdsales</TableCell>
              <TableCell>Tokens sold</TableCell>
@@ -122,4 +122,4 @@ export default connect(
     crowdsales: state.chaingear.crowdsales
   }),
   { showAllCrowdsales }
-)(Crowdsales);
+)(Icos);
