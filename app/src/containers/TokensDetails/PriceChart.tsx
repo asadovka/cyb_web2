@@ -148,21 +148,33 @@ class PriceChart extends React.Component {
 
 
     // console.log(ticks)
-    // if (avgPrice) {
-    //   chart = (
-    //     <div>
-    //       <div>
-    //       <ComposedChart width={1100} height={300} data={avgPriceChart} syncId="anyId"
-    //             margin={{top: 10, right: 0, left: 100, bottom: 0}}>
-    //         <XAxis tickFormatter={formatAxis} dataKey="time"/>
-    //         <YAxis   />
-    //         <Line dataKey='price' type='monotone' dot={false}  stroke="#82ca9d" />
-    //         <Tooltip labelFormatter={labelFormatter} />
-    //       </ComposedChart>
-    //       </div>
-    //   </div>
-    //   );      
-    // } else {
+    if (avgPrice) {
+      chart = (
+        <div>
+          <div>
+          <ComposedChart width={1100} height={300} data={avgPriceChart} syncId="anyId"
+                margin={{top: 10, right: 0, left: 100, bottom: 0}}>
+            <XAxis 
+              ticks={getTicks(interval)}
+              tickFormatter={formatAxis(interval)} 
+              dataKey="time"
+              scale={scale}
+              interval="preserveStartEnd"
+            />
+            <YAxis 
+              type="number"  
+              width={100} 
+              orientation="right" 
+              tickFormatter={formatY} 
+              domain={[dataMin => (dataMin - (dataMin/100*5)), dataMax => (dataMax + (dataMax/100 * 5))]}
+            />
+            <Line dataKey='price' type='monotone' dot={false}  stroke="#82ca9d" isAnimationActive={false} />
+            <Tooltip labelFormatter={labelFormatter} />
+          </ComposedChart>
+          </div>
+      </div>
+      );      
+    } else {
       chart = (
         <div>
           <div>
@@ -198,7 +210,7 @@ class PriceChart extends React.Component {
           </div>
       </div>
       );      
-    // }
+    }
 
     return (
       <div>
