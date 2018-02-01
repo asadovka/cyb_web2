@@ -101,7 +101,7 @@ class Icos extends React.Component {
        <Table>
          <TableHead>
            <TableRow>
-             <TableCell>System2</TableCell>
+             <TableCell>System</TableCell>
              <TableCell>Descriptions</TableCell>
              <TableCell>Crowdsales</TableCell>
              <TableCell>Tokens sold</TableCell>
