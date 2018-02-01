@@ -47,7 +47,6 @@ const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }
         <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
           <img width={30} src={item.logo}/>            
           <span>{item.system}</span>
-          {item.currency}
           {/*<span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>
             {item.currency}
           </span>*/}
