@@ -47,6 +47,7 @@ const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }
         <Logo to={`/tokens/${item.symbol}-${item.currency}`}>
           <img width={30} src={item.logo}/>            
           <span>{item.system}</span>
+          {item.currency}
           {/*<span style={{ marginLeft: 20 }} className={`tag ${(item.currency === 'USD' || item.currency === 'USDT') ? 'is-success' : 'is-warning'}`}>
             {item.currency}
           </span>*/}
@@ -59,7 +60,7 @@ const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }
         {item.price > 1 ? numeral(item.price).format('$0,0,0.00').replace(/,/g,' ') : numeral(item.price).format('$0,0,0.0000').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '20%'}} padding="none">
-        {numeral(item.amount).format('$0,0,0').replace(/,/g,' ')}
+        {numeral(item.amount * item.price).format('$0,0,0').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '13%'}} padding="none">
         {numeral(item.supply).format('0,0,0,0').replace(/,/g,' ') }&nbsp;{item.symbol}

@@ -94,7 +94,7 @@ export const calculateRows = (state) => {
         return {
           ...item,
           price: item.price * btc_usd,
-          amount: item.amount * btc_usd
+          amount: item.amount * btc_usd,
         }  
       }
 
@@ -102,7 +102,7 @@ export const calculateRows = (state) => {
         return {
           ...item,
           price: item.price * eth_usd,
-          amount: item.amount * eth_usd
+          amount: item.amount * eth_usd,
         }  
       }
       
@@ -141,7 +141,6 @@ export const getMyTokens = (state) => {
         return {
           ...item,
           price: item.price * btc_usd,
-          amount: item.amount * btc_usd
         }  
       }
 
@@ -149,7 +148,6 @@ export const getMyTokens = (state) => {
         return {
           ...item,
           price: item.price * eth_usd,
-          amount: item.amount * eth_usd
         }  
       }
       
@@ -223,6 +221,7 @@ export const showAllTokens = () => (dispatch, getState) => {
             // console.log('>> ', tokens, item.fromsymbol)
             const token = tokens.find(x => x.token.symbol === item.fromsymbol);
             // console.log('> ', token)
+            // let supply = item.supply;
             return ({
               symbol: item.fromsymbol,
               system: token.system,
@@ -329,7 +328,7 @@ const rowsReducer = (state = [], action) => {
             return {
               ...item,
               symbol: item.symbol,
-              amount: data[item.symbol].amount,
+            //  amount: data[item.symbol].amount,
               price: data[item.symbol].price,
               open: data[item.symbol].open,
               close: data[item.symbol].close,
