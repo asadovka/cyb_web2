@@ -198,57 +198,100 @@ export const showAllTokens = () => (dispatch, getState) => {
         })  
       }))
     .then(({ pairs, tokens }) => {
-      console.log(pairs.map(x => x.base).join(','))
-      let rows = [];
-      rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
-      rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);
-      rows = initTokens(pairs, tokens, 'BTC', dispatch, rows);
-      rows = initTokens(pairs, tokens, 'ETH', dispatch, rows);
+      // console.log(pairs.map(x => x.base).join(','))
+      //const obj = {};
+      const obj = pairs.reduce((obj, item) => {
+        
+        const token = tokens.find(x => x.token.symbol === item.base);
+        if (token) {
+          if (!obj[item.base]) {
+            obj[item.base] = [];
+          }
+          obj[item.base].push(item.quote);
+        }
+        return obj;
+      }, {});
+      let pairsArr = [];
       
-      dispatch({
-        type: 'SET_TOKEN_ROWS',
-        payload: rows
-      });
+      for(let key in obj) {
+        pairsArr.push(`${key}_${obj[key][0]}`);
+      }
+      
+      marketApi.getTokens(pairsArr.join(','))
+        .then(data => {
+          const rows = data.map(item => {
+            // console.log('>> ', tokens, item.fromsymbol)
+            const token = tokens.find(x => x.token.symbol === item.fromsymbol);
+            // console.log('> ', token)
+            return ({
+              symbol: item.fromsymbol,
+              system: token.system,
+              supply: item.supply,
+              logo: getSystemLogoUrl(token, `${config.CYBER_CHAINGEAR_API}/logos/`),
+              price: item.price,
+              amount: item.volume,
+              procent: item.priceChange,
+              currency: item.tosymbol
+            });
+          })
+//          console.log(data);
+          dispatch({
+            type: 'SET_TOKEN_ROWS',
+            payload: rows
+          });
 
-      const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
-      const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
-      streemApi.subscribeTickers(tiker => {   
-        // console.log(' tiker ', tiker);     
-        newTikers[tiker.pair.base] = {
-          symbol: tiker.pair.base,
-          amount: tiker.baseAmount,
-          price: tiker.avgPrice,
-          close: tiker.close,
-          open: tiker.open
-        };
+          const pairsStr = rows.map(item => `"${item.symbol}_${item.currency}"`).join(',');
+          const TIKER_INTERVAL = 1000 * 60 * 60 * 24 * 1; /*1 day*/
+          streemApi.subscribeTickers(tiker => {   
+            // console.log(' tiker ', tiker);     
+            newTikers[tiker.pair.base] = {
+              symbol: tiker.pair.base,
+              amount: tiker.baseAmount,
+              price: tiker.avgPrice,
+              close: tiker.close,
+              open: tiker.open
+            };
 
 
-        updateRows(dispatch, getState);        
-      }, pairsStr, TIKER_INTERVAL)
+            updateRows(dispatch, getState);        
+          }, pairsStr, TIKER_INTERVAL)
 
-      dispatch({
-        type: 'SET_TOKENS_LOADING',
-        payload: false
-      })
+          dispatch({
+            type: 'SET_TOKENS_LOADING',
+            payload: false
+          })
 
-
-      const from = moment().add(-7, 'day').valueOf();
-      rows.forEach(row => {
-        marketApi.getHistoHour(row.symbol, row.currency, from)
-          .then(response => {
-              const data = response.data.map(item => ({ time: item.time, price: item.close })).reverse();
-              dispatch({
-                type: 'SET_TOKEN_PRICE_CHART',
-                payload: { data, symbol: row.symbol }
+          const from = moment().add(-7, 'day').valueOf();
+          rows.forEach(row => {
+            marketApi.getHistoHour(row.symbol, row.currency, from)
+              .then(response => {
+                  const data = response.data.map(item => ({ time: item.time, price: item.close })).reverse();
+                  dispatch({
+                    type: 'SET_TOKEN_PRICE_CHART',
+                    payload: { data, symbol: row.symbol }
+                  })
+              })
+              .catch(() => {
+                dispatch({
+                  type: 'SET_TOKEN_PRICE_CHART_ERROR',
+                  payload: row.symbol
+                })
               })
           })
-          .catch(() => {
-            dispatch({
-              type: 'SET_TOKEN_PRICE_CHART_ERROR',
-              payload: row.symbol
-            })
-          })
-      })
+        })
+
+      // let rows = [];
+      // rows = initTokens(pairs, tokens, 'USD', dispatch, rows);
+      // rows = initTokens(pairs, tokens, 'USDT', dispatch, rows);
+      // rows = initTokens(pairs, tokens, 'BTC', dispatch, rows);
+      // rows = initTokens(pairs, tokens, 'ETH', dispatch, rows);
+      
+      
+
+      
+
+
+      
       // marketApi.getHistoHour(symbol, currency, from)
       //   .then(response => {
       //     // this.setState({

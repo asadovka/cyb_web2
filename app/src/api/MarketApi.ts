@@ -23,6 +23,13 @@ export class DefaultMarketApi {
       `${config.CYBER_MARKETS_API}/histohour?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}${e ? '&e=' + e : ''}`
     );
   }
+
+  getTokens(pairs) {
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/tokens?fsyms=${pairs}`
+    );
+  }
+
   getTokensStatistics() {
     // return this.http.GET(
     //   `${config.CYBER_MARKETS_API}/tokenstats`

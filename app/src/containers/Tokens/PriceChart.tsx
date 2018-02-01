@@ -27,7 +27,11 @@ class PriceChart extends React.Component {
     let cdata = data;
 
     if (loading) {
-      return <CircularProgress />
+      return (
+          <div style={{ textAlign: 'center' }}>
+            <CircularProgress />
+          </div>
+       );
     } 
     if (error) {
       return <div>error</div>;
