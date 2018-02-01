@@ -8,7 +8,7 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import List from 'material-ui/List';
 import Paper from 'material-ui/Paper';
-import { MenuItem } from 'material-ui/Menu';
+// import { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import MenuIcon from 'material-ui-icons/Menu';
@@ -65,6 +65,16 @@ const styles = theme => ({
   },
 });
 
+import {
+  Layout,
+  AppHeader,
+  AppContent,
+  AppMenu,
+  SearchForm,
+  Logo,
+  Menu, MenuItem
+} from '../../components/AppLayout/';
+
 
 class PersistentDrawer extends React.Component {
   constructor(props){
@@ -91,38 +101,23 @@ class PersistentDrawer extends React.Component {
 
     return (
         <MuiThemeProvider theme={theme}>
-      <div>
-        {/*<AppBar>
-            <Toolbar >
-              <IconButton
-                color="contrast"
-                aria-label="open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames(classes.menuButton)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography className={classes.appTitle} type="title" color="inherit" noWrap>
-                <Link to='/' style={{ color: '#fff'}}>Cyber search</Link>
-              </Typography>
-              <div>
-                <AppSearch />
-              </div>
-            </Toolbar>
-        </AppBar>
-        <Drawer
-          open={open}
-          handleDrawerClose={this.handleDrawerClose}
-        />*/}
-        <div style={{ position: 'fixed', left: 0, right: 0, zIndex: 1}}>
-        <Header />
-        </div>
-        <main className={classes.content}>
-          <div className='container'>
-            {this.props.children}
-          </div>
-        </main>
-      </div>
+      <Layout>
+        <AppHeader>
+          <SearchForm />
+        </AppHeader>
+        <AppMenu>
+          <Logo />
+          <Menu>
+            <MenuItem icon='stratis' to='/tokens'>Tokens</MenuItem>
+            <MenuItem icon='omi' to='/icos'>ICOs</MenuItem>
+            <MenuItem icon='internet' to='/cybernode'>cybernode</MenuItem>
+            <MenuItem icon='stratis' to='/faq'>FAQ</MenuItem>
+          </Menu>
+        </AppMenu>
+        <AppContent>
+          {this.props.children}
+        </AppContent>
+      </Layout>
         </MuiThemeProvider>
     );
   }
