@@ -10,7 +10,7 @@ export const Layout = ({ children }) => (
 
 export const AppHeader = ({ children }) => (
   <div className={styles.appHeader}>
-    <div className='container' style={{ width: 900 }}>
+    <div className={styles.appHeaderContainer + ' container'}  style={{ width: 900 }}>
       {children}
     </div>
   </div>
@@ -24,11 +24,9 @@ export const AppContent = ({ children }) => (
   </div>
 );
 
-export const AppMenu = ({ children }) => (
-  <div className={styles.appMenu}>
-    <div className={styles.appMenuOpen}>
-      {children}
-    </div>
+export const AppMenu = ({ children, open }) => (
+  <div className={styles.appMenu + ' ' + (open ? styles.appMenuOpen : '')}>
+    {children}
   </div>
 );
 
@@ -41,8 +39,8 @@ export const SearchForm = () => (
 import { Link } from 'react-router';
 
 export const Logo = () => (
-  <Link to='/'>
-    <img className={styles.logo} src={require('./cyber_fund_logo.svg')} />
+  <Link className={styles.logo} to='/'>
+    <img  src={require('./cyber_fund_logo.svg')} />
   </Link>
 );
 
@@ -53,11 +51,16 @@ export const Menu = ({ children }) => (
   </ul>
 );
 
-export const MenuItem = ({ children, to, icon }) => (
+export const MenuItem = ({ children, to, icon, open }) => (
   <li className={styles.menuItem}>
-    <Link to={to} activeClassName={styles.menuItemActive} className={styles['menuItem_'+ icon]} >
+    <Link to={to} activeClassName={styles.menuItemActive} className={styles['menuItem_'+ icon] + ' ' + (open ? styles.menuItemActiveOpen: '')} >
       {children}
     </Link>
   </li>
 );
 
+export const Switcher = ({ onClick }) => (
+  <div className={styles.switcher}>
+    <button onClick={onClick}></button>
+  </div>
+)

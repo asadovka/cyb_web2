@@ -72,7 +72,8 @@ import {
   AppMenu,
   SearchForm,
   Logo,
-  Menu, MenuItem
+  Menu, MenuItem,
+  Switcher
 } from '../../components/AppLayout/';
 
 
@@ -80,7 +81,7 @@ class PersistentDrawer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      open: false,
+      open: true,
     }
     this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
     this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -103,15 +104,16 @@ class PersistentDrawer extends React.Component {
         <MuiThemeProvider theme={theme}>
       <Layout>
         <AppHeader>
+          <Logo />
           <SearchForm />
         </AppHeader>
-        <AppMenu>
-          <Logo />
+        <AppMenu open={open}>
+          <Switcher onClick={() => this.setState({ open: !this.state.open })}/>
           <Menu>
-            <MenuItem icon='stratis' to='/tokens'>Tokens</MenuItem>
-            <MenuItem icon='omi' to='/icos'>ICOs</MenuItem>
-            <MenuItem icon='internet' to='/cybernode'>cybernode</MenuItem>
-            <MenuItem icon='stratis' to='/faq'>FAQ</MenuItem>
+            <MenuItem open={open} icon='stratis' to='/tokens'>Tokens</MenuItem>
+            <MenuItem open={open} icon='omi' to='/icos'>ICOs</MenuItem>
+            <MenuItem open={open} icon='internet' to='/cybernode'>cybernode</MenuItem>
+            <MenuItem open={open} icon='stratis' to='/faq'>FAQ</MenuItem>
           </Menu>
         </AppMenu>
         <AppContent>
