@@ -63,11 +63,11 @@ const TokenDetails = ({
     <div>
         <Grid container spacing={16}>
           <Grid item xs={4} >
-            <Paper style={{ padding: 40 }}>
+            <Paper style={{ padding: 20 }}>
               <Grid container spacing={0}>
-                <Grid item xs={6} >
+                <Grid item xs={4} >
                   <CoinLogoContainer>
-                  <img width={65} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
+                  <img width={50} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
                   <CoinSystem>
                     {data.system}
                   </CoinSystem>
@@ -76,7 +76,7 @@ const TokenDetails = ({
                   </CoinSystem>
                   </CoinLogoContainer>
                 </Grid>
-                <Grid item xs={6} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                <Grid item xs={8} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
                   <Price>
                     <PriceValue>{priceFormat(price_usd)} USD</PriceValue>
                     <PriceChange>{procentFormat(price_change_usd)}%</PriceChange>
@@ -94,22 +94,22 @@ const TokenDetails = ({
             </Paper>
           </Grid>
           <Grid item xs={8}>
-            <Paper style={{ padding: 40 }}>
-              <Grid container spacing={0}>
+            <Paper style={{ padding: 20 }}>
+              <Grid container spacing={16}>
                 <Grid item xs={4}>
                   <Title>Capitalization</Title>
                   <Label>{format(price_usd * supply)} USD</Label>
                   <Label>{format(price_btc * supply)} BTC</Label>
                 </Grid>
-                <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
                   <Title color="green">Volume (24)</Title>
                   <Label>{format(voluem * price_usd)} USD</Label>
                   <Label>{format(voluem)} {data.token.symbol}</Label>
                 </Grid>
-                <Grid item xs={4} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
                   <Title color="blue">Supply</Title>
                   <Label>Maximum: {format(supply)} {data.token.symbol}</Label>
-                  <Label>Circulationg: {format(supply_circ)} {data.token.symbol}</Label>
+                  <Label>Circulating: {format(supply_circ)} {data.token.symbol}</Label>
                 </Grid>
               </Grid>
             </Paper>

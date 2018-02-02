@@ -10,7 +10,7 @@ export const Layout = ({ children }) => (
 
 export const AppHeader = ({ children }) => (
   <div className={styles.appHeader}>
-    <div className='container'>
+    <div className='container' style={{ width: 900 }}>
       {children}
     </div>
   </div>
@@ -18,7 +18,7 @@ export const AppHeader = ({ children }) => (
 
 export const AppContent = ({ children }) => (
   <div className={styles.appContent}>
-    <div className='container'>
+    <div className='container' style={{ width: 900 }}>
       {children}
     </div>
   </div>
