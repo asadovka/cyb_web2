@@ -8,16 +8,16 @@ export const Layout = ({ children }) => (
   </div>
 );
 
-export const AppHeader = ({ children }) => (
-  <div className={styles.appHeader}>
+export const AppHeader = ({ children, open }) => (
+  <div className={styles.appHeader + ' ' + (open ? styles.appHeaderOpen : '')}>
     <div className={styles.appHeaderContainer + ' container'}  style={{ width: 900 }}>
       {children}
     </div>
   </div>
 );
 
-export const AppContent = ({ children }) => (
-  <div className={styles.appContent}>
+export const AppContent = ({ children, open }) => (
+  <div className={styles.appContent + ' ' + (open ? styles.appContentOpen: '')}>
     <div className='container' style={{ width: 900 }}>
       {children}
     </div>

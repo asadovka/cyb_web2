@@ -103,7 +103,7 @@ class PersistentDrawer extends React.Component {
     return (
         <MuiThemeProvider theme={theme}>
       <Layout>
-        <AppHeader>
+        <AppHeader open={open}>
           <Logo />
           <SearchForm />
         </AppHeader>
@@ -116,7 +116,7 @@ class PersistentDrawer extends React.Component {
             <MenuItem open={open} icon='stratis' to='/faq'>FAQ</MenuItem>
           </Menu>
         </AppMenu>
-        <AppContent>
+        <AppContent open={open}>
           {this.props.children}
         </AppContent>
       </Layout>
