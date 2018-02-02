@@ -61,6 +61,10 @@ export const MenuItem = ({ children, to, icon, open }) => (
 
 export const Switcher = ({ onClick }) => (
   <div className={styles.switcher}>
-    <button onClick={onClick}></button>
+    <button onClick={onClick}>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 )
