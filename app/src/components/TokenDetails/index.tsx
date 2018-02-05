@@ -59,3 +59,81 @@ export const CoinSystem = ({ children }) => (
   </div>
 );
 
+export const LinkTitile = ({ children }) => (
+  <h2 className={styles.linkTitile}>
+    {children}
+  </h2>
+);
+
+
+export const NewsList = ({ children }) => (
+  <ul className={styles.NewsList}>
+    {children}
+  </ul>
+);
+
+export const NewsListLink = ({ children, url, icon }) => (
+  <li className={styles.NewsListItem}>
+    <a target="_blank" key={url} href={url}>      
+      <span className={styles.NewsListItemBg}>      
+        {!!icon && <img width={20} src={icon} />}
+      </span>
+      {children}
+    </a>
+  </li>
+);
+
+
+
+export const AppsList = ({ children }) => (
+  <ul className={styles.appsList}>
+    {children}
+  </ul>
+);
+
+export const AppsListItem = ({ children, url, icon }) => (
+  <li className={styles.appsListItem}>
+    <a target="_blank" key={url} href={url}>
+      {!!icon && <img width={20} src={icon} />}
+      {children}
+    </a>
+  </li>
+);
+
+
+export const LinkContainer = ({ children }) => (
+  <div className={styles.linkContainer}>
+    {children}
+  </div>
+);
+
+
+export const ScientificRoots = ({ children}) => (
+  <ul className={styles.scientificRoots}>
+    {children}
+  </ul>
+);
+
+export const ScientificRootsItem = ({ children, url }) => (
+  <li className={styles.scientificRootsItem}>
+    <a target="_blank" key={url} href={url}>
+      {children}
+    </a>
+  </li>
+);
+
+
+export const DevelopersDimension = ({ children}) => (
+  <ul className={styles.developersDimension}>
+    {children}
+  </ul>
+);
+
+export const DevelopersDimensionItem = ({ children, url }) => (
+  <li className={styles.sevelopersDimensionItem}>
+    <a target="_blank" key={url} href={url}>
+      {children}
+    </a>
+  </li>
+);
+

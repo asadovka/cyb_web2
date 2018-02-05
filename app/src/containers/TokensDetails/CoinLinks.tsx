@@ -7,6 +7,21 @@ import { CircularProgress } from 'material-ui/Progress';
 
 import { getLinksByTag } from './module';
 
+import { 
+  LinkTitile,
+  NewsList,
+  NewsListLink,
+
+  AppsList, AppsListItem,
+
+  LinkContainer,
+
+  ScientificRoots, ScientificRootsItem,
+
+  DevelopersDimension, DevelopersDimensionItem
+} from '../../components/TokenDetails/';
+
+
 import {Injector} from "../../injector";
 const {
   chaingearApi
@@ -21,7 +36,7 @@ const LinksGroup = ({
 
   return (
     <div style={{ marginBottom: 40 }}>
-      {title && <h2 className='title'>{title}</h2>}
+      {title && <LinkTitile>{title}</LinkTitile>}
       <div className='tags'>
        {links.map(link => (
          <a target="_blank" key={link.url} className='tag' href={link.url}>
@@ -44,27 +59,54 @@ let CoinLinks = ({ tokensDetails }) => {
   }
 
   return (
-    <div>
-      <LinksGroup 
-        links={getLinksByTag(data, 'News')} 
-        title='News'
-      />
-      <LinksGroup 
-        links={getLinksByTag(data, 'Apps')} 
-        title='Apps'
-      />
-      <LinksGroup 
-        links={getLinksByTag(data, 'Science')} 
-        title='Scientific Roots'
-        noIcone={true}
-      />
-      <LinksGroup 
-        links={getLinksByTag(data, 'Code')}
-        title='Developers Dimension' 
-        noIcone={true}
-      />
+    <LinkContainer>
+      <LinkTitile>News</LinkTitile>
+      <NewsList>
+        {getLinksByTag(data, 'News').map(link => (
+          <NewsListLink 
+            url={link.url}
+            icon={chaingearApi.imageUrl() + link.icon}
+            key={link.url}
+          >{link.name}</NewsListLink>
+        ))}
+      </NewsList>
+      <LinkTitile>Apps</LinkTitile>
+      <AppsList>
+        {getLinksByTag(data, 'Apps').map(link => (
+          <AppsListItem
+            url={link.url}
+            icon={chaingearApi.imageUrl() + link.icon}
+            key={link.url}
+          >
+            {link.name}
+          </AppsListItem>
+        ))}
+      </AppsList>
+      <LinkTitile>Scientific Roots</LinkTitile>
+      <ScientificRoots>
+        {getLinksByTag(data, 'Science').map(link => (
+          <ScientificRootsItem
+            url={link.url}
+            key={link.url}
+          >
+            {link.name}
+          </ScientificRootsItem>
+        ))}
+      </ScientificRoots>
+
+      <LinkTitile>Developers Dimension</LinkTitile>
+      <DevelopersDimension>
+         {getLinksByTag(data, 'Code').map(link => (
+          <DevelopersDimensionItem
+            url={link.url}
+            key={link.url}
+          >
+            {link.name}
+          </DevelopersDimensionItem>
+        ))}
+      </DevelopersDimension>
         
-     </div> 
+     </LinkContainer> 
   );
 }
 

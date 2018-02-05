@@ -68,3 +68,162 @@
   color: #7a7a7a;
   text-transform: uppercase;
 }
+
+
+
+.linkTitile {
+  font-size: 36px;
+  line-height: 42px;
+  color: #7c7c7c;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 30px;
+}
+
+.linkTitile::before {
+  content: '';
+  width: 39px;
+  height: 2px;
+  background: #7c7c7c;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: rotate(-65deg);
+}
+
+
+.NewsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.NewsListItem a {
+  color: #696969;
+  display: block;
+  min-width: 65px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.NewsListItem img {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+.NewsListItemBg {
+  margin-bottom: 20px;
+  display: block;
+  width: 39px;
+  height: 39px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background-color: #eff3f6;
+  box-shadow: -1px 4px 5px 0 rgba(0, 0, 0, 0.12);
+  transform-origin: center center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.appsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+
+.appsListItem {
+  width: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+
+.appsListItem a {
+  color: #000;
+  font-size: 14px;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.appsListItem a img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.linkContainer {
+  padding: 60px;
+  padding-top: 30px;
+}
+
+.scientificRoots {
+  margin-bottom: 40px;
+}
+
+.scientificRootsItem {
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.scientificRootsItem:last-child {
+  border: none;
+}
+
+.scientificRootsItem a {
+  display: block;
+  color: #000;
+  padding-right: 100px;
+  position: relative;
+}
+
+.scientificRootsItem a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: calc(50% - 5px);
+  right: 0;
+
+  border-top: 5px solid transparent;
+  border-left: 10px solid #000;
+  border-bottom: 5px solid transparent;
+}
+
+
+.developersDimension {
+  margin-bottom: 40px;
+}
+
+
+.sevelopersDimensionItem {
+  border-top: 1px solid #dedede;
+  padding: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.sevelopersDimensionItem:hover {
+  border-radius: 4px;
+  background-color: #eff3f6;
+}
+
+.sevelopersDimensionItem a { 
+  display: block;
+  color: #000;
+}
+
