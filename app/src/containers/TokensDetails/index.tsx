@@ -23,7 +23,7 @@ class TokensDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 3
+      value: 0
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -54,7 +54,7 @@ class TokensDetails extends React.Component {
           {crowdsalesDetails.success && crowdsalesDetails.data.specs && <Tab label='Spec' value={2}/>}*/}
           <Tab label='Link' value={3}/>
         </Tabs>
-        <Card>
+        <Card style={{ padding: '40px 60px', marginBottom: 40 }}>
           <CardContent>
         {value === 0 && <div>
           <PriceChart />
@@ -74,10 +74,7 @@ class TokensDetails extends React.Component {
         </div>}
           </CardContent>
         </Card>
-                  
-        {success && <div style={{ marginTop: 20 }}>
-           You can improve <a href={`https://github.com/cyberFund/chaingear/blob/gh-pages/sources/${data.system}/${data.system}.toml`}>{data.system}'s</a> page on Github.
-        </div>}
+               
        </div>
     );    
   }

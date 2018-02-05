@@ -50,82 +50,92 @@ const TokenDetails = ({
   price_change_eth 
 }) => {
   const { data } = tokensDetails;
+  let conten;
+
   if (!data.system) {
-    return (
+    conten =  (
       <Card>
         <CardContent style={{ textAlign: 'center'}}>
          <CircularProgress />
         </CardContent>
       </Card>
     );
+  } else {
+    conten = (
+      <div>
+          <Grid container spacing={16}>
+            <Grid item xs={4} >
+              <Paper style={{ padding: 20 }}>
+                <Grid container spacing={0}>
+                  <Grid item xs={4} >
+                    <CoinLogoContainer>
+                    <img width={50} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
+                    <CoinSystem>
+                      {data.system}
+                    </CoinSystem>
+                    <CoinSystem>
+                      {data.token.symbol}
+                    </CoinSystem>
+                    </CoinLogoContainer>
+                  </Grid>
+                  <Grid item xs={8} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
+                    <Price>
+                      <PriceValue>{priceFormat(price_usd)} USD</PriceValue>
+                      <PriceChange>{procentFormat(price_change_usd)}%</PriceChange>
+                    </Price>
+                    <Price>
+                      <PriceValue>{priceFormat(price_btc)} BTC</PriceValue>
+                      <PriceChange>{procentFormat(price_change_btc)}%</PriceChange>            
+                    </Price>
+                    <Price>
+                      <PriceValue>{priceFormat(price_eth)} ETH</PriceValue>
+                      <PriceChange>{procentFormat(price_change_eth)}%</PriceChange> 
+                    </Price>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={8}>
+              <Paper style={{ padding: 20 }}>
+                <Grid container spacing={16}>
+                  <Grid item xs={4}>
+                    <Title>Capitalization</Title>
+                    <Label>{format(price_usd * supply)} USD</Label>
+                    <Label>{format(price_btc * supply)} BTC</Label>
+                  </Grid>
+                  <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
+                    <Title color="green">Volume (24)</Title>
+                    <Label>{format(voluem * price_usd)} USD</Label>
+                    <Label>{format(voluem)} {data.token.symbol}</Label>
+                  </Grid>
+                  <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
+                    <Title color="blue">Supply</Title>
+                    <Label>Maximum: {format(supply)} {data.token.symbol}</Label>
+                    <Label>Circulating: {format(supply_circ)} {data.token.symbol}</Label>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+          </Grid>    
+         <LinkList>
+          {getLinksByTag(data, "Main", 4).map(link => (
+            <LinkListItem 
+              key={link.name} 
+              url={link.url}
+              name={link.name}
+            />
+          ))}
+          </LinkList>
+       </div>
+    );
   }
+
   return (
-    <div>
-        <Grid container spacing={16}>
-          <Grid item xs={4} >
-            <Paper style={{ padding: 20 }}>
-              <Grid container spacing={0}>
-                <Grid item xs={4} >
-                  <CoinLogoContainer>
-                  <img width={50} src={getSystemLogoUrl(data, chaingearApi.imageUrl())} />
-                  <CoinSystem>
-                    {data.system}
-                  </CoinSystem>
-                  <CoinSystem>
-                    {data.token.symbol}
-                  </CoinSystem>
-                  </CoinLogoContainer>
-                </Grid>
-                <Grid item xs={8} style={{ paddingLeft: 20, borderLeft: '1px solid #ccc' }}>
-                  <Price>
-                    <PriceValue>{priceFormat(price_usd)} USD</PriceValue>
-                    <PriceChange>{procentFormat(price_change_usd)}%</PriceChange>
-                  </Price>
-                  <Price>
-                    <PriceValue>{priceFormat(price_btc)} BTC</PriceValue>
-                    <PriceChange>{procentFormat(price_change_btc)}%</PriceChange>            
-                  </Price>
-                  <Price>
-                    <PriceValue>{priceFormat(price_eth)} ETH</PriceValue>
-                    <PriceChange>{procentFormat(price_change_eth)}%</PriceChange> 
-                  </Price>
-                </Grid>
-              </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={8}>
-            <Paper style={{ padding: 20 }}>
-              <Grid container spacing={16}>
-                <Grid item xs={4}>
-                  <Title>Capitalization</Title>
-                  <Label>{format(price_usd * supply)} USD</Label>
-                  <Label>{format(price_btc * supply)} BTC</Label>
-                </Grid>
-                <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
-                  <Title color="green">Volume (24)</Title>
-                  <Label>{format(voluem * price_usd)} USD</Label>
-                  <Label>{format(voluem)} {data.token.symbol}</Label>
-                </Grid>
-                <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
-                  <Title color="blue">Supply</Title>
-                  <Label>Maximum: {format(supply)} {data.token.symbol}</Label>
-                  <Label>Circulating: {format(supply_circ)} {data.token.symbol}</Label>
-                </Grid>
-              </Grid>
-            </Paper>
-          </Grid>
-        </Grid>    
-       <LinkList>
-        {getLinksByTag(data, "Main", 4).map(link => (
-          <LinkListItem 
-            key={link.name} 
-            url={link.url}
-            name={link.name}
-          />
-        ))}
-        </LinkList>
-     </div>
+    <div style={{ minHeight: 187 }}>
+      {conten}
+    </div>
   );
+    
 }
 
 

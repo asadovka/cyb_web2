@@ -8,6 +8,12 @@ import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 import Checkbox from 'material-ui/Checkbox';
 import { FormGroup, FormControlLabel } from 'material-ui/Form';
+
+import {
+   Tabs, Tab
+} from '../../components/TokenDetails/';
+
+
 var numeral = require('numeral');
 
 var numeral = require('numeral');
@@ -117,7 +123,7 @@ class PriceChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      avgPrice: false,
+      avgPrice: true,
       scale: "auto",
       interval: '1d'
     }
@@ -152,8 +158,8 @@ class PriceChart extends React.Component {
       chart = (
         <div>
           <div>
-          <ComposedChart width={900} height={300} data={avgPriceChart} syncId="anyId"
-                margin={{top: 10, right: 0, left: 100, bottom: 0}}>
+          <ComposedChart width={990} height={300} data={avgPriceChart} syncId="anyId"
+                margin={{top: 10, right: 0, left: 0, bottom: 0}}>
             <XAxis 
               ticks={getTicks(interval)}
               tickFormatter={formatAxis(interval)} 
@@ -178,8 +184,8 @@ class PriceChart extends React.Component {
       chart = (
         <div>
           <div>
-          <ComposedChart width={900} height={300} data={multiPriceChart} syncId="anyId"
-                margin={{top: 10, right: 0, left: 100, bottom: 0}}>
+          <ComposedChart width={990} height={300} data={multiPriceChart} syncId="anyId"
+                margin={{top: 10, right: 0, left: 0, bottom: 0}}>
             <XAxis 
               ticks={getTicks(interval)}
               tickFormatter={formatAxis(interval)} 
@@ -214,14 +220,15 @@ class PriceChart extends React.Component {
 
     return (
       <div>
-        <div>
-          <button className={`button ${interval == '1d' ? 'is-success' : ''}`} onClick={() => this.changeInterval('1d')}>1d</button>
-          <button className={`button ${interval == '7d' ? 'is-success' : ''}`} onClick={() => this.changeInterval('7d')}>7d</button>
-          <button className={`button ${interval == '1m' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1m')}>1m</button>
-          <button className={`button ${interval == '3m' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('3m')}>3m</button>
-          {/*<button className={`button ${interval == '1y' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('1y')}>1y</button>
-          <button className={`button ${interval == 'all' ? 'is-success' : ''}`}  onClick={() => this.changeInterval('all')}>ALL</button>*/}
-        </div>
+        <Tabs value={interval} onChange={(e, v) => this.changeInterval(v)}>
+          <Tab value='1d' label='1 day'  />
+          <Tab value='7d' label='7 days'  />
+          <Tab value='1m' label='1 month'  />
+          <Tab value='3m' label='3 months'  />
+          {/*<Tab value='1y' label='1y'  />
+          <Tab value='all' label='all'  />*/}
+
+        </Tabs>
         {/*<div>
           <button className={`button ${scale == 'auto' ? 'is-success' : ''}`}  onClick={() => this.setState({scale : 'auto'})}>line</button>
           <button className={`button ${scale == 'log' ? 'is-success' : ''}`}  onClick={() => this.setState({scale : 'log'})}>log</button>        
@@ -232,7 +239,7 @@ class PriceChart extends React.Component {
               checked={avgPrice}
               onChange={() => this.setState({ avgPrice: !this.state.avgPrice })}
               value='avg'
-            />}  label="avg price"/>
+            />}  label="Price (All)"/>
         </div>
       </div>
     );
