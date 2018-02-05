@@ -10,7 +10,7 @@ export const Layout = ({ children }) => (
 
 export const AppHeader = ({ children, open }) => (
   <div className={styles.appHeader + ' ' + (open ? styles.appHeaderOpen : '')}>
-    <div className={styles.appHeaderContainer + ' container'}  style={{ width: 900 }}>
+    <div className={styles.appHeaderContainer + ' container'}  style={{ width: 1090 }}>
       {children}
     </div>
   </div>
@@ -18,7 +18,7 @@ export const AppHeader = ({ children, open }) => (
 
 export const AppContent = ({ children, open }) => (
   <div className={styles.appContent + ' ' + (open ? styles.appContentOpen: '')}>
-    <div className='container' style={{ width: 900 }}>
+    <div className='container' style={{ width: 1090 }}>
       {children}
     </div>
   </div>

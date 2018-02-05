@@ -52,13 +52,13 @@ const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }
           </span>*/}
         </Logo>
       </TableCell >
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right', paddingRight: 20, width: '10%'}} padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', paddingRight: 20, width: '15%'}} padding="none">
         {numeral(item.price * item.supply).format('$0,0,0,0').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '10%'}} padding="none">
         {item.price > 1 ? numeral(item.price).format('$0,0,0.00').replace(/,/g,' ') : numeral(item.price).format('$0,0,0.0000').replace(/,/g,' ')}
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '20%'}} padding="none">
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '15%'}} padding="none">
         {numeral(item.amount * item.price).format('$0,0,0').replace(/,/g,' ')}
       </TableCell>
       <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '13%'}} padding="none">
@@ -69,7 +69,7 @@ const TokenRows = withStyles(styles)(({ item, myTokens, toggleMyToken, classes }
           color: procent === 0 ? '#000' : (procent < 0 ? 'red' : 'green')
         }}>{numeral(item.procent).format('0.00')}%</span>
       </TableCell>
-      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%', height: 100 }} padding='none'>
+      <TableCell style={{ borderBottom: 'none', textAlign: 'right', width: '30%', height: 60 }} padding='none'>
         <PriceChart
           symbol={item.symbol} 
           currency={item.currency}
@@ -92,9 +92,9 @@ const TableHeader = ({ onReset, myTokens }) => (
          {onReset && <button disabled={myTokens.length === 0} style={buttonStyle} className="button is-small is-rounded is-light" onClick={onReset}>Clean</button>}
        </TableCell>
        <TableCell padding='none' style={{ textAlign: 'left', width: '10%'}}>Token</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '10%' }}>Market&nbsp;Cap</TableCell>
+       <TableCell padding='none' style={{ textAlign: 'right', paddingRight: 20, width: '15%' }}>Market&nbsp;Cap</TableCell>
        <TableCell padding='none' style={{ textAlign: 'right', width: '10%'}}>Weighted Price</TableCell>
-       <TableCell padding='none' style={{ textAlign: 'right', width: '20%'}}><TableSortLabel active={false}>Volume&nbsp;(24h)</TableSortLabel></TableCell>               
+       <TableCell padding='none' style={{ textAlign: 'right', width: '15%'}}>Volume&nbsp;(24h)</TableCell>               
        <TableCell padding='none' style={{ textAlign: 'right', width: '13%'}}>Supply</TableCell>               
        <TableCell padding='none' style={{ width: '10%', textAlign: 'right'}}>Change&nbsp;(24h)</TableCell>
        <TableCell padding='none' style={{ width: '30%', textAlign: 'center'}}>Price Graph&nbsp;(7d)</TableCell>
