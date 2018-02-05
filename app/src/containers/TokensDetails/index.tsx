@@ -15,7 +15,8 @@ import { getSystemLogoUrl } from '../Tokens/module';
 import { CircularProgress } from 'material-ui/Progress';
 
 import CoinLinks from './CoinLinks';
-import Tabs, { Tab } from 'material-ui/Tabs';
+import Tabs, { Tab } from '../../components/Tabs/';
+//'material-ui/Tabs';
 
 
 class TokensDetails extends React.Component {
