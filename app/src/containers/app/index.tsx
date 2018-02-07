@@ -25,12 +25,10 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import ReportIcon from 'material-ui-icons/Report';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
-import Drawer from './Drawer';
 
 import { Link } from 'react-router';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
-import Header from './Header';
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import createPalette from 'material-ui/styles/createPalette';

@@ -1,0 +1,82 @@
+
+.roundCheckbox input{
+  display: none;
+}
+
+.roundCheckbox {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.checkmark {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 0;
+  border: 1px solid #000;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.roundCheckbox input:checked ~ .checkmark {
+  background: #000;
+}
+
+.roundCheckbox.purple .checkmark {
+  border: 1px solid #7780fc;
+}
+
+.roundCheckbox.purple {
+  color: #7780fc
+}
+
+.roundCheckbox.purple input:checked ~ .checkmark {
+  background: #7780fc;
+}
+
+.roundCheckbox.sky .checkmark {
+  border: 1px solid #74c1ff;
+}
+
+.roundCheckbox.sky {
+  color: #74c1ff
+}
+
+.roundCheckbox.sky input:checked ~ .checkmark {
+  background: #74c1ff;
+}
+
+
+.roundCheckbox.blue .checkmark {
+  border: 1px solid #438cef;
+}
+
+.roundCheckbox.blue {
+  color: #438cef
+}
+
+.roundCheckbox.blue input:checked ~ .checkmark {
+  background: #438cef;
+}
+
+
+.roundCheckbox.green .checkmark {
+  border: 1px solid #38d2b6;
+}
+
+.roundCheckbox.green {
+  color: #38d2b6
+}
+
+.roundCheckbox.green input:checked ~ .checkmark {
+  background: #38d2b6;
+}
+
+
+
+
+
+

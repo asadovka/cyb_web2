@@ -4,15 +4,13 @@ import withRouter from "react-router/es/withRouter";
 
 import { search } from '../../../modules/search';
 
-
-import { Link } from 'react-router';
-
 import Content from './Content';
 import LeftMenu from './LeftMenu';
 import Tabs from './Tabs';
-import App from '../../app/';
 
-import Paper from 'material-ui/Paper';
+import { FilterPanel } from '../../../components/searchPage/'
+import { Layout, LayoutSideBar, LayoutContent} from '../../../components/searchPage/Layout/';
+
 
 
 class SearchResultPageComponent extends React.Component {
@@ -34,30 +32,16 @@ class SearchResultPageComponent extends React.Component {
   }
 
   render() {
-    const {
-      query,
-      entities,
-      chains,
-    } = this.props;
-
-
-
     return (
-      <div>
-        <div className='columns'>
-          <div className='column is-narrow'>
-            <Paper>
-              <LeftMenu />
-            </Paper>
-          </div>
-          <div className='column'>
-            <Paper>
-              <Tabs />
-              <Content />
-            </Paper>
-          </div>
-        </div>
-      </div>
+      <Layout>
+        <LayoutSideBar>
+          <LeftMenu />
+        </LayoutSideBar>
+        <LayoutContent>
+          <Tabs />
+          <Content />
+        </LayoutContent>
+      </Layout>
     );
   }
 }

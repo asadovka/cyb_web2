@@ -2,7 +2,8 @@ import * as React from "react";
 import { Link } from 'react-router';
 
 import {
-  Title, Number, Date, Row, Hash,
+  Item,
+  Title, Date, Row, Hash,
   Height, Total, DetailsLink
 } from '../../../../components/SearchItems/';
 
@@ -11,11 +12,16 @@ import {
 
 const EthereumBlock = (data) => {
  return (
-  <div>
+  <Item color='#438cef'>
     <Row>
-      <Title>Ethereum</Title>
-      <Number>#{data.tx_number}</Number>
-      <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' />
+      <Title 
+        color='#438cef'
+        system='Ethereum'
+        number={data.tx_number}
+      />  
+    </Row>
+    <Row>
+      <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' label='Mined on:'/>
     </Row>
     <Row>
       <Hash value={data.hash} />
@@ -26,7 +32,7 @@ const EthereumBlock = (data) => {
         {`seacrh.cyber.fund/ethereum/block/${data.number}`}
       </DetailsLink>
     </Row>
-  </div>
+  </Item>
  );
 }
 

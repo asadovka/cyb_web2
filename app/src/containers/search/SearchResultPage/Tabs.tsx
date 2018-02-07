@@ -4,7 +4,8 @@ import withRouter from "react-router/es/withRouter";
 
 import { Link } from 'react-router';
 var cx = require('classnames');
-import Tabs, { Tab } from 'material-ui/Tabs';
+import Tabs, { Tab } from '../../../components/Tabs/'
+//'material-ui/Tabs';
 
 import { browserHistory } from 'react-router'
 
@@ -31,13 +32,11 @@ const TabsContainer = ({ entities, query, chains }) => {
   return (
     <Tabs
       value={tabIndex}
-      indicatorColor="primary"
-      textColor="primary"
       onChange={tabChange}
     >
-      <Tab label="All" />
-      <Tab label="Blocks" />
-      <Tab label="Transactions" />
+      <Tab label="All" value={0}/>
+      <Tab label="Blocks" value={1}/>
+      <Tab label="Transactions" value={2}/>
     </Tabs>
   );
 }

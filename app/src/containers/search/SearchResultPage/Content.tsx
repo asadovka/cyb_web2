@@ -17,8 +17,18 @@ import EthereumBlock from './items/EthereumBlock';
 import EthereumClassicBlock from './items/EthereumClassicBlock';
 import EthereumTx from './items/EthereumTx';
 import EthereumClassicTx from './items/EthereumClassicTx';
+import Paper from 'material-ui/Paper';
 
+import { Container } from '../../../components/SearchItems/';
 import { SectionTitle, SectionsContainer } from '../../../components/SectionTitle/';
+
+
+    {/*<div>
+    {results(searchResult.items, searchResult.loading, searchResult.error, searchResult.success)}
+    </div>
+    {(searchResult.showMore) && <div style={{ textAlign: 'center', marginTop: 40 }}>
+      <button onClick={() => showMore({ query, chains, entities })} className='button is-large'>show more</button>
+    </div>} */}
 
 const Content = ({
   searchResult,
@@ -28,14 +38,78 @@ const Content = ({
   query,
   showMore
 }) => (
-  <div>
-    <div>
-    {results(searchResult.items, searchResult.loading, searchResult.error, searchResult.success)}
-    </div>
-    {(searchResult.showMore) && <div style={{ textAlign: 'center', marginTop: 40 }}>
-      <button onClick={() => showMore({ query, chains, entities })} className='button is-large'>show more</button>
-    </div>}
-  </div>
+    <Container>
+      <EthereumBlock
+        tx_number={1}
+        number={1}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        size='534'
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+      <EthereumTx
+        timestamp={(new Date('2015-07-30 06:31')).getTime()}
+        hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
+        tx_number={1}
+        fee={1}
+        value='534'
+      />
+    </Container>
 );
 
 

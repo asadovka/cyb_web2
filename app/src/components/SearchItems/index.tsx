@@ -5,16 +5,19 @@ import moment from 'moment'
 
 const styles = require("./SearchItems.less");
 
-export const Title = ({ children }) => (
-  <h3 className={styles.title}>{children}</h3>
+export const Title = ({ color, system, number }) => (
+  <h3 
+    className={styles.title} 
+    style={{ backgroundColor: color }}
+  >
+    <span className={styles.titleFirst} >{system}</span>
+    <span>#{number}</span>
+  </h3>
 );
 
-export const Number = ({ children }) => (
-  <span className={styles.number}>{children}</span>
-)
 
-export const Date = ({ value, format }) => (
-  <span className={styles.date}>{moment(value).format(format)}</span>
+export const Date = ({ value, format, label }) => (
+  <span className={styles.date}>{label + ' ' + moment(value).format(format)}</span>
 )
 
 export const Hash = ({ value }) => {
@@ -60,6 +63,17 @@ export const Row = ({ children }) => (
 );
 
 
+export const Container = ({ children }) => (
+  <div className={styles.container}>
+    {children}
+  </div>
+);
+
+export const Item = ({ children, color }) => (
+  <div className={styles.item} style={{ borderLeft: `4px solid ${color}`}}>
+    {children}
+  </div>
+);
 
 
 
