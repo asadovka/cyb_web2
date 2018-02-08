@@ -57,22 +57,24 @@ export function Root() {
         <Route path={"/search"} component={SearchResultPage}/>
         <Route path={"/test"} component={Test}/>
         
+        <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
+        <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
+
+        <Route path={"/bitcoin_cash/block/:blockNumber"} component={BitcoinCashBlockPage}/>
+        <Route path={"/bitcoin_cash/tx/:txId"} component={BitcoinCashTxPage}/>
+
+        <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
+        <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
+        <Route path={"/ethereum/address/:hash"} component={EthereumAddressPage}/>
+
+
+        <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
+        <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
+          
         <Route component={DetailsPage}>
           <Route path={"/faq"} component={FAQ}/>
 
-          <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
-          <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
 
-          <Route path={"/bitcoin_cash/block/:blockNumber"} component={BitcoinCashBlockPage}/>
-          <Route path={"/bitcoin_cash/tx/:txId"} component={BitcoinCashTxPage}/>
-
-          <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
-          <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
-          <Route path={"/ethereum/address/:hash"} component={EthereumAddressPage}/>
-
-
-          <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
-          <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
         </Route>
 
         <Route path={"/cybernode"} component={Cybernode}/>

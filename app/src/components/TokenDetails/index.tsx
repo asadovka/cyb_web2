@@ -59,11 +59,6 @@ export const CoinSystem = ({ children }) => (
   </div>
 );
 
-export const LinkTitile = ({ children }) => (
-  <h2 className={styles.linkTitile}>
-    {children}
-  </h2>
-);
 
 
 export const NewsList = ({ children }) => (

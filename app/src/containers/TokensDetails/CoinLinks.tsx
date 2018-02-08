@@ -8,7 +8,6 @@ import { CircularProgress } from 'material-ui/Progress';
 import { getLinksByTag } from './module';
 
 import { 
-  LinkTitile,
   NewsList,
   NewsListLink,
 
@@ -21,32 +20,13 @@ import {
   DevelopersDimension, DevelopersDimensionItem
 } from '../../components/TokenDetails/';
 
+import { Titile } from '../../components/Title/';
 
 import {Injector} from "../../injector";
 const {
   chaingearApi
 } = Injector.of();
 
-const LinksGroup = ({
-  title,
-  links,
-  noIcone = false
-}) => {
-  if (links.lenght) return null;
-
-  return (
-    <div style={{ marginBottom: 40 }}>
-      {title && <LinkTitile>{title}</LinkTitile>}
-      <div className='tags'>
-       {links.map(link => (
-         <a target="_blank" key={link.url} className='tag' href={link.url}>
-           {(!noIcone && link.icon) && <img style={{ marginRight: 10 }} width={20} src={chaingearApi.imageUrl() + link.icon} />} {link.name}
-         </a>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 let CoinLinks = ({ tokensDetails }) => {
   const { data } = tokensDetails;
@@ -60,7 +40,7 @@ let CoinLinks = ({ tokensDetails }) => {
 
   return (
     <LinkContainer>
-      <LinkTitile>News</LinkTitile>
+      <Titile>News</Titile>
       <NewsList>
         {getLinksByTag(data, 'News').map(link => (
           <NewsListLink 
@@ -70,7 +50,8 @@ let CoinLinks = ({ tokensDetails }) => {
           >{link.name}</NewsListLink>
         ))}
       </NewsList>
-      <LinkTitile>Apps</LinkTitile>
+
+      <Titile>Apps</Titile>
       <AppsList>
         {getLinksByTag(data, 'Apps').map(link => (
           <AppsListItem
@@ -82,7 +63,7 @@ let CoinLinks = ({ tokensDetails }) => {
           </AppsListItem>
         ))}
       </AppsList>
-      <LinkTitile>Scientific Roots</LinkTitile>
+      <Titile>Scientific Roots</Titile>
       <ScientificRoots>
         {getLinksByTag(data, 'Science').map(link => (
           <ScientificRootsItem
@@ -94,7 +75,7 @@ let CoinLinks = ({ tokensDetails }) => {
         ))}
       </ScientificRoots>
 
-      <LinkTitile>Developers Dimension</LinkTitile>
+      <Titile>Developers Dimension</Titile>
       <DevelopersDimension>
          {getLinksByTag(data, 'Code').map(link => (
           <DevelopersDimensionItem
