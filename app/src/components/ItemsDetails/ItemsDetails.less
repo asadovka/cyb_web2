@@ -60,6 +60,11 @@
   overflow: hidden;
   font-size: 16px;
   color: #438cef;
+  
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 5px;
+  text-overflow: ellipsis;
 }
 
 
@@ -83,11 +88,13 @@
   font-weight: bold;
 }
 
+
 .transactionsTable td {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 14px;
   color: #000;
+  vertical-align: middle;
 }
 
 .transactionsTable th:first-child, 
@@ -95,9 +102,21 @@
   padding-left: 45px;
 }
 
+.transactionsTable th:last-child, 
+.transactionsTable td:last-child {
+  padding-right: 45px;
+}
+
 .transactionsTable th:nth-child(2),
 .transactionsTable td:nth-child(2) {
   width: 10%;
+}
+
+.transactionsTable th:nth-child(5), 
+.transactionsTable th:nth-child(6),
+.transactionsTable td:nth-child(5), 
+.transactionsTable td:nth-child(6) {
+  // text-align: right;
 }
 
 .transactionsTable {
@@ -105,3 +124,8 @@
   padding-bottom: 80px;
 }
 
+
+.paperIcon {
+  margin-right: 5px;
+  margin-bottom: -2px;
+}

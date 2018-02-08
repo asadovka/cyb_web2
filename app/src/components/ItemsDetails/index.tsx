@@ -58,4 +58,11 @@ export const TransactionsTable = ({ children }) => (
     </table>
   </div>
 );
+var numeral = require('numeral');
 
+export const EPrice = ({ value, icon = false }) => (
+  <span>
+    {icon && <img className={styles.paperIcon} src={require('./paper.svg')}/>}
+    {numeral(value).format('0.000000')} ETH
+  </span>
+)

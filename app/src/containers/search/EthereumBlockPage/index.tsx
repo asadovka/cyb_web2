@@ -11,7 +11,8 @@ import { Titile } from '../../../components/Title/';
 import { 
   Head, SubTitle, Button,
   Details, DetailsRow, Label, Value,
-  TLink, TransactionsTable
+  TLink, TransactionsTable,
+  EPrice
 } from '../../../components/ItemsDetails/';
 
 import Tabs, { Tab } from '../../../components/Tabs/';
@@ -36,7 +37,7 @@ class EthereumBlockPageComponent extends React.Component {
         <Details>
           <DetailsRow>
             <Label>timestamp</Label>
-            <Value>{ethereumBlock.timestamp && moment(ethereumBlock.timestamp.epochSecond).format('YYYY/MM/DD')}</Value>
+            <Value>{ethereumBlock.timestamp && (moment(ethereumBlock.timestamp * 1000).fromNow() + ' (' + moment(ethereumBlock.timestamp * 1000).format('') + ')')}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>block hash</Label>
@@ -113,11 +114,11 @@ class EthereumBlockPageComponent extends React.Component {
             {transactions.map(t => (
               <tr key={t.hash}>
                 <td><TLink hash={t.hash}/></td>
-                <td>???</td>
+                <td>{ethereumBlock.timestamp && moment(ethereumBlock.timestamp * 1000).fromNow()}</td>
                 <td><TLink hash={t.from}/></td>
                 <td><TLink hash={t.to}/></td>
-                <td>{t.value}</td>
-                <td>{t.fee}</td>
+                <td><EPrice value={t.value} icon={true}/></td>
+                <td><EPrice value={t.value} /></td>
               </tr>
             ))}
           </thead>
