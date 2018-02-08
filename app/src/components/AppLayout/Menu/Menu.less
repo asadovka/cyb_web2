@@ -1,0 +1,88 @@
+
+.menu {
+  padding-top: 60px;
+  width: 100%;
+}
+
+.menuItem a {
+  color: #cbcbcb;
+  font-size: 16px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 65px;
+  position: relative;
+  width: 40px;
+  overflow: hidden;
+}
+
+.menuItem a::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: red;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  background: url(../Menu/stratis.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;  
+}
+
+.menuItem .menuItem_omi::before {
+  background-image: url(../Menu/omi.svg);
+}
+
+.menuItem .menuItem_stratis::before {
+  background-image: url(../Menu/stratis.svg);  
+}
+
+.menuItem .menuItem_internet::before {
+  background-image: url(../Menu/internet.svg);  
+}
+
+.menuItem .menuItem_refresh::before {
+  background-image: url(../Menu/refresh.svg);  
+}
+
+.menuItem .menuItem_hitbox::before {
+  background-image: url(../Menu/hitbox.svg);  
+}
+
+.menuItem .menuItem_mail::before {
+  background-image: url(../Menu/mail.svg);  
+}
+
+.menuItem .menuItem_help::before {
+  background-image: url(../Menu/help.svg);  
+}
+
+.menuItem .menuItem_chart::before {
+  background-image: url(../Menu/chart.svg);  
+}
+
+.menuItem .menuItem_square-qube::before {
+  background-image: url(../Menu/square-qube.svg);  
+}
+
+
+
+
+.menuItem .menuItemActive {
+  color: #fff;
+}
+
+.menuItem .menuItemActive::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #438cef;
+    box-shadow: 4px 0px 11px 0 #4e99ff;
+}
+
+.menuItem a.menuItemActiveOpen {
+  width: auto;
+}

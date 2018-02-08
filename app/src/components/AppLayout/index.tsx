@@ -30,29 +30,7 @@ export const AppMenu = ({ children, open }) => (
   </div>
 );
 
-import { browserHistory } from 'react-router'
-import withRouter from "react-router/es/withRouter";
-
-let input;
-export const SearchForm = withRouter(({ location: { query : { q } } }) => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    browserHistory.push('/search?q=' + input.value);
-  }
-  return (
-    <form onSubmit={onSubmit} action='/search' className={styles.searchForm}>
-      <input 
-        name='q' 
-        className={styles.searchFormInput} 
-        placeholder='Adds' 
-        defaultValue={q}
-        ref={node => {
-          input = node 
-        }} 
-      />
-    </form>
-  );
-})
+export { SearchForm } from './SearchForm/';
 
 import { Link } from 'react-router';
 
@@ -63,26 +41,14 @@ export const Logo = () => (
 );
 
 
-export const Menu = ({ children }) => (
-  <ul className={styles.menu}>
+export { Menu, MenuItem } from './Menu/';
+export { Switcher } from './Switcher/';
+
+
+export const LayoutSwitcher = ({ children }) => (
+  <div className={styles.layoutSwitcher}>
     {children}
-  </ul>
-);
-
-export const MenuItem = ({ children, to, icon, open }) => (
-  <li className={styles.menuItem}>
-    <Link to={to} activeClassName={styles.menuItemActive} className={styles['menuItem_'+ icon] + ' ' + (open ? styles.menuItemActiveOpen: '')} >
-      {children}
-    </Link>
-  </li>
-);
-
-export const Switcher = ({ onClick }) => (
-  <div className={styles.switcher}>
-    <button onClick={onClick}>
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </div>
-)
+);
+
+

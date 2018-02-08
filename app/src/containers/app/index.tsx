@@ -40,28 +40,7 @@ const theme = createMuiTheme({
   })
 });
 
-const styles = theme => ({
-  appTitle: {
-    flex: 1
-  },
-
-  content: {
-    width: '100%',
-    minHeight: '100vh',
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 3 + 86,
-    [theme.breakpoints.up('sm')]: {
-        paddingTop: theme.spacing.unit * 3 + 94,
-    },
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-
-  },
-});
+const styles = theme => ({});
 
 import {
   Layout,
@@ -71,7 +50,8 @@ import {
   SearchForm,
   Logo,
   Menu, MenuItem,
-  Switcher
+  Switcher,
+  LayoutSwitcher
 } from '../../components/AppLayout/';
 
 
@@ -81,17 +61,7 @@ class PersistentDrawer extends React.Component {
     this.state = {
       open: true,
     }
-    this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
-    this.handleDrawerClose = this.handleDrawerClose.bind(this);
   }
-
-  handleDrawerOpen()  {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose() {
-    this.setState({ open: false });
-  };
 
 
   render() {
@@ -101,17 +71,24 @@ class PersistentDrawer extends React.Component {
     return (
         <MuiThemeProvider theme={theme}>
       <Layout>
+        <LayoutSwitcher>
+          <Switcher open={open} onClick={() => this.setState({ open: !this.state.open })}/>
+        </LayoutSwitcher>
         <AppHeader open={open}>
           <Logo />
           <SearchForm />
         </AppHeader>
         <AppMenu open={open}>
-          <Switcher onClick={() => this.setState({ open: !this.state.open })}/>
-          <Menu>
-            <MenuItem open={open} icon='stratis' to='/tokens'>Tokens</MenuItem>
-            <MenuItem open={open} icon='omi' to='/icos'>ICOs</MenuItem>
-            <MenuItem open={open} icon='internet' to='/cybernode'>cybernode</MenuItem>
-            <MenuItem open={open} icon='stratis' to='/faq'>FAQ</MenuItem>
+          <Menu open={open} >
+            <MenuItem icon='stratis' to='/tokens'>Tokens</MenuItem>
+            <MenuItem icon='mail' to='/contracts'>Contracts</MenuItem>
+            <MenuItem icon='internet' to='/labels'>Labels</MenuItem>
+            <MenuItem icon='omi' to='/icos'>ICOs</MenuItem>
+            <MenuItem icon='hitbox' to='/blockchains'>Blockchains</MenuItem>
+            <MenuItem icon='refresh' to='/exchanges'>Exchanges</MenuItem>
+            <MenuItem icon='chart' to='/analytics'>Analytics</MenuItem>
+            <MenuItem icon='square-qube' to='/cybernode'>cybernode</MenuItem>
+            <MenuItem icon='help' to='/faq'>FAQ</MenuItem>
           </Menu>
         </AppMenu>
         <AppContent open={open}>

@@ -1,24 +1,30 @@
 
 .layout {
   display: flex;
+  position: relative;
+}
+
+.layoutSwitcher {
+  position: fixed;
+  top: 45px;
+  left: 30px;
+  z-index: 2;
 }
 
 .appHeader {
   position: fixed;
-  left: 117px;
+  left: 0;
   right: 0;
   z-index: 1;
-  background-color: #004B87;
+  background-color: #438cef;
   transition: left 0.3s ease-in-out;
+  box-shadow: 4px 3px 11px 0 rgba(0, 0, 0, 0.08);
 }
 
-.appHeaderOpen {
-  left: 170px;
-}
 
 .appHeaderContainer {
   display: flex;
-  height: 130px;
+  height: 109px;
   align-items: center;
 }
 
@@ -30,6 +36,7 @@
   padding-top: 190px;
   background-color: #eff3f6;
   padding-left: 117px;
+  padding-bottom: 10px;
 }
 
 .appContentOpen {
@@ -39,13 +46,12 @@
 .appMenu {
   position: fixed;
   width: 170px;
-  background: #004B87;
   flex-shrink: 0;
   z-index: 2;
   box-shadow: 4px 3px 4px 0 rgba(0, 0, 0, 0.24);
 
   transition: width 0.3s ease-in-out;
-  background: #004B87;
+  background: #2e3842;
   flex-shrink: 0;
   z-index: 2;
   box-shadow: 4px 3px 4px 0 rgba(0, 0, 0, 0.24);
@@ -53,43 +59,16 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-  width: 117px;
+  width: 85px;
   min-height: 100vh;
+  top: 109px;
+  overflow: hidden;
 }
 
 .appMenuOpen {
   width: 170px;
 }
 
-
-
-
-
-.searchFormInput {
-  width: 100%;
-  padding: 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  background-color: #eff3f6;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.19);
-  border: none;
-}
-
-.searchForm {
-  position: relative;
-  flex: 1;
-  margin-left: 47px;
-}
-
-.searchForm::after {
-  content: '';
-  position: absolute;
-  width: 18px;
-  height: 19px;
-  right: 15px;
-  top: 15px;
-  background: url(../AppLayout/search.jpg);
-}
 
 .logo {
   height: 46px;
@@ -102,77 +81,4 @@
 }
 
 
-.menu {
-  padding-top: 60px;
-}
-
-.menuItem a {
-  color: #cbcbcb;
-  font-size: 16px;
-  display: block;
-  padding-bottom: 15px;
-  padding-left: 40px;
-  position: relative;
-  width: 40px;
-  overflow: hidden;
-}
-
-.menuItem a::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  background: red;
-  position: absolute;
-  top: 0;
-  left: 5px;
-  background: url(../AppLayout/stratis.svg);
-  background-size: 24px 24px;
-  background-repeat: no-repeat;  
-}
-
-.menuItem .menuItem_omi::before {
-  background-image: url(../AppLayout/omi.svg);
-}
-
-.menuItem .menuItem_stratis::before {
-  background-image: url(../AppLayout/stratis.svg);  
-}
-
-.menuItem .menuItem_internet::before {
-  background-image: url(../AppLayout/internet.svg);  
-}
-
-.menuItem .menuItemActive {
-  color: #fff;
-}
-
-.menuItem a.menuItemActiveOpen {
-  width: auto;
-}
-
-.switcher {
-  height: 130px;
-  display: flex;
-  align-items: center;
-}
-
-.switcher button {
-  background: none;
-  border: none;
-  width: 24px;
-  height: 17px;
-  padding: 0;
-      display: flex;
-    flex-direction: column;
-    /* align-content: stretch; */
-    justify-content: space-between;
-    align-items: stretch;
-}
-
-.switcher button span {
-  height: 2px;
-  display: block;
-  z-index: 2;
-  background: #fff;
-}
 

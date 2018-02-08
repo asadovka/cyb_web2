@@ -1,0 +1,50 @@
+
+
+.switcher {
+  display: flex;
+  align-items: center;
+}
+
+.switcher button {
+  background: none;
+  border: none;
+  width: 24px;
+  height: 17px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  cursor: pointer;
+}
+
+.switcher button span {
+  height: 2px;
+  display: block;
+  z-index: 2;
+  background: #fff;
+  transition: opacity 0.1s, transform 0.4s;
+}
+
+.switcherOpen.switcher button span:nth-child(2) {
+  opacity: 0;
+}
+
+.switcher button span:nth-child(1) {
+  transform-origin: 0 0;
+}
+
+.switcherOpen.switcher button span:nth-child(1) {
+  transform: rotate(40deg);
+}
+
+.switcher button span:nth-child(3) {
+  transform-origin: 0 100%;
+}
+
+.switcherOpen.switcher button span:nth-child(3) {
+  transform: rotate(-40deg);
+}
+
+
+

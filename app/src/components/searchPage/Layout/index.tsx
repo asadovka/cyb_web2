@@ -14,7 +14,9 @@ export const LayoutSideBar = ({ children }) => (
 );
 
 export const LayoutContent = ({ children }) => (
-  <div className='column'>
+  <div className='column' style={{ 
+    paddingBottom: 0
+  }}>
     {children}
   </div>
 );
