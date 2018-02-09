@@ -40,8 +40,8 @@ const Content = ({
 }) => (
     <Container>
       <EthereumBlock
-        tx_number={1}
-        number={1}
+        tx_number={2}
+        number={1000000}
         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
         size='534'
         timestamp={(new Date('2015-07-30 06:31')).getTime()}

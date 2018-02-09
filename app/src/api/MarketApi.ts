@@ -30,6 +30,12 @@ export class DefaultMarketApi {
     );
   }
 
+  getPriceOnDate(fsym, tsyms, ts) {
+    return this.http.GEt(
+      `${config.CYBER_MARKETS_API}/pricehistorical?fsym=${fsym}&tsyms=${tsyms}&ts=${ts}`
+    );
+  }
+
   getTokensStatistics() {
     // return this.http.GET(
     //   `${config.CYBER_MARKETS_API}/tokenstats`

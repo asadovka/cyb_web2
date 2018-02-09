@@ -9,6 +9,7 @@ const CfActions = {
 
 import {combineReducers} from "redux";
 import {combineEpics} from "redux-observable";
+import moment from 'moment'
 
 import {Injector} from "../injector";
 const {
@@ -18,6 +19,23 @@ const {
 
 import { createDateReducer, mapPayload, mapError, loadDataEpic, ItemsReducer } from '../utils/redux'
 
+const EthereumUSDPrice = (state = 0, action) => {
+  switch (action.type) {
+    case "SET_ETH_USD_PRICE_BY_DATE":
+      return action.payload;    
+    default:
+      return state;
+  }
+}
+
+const Field = (name, initState) => (state = initState, action) => {
+  switch (action.type) {
+    case `SET_${name}`:
+      return action.payload;    
+    default:
+      return state;
+  }
+}
 
 export const reducer = combineReducers({
   searchResults: ItemsReducer('SEARCH'),
@@ -32,10 +50,15 @@ export const reducer = combineReducers({
 
   ethereumBlock: createDateReducer(CfActions.GET_ETHEREUM_BLOCK),
   ethereumTx: createDateReducer(CfActions.GET_ETHEREUM_TX),
+  ethereumTxs: createDateReducer('GET_ETHEREUM_BLOCK_TRANSACTIONS', []),
+  eth_usd_price_on_date: Field('ETH_USD_PRICE_BY_DATE', 0),
+  timeAfterPreviosBlock: Field('TIME_PREV_BLOCK', 0),
 
   ethereumClassicBlock: createDateReducer('GET_ETHEREUM_CLASSIC_BLOCK'),
   ethereumClassicTx: createDateReducer('GET_ETHEREUM_CLASSIC_TX'),
 })
+
+
 
 
 
@@ -105,10 +128,46 @@ const getBitcoinCashBlockEpic = loadDataEpic(
 )
 
 
-export const getEthereumBlock = (blockNumber) => ({
-  type: CfActions.GET_ETHEREUM_BLOCK,
-  payload: {blockNumber}
-})
+export const getEthereumBlock = (blockNumber) => (dispatch) => {
+  // dispatch({
+  //   type: CfActions.GET_ETHEREUM_BLOCK,
+  //   payload: {blockNumber}
+  // })
+
+  searchApi.getEthereumBlock(blockNumber)
+    .then(data => {
+      dispatch({
+        type: CfActions.GET_ETHEREUM_BLOCK + '_FULFILLED',
+        payload: data
+      })
+
+
+      searchApi.getEthereumBlock((+blockNumber) - 1)
+        .then(prevBlock => {
+          dispatch({
+            type: 'SET_TIME_PREV_BLOCK',
+            payload: moment(data.timestamp * 1000).from(prevBlock.timestamp * 1000)
+          })
+        })
+
+      return http.GET(
+        `https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD&ts=${data.timestamp}`
+      )
+    }).then(response => {
+      dispatch({
+        type: 'SET_ETH_USD_PRICE_BY_DATE',
+        payload: response.ETH.USD
+      })
+    })
+
+  searchApi.getEthereumTxsByBlockNumber(blockNumber, 1, 3)
+    .then(data => {
+      dispatch({
+        type: 'GET_ETHEREUM_BLOCK_TRANSACTIONS_FULFILLED',
+        payload: data
+      })
+    })
+}
 
 const getEthereumBlockEpic = loadDataEpic(
   CfActions.GET_ETHEREUM_BLOCK,

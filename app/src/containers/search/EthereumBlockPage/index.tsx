@@ -12,26 +12,56 @@ import {
   Head, SubTitle, Button,
   Details, DetailsRow, Label, Value,
   TLink, TransactionsTable,
-  EPrice
+  EPrice,
+  FlexContainer
 } from '../../../components/ItemsDetails/';
 
 import Tabs, { Tab } from '../../../components/Tabs/';
+var numeral = require('numeral');
+
+const procent = (a, b) => {
+  const max = Math.max(a, b);
+  const min = Math.min(a, b);
+  return numeral(100 * min / max).format('0.00') + '%';
+}
 
 class EthereumBlockPageComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.previous = this.previous.bind(this);
+    this.next = this.next.bind(this);    
+  }
+
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 
     getData(blockNumber);
   }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.blockNumber !== nextProps.blockNumber) {
+      this.props.getData(nextProps.blockNumber);
+    }
+  }
+
+  previous() {
+    const { blockNumber } = this.props;
+    browserHistory.push(`/ethereum/block/${(+blockNumber) - 1}`)
+  }
+
+  next() {
+    const { blockNumber } = this.props;
+    browserHistory.push(`/ethereum/block/${(+blockNumber) + 1}`)
+  }
 
   render() {
-    const {ethereumBlock, transactions } = this.props;
+    const {ethereumBlock, transactions, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
+    const tx_fees_usd = numeral((+ethereumBlock.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
       <div>
         <Head>
-          <Button>previous</Button>
+          <Button onClick={this.previous}>previous</Button>
           <Titile inline={true}>Ethereum Block #{ethereumBlock.number}</Titile>
-          <Button>next</Button>
+          <Button onClick={this.next}>next</Button>
         </Head>
         <SubTitle>Block info</SubTitle>
         <Details>
@@ -49,7 +79,7 @@ class EthereumBlockPageComponent extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>block size</Label>
-            <Value>{ethereumBlock.size}</Value>
+            <Value>{ethereumBlock.size} bytes</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>nonce</Label>
@@ -65,40 +95,41 @@ class EthereumBlockPageComponent extends React.Component {
         <Details>
           <DetailsRow>
             <Label>miner</Label>
-            <Value>{ethereumBlock.miner}</Value>
+            <Value>{ethereumBlock.miner}(???) {timeAfterPreviosBlock}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>difficulty</Label>
-            <Value>{ethereumBlock.difficulty}</Value>
+            <Value>{numeral(ethereumBlock.difficulty).format('000,000,000')}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>block reward</Label>
-            <Value>{ethereumBlock.block_reward}</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>block size</Label>
-            <Value>{ethereumBlock.size}</Value>
+            <Value>{numeral((+ethereumBlock.block_reward) + (+ethereumBlock.tx_fees)).format('0.000000')} ETH ({numeral(ethereumBlock.block_reward).format('0.000000')} + {numeral(ethereumBlock.tx_fees).format('0.000000')} + ???)</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>transaction fees</Label>
-            <Value>{ethereumBlock.tx_fees}</Value>
+            <Value>{numeral(ethereumBlock.tx_fees).format('0.000000')} ETH | {tx_fees_usd} ({procent(+ethereumBlock.block_reward, +ethereumBlock.tx_fees)} of he total block reward)</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>gas used</Label>
-            <Value>{ethereumBlock.gas_used}</Value>
+            <Value>{procent(+ethereumBlock.gas_used, +ethereumBlock.gas_limit)} ({numeral(ethereumBlock.gas_used).format('000,000,000')} of {numeral(ethereumBlock.gas_limit).format('000,000,000')})</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>gas limit</Label>
-            <Value>{ethereumBlock.gas_limit}</Value>
+            <Value>{numeral(ethereumBlock.gas_limit).format('000,000,000')}</Value>
           </DetailsRow>
         </Details>
 
 
         <SubTitle>Transaction</SubTitle>
-        <Tabs value={1} onChange={() => {}}>
-          <Tab label={`transaction: ${transactions.length}`} value={1}></Tab>
-          <Tab label={'tuncle blocks: 0'} value={2}></Tab>
-        </Tabs>
+        <FlexContainer>
+          <Tabs value={1} onChange={() => {}}>
+            <Tab label={`transaction: ${ethereumBlock.tx_number}`} value={1}></Tab>
+            <Tab label={'uncle blocks: 0'} value={2}></Tab>
+          </Tabs>
+          <div>
+            <Button>download</Button>
+          </div>
+        </FlexContainer>
         <TransactionsTable>
           <thead>
             <tr>
@@ -134,27 +165,8 @@ function mapStateToProps(state, ownProps) {
   return {
     blockNumber: ownProps.routeParams.blockNumber,
     ethereumBlock: state.search.ethereumBlock.data,
-    transactions: [
-{
-block_number: 1000000,
-index: 0,
-fee: "0.010407437722000000",
-value: "100.000000000000000000",
-hash: "0xea1093d492a1dcb1bef708f771a99a96ff05dcab81ca76c31940300177fcf49f",
-from: "0x39fa8c5f2793459d6622857e7d9fbb4bd91766d3",
-to: "0xc083e9947cf02b8ffc7d3090ae9aea72df98fd47",
-creates_contract: false
-},
-{
-block_number: 1000000,
-index: 1,
-fee: "0.003000000000000000",
-value: "0.437194980000000000",
-hash: "0xe9e91f1ee4b56c0df2e9f06c2b8c27c6076195a88a7b8537ba8313d80e6f124e",
-from: "0x32be343b94f860124dc4fee278fdcbd38c102d88",
-to: "0xdf190dc7190dfba737d7777a163445b7fff16133",
-creates_contract: false
-}
-    ]
+    transactions: state.search.ethereumTxs.data,
+    eth_usd_price_on_date: state.search.eth_usd_price_on_date,
+    timeAfterPreviosBlock: state.search.timeAfterPreviosBlock
   };
 }

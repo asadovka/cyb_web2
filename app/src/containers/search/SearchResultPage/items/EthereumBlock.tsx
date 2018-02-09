@@ -17,7 +17,7 @@ const EthereumBlock = (data) => {
       <Title 
         color='#438cef'
         system='Ethereum'
-        number={data.tx_number}
+        number={data.number}
       />  
     </Row>
     <Row>

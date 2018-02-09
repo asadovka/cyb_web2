@@ -56,6 +56,24 @@ export const TransactionsTable = ({ children }) => (
     <table>
       {children}
     </table>
+    <div className={styles.transactionsTablePager}>
+      <FlexContainer>
+        <div>
+          View on page: <select><option>10</option><option>20</option><option>100</option></select>
+        </div>
+        <div>
+          <button>previous</button>
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button>5</button>
+          <span>...</span>
+          <button>12</button>
+          <button>next</button>
+        </div>
+      </FlexContainer>
+    </div>
   </div>
 );
 var numeral = require('numeral');
@@ -66,3 +84,11 @@ export const EPrice = ({ value, icon = false }) => (
     {numeral(value).format('0.000000')} ETH
   </span>
 )
+
+//TODO: better name
+export const FlexContainer = ({ children }) => (
+  <div className={styles.flexContainer}>
+    {children}
+  </div>
+);
+
