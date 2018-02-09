@@ -24,6 +24,12 @@ export class DefaultMarketApi {
     );
   }
 
+  getHistoDay(fsym, tsym, toTs=1, e=null){ 
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/histoday?fsym=${fsym}&tsym=${tsym}&toTs=${toTs}${e ? '&e=' + e : ''}`
+    );
+  }
+
   getTokens(pairs) {
     return this.http.GET(
       `${config.CYBER_MARKETS_API}/tokens?fsyms=${pairs}`

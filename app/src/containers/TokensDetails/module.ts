@@ -298,33 +298,36 @@ const updateOrders = _.throttle(dispatch => {
 const getChartData = (symbol, base, interval, e) => {
   if (interval === '1d') {
     const from = moment().add(-1, 'day').valueOf();
-        //return marketApi.getHistoMinute(symbol, base, from, e)
-    return marketApi.http.GET(
-    `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
-    )
+    return marketApi.getHistoMinute(symbol, base, from, e)
+    
+    // return marketApi.http.GET(
+    // `https://min-api.cryptocompare.com/data/histominute?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+    // )
   }
 
   if (interval === '7d') {
     const from = moment().add(-7, 'day').valueOf();
-    // return marketApi.getHistoHour(symbol, base, from, e)
-    return marketApi.http.GET(
-      `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
-    )
+   return marketApi.getHistoHour(symbol, base, from, e)
+    // return marketApi.http.GET(
+    //   `https://min-api.cryptocompare.com/data/histohour?fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+    // )
   }
 
   if (interval === '1m') {
     const from = moment().add(-1, 'M').valueOf(); 
     const limit = moment().diff(from, 'hours');
-    return marketApi.http.GET(
-      `https://min-api.cryptocompare.com/data/histohour?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
-    );
+    return marketApi.getHistoHour(symbol, base, from, e)
+    // return marketApi.http.GET(
+    //   `https://min-api.cryptocompare.com/data/histohour?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+    // );
   }
 
   const from = moment().add(-3, 'M').valueOf(); 
   const limit = moment().diff(from, 'days');
-  return marketApi.http.GET(
-    `https://min-api.cryptocompare.com/data/histoday?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
-  );
+  return marketApi.getHistoDay(symbol, base, from, e)
+  // return marketApi.http.GET(
+  //   `https://min-api.cryptocompare.com/data/histoday?limit=${limit}&fsym=${symbol}&tsym=${base}&toTs=${from}${e ? '&e=' + e : ''}`
+  // );
 }
 
 export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, getState) => {
