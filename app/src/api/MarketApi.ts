@@ -30,6 +30,18 @@ export class DefaultMarketApi {
     );
   }
 
+  tokenDetails(fsym) {
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/tokendetails?fsym=${fsym}`
+    );
+  }
+
+  pricemultifull(fsyms, tsyms) {
+    return this.http.GET(
+      `${config.CYBER_MARKETS_API}/pricemultifull?fsyms=${fsyms}&tsyms=${tsyms}`
+    );    
+  }
+
   getTokens(pairs) {
     return this.http.GET(
       `${config.CYBER_MARKETS_API}/tokens?fsyms=${pairs}`
@@ -42,34 +54,4 @@ export class DefaultMarketApi {
     );
   }
 
-  getTokensStatistics() {
-    // return this.http.GET(
-    //   `${config.CYBER_MARKETS_API}/tokenstats`
-    // );
-    const data = [
-        {
-          system: 'Agoras',
-          price_usd: 12,
-          price_bit: 34,
-          price_history: [1,2,3, 4,5, 6, 7],
-          percent: 2
-        },
-        {
-          system: 'Agrello',
-          price_usd: 12,
-          price_bit: 34,
-          price_history: [25,23,34, 42,53, 6, 7],
-          percent: -5,
-        },
-        {
-          system: 'Aidos Kuneen',
-          price_usd: 12,
-          price_bit: 34,
-          price_history: [1,2,33, 4,53, 36, 7],
-          percent: 2
-        }
-      ];
-
-    return Promise.resolve(data);
-  }
 }

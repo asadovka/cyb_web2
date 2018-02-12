@@ -47,7 +47,10 @@ const TokenDetails = ({
   price_eth,
   price_change_usd,
   price_change_btc, 
-  price_change_eth 
+  price_change_eth,
+  capitalization_usd,
+  capitalization_btc,
+  voluem_usd
 }) => {
   const { data } = tokensDetails;
   let conten;
@@ -100,17 +103,17 @@ const TokenDetails = ({
                 <Grid container spacing={16}>
                   <Grid item xs={4}>
                     <Title>Capitalization</Title>
-                    <Label>{format(price_usd * supply)} USD</Label>
-                    <Label>{format(price_btc * supply)} BTC</Label>
+                    <Label>{format(capitalization_usd)} USD</Label>
+                    <Label>{format(capitalization_btc)} BTC</Label>
                   </Grid>
                   <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
                     <Title color="green">Volume (24)</Title>
-                    <Label>{format(voluem * price_usd)} USD</Label>
+                    <Label>{format(voluem_usd)} USD</Label>
                     <Label>{format(voluem)} {data.token.symbol}</Label>
                   </Grid>
                   <Grid item xs={4} style={{  borderLeft: '1px solid #ccc' }}>
                     <Title color="blue">Supply</Title>
-                    <Label>Maximum: {format(supply)} {data.token.symbol}</Label>
+                    <Label>Maximum: {supply ? format(supply) + ' ' + data.token.symbol : ' -'}</Label>
                     <Label>Circulating: {format(supply_circ)} {data.token.symbol}</Label>
                   </Grid>
                 </Grid>
@@ -143,16 +146,23 @@ const TokenDetails = ({
 export default connect(
   (state, ownProps) => ({
     tokensDetails: state.tokensDetails.tokensDetails,
-    price_usd: 12000,
-    price_btc: 1,
-    price_eth: 10,
 
-    price_change_usd: 5.45,
-    price_change_btc: 0,
-    price_change_eth: 0,
+    price_usd: state.tokensDetails.priceData.price_usd,
+    price_change_usd: state.tokensDetails.priceData.price_change_usd,
 
-    supply: 21000000,
-    supply_circ: 16000,
-    voluem: 1621290
+    price_btc: state.tokensDetails.priceData.price_btc,
+    price_change_btc: state.tokensDetails.priceData.price_change_btc,
+
+    price_eth: state.tokensDetails.priceData.price_eth,
+    price_change_eth: state.tokensDetails.priceData.price_change_eth,
+
+    capitalization_btc: state.tokensDetails.priceData.capitalization_btc,
+    capitalization_usd: state.tokensDetails.priceData.capitalization_usd,
+
+    supply: state.tokensDetails.priceData.supply,
+    supply_circ: state.tokensDetails.priceData.supply_circ,
+
+    voluem: state.tokensDetails.priceData.voluem,
+    voluem_usd: state.tokensDetails.priceData.voluem_usd,
   })
 )(TokenDetails);

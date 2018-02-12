@@ -144,7 +144,7 @@ const orderReducer = (type, exchange) => (state = [], action) => {
 }
 
 export const closeConnection = () => () => {
-  streemApi.close();
+  // streemApi.close();
 }
 
 const sellValue = exchange => (state = 0, action) => {
@@ -250,8 +250,37 @@ const exchanges = (state = [], action) => {
   }
 }
 
+const initState = {
+  price_usd: 0,
+  price_change_usd: 0,
+
+  price_btc: 0,
+  price_change_btc: 0,
+
+  price_eth: 0,
+  price_change_eth: 0,
+
+  supply: 0,
+  supply_circ: 0,
+  voluem: 0,
+  voluem_usd: 0,
+
+  capitalization_btc: 0,
+  capitalization_usd: 0,
+}
+const priceData = (state = initState, action) => {
+  switch (action.type) {
+    case "SET_PRICE_DATA":
+      return { ...action.payload };
+    
+    default:
+      return state;
+  }
+}
+
 export const reducer = combineReducers({
   avgPriceChart,
+  priceData,
   multiPriceChart,
   exchanges,
   tokensDetails: createDateReducer('TOKEN_DETAILS'),
@@ -377,30 +406,54 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
     })
   })
 
+  Promise.all([
+    marketApi.pricemultifull(symbol, 'USD,BTC,ETH'),
+    marketApi.tokenDetails(symbol)
+  ]).then(data => {
+    dispatch({
+        type: 'SET_PRICE_DATA',
+        payload: {
+          price_usd: data[0].raw[symbol]['USD'].price,
+          price_change_usd: 0,
 
-  streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
-    streemApi.subscribeTrades(trade => {
-      if (Array.isArray(trade)) {
-        dispatch({
-          type: 'SET_TRADE',
-          payload: trade
-        })
-      } else {
-        _trades = _trades.concat([trade]);
+          price_btc: data[0].raw[symbol]['BTC'].price,
+          price_change_btc: 0,
 
-        updateTrades(dispatch)
-        
-      }
-    }, `"${symbol}_${base}"`);
+          price_eth: data[0].raw[symbol]['ETH'].price,
+          price_change_eth: 0,
 
-    dispatch({ type: 'CLEAN_ORDERS' })
+          capitalization_btc: data[1].capitalizationBtc,
+          capitalization_usd: data[1].capitalizationUsd,
 
-    streemApi.subscribeOrders(order => {
-      _orders = _orders.concat(order);
-      updateOrders(dispatch);
+          supply: data[1].supplyTotal,
+          supply_circ: data[1].supplyCirculating,
+          voluem: data[1].volume24h,
+          voluem_usd: data[1].volume24hUsd          
+        }
+      })
+  }) 
+  // streemApi.open(config.CYBER_MARKETS_STREAM_API, () => {
+  //   streemApi.subscribeTrades(trade => {
+  //     if (Array.isArray(trade)) {
+  //       dispatch({
+  //         type: 'SET_TRADE',
+  //         payload: trade
+  //       })
+  //     } else {
+  //       _trades = _trades.concat([trade]);
 
-    }, `"${symbol}_${base}"`)
-  })  
+  //       updateTrades(dispatch)        
+  //     }
+  //   }, `"${symbol}_${base}"`);
+
+  //   dispatch({ type: 'CLEAN_ORDERS' })
+
+  //   streemApi.subscribeOrders(order => {
+  //     _orders = _orders.concat(order);
+  //     updateOrders(dispatch);
+
+  //   }, `"${symbol}_${base}"`)
+  // })  
 }
 
 
