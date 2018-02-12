@@ -264,7 +264,7 @@ export const showAllTokens = () => (dispatch, getState) => {
           rows.forEach(row => {
             marketApi.getHistoHour(row.symbol, row.currency, from)
               .then(response => {
-                  const data = response.Data.map(item => ({ time: item.time * 1000, price: item.close })).reverse();
+                  const data = response.Data.map(item => ({ time: item.time * 1000, price: item.close }));
                   dispatch({
                     type: 'SET_TOKEN_PRICE_CHART',
                     payload: { data, symbol: row.symbol }

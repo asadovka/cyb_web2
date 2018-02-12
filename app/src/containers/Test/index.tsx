@@ -15,38 +15,47 @@ class Test extends React.Component {
 
 
 
-    const rows = orders.map(order => (
-      <TableRow key={order.symbol}>
-        <TableCell padding="checkbox">
-          <Checkbox 
-            checked={myTokens.indexOf(order.symbol) !== -1}
-            onChange={(event, checked) => toggleMyToken(order.symbol, checked)}
-          />
-        </TableCell>
-        <TableCell>{order.symbol}</TableCell>
-        <TableCell>{order.amount}</TableCell>
-        <TableCell>{order.price}</TableCell>
-      </TableRow>
-    ))
+    // const rows = orders.map(order => (
+    //   <TableRow key={order.symbol}>
+    //     <TableCell padding="checkbox">
+    //       <Checkbox 
+    //         checked={myTokens.indexOf(order.symbol) !== -1}
+    //         onChange={(event, checked) => toggleMyToken(order.symbol, checked)}
+    //       />
+    //     </TableCell>
+    //     <TableCell>{order.symbol}</TableCell>
+    //     <TableCell>{order.amount}</TableCell>
+    //     <TableCell>{order.price}</TableCell>
+    //   </TableRow>
+    // ))
+    // return (
+    //   <Paper>
+    //     <Table>
+    //       <TableHead>
+    //         <TableRow>
+    //           <TableCell padding="checkbox">
+    //             {/*<Checkbox />*/}
+    //             <TextField onChange={(e) => changeSearch(e.target.value)} />
+    //           </TableCell>
+    //           <TableCell>token</TableCell>
+    //           <TableCell>amount</TableCell>
+    //           <TableCell>price</TableCell>
+    //         </TableRow>
+    //       </TableHead>
+    //       <TableBody>
+    //         {rows}
+    //       </TableBody>
+    //     </Table>
+    //   </Paper>
+    // );
     return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell padding="checkbox">
-                {/*<Checkbox />*/}
-                <TextField onChange={(e) => changeSearch(e.target.value)} />
-              </TableCell>
-              <TableCell>token</TableCell>
-              <TableCell>amount</TableCell>
-              <TableCell>price</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows}
-          </TableBody>
-        </Table>
-      </Paper>
+      <div>
+        <div style={{ display: 'flex' }}>
+          <div style={{ background: 'red' }}>1</div>
+          <div style={{ background: 'red' }}>2</div>
+          <div style={{ background: 'red' }}>3</div>
+        </div>
+      </div>
     );
   }
 }
