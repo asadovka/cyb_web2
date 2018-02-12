@@ -50,6 +50,11 @@ const  formatAxis = (interval) => (tickItem) =>{
 
 //   return 60 * 2; //1day
 // }
+import { RoundCheckbox } from '../../components/RoundCheckbox/'
+
+import { 
+  FlexContainer
+} from '../../components/ItemsDetails/';
 
 const getTicks = (interval) => {
   const ticks = [];
@@ -125,9 +130,29 @@ class PriceChart extends React.Component {
     this.state = {
       avgPrice: true,
       scale: "auto",
-      interval: '1d'
+      interval: '1d',
+      visableExchanges: [],
     }
     this.changeInterval = this.changeInterval.bind(this);
+    this.toggleAvgPrice = this.toggleAvgPrice.bind(this);
+    this.toggleExchange = this.toggleExchange.bind(this);
+  }
+
+  toggleExchange(e) {
+    console.log(e)
+    const visableExchanges = this.state.visableExchanges.indexOf(e) !== -1
+      ? this.state.visableExchanges.filter(x => x !== e)
+      : this.state.visableExchanges.concat(e);
+
+    this.setState({
+      visableExchanges
+    })
+  }
+
+  toggleAvgPrice() {
+    const avgPrice = !this.state.avgPrice;
+    const visableExchanges = this.props.exchanges.map(x => x);
+    this.setState({ avgPrice, visableExchanges })
   }
 
   changeInterval(interval) {
@@ -137,7 +162,7 @@ class PriceChart extends React.Component {
     this.props.showTokensDetails(symbol, base, interval);
   }
   render () {
-    const { interval } = this.state;
+    const { interval, visableExchanges } = this.state;
 
     const {
       avgPriceChart,
@@ -201,7 +226,7 @@ class PriceChart extends React.Component {
               domain={[dataMin => (dataMin - (dataMin/100*5)), dataMax => (dataMax + (dataMax/100 * 5))]}
             />
             {exchanges.map((e, index) => (
-              <Line 
+              visableExchanges.indexOf(e) !== -1 && <Line 
                 dataKey={e} 
                 key={e} 
                 type='linear' 
@@ -234,13 +259,27 @@ class PriceChart extends React.Component {
           <button className={`button ${scale == 'log' ? 'is-success' : ''}`}  onClick={() => this.setState({scale : 'log'})}>log</button>        
         </div>*/}
         {chart}
-        <div>
+        <FlexContainer>
+          <div>
           <FormControlLabel control={<Checkbox
               checked={avgPrice}
-              onChange={() => this.setState({ avgPrice: !this.state.avgPrice })}
+              onChange={this.toggleAvgPrice}
               value='avg'
             />}  label="Price (All)"/>
-        </div>
+          </div>
+          <div>
+            {!avgPrice && exchanges.map((e, index) => (
+              <div style={{ marginLeft: 20, display: 'inline-block'}}>
+              <RoundCheckbox
+                label={e}
+                onChange={() => this.toggleExchange(e)}
+                checked={visableExchanges.indexOf(e) !== -1}
+                color={colors[index]}
+              />
+              </div>
+            ))}
+          </div>
+        </FlexContainer>
       </div>
     );
 

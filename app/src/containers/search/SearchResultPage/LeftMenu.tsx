@@ -55,6 +55,10 @@ class LeftMenu extends React.Component {
   }
 
   render() {
+    // const {
+    //   chains
+    // } = this.prop;
+
     return (
       <FilterPanel>
         <ul>
@@ -62,7 +66,7 @@ class LeftMenu extends React.Component {
             <RoundCheckbox onChange={() => this.change('')} label='All'/>
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='purple'/>
+            <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='#7780fc' />
           </li>
           <li style={{ marginBottom: 10 }}>
             <RoundCheckbox onChange={() => this.change('bitcoin_cash')} label='Bitcoin cash' color='sky'/>
