@@ -5,6 +5,10 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from '../../componen
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 
+import {
+  Switcher
+} from '../../components/AppLayout/';
+
 class Test extends React.Component {
   componentDidMount() {
     this.props.showTokens();
@@ -50,10 +54,13 @@ class Test extends React.Component {
     // );
     return (
       <div>
-        <div style={{ display: 'flex' }}>
-          <div style={{ background: 'red' }}>1</div>
-          <div style={{ background: 'red' }}>2</div>
-          <div style={{ background: 'red' }}>3</div>
+        <button style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 30 }}>
+          <span style={{ background: 'red', height: 2 }}></span>
+          <span style={{ background: 'red', height: 2 }}></span>
+          <span style={{ background: 'red', height: 2 }}></span>
+        </button>
+        <div style={{ background: 'green' }}>
+        <Switcher open={false}/>
         </div>
       </div>
     );

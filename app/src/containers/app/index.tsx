@@ -71,7 +71,7 @@ class PersistentDrawer extends React.Component {
     return (
         <MuiThemeProvider theme={theme}>
       <Layout>
-        <LayoutSwitcher>
+        <LayoutSwitcher open={open}>
           <Switcher open={open} onClick={() => this.setState({ open: !this.state.open })}/>
         </LayoutSwitcher>
         <AppHeader open={open}>

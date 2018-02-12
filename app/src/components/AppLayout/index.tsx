@@ -45,8 +45,8 @@ export { Menu, MenuItem } from './Menu/';
 export { Switcher } from './Switcher/';
 
 
-export const LayoutSwitcher = ({ children }) => (
-  <div className={styles.layoutSwitcher}>
+export const LayoutSwitcher = ({ children, open }) => (
+  <div className={styles.layoutSwitcher + ' ' + (open ? styles.layoutSwitcherOpen : '')}>
     {children}
   </div>
 );
