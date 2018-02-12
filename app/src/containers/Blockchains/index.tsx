@@ -10,17 +10,16 @@ import { showTokensDetails, getSystemLogoUrl } from '../../modules/chaingear';
 import Tabs from './Tabs';
 import LatestBlocks from './LatestBlocks';
 import Mempool from './Mempool';
+import ComingSoon from '../../components/ComingSoon/';
 
 class Blockchains extends React.Component<any, any> {
   componentDidMount() {
   }
   render() {
     return (
-      <App>
-        <Tabs />
-        <LatestBlocks />
-        <Mempool />
-      </App>
+      <div>
+        <ComingSoon/>
+      </div>
     );    
   }
 }

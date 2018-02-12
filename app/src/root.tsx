@@ -22,6 +22,14 @@ import EthereumClassicBlockPage from './containers/search/EthereumClassicBlockPa
 
 import { DetailsPage } from "./containers/DetailsPage/"
 
+import Analytics from './containers/Analytics/';
+import Blockchains from './containers/Blockchains/';
+import Exchanges from './containers/Exchanges/';
+import Labels from './containers/Labels/';
+import Contracts from './containers/Contracts/';
+
+
+
 import Tokens from './containers/Tokens/';
 import TokensDetails from './containers/TokensDetails/';
 
@@ -78,6 +86,12 @@ export function Root() {
         </Route>
 
         <Route path={"/cybernode"} component={Cybernode}/>
+        <Route path={"/analytics"} component={Analytics}/>
+        <Route path={"/blockchains"} component={Blockchains}/>
+        <Route path={"/exchanges"} component={Exchanges}/>
+        <Route path={"/labels"} component={Labels}/>
+        <Route path={"/contracts"} component={Contracts}/>
+
 
         <Route path={"/tokens"} component={Tokens}/>
         <Route path={"/tokens/:symbol-:base"} component={TokensDetails}/>
