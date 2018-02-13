@@ -69,13 +69,13 @@ class LeftMenu extends React.Component {
             <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='#7780fc' />
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('bitcoin_cash')} label='Bitcoin cash' color='sky'/>
+            <RoundCheckbox onChange={() => this.change('bitcoin_cash')} label='Bitcoin cash' color='#74c1ff'/>
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('ethereum')} label='Ethereum' color='blue'/>
+            <RoundCheckbox onChange={() => this.change('ethereum')} label='Ethereum' color='#438cef'/>
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='green'/>
+            <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='#38d2b6'/>
           </li>
         </ul>
       </FilterPanel>
