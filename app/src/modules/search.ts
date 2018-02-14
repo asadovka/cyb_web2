@@ -134,31 +134,51 @@ export const getEthereumBlock = (blockNumber) => (dispatch) => {
   //   payload: {blockNumber}
   // })
 
-  searchApi.getEthereumBlock(blockNumber)
-    .then(data => {
+  // searchApi.getEthereumBlock(blockNumber)
+  //   .then(data => {
+  //     dispatch({
+  //       type: CfActions.GET_ETHEREUM_BLOCK + '_FULFILLED',
+  //       payload: data
+  //     })
+
+
+  //     searchApi.getEthereumBlock((+blockNumber) - 1)
+  //       .then(prevBlock => {
+  //         dispatch({
+  //           type: 'SET_TIME_PREV_BLOCK',
+  //           payload: moment(data.timestamp * 1000).from(prevBlock.timestamp * 1000)
+  //         })
+  //       })
+
+  //     return http.GET(
+  //       `https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD&ts=${data.timestamp}`
+  //     )
+  //   }).then(response => {
+  //     dispatch({
+  //       type: 'SET_ETH_USD_PRICE_BY_DATE',
+  //       payload: response.ETH.USD
+  //     })
+  //   })
+
       dispatch({
         type: CfActions.GET_ETHEREUM_BLOCK + '_FULFILLED',
-        payload: data
+        payload: {
+          number: 1000000,
+          timestamp: (+new Date()) / 1000,
+          hash: '0x4ac3f539f2cd2aae120f210bdc6cf48f144a987fa144d5c0a2ca9ce0fb3f9e30',
+          sha3_uncles: '0x48bc95d97ca9dbd8ac76952c1da8a3a0d5f5c97333aaeb824aeaf878a168d85b',
+          size: 19468,
+          extra_data: 'ethermine-asia5 (Hex:0x65746865726d696e652d6173696135)',
+          miner: '0xea674fdde714fd979de3edf0f56aa9716b898ec8',
+          difficulty: 2688424261153540,
+          block_reward: '5',
+          tx_fees: '0.01',
+          gas_used: 80000,
+          gas_limit: 83400,
+          tx_number: 2
+        }
       })
 
-
-      searchApi.getEthereumBlock((+blockNumber) - 1)
-        .then(prevBlock => {
-          dispatch({
-            type: 'SET_TIME_PREV_BLOCK',
-            payload: moment(data.timestamp * 1000).from(prevBlock.timestamp * 1000)
-          })
-        })
-
-      return http.GET(
-        `https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD&ts=${data.timestamp}`
-      )
-    }).then(response => {
-      dispatch({
-        type: 'SET_ETH_USD_PRICE_BY_DATE',
-        payload: response.ETH.USD
-      })
-    })
 
   searchApi.getEthereumTxsByBlockNumber(blockNumber, 1, 3)
     .then(data => {

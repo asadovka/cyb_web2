@@ -413,14 +413,15 @@ export const showTokensDetails = (symbol, base, interval = '1d') => (dispatch, g
     dispatch({
         type: 'SET_PRICE_DATA',
         payload: {
-          price_usd: data[0].raw[symbol]['USD'].price,
-          price_change_usd: 0,
+          price_usd: _.get(data, `0.RAW.${symbol}.USD.PRICE`),
+          price_change_usd: _.get(data, `0.RAW.${symbol}.USD.CHANGEPCT24HOUR`),
 
-          price_btc: data[0].raw[symbol]['BTC'].price,
-          price_change_btc: 0,
 
-          price_eth: data[0].raw[symbol]['ETH'].price,
-          price_change_eth: 0,
+          price_btc: _.get(data, `0.RAW.${symbol}.BTC.PRICE`),
+          price_change_btc: _.get(data, `0.RAW.${symbol}.BTC.CHANGEPCT24HOUR`),
+
+          price_eth: _.get(data, `0.RAW.${symbol}.ETH.PRICE`),
+          price_change_eth: _.get(data, `0.RAW.${symbol}.ETH.CHANGEPCT24HOUR`),
 
           capitalization_btc: data[1].capitalizationBtc,
           capitalization_usd: data[1].capitalizationUsd,

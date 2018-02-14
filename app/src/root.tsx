@@ -20,7 +20,6 @@ import EthereumAddressPage from "./containers/search/EthereumAddressPage/";
 import EthereumClassicTxPage from "./containers/search/EthereumClassicTxPage/";
 import EthereumClassicBlockPage from './containers/search/EthereumClassicBlockPage/';
 
-import { DetailsPage } from "./containers/DetailsPage/"
 
 import Analytics from './containers/Analytics/';
 import Blockchains from './containers/Blockchains/';
@@ -78,12 +77,8 @@ export function Root() {
 
         <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
         <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
+        <Route path={"/faq"} component={FAQ}/>
           
-        <Route component={DetailsPage}>
-          <Route path={"/faq"} component={FAQ}/>
-
-
-        </Route>
 
         <Route path={"/cybernode"} component={Cybernode}/>
         <Route path={"/analytics"} component={Analytics}/>

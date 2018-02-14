@@ -1,7 +1,11 @@
 import * as React from "react";
+import Paper from 'material-ui/Paper';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 
 const FAQ = () => (
+  <Card>
+    <CardContent>
   <div className="content">
 
 <h1>Frequently Asked Questions</h1>
@@ -81,6 +85,8 @@ const FAQ = () => (
 
 
   </div>
+    </CardContent>
+  </Card>
 );
 
 export default FAQ;
