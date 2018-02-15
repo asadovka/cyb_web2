@@ -19,6 +19,19 @@ import {
 //               {name: 'Page E', price: 1520, volume: 1108, amt: 1100},
 //               {name: 'Page F', price: 1400, volume: 680, amt: 1700}];
 
+const colors = [
+  '#4c8cfe',
+  '#6862db',
+  '#61c8b0',
+  '#e65f64',
+  '#ff9f00',
+]
+
+
+const exchanges = [
+  'gdax',
+  'hitbtc'
+];
 class Test extends React.Component {
   constructor(props) {
     super(props);
@@ -30,9 +43,31 @@ class Test extends React.Component {
 
   componentDidMount() {
     //this.props.showTokens();
-    fetch('https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&e=gdax')
+    Promise.all([
+      fetch('https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&e=gdax')
+      .then(response => response.json()),
+      fetch('https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&e=hitbtc')
+      .then(response => response.json()),
+      fetch('https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&e=bitfinex')
       .then(response => response.json())
-      .then(data => this.setState({ data: data.Data }))
+
+    ]).then(data => {
+      const r = [];
+      for(var i = 0; i < data[0].Data.length; i++ ) {
+        r.push({
+          gdax_price: data[0].Data[i].close,
+          hitbtc_price: data[1].Data[i].close,
+          bitfinex_price: data[2].Data[i].close,
+
+          gdax_volume: data[0].Data[i].volumeto,
+          hitbtc_volume: data[1].Data[i].volumeto,
+          bitfinex_volume: data[2].Data[i].volumeto,
+
+
+        })
+      }
+      this.setState({ data: r });
+    })
   }
   
   render() {    
@@ -42,16 +77,18 @@ class Test extends React.Component {
     return (
       <div>
         <ComposedChart width={600} height={400} data={data} >
-          <XAxis />
-          <YAxis />
-          <Tooltip/>
-          <Line type='monotone'  dataKey='close' stroke='#ff7300' dot={false}/>
+  
+          <YAxis yAxisId="s"  height={100} domain={[dataMin => 0, dataMax => (dataMax * 3)]}  orientation='left' hide={true} />
+          <YAxis yAxisId="s2" domain={[dataMin => (dataMin - (dataMin/100*20)), dataMax => (dataMax + (dataMax/100 * 5))]} orientation='right' />
+            <Tooltip/>
+          <Line yAxisId="s2" type='monotone'  dataKey='gdax_price' stroke='#4c8cfe' dot={false}/>
+          <Line yAxisId="s2" type='monotone'  dataKey='hitbtc_price' stroke='#6862db' dot={false}/>
+          <Line yAxisId="s2" type='monotone'  dataKey='bitfinex_price' stroke='#61c8b0' dot={false}/>
+
+          <Bar yAxisId="s" dataKey='gdax_volume' stackId="a" maxBarSize={30} fill='#4c8cfe'/>
+          <Bar yAxisId="s" dataKey='hitbtc_volume' stackId="a" maxBarSize={30} fill='#6862db'/>
+          <Bar yAxisId="s" dataKey='bitfinex_volume' stackId="a" maxBarSize={30} fill='#61c8b0'/>
        </ComposedChart>
-        <ComposedChart width={600} height={100} data={data} >
-          <YAxis />
-          <Tooltip active={true} />
-          <Bar dataKey='volumeto' maxBarSize={5} fill='#413ea0'/>
-       </ComposedChart>       
       </div>
     );
   }
