@@ -1,7 +1,17 @@
 version: 2
 
+aliases:
+ # build and deploy for all tags AND commits in master
+ - &staging_filter
+     filters:
+       tags:
+         only: /.*/
+       branches:
+         only: master
+
 jobs:
-  deploy_image:
+
+  build_and_push_staging_image:
      working_directory: ~/build
      docker:
        - image: docker:17.05.0-ce-git
@@ -26,15 +36,25 @@ jobs:
                 docker push cybernode/cui-browser:$CIRCLE_TAG
              fi
 
+  deploy_stagin_image:
+    working_directory: ~/build
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - run:
+          name: Run new version of browser-ui on staging
+          command: |
+            ssh mars@staging.cyber.fund -p 33322 'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.browser.sh'
+
+
+
 workflows:
   version: 2
-
-  ui_build_deploy:
+  staging_cd:
     jobs:
-      - deploy_image:
-          filters:
-            # build and deploy for all tags AND commits in master
-            tags:
-              only: /.*/
-            branches:
-              only: master
+      - build_and_push_staging_image:
+          <<: *staging_filter
+      - deploy_stagin_image:
+          <<: *staging_filter
+          requires:
+            - build_and_push_staging_image
