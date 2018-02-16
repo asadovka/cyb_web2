@@ -43,10 +43,9 @@ jobs:
     steps:
       - run:
           name: Run new version of browser-ui on staging
-          command:
-            - >-
-              ssh mars@staging.cyber.fund -p 33322 -o "StrictHostKeyChecking no"
-              'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.browser.sh'
+          command: >-
+            ssh mars@staging.cyber.fund -p 33322 -o "StrictHostKeyChecking no"
+            'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.browser.sh'
 
 
 
