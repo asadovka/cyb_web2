@@ -1,2 +1,2 @@
-Repository for UI/UX development of cyber-browser
-With installed sketch application you can check current state of work.
+Folder for cyber-browser concept development
+With installed draw.io application or using the online version you can check current state of work.
