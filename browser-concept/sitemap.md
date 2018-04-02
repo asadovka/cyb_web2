@@ -2,15 +2,30 @@ Tha main purpose of this document is to describe the structure of browser pages.
 
 # 1. Main Page
 
-The main purpose of this page is to accent the user's attention to search function. 
+**Purpose:** the main purpose of this page is to accent the user's attention to search function. 
+
+**Design  features:** design should be simple and attractive.
+
 There is a status text below search panel which describes technical information about cyber.Search products:
 
-_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_ 
+**_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_** 
 
-where transactions are number of all indexed transactions from all blockchains connected to cybernode 
+where transactions are the number of all indexed transactions from all blockchains connected to Cybernode, blockchain systems - all blockchains processed by Cybernode, tokens - all unique tokens from all blockchains that are listed in Chaingear, database size - size of Cybernode database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
-1. Total market cap [billions of USD] - is a summ of all token capitalizations
+1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
+2. Chaingear registers - number of created registers in Chaingear.
+3. Portfolio volume - volume of user's portfolio (for authorized ones) valuated in BTC or hint to create portfolio (for non authorized users).
+
+At the bottom of the page 5 project links are placed:
+1. GitHub - GitHub repository of cyber.Search
+2. Roadmap - roadmap of all cyber.Search projects
+3. Cybernode - Cybeernode landing page
+4. Dashboard - a link user's custom dashboard
+5. Knowledge - a link to knowledge database of cyber.Search projects
+
+**Proposals:**
+- Place a hint to use Metamask for getting the full functionality.
 
 # 2. Search Results Page
 
