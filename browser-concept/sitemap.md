@@ -104,6 +104,7 @@ Main functions of the page:
 5. Upload content to register via IPFS
 6. JSON import of custom fields
 6. Real time calculation of registry creation costs
+7. Data import from smart contract
 
 
 # 7. Cybernode Page
