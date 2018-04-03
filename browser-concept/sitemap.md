@@ -90,6 +90,22 @@ Sorting function is active after selecting the one category of search results an
 
 # 6. Chaingear Page
 
+**Purpose:** provide easy integration with Chaingear. 
+**Design & UI  features:** simple UI, autoupdate register data, preview of changes.
+
+All functionality is available after Metamask authorization.
+
+Main functions of the page:
+
+1. Watch and label created registers.
+2. Create register (multiregister)
+3. Delete register
+4. Transfer the rights of usage to another account
+5. Upload content to register via IPFS
+6. JSON import of custom fields
+6. Real time calculation of registry creation costs
+
+
 # 7. Cybernode Page
 
 # 8. Labels Page
