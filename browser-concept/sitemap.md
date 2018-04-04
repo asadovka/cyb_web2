@@ -10,7 +10,7 @@ There is a status text below search panel which describes technical information 
 
 **_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_** 
 
-where transactions are the number of all indexed transactions from all blockchains connected to Cybernode, blockchain systems - all blockchains processed by Cybernode, tokens - all unique tokens from all blockchains that are listed in Chaingear, database size - size of Cybernode database.
+where transactions are the number of all indexed transactions from all blockchains connected to Cybernode, blockchain systems - all blockchains processed by Cybernode, tokens - all unique tokens from all blockchains indexed, database size - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
 1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
@@ -25,7 +25,9 @@ At the bottom of the page 5 project links are placed:
 5. Knowledge - a link to knowledge database of cyber.Search projects
 
 **Proposals:**
-- Place a hint to use Metamask for getting the full functionality.
+- Place a hint to use Metamask for getting the full functionality (active/non active).
+- Plug for further functionality
+
 
 # 2. Search Results Page
 
