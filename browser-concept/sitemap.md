@@ -1,6 +1,40 @@
-Tha main purpose of this document is to describe the structure of browser pages.
+Tha main purpose of this document is to describe requirements and the structure of browser pages. With installed draw.io application or using the online version you can open mockups and check the current state of work.
 
-# 1. Main Page
+# Requirements
+
+## 1. Business Requirements
+
+- lead users to make payable actions (create registry, develop custom browser app, pay for developing functionality)
+
+## 2. Business rules
+
+- focusing on developers and Metamask users
+- developing in terms of web 3.0 principles
+- integration with Metamask 
+- full tokenization of economy processes (valuation, transfering data)
+- collect feedback and create analytics with use of instruments that aviod collect personal data
+- IPFS integration
+
+## 3. Common functional requirements
+
+- avoid pagination in all tables (use scrolling instead)
+- prefered type of data structure - tables
+
+## 3. Common non-functional requirements 
+
+- simple and attractive design
+- intuitive UI
+
+## 3. System requirements
+
+- less than 1 second for loading page
+- less than 3 seconds for loading all data
+- Web version of browser (React)
+- Desktop version (Electron + React) 
+
+# Browser Pages
+
+## 1. Main Page
 
 **Purpose:** accent the user's attention to search function. 
 
@@ -13,9 +47,17 @@ There is a status text below search panel which describes technical information 
 where transactions are the number of all indexed transactions from all blockchains connected to Cybernode, blockchain systems - all blockchains processed by Cybernode, tokens - all unique tokens from all blockchains indexed, database size - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
-1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
-2. Chaingear registers - number of created registers in Chaingear.
-3. Portfolio volume - volume of user's portfolio (for authorized ones) valuated in BTC or hint to create portfolio (for non authorized users).
+1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+
+    _**Call to action:** transition to cybernomics page.
+  
+2. Chaingear registers [number] - number of user's registers (for authorized ones with created registers) or number of created registers in Chaingear.
+
+    _**Call to action:** transition to Chaingear page.
+  
+3. Portfolio volume [valuation in BTC] - volume of user's portfolio (for authorized ones) valuated in BTC or hint to create portfolio (for non authorized users).
+
+    _**Call to action:** transition to Portfolio page.
 
 At the bottom of the page 5 project links are placed:
 1. GitHub - GitHub repository of cyber.Search
@@ -25,11 +67,12 @@ At the bottom of the page 5 project links are placed:
 5. Knowledge - a link to knowledge database of cyber.Search projects
 
 **Proposals:**
-- Place a hint to use Metamask for getting the full functionality (active/non active).
-- Plug for further functionality
+- Place a hint to use Metamask for getting the full functionality (when page requires metamask - make the icon active/ otherwise - non active).
+- Plugs for developing functionality
+- Transition
 
 
-# 2. Search Results Page
+## 2. Search Results Page
 
 **Purpose:** provide easy and quick functionality for working with blockchain search.
 
@@ -72,25 +115,25 @@ Sorting function is active after selecting the one category of search results an
 1. Time data
 2. Value (valuation/size)
 
-## 2.1 Contract Page
+### 2.1 Contract Page
 
-## 2.2 Transaction Page
+### 2.2 Transaction Page
 
-## 2.3 Block Page
+### 2.3 Block Page
 
-# 3. Blockchains Page
+## 3. Blockchains Page
 
-## 3.1 Blockchain Page
+### 3.1 Blockchain Page
 
-# 4. Tokens Page
+## 4. Tokens Page
 
-## 4.1 Token Page
+### 4.1 Token Page
 
-# 5. Exchanges Page
+## 5. Exchanges Page
 
-## 5.1 Exchange page
+### 5.1 Exchange page
 
-# 6. Chaingear Page
+## 6. Chaingear Page
 
 **Purpose:** provide easy integration with Chaingear. 
 **Design & UI  features:** simple UI, autoupdate register data, preview of changes.
@@ -109,10 +152,10 @@ Main functions of the page:
 7. Data import from smart contract
 
 
-# 7. Cybernode Page
+## 7. Cybernode Page
 
-# 8. Labels Page
+## 8. Labels Page
 
-# 9. Portfolio Page
+## 9. Portfolio Page
 
-# 10. FAQ Page
+## 10. FAQ Page
