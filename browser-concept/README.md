@@ -54,15 +54,15 @@ where transactions are the number of all indexed transactions from all blockchai
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
 1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
-    **_Call to action:** transition to cybernomics page.
+    _**Call to action:** transition to cybernomics page_.
   
 2. Chaingear registers [number] - number of user's registers (for authorized ones with created registers) or number of created registers in Chaingear.
 
-    **_Call to action:** transition to Chaingear page.
+    _**Call to action:** transition to Chaingear page_.
   
 3. Portfolio volume [valuation in BTC] - volume of user's portfolio (for authorized ones) valuated in BTC or hint to create portfolio (for non authorized users).
 
-    **_Call to action:** transition to Portfolio page.
+    _**Call to action:** transition to Portfolio page_.
 
 At the bottom of the page 5 project links are placed:
 1. GitHub - GitHub repository of cyber.Search
