@@ -1,29 +1,34 @@
 Tha main purpose of this document is to describe requirements and the structure of browser pages. With installed draw.io application or using the online version you can open mockups and check the current state of work.
 
+# Project description
+
+Cyber browser - an entrance point to start working with blockchains.
+
 # Requirements
 
 ## 1. Business Requirements
 
-- lead users to make payable actions (create registry, develop custom browser app, pay for developing functionality)
+- Lead users to make payable actions (create registry, develop custom browser app, pay for developing functionality)
 
 ## 2. Business rules
 
-- focusing on developers and Metamask users
-- developing in terms of web 3.0 principles
-- integration with Metamask 
-- full tokenization of economy processes (valuation, transfering data)
-- collect feedback and create analytics with use of instruments that aviod collect personal data
-- IPFS integration
+- Focusing on developers and Metamask users
+- Developing in terms of web 3.0 principles
+- Full tokenization of economy processes (valuation, transfering data)
+- Collect feedback and create analytics with use of instruments that aviod collect personal data
+
 
 ## 3. Common functional requirements
 
-- avoid pagination in all tables (use scrolling instead)
-- prefered type of data structure - tables
+- Integration with Metamask 
+- IPFS integration
+- Avoid pagination in all tables (use scrolling instead)
+- Prefered type of data structure - tables
 
 ## 3. Common non-functional requirements 
 
-- simple and attractive design
-- intuitive UI
+- Simple and attractive design
+- Intuitive UI
 
 ## 3. System requirements
 
@@ -67,28 +72,35 @@ At the bottom of the page 5 project links are placed:
 5. Knowledge - a link to knowledge database of cyber.Search projects
 
 **Proposals:**
+
 - Place a hint to use Metamask for getting the full functionality (when page requires metamask - make the icon active/ otherwise - non active).
 - Plugs for developing functionality
-- Transition
+- Place transition to roadmap where users can donate for developing options
 
 
 ## 2. Search Results Page
 
 **Purpose:** provide easy and quick functionality for working with blockchain search.
 
-**Design & UI  features:** strictly logical UI, adaptive preferenses of filtration. 
+**Design & UI  features:** strictly logical UI, adaptive preferenses of filtration and sorting. 
 
 #### Objects of search. 
 
 There are 2 types of search provided by browser:
-1. Global search (searching in whole ecosystem of Cybernode)
-2. Local search (searching the data in certain pages)
+1. Global search (searching in whole ecosystem of indexed objects)
+2. Context search (searching the data in certain pages)
 
 There are 3 types of objects that can be foung via global search:
 
-1. Transaction
-2. Contract
-3. Block
+1. Blockchains
+2. Transactions
+3. Contracts
+4. Blocks
+5. Tokens
+6. ICO
+7. Chaingear register
+8. Label
+9. Exchange
 
 The search pannel in general should include next functions:
 1. Global and local search (GitHub style)
@@ -98,9 +110,9 @@ The search pannel in general should include next functions:
 
 Left menu includes next functions:
 
-1. filtering (by transactions, contracts and blocks)
-2. sorting function (is applied only for one category - transaction or contract or block)
-3. total results found
+1. filtering (objects)
+2. sorting function (is applied only for one selected object)
+3. total results found stats
 
 Search results in general are shown as a list of objects. Each object has similar structure:
 1. Name of blockchain (Bitcoin, Ethereum)
@@ -143,7 +155,8 @@ All functionality is available after Metamask authorization.
 Main functions of the page:
 
 1. Watch and label created registers.
-2. Create register (multiregister)
+2. Create register
+3. Edit register (entry)
 3. Delete register
 4. Transfer the rights of usage to another account
 5. Upload content to register via IPFS
