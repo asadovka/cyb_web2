@@ -4,8 +4,7 @@ Frontend (stateless web UI) for cyber-markets and cyber-search (blockchain brows
 
 ### Development
 
-    npm install yarm -g if not installed
-
+    npm install yarn -g  # if not installed
     npm start
 
 This starts local server that compiles all UI assets into memory and
