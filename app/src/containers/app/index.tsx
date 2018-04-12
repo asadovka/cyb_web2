@@ -84,7 +84,7 @@ class PersistentDrawer extends React.Component {
             <MenuItem icon='mail' to='/contracts'>Contracts</MenuItem>
             <MenuItem icon='internet' to='/labels'>Labels</MenuItem>
             <MenuItem icon='omi' to='/icos'>ICOs</MenuItem>
-            <MenuItem icon='hitbox' to='/blockchains'>Blockchains</MenuItem>
+            <MenuItem icon='hitbox' to='/registers'>Blockchains</MenuItem>
             <MenuItem icon='refresh' to='/exchanges'>Exchanges</MenuItem>
             <MenuItem icon='chart' to='/analytics'>Analytics</MenuItem>
             <MenuItem icon='square-qube' to='/cybernode'>cybernode</MenuItem>

@@ -193,6 +193,12 @@ class PriceChart extends React.Component {
               interval="preserveStartEnd"
             />
             <YAxis 
+              yAxisId="s"
+              domain={[dataMin => 0, dataMax => (dataMax * 3)]}
+              orientation='left' 
+              hide={true}
+            />
+            <YAxis 
               type="number"  
               width={100} 
               orientation="right" 
@@ -200,6 +206,13 @@ class PriceChart extends React.Component {
               domain={[dataMin => (dataMin - (dataMin/100*5)), dataMax => (dataMax + (dataMax/100 * 5))]}
             />
             <Line dataKey='price' type='monotone' dot={false}  stroke="#82ca9d" isAnimationActive={false} />
+            <Bar 
+              yAxisId="s" 
+              dataKey={`volumeFrom`} 
+              stackId="a" 
+              maxBarSize={30} 
+              fill='#61c8b0'
+            />
             <Tooltip labelFormatter={labelFormatter} />
           </ComposedChart>
           </div>
@@ -219,6 +232,13 @@ class PriceChart extends React.Component {
               interval="preserveStartEnd"
             />
             <YAxis 
+              yAxisId="s"
+              domain={[dataMin => 0, dataMax => (dataMax * 3)]}
+              orientation='left' 
+              hide={true}
+            />
+  
+            <YAxis 
               type="number"  
               width={100} 
               orientation="right" 
@@ -235,7 +255,20 @@ class PriceChart extends React.Component {
                 isAnimationActive={false}
               />
             ))}
+
+            {exchanges.map((e, index) => (
+              visableExchanges.indexOf(e) !== -1 && (
+                <Bar 
+                  yAxisId="s" 
+                  dataKey={`${e}_voluem`} 
+                  stackId="a" 
+                  maxBarSize={30} 
+                  fill={colors[index]}
+                />
+            )))}
             
+            
+
             <Tooltip labelFormatter={labelFormatter} />
           </ComposedChart>
           </div>

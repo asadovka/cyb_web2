@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router'
 
 import moment from 'moment'
 
-import { Titile } from '../../../components/Title/';
+import { Title } from '../../../components/Title/';
 import { 
   Head, SubTitle, Button,
   Details, DetailsRow, Label, Value,
@@ -60,7 +60,7 @@ class EthereumBlockPageComponent extends React.Component {
       <div>
         <Head>
           <Button onClick={this.previous}>previous</Button>
-          <Titile inline={true}>Ethereum Block #{ethereumBlock.number}</Titile>
+          <Title inline={true}>Ethereum Block #{ethereumBlock.number}</Title>
           <Button onClick={this.next}>next</Button>
         </Head>
         <SubTitle>Block info</SubTitle>

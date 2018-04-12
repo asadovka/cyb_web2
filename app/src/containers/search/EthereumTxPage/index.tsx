@@ -8,7 +8,7 @@ import { browserHistory } from 'react-router'
 import moment from 'moment'
 
 
-import { Titile } from '../../../components/Title/';
+import { Title } from '../../../components/Title/';
 import { 
   Head, SubTitle, Button,
   Details, DetailsRow, Label, Value,
@@ -30,7 +30,7 @@ class EthereumTxPage extends React.Component {
     return (
       <div>
         <div style={{ textAlign: 'center' }}>
-          <Titile inline={true}>Ethereum Transaction</Titile>
+          <Title inline={true}>Ethereum Transaction</Title>
         </div>
         <SubTitle>Overview</SubTitle>
         <Details>

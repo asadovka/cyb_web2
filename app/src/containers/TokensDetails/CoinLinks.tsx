@@ -20,7 +20,7 @@ import {
   DevelopersDimension, DevelopersDimensionItem
 } from '../../components/TokenDetails/';
 
-import { Titile } from '../../components/Title/';
+import { Title } from '../../components/Title/';
 
 import {Injector} from "../../injector";
 const {
@@ -40,7 +40,7 @@ let CoinLinks = ({ tokensDetails }) => {
 
   return (
     <LinkContainer>
-      <Titile>News</Titile>
+      <Title>News</Title>
       <NewsList>
         {getLinksByTag(data, 'News').map(link => (
           <NewsListLink 
@@ -51,7 +51,7 @@ let CoinLinks = ({ tokensDetails }) => {
         ))}
       </NewsList>
 
-      <Titile>Apps</Titile>
+      <Title>Apps</Title>
       <AppsList>
         {getLinksByTag(data, 'Apps').map(link => (
           <AppsListItem
@@ -63,7 +63,7 @@ let CoinLinks = ({ tokensDetails }) => {
           </AppsListItem>
         ))}
       </AppsList>
-      <Titile>Scientific Roots</Titile>
+      <Title>Scientific Roots</Title>
       <ScientificRoots>
         {getLinksByTag(data, 'Science').map(link => (
           <ScientificRootsItem
@@ -75,7 +75,7 @@ let CoinLinks = ({ tokensDetails }) => {
         ))}
       </ScientificRoots>
 
-      <Titile>Developers Dimension</Titile>
+      <Title>Developers Dimension</Title>
       <DevelopersDimension>
          {getLinksByTag(data, 'Code').map(link => (
           <DevelopersDimensionItem

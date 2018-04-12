@@ -4,6 +4,11 @@ import {Router, Route, browserHistory} from "react-router";
 import "./bulma-root.sass"
 
 
+import Registers from './containers/chaingear/allregister/';
+import NewRegisters from './containers/chaingear/newregister/';
+import RegistersDetails from './containers/chaingear/registrerdetails/';
+
+
 import IndexPage from "./containers/IndexPage/";
 import {SearchResultPage} from "./containers/search/SearchResultPage/";
 
@@ -53,7 +58,7 @@ function logPageView() {
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
-      
+
 
 export function Root() {
   return (
@@ -86,6 +91,10 @@ export function Root() {
         <Route path={"/exchanges"} component={Exchanges}/>
         <Route path={"/labels"} component={Labels}/>
         <Route path={"/contracts"} component={Contracts}/>
+
+        <Route path={"/registers/new"} component={NewRegisters}/>
+        <Route path={"/registers/:address"} component={RegistersDetails}/>
+        <Route path={"/registers"} component={Registers}/>
 
 
         <Route path={"/tokens"} component={Tokens}/>
