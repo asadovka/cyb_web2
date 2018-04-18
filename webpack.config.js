@@ -4,6 +4,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+
+//https://github.com/JeffreyWay/laravel-mix/issues/790
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
+
 module.exports = function (options = {}) {
   // Settings
   // --env.NODE_ENV root --env.SOURCE_MAP source-map ...
@@ -153,6 +158,12 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: 2
+      })
+    );
+
+    plugins.push(
+      new UglifyJsPlugin({
+        test: /\.js($|\?)/i
       })
     );
   }
