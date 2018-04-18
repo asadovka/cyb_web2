@@ -36,3 +36,5 @@ cyber.markets.properties
 # Gradle
 .gradle/
 build
+
+package-lock.json

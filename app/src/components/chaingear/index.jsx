@@ -35,10 +35,14 @@ export const Panel = ({ children, title }) => (
   </div>
 );
 
+
+  // <div className={styles.code}>
+  //   {children}
+  // </div>
+
 export const Code = ({ children }) => (
-  <div className={styles.code}>
-    {children}
-  </div>
+  <textarea className={styles.code} rows="25" cols="60" value={children} onChange={()=>{}}>
+  </textarea>
 );
 
 
@@ -59,7 +63,7 @@ export const TotalCost = ({ value }) => (
 
 
 export const CreateButton = ({ children, ...ptops }) => (
-  <button className={styles.createButton} {...ptops}>
+  <button  className={styles.createButton} {...ptops}>
     {children}
   </button>
 );

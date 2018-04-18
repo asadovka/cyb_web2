@@ -6,12 +6,42 @@ import { Paper } from '../../../components/Paper/';
 import { Container, Text, Link } from '../../../components/CallToAction/';
 import { Table } from '../../../components/cTable/';
 
+import { Link as RouterLink } from 'react-router';
+
+import { chaingear } from 'cyber-search-js';
 
 export class Allregister extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      registries: []
+    }
+  }
+
+  componentDidMount() {
+    chaingear.getRegistry().then(registries => {
+      this.setState({ registries })
+    })
+  }
   render() {
+    const { registries } = this.state;
+    const rows = registries.map((item, index) => {
+      return (
+        <tr key={index}>
+          <td><RouterLink to={`/registers/${item.address}`}>{item.name}</RouterLink></td>
+          <td>{item.address}</td>
+          <td>1 ETH</td>
+          <td>10 ETH</td>
+          <td>32</td>
+          <td>Oct 09 15:47</td>
+          <td>Oct 09 15:47</td>
+        </tr>
+      );
+    })
     return (
       <div>
-        <Title>My registers<Badge>0</Badge></Title>
+        <Title>My registers<Badge>{registries.length}</Badge></Title>
         <Paper>
           <Container>
               <Text>You haven`t created registers yet!</Text>
@@ -19,7 +49,7 @@ export class Allregister extends Component {
           </Container>
         </Paper>
 
-        <Title>All registers<Badge>4</Badge></Title>
+        <Title>All registers<Badge>{registries.length}</Badge></Title>
         <Paper>
           <Table>
             <thead>
@@ -34,42 +64,7 @@ export class Allregister extends Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Ololo</td>
-                <td>0x2452f33</td>
-                <td>1 ETH</td>
-                <td>10 ETH</td>
-                <td>32</td>
-                <td>Oct 09 15:47</td>
-                <td>Oct 09 15:47</td>
-              </tr>
-              <tr>
-                <td>Ololo</td>
-                <td>0x2452f33</td>
-                <td>1 ETH</td>
-                <td>10 ETH</td>
-                <td>32</td>
-                <td>Oct 09 15:47</td>
-                <td>Oct 09 15:47</td>
-              </tr>
-              <tr>
-                <td>Ololo</td>
-                <td>0x2452f33</td>
-                <td>1 ETH</td>
-                <td>10 ETH</td>
-                <td>32</td>
-                <td>Oct 09 15:47</td>
-                <td>Oct 09 15:47</td>
-              </tr>
-              <tr>
-                <td>Ololo</td>
-                <td>0x2452f33</td>
-                <td>1 ETH</td>
-                <td>10 ETH</td>
-                <td>32</td>
-                <td>Oct 09 15:47</td>
-                <td>Oct 09 15:47</td>
-              </tr>
+              {rows}
             </tbody>
           </Table>
         </Paper>
