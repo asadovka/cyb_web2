@@ -36,16 +36,16 @@ jobs:
                 docker push cybernode/cui-browser:$CIRCLE_TAG
              fi
 
-  deploy_stagin_image:
-    working_directory: ~/build
-    docker:
-      - image: docker:17.05.0-ce-git
-    steps:
-      - run:
-          name: Run new version of browser-ui on staging
-          command: >-
-            ssh mars@staging.cyber.fund -p 33322 -o "StrictHostKeyChecking no"
-            'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.browser.sh'
+  # deploy_stagin_image:
+  #   working_directory: ~/build
+  #   docker:
+  #     - image: docker:17.05.0-ce-git
+  #   steps:
+  #     - run:
+  #         name: Run new version of browser-ui on staging
+  #         command: >-
+  #           ssh mars@staging.cyber.fund -p 33322 -o "StrictHostKeyChecking no"
+  #           'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.browser.sh'
 
 
 
