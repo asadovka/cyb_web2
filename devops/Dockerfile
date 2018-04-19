@@ -1,9 +1,10 @@
 #FROM andrey/node_module as webpack
 #WORKDIR /src
-FROM node:8.5.0 as webpack
+FROM node:8.9.0 as webpack
 COPY ./ /src
 WORKDIR /src
 RUN npm install
+RUN npm rebuild node-sass
 RUN npm run build
 
 FROM nginx
