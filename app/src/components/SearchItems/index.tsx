@@ -16,8 +16,16 @@ export const Title = ({ color, system, number }) => (
 );
 
 
+export const dateFormat = (value) => moment(value).format('DD/MM/YYYY (hh:mm)');
+
+export const Value = ({ children }) => (
+  <span className={styles.value}>
+    {children}
+  </span>
+);
+
 export const Date = ({ value, format, label }) => (
-  <span className={styles.date}>{label + ' ' + moment(value).format(format)}</span>
+  <span className={styles.date}>{moment(value).format(format)}</span>
 )
 
 export const Hash = ({ value }) => {
@@ -30,7 +38,6 @@ export const Hash = ({ value }) => {
 
   return (
     <span className={styles.hash}>
-      Hash:&nbsp;
       {value.substr(0, 2)}
       {items.map((code, i) => (
         <span
@@ -43,6 +50,18 @@ export const Hash = ({ value }) => {
     </span>
   );
 }
+
+export const LinkHash = ({ value, to }) => (
+  <Link to={to} className={styles.linHash}>
+    <Hash value={value} />
+  </Link>
+);
+
+export const LinkAddress = ({ address, to }) => (
+  <Link to={to} className={styles.linkAddress}>
+    {address}
+  </Link>
+)
 
 export const DetailsLink = (props) => (
   <Link {...props} className={styles.link} />
@@ -69,13 +88,57 @@ export const Container = ({ children }) => (
   </div>
 );
 
-export const Item = ({ children, color }) => (
-  <div className={styles.item} style={{ borderLeft: `4px solid ${color}`}}>
+// export const Item = ({ children, color }) => (
+//   <div className={styles.item} style={{ borderLeft: `4px solid ${color}`}}>
+//     {children}
+//   </div>
+// );
+
+export const Item = ({ children, line='#000' }) => (
+  <div className={styles.item} style={{ border: `1px solid ${line}`}}>
     {children}
   </div>
 );
 
+export const ItemTitle = ({ children, bg = '#fff' }) => (
+  <h3 className={styles.itemTitle} style={{ backgroundColor: `${bg}`}}>
+    {children}
+  </h3>
+);
 
+export const colors = {
+  'block': '#757bf8',
+  'transaction': '#70cadb',
+  'uncle': '#ff9b53',
+  'contract': '#aac3e5',
+
+  'ethereum': '#03cba0',
+}
+
+
+export const ItemContainer = ({ children }) => (
+  <div className={styles.itemContainer}>
+    {children}
+  </div>
+);
+
+// style={{ borderRight: '1px solid #dedede'}}
+export const ItemContainerRow = ({ children, width, border= 'none' }) => (
+  <div className={styles.itemContainerRow} style={{ 
+    width: width,
+    borderRight: border === 'right' ? '1px solid #dedede': null,
+    borderLeft: border === 'left' ? '1px solid #dedede': null,
+    borderTop: border === 'top' ? '1px solid #dedede': null
+  }}>
+    {children}
+  </div>
+);
+
+export const Label = ({ children }) => (
+  <span className={styles.label}>
+    {children}
+  </span>
+);
 
 export function Plain(data) {
   return (

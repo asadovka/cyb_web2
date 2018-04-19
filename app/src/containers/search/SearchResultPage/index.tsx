@@ -38,7 +38,7 @@ class SearchResultPageComponent extends React.Component {
           <LeftMenu />
         </LayoutSideBar>
         <LayoutContent>
-          <Tabs />
+          {/*<Tabs />*/}
           <Content />
         </LayoutContent>
       </Layout>

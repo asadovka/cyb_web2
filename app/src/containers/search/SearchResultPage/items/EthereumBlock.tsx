@@ -2,17 +2,14 @@ import * as React from "react";
 import { Link } from 'react-router';
 
 import {
-  Item,
+  Item, colors, ItemTitle, ItemContainer, ItemContainerRow, Label,
+  Value, dateFormat,
   Title, Date, Row, Hash,
-  Height, Total, DetailsLink
+  Height, Total, DetailsLink, LinkHash
 } from '../../../../components/SearchItems/';
 
 
-
-
-const EthereumBlock = (data) => {
- return (
-  <Item color='#438cef'>
+  {/*<Item color='#438cef'>
     <Row>
       <Title 
         color='#438cef'
@@ -32,7 +29,27 @@ const EthereumBlock = (data) => {
         {`seacrh.cyber.fund/ethereum/block/${data.number}`}
       </DetailsLink>
     </Row>
-  </Item>
+  </Item>*/}
+
+const EthereumBlock = ({ number, hash, txNumber, timestamp }) => {
+ return (
+    <Item line={colors.block}>
+      <ItemTitle bg={colors.ethereum}>Ethereum block #{number}</ItemTitle>
+      <ItemContainer>
+        <ItemContainerRow width='33%' border='right'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/ethereum/block/${number}`} />
+        </ItemContainerRow>
+        <ItemContainerRow width='33%' border='right'>
+          <Label>Transaction:</Label>
+          <Value>{txNumber}</Value>
+        </ItemContainerRow>
+        <ItemContainerRow width='33%'>
+          <Label>Mined on:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+        </ItemContainerRow>
+      </ItemContainer>
+    </Item>
  );
 }
 

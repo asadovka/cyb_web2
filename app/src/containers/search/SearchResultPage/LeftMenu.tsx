@@ -31,6 +31,8 @@ import { RoundCheckbox } from '../../../components/RoundCheckbox/'
 
 import { browserHistory } from 'react-router'
 
+import { colors } from '../../../components/SearchItems/';
+
 class LeftMenu extends React.Component {
   
   constructor(props) {
@@ -61,21 +63,37 @@ class LeftMenu extends React.Component {
 
     return (
       <FilterPanel>
+        <h2>Show results for:</h2>
+
+        <h3 style={{ marginTop: 50 }}>Blockchain</h3>
         <ul>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('')} label='All'/>
+            <RoundCheckbox  checked={true} label='Ethereum' color={colors.ethereum} />
           </li>
-          <li style={{ marginBottom: 10 }}>
+          {/*<li style={{ marginBottom: 10 }}>
             <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='#7780fc' />
           </li>
           <li style={{ marginBottom: 10 }}>
             <RoundCheckbox onChange={() => this.change('bitcoin_cash')} label='Bitcoin cash' color='#74c1ff'/>
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('ethereum')} label='Ethereum' color='#438cef'/>
+            <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='#38d2b6'/>
+          </li>*/}
+        </ul>
+
+        <h3 style={{ marginTop: 50 }}>Object</h3>
+        <ul >
+          <li style={{ marginBottom: 10 }}>
+            <RoundCheckbox  checked={true} label='Contract' color={colors.contract} />
           </li>
           <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='#38d2b6'/>
+            <RoundCheckbox  checked={true} label='Block' color={colors.block} />
+          </li>
+          <li style={{ marginBottom: 10 }}>
+            <RoundCheckbox  checked={true} label='Uncle block' color={colors.uncle} />
+          </li>
+          <li style={{ marginBottom: 10 }}>
+            <RoundCheckbox  checked={true} label='Transaction' color={colors.transaction} />
           </li>
         </ul>
       </FilterPanel>

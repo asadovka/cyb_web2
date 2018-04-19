@@ -2,24 +2,32 @@ import * as React from "react";
 import { Link } from 'react-router';
 
 import {
-  Title, Number, Date, Row, Hash,
-  Height, Total, DetailsLink
+  Item, colors, ItemTitle, ItemContainer, ItemContainerRow, Label,
+  Value, dateFormat, Hash, 
+  Height, Total, DetailsLink, LinkHash
 } from '../../../../components/SearchItems/';
 
-const BitcoinTx = (props) => {
+const EthereumAddress = ({ hash, timestamp, value }) => {
   return (
-  <div>
-    <Row>
-      <Title>Ethereum address</Title>
-    </Row>
-    <Row>
-      <DetailsLink to={`/ethereum/address/${props.hash}`}>
-        {`seacrh.cyber.fund/ethereum/address/${props.hash}`}
-      </DetailsLink>
-    </Row>
-  </div>
+  <Item line={colors.contract}>
+    <ItemTitle bg={colors.ethereum}>Ethereum contract</ItemTitle>
+      <ItemContainer>
+        <ItemContainerRow width='33%' border='right'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/ethereum/address/${hash}`} />
+        </ItemContainerRow>
+        <ItemContainerRow width='33%' border='right'>
+          <Label>Value:</Label>
+          <Value>{value} ETH</Value>
+        </ItemContainerRow>
+        <ItemContainerRow width='33%'>
+          <Label>Created:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+        </ItemContainerRow>
+      </ItemContainer>
+  </Item>
   );
 }
 
-export default BitcoinTx;
+export default EthereumAddress;
 
