@@ -33,19 +33,30 @@ class SearchResultPageComponent extends React.Component {
 
   render() {
     return (
-      <Layout>
-        <LayoutSideBar>
-          <LeftMenu />
-        </LayoutSideBar>
-        <LayoutContent>
-          {/*<Tabs />*/}
-          <Content />
-        </LayoutContent>
-      </Layout>
+      <div>
+        <Content />
+      </div>
     );
   }
 }
 
+
+      // <Layout>
+      //   <LayoutSideBar>
+      //     <LeftMenu />
+      //   </LayoutSideBar>
+      //   <LayoutContent>
+      //     {/*<Tabs />*/}
+      //     <Content />
+      //   </LayoutContent>
+      // </Layout>
+
+
+export const SearchMenu = () => (
+  <div>
+    <LeftMenu />
+  </div>
+);
 
 
 export const SearchResultPage = withRouter(connect(mapStateToProps, { search })(SearchResultPageComponent));

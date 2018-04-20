@@ -21,11 +21,11 @@ var cx = require('classnames');
 //   </Tabs>
 // )
 
-import List from 'material-ui/List';
+// import List from 'material-ui/List';
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import { FilterPanel } from '../../../components/searchPage/'
+import { FilterPanel, Title, List, ListTitle } from '../../../components/searchPage/'
 
 import { RoundCheckbox } from '../../../components/RoundCheckbox/'
 
@@ -62,12 +62,12 @@ class LeftMenu extends React.Component {
     // } = this.prop;
 
     return (
-      <FilterPanel>
-        <h2>Show results for:</h2>
+      <div>
+        <Title>Show results for:</Title>
 
-        <h3 style={{ marginTop: 50 }}>Blockchain</h3>
-        <ul>
-          <li style={{ marginBottom: 10 }}>
+        <ListTitle>Blockchain</ListTitle>
+        <List>
+          <li>
             <RoundCheckbox  checked={true} label='Ethereum' color={colors.ethereum} />
           </li>
           {/*<li style={{ marginBottom: 10 }}>
@@ -79,24 +79,24 @@ class LeftMenu extends React.Component {
           <li style={{ marginBottom: 10 }}>
             <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='#38d2b6'/>
           </li>*/}
-        </ul>
+        </List>
 
-        <h3 style={{ marginTop: 50 }}>Object</h3>
-        <ul >
-          <li style={{ marginBottom: 10 }}>
+        <ListTitle>Object</ListTitle>
+        <List>
+          <li>
             <RoundCheckbox  checked={true} label='Contract' color={colors.contract} />
           </li>
-          <li style={{ marginBottom: 10 }}>
+          <li>
             <RoundCheckbox  checked={true} label='Block' color={colors.block} />
           </li>
-          <li style={{ marginBottom: 10 }}>
+          <li>
             <RoundCheckbox  checked={true} label='Uncle block' color={colors.uncle} />
           </li>
-          <li style={{ marginBottom: 10 }}>
+          <li>
             <RoundCheckbox  checked={true} label='Transaction' color={colors.transaction} />
           </li>
-        </ul>
-      </FilterPanel>
+        </List>
+      </div>
     );
   }
 }

@@ -10,7 +10,7 @@ import RegistersDetails from './containers/chaingear/registrerdetails/';
 
 
 import IndexPage from "./containers/IndexPage/";
-import {SearchResultPage} from "./containers/search/SearchResultPage/";
+import { SearchResultPage, SearchMenu } from "./containers/search/SearchResultPage/";
 
 import {BitcoinBlockPage} from "./containers/search/BitcoinBlockPage/";
 import {BitcoinTxPage} from "./containers/search/BitcoinTxPage/";
@@ -60,6 +60,16 @@ function logPageView() {
 }
 
 
+const TestLayout = ({ menu, children }) => (
+  <div>
+    <div>
+      {menu}
+    </div>
+    <div>
+      {children}
+    </div>
+  </div>
+)
 
 export function Root() {
   return (
@@ -67,8 +77,7 @@ export function Root() {
       <Route component={App} >
         <Route path={"/"} component={IndexPage}/>
   
-        <Route path={"/search"} component={SearchResultPage}/>
-        <Route path={"/test"} component={Test}/>
+        {/*<Route path={"/search"} component={SearchResultPage}/>*/}
         
         <Route path={"/bitcoin/block/:blockNumber"} component={BitcoinBlockPage}/>
         <Route path={"/bitcoin/tx/:txId"} component={BitcoinTxPage}/>
@@ -105,6 +114,9 @@ export function Root() {
         <Route path={"/icos"} component={icos}/>
         <Route path={"/icos/:system"} component={icosDetails}/>
 
+      </Route>
+      <Route component={App} >
+        <Route path={"/search"} components={{ children: SearchResultPage, menu: SearchMenu }}/>
       </Route>
     </Router>
   );

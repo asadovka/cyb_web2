@@ -145,7 +145,7 @@ class Register extends Component {
 
 
     return (
-      <div>
+      <div className='container' style={{ width: 1090 }}>
         {isOwner && <div>
           <div>Balance: {balance}</div>
           <button onClick={this.claim}>claim</button>

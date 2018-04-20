@@ -29,3 +29,46 @@
 .filterPanelContent {
   padding: 20px 30px;
 }
+
+
+.title {
+  color: #9f9d9d;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+
+.list li {
+  margin-bottom: 10px;
+  margin-left: 25px;
+}
+
+.listTitle {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: #2e3842;
+  position: relative;
+  padding-left: 30px;
+}
+
+.listTitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #438cef;
+  border-radius: 50%;
+  top: 2px;
+}
+
+.listTitle::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 50%;
+}

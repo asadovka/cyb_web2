@@ -70,25 +70,33 @@ class Test extends React.Component {
     })
   }
   
-  render() {    
-    const { data } = this.state;
+  // render() {    
+  //   const { data } = this.state;
 
 
+  //   return (
+  //     <div>
+  //       <ComposedChart width={600} height={400} data={data} >
+  
+  //         <YAxis yAxisId="s"  height={100} domain={[dataMin => 0, dataMax => (dataMax * 3)]}  orientation='left' hide={true} />
+  //         <YAxis yAxisId="s2" domain={[dataMin => (dataMin - (dataMin/100*20)), dataMax => (dataMax + (dataMax/100 * 5))]} orientation='right' />
+  //           <Tooltip/>
+  //         <Line yAxisId="s2" type='monotone'  dataKey='gdax_price' stroke='#4c8cfe' dot={false}/>
+  //         <Line yAxisId="s2" type='monotone'  dataKey='hitbtc_price' stroke='#6862db' dot={false}/>
+  //         <Line yAxisId="s2" type='monotone'  dataKey='bitfinex_price' stroke='#61c8b0' dot={false}/>
+
+  //         <Bar yAxisId="s" dataKey='gdax_volume' stackId="a" maxBarSize={30} fill='#4c8cfe'/>
+  //         <Bar yAxisId="s" dataKey='hitbtc_volume' stackId="a" maxBarSize={30} fill='#6862db'/>
+  //         <Bar yAxisId="s" dataKey='bitfinex_volume' stackId="a" maxBarSize={30} fill='#61c8b0'/>
+  //      </ComposedChart>
+  //     </div>
+  //   );
+  // }
+
+  render() {
     return (
       <div>
-        <ComposedChart width={600} height={400} data={data} >
-  
-          <YAxis yAxisId="s"  height={100} domain={[dataMin => 0, dataMax => (dataMax * 3)]}  orientation='left' hide={true} />
-          <YAxis yAxisId="s2" domain={[dataMin => (dataMin - (dataMin/100*20)), dataMax => (dataMax + (dataMax/100 * 5))]} orientation='right' />
-            <Tooltip/>
-          <Line yAxisId="s2" type='monotone'  dataKey='gdax_price' stroke='#4c8cfe' dot={false}/>
-          <Line yAxisId="s2" type='monotone'  dataKey='hitbtc_price' stroke='#6862db' dot={false}/>
-          <Line yAxisId="s2" type='monotone'  dataKey='bitfinex_price' stroke='#61c8b0' dot={false}/>
-
-          <Bar yAxisId="s" dataKey='gdax_volume' stackId="a" maxBarSize={30} fill='#4c8cfe'/>
-          <Bar yAxisId="s" dataKey='hitbtc_volume' stackId="a" maxBarSize={30} fill='#6862db'/>
-          <Bar yAxisId="s" dataKey='bitfinex_volume' stackId="a" maxBarSize={30} fill='#61c8b0'/>
-       </ComposedChart>
+        test
       </div>
     );
   }

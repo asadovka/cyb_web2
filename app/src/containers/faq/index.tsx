@@ -4,6 +4,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 
 const FAQ = () => (
+  <div className='container' style={{ width: 1090 }}>
   <Card>
     <CardContent>
   <div className="content">
@@ -87,6 +88,7 @@ const FAQ = () => (
   </div>
     </CardContent>
   </Card>
+  </div>
 );
 
 export default FAQ;

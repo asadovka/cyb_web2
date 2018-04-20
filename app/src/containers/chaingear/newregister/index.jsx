@@ -152,7 +152,7 @@ export class Newregister extends Component {
     const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
 
     return (
-      <div>
+      <div className='container' style={{ width: 1090 }}>
         <Title>New registry creation</Title>
         <Container>
           <SideBar>

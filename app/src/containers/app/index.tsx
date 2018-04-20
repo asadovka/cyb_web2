@@ -51,7 +51,8 @@ import {
   Logo,
   Menu, MenuItem,
   Switcher,
-  LayoutSwitcher
+  LayoutSwitcher,
+  AppSecondMenu
 } from '../../components/AppLayout/';
 
 
@@ -65,7 +66,7 @@ class PersistentDrawer extends React.Component {
 
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, menu } = this.props;
     const { open } = this.state;
 
     return (
@@ -91,9 +92,12 @@ class PersistentDrawer extends React.Component {
             <MenuItem icon='help' to='/faq'>FAQ</MenuItem>
           </Menu>
         </AppMenu>
-        <AppContent open={open}>
+        {menu && <AppSecondMenu open={open}>
+          {menu}
+        </AppSecondMenu>}
+        <AppContent open={open} withMenu={!!menu}>
           {this.props.children}
-        </AppContent>
+        </AppContent>        
       </Layout>
         </MuiThemeProvider>
     );

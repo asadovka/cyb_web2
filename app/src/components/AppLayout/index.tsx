@@ -16,16 +16,21 @@ export const AppHeader = ({ children, open }) => (
   </div>
 );
 
-export const AppContent = ({ children, open }) => (
-  <div className={styles.appContent + ' ' + (open ? styles.appContentOpen: '')}>
-    <div className='container' style={{ width: 1090 }}>
+export const AppContent = ({ children, open, withMenu }) => (
+  <div className={styles.appContent + ' ' + (open ? styles.appContentOpen: '') + ' ' + (withMenu ? styles.appContentWithMenu: '')}>  
       {children}
-    </div>
   </div>
 );
 
 export const AppMenu = ({ children, open }) => (
   <div className={styles.appMenu + ' ' + (open ? styles.appMenuOpen : '')}>
+    {children}
+  </div>
+);
+
+
+export const AppSecondMenu = ({ children, open }) => (
+  <div className={styles.appSecondMenu  + ' ' + (open ? styles.appSecondMenuOpen: '')}>
     {children}
   </div>
 );
