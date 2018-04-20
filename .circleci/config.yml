@@ -57,5 +57,5 @@ workflows:
           <<: *staging_filter
       # - deploy_stagin_image:
       #     <<: *staging_filter
-          requires:
-            - build_and_push_staging_image
+          # requires:
+          #   - build_and_push_staging_image
