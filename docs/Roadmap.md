@@ -62,7 +62,7 @@
 6. Code implementation of page
 7. Review & QA
 
-### 1. Initialization of main exchange pages (Exchange, Exchanges)
+### 3 Initialization of main exchange pages (Exchange, Exchanges)
 
 1. Research and analysis of current market reviewers (cryptocompare, coinmarketcap, data.bitcoinity, block.cc)
 2. Requirements gathering and documentation for entities (Exchange, Token Pair, Trade)
@@ -72,7 +72,7 @@
 6. Code implementation of page
 7. Review & QA
 
-### 2. Initialize specification documents for exchange data (Orderbook, Exchange)
+### 4. Initialize specification documents for exchange data (Orderbook, Exchange)
 
 1. Research and analysis of current exchanges and their capabilities
 2. Documentation of main requirements for Orderbook
@@ -91,8 +91,6 @@ FAQ
 Context search
 Donation mechanism
 Userflow
-Specs for OB
-Specs for Exchanges
 Feedback collector
 
 # Sprint 12  [05.06 - 18.06]
