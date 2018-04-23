@@ -29,16 +29,19 @@ export const Date = ({ value, format, label }) => (
 )
 
 export const Hash = ({ value }) => {
+  //TODO: fix when change backend
+  const _value = value.substr(2, value.length );
+
   let inx = 2;
   const items = [];
-  while(inx <= value.length - 4) {
-    items.push(value.substr(inx, 6));
+  while(inx <= _value.length - 4) {
+    items.push(_value.substr(inx, 6));
     inx += 6;
   }
 
   return (
     <span className={styles.hash}>
-      {value.substr(0, 2)}
+      {_value.substr(0, 2)}
       {items.map((code, i) => (
         <span
           key={i}
@@ -46,7 +49,7 @@ export const Hash = ({ value }) => {
           style={{ background: '#' + code, color: '#' + code }}
         >{code}</span>)
       )}
-      {value.substr(value.length - 2)}
+      {_value.substr(_value.length - 2)}
     </span>
   );
 }
