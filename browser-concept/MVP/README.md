@@ -1,1 +1,0 @@
-Browser concept for MVP.

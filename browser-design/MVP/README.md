@@ -1,1 +1,0 @@
-Browser design for MVP.
