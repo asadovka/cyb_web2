@@ -28,15 +28,15 @@ class EthereumTxPage extends React.Component {
     const {data} = this.props;
 
     return (
-      <div>
+      <div className='container' style={{ width: 1090 }}>
         <div style={{ textAlign: 'center' }}>
           <Title inline={true}>Ethereum Transaction</Title>
         </div>
         <SubTitle>Overview</SubTitle>
         <Details>
           <DetailsRow>
-            <Label>timestamp</Label>
-            <Value>{data.block_time && (moment(data.block_time * 1000).fromNow() + ' (' + moment(data.block_time * 1000).format('') + ')')}</Value>
+            <Label>time(UTC)</Label>
+            <Value>{data.blockTime && (moment(data.blockTime * 1000).fromNow() + ' (' + moment(data.blockTime * 1000).format('') + ')')}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>transaction hash</Label>
@@ -44,7 +44,7 @@ class EthereumTxPage extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>block</Label>
-            <Value>{data.block_number}</Value>
+            <Value>{data.blockNumber}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>nonce</Label>
@@ -80,15 +80,15 @@ class EthereumTxPage extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>gas price</Label>
-            <Value>{data.gas_price}</Value>
+            <Value>{data.gasPrice}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>gas used</Label>
-            <Value>{data.gas_used}</Value>
+            <Value>{data.gasUsed}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>gas limit</Label>
-            <Value>{data.gas_limit}</Value>
+            <Value>{data.gasLimit}</Value>
           </DetailsRow>
         </Details>
 

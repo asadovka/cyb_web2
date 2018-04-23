@@ -55,7 +55,7 @@ class EthereumBlockPageComponent extends React.Component {
 
   render() {
     const {ethereumBlock, transactions, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
-    console.log('>> ', ethereumBlock)
+    // console.log('>> ', ethereumBlock)
     const tx_fees_usd = numeral((+ethereumBlock.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
       <div className='container' style={{ width: 1090 }}>
@@ -96,7 +96,7 @@ class EthereumBlockPageComponent extends React.Component {
         <Details>
           <DetailsRow>
             <Label>miner</Label>
-            <Value>{ethereumBlock.miner}(???) {timeAfterPreviosBlock}</Value>
+            <Value>{ethereumBlock.minerContractHash}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>difficulty</Label>
@@ -170,7 +170,7 @@ class EthereumBlockPageComponent extends React.Component {
             </tr>
           </thead>
           <thead>
-            {transactions.map(t => (
+            {transactions.splice(0, 10).map(t => (
               <tr key={t.hash}>
                 <td><TLink hash={t.hash}/></td>
                 <td>{ethereumBlock.timestamp && moment(ethereumBlock.timestamp * 1000).fromNow()}</td>
