@@ -55,18 +55,19 @@ class EthereumBlockPageComponent extends React.Component {
 
   render() {
     const {ethereumBlock, transactions, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
+    console.log('>> ', ethereumBlock)
     const tx_fees_usd = numeral((+ethereumBlock.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
-      <div>
+      <div className='container' style={{ width: 1090 }}>
         <Head>
           <Button onClick={this.previous}>previous</Button>
           <Title inline={true}>Ethereum Block #{ethereumBlock.number}</Title>
           <Button onClick={this.next}>next</Button>
         </Head>
-        <SubTitle>Block info</SubTitle>
+        <SubTitle>Overview</SubTitle>
         <Details>
           <DetailsRow>
-            <Label>timestamp</Label>
+            <Label>Time (UTC)</Label>
             <Value>{ethereumBlock.timestamp && (moment(ethereumBlock.timestamp * 1000).fromNow() + ' (' + moment(ethereumBlock.timestamp * 1000).format('') + ')')}</Value>
           </DetailsRow>
           <DetailsRow>
@@ -75,7 +76,7 @@ class EthereumBlockPageComponent extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>sha3uncles</Label>
-            <Value>{ethereumBlock.sha3_uncles}</Value>
+            <Value>{ethereumBlock.sha3Uncles}</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>block size</Label>
@@ -87,11 +88,11 @@ class EthereumBlockPageComponent extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>extra data</Label>
-            <Value>{ethereumBlock.extra_data}</Value>
+            <Value>{ethereumBlock.extraData}</Value>
           </DetailsRow>
         </Details>
          
-        <SubTitle>Summary</SubTitle>
+        <SubTitle>Mining</SubTitle>
         <Details>
           <DetailsRow>
             <Label>miner</Label>
@@ -102,6 +103,14 @@ class EthereumBlockPageComponent extends React.Component {
             <Value>{numeral(ethereumBlock.difficulty).format('000,000,000')}</Value>
           </DetailsRow>
           <DetailsRow>
+            <Label>gas used</Label>
+            <Value>{procent(+ethereumBlock.gasUsed, +ethereumBlock.gasLimit)} ({numeral(ethereumBlock.gasUsed).format('000,000,000')} of {numeral(ethereumBlock.gasLimit).format('000,000,000')})</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>gas limit</Label>
+            <Value>{numeral(ethereumBlock.gasLimit).format('000,000,000')}</Value>
+          </DetailsRow>
+          {/*<DetailsRow>
             <Label>block reward</Label>
             <Value>{numeral((+ethereumBlock.block_reward) + (+ethereumBlock.tx_fees)).format('0.000000')} ETH ({numeral(ethereumBlock.block_reward).format('0.000000')} + {numeral(ethereumBlock.tx_fees).format('0.000000')} + ???)</Value>
           </DetailsRow>
@@ -116,19 +125,38 @@ class EthereumBlockPageComponent extends React.Component {
           <DetailsRow>
             <Label>gas limit</Label>
             <Value>{numeral(ethereumBlock.gas_limit).format('000,000,000')}</Value>
-          </DetailsRow>
+          </DetailsRow>*/}
         </Details>
 
+        <SubTitle>Rewards</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>static block reward</Label>
+            <Value>{numeral((+ethereumBlock.blockReward)).format('0.000000')} ETH</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>transaction fees</Label>
+            <Value>{numeral((+ethereumBlock.txFees)).format('0.000000')} ETH</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>uncle inclusion reward</Label>
+            <Value>{numeral((+ethereumBlock.unclesReward)).format('0.000000')} ETH</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>total block reward</Label>
+            <Value>{numeral((+ethereumBlock.blockReward) + (+ethereumBlock.txFees) + (+ethereumBlock.unclesReward)).format('0.000000')} ETH</Value>
+          </DetailsRow>
+        </Details>
 
         <SubTitle>Transaction</SubTitle>
         <FlexContainer>
           <Tabs value={1} onChange={() => {}}>
             <Tab label={`transaction: ${ethereumBlock.tx_number}`} value={1}></Tab>
-            <Tab label={'uncle blocks: 0'} value={2}></Tab>
+            {/*<Tab label={'uncle blocks: 0'} value={2}></Tab>*/}
           </Tabs>
-          <div>
+          {/*<div>
             <Button>download</Button>
-          </div>
+          </div>*/}
         </FlexContainer>
         <TransactionsTable>
           <thead>
