@@ -31,7 +31,7 @@ import {
     </Row>
   </Item>*/}
 
-const EthereumBlock = ({ number, hash, txNumber, timestamp }) => {
+const EthereumBlock = ({ number, hash, tx_number, timestamp }) => {
  return (
     <Item line={colors.block}>
       <ItemTitle bg={colors.ethereum}>Ethereum block #{number}</ItemTitle>
@@ -42,7 +42,7 @@ const EthereumBlock = ({ number, hash, txNumber, timestamp }) => {
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Transaction:</Label>
-          <Value>{txNumber}</Value>
+          <Value>{tx_number}</Value>
         </ItemContainerRow>
         <ItemContainerRow width='33%'>
           <Label>Mined on:</Label>

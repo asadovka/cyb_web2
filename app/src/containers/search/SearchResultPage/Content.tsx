@@ -20,7 +20,10 @@ import EthereumTx from './items/EthereumTx';
 import EthereumAddress from './items/EthereumAddress';
 
 import EthereumClassicBlock from './items/EthereumClassicBlock';
+import EthereumClassiUncle from './items/EthereumClassiUncle';
 import EthereumClassicTx from './items/EthereumClassicTx';
+import EthereumClassicContract from './items/EthereumClassicContract';
+
 import Paper from 'material-ui/Paper';
 
 import { Container } from '../../../components/SearchItems/';
@@ -129,41 +132,47 @@ const Content = ({
 
 
 function results(items, loading, error, success) {
-  // if (loading) {
-  //   return (
-  //     <div className="tile is-child box">
-  //       <h1 className="title">Loading...</h1>
-  //     </div>
-  //   );
-  // } 
+  if (loading) {
+    return (
+       <Container>
+      <div className="tile is-child">
+        <h1 className="title">Loading...</h1>
+      </div>
+      </Container>
+    );
+  } 
 
-  // if (error) {
-  //   return (
-  //     <div className="tile is-child box">
-  //       <h1 className="title">Some error occurred, please try later.</h1>
-  //     </div>
-  //   );
-  // }
+  if (error) {
+    return (
+      <Container>
+      <div className="tile is-child">
+        <h1 className="title">Some error occurred, please try later.</h1>
+      </div>
+      </Container>
+    );
+  }
 
-  // if (success && !items.length) {
-  //   return (
-  //     <div className="tile is-child box">
-  //       <h1 className="title">Nothing is found in cyber•Space.</h1>
-  //     </div>
-  //   );
-  // }
+  if (success && !items.length) {
+    return (
+       <Container>
+      <div className="tile is-child">
+        <h1 className="title">Nothing is found in cyber•Space.</h1>
+      </div>
+      </Container>
+    );
+  }
 
   return (
     <Container>
-      {/*items.map(item => (
+      {items.map(item => (
         <RenderByType 
           key={JSON.stringify(item)}
           chain={item.chain} 
           entity={item.entity} 
           data={item.data} 
         />
-      ))*/}
-      <RenderByType 
+      ))}
+      {/*<RenderByType 
         key={1}
         chain={'ethereum'} 
         entity={'block'} 
@@ -206,7 +215,7 @@ function results(items, loading, error, success) {
           value: 45, // ??
           timestamp: 1517319693, // ???
         }} 
-      />
+      />*/}
     </Container>
   );
   
@@ -250,22 +259,25 @@ function results(items, loading, error, success) {
 
 const items = {
   block: {
-    BITCOIN: BitcoinBlock,
+    // BITCOIN: BitcoinBlock,
     ethereum: EthereumBlock,
-    BITCOIN_CASH: BitcoinCashBlock,
+    // BITCOIN_CASH: BitcoinCashBlock,
     ethereum_classic: EthereumClassicBlock
   },
   tx: {
-    BITCOIN: BitcoinTx,
-    BITCOIN_CASH: BitcoinCashTx,
+    // BITCOIN: BitcoinTx,
+    // BITCOIN_CASH: BitcoinCashTx,
     ethereum: EthereumTx,
-    ethereum_classic: EthereumClassicTx
+    ethereum_classic: EthereumClassicTx,
+    // ethereum_classic: EthereumClassicTx
   },
   uncle: {
     ethereum: EthereumUncle,
+    ethereum_classic: EthereumClassiUncle
   },
-  address_summary: {
-     ethereum: EthereumAddress
+  contract_summary: {
+     ethereum: EthereumAddress,
+     ethereum_classic: EthereumClassicContract
   }
 }
 

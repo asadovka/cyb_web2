@@ -16,18 +16,18 @@ import { Layout, LayoutSideBar, LayoutContent} from '../../../components/searchP
 class SearchResultPageComponent extends React.Component {
 
   componentDidMount() {
-    const { query, page, chains, entities } = this.props;
-    this.props.search(query, page, chains, entities);
+    const { query, page, chains, types } = this.props;
+    this.props.search(query, page, chains, types);
   }
 
   componentWillReceiveProps(nextPorps) {
-    const { query, page, chains, entities } = this.props;
+    const { query, page, chains, types } = this.props;
 
     if (nextPorps.query !== query || 
         nextPorps.page !== page || 
         nextPorps.chains !== chains || 
-        nextPorps.entities !== entities) {
-      this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.entities);    
+        nextPorps.types !== types) {
+      this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.types);    
     }
   }
 
@@ -66,7 +66,7 @@ function mapStateToProps(state, ownProps) {
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
     chains: ownProps.location.query.chains,
-    entities: ownProps.location.query.entities
+    types: ownProps.location.query.types
   };
 }
 

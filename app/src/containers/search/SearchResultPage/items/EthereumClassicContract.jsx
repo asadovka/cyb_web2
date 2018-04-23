@@ -3,32 +3,31 @@ import { Link } from 'react-router';
 
 import {
   Item, colors, ItemTitle, ItemContainer, ItemContainerRow, Label,
-  Value, dateFormat,
-  Title, Date, Row, Hash,
+  Value, dateFormat, Hash, 
   Height, Total, DetailsLink, LinkHash
 } from '../../../../components/SearchItems/';
 
-
-const EthereumBlock = ({ number, hash, tx_number, timestamp }) => {
- return (
-    <Item line={colors.block}>
-      <ItemTitle bg={colors.ethereum_classic}>Ethereum Classic block #{number}</ItemTitle>
+const EthereumAddress = ({ hash, first_activity_date, confirmed_balance }) => {
+  return (
+  <Item line={colors.contract}>
+    <ItemTitle bg={colors.ethereum_classic}>Ethereum contract</ItemTitle>
       <ItemContainer>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/block/${number}`} />
+          <LinkHash value={hash} to={`/ethereum/address/${hash}`} />
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
-          <Label>Transaction:</Label>
-          <Value>{tx_number}</Value>
+          <Label>Value:</Label>
+          <Value>{confirmed_balance} ETH</Value>
         </ItemContainerRow>
         <ItemContainerRow width='33%'>
-          <Label>Mined on:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
+          <Label>Created:</Label>
+          <Value>{dateFormat(first_activity_date)}</Value>
         </ItemContainerRow>
       </ItemContainer>
-    </Item>
- );
+  </Item>
+  );
 }
 
-export default EthereumBlock;
+export default EthereumAddress;
+

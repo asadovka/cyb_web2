@@ -39,27 +39,49 @@ class LeftMenu extends React.Component {
     super(props);
   }
 
-  change(chain) {
+  changeChain(chain) {
     const {
       query,
       chains,
-      entities
+      types
     } = this.props;
     let newChains = chains || '';
     
-    newChains = newChains.indexOf(chain) === -1  
+    newChains = newChains.split(',').indexOf(chain) === -1  
       ? newChains.split(',').concat(chain)
       : newChains.split(',').filter(x => x !== chain)
 
+
     const _newChains = newChains.filter(x => !!x).join(',');
-    this.props.router.push({ pathname: '/search', query: { q: query, chains: _newChains, entities} });
+    this.props.router.push({ pathname: '/search', query: { q: query, chains: _newChains, types: types } });
     // browserHistory.push('/search', { q: query, chains: chain, entities })
+  }
+  changeTypes(type) {
+    const {
+      query,
+      chains,
+      types
+    } = this.props;
+    let newTypes = types || '';
+    
+    newTypes = newTypes.split(',').indexOf(type) === -1  
+      ? newTypes.split(',').concat(type)
+      : newTypes.split(',').filter(x => x !== type)
+
+
+    const _newTypes = newTypes.filter(x => !!x).join(',');
+    this.props.router.push({ pathname: '/search', query: { q: query, chains: chains, types: _newTypes } });
+
   }
 
   render() {
-    // const {
-    //   chains
-    // } = this.prop;
+    let {
+      chains,
+      types
+    } = this.props;
+
+    chains = chains || '';
+    types = types || '';
 
     return (
       <div>
@@ -68,7 +90,17 @@ class LeftMenu extends React.Component {
         <ListTitle>Blockchain</ListTitle>
         <List>
           <li>
-            <RoundCheckbox  checked={true} label='Ethereum' color={colors.ethereum} />
+            <RoundCheckbox 
+              onChange={() => this.changeChain('ethereum')} 
+              checked={!!chains.split(',').find(x => x === 'ethereum')} 
+              label='Ethereum' color={colors.ethereum} />
+          </li>
+          <li>
+            <RoundCheckbox 
+              onChange={() => this.changeChain('ethereum_classic')} 
+              checked={!!chains.split(',').find(x => x === 'ethereum_classic')} 
+              label='Ethereum Classic' 
+              color={colors.ethereum_classic} />
           </li>
           {/*<li style={{ marginBottom: 10 }}>
             <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='#7780fc' />
@@ -84,16 +116,29 @@ class LeftMenu extends React.Component {
         <ListTitle>Object</ListTitle>
         <List>
           <li>
-            <RoundCheckbox  checked={true} label='Contract' color={colors.contract} />
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('contract_summary')} 
+              checked={!!types.split(',').find(x => x === 'contract_summary')}  
+              label='Contract' color={colors.contract} />
           </li>
           <li>
-            <RoundCheckbox  checked={true} label='Block' color={colors.block} />
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('block')} 
+              checked={!!types.split(',').find(x => x === 'block')} 
+              label='Block' color={colors.block} />
           </li>
           <li>
-            <RoundCheckbox  checked={true} label='Uncle block' color={colors.uncle} />
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('uncle')} 
+              checked={!!types.split(',').find(x => x === 'uncle')} 
+              label='Uncle block' 
+              color={colors.uncle} />
           </li>
           <li>
-            <RoundCheckbox  checked={true} label='Transaction' color={colors.transaction} />
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('tx')} 
+              checked={!!types.split(',').find(x => x === 'tx')}
+              label='Transaction' color={colors.transaction} />
           </li>
         </List>
       </div>
@@ -132,5 +177,5 @@ class LeftMenu extends React.Component {
 export default withRouter(connect((state, ownProps) => ({
   query: ownProps.location.query.q,
   chains: ownProps.location.query.chains,
-  entities: ownProps.location.query.entities
+  types: ownProps.location.query.types
 }))(LeftMenu));

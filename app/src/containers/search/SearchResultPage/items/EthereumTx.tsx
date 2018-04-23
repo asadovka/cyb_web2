@@ -35,7 +35,7 @@ import {
 //       </Row>
 //     </Item>
 
-const EthereumTx = ({ hash, value, timestamp, from, to }) => {
+const EthereumTx = ({ hash, value, block_time, from, to }) => {
   return (
    <Item line={colors.transaction}>
      <ItemTitle bg={colors.ethereum}>Ethereum transaction</ItemTitle>
@@ -50,7 +50,7 @@ const EthereumTx = ({ hash, value, timestamp, from, to }) => {
        </ItemContainerRow>
        <ItemContainerRow width='33%' border='left'>
           <Label>Finalization Time:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
+          <Value>{dateFormat(block_time)}</Value>
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>From:</Label>

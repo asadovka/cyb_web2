@@ -113,6 +113,7 @@ export const colors = {
   'contract': '#aac3e5',
 
   'ethereum': '#03cba0',
+  'ethereum_classic': '#543bcc'
 }
 
 

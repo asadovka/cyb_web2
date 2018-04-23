@@ -7,7 +7,9 @@ import {
   Height, Total, DetailsLink, LinkHash
 } from '../../../../components/SearchItems/';
 
-const EthereumAddress = ({ hash, timestamp, value }) => {
+
+
+const EthereumAddress = ({ hash, first_activity_date, confirmed_balance }) => {
   return (
   <Item line={colors.contract}>
     <ItemTitle bg={colors.ethereum}>Ethereum contract</ItemTitle>
@@ -18,11 +20,11 @@ const EthereumAddress = ({ hash, timestamp, value }) => {
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Value:</Label>
-          <Value>{value} ETH</Value>
+          <Value>{confirmed_balance} ETH</Value>
         </ItemContainerRow>
         <ItemContainerRow width='33%'>
           <Label>Created:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
+          <Value>{dateFormat(first_activity_date)}</Value>
         </ItemContainerRow>
       </ItemContainer>
   </Item>
