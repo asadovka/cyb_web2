@@ -157,6 +157,28 @@ There is a pagination function on results page. It should be implemented via but
 
 ### 2.3 Block Page
 
+Currently browser shows 3 types of block pages:
+
+1. Ethereum (Ethereum Classic) block page
+2. Ethereum (Ethereum Classic) uncle block page
+3. Bitcoin (Bitcoin Cash) block page
+
+#### 2.3.1 Bitcoin block
+
+Data which is displayed (including options and user actions):
+
+- Bitcoin block number [number] (header of page)
+- Time (UTC) [date] - time of block generation
+- Bloch hash [string] - hash of block
+- Merkle root [string] - hash of merkle tree
+- Block version [number] - number of block
+- Block size [number + number of bytes]
+- Nonce [string] - answer to PoW
+- Miner [string] - miner hash
+- Difficulty [number] - mining difficulty
+- Static block reward [number + currency] - static reward for block mining
+- Fees [number + currency] - 
+
 ## 3. Blockchains Page
 
 ### 3.1 Blockchain Page
