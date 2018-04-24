@@ -53,8 +53,6 @@ To attach to container and/or remove it if needed:
 * **Image**: `cui-browser`
 * **Portmap**: 32500
 
-### Roadmap
 
-* https://github.com/facebook/jest
-* https://github.com/zeit/next.js/
+[http://browser.cybersearch.io/](http://browser.cybersearch.io/)
 
