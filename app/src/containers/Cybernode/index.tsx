@@ -10,6 +10,9 @@ var config = require('./config.js')
 import Paper from 'material-ui/Paper';
 import Table, { TableBody, TableCell, TableHead, TableRow } from '../../components/Table/';
 
+import Container from '../../components/Container/';
+
+
 class Cybernode extends React.Component {
   componentDidMount() {
     this.props.checkApi();
@@ -23,6 +26,7 @@ class Cybernode extends React.Component {
     } = this.props;
 
     return (
+      <Container>
       <Paper>
         <Table>
           <TableBody>
@@ -51,6 +55,7 @@ class Cybernode extends React.Component {
           </TableBody>
         </Table>
       </Paper>
+      </Container>
     );    
   }
 }

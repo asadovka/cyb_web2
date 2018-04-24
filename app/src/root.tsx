@@ -71,10 +71,19 @@ const TestLayout = ({ menu, children }) => (
   </div>
 )
 
+import Container from './components/Container/';
+
+const Wrapper = ({ children }) => (
+  <Container>
+    {children}
+  </Container>
+)
+
 export function Root() {
   return (
     <Router onUpdate={logPageView} history={browserHistory}>
       <Route component={App} >
+      <Route component={Wrapper} >
         <Route path={"/"} component={IndexPage}/>
   
         {/*<Route path={"/search"} component={SearchResultPage}/>*/}
@@ -113,7 +122,7 @@ export function Root() {
 
         <Route path={"/icos"} component={icos}/>
         <Route path={"/icos/:system"} component={icosDetails}/>
-
+       </Route>
       </Route>
       <Route component={App} >
         <Route path={"/search"} components={{ children: SearchResultPage, menu: SearchMenu }}/>

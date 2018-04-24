@@ -4,7 +4,7 @@ import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 
 const FAQ = () => (
-  <div className='container' style={{ width: 1090 }}>
+  <div >
   <Card>
     <CardContent>
   <div className="content">

@@ -40,7 +40,7 @@ export class Allregister extends Component {
       );
     })
     return (
-      <div className='container' style={{ width: 1090 }}>
+      <div>
         <Title>My registers<Badge>{registries.length}</Badge></Title>
         <Paper>
           <Container>

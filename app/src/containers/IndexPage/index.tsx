@@ -4,6 +4,7 @@ import {Link} from "react-router";
 import BlockchainStatics from './BlockchainStatics';
 
 import { connect } from 'react-redux';
+import Container from '../../components/Container/';
 
 class IndexPage extends React.Component {
   componentDidMount() {

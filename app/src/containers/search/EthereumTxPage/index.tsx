@@ -9,6 +9,8 @@ import moment from 'moment'
 
 
 import { Title } from '../../../components/Title/';
+import Container from '../../../components/Container/';
+
 import { 
   Head, SubTitle, Button,
   Details, DetailsRow, Label, Value,
@@ -28,7 +30,7 @@ class EthereumTxPage extends React.Component {
     const {data} = this.props;
 
     return (
-      <div className='container' style={{ width: 1090 }}>
+      <Container>
         <div style={{ textAlign: 'center' }}>
           <Title inline={true}>Ethereum Transaction</Title>
         </div>
@@ -105,7 +107,7 @@ class EthereumTxPage extends React.Component {
         </Details>
 
 
-      </div>
+      </Container>
     );
   }
 }
