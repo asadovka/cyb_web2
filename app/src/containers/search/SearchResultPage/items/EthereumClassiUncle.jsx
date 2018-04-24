@@ -34,14 +34,14 @@ import {
 //       </Row>
 //     </Item>
 
-const EthereumUncle = ({ number, timestamp, hash }) => {
+const EthereumUncle = ({ block_number, timestamp, hash }) => {
   return (
      <Item line={colors.uncle}>
-      <ItemTitle bg={colors.ethereum_classic}>Ethereum Uncle block #{number}</ItemTitle>
+      <ItemTitle bg={colors.ethereum_classic}>Ethereum Uncle block #{block_number}</ItemTitle>
       <ItemContainer>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/uncle/${number}`} />
+          <LinkHash value={hash} to={`/ethereum/uncle/${block_number}`} />
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Uncle position:</Label>

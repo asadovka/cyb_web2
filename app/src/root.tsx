@@ -97,7 +97,7 @@ export function Root() {
         <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
         <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
         <Route path={"/ethereum/address/:hash"} component={EthereumAddressPage}/>
-        <Route path={"/ethereum/uncle/:blockNumber"} component={EthereumUncle}/>
+        <Route path={"/ethereum/uncle/:hash"} component={EthereumUncle}/>
 
 
         <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
