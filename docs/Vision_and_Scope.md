@@ -175,11 +175,15 @@ Data which is displayed (including options and user actions):
 - Block version [number] - number of block
 - Block size [number + bytes]
 - Nonce [string] - answer to PoW
+
+
 - Miner [string] - miner hash
 - Difficulty [number] - mining difficulty
 - Static block reward [number + currency] - static reward for block mining in BTC
 - Fees [number + currency] - accumulated fees in BTC
 - Total blobk reward [number + currency] - sum of static reward and fees
+
+
 - Transactions[number] - number of transactions in block
 
 Transaction table. Headers:
@@ -197,6 +201,35 @@ Actions:
 1. Info by pointing:
 - Time (UTC) - show age of block (current time minus block generation time)
 - Miner - show label of miner
+
+#### 2.3.2 Ethereum block
+
+- Ethereum block number [number] (header of page)
+- Time (UTC) [date] - time of block generation
+- Bloch hash [string] - hash of block
+- Sha3Uncles [string] - hash of uncles
+- Block size [number + bytes]
+- Nonce [string] - answer to PoW
+- Extra Data [string] - extra mining date
+
+
+- Miner [string] - miner hash
+- Difficulty [number] - mining difficulty
+- Gas used [number] - used gas
+- Gas limit [number] - limit of gas
+
+
+- Static block reward [number + currency] - static reward for block mining in ETH
+- Fees [number + currency] - accumulated fees in ETH
+- Uncle inclusion rewards [number + currency] - rewards in ETH for uncle inclusion
+- Total blobk reward [number + currency] - sum of static reward, fees and uncle inclusion
+
+
+- Transactions[number] - number of transactions in block
+
+Transaction table. Headers:
+
+
 
 ## 3. Blockchains Page
 
