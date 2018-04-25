@@ -192,6 +192,12 @@ Transaction table. Headers:
 - Output value [number + currency] - summ of all output values in BTC
 - Fee [number + currency] - fees per transaction in BTC
 
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of block (current time minus block generation time)
+- Miner - show label of miner
+
 ## 3. Blockchains Page
 
 ### 3.1 Blockchain Page
