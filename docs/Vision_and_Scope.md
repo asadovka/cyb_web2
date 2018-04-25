@@ -225,11 +225,24 @@ Actions:
 - Total blobk reward [number + currency] - sum of static reward, fees and uncle inclusion
 
 
-- Transactions[number] - number of transactions in block
+- Transactions [number] - number of transactions in block
+- Uncle blocks [number] - number of uncle blocks
 
 Transaction table. Headers:
 
+- Hash [string] - transaction hash
+- Confirmation delay [number + seconds] - time of confirmation minus time of getting into mempool
+- From [hash] - hash of input
+- To [hash] - hash of output
+- Value [number + currency] - transaction value in ETH
+- Fee [number + currency] - fees per transaction in ETH
 
+TUncle table. Headers:
+
+- Hash [string] - uncle hash
+- Level [number] - uncle position
+- Miner [hash] - hash of miner
+- Reward [number + currency] - rewards of uncle
 
 ## 3. Blockchains Page
 
