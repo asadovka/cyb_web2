@@ -170,7 +170,7 @@ Data which is displayed (including options and user actions):
 
 - Bitcoin block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
-- Bloch hash [string] - hash of block
+- Block hash [string] - hash of block
 - Merkle root [string] - hash of merkle tree
 - Block version [number] - number of block
 - Block size [number + bytes]
@@ -201,12 +201,13 @@ Actions:
 1. Info by pointing:
 - Time (UTC) - show age of block (current time minus block generation time)
 - Miner - show label of miner
+- Total block reward - string "Static block reward + Fees"
 
 #### 2.3.2 Ethereum block
 
 - Ethereum block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
-- Bloch hash [string] - hash of block
+- Block hash [string] - hash of block
 - Sha3Uncles [string] - hash of uncles
 - Block size [number + bytes]
 - Nonce [string] - answer to PoW
@@ -237,12 +238,40 @@ Transaction table. Headers:
 - Value [number + currency] - transaction value in ETH
 - Fee [number + currency] - fees per transaction in ETH
 
-TUncle table. Headers:
+Uncle table. Headers:
 
 - Hash [string] - uncle hash
 - Level [number] - uncle position
 - Miner [hash] - hash of miner
 - Reward [number + currency] - rewards of uncle
+
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of block (current time minus block generation time)
+- Extra - show converted hash
+- Miner - show label of miner
+- Gas used - 100% * (gas used / gas limit )
+- Total block reward - string "Static block reward + Uncle block reward + Fees"
+
+
+#### 2.3.3 Ethereum uncle block
+
+- Ethereum uncle block number [number] (header of page)
+- Time (UTC) [date] - time of block generation
+- Uncle hash [string] - hash of uncle block
+- Parent block hash [string] - hash of parent block
+- Uncle level [number] - uncle position
+
+- Miner [hash] - hash of miner
+
+- Uncle inclusion rewards [number + currency] - rewards in ETH for uncle inclusion
+
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of block (current time minus block generation time)
+- Miner - show label of miner
 
 ## 3. Blockchains Page
 
