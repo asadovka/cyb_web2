@@ -30,6 +30,7 @@ Cyber browser - an entrance point to start working with blockchains.
 - Simple and attractive design
 - Intuitive UI
 - Adaptive design for mobile devices
+- all hashes should be easy to copy
 
 ## 3. System requirements
 
@@ -172,12 +173,24 @@ Data which is displayed (including options and user actions):
 - Bloch hash [string] - hash of block
 - Merkle root [string] - hash of merkle tree
 - Block version [number] - number of block
-- Block size [number + number of bytes]
+- Block size [number + bytes]
 - Nonce [string] - answer to PoW
 - Miner [string] - miner hash
 - Difficulty [number] - mining difficulty
-- Static block reward [number + currency] - static reward for block mining
-- Fees [number + currency] - 
+- Static block reward [number + currency] - static reward for block mining in BTC
+- Fees [number + currency] - accumulated fees in BTC
+- Total blobk reward [number + currency] - sum of static reward and fees
+- Transactions[number] - number of transactions in block
+
+Transaction table. Headers:
+
+- Hash [string] - transaction hash
+- Confirmation delay [number + seconds] - time of confirmation minus time of getting into mempool
+- Inputs [number] - number in inputs
+- Input value [number + currency] - summ of all input values in BTC
+- Outputs [number] - number in outputs
+- Output value [number + currency] - summ of all output values in BTC
+- Fee [number + currency] - fees per transaction in BTC
 
 ## 3. Blockchains Page
 
