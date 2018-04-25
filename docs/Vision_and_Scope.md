@@ -156,6 +156,11 @@ There is a pagination function on results page. It should be implemented via but
 
 ### 2.2 Transaction Page
 
+Currently browser shows 3 types of transaction pages:
+
+1. Ethereum (Ethereum Classic) transaction page
+2. Bitcoin (Bitcoin Cash) transaction page
+
 ### 2.3 Block Page
 
 Currently browser shows 3 types of block pages:
