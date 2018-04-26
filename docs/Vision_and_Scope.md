@@ -162,6 +162,25 @@ Currently browser shows 3 types of transaction pages:
 1. Ethereum (Ethereum Classic) transaction page
 2. Bitcoin (Bitcoin Cash) transaction page
 
+#### 2.2.1 Bitcoin transaction
+
+Displayed data:
+
+- Time (UTC) [date] - time of getting transaction to mempool
+- Hash [string] - hash of transaction
+- Block [number] - number of block
+- Size - [number + bytes] - size of transaction in bytes
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+
+
+- Value [number + currency] - total transaction value in BTC
+- Fees [number + currency] - accumulated fees in BTC
+- Fee per byte [number + satoshi/Byte] - fee/size 
+
+Addresses:
+
+
 ### 2.3 Block Page
 
 Currently browser shows 3 types of block pages:
@@ -172,14 +191,14 @@ Currently browser shows 3 types of block pages:
 
 #### 2.3.1 Bitcoin block
 
-Data which is displayed (including options and user actions):
+Displayed data:
 
 - Bitcoin block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
-- Block hash [string] - hash of block
+- Hash [string] - hash of block
 - Merkle root [string] - hash of merkle tree
-- Block version [number] - number of block
-- Block size [number + bytes]
+- Version [number] - number of block
+- Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
 
 
@@ -195,7 +214,7 @@ Data which is displayed (including options and user actions):
 Transaction table. Headers:
 
 - Hash [string] - transaction hash
-- Confirmation delay [number + seconds] - time of confirmation minus time of getting into mempool
+- Time [date] - time of getting into block or confirmation minus time of getting into mempool
 - Inputs [number] - number in inputs
 - Input value [number + currency] - summ of all input values in BTC
 - Outputs [number] - number in outputs
@@ -216,11 +235,13 @@ Actions:
 
 #### 2.3.2 Ethereum block
 
+Displayed data:
+
 - Ethereum block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
-- Block hash [string] - hash of block
+- Hash [string] - hash of block
 - Sha3Uncles [string] - hash of uncles
-- Block size [number + bytes]
+- Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
 - Extra Data [string] - extra mining date
 
@@ -243,7 +264,7 @@ Actions:
 Transaction table. Headers:
 
 - Hash [string] - transaction hash
-- Confirmation delay [number + seconds] - time of confirmation minus time of getting into mempool
+- Time [number + seconds] - time of getting into block or confirmation minus time of getting into mempool
 - From [hash] - hash of input
 - To [hash] - hash of output
 - Value [number + currency] - transaction value in ETH
@@ -271,11 +292,13 @@ Actions:
 
 #### 2.3.3 Ethereum uncle block
 
+Displayed data:
+
 - Ethereum uncle block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
-- Uncle hash [string] - hash of uncle block
-- Parent block hash [string] - hash of parent block
-- Uncle level [number] - uncle position
+- Hash [string] - hash of uncle block
+- Parent hash [string] - hash of parent block
+- Level [number] - uncle position
 
 - Miner [hash] - hash of miner
 
