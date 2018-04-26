@@ -97,7 +97,8 @@ class Content extends React.Component<any, any> {
         const newItems = this.state.items.concat(data.items);
         this.setState({
           items: newItems,
-          hasMoreItems: newItems.length < data.totalHits
+          hasMoreItems: newItems.length < data.totalHits,
+          success: true
         })
       })
   }
