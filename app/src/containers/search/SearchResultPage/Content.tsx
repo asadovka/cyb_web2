@@ -30,230 +30,151 @@ import { Container } from '../../../components/SearchItems/';
 import { SectionTitle, SectionsContainer } from '../../../components/SectionTitle/';
 
 
-    {/*<div>
-    {results(searchResult.items, searchResult.loading, searchResult.error, searchResult.success)}
-    </div>
-    {(searchResult.showMore) && <div style={{ textAlign: 'center', marginTop: 40 }}>
-      <button onClick={() => showMore({ query, chains, entities })} className='button is-large'>show more</button>
-    </div>} */}
+import InfiniteScroll from 'react-infinite-scroller';
 
-const Content = ({
-  searchResult,
-  chains,
-  entities,
-  search,
-  query,
-  showMore
-}) => {
-  console.log(' >> ', searchResult);
-  return (
-    <div>
-    {results(searchResult.items, searchResult.loading, searchResult.error, searchResult.success)}
-    </div>
-  )
-//   console.log(' >> ', searchResult);
+import {Injector} from "../../../injector";
 
-//   return (
-//     <Container>
-//       <EthereumBlock
-//         tx_number={2}
-//         number={1000000}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         size='534'
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//       <EthereumTx
-//         timestamp={(new Date('2015-07-30 06:31')).getTime()}
-//         hash={'0xfc7cf07b83d66c4abaeb522a15719f90e070b16d090b432661811629736e59f8'}
-//         tx_number={1}
-//         fee={1}
-//         value='534'
-//       />
-//     </Container>
-// );
-}
+const {
+  searchApi,
+  http
+} = Injector.of();
 
+class Content extends React.Component<any, any> {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      items: [],
+      loading: false,
+      error: false,
+      success: false,
+      hasMoreItems: true,
+      page: 0
+    }
+    this.loadItems = this.loadItems.bind(this);
+  }
 
-function results(items, loading, error, success) {
-  if (loading) {
-    return (
-       <Container>
-      <div className="tile is-child">
-        <h1 className="title">Loading...</h1>
-      </div>
-      </Container>
-    );
-  } 
+  // componentDidMount() {
+  //   const { query, page, chains, types } = this.props;
+  //   this.props.search(query, page, chains, types);
+  // }
 
-  if (error) {
+  componentWillReceiveProps(nextPorps) {
+    const { query, page, chains, types } = this.props;
+
+    if (nextPorps.query !== query || 
+        nextPorps.page !== page || 
+        nextPorps.chains !== chains || 
+        nextPorps.types !== types) {
+      this.setState({
+        loading: true
+      })
+      searchApi.search(nextPorps.query, 0 , nextPorps.chains, nextPorps.types, 10)
+        .then(data => {
+          this.setState({
+            loading: false,
+            items: data.items,
+            hasMoreItems: data.items.length < data.totalHits
+          })
+        })
+      // this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.types); 
+
+    }
+  }
+
+  loadItems(page) {
+    // console.log('loadItems ', page);
+    const {
+       query,
+       // page,
+       chains,
+       types
+    } = this.props;
+
+    searchApi.search(query, page - 1 , chains, types, 10)
+      .then(data => {
+        //console.log(data);
+        const newItems = this.state.items.concat(data.items);
+        this.setState({
+          items: newItems,
+          hasMoreItems: newItems.length < data.totalHits
+        })
+      })
+  }
+
+  componentDidMount() {
+    // const page = 0;
+    // searchApi.search('0x7d5a4369273c723454ac137f48a4f142b097aa2779464e6505f1b1c5e37b5382', page, null, null, 10)
+    //   .then(data => {
+    //     //console.log(data);
+    //     const newItems = this.state.items.concat(data.items);
+    //     this.setState({
+    //       loading: false,
+    //       items: newItems,
+    //       hasMoreItems: newItems.length < data.totalHits
+    //     })
+    //   })
+  }
+
+  render() {
+    const {
+      items,
+      loading,
+      error,
+      success
+    } = this.state;
+
+    if (loading) {
+      return (
+         <Container>
+        <div className="tile is-child">
+          <h1 className="title">Loading...</h1>
+        </div>
+        </Container>
+      );
+    } 
+
+    if (error) {
+      return (
+        <Container>
+        <div className="tile is-child">
+          <h1 className="title">Some error occurred, please try later.</h1>
+        </div>
+        </Container>
+      );
+    }
+
+    if (success && !items.length) {
+      return (
+         <Container >
+        <div className="tile is-child">
+          <h1 className="title">Nothing is found in cyber•Space.</h1>
+        </div>
+        </Container>
+      );
+    }
+
     return (
       <Container>
-      <div className="tile is-child">
-        <h1 className="title">Some error occurred, please try later.</h1>
-      </div>
-      </Container>
-    );
-  }
-
-  if (success && !items.length) {
-    return (
-       <Container>
-      <div className="tile is-child">
-        <h1 className="title">Nothing is found in cyber•Space.</h1>
-      </div>
-      </Container>
-    );
-  }
-
-  return (
-    <Container>
-      {items.map(item => (
+      <InfiniteScroll
+                pageStart={0}
+                loadMore={this.loadItems}
+                hasMore={this.state.hasMoreItems}
+                loader={<div>loading</div>}>
+        {items.map((item, i) => (
         <RenderByType 
-          key={JSON.stringify(item)}
+          key={i}
           chain={item.chain} 
           entity={item.entity} 
           data={item.data} 
         />
       ))}
-      {/*<RenderByType 
-        key={1}
-        chain={'ethereum'} 
-        entity={'block'} 
-        data={{ 
-          number: 5000000, 
-          timestamp: 1517319693, 
-          hash: '0x7d5a4369273c723454ac137f48a4f142b097aa2779464e6505f1b1c5e37b5382', 
-          txNumber: 109 
-        }} 
-      />
-      <RenderByType 
-        key={2}
-        chain={'ethereum'} 
-        entity={'tx'} 
-        data={{ 
-          hash: '0x569c5b35f203ca6db6e2cec44bceba756fad513384e2bd79c06a8c0181273379', 
-          value: 3.18096329,
-          timestamp: 1517319693, // ???
-          from: "0x0681d8db095565fe8a346fa0277bffde9c0edbbf",
-          to: "0xd850942ef8811f2a866692a623011bde52a462c1",
-        }} 
-      />
-      <RenderByType 
-        key={3}
-        chain={'ethereum'} 
-        entity={'uncle'} 
-        data={{ 
-          number: 5000000, 
-          hash: '0x569c5b35f203ca6db6e2cec44bceba756fad513384e2bd79c06a8c0181273379', 
-          // Uncle position ??
-          timestamp: 1517319693, // ???
-        }} 
-      />
-      <RenderByType 
-        key={4}
-        chain={'ethereum'} 
-        entity={'address_summary'} 
-        data={{ 
-          hash: '0x569c5b35f203ca6db6e2cec44bceba756fad513384e2bd79c06a8c0181273379', 
-          value: 45, // ??
-          timestamp: 1517319693, // ???
-        }} 
-      />*/}
-    </Container>
-  );
-  
-  // const blocks = items.filter(item => item.entity === 'BLOCK');
-  // const transactions = items.filter(item => item.entity === 'TRANSACTION');
 
-
-  // return (
-  //   <SectionsContainer>
-  //     {blocks.length > 0 && (<div>
-  //       <SectionTitle>Blocks</SectionTitle>
-  //       <div className='columns is-multiline'>
-  //       {blocks.map((item, index) => (
-  //         <div key={JSON.stringify(item)} className="column is-one-third">
-  //           <ul style={{ overflow: 'hidden' }}>
-  //             <li><RenderByType chain={item.chain} entity={item.entity} data={item.data} /></li>
-  //           </ul>
-  //         </div>
-  //       ))}
-  //       </div>
-  //     </div>)}
-
-  //     {transactions.length > 0 && (<div>
-  //       <SectionTitle>Transactions</SectionTitle>
-  //       <div className='columns is-multiline'>
-  //       {transactions.map((item, index) => (
-  //         <div key={JSON.stringify(item)} className="column is-one-third">
-  //           <ul style={{ overflow: 'hidden' }}>
-  //             <li><RenderByType chain={item.chain} entity={item.entity} data={item.data} /></li>
-  //           </ul>
-  //         </div>
-  //       ))}
-  //       </div>
-  //     </div>)}
-  //   </SectionsContainer>
-  //  ); 
+      </InfiniteScroll>
+      </Container>
+    );
+  }
 }
-
 
 
 
@@ -298,6 +219,6 @@ export default withRouter(connect(((state, ownProps) => ({
     query: ownProps.location.query.q,
     page: ownProps.location.query.page || 0,
     chains: ownProps.location.query.chains,
-    entities: ownProps.location.query.entities  
+    types: ownProps.location.query.types 
 })), { showMore })(Content));
 

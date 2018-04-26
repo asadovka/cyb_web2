@@ -6,30 +6,28 @@ import { search } from '../../../modules/search';
 
 import Content from './Content';
 import LeftMenu from './LeftMenu';
-import Tabs from './Tabs';
 
 import { FilterPanel } from '../../../components/searchPage/'
 import { Layout, LayoutSideBar, LayoutContent} from '../../../components/searchPage/Layout/';
 
 
-
 class SearchResultPageComponent extends React.Component {
 
-  componentDidMount() {
-    const { query, page, chains, types } = this.props;
-    this.props.search(query, page, chains, types);
-  }
+  // componentDidMount() {
+  //   const { query, page, chains, types } = this.props;
+  //   this.props.search(query, page, chains, types);
+  // }
 
-  componentWillReceiveProps(nextPorps) {
-    const { query, page, chains, types } = this.props;
+  // componentWillReceiveProps(nextPorps) {
+  //   const { query, page, chains, types } = this.props;
 
-    if (nextPorps.query !== query || 
-        nextPorps.page !== page || 
-        nextPorps.chains !== chains || 
-        nextPorps.types !== types) {
-      this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.types);    
-    }
-  }
+  //   if (nextPorps.query !== query || 
+  //       nextPorps.page !== page || 
+  //       nextPorps.chains !== chains || 
+  //       nextPorps.types !== types) {
+  //     this.props.search(nextPorps.query, nextPorps.page, nextPorps.chains, nextPorps.types);    
+  //   }
+  // }
 
   render() {
     return (
