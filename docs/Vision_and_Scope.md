@@ -171,14 +171,34 @@ Displayed data:
 - Block [number] - number of block
 - Size - [number + bytes] - size of transaction in bytes
 - State [string] - "Confirmed", "Mempool", "Finalized"
-
-
+- Confirmations [number] - number of confirmations (for confirmed or finalized transactions)
 
 - Value [number + currency] - total transaction value in BTC
 - Fees [number + currency] - accumulated fees in BTC
 - Fee per byte [number + satoshi/Byte] - fee/size 
 
-Addresses:
+Address table. Headers:
+
+1. Inputs [number]:
+- Hash [string] - contract hash
+- Value [number + currency] - input value in BTC
+- Fee [number + currency] - fees in BTC
+
+1. Outputs [number]:
+- Hash [string] - contract hash
+- Value [number + currency] - input value in BTC
+- Fee [number + currency] - fees in BTC
+
+Transaction data:
+
+- Input data [string] - input scripts
+- Output data [string] - output scripts
+
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of transaction (current time minus mempool)
+- Confirmations - first confirmation time minus mempool time
 
 
 ### 2.3 Block Page
