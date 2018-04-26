@@ -38,7 +38,7 @@ class EthereumUncle extends React.Component {
 
   componentDidMount() {
     const { hash } = this.props;
-    searchApi.getEthereumUncle(hash)
+    searchApi.getEthereumClassicUncle(hash)
       .then(data => {
         this.setState({
           ethereumUncleBlock: data
@@ -64,7 +64,7 @@ class EthereumUncle extends React.Component {
     return (
       <div>
         <Head>
-          <Title inline={true}>Ethereum Block #{ethereumUncleBlock.number}</Title>
+          <Title inline={true}>Ethereum Uncle Block #{ethereumUncleBlock.number}</Title>
         </Head>
         <SubTitle>Overview</SubTitle>
         <Details>

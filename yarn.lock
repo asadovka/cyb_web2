@@ -2091,9 +2091,9 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-cyber-search-js@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/cyber-search-js/-/cyber-search-js-0.1.12.tgz#85220b31951c563038543d8689c8baa74ff1023d"
+cyber-search-js@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/cyber-search-js/-/cyber-search-js-0.1.13.tgz#6b7431d854e7e0364c5b0b47c7bc0b65c142f703"
   dependencies:
     "@types/history" "3.2.2"
     "@types/node" "8.0.30"
