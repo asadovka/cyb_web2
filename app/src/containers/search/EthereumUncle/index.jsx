@@ -16,44 +16,55 @@ import {
   FlexContainer
 } from '../../../components/ItemsDetails/';
 
+
+import {Injector} from "../../../injector";
+
+const {
+  searchApi,
+  http
+} = Injector.of();
+
 class EthereumUncle extends React.Component {
   constructor(props) {
     super(props);
-    this.previous = this.previous.bind(this);
-    this.next = this.next.bind(this);    
+
+    // this.previous = this.previous.bind(this);
+    // this.next = this.next.bind(this);    
+
+    this.state = {
+      ethereumUncleBlock: null
+    }
   }
 
   componentDidMount() {
-    // const {hash, getData} = this.props;
-
-    // getData(hash);
+    const { hash } = this.props;
+    searchApi.getEthereumUncle(hash)
+      .then(data => {
+        this.setState({
+          ethereumUncleBlock: data
+        })
+      })
   }
 
-  previous() {
-    const { number } = this.props.ethereumUncleBlock;
-    browserHistory.push(`/ethereum/block/${(+number) - 1}`)
-  }
+  // previous() {
+  //   const { number } = this.props.ethereumUncleBlock;
+  //   browserHistory.push(`/ethereum/block/${(+number) - 1}`)
+  // }
 
-  next() {
-    const { number } = this.props.ethereumUncleBlock;
-    browserHistory.push(`/ethereum/block/${(+number) + 1}`)
-  }
+  // next() {
+  //   const { number } = this.props.ethereumUncleBlock;
+  //   browserHistory.push(`/ethereum/block/${(+number) + 1}`)
+  // }
 
   render() {
-    const {hash, ethereumUncleBlock } = this.props;
+    const { ethereumUncleBlock } = this.state;
 
-    // const rows = this.props.transactions.map(t => (
-    //   <tr>
-    //     <td>{t.txHash}</td>
-    //   </tr>
-    // ))
-   
+    if (!ethereumUncleBlock) return null;
+
     return (
       <div>
         <Head>
-          <Button onClick={this.previous}>previous</Button>
           <Title inline={true}>Ethereum Uncle Block #{ethereumUncleBlock.number}</Title>
-          <Button onClick={this.next}>next</Button>
         </Head>
         <SubTitle>Overview</SubTitle>
         <Details>
@@ -71,7 +82,7 @@ class EthereumUncle extends React.Component {
           </DetailsRow>
           <DetailsRow>
             <Label>uncle level</Label>
-            <Value>{ethereumUncleBlock.position}</Value>
+            <Value>{ethereumUncleBlock.position + 1}</Value>
           </DetailsRow>
         </Details>
 
@@ -99,19 +110,6 @@ export default withRouter(
   connect(
     (state, ownProps) => ({
       hash: ownProps.routeParams.hash,
-      // transactions: [
-      //   { hash: '27c4d937dca276fb2b61e579902e8a876fd5b5abc17590410ced02d5a9f8e483'}
-      // ]
-      ethereumUncleBlock: {
-        timestamp: 1517325544,
-        number: 5000399,
-        blockNumber: 5000401,
-        position: 0,
-        uncleReward: "2.25",
-        miner: '0x52bc44d5378309ee2abf1539bf71de1b7d7be3b5',
-        hash: '0xf3b46e902224d0a81fa43ff43f99ec67d5880ea8706d19a30197769dc7ac090d',
-        blockHash: '0x4dbe093a59f9c9afe58006dac3fe21fe701932176b77f21ce2372e8d2dc64ebe'
-      }
     }),
     // { getData: getEthereumAddress }
   )(EthereumUncle)
