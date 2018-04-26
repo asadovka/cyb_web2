@@ -30,7 +30,8 @@ Cyber browser - an entrance point to start working with blockchains.
 - Simple and attractive design
 - Intuitive UI
 - Adaptive design for mobile devices
-- all hashes should be easy to copy
+- Display IPFS hash for all objects 
+- All hashes should be easy to copy
 
 ## 3. System requirements
 
@@ -208,6 +209,11 @@ Actions:
 - Miner - show label of miner
 - Total block reward - string "Static block reward + Fees"
 
+2. Clicking
+- Transaction table - expanding tx inputs and outputs by clicking on transaction row (like https://tradeblock.com/bitcoin/block/400000)
+- Next & Previous buttons (top of the page)
+- Hash string - copy string in buffer 
+
 #### 2.3.2 Ethereum block
 
 - Ethereum block number [number] (header of page)
@@ -259,6 +265,9 @@ Actions:
 - Gas used - 100% * (gas used / gas limit )
 - Total block reward - string "Static block reward + Uncle block reward + Fees"
 
+2. Clicking
+- Next & Previous buttons (top of the page)
+- Hash string - copy string in buffer 
 
 #### 2.3.3 Ethereum uncle block
 
@@ -277,6 +286,10 @@ Actions:
 1. Info by pointing:
 - Time (UTC) - show age of block (current time minus block generation time)
 - Miner - show label of miner
+
+2. Clicking
+- Next & Previous buttons (top of the page)
+- Hash string - copy string in buffer 
 
 ## 3. Blockchains Page
 
