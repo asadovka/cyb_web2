@@ -200,6 +200,12 @@ Actions:
 - Time (UTC) - show age of transaction (current time minus mempool)
 - Confirmations - first confirmation time minus mempool time
 
+2. Clicking
+- Hash string - copy string in buffer 
+
+3. Labeling 
+- labeling via button "label it"
+
 #### 2.2.2 Ethereum transaction
 
 Displayed data:
@@ -232,14 +238,20 @@ Address table. Headers:
 
 Transaction data:
 
-- Input data [string] - input scripts
-- Output data [string] - output scripts
+- Input data [string] - hash
+- OLogs [string] - logs of transaction
 
 Actions:
 
 1. Info by pointing:
 - Time (UTC) - show age of transaction (current time minus mempool)
 - Confirmations - first confirmation time minus mempool time
+
+2. Clicking
+- Hash string - copy string in buffer 
+
+3. Labeling 
+- labeling via button "label it"
 
 ### 2.3 Block Page
 
