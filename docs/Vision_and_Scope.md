@@ -129,9 +129,9 @@ Search results in general are shown as a list of object preview. Each object pre
 1. Transaction:
 - Hash
 - Value
-- Time of finalization (or time of confirmation or "Mempool" status)
-- "From" address hash (Only for Ethereum and Ethereum Classic)
-- "To" address hash (Only for Ethereum and Ethereum Classic) 
+- Time (finalization, or time of confirmation or "Mempool" status)
+- "Sender" address hash (Only for Ethereum and Ethereum Classic)
+- "Receiver" address hash (Only for Ethereum and Ethereum Classic) 
 
 2. Block
 - Block number
