@@ -174,7 +174,7 @@ Displayed data:
 - Confirmations [number] - number of confirmations (for confirmed or finalized transactions)
 
 - Value [number + currency] - total transaction value in BTC
-- Fees [number + currency] - accumulated fees in BTC
+- Fee [number + currency] - accumulated fees in BTC
 - Fee per byte [number + satoshi/Byte] - fee/size 
 
 Address table. Headers:
@@ -200,6 +200,46 @@ Actions:
 - Time (UTC) - show age of transaction (current time minus mempool)
 - Confirmations - first confirmation time minus mempool time
 
+#### 2.2.2 Ethereum transaction
+
+Displayed data:
+
+- Time (UTC) [date] - time of getting transaction to mempool
+- Hash [string] - hash of transaction
+- Block [number] - number of block
+- Nonce [number] - nonce of transaction
+- Size - [number + bytes] - size of transaction in bytes
+- State [string] - "Confirmed", "Mempool", "Finalized"
+- Confirmations [number] - number of confirmations (for confirmed or finalized transactions)
+
+- Value [number + currency] - total transaction value in ETH
+- Fee [number + currency] - accumulated fees in ETH
+- Gas price [number + wei] - price of gas
+- Gas used [number] - used gas
+- Gas limit [number] - limit of gas
+
+Address table. Headers:
+
+1. Sender [number]:
+- Hash [string] - contract hash
+- Value [number + currency] - input value in ETH
+- Fee [number + currency] - fees in ETH
+
+1. Receiver [number]:
+- Hash [string] - contract hash
+- Value [number + currency] - input value in ETH
+- Fee [number + currency] - fees in ETH
+
+Transaction data:
+
+- Input data [string] - input scripts
+- Output data [string] - output scripts
+
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of transaction (current time minus mempool)
+- Confirmations - first confirmation time minus mempool time
 
 ### 2.3 Block Page
 
