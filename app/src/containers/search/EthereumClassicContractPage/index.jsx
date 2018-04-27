@@ -37,7 +37,7 @@ class EthereumTxPage extends React.Component {
 
   componentDidMount() {
     const { hash } = this.props;
-    searchApi.getEthereumContract(hash)
+    searchApi.getEthereumClassicContract(hash)
       .then(data => {
         this.setState({ data })
       })
@@ -56,7 +56,7 @@ class EthereumTxPage extends React.Component {
 //        <Title inline={true}>Ethereum Contract</Title>
 
       <div>
-        <Title>Ethereum Contract</Title>
+        <Title>Ethereum Classic Contract</Title>
         <Head>
           <div>
             <Robohash hash={hash} />

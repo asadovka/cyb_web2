@@ -16,7 +16,7 @@ const EthereumAddress = ({ hash, first_activity_date, confirmed_balance }) => {
       <ItemContainer>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/address/${hash}`} />
+          <LinkHash value={hash} to={`/ethereum/contract/${hash}`} />
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Value:</Label>

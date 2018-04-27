@@ -16,7 +16,7 @@ const EthereumBlock = ({ number, hash, tx_number, timestamp }) => {
       <ItemContainer>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/block/${number}`} />
+          <LinkHash value={hash} to={`/ethereum_classic/block/${number}`} />
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Transaction:</Label>

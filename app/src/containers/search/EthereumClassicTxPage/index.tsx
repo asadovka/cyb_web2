@@ -5,6 +5,20 @@ import withRouter from "react-router/es/withRouter";
 import { getEthereumClassicTx } from '../../../modules/search';
 import { browserHistory } from 'react-router'
 
+import { Title } from '../../../components/Title/';
+import Container from '../../../components/Container/';
+
+import { 
+  Head, SubTitle, Button,
+  Details, DetailsRow, Label, Value,
+  TLink, TransactionsTable,
+  EPrice,
+  FlexContainer
+} from '../../../components/ItemsDetails/';
+
+import moment from 'moment'
+
+
 class EthereumClassicTxPage extends React.Component {
   componentDidMount() {
     const {txHash, getData} = this.props;
@@ -16,64 +30,84 @@ class EthereumClassicTxPage extends React.Component {
     const {data} = this.props;
 
     return (
-      <div>
-        <h2 className='title'>Ethereum Classic Transaction</h2>
-        <button className='button' onClick={browserHistory.goBack}>back</button>
-        <table className='table is-striped is-fullwidth'>
-          <tbody>
-            <tr>
-              <td>block hash</td>
-              <td>{data.block_hash}</td>
-            </tr>
-            <tr>
-              <td>block number</td>
-              <td>{data.block_number}</td>
-            </tr>
-            <tr>
-              <td>from</td>
-              <td>{data.from}</td>
-            </tr>
-            <tr>
-              <td>gas limit</td>
-              <td>{data.gas_limit}</td>
-            </tr>
-            <tr>
-              <td>gas price</td>
-              <td>{data.gas_price}</td>
-            </tr>
-            <tr>
-              <td>gas used</td>
-              <td>{data.gas_used}</td>
-            </tr>
-            <tr>
-              <td>hash</td>
-              <td>{data.hash}</td>
-            </tr>
-            <tr>
-              <td>input</td>
-              <td>{data.input}</td>
-            </tr>
-            <tr>
-              <td>timestamp</td>
-              <td>{data.timestamp && data.timestamp.epochSecond}</td>
-            </tr>
-            <tr>
-              <td>to</td>
-              <td>{data.to}</td>
-            </tr>
-            <tr>
-              <td>transaction index</td>
-              <td>{data.transaction_index}</td>
-            </tr>
-            <tr>
-              <td>value</td>
-              <td>{data.value}</td>
-            </tr>
-          </tbody>
-        </table>
+      <Container>
+        <div style={{ textAlign: 'center' }}>
+          <Title inline={true}>Ethereum Classic Transaction</Title>
+        </div>
+        <SubTitle>Overview</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>time(UTC)</Label>
+            <Value>{data.blockTime && (moment(data.blockTime * 1000).fromNow() + ' (' + moment(data.blockTime * 1000).format('') + ')')}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>transaction hash</Label>
+            <Value>{data.hash}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>block</Label>
+            <Value>{data.blockNumber}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>nonce</Label>
+            <Value>{data.nonce}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>status</Label>
+            <Value>Confirmed (???, ??? confirmations)</Value>
+          </DetailsRow>
+        </Details>
+
+        <SubTitle>Details</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>Type</Label>
+            <Value>???</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>from</Label>
+            <Value>{data.from}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>to</Label>
+            <Value>{data.to} ???</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>value</Label>
+            <Value>{data.value}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>fee</Label>
+            <Value>{data.fee}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>gas price</Label>
+            <Value>{data.gasPrice}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>gas used</Label>
+            <Value>{data.gasUsed}</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>gas limit</Label>
+            <Value>{data.gasLimit}</Value>
+          </DetailsRow>
+        </Details>
+
+        <SubTitle>Data</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>input</Label>
+            <Value>???</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>logs</Label>
+            <Value>???</Value>
+          </DetailsRow>
+        </Details>
 
 
-      </div>
+      </Container>
     );
   }
 }
