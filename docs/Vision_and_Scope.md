@@ -163,8 +163,11 @@ Currently browser shows 2 types of contract pages:
 #### 2.1.1 Bitcoin contract
 
 Displayed data:
+- Robohash logo
+- QR code of address hash
+
 - Time (UTC) [date] - time of contract getting into blockchain
-- Last activity [string] - tcurrent time minus time of last transaction
+- Last activity [string] - current time minus time of last transaction
 - Hash [string] - hash of address
 
 - Transactions [number] - number of transactions in contract
@@ -206,6 +209,7 @@ Actions:
 
 1. Info by pointing:
 - Time (UTC) - show age of transaction (current time minus mempool)
+- Address - show label of address
 
 2. Clicking
 - Hash string - copy string in buffer 
@@ -214,6 +218,91 @@ Actions:
 3. Labeling 
 - labeling via button "label it"
 
+#### 2.1.2 Ethereum contract
+
+Displayed data:
+- Robohash logo
+- QR code of address hash
+
+- Time (UTC) [date] - time of contract getting into blockchain
+- Last activity [string] - current time minus time of last transaction
+- Hash [string] - hash of address
+
+- Transactions [number] - number of transactions in contract
+- Unconfirmed transactions [number] - number of transactions in mempool
+- Accumulated income [number + currency] - received ETH
+- Income to claim [number + currency] - ETH available to withdraw 
+- Pending income [number + currency] - ETH in mempool transactions
+
+Charts:
+
+1. Valuation tab (Regular graph, all above zero):
+- Valuation / Time - balance of contract on each period of time
+
+2. Transactions tab (incoming tx - above zero, outcoming - below):
+- Transactions / Time - activity of transactions by contract on each period of time
+
+Transactions and blocks;
+
+1. Transactions tab:
+- Hash [string] - hash of transaction
+- Block [number] - number of block
+- Sender[hash]- hash of "from" address
+- Sent [number + currency] - total input balance in ETH
+- Receiver [hash]- hash of "to" address
+- Received [number + currency] - total output balance in ETH
+- Fee [number + currency] - accumulated fees in ETH
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+4. Internal transactions tab (if available):
+- Hash [string] - hash of transaction
+- Block [number] - number of block
+- Sender[hash]- hash of "from" address
+- Sent [number + currency] - total input balance in ETH
+- Receiver [hash]- hash of "to" address
+- Received [number + currency] - total output balance in ETH
+- Fee [number + currency] - accumulated fees in ETH
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+3. Tokens tab:
+- Token [string] - token name
+- Received [number + currency] - received tokens
+- Sent [number + currency] - sent tokens
+- Balance [number + currency] - sent minus received tokens
+
+4. Mined blocks tab (for miner address only):
+- Block [number] - number of mined block
+- Hash [string] - block hash
+- Transactions [number] - number of transactions in mined block
+- Time [date] - time of block generation
+- Reward [number + currency] - rewards for block in ETH
+
+5. Mined uncles tab (if available):
+- Block [number] - number of mined uncle
+- Hash [string] - uncle hash
+- Time [date] - time of block generation
+- Reward [number + currency] - rewards for uncle in ETH
+
+Code:
+
+Contract code:
+- Contract name [string] - name of contract
+- Compiler version [string] - version of compiler
+Source code - code of contract
+ABI - contract ABI
+Swarm code - link in ethereum swarm
+ 
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of transaction (current time minus mempool)
+- Address - show label of address
+
+2. Clicking
+- Hash string - copy string in buffer 
+
+3. Labeling 
+- labeling via button "label it"
 
 ### 2.2 Transaction Page
 
