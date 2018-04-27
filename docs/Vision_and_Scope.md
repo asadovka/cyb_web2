@@ -155,9 +155,69 @@ There is a pagination function on results page. It should be implemented via but
 
 ### 2.1 Contract Page
 
+Currently browser shows 2 types of contract pages:
+
+1. Ethereum (Ethereum Classic) contract page
+2. Bitcoin (Bitcoin Cash) contract page
+
+#### 2.1.1 Bitcoin contract
+
+Displayed data:
+- Time (UTC) [date] - time of contract getting into blockchain
+- Last activity [string] - tcurrent time minus time of last transaction
+- Hash [string] - hash of address
+
+- Transactions [number] - number of transactions in contract
+- Unconfirmed transactions [number] - number of transactions in mempool
+- Accumulated income [number + currency] - received BTC
+- Income to claim [number + currency] - BTC available to withdraw 
+- Pending income [number + currency] - BTC in mempool transactions
+
+Charts:
+
+1. Valuation tab (Regular graph, all above zero):
+- Valuation / Time - balance of contract on each period of time
+
+2. Transactions tab (incoming tx - above zero, outcoming - below):
+- Transactions / Time - activity of transactions by contract on each period of time
+
+Transactions and blocks;
+
+1. Transactions tab:
+- Hash [string] - hash of transaction
+- Block [number] - number of block
+- Sender[number]- number of inputs
+- Sent [number + currency] - total input balance in BTC
+- Receiver [number]- number of outputs
+- Received [number + currency] - total output balance in BTC
+- Fee [number + currency] - accumulated fees in BTC
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+2. Mined blocks (for miner address only):
+- Block [number] - number of mined block
+- Transactions [number] - number of transactions in mined block
+- Time [date] - time of block generation
+- Reward [number + currency] - rewards for block in BTC
+
+Code:
+- bitcoin scripts
+
+Actions:
+
+1. Info by pointing:
+- Time (UTC) - show age of transaction (current time minus mempool)
+
+2. Clicking
+- Hash string - copy string in buffer 
+- Transaction row - expand transaction details (inputs and outputs)
+
+3. Labeling 
+- labeling via button "label it"
+
+
 ### 2.2 Transaction Page
 
-Currently browser shows 3 types of transaction pages:
+Currently browser shows 2 types of transaction pages:
 
 1. Ethereum (Ethereum Classic) transaction page
 2. Bitcoin (Bitcoin Cash) transaction page
@@ -179,12 +239,12 @@ Displayed data:
 
 Address table. Headers:
 
-1. Inputs [number]:
+1. Sender [number]- number of inputs:
 - Hash [string] - contract hash
 - Value [number + currency] - input value in BTC
 - Fee [number + currency] - fees in BTC
 
-1. Outputs [number]:
+1. Receiver [number]- number of outputs:
 - Hash [string] - contract hash
 - Value [number + currency] - input value in BTC
 - Fee [number + currency] - fees in BTC
@@ -278,7 +338,7 @@ Displayed data:
 - Difficulty [number] - mining difficulty
 - Static block reward [number + currency] - static reward for block mining in BTC
 - Fees [number + currency] - accumulated fees in BTC
-- Total blobk reward [number + currency] - sum of static reward and fees
+- Total blobk reward [number + currency] - sum of static reward and fees in BTC
 
 
 - Transactions[number] - number of transactions in block
