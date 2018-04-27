@@ -7,12 +7,13 @@ import {
   Container, SideBar, Content,
   Label,
   Panel,
-  Code,
   Control,
   TotalCost,
   CreateButton,
   FieldsTable
 } from '../../../components/chaingear/';
+
+import Code from '../../../components/SolidityHighlight/';
 
 import { chaingear } from 'cyber-search-js';
 import AddField from './AddField';

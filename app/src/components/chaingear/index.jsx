@@ -40,10 +40,7 @@ export const Panel = ({ children, title }) => (
   //   {children}
   // </div>
 
-export const Code = ({ children }) => (
-  <textarea className={styles.code} rows="25" cols="60" value={children} onChange={()=>{}}>
-  </textarea>
-);
+
 
 
 export const Control = ({ children, title }) => (
