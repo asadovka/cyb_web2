@@ -64,7 +64,7 @@ class EthereumUncle extends React.Component {
     return (
       <div>
         <Head>
-          <Title inline={true}>Ethereum Block #{ethereumUncleBlock.number}</Title>
+          <Title inline={true}>Ethereum Uncle Block #{ethereumUncleBlock.number}</Title>
         </Head>
         <SubTitle>Overview</SubTitle>
         <Details>

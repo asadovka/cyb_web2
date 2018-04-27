@@ -25,21 +25,40 @@ const procent = (a, b) => {
   return numeral(100 * min / max).format('0.00') + '%';
 }
 
+import {Injector} from "../../../injector";
+
+const {
+  searchApi,
+} = Injector.of();
+
 class EthereumClassicBlockPage extends React.Component {
   constructor(props) {
     super(props);
     this.previous = this.previous.bind(this);
-    this.next = this.next.bind(this);    
+    this.next = this.next.bind(this);
+    this.loadTransactions = this.loadTransactions.bind(this);
+    this.state = {
+      transactions: []
+    }
+  }
+
+  loadTransactions(blockNumber) {
+    searchApi.getEthereumClassicTxsByBlockNumber(blockNumber, 0, 10)
+      .then(data => {
+        this.setState({ transactions: data })
+      })    
   }
 
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 
     getData(blockNumber);
+    this.loadTransactions(blockNumber);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.blockNumber !== nextProps.blockNumber) {
       this.props.getData(nextProps.blockNumber);
+      this.loadTransactions(nextProps.blockNumber)
     }
   }
 
@@ -54,11 +73,12 @@ class EthereumClassicBlockPage extends React.Component {
   }
 
   render() {
-    const {data, transactions, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
+    const {data, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
     
+    const { transactions } = this.state;
+
     if (!data) return null;
 
-    // console.log('>> ', ethereumBlock)
     const tx_fees_usd = numeral((+data.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
       <div className='container' style={{ width: 1090 }}>
@@ -154,7 +174,7 @@ class EthereumClassicBlockPage extends React.Component {
         <SubTitle>Transaction</SubTitle>
         <FlexContainer>
           <Tabs value={1} onChange={() => {}}>
-            <Tab label={`transaction: ${data.tx_number}`} value={1}></Tab>
+            <Tab label={`transaction: ${data.txNumber}`} value={1}></Tab>
             {/*<Tab label={'uncle blocks: 0'} value={2}></Tab>*/}
           </Tabs>
           {/*<div>
@@ -173,7 +193,7 @@ class EthereumClassicBlockPage extends React.Component {
             </tr>
           </thead>
           <thead>
-            {transactions.splice(0, 10).map(t => (
+            {transactions.slice(0, 10).map(t => (
               <tr key={t.hash}>
                 <td><TLink hash={t.hash}/></td>
                 <td>{data.timestamp && moment(data.timestamp * 1000).fromNow()}</td>
