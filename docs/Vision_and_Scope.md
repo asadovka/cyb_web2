@@ -414,23 +414,31 @@ Currently browser shows 3 types of block pages:
 
 Displayed data:
 
-- Bitcoin block number [number] (header of page)
+- Block number [number] (header of page)
+
+General
+
 - Time (UTC) [date] - time of block generation
 - Hash [string] - hash of block
-- Merkle root [string] - hash of merkle tree
-- Version [number] - number of block
 - Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
+- Transactions[number] - number of transactions in block
 
+Blockchain specific
+
+- Merkle root [string] - hash of merkle tree
+- Version [number] - number of block
+
+Mining
 
 - Miner [string] - miner hash
 - Difficulty [number] - mining difficulty
+
+Rewards
+
 - Static block reward [number + currency] - static reward for block mining in BTC
 - Fees [number + currency] - accumulated fees in BTC
 - Total blobk reward [number + currency] - sum of static reward and fees in BTC
-
-
-- Transactions[number] - number of transactions in block
 
 Transaction table. Headers:
 
@@ -459,28 +467,34 @@ Actions:
 Displayed data:
 
 - Ethereum block number [number] (header of page)
+
+General
+
 - Time (UTC) [date] - time of block generation
 - Hash [string] - hash of block
-- Sha3Uncles [string] - hash of uncles
 - Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
+- Transactions [number] - number of transactions in block
+
+Blockchain specific
+
+- Sha3Uncles [string] - hash of uncles
 - Extra Data [string] - extra mining date
-
-
-- Miner [string] - miner hash
-- Difficulty [number] - mining difficulty
+- Uncles [number] - number of uncle blocks
 - Gas used [number] - used gas
 - Gas limit [number] - limit of gas
 
+Mining
+
+- Miner [string] - miner hash
+- Difficulty [number] - mining difficulty
+
+Rewards
 
 - Static block reward [number + currency] - static reward for block mining in ETH
 - Fees [number + currency] - accumulated fees in ETH
 - Uncle inclusion rewards [number + currency] - rewards in ETH for uncle inclusion
 - Total blobk reward [number + currency] - sum of static reward, fees and uncle inclusion
-
-
-- Transactions [number] - number of transactions in block
-- Uncle blocks [number] - number of uncle blocks
 
 Transaction table. Headers:
 
