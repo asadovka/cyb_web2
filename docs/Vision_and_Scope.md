@@ -436,10 +436,10 @@ Transaction table. Headers:
 
 - Hash [string] - transaction hash
 - Time [date] - time of getting into block or confirmation minus time of getting into mempool
-- Inputs [number] - number in inputs
-- Input value [number + currency] - summ of all input values in BTC
-- Outputs [number] - number in outputs
-- Output value [number + currency] - summ of all output values in BTC
+- Senders [number] - number in inputs
+- Sent[number + currency] - summ of all input values in BTC
+- Receivers [number] - number in outputs
+- Received [number + currency] - summ of all output values in BTC
 - Fee [number + currency] - fees per transaction in BTC
 
 Actions:
@@ -488,7 +488,7 @@ Transaction table. Headers:
 - Time [number + seconds] - time of getting into block or confirmation minus time of getting into mempool
 - From [hash] - hash of input
 - To [hash] - hash of output
-- Value [number + currency] - transaction value in ETH
+- Sent [number + currency] - transaction value in ETH
 - Fee [number + currency] - fees per transaction in ETH
 
 Uncle table. Headers:
