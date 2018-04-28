@@ -518,6 +518,7 @@ Displayed data:
 - Ethereum uncle block number [number] (header of page)
 - Time (UTC) [date] - time of block generation
 - Hash [string] - hash of uncle block
+- Parent block [number] - number of parent block
 - Parent hash [string] - hash of parent block
 - Level [number] - uncle position
 
