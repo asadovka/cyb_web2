@@ -315,28 +315,34 @@ Currently browser shows 2 types of transaction pages:
 
 Displayed data:
 
+General
+
 - Time (UTC) [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
+- Value [number + currency] - total transaction value in BTC
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+Blockchain specific
+
 - Block [number] - number of block
 - Size - [number + bytes] - size of transaction in bytes
-- State [string] - "Confirmed", "Mempool", "Finalized"
 - Confirmations [number] - number of confirmations (for confirmed or finalized transactions)
+- Inputs [number] - number of input addresses
+- Outputs [number] - number of output addresses
 
-- Value [number + currency] - total transaction value in BTC
+Fees
+
 - Fee [number + currency] - accumulated fees in BTC
 - Fee per byte [number + satoshi/Byte] - fee/size 
+- Fee per weight unit [number + satoshi/WU] - fee/weight unit 
 
 Address table. Headers:
 
-1. Sender [number]- number of inputs:
-- Hash [string] - contract hash
-- Value [number + currency] - input value in BTC
-- Fee [number + currency] - fees in BTC
+1. Sender [string]- input hashes:
+- Sent [number + currency] - input value in BTC
 
-1. Receiver [number]- number of outputs:
-- Hash [string] - contract hash
-- Value [number + currency] - input value in BTC
-- Fee [number + currency] - fees in BTC
+2. Receiver [string]- output hashes:
+- Received [number + currency] - input value in BTC
 
 Transaction data:
 
@@ -359,15 +365,22 @@ Actions:
 
 Displayed data:
 
+General
+
 - Time (UTC) [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
+- Value [number + currency] - total transaction value in ETH
+- State [string] - "Confirmed", "Mempool", "Finalized"
+
+Blockchain specific
+
 - Block [number] - number of block
 - Nonce [number] - nonce of transaction
 - Size - [number + bytes] - size of transaction in bytes
-- State [string] - "Confirmed", "Mempool", "Finalized"
 - Confirmations [number] - number of confirmations (for confirmed or finalized transactions)
 
-- Value [number + currency] - total transaction value in ETH
+Fees
+
 - Fee [number + currency] - accumulated fees in ETH
 - Gas price [number + wei] - price of gas
 - Gas used [number] - used gas
@@ -375,20 +388,16 @@ Displayed data:
 
 Address table. Headers:
 
-1. Sender [number]:
-- Hash [string] - contract hash
-- Value [number + currency] - input value in ETH
-- Fee [number + currency] - fees in ETH
+1. Sender [string]- input hashes:
+- Sent [number + currency] - input value in ETH
 
-1. Receiver [number]:
-- Hash [string] - contract hash
-- Value [number + currency] - input value in ETH
-- Fee [number + currency] - fees in ETH
+2. Receiver [string]- output hashes:
+- Received [number + currency] - input value in ETH
 
 Transaction data:
 
 - Input data [string] - hash
-- OLogs [string] - logs of transaction
+- Logs [string] - logs of transaction
 
 Actions:
 
