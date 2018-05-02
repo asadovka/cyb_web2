@@ -41,7 +41,7 @@ const EthereumUncle = ({ block_number, timestamp, hash }) => {
       <ItemContainer>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/uncle/${block_number}`} />
+          <LinkHash value={hash} to={`/ethereum_classic/uncle/${hash}`} />
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Uncle position:</Label>

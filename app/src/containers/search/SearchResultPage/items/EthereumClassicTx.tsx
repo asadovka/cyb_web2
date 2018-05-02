@@ -42,7 +42,7 @@ const EthereumTx = ({ hash, value, block_time, from, to }) => {
      <ItemContainer>
        <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/tx/${hash}`} />         
+          <LinkHash value={hash} to={`/ethereum_classic/tx/${hash}`} />         
        </ItemContainerRow>
        <ItemContainerRow width='33%'>
           <Label>Value:</Label>
@@ -54,11 +54,11 @@ const EthereumTx = ({ hash, value, block_time, from, to }) => {
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>From:</Label>
-         <LinkAddress address={from} to={`/ethereum/address/${from}`}/>
+         <LinkAddress address={from} to={`/ethereum_classic/contract/${from}`}/>
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>To:</Label>
-         <LinkAddress address={to} to={`/ethereum/address/${to}`}/>
+         <LinkAddress address={to} to={`/ethereum_classic/contract/${to}`}/>
        </ItemContainerRow>
      </ItemContainer>
    </Item>   

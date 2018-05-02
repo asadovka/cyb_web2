@@ -38,7 +38,7 @@ class EthereumUncle extends React.Component {
 
   componentDidMount() {
     const { hash } = this.props;
-    searchApi.getEthereumUncle(hash)
+    searchApi.getEthereumClassicUncle(hash)
       .then(data => {
         this.setState({
           ethereumUncleBlock: data

@@ -25,7 +25,7 @@ import EthereumUncle from './containers/search/EthereumUncle/';
 
 import EthereumClassicTxPage from "./containers/search/EthereumClassicTxPage/";
 import EthereumClassicBlockPage from './containers/search/EthereumClassicBlockPage/';
-
+import EthereumClassicContractPage from './containers/search/EthereumClassicContractPage/'
 
 import Analytics from './containers/Analytics/';
 import Blockchains from './containers/Blockchains/';
@@ -33,6 +33,7 @@ import Exchanges from './containers/Exchanges/';
 import Labels from './containers/Labels/';
 import Contracts from './containers/Contracts/';
 
+import EthereumClassicUncle from './containers/search/EthereumClassicUncle/'
 
 
 import Tokens from './containers/Tokens/';
@@ -96,12 +97,14 @@ export function Root() {
 
         <Route path={"/ethereum/block/:blockNumber"} component={EthereumBlockPage}/>
         <Route path={"/ethereum/tx/:txHash"} component={EthereumTxPage}/>
-        <Route path={"/ethereum/address/:hash"} component={EthereumAddressPage}/>
+        <Route path={"/ethereum/contract/:hash"} component={EthereumAddressPage}/>
         <Route path={"/ethereum/uncle/:hash"} component={EthereumUncle}/>
 
 
         <Route path={"/ethereum_classic/block/:blockNumber"} component={EthereumClassicBlockPage}/>
         <Route path={"/ethereum_classic/tx/:txHash"} component={EthereumClassicTxPage}/>
+        <Route path={"/ethereum_classic/uncle/:hash"} component={EthereumClassicUncle}/>
+        <Route path={"/ethereum_classic/contract/:hash"} component={EthereumClassicContractPage}/>
         <Route path={"/faq"} component={FAQ}/>
           
 

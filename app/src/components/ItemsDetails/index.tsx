@@ -51,31 +51,30 @@ export const TLink = ({ hash }) => (
   </Link>
 );
 
-export const TransactionsTable = ({ children }) => (
-  <div className={styles.transactionsTable}>
-    <table>
-      {children}
-    </table>
-    <div className={styles.transactionsTablePager}>
-      <FlexContainer>
-        <div>
-          View on page: <select><option>10</option><option>20</option><option>100</option></select>
-        </div>
-        <div>
-          <button>previous</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>4</button>
-          <button>5</button>
-          <span>...</span>
-          <button>12</button>
-          <button>next</button>
-        </div>
-      </FlexContainer>
+export const TransactionsTable = ({ children, page = null, pageSize, totalCount }) => {
+  const pages = [];
+  for(var i = 0; i < Math.ceil(totalCount/ pageSize); i++) {
+    pages.push(<button>{i+1}</button>)
+  }
+  console.log(totalCount)
+  return (
+    <div className={styles.transactionsTable}>
+      <table>
+        {children}
+      </table>
+      {page !== null && <div className={styles.transactionsTablePager}>
+        <FlexContainer>
+          <div>
+            View on page: <select><option>10</option><option>20</option><option>100</option></select>
+          </div>
+          <div>
+            {pages}
+          </div>
+        </FlexContainer>
+      </div>}
     </div>
-  </div>
-);
+  );
+}
 var numeral = require('numeral');
 
 export const EPrice = ({ value, icon = false }) => (

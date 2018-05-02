@@ -54,11 +54,11 @@ const EthereumTx = ({ hash, value, block_time, from, to }) => {
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>From:</Label>
-         <LinkAddress address={from} to={`/ethereum/address/${from}`}/>
+         <LinkAddress address={from} to={`/ethereum/contract/${from}`}/>
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>To:</Label>
-         <LinkAddress address={to} to={`/ethereum/address/${to}`}/>
+         <LinkAddress address={to} to={`/ethereum/contract/${to}`}/>
        </ItemContainerRow>
      </ItemContainer>
    </Item>   

@@ -25,21 +25,52 @@ const procent = (a, b) => {
   return numeral(100 * min / max).format('0.00') + '%';
 }
 
+import {Injector} from "../../../injector";
+
+const {
+  searchApi,
+} = Injector.of();
+
+
+const Pager = ({ page, items, pageSize, render  }) => (
+  <div>
+    {render(items.slice(page, pageSize))}
+  </div>
+)
+
 class EthereumBlockPageComponent extends React.Component {
   constructor(props) {
     super(props);
     this.previous = this.previous.bind(this);
     this.next = this.next.bind(this);    
+    this.loadTransactions = this.loadTransactions.bind(this);
+    this.state = {
+      transactions: [],
+      page: 0,
+      pageSize: 10,
+      totalCount: 0
+    }
+  }
+
+
+  loadTransactions(blockNumber) {
+    searchApi.getEthereumTxsByBlockNumber(blockNumber, 0, 10)
+      .then(data => {
+        console.log('loaded')
+        this.setState({ transactions: data, totalCount: data.length })
+      })    
   }
 
   componentDidMount() {
     const {blockNumber, getData} = this.props;
 
     getData(blockNumber);
+    this.loadTransactions(blockNumber);
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.blockNumber !== nextProps.blockNumber) {
       this.props.getData(nextProps.blockNumber);
+      this.loadTransactions(nextProps.blockNumber);
     }
   }
 
@@ -54,8 +85,9 @@ class EthereumBlockPageComponent extends React.Component {
   }
 
   render() {
-    const {ethereumBlock, transactions, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
-    // console.log('>> ', ethereumBlock)
+    const {ethereumBlock, eth_usd_price_on_date, timeAfterPreviosBlock } = this.props;
+    const { transactions, page, pageSize, totalCount } = this.state;
+
     const tx_fees_usd = numeral((+ethereumBlock.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
       <div className='container' style={{ width: 1090 }}>
@@ -151,14 +183,18 @@ class EthereumBlockPageComponent extends React.Component {
         <SubTitle>Transaction</SubTitle>
         <FlexContainer>
           <Tabs value={1} onChange={() => {}}>
-            <Tab label={`transaction: ${ethereumBlock.tx_number}`} value={1}></Tab>
+            <Tab label={`transaction: ${ethereumBlock.txNumber}`} value={1}></Tab>
             {/*<Tab label={'uncle blocks: 0'} value={2}></Tab>*/}
           </Tabs>
           {/*<div>
             <Button>download</Button>
           </div>*/}
         </FlexContainer>
-        <TransactionsTable>
+        <TransactionsTable 
+          page={page} 
+          pageSize={pageSize} 
+          totalCount={ethereumBlock.txNumber}
+        >
           <thead>
             <tr>
               <th>Hash</th>
@@ -170,7 +206,7 @@ class EthereumBlockPageComponent extends React.Component {
             </tr>
           </thead>
           <thead>
-            {transactions.splice(0, 10).map(t => (
+            {transactions.slice(page, pageSize).map(t => (
               <tr key={t.hash}>
                 <td><TLink hash={t.hash}/></td>
                 <td>{ethereumBlock.timestamp && moment(ethereumBlock.timestamp * 1000).fromNow()}</td>
@@ -193,7 +229,7 @@ function mapStateToProps(state, ownProps) {
   return {
     blockNumber: ownProps.routeParams.blockNumber,
     ethereumBlock: state.search.ethereumBlock.data,
-    transactions: state.search.ethereumTxs.data,
+    // transactions: state.search.ethereumTxs.data,
     eth_usd_price_on_date: state.search.eth_usd_price_on_date,
     timeAfterPreviosBlock: state.search.timeAfterPreviosBlock
   };

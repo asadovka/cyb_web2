@@ -2091,9 +2091,9 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-cyber-search-js@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/cyber-search-js/-/cyber-search-js-0.1.11.tgz#41c7e026f6c27a438d4be3b65ac1e49ded985052"
+cyber-search-js@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/cyber-search-js/-/cyber-search-js-0.1.15.tgz#cbaa711736b2d05dcfbf0486f3e68b03c16e6a71"
   dependencies:
     "@types/history" "3.2.2"
     "@types/node" "8.0.30"
@@ -3423,6 +3423,10 @@ hawk@~6.0.2:
 he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+highlight.js@9.12.0:
+  version "9.12.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
 
 history@^3.0.0:
   version "3.3.0"
@@ -5764,6 +5768,17 @@ q@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+
+qrcode.react@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-0.8.0.tgz#413b31cc3b62910e39513f7bead945e01c4c34fb"
+  dependencies:
+    prop-types "^15.6.0"
+    qr.js "0.0.0"
+
 qs@^6.5.1, qs@~6.5.1, qs@6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
@@ -5907,6 +5922,12 @@ react-ga@2.3.5:
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.3.5.tgz#7c3d0c530b2bbe64ceb1faa79be340685aa84a9a"
   dependencies:
     object-assign "^4.1.1"
+
+react-infinite-scroller@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.1.4.tgz#176b1a9ca8fdff53eeb34f648c7b0d446459d61b"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-json-tree@0.10.9:
   version "0.10.9"
