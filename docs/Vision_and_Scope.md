@@ -166,9 +166,13 @@ Displayed data:
 - Robohash logo
 - QR code of address hash
 
-- Time (UTC) [date] - time of contract getting into blockchain
+General
+
+- Time [date] - time of contract getting into blockchain
 - Last activity [string] - current time minus time of last transaction
 - Hash [string] - hash of address
+
+Balance
 
 - Transactions [number] - number of transactions in contract
 - Unconfirmed transactions [number] - number of transactions in mempool
@@ -187,6 +191,8 @@ Charts:
 Transactions and blocks;
 
 1. Transactions tab:
+
+- Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Block [number] - number of block
 - Sender[number]- number of inputs
@@ -197,9 +203,9 @@ Transactions and blocks;
 - State [string] - "Confirmed", "Mempool", "Finalized"
 
 2. Mined blocks (for miner address only):
+- Time [date] - time of block generation
 - Block [number] - number of mined block
 - Transactions [number] - number of transactions in mined block
-- Time [date] - time of block generation
 - Reward [number + currency] - rewards for block in BTC
 
 Code:
@@ -224,7 +230,7 @@ Displayed data:
 - Robohash logo
 - QR code of address hash
 
-- Time (UTC) [date] - time of contract getting into blockchain
+- Time [date] - time of contract getting into blockchain
 - Last activity [string] - current time minus time of last transaction
 - Hash [string] - hash of address
 
@@ -245,40 +251,40 @@ Charts:
 Transactions and blocks;
 
 1. Transactions tab:
+- Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Block [number] - number of block
 - Sender[hash]- hash of "from" address
-- Sent [number + currency] - total input balance in ETH
 - Receiver [hash]- hash of "to" address
-- Received [number + currency] - total output balance in ETH
+- Sent [number + currency] - total input balance in ETH
 - Fee [number + currency] - accumulated fees in ETH
 - State [string] - "Confirmed", "Mempool", "Finalized"
 
 4. Internal transactions tab (if available):
+- Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Block [number] - number of block
 - Sender[hash]- hash of "from" address
-- Sent [number + currency] - total input balance in ETH
 - Receiver [hash]- hash of "to" address
-- Received [number + currency] - total output balance in ETH
+- Sent [number + currency] - total input balance in ETH
 - Fee [number + currency] - accumulated fees in ETH
 - State [string] - "Confirmed", "Mempool", "Finalized"
 
 3. Tokens tab:
 - Token [string] - token name
-- Received [number + currency] - received tokens
-- Sent [number + currency] - sent tokens
-- Balance [number + currency] - sent minus received tokens
+- Sender [number + currency] - sent tokens
+- Receiver [number + currency] - received tokens
+- Sent [number + currency] - sent minus received tokens
 
 4. Mined blocks tab (for miner address only):
-- Block [number] - number of mined block
-- Hash [string] - block hash
-- Transactions [number] - number of transactions in mined block
 - Time [date] - time of block generation
+- Block [number] - number of mined block
+- Transactions [number] - number of transactions in mined block
 - Reward [number + currency] - rewards for block in ETH
 
 5. Mined uncles tab (if available):
-- Block [number] - number of mined uncle
+- Block [number] - number of block with uncle
+- Uncle [number] - number of mined uncle
 - Hash [string] - uncle hash
 - Time [date] - time of block generation
 - Reward [number + currency] - rewards for uncle in ETH
@@ -295,7 +301,7 @@ Swarm code - link in ethereum swarm
 Actions:
 
 1. Info by pointing:
-- Time (UTC) - show age of transaction (current time minus mempool)
+- Time  - show age of transaction (current time minus mempool)
 - Address - show label of address
 
 2. Clicking
@@ -317,7 +323,7 @@ Displayed data:
 
 General
 
-- Time (UTC) [date] - time of getting transaction to mempool
+- Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Value [number + currency] - total transaction value in BTC
 - State [string] - "Confirmed", "Mempool", "Finalized"
@@ -367,7 +373,7 @@ Displayed data:
 
 General
 
-- Time (UTC) [date] - time of getting transaction to mempool
+- Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Value [number + currency] - total transaction value in ETH
 - State [string] - "Confirmed", "Mempool", "Finalized"
@@ -402,7 +408,7 @@ Transaction data:
 Actions:
 
 1. Info by pointing:
-- Time (UTC) - show age of transaction (current time minus mempool)
+- Time - show age of transaction (current time minus mempool)
 - Confirmations - first confirmation time minus mempool time
 
 2. Clicking
@@ -427,7 +433,7 @@ Displayed data:
 
 General
 
-- Time (UTC) [date] - time of block generation
+- Time [date] - time of block generation
 - Hash [string] - hash of block
 - Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
@@ -479,7 +485,7 @@ Displayed data:
 
 General
 
-- Time (UTC) [date] - time of block generation
+- Time [date] - time of block generation
 - Hash [string] - hash of block
 - Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
@@ -539,7 +545,7 @@ Actions:
 Displayed data:
 
 - Ethereum uncle block number [number] (header of page)
-- Time (UTC) [date] - time of block generation
+- Time [date] - time of block generation
 - Hash [string] - hash of uncle block
 - Parent block [number] - number of parent block
 - Parent hash [string] - hash of parent block
@@ -552,7 +558,7 @@ Displayed data:
 Actions:
 
 1. Info by pointing:
-- Time (UTC) - show age of block (current time minus block generation time)
+- Time - show age of block (current time minus block generation time)
 - Miner - show label of miner
 
 2. Clicking
