@@ -25,3 +25,15 @@ All major changes of cyber browser will be documented in this file.
 
 - Google Cloud deployment
 - Several names for domains choosed 
+
+## Sprint 9:
+
+**1. Implemented new process of browser development:**
+- Mockup process migrated to sketch
+- Created design library
+- Created project in Zeplin app for design reviewing
+
+**2. Updated versions of Block, Transaction, Contract Pages:** 
+- Documented requirements & features
+- Created mockups and graphic design
+- Implemented code
