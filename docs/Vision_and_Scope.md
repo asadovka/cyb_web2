@@ -76,9 +76,9 @@ There are 3 main widgets below the status string describing the cryptoeconomy, r
 At the bottom of the page 5 project links are placed:
 1. GitHub - GitHub repository of cyber.Congress [https://github.com/cybercongress]
 2. Roadmap - roadmap for cyber.Search project [https://github.com/orgs/cybercongress/projects/1]
-3. Cybernode - Cybernode stats page []
+3. Cybernode - Cybernode stats page [cybersearch.live]
 4. Dashboard - a link user's custom dashboard []
-5. Knowledge - a link to knowledge database of cyber.Search project []
+5. Knowledge - a link to knowledge database of cyber.Search project [cybersearch.io]
 
 **Proposals:**
 
