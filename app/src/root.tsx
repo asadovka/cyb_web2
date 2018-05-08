@@ -83,9 +83,9 @@ const Wrapper = ({ children }) => (
 export function Root() {
   return (
     <Router onUpdate={logPageView} history={browserHistory}>
+        <Route path={"/"} component={IndexPage}/>
       <Route component={App} >
       <Route component={Wrapper} >
-        <Route path={"/"} component={IndexPage}/>
   
         {/*<Route path={"/search"} component={SearchResultPage}/>*/}
         
