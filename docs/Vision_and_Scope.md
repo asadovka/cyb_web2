@@ -53,7 +53,12 @@ There is a status text below search panel which describes technical information 
 
 **_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_** 
 
-where transactions are the number of all indexed transactions from all blockchains connected to Cybernode, blockchain systems - all blockchains processed by Cybernode, tokens - all unique tokens from all blockchains indexed, database size - size of Cassandra (index) database.
+Where:
+
+1. Transactions - number of all indexed transactions from all blockchains connected to Cybernode. 
+2. Blockchain systems - all blockchains processed by Cybernode.
+3. Tokens - all unique tokens from all blockchains indexed. 
+4. Database size - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
 1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
@@ -69,11 +74,11 @@ There are 3 main widgets below the status string describing the cryptoeconomy, r
     _**Call to action:** transition to Portfolio page_.
 
 At the bottom of the page 5 project links are placed:
-1. GitHub - GitHub repository of cyber.Search
-2. Roadmap - roadmap of all cyber.Search projects
-3. Cybernode - Cybeernode landing page
-4. Dashboard - a link user's custom dashboard
-5. Knowledge - a link to knowledge database of cyber.Search projects
+1. GitHub - GitHub repository of cyber.Congress [https://github.com/cybercongress]
+2. Roadmap - roadmap for cyber.Search project [https://github.com/orgs/cybercongress/projects/1]
+3. Cybernode - Cybernode stats page []
+4. Dashboard - a link user's custom dashboard []
+5. Knowledge - a link to knowledge database of cyber.Search project []
 
 **Proposals:**
 
