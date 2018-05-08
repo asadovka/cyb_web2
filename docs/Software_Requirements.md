@@ -1,4 +1,4 @@
-Tha main purpose of this document is to describe requirements and the structure of browser pages. With installed draw.io application or using the online version you can open mockups and check the current state of work.
+Tha main purpose of this document is to describe requirements and the structure of browser pages. With installed sketch application or using the online version you can open mockups and check the current state of work.
 
 # Project description
 
@@ -6,26 +6,14 @@ Cyber browser - an entrance point to start working with blockchains.
 
 # Requirements
 
-## 1. Business Requirements
-
-- Lead users to make payable actions (create registry, develop custom browser app, pay for developing functionality)
-- Attract mimimum 100 000 active users till token distribution
-
-## 2. Business rules
-
-- Focusing on developers and Metamask users
-- Developing in terms of web 3.0 principles
-- Full tokenization of economy processes (valuation, transfering data)
-- Collect feedback and create analytics with use of instruments that aviod collect personal data
-
-## 3. Common functional requirements
+## 1. Common functional requirements
 
 - Integration with Metamask 
 - IPFS integration
 - Avoid pagination in all tables (use scrolling instead)
 - Prefered type of data structure - tables
 
-## 3. Common non-functional requirements 
+## 2. Common non-functional requirements 
 
 - Simple and attractive design
 - Intuitive UI
@@ -55,12 +43,13 @@ There is a status text below search panel which describes technical information 
 
 Where:
 
-1. Transactions - number of all indexed transactions from all blockchains connected to Cybernode. 
-2. Blockchain systems - all blockchains processed by Cybernode.
-3. Tokens - all unique tokens from all blockchains indexed. 
-4. Database size - size of Cassandra (index) database.
+1. Transactions [number] - number of all indexed transactions from all blockchains connected to Cybernode. 
+2. Blockchain systems [number] - all blockchains processed by Cybernode.
+3. Tokens [numger] - all unique tokens from all blockchains indexed. 
+4. Database size [number + Gb] - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
+
 1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
     _**Call to action:** transition to cybernomics page_.
