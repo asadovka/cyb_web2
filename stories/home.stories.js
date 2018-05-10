@@ -14,7 +14,6 @@ import {
   BGWrapper,
   TopPanel,
   MetamaskLogo,
-  SearchInput,
   Legend,
   Items,
   Item,
@@ -25,6 +24,11 @@ import {
   Arrow
 } from '../app/src/components/home/';
 
+import {
+  SearchForm
+} from '../app/src/components/SearchForm/'
+
+
 
 storiesOf('home', module)
 .add('state1', withNotes(someMarkdownText)(() => 
@@ -32,7 +36,7 @@ storiesOf('home', module)
     <TopPanel>
       <MetamaskLogo />
       <Container>
-        <SearchInput />
+        <SearchForm />
         <Legend>
           Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
           blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs
@@ -72,7 +76,7 @@ storiesOf('home', module)
     <TopPanel>
       <MetamaskLogo />
       <Container>
-        <SearchInput />
+        <SearchForm />
         <Legend>
           Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
           blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs

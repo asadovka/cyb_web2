@@ -3,14 +3,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 
-import { 
-  Head, SubTitle, Button,
-  Details, DetailsRow, Label, Value,
-  TLink, TransactionsTable,
-  EPrice,
-  FlexContainer
-} from '../app/src/components/ItemsDetails/';
-
 import { withState } from '@dump247/storybook-state';
 
 
@@ -19,11 +11,6 @@ import {
   AppHeader,
   AppContent,
   AppMenu,
-  SearchForm,
-  Logo,
-  Menu, MenuItem,
-  Switcher,
-  LayoutSwitcher,
   AppSecondMenu
 } from '../app/src/components/AppLayout/';
 
@@ -58,7 +45,7 @@ storiesOf('App layout', module)
     <AppSecondMenu>
       menu
     </AppSecondMenu>
-    <AppContent>
+    <AppContent withMenu={true}>
       content
     </AppContent>
   </Layout>

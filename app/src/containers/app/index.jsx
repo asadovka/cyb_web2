@@ -6,14 +6,18 @@ import {
   AppHeader,
   AppContent,
   AppMenu,
-  SearchForm,
-  Logo,
   Menu, MenuItem,
   AppSecondMenu
 } from '../../components/AppLayout/';
 
 import withRouter from "react-router/es/withRouter";
 import { browserHistory } from 'react-router'
+
+
+import {
+  SearchForm
+} from '../../components/SearchForm/'
+
 
 class PersistentDrawer extends React.Component {
   constructor(props){
@@ -39,7 +43,6 @@ class PersistentDrawer extends React.Component {
         onToggle={() => this.setState({ open: !this.state.open })}
       >
         <AppHeader>
-          <Logo />
           <SearchForm onSubmit={onSubmit} defaultValue={q} />
         </AppHeader>
         <AppMenu>

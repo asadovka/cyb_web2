@@ -31,26 +31,7 @@ export const TopPanel = ({ children }) => (
   </div>
 );
 
-let input;
-export const SearchInput = (props) => {
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (props.onSubmit) props.onSubmit(input.value)
-  }
-  return (
-    <form onSubmit={onSubmit} className={styles.inputContainer}>
-      <input 
-        {...props} 
-        type='text' 
-        className={styles.input} 
-        ref={node => {
-          input = node 
-        }} 
-      />
-      <span className={styles.inputIcone}/>
-    </form>
-  );
-}
+
 
 export const Legend = ({ children }) => (
   <span className={styles.legend}>

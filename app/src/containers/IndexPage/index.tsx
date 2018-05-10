@@ -12,7 +12,6 @@ import {
   BGWrapper,
   TopPanel,
   MetamaskLogo,
-  SearchInput,
   Legend,
   Items,
   Item,
@@ -22,6 +21,11 @@ import {
   Image,
   Arrow
 } from '../../components/home/';
+
+import {
+  SearchForm
+} from '../../components/SearchForm/'
+
 
 class IndexPage extends React.Component {
   componentDidMount() {
@@ -38,7 +42,7 @@ class IndexPage extends React.Component {
     <TopPanel>
       <MetamaskLogo />
       <Container>
-        <SearchInput onSubmit={this.onSubmit}/>
+        <SearchForm onSubmit={this.onSubmit}/>
         <Legend>
           Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
           blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs

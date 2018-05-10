@@ -7,7 +7,7 @@ const styles = require("./AppLayout.less");
 export const AppHeader = ({ children, open }) => {
   return (
     <div className={styles.appHeader + ' ' + (open ? styles.appHeaderOpen : '')}>
-      <div className={styles.appHeaderContainer + ' container'}  style={{ width: 1090 }}>
+      <div className={styles.appHeaderContainer}  style={{ width: 1090 }}>
         {children}
       </div>
     </div>
@@ -33,7 +33,6 @@ export const AppSecondMenu = ({ children, open }) => (
   </div>
 );
 
-export { SearchForm } from './SearchForm/';
 
 import { Link } from 'react-router';
 
