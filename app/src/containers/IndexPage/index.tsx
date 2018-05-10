@@ -11,7 +11,7 @@ import {
   Container,
   BGWrapper,
   TopPanel,
-  MetamaskIndicator,
+  MetamaskLogo,
   SearchInput,
   Legend,
   Items,
@@ -36,7 +36,7 @@ class IndexPage extends React.Component {
     return (
   <BGWrapper>
     <TopPanel>
-      <MetamaskIndicator />
+      <MetamaskLogo />
       <Container>
         <SearchInput onSubmit={this.onSubmit}/>
         <Legend>

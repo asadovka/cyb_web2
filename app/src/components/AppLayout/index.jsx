@@ -2,19 +2,17 @@ import * as React from 'react';
 
 const styles = require("./AppLayout.less");
 
-export const Layout = ({ children }) => (
-  <div className={styles.layout}>
-    {children}
-  </div>
-);
 
-export const AppHeader = ({ children, open }) => (
-  <div className={styles.appHeader + ' ' + (open ? styles.appHeaderOpen : '')}>
-    <div className={styles.appHeaderContainer + ' container'}  style={{ width: 1090 }}>
-      {children}
+
+export const AppHeader = ({ children, open }) => {
+  return (
+    <div className={styles.appHeader + ' ' + (open ? styles.appHeaderOpen : '')}>
+      <div className={styles.appHeaderContainer + ' container'}  style={{ width: 1090 }}>
+        {children}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 export const AppContent = ({ children, open, withMenu }) => (
   <div className={styles.appContent + ' ' + (open ? styles.appContentOpen: '') + ' ' + (withMenu ? styles.appContentWithMenu: '')}>  
@@ -47,7 +45,8 @@ export const Logo = () => (
 
 
 export { Menu, MenuItem } from './Menu/';
-export { Switcher } from './Switcher/';
+import { Switcher } from './Switcher/';
+export { Switcher };
 
 
 export const LayoutSwitcher = ({ children, open }) => (
@@ -57,3 +56,18 @@ export const LayoutSwitcher = ({ children, open }) => (
 );
 
 
+export const Layout = ({ children, open, onToggle }) => {
+  const childrenWithProps = React.Children.map(children, child =>
+      React.cloneElement(child, { open }));
+  return (
+    <div className={styles.layout}>
+    <LayoutSwitcher>
+      <Switcher 
+        onClick={onToggle}
+        open={open}
+      />
+    </LayoutSwitcher>    
+      {childrenWithProps}
+    </div>
+  );
+}

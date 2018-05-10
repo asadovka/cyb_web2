@@ -4329,6 +4329,14 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gl-mat4@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/gl-mat4/-/gl-mat4-1.1.4.tgz#1e895b55892e56a896867abd837d38f37a178086"
+
+gl-vec3@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gl-vec3/-/gl-vec3-1.0.3.tgz#110fd897d0729f6398307381567d0944941bf22b"
+
 glamor@^2.20.40:
   version "2.20.40"
   resolved "https://registry.yarnpkg.com/glamor/-/glamor-2.20.40.tgz#f606660357b7cf18dface731ad1a2cfa93817f05"
@@ -6049,6 +6057,13 @@ merge-descriptors@1.0.1:
 merge2@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.2.2.tgz#03212e3da8d86c4d8523cebd6318193414f94e34"
+
+metamask-logo@2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/metamask-logo/-/metamask-logo-2.1.4.tgz#0612b2b0ffc7eeb6be480c310785426ad9599e3c"
+  dependencies:
+    gl-mat4 "1.1.4"
+    gl-vec3 "1.0.3"
 
 methods@~1.1.2:
   version "1.1.2"

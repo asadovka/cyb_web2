@@ -2,14 +2,12 @@ import * as React from 'react';
 
 const styles = require("./SearchForm.less");
 
-import { browserHistory } from 'react-router'
-import withRouter from "react-router/es/withRouter";
 
 let input;
-export const SearchForm = withRouter(({ location: { query : { q } } }) => {
+export const SearchForm = ( { defaultValue, ...props }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    browserHistory.push('/search?q=' + input.value);
+    props.onSubmit(input.value);
   }
   return (
     <form onSubmit={onSubmit} action='/search' className={styles.searchForm}>
@@ -17,11 +15,11 @@ export const SearchForm = withRouter(({ location: { query : { q } } }) => {
         name='q' 
         className={styles.searchFormInput} 
         placeholder='Adds' 
-        defaultValue={q}
+        defaultValue={defaultValue}
         ref={node => {
           input = node 
         }} 
       />
     </form>
   );
-})
+}
