@@ -15,16 +15,14 @@ export const Container = ({ children }) => (
   </div>
 );
 
-export const MetamaskIndicator = () => (
-  <div className={styles.metamaskIndicator}>
-  </div>
-);
 
 export const BGWrapper = ({ children }) => (
   <div style={{   backgroundColor: '#eff3f6', minHeight: '100vh'}}>
     {children}
   </div>
 );
+
+export { MetamaskLogo } from './MetamaskLogo';
 
 
 export const TopPanel = ({ children }) => (

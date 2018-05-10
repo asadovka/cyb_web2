@@ -13,11 +13,3 @@ import { Button } from '../app/src/components/Button/';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
-storiesOf('Button', module)
-.add('basic', withNotes(someMarkdownText)(() => <Button onClick={action('clicker')}>2</Button>));
-
-
-storiesOf('Button2', module)
-.add('sdfsfd', withNotes(someMarkdownText)(() => <Button onClick={action('clicker')}>223423</Button>))
-.add('22', withNotes(someMarkdownText)(() => <Button onClick={action('clicker')}>2</Button>));
-  

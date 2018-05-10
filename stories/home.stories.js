@@ -13,7 +13,7 @@ import {
   Container,
   BGWrapper,
   TopPanel,
-  MetamaskIndicator,
+  MetamaskLogo,
   SearchInput,
   Legend,
   Items,
@@ -30,7 +30,7 @@ storiesOf('home', module)
 .add('state1', withNotes(someMarkdownText)(() => 
   <BGWrapper>
     <TopPanel>
-      <MetamaskIndicator />
+      <MetamaskLogo />
       <Container>
         <SearchInput />
         <Legend>
@@ -70,7 +70,7 @@ storiesOf('home', module)
 .add('state2', withNotes(someMarkdownText)(() => 
   <BGWrapper>
     <TopPanel>
-      <MetamaskIndicator />
+      <MetamaskLogo />
       <Container>
         <SearchInput />
         <Legend>
