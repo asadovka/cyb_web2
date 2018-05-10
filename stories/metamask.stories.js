@@ -22,6 +22,13 @@ storiesOf('MetamaskLogo', module)
     </TopPanel>
   </BGWrapper>
 ))
+.add('no metamask', withNotes(text)(() => 
+  <BGWrapper>
+    <TopPanel>
+      <MetamaskLogo disabled={true}/>      
+    </TopPanel>
+  </BGWrapper>
+))
 
 
 

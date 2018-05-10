@@ -12,6 +12,7 @@ class MetamaskLogo extends React.Component {
       pxNotRatio: true,
       width: 194,
       height: 196,
+
       // pxNotRatio: false,
       // width: 0.9,
       // height: 0.9,
@@ -37,8 +38,10 @@ class MetamaskLogo extends React.Component {
    // viewer.setFollowMouse(true)
   }
   render() {
+    const { disabled } = this.props;
+
     return (
-      <div ref='container' className={styles.metamaskIndicator}>
+      <div ref='container' className={styles.metamaskIndicator + ' ' + (disabled ? styles.metamaskIndicatorDisabled : '')}>
       </div>
     );
   }
