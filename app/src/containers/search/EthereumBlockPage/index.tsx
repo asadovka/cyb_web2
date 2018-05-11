@@ -90,7 +90,7 @@ class EthereumBlockPageComponent extends React.Component {
 
     const tx_fees_usd = numeral((+ethereumBlock.tx_fees) * eth_usd_price_on_date).format('$0.00');
     return (
-      <div className='container' style={{ width: 1090 }}>
+      <div className='container' style={{ width: 1090, margin: '0 auto' }}>
         <Head>
           <Button onClick={this.previous}>previous</Button>
           <Title inline={true}>Ethereum Block #{ethereumBlock.number}</Title>
@@ -213,7 +213,7 @@ class EthereumBlockPageComponent extends React.Component {
                 <td><TLink hash={t.from}/></td>
                 <td><TLink hash={t.to}/></td>
                 <td><EPrice value={t.value} icon={true}/></td>
-                <td><EPrice value={t.value} /></td>
+                <td><EPrice value={t.fee} /></td>
               </tr>
             ))}
           </thead>

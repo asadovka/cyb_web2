@@ -38,7 +38,7 @@ import EthereumClassicContract from '../app/src/containers/search/SearchResultPa
 
 // import "../app/src/global.less";
 
-storiesOf('searrch', module)
+storiesOf('search', module)
 .add('basics', withState({ open: false })(({ store }) => (
   <Layout 
     open={store.state.open}
