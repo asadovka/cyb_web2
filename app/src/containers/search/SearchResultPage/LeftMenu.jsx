@@ -2,43 +2,16 @@ import * as React from "react";
 import {connect} from "react-redux";
 import withRouter from "react-router/es/withRouter";
 
-import { Link } from 'react-router';
-var cx = require('classnames');
 
-// import { Tabs, Tab } from '../../../components/VerticalTabs/';
 
-// const LeftMenu = ({
-//   chains,
-//   query,
-//   entities
-// }) => (
-//   <Tabs>
-//       <Tab isActive={!chains} to={{ pathname:"/search", query: { q: query, entities } }}>All</Tab>
-//       <Tab isActive={chains === 'bitcoin'} to={{ pathname:"/search", query: { q: query, chains: 'bitcoin', entities } }}>Bitcoin</Tab>
-//       <Tab isActive={chains === 'bitcoin_cash'} to={{ pathname:"/search", query: { q: query, chains: 'bitcoin_cash', entities } }}>Bitcoin cash</Tab>
-//       <Tab isActive={chains === 'ethereum'} to={{ pathname:"/search", query: { q: query, chains: 'ethereum', entities } }}>Ethereum</Tab>
-//       <Tab isActive={chains === 'ethereum_classic'} to={{ pathname:"/search", query: { q: query, chains: 'ethereum_classic', entities } }}>Ethereum classic</Tab>
-//   </Tabs>
-// )
-
-// import List from 'material-ui/List';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
-
-import { FilterPanel, Title, List, ListTitle } from '../../../components/searchPage/'
+import { Title, List } from '../../../components/searchPage/'
 
 import { RoundCheckbox } from '../../../components/RoundCheckbox/'
 
-import { browserHistory } from 'react-router'
 
 import { colors } from '../../../components/SearchItems/';
 
 class LeftMenu extends React.Component {
-  
-  constructor(props) {
-    super(props);
-  }
-
   changeChain(chain) {
     const {
       query,
@@ -56,6 +29,35 @@ class LeftMenu extends React.Component {
     this.props.router.push({ pathname: '/search', query: { q: query, chains: _newChains, types: types } });
     // browserHistory.push('/search', { q: query, chains: chain, entities })
   }
+  selectAllChain = (checked) => {
+    const {
+      query,
+      chains,
+      types
+    } = this.props;
+    let newChains = chains || '';
+    
+    newChains = checked ? ['ethereum', 'ethereum_classic'] : [];
+
+
+    const _newChains = newChains.filter(x => !!x).join(',');
+    this.props.router.push({ pathname: '/search', query: { q: query, chains: _newChains, types: types } });
+  }
+  selectAllTypes = (checked) => {
+    const {
+      query,
+      chains,
+      types
+    } = this.props;
+    let newTypes = types || '';
+    
+    newTypes = checked ? ['contract_summary', 'block', 'uncle', 'tx'] : [];
+
+
+    const _newTypes = newTypes.filter(x => !!x).join(',');
+    this.props.router.push({ pathname: '/search', query: { q: query, chains: chains, types: _newTypes } });
+
+  }
   changeTypes(type) {
     const {
       query,
@@ -71,9 +73,17 @@ class LeftMenu extends React.Component {
 
     const _newTypes = newTypes.filter(x => !!x).join(',');
     this.props.router.push({ pathname: '/search', query: { q: query, chains: chains, types: _newTypes } });
-
   }
-
+  isAllChainSelected(chains) {
+    //TODO:
+    return !!chains.split(',').find(x => x === 'ethereum') && !!chains.split(',').find(x => x === 'ethereum_classic');
+  }
+  isAllTypesSelected(types) {
+    return !!types.split(',').find(x => x === 'contract_summary') &&
+      !!types.split(',').find(x => x === 'block') && 
+      !!types.split(',').find(x => x === 'uncle') && 
+      !!types.split(',').find(x => x === 'tx');
+  }
   render() {
     let {
       chains,
@@ -87,7 +97,11 @@ class LeftMenu extends React.Component {
       <div>
         <Title>Show results for:</Title>
 
-        <ListTitle>Blockchain</ListTitle>
+        <RoundCheckbox 
+          onChange={this.selectAllChain}
+          checked={this.isAllChainSelected(chains)} 
+          label='Blockchain'  
+        />
         <List>
           <li>
             <RoundCheckbox 
@@ -102,18 +116,13 @@ class LeftMenu extends React.Component {
               label='Ethereum Classic' 
               color={colors.ethereum_classic} />
           </li>
-          {/*<li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('bitcoin')} label='Bitcoin' color='#7780fc' />
-          </li>
-          <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('bitcoin_cash')} label='Bitcoin cash' color='#74c1ff'/>
-          </li>
-          <li style={{ marginBottom: 10 }}>
-            <RoundCheckbox onChange={() => this.change('ethereum_classic')} label='Ethereum classic' color='#38d2b6'/>
-          </li>*/}
         </List>
 
-        <ListTitle>Object</ListTitle>
+        <RoundCheckbox 
+          onChange={this.selectAllTypes}
+          checked={this.isAllTypesSelected(types)} 
+          label='Object'  
+        />        
         <List>
           <li>
             <RoundCheckbox  
@@ -145,35 +154,6 @@ class LeftMenu extends React.Component {
     );
   }
 }
-
-// const LeftMenu = ({
-//   chains,
-//   query,
-//   entities
-// }) => (
-// <List >
-//     <ListItem button>
-//       <Link to={{ pathname:"/search", query: { q: query, entities } }} style={{ color: '#000', width: '100%' }}>All</Link>
-//     </ListItem>
-//     <Divider />
-//     <ListItem button>
-//       <Link to={{ pathname:"/search", query: { q: query, chains: 'bitcoin', entities } }} style={{ color: '#000', width: '100%' }}>Bitcoin</Link>
-//     </ListItem>
-//     <Divider />
-//     <ListItem button>
-//       <Link to={{ pathname:"/search", query: { q: query, chains: 'bitcoin_cash', entities } }} style={{ color: '#000', width: '100%' }}>Bitcoin cash</Link>
-//     </ListItem>
-//     <Divider />
-//     <ListItem button>
-//       <Link to={{ pathname:"/search", query: { q: query, chains: 'ethereum', entities } }} style={{ color: '#000', width: '100%' }}>Ethereum</Link>
-//     </ListItem>
-//     <Divider />
-//     <ListItem button>
-//       <Link to={{ pathname:"/search", query: { q: query, chains: 'ethereum_classic', entities } }} style={{ color: '#000', width: '100%' }}>Ethereum classic</Link>
-//     </ListItem>
-//   </List>
-// )
-
 export default withRouter(connect((state, ownProps) => ({
   query: ownProps.location.query.q,
   chains: ownProps.location.query.chains,

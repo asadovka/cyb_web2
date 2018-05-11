@@ -1,10 +1,8 @@
 import * as React from "react";
 import {Link} from "react-router";
 
-import BlockchainStatics from './BlockchainStatics';
 
 import { connect } from 'react-redux';
-// import Container from '../../components/Container/';
 import { browserHistory } from 'react-router'
 
 import {

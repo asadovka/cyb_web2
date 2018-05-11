@@ -56,8 +56,11 @@ export const LayoutSwitcher = ({ children, open }) => (
 
 
 export const Layout = ({ children, open, onToggle }) => {
-  const childrenWithProps = React.Children.map(children, child =>
-      React.cloneElement(child, { open }));
+  const childrenWithProps = React.Children.map(children, child => {
+    if (!child) return child;
+    
+    return React.cloneElement(child, { open });
+  });
   return (
     <div className={styles.layout}>
     <LayoutSwitcher>

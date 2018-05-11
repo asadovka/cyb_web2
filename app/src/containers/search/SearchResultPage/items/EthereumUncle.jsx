@@ -45,7 +45,7 @@ const EthereumUncle = ({ block_number, timestamp, hash }) => {
         </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Uncle position:</Label>
-          <Value>0</Value>
+          <Value>???</Value>
         </ItemContainerRow>
         <ItemContainerRow>
           <Label>Mined on:</Label>
