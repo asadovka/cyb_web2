@@ -24,7 +24,11 @@ import { RoundCheckbox } from '../app/src/components/RoundCheckbox/'
 
 import { Container } from '../app/src/components/SearchItems/';
 
-import { colors } from '../app/src/components/SearchItems/';
+import {
+  Item, colors, ItemTitle, ItemContainer, ItemContainerRow, Label,
+  Value, dateFormat,
+  LinkHash
+} from '../app/src/components/SearchItems/';
 
 import EthereumBlock from '../app/src/containers/search/SearchResultPage/items/EthereumBlock';
 import EthereumUncle from '../app/src/containers/search/SearchResultPage/items/EthereumUncle';
@@ -37,6 +41,8 @@ import EthereumClassicTx from '../app/src/containers/search/SearchResultPage/ite
 import EthereumClassicContract from '../app/src/containers/search/SearchResultPage/items/EthereumClassicContract';
 
 // import "../app/src/global.less";
+
+
 
 storiesOf('search', module)
 .add('basics', withState({ open: false })(({ store }) => (
@@ -158,6 +164,112 @@ storiesOf('search', module)
           first_activity_date={'2015-07-30T15:31:17.000Z'} 
           confirmed_balance={45}
         />
+
+        <Item>
+          <ItemTitle >Token</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Bitcoin (BTC)</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Market cap:</Label>
+                <Value>100 B USD</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Price:</Label>
+                <Value>6500 USD</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
+
+        <Item>
+          <ItemTitle >Token</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Ethereum (ETH)</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Market cap:</Label>
+                <Value>100 B USD</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Price:</Label>
+                <Value>6500 USD</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
+
+        <Item>
+          <ItemTitle >Exchange</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Binance</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Volume (24h):</Label>
+                <Value>345363 BTC</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Trading pairs:</Label>
+                <Value>140</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
+
+        <Item>
+          <ItemTitle >Etherdelta</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Binance</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Volume (24h):</Label>
+                <Value>345363 BTC</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Trading pairs:</Label>
+                <Value>140</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
+        <Item>
+          <ItemTitle >Blockchain</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Bitcoin blockchain</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Transactions:</Label>
+                <Value>130 M</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Transactions per second:</Label>
+                <Value>140</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
+        <Item>
+          <ItemTitle >Blockchain</ItemTitle>
+            <ItemContainer>
+              <ItemContainerRow width='33%' center >
+                <Value>Ethereum blockchain</Value>
+              </ItemContainerRow> 
+              <ItemContainerRow center width='33%'  border='left'>
+                <Label>Transactions:</Label>
+                <Value>130 M</Value>
+              </ItemContainerRow>
+              <ItemContainerRow center width='33%' border='left'>
+                <Label>Transactions per second:</Label>
+                <Value>140</Value>
+              </ItemContainerRow>
+            </ItemContainer>
+        </Item>
+
       </Container>
     </AppContent>
   </Layout>

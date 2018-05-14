@@ -51,10 +51,10 @@ USE CASES:
 - Tokens
 - Exchanges
 
-- Chaingear
+- Chaingear (my registers, new register)
 - Dashboard
-- Labels
-- Portfolio
+- Labels (my labels, new label)
+- Portfolio (my portfolio, public portfolios)
 
 - Cybernode
 - FAQ

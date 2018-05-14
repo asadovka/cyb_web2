@@ -12,17 +12,17 @@ const EthereumAddress = ({ hash, first_activity_date, confirmed_balance }) => {
   <Item line={colors.contract}>
     <ItemTitle bg={colors.ethereum_classic}>Ethereum contract</ItemTitle>
       <ItemContainer>
+        <ItemContainerRow center width='33%' border='right'>
+          <Label>Created:</Label>
+          <Value>{dateFormat(first_activity_date)}</Value>
+        </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
           <LinkHash value={hash} to={`/ethereum/address/${hash}`} />
         </ItemContainerRow>
-        <ItemContainerRow width='33%' border='right'>
+        <ItemContainerRow center width='33%'>
           <Label>Value:</Label>
           <Value>{confirmed_balance} ETH</Value>
-        </ItemContainerRow>
-        <ItemContainerRow width='33%'>
-          <Label>Created:</Label>
-          <Value>{dateFormat(first_activity_date)}</Value>
         </ItemContainerRow>
       </ItemContainer>
   </Item>

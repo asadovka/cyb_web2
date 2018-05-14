@@ -39,17 +39,17 @@ const EthereumUncle = ({ block_number, timestamp, hash }) => {
      <Item line={colors.uncle}>
       <ItemTitle bg={colors.ethereum_classic}>Ethereum Uncle block #{block_number}</ItemTitle>
       <ItemContainer>
+        <ItemContainerRow center width='33%' border='right'>
+          <Label>Mined on:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+        </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
           <LinkHash value={hash} to={`/ethereum_classic/uncle/${hash}`} />
         </ItemContainerRow>
-        <ItemContainerRow width='33%' border='right'>
+        <ItemContainerRow center>
           <Label>Uncle position:</Label>
           <Value>0</Value>
-        </ItemContainerRow>
-        <ItemContainerRow>
-          <Label>Mined on:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
         </ItemContainerRow>
       </ItemContainer>
     </Item>  
