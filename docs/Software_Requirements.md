@@ -153,31 +153,35 @@ Left menu includes next hardcoded functions:
 Search results in general are shown as a list of object preview. Each object preview its own structure:
 
 1. Transaction:
-- Hash
-- Value
-- Time (finalization, or time of confirmation or "Mempool" status)
-- "Sender" address hash (Only for Ethereum and Ethereum Classic)
-- "Receiver" address hash (Only for Ethereum and Ethereum Classic) 
 
-2. Block
-- Block number
+- Time (finalization, or time of confirmation or "Mempool" status)
+- Hash
+- Value 
+
+2. Block + number
+
+- Time of creation
 - Hash
 - Number of transactions
-- Time of creation
 
-3. Uncle
+
+3. Uncle + number
+
+- Time  of creation
 - Hash
 - Uncle position
-- Time  of creation
+
 
 4. Contract
+
+- Time of creation
 - Hash
 - Value
-- Time of creation
+
 
 Each preview has clickable hash string, that leads to block/uncle, contract or transaction page.
 
-There is a pagination function on results page. It should be implemented via button "show more" at the bottom of the page.
+There is a infinite page scroll function on results page. 
 
 ### 2.1 Contract Page
 
@@ -195,15 +199,14 @@ Displayed data:
 General
 
 - Time [date] - time of contract getting into blockchain
-- Last activity [string] - current time minus time of last transaction
+- Balance [number + currency] - BTC available to withdraw 
 - Hash [string] - hash of address
 
-Balance
+Cashflow
 
 - Transactions [number] - number of transactions in contract
 - Unconfirmed transactions [number] - number of transactions in mempool
 - Accumulated income [number + currency] - received BTC
-- Income to claim [number + currency] - BTC available to withdraw 
 - Pending income [number + currency] - BTC in mempool transactions
 
 Charts:
@@ -256,14 +259,17 @@ Displayed data:
 - Robohash logo
 - QR code of address hash
 
+General:
+
 - Time [date] - time of contract getting into blockchain
-- Last activity [string] - current time minus time of last transaction
+- Balance [number + currency] - ETH available to withdraw 
 - Hash [string] - hash of address
+
+Cashflow:
 
 - Transactions [number] - number of transactions in contract
 - Unconfirmed transactions [number] - number of transactions in mempool
 - Accumulated income [number + currency] - received ETH
-- Income to claim [number + currency] - ETH available to withdraw 
 - Pending income [number + currency] - ETH in mempool transactions
 
 Charts:
