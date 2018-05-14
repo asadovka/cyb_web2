@@ -39,6 +39,12 @@ Cyber browser - an entrance point to start working with blockchains.
 
 Browser menu pages:
 
+USE CASES:
+
+1. no metamask - install metamask
+2. metamask - account logo
+
+
 - Main
 
 - Blockchains
@@ -53,10 +59,12 @@ Browser menu pages:
 - Cybernode
 - FAQ
 
+- currency selector
+
 Header:
 
 - search panel (local/global search)
-- currency selector
+
 
 
 ## 1. Main Page
