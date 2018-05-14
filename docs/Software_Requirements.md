@@ -48,19 +48,50 @@ Where:
 3. Tokens [numger] - all unique tokens from all blockchains indexed. 
 4. Database size [number + Gb] - size of Cassandra (index) database.
 
-There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio:
+There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio. Their apperance depends on user type:
 
-1. Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+1. User without Metamask
 
-    _**Call to action:** transition to cybernomics page_.
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+
+    _**Call to action:** install Metamask and transit to cybernomics page_.
   
-2. Chaingear registers [number] - number of user's registers (for authorized ones with created registers) or number of created registers in Chaingear.
+- Chaingear registers [number] - number of created registers in Chaingear.
 
-    _**Call to action:** transition to Chaingear page_.
+    _**Call to action:** install Metamask and transit to Chaingear page_.
   
-3. Portfolio volume [valuation in BTC] - volume of user's portfolio (for authorized ones) valuated in BTC or hint to create portfolio (for non authorized users).
+- Portfolio volume [valuation in BTC] - volume of all user's portfolio.
 
-    _**Call to action:** transition to Portfolio page_.
+    _**Call to action:** install Metamask and transit to Portfolio page_.
+
+2. User with Metamask (no activities in system)
+
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+
+    _**Call to action:** transit to cybernomics page_.
+  
+- Chaingear registers [number] - number of created registers in Chaingear.
+
+    _**Call to action:** transit to Chaingear page, hint to create register or record_.
+  
+- Portfolio volume [valuation in BTC] - portfolio volume from metamask address.
+
+    _**Call to action:** , transit to Portfolio page, hint to create full portfolio_.
+
+3. User with Metamask (no activities in system)
+
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+
+    _**Call to action:** transit to cybernomics page_.
+  
+- Chaingear registers [number] - number of created registers/records in Chaingear.
+
+    _**Call to action:** Chaingear page_.
+  
+- Portfolio volume [valuation in BTC] - volume of user's portfolio.
+
+    _**Call to action:** Portfolio page_.
+
 
 At the bottom of the page 5 project links are placed:
 1. GitHub - GitHub repository of cyber.Congress [https://github.com/cybercongress]
@@ -69,9 +100,10 @@ At the bottom of the page 5 project links are placed:
 4. Dashboard - a link user's custom dashboard []
 5. Knowledge - a link to knowledge database of cyber.Search project [cybersearch.io]
 
+
+
 **Proposals:**
 
-- Place a hint to use Metamask for getting the full functionality (when page requires metamask - make the icon active/ otherwise - non active).
 - Plugs for developing functionality
 - Place transition to roadmap where users can donate for developing options
 
