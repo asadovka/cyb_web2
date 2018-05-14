@@ -39,16 +39,19 @@ Cyber browser - an entrance point to start working with blockchains.
 
 Browser menu pages:
 
-Main
-Blockchains
-Tokens
-Exchanges
-Chaingear
-Labels
-Portfolio
-Dashboard
-Cybernode
-FAQ
+- Main
+
+- Blockchains
+- Tokens
+- Exchanges
+
+- Chaingear
+- Dashboard
+- Labels
+- Portfolio
+
+- Cybernode
+- FAQ
 
 Header:
 
