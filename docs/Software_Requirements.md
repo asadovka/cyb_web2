@@ -31,6 +31,31 @@ Cyber browser - an entrance point to start working with blockchains.
 
 # Browser Pages
 
+## 0. Browser menu & Header
+
+**Purpose:** list of all browser pages, navigation instrument. 
+
+**Design & UI features:** logical navigation, currency selector.
+
+Browser menu pages:
+
+Main
+Blockchains
+Tokens
+Exchanges
+Chaingear
+Labels
+Portfolio
+Dashboard
+Cybernode
+FAQ
+
+Header:
+
+- search panel (local/global search)
+- currency selector
+
+
 ## 1. Main Page
 
 **Purpose:** accent the user's attention to search function. 
