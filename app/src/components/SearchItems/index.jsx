@@ -139,13 +139,13 @@ export const Container = ({ children }) => (
 //   </div>
 // );
 
-export const Item = ({ children, line='#000' }) => (
+export const Item = ({ children, line='#d9d9d9' }) => (
   <div className={styles.item} style={{ border: `1px solid ${line}`}}>
     {children}
   </div>
 );
 
-export const ItemTitle = ({ children, bg = '#fff' }) => (
+export const ItemTitle = ({ children, bg = '#000' }) => (
   <h3 className={styles.itemTitle} style={{ backgroundColor: `${bg}`}}>
     {children}
   </h3>
@@ -169,12 +169,13 @@ export const ItemContainer = ({ children }) => (
 );
 
 // style={{ borderRight: '1px solid #dedede'}}
-export const ItemContainerRow = ({ children, width, border= 'none' }) => (
+export const ItemContainerRow = ({ children, width, border= 'none', center = false }) => (
   <div className={styles.itemContainerRow} style={{ 
     width: width,
     borderRight: border === 'right' ? '1px solid #dedede': null,
     borderLeft: border === 'left' ? '1px solid #dedede': null,
-    borderTop: border === 'top' ? '1px solid #dedede': null
+    borderTop: border === 'top' ? '1px solid #dedede': null,
+    textAlign: center ? 'center' : null
   }}>
     {children}
   </div>

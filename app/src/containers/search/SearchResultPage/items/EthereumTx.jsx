@@ -40,26 +40,26 @@ const EthereumTx = ({ hash, value, block_time, from, to }) => {
    <Item line={colors.transaction}>
      <ItemTitle bg={colors.ethereum}>Ethereum transaction</ItemTitle>
      <ItemContainer>
-       <ItemContainerRow width='33%' border='right'>
-          <Label>Hash:</Label>
-          <LinkHash value={hash} to={`/ethereum/tx/${hash}`} />         
-       </ItemContainerRow>
-       <ItemContainerRow width='33%'>
-          <Label>Value:</Label>
-          <Value>{value} ETH</Value>       
-       </ItemContainerRow>
-       <ItemContainerRow width='33%' border='left'>
+       <ItemContainerRow center width='33%' border='right'>
           <Label>Finalization Time:</Label>
           <Value>{dateFormat(block_time)}</Value>
        </ItemContainerRow>
-       <ItemContainerRow width='50%' border='top'>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/ethereum/tx/${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Value:</Label>
+          <Value>{value} ETH</Value>       
+       </ItemContainerRow>
+       {/*<ItemContainerRow width='50%' border='top'>
          <Label>From:</Label>
          <LinkAddress address={from} to={`/ethereum/contract/${from}`}/>
        </ItemContainerRow>
        <ItemContainerRow width='50%' border='top'>
          <Label>To:</Label>
          <LinkAddress address={to} to={`/ethereum/contract/${to}`}/>
-       </ItemContainerRow>
+       </ItemContainerRow>*/}
      </ItemContainer>
    </Item>   
   );

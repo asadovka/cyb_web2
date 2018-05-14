@@ -14,17 +14,17 @@ const EthereumBlock = ({ number, hash, tx_number, timestamp }) => {
     <Item line={colors.block}>
       <ItemTitle bg={colors.ethereum_classic}>Ethereum Classic block #{number}</ItemTitle>
       <ItemContainer>
+        <ItemContainerRow center width='33%' border='right'>
+          <Label>Mined on:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+        </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
           <LinkHash value={hash} to={`/ethereum_classic/block/${number}`} />
         </ItemContainerRow>
-        <ItemContainerRow width='33%' border='right'>
+        <ItemContainerRow center width='33%'>
           <Label>Transaction:</Label>
           <Value>{tx_number}</Value>
-        </ItemContainerRow>
-        <ItemContainerRow width='33%'>
-          <Label>Mined on:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
         </ItemContainerRow>
       </ItemContainer>
     </Item>

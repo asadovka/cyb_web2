@@ -4,49 +4,27 @@ import { Link } from 'react-router';
 import {
   Item, colors, ItemTitle, ItemContainer, ItemContainerRow, Label,
   Value, dateFormat,
-  Title, Date, Row, Hash,
-  Height, Total, DetailsLink, LinkHash
+  LinkHash
 } from '../../../../components/SearchItems/';
 
 
-  {/*<Item color='#438cef'>
-    <Row>
-      <Title 
-        color='#438cef'
-        system='Ethereum'
-        number={data.number}
-      />  
-    </Row>
-    <Row>
-      <Date value={data.timestamp} format='YYYY-MM-DD hh:mm' label='Mined on:'/>
-    </Row>
-    <Row>
-      <Hash value={data.hash} />
-      <Height>Size:&nbsp;{data.size}</Height>
-    </Row>
-    <Row>
-      <DetailsLink to={`/ethereum/block/${data.number}`}>
-        {`seacrh.cyber.fund/ethereum/block/${data.number}`}
-      </DetailsLink>
-    </Row>
-  </Item>*/}
 
 const EthereumBlock = ({ number, hash, tx_number, timestamp }) => {
  return (
     <Item line={colors.block}>
       <ItemTitle bg={colors.ethereum}>Ethereum block #{number}</ItemTitle>
       <ItemContainer>
+        <ItemContainerRow center width='33%' border='right'>
+          <Label>Mined on:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+        </ItemContainerRow>
         <ItemContainerRow width='33%' border='right'>
           <Label>Hash:</Label>
           <LinkHash value={hash} to={`/ethereum/block/${number}`} />
         </ItemContainerRow>
-        <ItemContainerRow width='33%' border='right'>
+        <ItemContainerRow center width='33%'>
           <Label>Transaction:</Label>
           <Value>{tx_number}</Value>
-        </ItemContainerRow>
-        <ItemContainerRow width='33%'>
-          <Label>Mined on:</Label>
-          <Value>{dateFormat(timestamp)}</Value>
         </ItemContainerRow>
       </ItemContainer>
     </Item>
