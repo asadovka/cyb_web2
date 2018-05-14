@@ -17,13 +17,34 @@
 
 
 .hash {
-  margin-right: 30px;
+  // margin-right: 10px;
 }
 
 .linHash {
   color: #438cef;
   font-size: 18px;
   line-height: 21px;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+}
+
+.copyButton {
+  text-indent: -9999px;
+  width: 12px;
+  height: 14px;
+  border: none;
+  background: url('../SearchItems/baseline-file-copy-24-px.svg') no-repeat;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.copyButton {
+  display: none;
+}
+
+.linHash:hover .copyButton {
+  display: block;
 }
 
 .linHash:hover {

@@ -61,16 +61,6 @@ function logPageView() {
 }
 
 
-const TestLayout = ({ menu, children }) => (
-  <div>
-    <div>
-      {menu}
-    </div>
-    <div>
-      {children}
-    </div>
-  </div>
-)
 
 import Container from './components/Container/';
 

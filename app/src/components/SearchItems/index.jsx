@@ -54,11 +54,53 @@ export const Hash = ({ value }) => {
   );
 }
 
-export const LinkHash = ({ value, to }) => (
-  <Link to={to} className={styles.linHash}>
-    <Hash value={value} />
-  </Link>
-);
+//https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Fallback: Copying text command was ' + msg);
+  } catch (err) {
+    console.error('Fallback: Oops, unable to copy', err);
+  }
+
+  document.body.removeChild(textArea);
+}
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+
+export const LinkHash = ({ value, to }) => {
+  const copyFunc = (e) => {
+    copyTextToClipboard(value);
+    e.preventDefault();
+    e.target.blur();
+  }
+  return (
+    <Link to={to} className={styles.linHash}>
+      <Hash value={value} />
+      <button 
+        className={styles.copyButton} 
+        title='click to copy'
+        onClick={copyFunc}
+      >copy</button>
+    </Link>
+  );
+}
 
 export const LinkAddress = ({ address, to }) => (
   <Link to={to} className={styles.linkAddress}>

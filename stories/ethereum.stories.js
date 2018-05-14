@@ -30,6 +30,8 @@ import {
 
 import Tabs, { Tab } from '../app/src/components/Tabs/';
 
+import Container from '../app/src/components/Container/';
+
 storiesOf('Ethereum pages', module)
 .add('block', withState({ open: false })(({ store }) => (
   <Layout 
@@ -53,7 +55,7 @@ storiesOf('Ethereum pages', module)
       </Menu>
     </AppMenu>
     <AppContent >
-            <div className='container' style={{ width: 1090 }}>
+            <Container>
         <Head>
           <Button o>previous</Button>
           <Title inline={true}>Ethereum Block #5000000</Title>
@@ -159,7 +161,7 @@ storiesOf('Ethereum pages', module)
               </tr>
           </thead>
         </TransactionsTable>
-      </div>
+      </Container>
     </AppContent>
   </Layout>
 )));
