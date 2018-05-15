@@ -24,9 +24,20 @@ import {
   Details, DetailsRow, Label, Value,
   TLink, TransactionsTable,
   EPrice,
-  FlexContainer
+  FlexContainer,
+  Grid,
+  Row,
+  Paper,
+  LabelBlock,
+  Status,
+  ActionButtonContainer,
+  ActionButton
 } from '../app/src/components/ItemsDetails/';
 
+
+import {
+  LinkHash
+} from '../app/src/components/SearchItems/';
 
 import Tabs, { Tab } from '../app/src/components/Tabs/';
 
@@ -77,31 +88,27 @@ storiesOf('Ethereum pages', module)
           <Title inline={true}>Ethereum Block #5000000</Title>
           <Button >next</Button>
         </Head>
-        <SubTitle>Overview</SubTitle>
+        <SubTitle>Genereral</SubTitle>
         <Details>
           <DetailsRow>
-            <Label>Time (UTC)</Label>
-            <Value>3 years ago (2015-07-30T18:31:17+03:00)</Value>
+            <Label>UTC Time</Label>
+            <Value>2015-07-30T18:31:17</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>block hash</Label>
+            <Label>hash</Label>
             <Value>0x74d74553948545d4754462d28d3fa4f8efb6f35e08559616df1c5c72695ae0b6</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>sha3uncles</Label>
-            <Value>0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>block size</Label>
+            <Label>size</Label>
             <Value>538 bytes</Value>
           </DetailsRow>
           <DetailsRow>
             <Label>nonce</Label>
-            <Value>???</Value>
+            <Value>0xb2192ef00e67aeee</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>extra data</Label>
-            <Value>0x426974636f696e2069732054484520426c6f636b636861696e2e</Value>
+            <Label>transactions</Label>
+            <Value>42</Value>
           </DetailsRow>
         </Details>
          
@@ -117,32 +124,84 @@ storiesOf('Ethereum pages', module)
           </DetailsRow>
         </Details>
 
-        <SubTitle>Rewards</SubTitle>
+        <SubTitle>Blockchain specific</SubTitle>
         <Details>
           <DetailsRow>
-            <Label>static block reward</Label>
-            <Value>5.000000 ETH</Value>
+            <Label>Sha3Uncles</Label>
+            <Value>0x57859b4878535799ef85e90f0dc7b319653d75e93550c5a096d79e93e11fe70f</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>transaction fees</Label>
-            <Value>0.000000 ETH</Value>
+            <Label>Extra Data</Label>
+            <Value>0xe4b883e5bda9e7a59ee4bb99e9b1bc</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>uncle inclusion reward</Label>
-            <Value>0.000000 ETH</Value>
+            <Label>Uncles</Label>
+            <Value>2</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>total block reward</Label>
-            <Value>5.000000 ETH</Value>
+            <Label>Gas used</Label>
+            <Value>3,015,845</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Gas limit</Label>
+            <Value>7,992,185</Value>
           </DetailsRow>
         </Details>
 
+        <Grid>
+          <Row width='50%'>
+            <SubTitle>Rewards</SubTitle>
+            <Details>
+              <DetailsRow>
+                <Label>static block reward</Label>
+                <Value>5.000000 ETH</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>uncle reward</Label>
+                <Value>0.000000 ETH</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>fees</Label>
+                <Value>0.000000 ETH</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>total block reward</Label>
+                <Value>5.000000 ETH</Value>
+              </DetailsRow>
+            </Details>
+          </Row>
+          <Row width='50%'>
+            <SubTitle>Uncles</SubTitle>          
+            <TransactionsTable>
+              <thead>
+                <tr>
+                  <th>Hash</th>
+                  <th>Level</th>
+                  <th>Miner</th>
+                  <th>Reward</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <TLink to='/' hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/>
+                  </td>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    <TLink to='/' hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/>
+                  </td>
+                  <td>
+                    3 ETh
+                  </td>
+                </tr>
+              </tbody>
+            </TransactionsTable>
+          </Row>
+        </Grid>
+
         <SubTitle>Transaction</SubTitle>
-        <FlexContainer>
-          <Tabs value={1} onChange={() => {}}>
-            <Tab label={`transaction: 2`} value={1}></Tab>
-          </Tabs>
-        </FlexContainer>
         <TransactionsTable 
           page={0} 
           pageSize={10} 
@@ -160,10 +219,12 @@ storiesOf('Ethereum pages', module)
           </thead>
           <thead>
             <tr >
-              <td><TLink hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/></td>
+              <td>
+                <TLink to='/' hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/>
+              </td>
               <td>5 months ago</td>
-              <td><TLink hash='0x923d4a972be3bf2b1527984550db29a4205a520c'/></td>
-              <td><TLink hash='0x923d4a972be3bf2b1527984550db29a4205a520c'/></td>
+              <td><TLink to='/' hash='0x923d4a972be3bf2b1527984550db29a4205a520c'/></td>
+              <td><TLink to='/' hash='0x923d4a972be3bf2b1527984550db29a4205a520c'/></td>
               <td><EPrice value={316.472152} icon={true}/></td>
               <td><EPrice value={0.00295} /></td>
             </tr>
@@ -184,80 +245,128 @@ storiesOf('Ethereum pages', module)
     open={store.state.open}
     onToggle={() => store.set({ open: !store.state.open })}
   >
-        <div style={{ textAlign: 'center' }}>
-          <Title inline={true}>Ethereum Transaction</Title>
-        </div>
-        <SubTitle>Overview</SubTitle>
-        <Details>
-          <DetailsRow>
-            <Label>time(UTC)</Label>
-            <Value>7/2/2018 17:13:33 UTC</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>transaction hash</Label>
-            <Value>0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>block</Label>
-            <Value>5000000</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>nonce</Label>
-            <Value>3</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>status</Label>
-            <Value>Confirmed (???, ??? confirmations)</Value>
-          </DetailsRow>
-        </Details>
+        <Title>Ethereum Transaction</Title>
+        <SubTitle>General</SubTitle>
+        <Grid>
+          <Row width='25%' center>
+            <Paper>
+              <LabelBlock>UTC TIME:</LabelBlock>
+              <span>7/2/2018 17:13:33</span>
+            </Paper>
+          </Row>
 
-        <SubTitle>Details</SubTitle>
-        <Details>
-          <DetailsRow>
-            <Label>Type</Label>
-            <Value>???</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>from</Label>
-            <Value>0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>to</Label>
-            <Value>0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>value</Label>
-            <Value>3 УЕР</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>fee</Label>
-            <Value>0ю0002 УЕР</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>gas price</Label>
-            <Value>3 GWEI</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>gas used</Label>
-            <Value></Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>gas limit</Label>
-            <Value>21000</Value>
-          </DetailsRow>
-        </Details>
+          <Row width='25%' center>
+            <Paper>
+            <LabelBlock>Hash:</LabelBlock>
+              <LinkHash
+                to='/'
+                value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+              />
+            </Paper>
+          </Row>
 
-        <SubTitle>Data</SubTitle>
-        <Details>
-          <DetailsRow>
-            <Label>input</Label>
-            <Value>???</Value>
-          </DetailsRow>
-          <DetailsRow>
-            <Label>logs</Label>
-            <Value>???</Value>
-          </DetailsRow>
-        </Details>
+          <Row width='25%' center>
+            <Paper>
+            <LabelBlock>Value:</LabelBlock>
+            <span>3 ETH</span>
+            </Paper>
+          </Row>
+
+          <Row width='25%' center>
+            <Paper>
+            <LabelBlock>State:</LabelBlock>
+            <Status type='confirmed'>
+              Confirmed
+            </Status>
+            </Paper>
+          </Row>
+        </Grid>
+
+        
+        <Grid>
+          <Row width='50%'>
+          <SubTitle>Blockchains specific</SubTitle>
+            <Details>
+              <DetailsRow>
+                <Label>Block</Label>
+                <Value>234234</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>Size</Label>
+                <Value>193 bytes</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>Confirmations</Label>
+                <Value>2123</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>Nonce</Label>
+                <Value>3</Value>
+              </DetailsRow>                            
+            </Details>
+          </Row>
+
+          <Row width='50%'>
+            <SubTitle>Fees</SubTitle>
+            <Details>
+              <DetailsRow>
+                <Label>Fee</Label>
+                <Value>0.002 ETH</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>GAS Price</Label>
+                <Value>3 GWEI</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>GAS Limit</Label>
+                <Value>21000</Value>
+              </DetailsRow>
+              <DetailsRow>
+                <Label>GAS Used</Label>
+                <Value></Value>
+              </DetailsRow>                            
+            </Details>
+          </Row>
+        </Grid>
+
+        <SubTitle>Adresses</SubTitle>
+        <TransactionsTable>
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Sent</th>
+              <th>Receiver</th>
+              <th>Received</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <LinkHash
+                  to='/'
+                  value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+                />
+              </td>
+              <td>
+                <span>3 ETH</span>
+              </td>
+              <td>
+                <LinkHash
+                  to='/'
+                  value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+                />
+              </td>
+              <td>
+                <span>3 ETH</span>
+              </td>
+            </tr>
+          </tbody>
+        </TransactionsTable>
+
+        <SubTitle>Code</SubTitle>
+        <Paper>
+          Input data
+        </Paper>
   </App>
 )))
 .add('uncle', withState({ open: false })(({ store }) => (
@@ -269,23 +378,37 @@ storiesOf('Ethereum pages', module)
         <Head>
           <Title inline={true}>Ethereum Uncle Block #500000</Title>
         </Head>
-        <SubTitle>Overview</SubTitle>
+        <SubTitle>General</SubTitle>
         <Details>
           <DetailsRow>
-            <Label>Time (UTC)</Label>
-            <Value>2018-01-30T17:07:12+03:00</Value>
+            <Label>UTC Time</Label>
+            <Value>2018-01-30T17:07:12</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>parent block height</Label>
+            <Label>hash</Label>
+            <Value>
+              <LinkHash
+                to='/'
+                value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+              />
+            </Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>parent block</Label>
             <Value>500001</Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>parent block hash</Label>
-            <Value>0x0a264d62c3b7f50ba3464649fde3f2f3e1c776d80b335263c0923899a2d7f09e</Value>
+            <Label>parent hash</Label>
+            <Value>
+              <LinkHash
+                to='/'
+                value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+              />
+            </Value>
           </DetailsRow>
           <DetailsRow>
-            <Label>uncle level</Label>
-            <Value>1</Value>
+            <Label>level</Label>
+            <Value>2</Value>
           </DetailsRow>
         </Details>
 
@@ -293,7 +416,12 @@ storiesOf('Ethereum pages', module)
         <Details>
           <DetailsRow>
             <Label>miner</Label>
-            <Value>0x84990f5d2e09f56cabdabf6409ad31bdd8363b50</Value>
+            <Value>
+              <LinkHash
+                to='/'
+                value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+              />
+            </Value>
           </DetailsRow>
         </Details>
 
@@ -314,63 +442,74 @@ storiesOf('Ethereum pages', module)
   >
       <div>
         <Title>Ethereum Contract</Title>
-        <Head>
-          <div>
-            <Robohash hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
-          </div>
-          <div>
-            <QRCode hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
-          </div>
-          <div>
-            <div style={{
-              width: 55,
-              height: 55,
-              background: '#438cef',
-              borderRadius: '50%',
-              boxShadow: '0px 1px 4px #438cef'
-            }}>
-            </div>
-          </div>
-        </Head>
-        <SubTitle>Overview</SubTitle>
-        <Details>
-          <DetailsRow>
-            <Label>Time (UTC)</Label>
-            <Value>07.02.2018 17:13:33 (UTC)</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>Last activity</Label>
-            <Value>3 min ago</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>address hash</Label>
-            <Value>1C1mCxRukix1KfegAY5zQQJV7samAciZpv</Value>        
-          </DetailsRow>
-        </Details>
 
-        <SubTitle>Balance</SubTitle>
-        <Details>
-          <DetailsRow>
-            <Label>Transactions</Label>
-            <Value>12</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>Unconfirmed transactions</Label>
-            <Value>???</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>Lifetime balance</Label>
-            <Value>???</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>Current balance</Label>
-            <Value>5 ETH</Value>        
-          </DetailsRow>
-          <DetailsRow>
-            <Label>Current balance with unconfirmed transactions</Label>
-            <Value>???</Value>        
-          </DetailsRow>
-        </Details>
+        <div style={{ textAlign: 'center'}}>
+          <Robohash hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
+        </div>
+
+        <SubTitle>General</SubTitle>
+        <ActionButtonContainer>
+          <ActionButton />
+          <Grid>
+            <Row width='25%' center>
+              <Paper>
+              <QRCode hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
+              </Paper>
+            </Row>
+
+            <Row width='25%' center>
+              <Paper>
+                <LabelBlock>UTC TIME:</LabelBlock>
+                <span>7/2/2018 17:13:33</span>
+              </Paper>
+            </Row>
+
+            <Row width='25%' center>
+              <Paper>
+              <LabelBlock>Hash:</LabelBlock>
+                <LinkHash
+                  to='/'
+                  value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
+                />
+              </Paper>
+            </Row>
+
+            <Row width='25%' center>
+              <Paper>
+              <LabelBlock>Balance:</LabelBlock>
+              <span>3 ETH</span>
+              </Paper>
+            </Row>
+          </Grid>        
+        </ActionButtonContainer>
+
+        <SubTitle>Cashflow</SubTitle>
+        <Grid>
+          <Row width='50%'>
+            <Details>
+              <DetailsRow>
+                <Label>Transactions</Label>
+                <Value>12</Value>        
+              </DetailsRow>
+              <DetailsRow>
+                <Label>Unconfirmed transactions</Label>
+                <Value>3</Value>        
+              </DetailsRow>
+            </Details>
+          </Row>
+          <Row width='50%'>
+            <Details>
+              <DetailsRow>
+                <Label>Accumulated income</Label>
+                <Value>10 ETH</Value>        
+              </DetailsRow>
+              <DetailsRow>
+                <Label>Pending income</Label>
+                <Value>7 ETH</Value>        
+              </DetailsRow>
+            </Details>
+          </Row>
+        </Grid>
       </div>
   </App>
 )))

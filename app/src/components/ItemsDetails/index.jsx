@@ -45,8 +45,8 @@ export const Value = ({ children }) => (
 
 import { Link } from 'react-router'; 
 
-export const TLink = ({ hash }) => (
-  <Link to={`/ethereum/tx/${hash}`} className={styles.TLink}>
+export const TLink = ({ hash, to }) => (
+  <Link to={to} className={styles.TLink}>
     {hash}
   </Link>
 );
@@ -91,3 +91,52 @@ export const FlexContainer = ({ children }) => (
   </div>
 );
 
+
+export const LabelBlock = ({ children }) => (
+  <span className={styles.labelBlock}>
+    {children}
+  </span>
+);
+
+
+export const Grid = ({ children }) => (
+  <div className={styles.grid}>
+    {children}
+  </div>
+);
+
+export const Row = ({ children, width, center = false }) => (
+  <div className={styles.row} style={{ width, textAlign: center ? 'center': null }}>
+    {children}
+  </div>
+);
+
+export const Paper = ({ children }) => (
+  <div className={styles.paper}>
+    {children}
+  </div>
+);
+
+
+export const Status = ({ children, type }) => (
+  <span className={styles.status}>
+    {children}
+  </span>
+);
+
+export const ActionButton = (props) => (
+  <div className={styles.actionButton} style={{
+    width: 55,
+    height: 55,
+    background: '#438cef',
+    borderRadius: '50%',
+    boxShadow: '0px 1px 4px #438cef'
+  }}>
+  </div>
+);
+
+export const ActionButtonContainer = (props) => (
+  <div className={styles.actionButtonContainer}>
+    {props.children}
+  </div>
+);

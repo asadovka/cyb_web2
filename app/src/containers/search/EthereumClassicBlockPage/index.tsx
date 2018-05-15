@@ -195,10 +195,10 @@ class EthereumClassicBlockPage extends React.Component {
           <thead>
             {transactions.slice(0, 10).map(t => (
               <tr key={t.hash}>
-                <td><TLink hash={t.hash}/></td>
-                <td>{data.timestamp && moment(data.timestamp * 1000).fromNow()}</td>
-                <td><TLink hash={t.from}/></td>
-                <td><TLink hash={t.to}/></td>
+                <td><TLink hash={t.hash} to={`/ethereum/tx/${t.hash}`}/></td>
+                <td>{t.timestamp && moment(t.timestamp * 1000).fromNow()}</td>
+                <td><TLink hash={t.from} to={`/ethereum/contract/${t.from}`}/></td>
+                <td><TLink hash={t.to} to={`/ethereum/contract/${t.to}`}/></td>
                 <td><EPrice value={t.value} icon={true}/></td>
                 <td><EPrice value={t.value} /></td>
               </tr>
