@@ -111,8 +111,8 @@ export const Row = ({ children, width, center = false }) => (
   </div>
 );
 
-export const Paper = ({ children }) => (
-  <div className={styles.paper}>
+export const Paper = ({ children, center }) => (
+  <div className={styles.paper + ' ' + (center ? styles.paperCenter : '')}>
     {children}
   </div>
 );
@@ -125,13 +125,7 @@ export const Status = ({ children, type }) => (
 );
 
 export const ActionButton = (props) => (
-  <div className={styles.actionButton} style={{
-    width: 55,
-    height: 55,
-    background: '#438cef',
-    borderRadius: '50%',
-    boxShadow: '0px 1px 4px #438cef'
-  }}>
+  <div className={styles.actionButton}>
   </div>
 );
 

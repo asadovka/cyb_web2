@@ -84,7 +84,7 @@ storiesOf('Ethereum pages', module)
     onToggle={() => store.set({ open: !store.state.open })}
   >
         <Head>
-          <Button o>previous</Button>
+          <Button >previous</Button>
           <Title inline={true}>Ethereum Block #5000000</Title>
           <Button >next</Button>
         </Head>
@@ -458,14 +458,14 @@ storiesOf('Ethereum pages', module)
             </Row>
 
             <Row width='25%' center>
-              <Paper>
+              <Paper center>
                 <LabelBlock>UTC TIME:</LabelBlock>
                 <span>7/2/2018 17:13:33</span>
               </Paper>
             </Row>
 
             <Row width='25%' center>
-              <Paper>
+              <Paper center>
               <LabelBlock>Hash:</LabelBlock>
                 <LinkHash
                   to='/'
@@ -475,7 +475,7 @@ storiesOf('Ethereum pages', module)
             </Row>
 
             <Row width='25%' center>
-              <Paper>
+              <Paper center>
               <LabelBlock>Balance:</LabelBlock>
               <span>3 ETH</span>
               </Paper>
