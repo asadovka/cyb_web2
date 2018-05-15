@@ -64,7 +64,7 @@ USE CASES:
 - Cybernode
 - FAQ
 
-- currency selector
+- currency selector (USD-BTC-ETH)
 
 Header:
 
