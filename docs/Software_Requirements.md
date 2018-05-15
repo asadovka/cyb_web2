@@ -37,13 +37,18 @@ Cyber browser - an entrance point to start working with blockchains.
 
 **Design & UI features:** logical navigation, currency selector.
 
-Browser menu pages:
+
+Browser menu:
+
+1. Menu header:
 
 USE CASES:
 
-1. no metamask - install metamask
-2. metamask - account logo
+- no metamask - install metamask
+- non auth user- log in metamask
+- auth user - account logo
 
+2. Menu list:
 
 - Main
 
