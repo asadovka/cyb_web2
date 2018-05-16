@@ -95,7 +95,7 @@ There are 3 main widgets below the status string describing the cryptoeconomy, r
 
 - Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
-    _**Call to action:** install Metamask and transit to cybernomics page_.
+    _**Call to action:** install Metamask and transit to tokens page_.
   
 - Chaingear registers [number] - number of created registers in Chaingear.
 
@@ -109,7 +109,7 @@ There are 3 main widgets below the status string describing the cryptoeconomy, r
 
 - Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
-    _**Call to action:** transit to cybernomics page_.
+    _**Call to action:** transit to tokens page_.
   
 - Chaingear registers [number] - number of created registers in Chaingear.
 
@@ -123,7 +123,7 @@ There are 3 main widgets below the status string describing the cryptoeconomy, r
 
 - Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
-    _**Call to action:** transit to cybernomics page_.
+    _**Call to action:** transit to tokens page_.
   
 - Chaingear registers [number] - number of created registers/records in Chaingear.
 
