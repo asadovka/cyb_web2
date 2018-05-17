@@ -21,5 +21,17 @@ Clear colored states:
 
 Respect users:
 - public activity [address + events tracking] - surep perk
-- private activity [only events + abstract address tracking] - simple peak
+- private activity [only events + abstract address tracking] - simple perk
 - anonimous activity [no tracking at all]
+
+
+
+landing pages
+
+common logic structure
+
+cool visualisation
+
+proposal for development or including
+
+customisation
