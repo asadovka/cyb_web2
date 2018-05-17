@@ -239,7 +239,7 @@ Displayed data:
 
 General
 
-- Time [date] - time of contract getting into blockchain
+- UTC Time [date] - time of contract getting into blockchain
 - Balance [number + currency] - BTC available to withdraw 
 - Hash [string] - hash of address
 
@@ -262,18 +262,18 @@ Transactions and blocks;
 
 1. Transactions tab:
 
-- Time [date] - time of getting transaction to mempool
+- UTC Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Block [number] - number of block
 - Sender[number]- number of inputs
-- Sent [number + currency] - total input balance in BTC
+- Value[number + currency] - total input balance in BTC
 - Receiver [number]- number of outputs
-- Received [number + currency] - total output balance in BTC
+- Value [number + currency] - total output balance in BTC
 - Fee [number + currency] - accumulated fees in BTC
 - State [string] - "Confirmed", "Mempool", "Finalized"
 
 2. Mined blocks (for miner address only):
-- Time [date] - time of block generation
+- UTC Time [date] - time of block generation
 - Block [number] - number of mined block
 - Transactions [number] - number of transactions in mined block
 - Reward [number + currency] - rewards for block in BTC
@@ -302,7 +302,7 @@ Displayed data:
 
 General:
 
-- Time [date] - time of contract getting into blockchain
+- UTC Time [date] - time of contract getting into blockchain
 - Balance [number + currency] - ETH available to withdraw 
 - Hash [string] - hash of address
 
@@ -324,42 +324,45 @@ Charts:
 Transactions and blocks;
 
 1. Transactions tab:
-- Time [date] - time of getting transaction to mempool
+- UTC Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Block [number] - number of block
 - Sender[hash]- hash of "from" address
 - Receiver [hash]- hash of "to" address
-- Sent [number + currency] - total input balance in ETH
+- Value [number + currency] - tx value in ETH
 - Fee [number + currency] - accumulated fees in ETH
 - State [string] - "Confirmed", "Mempool", "Finalized"
 
-4. Internal transactions tab (if available):
-- Time [date] - time of getting transaction to mempool
-- Hash [string] - hash of transaction
-- Block [number] - number of block
+4. Operations tab (if available):
+- UTC Time [date] - time of getting transaction to mempool
+- Type [string] - type of internal tx (call, delegate call, destroy, create)
 - Sender[hash]- hash of "from" address
 - Receiver [hash]- hash of "to" address
-- Sent [number + currency] - total input balance in ETH
-- Fee [number + currency] - accumulated fees in ETH
-- State [string] - "Confirmed", "Mempool", "Finalized"
+- Value [number + currency] - total input balance in ETH
+- Gas used [number] - gas used
+- Gas limit [number] - gas limit
+- State [string] - "Failed", "Reverted", "Successful"
 
 3. Tokens tab:
 - Token [string] - token name
+- Hash [string] - transaction hash
 - Sender [number + currency] - sent tokens
 - Receiver [number + currency] - received tokens
-- Sent [number + currency] - sent minus received tokens
+- Value [number + currency] - sent minus received tokens
 
 4. Mined blocks tab (for miner address only):
-- Time [date] - time of block generation
+- UTC Time [date] - time of block generation
 - Block [number] - number of mined block
 - Transactions [number] - number of transactions in mined block
 - Reward [number + currency] - rewards for block in ETH
 
 5. Mined uncles tab (if available):
+
+- UTC Time [date] - time of block generation
+- Hash [string] - uncle hash
 - Block [number] - number of block with uncle
 - Uncle [number] - number of mined uncle
-- Hash [string] - uncle hash
-- Time [date] - time of block generation
+
 - Reward [number + currency] - rewards for uncle in ETH
 
 Code:
@@ -396,7 +399,7 @@ Displayed data:
 
 General
 
-- Time [date] - time of getting transaction to mempool
+- UTC Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Value [number + currency] - total transaction value in BTC
 - State [string] - "Confirmed", "Mempool", "Finalized"
@@ -417,11 +420,10 @@ Fees
 
 Address table. Headers:
 
-1. Sender [string]- input hashes:
-- Sent [number + currency] - input value in BTC
-
-2. Receiver [string]- output hashes:
-- Received [number + currency] - input value in BTC
+- Senders [string]- input hashes:
+- Value [number + currency] - input value in BTC
+- Receivers [string]- output hashes:
+- Value [number + currency] - output value in BTC
 
 Transaction data:
 
@@ -446,7 +448,7 @@ Displayed data:
 
 General
 
-- Time [date] - time of getting transaction to mempool
+- UTC Time [date] - time of getting transaction to mempool
 - Hash [string] - hash of transaction
 - Value [number + currency] - total transaction value in ETH
 - State [string] - "Confirmed", "Mempool", "Finalized"
@@ -467,11 +469,9 @@ Fees
 
 Address table. Headers:
 
-1. Sender [string]- input hashes:
-- Sent [number + currency] - input value in ETH
-
-2. Receiver [string]- output hashes:
-- Received [number + currency] - input value in ETH
+- Sender [string]- input hashes
+- Receiver [string]- output hashes:
+- Value [number + currency] - tx value in ETH
 
 Transaction data:
 
@@ -506,7 +506,7 @@ Displayed data:
 
 General
 
-- Time [date] - time of block generation
+- UTC Time [date] - time of block generation
 - Hash [string] - hash of block
 - Size [number + bytes] - size of block in bytes
 - Nonce [string] - answer to PoW
@@ -530,12 +530,12 @@ Rewards
 
 Transaction table. Headers:
 
+- UTC Time [date] - time of getting into block or confirmation minus time of getting into mempool
 - Hash [string] - transaction hash
-- Time [date] - time of getting into block or confirmation minus time of getting into mempool
 - Senders [number] - number in inputs
-- Sent[number + currency] - summ of all input values in BTC
+- Value [number + currency] - summ of all input values in BTC
 - Receivers [number] - number in outputs
-- Received [number + currency] - summ of all output values in BTC
+- Value [number + currency] - summ of all output values in BTC
 - Fee [number + currency] - fees per transaction in BTC
 
 Actions:
@@ -586,11 +586,11 @@ Rewards
 
 Transaction table. Headers:
 
+- UTC Time [number + seconds] - time of getting into block or confirmation minus time of getting into mempool
 - Hash [string] - transaction hash
-- Time [number + seconds] - time of getting into block or confirmation minus time of getting into mempool
-- From [hash] - hash of input
-- To [hash] - hash of output
-- Sent [number + currency] - transaction value in ETH
+- Sender [hash] - hash of input
+- Receiver [hash] - hash of output
+- Value [number + currency] - transaction value in ETH
 - Fee [number + currency] - fees per transaction in ETH
 
 Uncle table. Headers:
