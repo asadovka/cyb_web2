@@ -30,6 +30,15 @@
   align-items: center;
 }
 
+.linHash.hashText,
+.linHash.hashText:hover {
+  color: #7c7c7c;
+}
+
+.linHash.linHashMarginLeft {
+  margin-left: 30px;
+}
+
 .copyButton {
   text-indent: -9999px;
   width: 12px;
@@ -40,13 +49,22 @@
   cursor: pointer;
 }
 
-.copyButton {
-  display: none;
+.linHash.noCopy {
+  width: 130px;
+
+  .copyButton {
+    display: none;
+  }
 }
 
-.linHash:hover .copyButton {
-  display: block;
-}
+
+// .copyButton {
+//   display: none;
+// }
+
+// .linHash:hover .copyButton {
+//   display: block;
+// }
 
 .linHash:hover {
   color: #438cef;  

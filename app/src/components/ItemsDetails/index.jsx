@@ -2,6 +2,8 @@ import * as React from 'react';
 
 const styles = require("./ItemsDetails.less");
 
+import cx from 'classnames';
+
 export const Head = ({ children }) => (
   <div className={styles.head}>
     {children}
@@ -16,8 +18,8 @@ export const Button = (props) => (
   <button {...props} className={styles.button}/>
 );
 
-export const Details = ({ children }) => (
-  <table className={styles.details}>
+export const Details = ({ children, noShadow = false }) => (
+  <table className={cx(styles.details, { [styles.detailsNoShadow] : noShadow })}>
     <tbody>
       {children}
     </tbody>
@@ -62,7 +64,7 @@ export const TransactionsTable = ({ children, page = null, pageSize, totalCount 
       <table>
         {children}
       </table>
-      {page !== null && <div className={styles.transactionsTablePager}>
+      {/*page !== null && <div className={styles.transactionsTablePager}>
         <FlexContainer>
           <div>
             View on page: <select><option>10</option><option>20</option><option>100</option></select>
@@ -71,7 +73,7 @@ export const TransactionsTable = ({ children, page = null, pageSize, totalCount 
             {pages}
           </div>
         </FlexContainer>
-      </div>}
+      </div>*/}
     </div>
   );
 }
@@ -99,8 +101,8 @@ export const LabelBlock = ({ children }) => (
 );
 
 
-export const Grid = ({ children }) => (
-  <div className={styles.grid}>
+export const Grid = ({ children, noPadding = false }) => (
+  <div className={styles.grid + ' ' + (noPadding ? styles.gridNoPadding : '')}>
     {children}
   </div>
 );
@@ -111,15 +113,19 @@ export const Row = ({ children, width, center = false }) => (
   </div>
 );
 
-export const Paper = ({ children, center }) => (
-  <div className={styles.paper + ' ' + (center ? styles.paperCenter : '')}>
+export const Paper = ({ children, center, noPadding }) => (
+  <div className={cx(styles.paper, { [styles.paperCenter]: center, [styles.paperNoPadding]: noPadding })}>
     {children}
   </div>
 );
 
 
 export const Status = ({ children, type }) => (
-  <span className={styles.status}>
+  <span className={cx(styles.status, {
+    [styles.statusSuccess]: type === 'success',
+    [styles.statusWarning]: type === 'warning',
+    [styles.statusError]: type === 'error'
+  })}>
     {children}
   </span>
 );

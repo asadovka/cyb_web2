@@ -36,16 +36,21 @@
   border-collapse: collapse;
 }
 
+.details.detailsNoShadow {
+  border-radius: none;
+  box-shadow: none;
+}
+
 .details tr {
   border-bottom: 1px solid #dedede;
 }
 
 .label {
   width: 280px;
-  padding: 10px;
+  padding: 15px 10px;
   padding-left: 50px;
   text-transform: uppercase;
-  color: #000;
+  color: #2e3842;
   font-size: 14px;
 }
 
@@ -88,7 +93,8 @@
 
 .transactionsTable th {
   border-bottom: 1px solid #dedede;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 35px;
   color: #7c7c7c;
   font-size: 14px;
   font-weight: bold;
@@ -96,8 +102,8 @@
 
 
 .transactionsTable td {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 14px;
   color: #000;
   vertical-align: middle;
@@ -126,8 +132,8 @@
 }
 
 .transactionsTable {
-  padding-top: 30px;
-  padding-bottom: 80px;
+  // padding-top: 30px;
+  padding-bottom: 40px;
 }
 
 
@@ -150,12 +156,19 @@
   margin-left: -15px;
 }
 
+.grid.gridNoPadding {
+  margin: 0;
+}
 
 .row {
   padding-left: 15px;
   padding-right: 15px;
 }
 
+.grid.gridNoPadding .row {
+  padding-right: 0;
+  padding-left: 0;
+}
 
 .paper {
   background: #fff;
@@ -174,6 +187,10 @@
   align-items: center;
 }
 
+.paper.paperNoPadding {
+  padding: 0;
+}
+
 .labelBlock {
   display: block;
   text-transform: uppercase;
@@ -187,11 +204,21 @@
   color: #fff;
   line-height: 19px;
   font-size: 13px;
-  background: #e8a823;
   border-radius: 18px;
   padding: 3px 10px;
 }
 
+.status.statusSuccess {
+  background: #03cba0;  
+}
+
+.status.statusWarning {
+  background: #e8a823;  
+}
+
+.status.statusError {
+  background: #cd333a;  
+}
 
 .actionButton {
   width: 55px;

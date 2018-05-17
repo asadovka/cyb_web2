@@ -5,6 +5,8 @@ import moment from 'moment'
 
 const styles = require("./SearchItems.less");
 
+import cx from 'classnames';
+
 export const Title = ({ color, system, number }) => (
   <h3 
     className={styles.title} 
@@ -84,22 +86,46 @@ function copyTextToClipboard(text) {
   });
 }
 
-export const LinkHash = ({ value, to }) => {
+export const LinkHash = ({ value, to, marginLeft, noCopy }) => {
   const copyFunc = (e) => {
     copyTextToClipboard(value);
     e.preventDefault();
     e.target.blur();
   }
-  return (
-    <Link to={to} className={styles.linHash}>
-      <Hash value={value} />
-      <button 
-        className={styles.copyButton} 
-        title='click to copy'
-        onClick={copyFunc}
-      >copy</button>
-    </Link>
-  );
+  if (to) {
+    return (
+      <Link to={to} className={
+        cx(styles.linHash, { 
+          [styles.linHashMarginLeft] : marginLeft,
+          [styles.noCopy] : noCopy
+        })}>
+        <Hash value={value} />
+        <button 
+          className={styles.copyButton} 
+          title='click to copy'
+          onClick={copyFunc}
+        >copy</button>
+      </Link>
+    );    
+  } else {
+      return (
+        <span className={
+          cx(styles.linHash, { 
+            [styles.linHashMarginLeft] : marginLeft,
+            [styles.noCopy] : noCopy,
+            [styles.hashText]: true
+          })}>
+          <Hash value={value} />
+          <button 
+            className={styles.copyButton} 
+            title='click to copy'
+            onClick={copyFunc}
+          >copy</button>
+        </span>
+      );
+
+  }
+
 }
 
 export const LinkAddress = ({ address, to }) => (

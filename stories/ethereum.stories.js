@@ -148,8 +148,7 @@ storiesOf('Ethereum pages', module)
           </DetailsRow>
         </Details>
 
-        <Grid>
-          <Row width='50%'>
+
             <SubTitle>Rewards</SubTitle>
             <Details>
               <DetailsRow>
@@ -169,8 +168,7 @@ storiesOf('Ethereum pages', module)
                 <Value>5.000000 ETH</Value>
               </DetailsRow>
             </Details>
-          </Row>
-          <Row width='50%'>
+
             <SubTitle>Uncles</SubTitle>          
             <TransactionsTable>
               <thead>
@@ -196,10 +194,23 @@ storiesOf('Ethereum pages', module)
                     3 ETh
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <TLink to='/' hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/>
+                  </td>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    <TLink to='/' hash={'0x9d2f76af534006c0d40e23af572925fba31994597991173f997ba0fc1764af91'}/>
+                  </td>
+                  <td>
+                    3 ETh
+                  </td>
+                </tr>
               </tbody>
             </TransactionsTable>
-          </Row>
-        </Grid>
+
 
         <SubTitle>Transaction</SubTitle>
         <TransactionsTable 
@@ -259,6 +270,7 @@ storiesOf('Ethereum pages', module)
             <Paper>
             <LabelBlock>Hash:</LabelBlock>
               <LinkHash
+                marginLeft
                 to='/'
                 value='0xb4de9f39cf7b6218d51ded0174007d4f9344ddfa690f9c94af00b4d18b7d3bb0'
               />
@@ -275,7 +287,7 @@ storiesOf('Ethereum pages', module)
           <Row width='25%' center>
             <Paper>
             <LabelBlock>State:</LabelBlock>
-            <Status type='confirmed'>
+            <Status type='success'>
               Confirmed
             </Status>
             </Paper>
@@ -334,9 +346,9 @@ storiesOf('Ethereum pages', module)
           <thead>
             <tr>
               <th>Sender</th>
-              <th>Sent</th>
+              <th></th>
               <th>Receiver</th>
-              <th>Received</th>
+              <th>Value</th>
             </tr>
           </thead>
           <tbody>
@@ -348,7 +360,7 @@ storiesOf('Ethereum pages', module)
                 />
               </td>
               <td>
-                <span>3 ETH</span>
+                <span>></span>
               </td>
               <td>
                 <LinkHash
@@ -453,7 +465,7 @@ storiesOf('Ethereum pages', module)
           <Grid>
             <Row width='25%' center>
               <Paper>
-              <QRCode hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
+                <QRCode hash='0xa7f995d07929ceb231b27523e3feb7478203b254ff6d3b7e27cf1e8383022dad' />
               </Paper>
             </Row>
 
@@ -484,9 +496,10 @@ storiesOf('Ethereum pages', module)
         </ActionButtonContainer>
 
         <SubTitle>Cashflow</SubTitle>
-        <Grid>
+        <Paper noPadding>
+        <Grid noPadding>
           <Row width='50%'>
-            <Details>
+            <Details noShadow>
               <DetailsRow>
                 <Label>Transactions</Label>
                 <Value>12</Value>        
@@ -498,7 +511,7 @@ storiesOf('Ethereum pages', module)
             </Details>
           </Row>
           <Row width='50%'>
-            <Details>
+            <Details noShadow>
               <DetailsRow>
                 <Label>Accumulated income</Label>
                 <Value>10 ETH</Value>        
@@ -510,6 +523,9 @@ storiesOf('Ethereum pages', module)
             </Details>
           </Row>
         </Grid>
+        </Paper>
+
+        <SubTitle>Charts</SubTitle>
       </div>
   </App>
 )))

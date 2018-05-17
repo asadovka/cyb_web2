@@ -49,7 +49,7 @@ class IndexPage extends React.Component {
     </TopPanel>
     <Container>
       <Items>
-        <Item to='/'>
+        <Item to='/tokens'>
           <ItemTitle>400 B USD</ItemTitle>
           <span>Total market cap</span>
           <Arrow />
