@@ -19,11 +19,13 @@ export const Button = (props) => (
 );
 
 export const Details = ({ children, noShadow = false }) => (
-  <table className={cx(styles.details, { [styles.detailsNoShadow] : noShadow })}>
-    <tbody>
-      {children}
-    </tbody>
-  </table>
+  <div className={cx(styles.detailsContainer, { [styles.containerNoShadow] : noShadow })}>
+    <table className={styles.details}>
+      <tbody>
+        {children}
+      </tbody>
+    </table>
+  </div>
 );
 
 export const DetailsRow = ({ children }) => (

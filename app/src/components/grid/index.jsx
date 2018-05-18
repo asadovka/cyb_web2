@@ -10,23 +10,31 @@ export const SectionTitle = ({ children }) => (
   </h3>
 )
 
-export const Section = ({ children }) => (
-  <div className={styles.section}>
-    {children}
+export const Section = ({ children, title }) => (
+  <div>
+    {title && <SectionTitle>{title}</SectionTitle>}
+    <div className={styles.section}>    
+      {children}
+    </div>
   </div>
 )
-
-export const SectionContent = ({ children }) => (
-  <div className={styles.sectionContent}>
-    {children}
-  </div>
-)
-
 
 export const Papper = ({ children }) => (
   <div className={styles.papper}>
     {children}
   </div>
 )
+
+export const SectionContent = ({ children, title, grow = 1}) => (
+  <div className={styles.sectionContent} style={{ flexGrow: grow }}>
+    {title && <SectionTitle>{title}</SectionTitle>}
+    <Papper>
+    {children}
+    </Papper>
+  </div>
+)
+
+
+
 
 

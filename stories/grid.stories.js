@@ -35,25 +35,66 @@ storiesOf('Grid', module)
 .add('two section title with content', () => (
   <Container>
     <Section>
-      <SectionContent>
-        <SectionTitle>Blockshain</SectionTitle>
-        <Papper>
-          <div>Input data</div>
-          <div>Input data</div>
-        </Papper>
+      <SectionContent title='Blockshain'>
+        <div>Input data</div>
+        <div>Input data</div>
       </SectionContent>
-      <SectionContent>
-        <SectionTitle>Fee</SectionTitle>
-        <Papper>
-          <div>Input data</div>
-        </Papper>
+      <SectionContent title='Fee'>
+        <div>Input data</div>
       </SectionContent>
     </Section>
 
-    <SectionTitle>Code</SectionTitle>
-    <Section>
+    <Section title='Blockshain'>
+      <SectionContent >
+        <div>Input data</div>
+        <div>Input data</div>
+      </SectionContent>
       <SectionContent>
-        <Papper>Input data</Papper>
+        <div>Input data</div>
+      </SectionContent>
+    </Section>
+
+    <Section title='General'>
+      <SectionContent >
+        <div>1</div>
+        <div>1</div>
+      </SectionContent>
+      <SectionContent>
+        <div>2</div>
+      </SectionContent>
+      <SectionContent>
+        <div>3</div>
+      </SectionContent>
+      <SectionContent>
+        <div>4</div>
+      </SectionContent>
+    </Section>
+
+    <Section title='Cashflow'>
+      <SectionContent >
+        <div>qr</div>
+      </SectionContent>
+      <SectionContent grow={3}>
+        <div>Input data</div>
+      </SectionContent>
+    </Section>
+
+    <Section>
+      <SectionContent title={<span>Blockshain<br/>Blockshain</span>}>
+        <div>Input data</div>
+        <div>Input data</div>
+      </SectionContent>
+      <SectionContent>
+        <div>Input data</div>
+      </SectionContent>
+      <SectionContent title='Fee'>
+        <div>Input data</div>
+      </SectionContent>
+    </Section>
+
+    <Section>
+      <SectionContent title='Code'>
+        Input data
       </SectionContent>
     </Section>
   </Container>

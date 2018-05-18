@@ -80,6 +80,102 @@ storiesOf('Components', module)
 ))
 .add('subtitle + view', () => (
   <Container>
+    <Grid>
+      <Row width='50%'>
+        <SubTitle>Blockchains specific</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>Block</Label>
+            <Value>234234</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Size</Label>
+            <Value>193 bytes</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Confirmations</Label>
+            <Value>2123</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Nonce</Label>
+            <Value>3</Value>
+          </DetailsRow>                            
+          <DetailsRow>
+            <Label>Confirmations</Label>
+            <Value>2123</Value>
+          </DetailsRow>
+        </Details>
+      </Row>
+
+      <Row width='50%'>
+        <SubTitle>Fees</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>Fee</Label>
+            <Value>0.002 ETH</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>GAS Price</Label>
+            <Value>3 GWEI</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>GAS Limit</Label>
+            <Value>21000</Value>
+          </DetailsRow>                           
+        </Details>
+      </Row>
+    </Grid>  
+
+
+    <Grid>
+      <Row width='50%'>
+      <SubTitle>Blockchains specific</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>Block</Label>
+            <Value>234234</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Size</Label>
+            <Value>193 bytes</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Confirmations</Label>
+            <Value>2123</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>Nonce</Label>
+            <Value>3</Value>
+          </DetailsRow>                            
+        </Details>
+      </Row>
+
+      <Row width='50%'>
+        <SubTitle>Fees</SubTitle>
+        <Details>
+          <DetailsRow>
+            <Label>Fee</Label>
+            <Value>0.002 ETH</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>GAS Price</Label>
+            <Value>3 GWEI</Value>
+          </DetailsRow>
+          <DetailsRow>
+            <Label>GAS Limit</Label>
+            <Value>21000</Value>
+          </DetailsRow>   
+          <DetailsRow>
+            <Label>GAS Limit</Label>
+            <Value>21000</Value>
+          </DetailsRow>                           
+        </Details>
+      </Row>
+    </Grid>
+
+
+  
+
     <SubTitle>SubTitle</SubTitle>
     <Details>
       <DetailsRow>
