@@ -7,10 +7,9 @@ import { withState } from '@dump247/storybook-state';
 
 
 import {
-  SectionTitle,
   Section,
   SectionContent,
-  Papper
+  SectionTabs
 } from '../app/src/components/grid/';
 
 
@@ -80,7 +79,23 @@ storiesOf('Grid', module)
     </Section>
 
     <Section>
-      <SectionContent title={<span>Blockshain<br/>Blockshain</span>}>
+      <SectionContent title='Code'>
+        Input data
+      </SectionContent>
+    </Section>
+
+
+    <Section title='Tabs sample'>
+      <SectionTabs>
+        tabs container
+      </SectionTabs>
+      <SectionContent >
+        Input data
+      </SectionContent>
+    </Section>
+
+    <Section>
+      <SectionContent title={<span>Bad<br/>case</span>}>
         <div>Input data</div>
         <div>Input data</div>
       </SectionContent>
@@ -92,11 +107,6 @@ storiesOf('Grid', module)
       </SectionContent>
     </Section>
 
-    <Section>
-      <SectionContent title='Code'>
-        Input data
-      </SectionContent>
-    </Section>
   </Container>
 ));
 

@@ -19,6 +19,12 @@ export const Section = ({ children, title }) => (
   </div>
 )
 
+export const SectionTabs = ({ children }) => (
+  <div className={styles.sectionTabContainer}>
+    {children}
+  </div>
+);
+
 export const Papper = ({ children }) => (
   <div className={styles.papper}>
     {children}
