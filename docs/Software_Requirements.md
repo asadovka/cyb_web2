@@ -40,6 +40,7 @@ Cyber browser - an entrance point to start working with blockchains.
 
 Browser menu:
 
+
 1. Menu header:
 
 USE CASES:
@@ -49,6 +50,10 @@ USE CASES:
 - auth user - account logo
 
 2. Menu list:
+
+Expanded view:
+
+menu string + logo
 
 - Main
 
@@ -64,12 +69,15 @@ USE CASES:
 - Cybernode
 - FAQ
 
-- currency selector (USD-BTC-ETH)
+- currency selector (USD-BTC-ETH) - symbols
+
+Collapsed view:
+
+logo only
 
 Header:
 
 - search panel (local/global search)
-
 
 
 ## 1. Main Page
@@ -147,7 +155,7 @@ At the bottom of the page 5 project links are placed:
 
 - Plugs for developing functionality
 - Place transition to roadmap where users can donate for developing options
-
+- Menu placement?
 
 ## 2. Search Results Page
 
