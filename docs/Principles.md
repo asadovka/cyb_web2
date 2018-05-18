@@ -17,7 +17,6 @@ The main purpose of this document is to describe the key principles of design an
 - Focusing on developers and Metamask users
 - Developing in terms of web 3.0 principles
 - Full tokenization of economy processes (valuation, transfering data)
-- Collect feedback and create analytics with use of instruments that aviod collect personal data
 
 
 
