@@ -1,0 +1,53 @@
+{
+  "_class": "group",
+  "do_objectID": "1CE85E35-B16A-4631-9AFF-2D2F508F1C0F",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 120,
+    "width": 180,
+    "x": 620,
+    "y": 20
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "B7E4B82A-286F-4141-A567-F0F2A10611C6"
+    },
+    {
+      "class": "text",
+      "id": "3AAEACBB-A6DE-4FBB-A28A-D115A16C43AF"
+    },
+    {
+      "class": "text",
+      "id": "1FB842FE-545C-492B-9787-4642B914FE05"
+    }
+  ],
+  "name": "Font: .AppleSystemUIFont",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

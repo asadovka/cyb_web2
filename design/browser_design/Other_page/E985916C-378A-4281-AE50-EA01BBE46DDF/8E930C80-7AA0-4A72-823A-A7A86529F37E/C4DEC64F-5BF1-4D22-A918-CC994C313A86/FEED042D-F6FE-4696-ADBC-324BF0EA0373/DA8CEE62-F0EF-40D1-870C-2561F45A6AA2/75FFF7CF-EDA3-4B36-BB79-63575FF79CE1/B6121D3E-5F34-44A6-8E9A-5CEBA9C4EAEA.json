@@ -1,0 +1,56 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "B6121D3E-5F34-44A6-8E9A-5CEBA9C4EAEA",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "E5CB45D2-70D3-426D-B4EC-CCC0DC477747",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "628C1441-92E2-48D9-8C38-F9BBA4798B49",
+    "height": 131.8811881188119,
+    "width": 253.9905213270142,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "UI/Color/Flat/Blue",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1.32,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "D68A4B39-8849-41EC-B406-BD31C75B1CCF",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 13.2,
+      "type": 0
+    },
+    "do_objectID": "964EC2ED-470A-46BF-BF7E-9189CB7E7F00",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "C691C5A0-5614-4FE6-9E8A-098D33D80AD8",
+  "verticalSpacing": 0
+}

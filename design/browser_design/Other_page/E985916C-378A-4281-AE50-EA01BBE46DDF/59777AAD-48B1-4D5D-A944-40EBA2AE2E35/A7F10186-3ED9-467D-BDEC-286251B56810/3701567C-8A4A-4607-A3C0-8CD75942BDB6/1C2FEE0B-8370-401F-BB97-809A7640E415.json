@@ -1,0 +1,62 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "1C2FEE0B-8370-401F-BB97-809A7640E415",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "A14682C8-7B34-454F-848E-741DB689D5F0",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "1A724AC9-C4C6-49DD-8C42-D0DDFC4AE4BE",
+    "height": 42,
+    "width": 40,
+    "x": 30,
+    "y": 20
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Tab - Active",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "30C836D6-E358-4C42-A16A-B8ADE0C0BB47_stringValue",
+      "value": "Tab 1"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "82A5F0D0-A0C6-4D5A-B7B1-F65D7E5BDC7C/9DB1E8A4-0803-4AEB-835C-17B01C871A59_stringValue",
+      "value": "Tab 1"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "CBABACB5-E304-4FA0-946F-0D0A6089A2B8_stringValue",
+      "value": "Tab 1"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "FD0017C7-465E-49B4-BF93-1414F0099B8F",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "B32B3E7D-5127-4A9D-8C2D-FD7A0E7EFD8B",
+  "verticalSpacing": 0
+}

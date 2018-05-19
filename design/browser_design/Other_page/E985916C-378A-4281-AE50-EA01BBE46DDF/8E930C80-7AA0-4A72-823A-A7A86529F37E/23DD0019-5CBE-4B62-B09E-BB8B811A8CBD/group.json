@@ -1,0 +1,56 @@
+{
+  "_class": "group",
+  "do_objectID": "23DD0019-5CBE-4B62-B09E-BB8B811A8CBD",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "6824BDE8-C58C-4D13-A45D-9CE39B325277",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "2FA6FEEF-8D4A-45E0-8034-C13CE5A28A2D",
+    "height": 256,
+    "width": 648,
+    "x": 261,
+    "y": 705
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "group",
+      "id": "1EB683AE-DDE8-457E-AD2D-40580DF5C55C"
+    },
+    {
+      "class": "group",
+      "id": "A0F48C4D-A2D9-4D17-A423-5E7E7FE54E37"
+    },
+    {
+      "class": "group",
+      "id": "6A5E7EC1-E16B-4480-8D5D-7829FD9A1F01"
+    }
+  ],
+  "name": "Secondary Colours",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "ECA0DEA0-C246-40ED-9592-CAEAA1246686",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

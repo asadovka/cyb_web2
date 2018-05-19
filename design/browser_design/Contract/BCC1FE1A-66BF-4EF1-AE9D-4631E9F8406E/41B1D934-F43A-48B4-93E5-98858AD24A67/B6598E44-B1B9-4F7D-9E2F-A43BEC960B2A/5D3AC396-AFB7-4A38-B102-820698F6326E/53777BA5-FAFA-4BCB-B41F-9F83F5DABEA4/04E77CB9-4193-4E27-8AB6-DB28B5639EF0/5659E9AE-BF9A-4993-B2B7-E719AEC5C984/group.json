@@ -1,0 +1,48 @@
+{
+  "_class": "group",
+  "do_objectID": "5659E9AE-BF9A-4993-B2B7-E719AEC5C984",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "F200E4E8-042C-4815-9B15-BD5B02439880",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "C15197A8-45A4-4B7D-81A1-14DAF7FE94BB",
+    "height": 24,
+    "width": 99,
+    "x": 0.777777777780102,
+    "y": 72
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "group",
+      "id": "C71B6E10-C6C4-44BA-9D06-D50896927D49"
+    }
+  ],
+  "name": "Batton_table_blue",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "C0DA4468-21EE-4ADB-9D49-B34EA2CA493E",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

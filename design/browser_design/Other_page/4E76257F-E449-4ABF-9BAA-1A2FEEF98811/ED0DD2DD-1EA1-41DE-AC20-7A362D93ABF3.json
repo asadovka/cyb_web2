@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "036806BE-37FA-4652-9B55-9B850CD6696F",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "ED0DD2DD-1EA1-41DE-AC20-7A362D93ABF3",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "1EED092C-5BB2-44CF-9207-F60EAA33103D",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "2BD0EEFA-D025-448F-B018-BCAF25EEEA55",
+    "height": 8,
+    "width": 5,
+    "x": 665,
+    "y": 1563
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Arrow",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

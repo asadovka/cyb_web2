@@ -1,0 +1,52 @@
+{
+  "_class": "group",
+  "do_objectID": "B6576D8B-6B3E-4C7F-9830-6CA25B8F113A",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "D4DDEFFC-08FA-4695-8C51-51EFEE97C634",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "28F1B144-D0B2-409D-B6CF-DD38087D1BF0",
+    "height": 311,
+    "width": 250,
+    "x": 0,
+    "y": 336
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "46514A29-51E5-4233-8A47-13150CA1A53E"
+    },
+    {
+      "class": "text",
+      "id": "CDE99FBA-718A-4341-92B9-F837BC5B0F5C"
+    }
+  ],
+  "name": "Text Inputs with Labels",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "0A93583A-4ED4-4C04-A4B0-D1341BE7B8CD",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

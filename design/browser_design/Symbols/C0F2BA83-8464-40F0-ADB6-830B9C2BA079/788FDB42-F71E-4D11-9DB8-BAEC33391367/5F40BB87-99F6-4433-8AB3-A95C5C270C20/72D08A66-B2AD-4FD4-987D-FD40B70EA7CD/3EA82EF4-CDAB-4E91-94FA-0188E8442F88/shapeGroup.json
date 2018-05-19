@@ -1,0 +1,80 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "3EA82EF4-CDAB-4E91-94FA-0188E8442F88",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "21B9C7CB-0D22-4FA6-B120-E2F9092AFCB8",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "35CDB49A-FE93-4371-9846-C136E3D3C9F8",
+    "height": 17.21718749999999,
+    "width": 18.31474447543442,
+    "x": 78.8768274619181,
+    "y": 89.35566406250001
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "03533EDA-3AAC-456C-8A9C-F492470372D3"
+    },
+    {
+      "class": "shapePath",
+      "id": "6C719303-FFF3-4DE5-932A-D126FAD61FF4"
+    }
+  ],
+  "name": "Stroke 90",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "F0F5A635-27D6-497B-8A91-D54DB5B0AC99",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 3.888,
+      "type": 0
+    },
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.106,
+          "green": 0.463,
+          "red": 0.894
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "position": 0,
+        "thickness": 0.54
+      }
+    ],
+    "do_objectID": "4844A72D-50FA-4651-AF45-9B6E19D20A0A",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}

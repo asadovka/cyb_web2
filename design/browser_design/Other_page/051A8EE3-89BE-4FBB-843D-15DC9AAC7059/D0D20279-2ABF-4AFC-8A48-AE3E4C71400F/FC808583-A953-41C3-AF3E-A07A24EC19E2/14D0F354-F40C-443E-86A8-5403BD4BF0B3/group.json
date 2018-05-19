@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "14D0F354-F40C-443E-86A8-5403BD4BF0B3",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "62CA5793-1512-4F7F-A1AC-6FB7A4922EEC",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "20C0DB9F-D3AC-4484-B953-3A4D20826D37",
+    "height": 16,
+    "width": 20,
+    "x": 0,
+    "y": 5
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "24090516-3E32-49BE-8BC6-DE0B5C58122C"
+    }
+  ],
+  "name": "Twitter",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "BCD4296F-D1DA-40B4-AD7F-D1596AB6F519",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.5,
+      "type": 0
+    },
+    "do_objectID": "77D308AB-E3A8-47B6-9396-E38AF2E152B2",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

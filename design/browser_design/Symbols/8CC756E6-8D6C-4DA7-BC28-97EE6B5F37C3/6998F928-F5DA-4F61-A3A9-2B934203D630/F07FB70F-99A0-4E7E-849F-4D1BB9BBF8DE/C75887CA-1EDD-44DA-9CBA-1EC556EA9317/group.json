@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "C75887CA-1EDD-44DA-9CBA-1EC556EA9317",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "DEB65880-C51D-44FC-9943-E6060640ECF5",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "494CD057-73E2-4E1F-A12C-DF173E6E3944",
+    "height": 17,
+    "width": 13,
+    "x": 36.5,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "075727D9-FE3C-42B7-963D-13F0D62BA4A2"
+    }
+  ],
+  "name": "Bitcoin",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "DD09BE73-3A6A-4401-AC30-B110FD5E75EC",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.3240000000000001,
+      "type": 0
+    },
+    "do_objectID": "D0E50B1E-0A1D-45DE-8B12-5BE42FF38BE9",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}
