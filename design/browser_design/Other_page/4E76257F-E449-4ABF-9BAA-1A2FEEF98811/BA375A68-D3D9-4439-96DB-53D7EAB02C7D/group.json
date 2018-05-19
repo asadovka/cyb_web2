@@ -1,0 +1,75 @@
+{
+  "_class": "group",
+  "do_objectID": "BA375A68-D3D9-4439-96DB-53D7EAB02C7D",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "1108164B-8CC3-4C62-95E4-A5027F2A408B",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "746C6942-87EA-4472-A899-FD5DFE04C1B6",
+    "height": 8,
+    "width": 5,
+    "x": 371,
+    "y": 1564
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": true,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "D05857A7-CF43-4601-96A7-98AC7AFCCCBE"
+    }
+  ],
+  "name": "Ebene_1",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 90.2731600674716,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "8FB61120-C8B7-4AC7-9A73-F3D976DB42E2",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.25,
+      "type": 0
+    },
+    "do_objectID": "00FD4DAA-1F8F-4229-957C-209A3CD66C46",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0,
+          "green": 0,
+          "red": 0
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 1,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

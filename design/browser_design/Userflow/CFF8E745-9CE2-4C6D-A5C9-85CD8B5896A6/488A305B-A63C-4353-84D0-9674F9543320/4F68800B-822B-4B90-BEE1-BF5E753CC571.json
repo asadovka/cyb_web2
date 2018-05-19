@@ -1,0 +1,52 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "4F68800B-822B-4B90-BEE1-BF5E753CC571",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "B839A92A-A255-4D2F-8268-4AFF0ADE75F5",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "861BA0E2-70F0-4D94-B38B-111ECBA2ADD6",
+    "height": 150,
+    "width": 120,
+    "x": 719,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "tiles/main page",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "D85F24EF-EC64-4ECC-B04C-287DE1260226_stringValue",
+      "value": "Home Page"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "79BE02E9-0D06-49CF-9458-E495C25ACD4A",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "18738054-7DFF-4D3A-B4B3-B938AAF4ACBC",
+  "verticalSpacing": 0
+}

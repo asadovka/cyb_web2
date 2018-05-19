@@ -1,0 +1,61 @@
+{
+  "_class": "group",
+  "do_objectID": "91BCF384-B302-4E9D-96BB-B442DA261836",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "ED3CB13C-349B-4487-93EA-A00D4DBCF5D1",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "CF90DCF3-039D-496E-AAEB-AF2F9FF26799",
+    "height": 30,
+    "width": 30,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "C852B9CD-4B4E-4BEB-B03A-04D16C407BD3"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "18B5A5B0-3A2C-4DDB-8E30-360C4BD90CB4"
+    }
+  ],
+  "name": "github",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "7F18EC1C-12D3-4B70-B582-C9E754399902",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 2,
+      "type": 0
+    },
+    "do_objectID": "80122247-225F-4C08-8622-050EF5C0125A",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

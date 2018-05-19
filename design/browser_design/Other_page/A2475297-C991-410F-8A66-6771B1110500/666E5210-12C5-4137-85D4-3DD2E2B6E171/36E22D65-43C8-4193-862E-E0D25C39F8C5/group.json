@@ -1,0 +1,61 @@
+{
+  "_class": "group",
+  "do_objectID": "36E22D65-43C8-4193-862E-E0D25C39F8C5",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "D0285389-43F9-4388-B9AD-DD8289B1D966",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "6183645B-C199-4724-8148-5189AE5FADCC",
+    "height": 12,
+    "width": 14,
+    "x": 1,
+    "y": 134
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "9DE0AB32-58D0-412D-971A-22DD61BCF615"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "BA818A42-1146-419E-9DEF-62F802B14464"
+    }
+  ],
+  "name": "heart",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "18A52036-FB67-40FD-9CF7-E962A6AF2C24",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.3,
+      "type": 0
+    },
+    "do_objectID": "A9477FE6-2B68-4C12-98E3-FE24AB271B77",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

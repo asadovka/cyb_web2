@@ -1,0 +1,52 @@
+{
+  "_class": "group",
+  "do_objectID": "F2843491-DD66-473A-8126-9EB3E975D0FE",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "2C92ACDD-4D93-4BE4-846C-5F128842B288",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "0FA839F5-6087-483F-B1F1-8939CA108604",
+    "height": 74,
+    "width": 217,
+    "x": 120,
+    "y": 413
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "E6CABF52-3815-4411-8410-9D47148C2BB8"
+    },
+    {
+      "class": "text",
+      "id": "3226E3CA-30EF-48BD-B076-45A8AEF89EF9"
+    }
+  ],
+  "name": "Pagination & Carousel",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "1C6B456E-0D4C-4C7C-9E41-03F9B1184412",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

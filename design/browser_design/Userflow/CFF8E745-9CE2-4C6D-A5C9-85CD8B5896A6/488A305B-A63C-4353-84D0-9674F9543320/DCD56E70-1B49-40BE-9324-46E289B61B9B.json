@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "DCD56E70-1B49-40BE-9324-46E289B61B9B",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "8E087279-75D3-4EC3-9550-F9A26CB44C54",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "89EB26AA-7481-437E-98C1-0F1CD6E19E0C",
+    "height": 80,
+    "width": 80,
+    "x": 579,
+    "y": 37
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "tiles/modal",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "21393084-E531-4BE2-9C19-339D5034BA87",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "8E75E36D-4E3D-4254-9603-A832805E7CAD",
+  "verticalSpacing": 0
+}

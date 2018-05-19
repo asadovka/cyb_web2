@@ -1,0 +1,30 @@
+{
+  "_class": "sharedStyle",
+  "do_objectID": "DE69AD8F-3916-4744-9FC2-A2D91D7FBF3E",
+  "name": "…inktip-bg",
+  "value": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.5333178043365479,
+          "green": 0.5333178043365479,
+          "red": 0.5333178043365479
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "sharedObjectID": "DE69AD8F-3916-4744-9FC2-A2D91D7FBF3E",
+    "startDecorationType": 0
+  }
+}

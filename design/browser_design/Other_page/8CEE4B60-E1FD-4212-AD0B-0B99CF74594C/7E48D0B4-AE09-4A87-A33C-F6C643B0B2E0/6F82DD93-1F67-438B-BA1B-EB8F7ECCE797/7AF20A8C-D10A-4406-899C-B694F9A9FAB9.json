@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "2DB20DD5-2CD6-46E6-9A19-37BD19B2B312",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "7AF20A8C-D10A-4406-899C-B694F9A9FAB9",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "25978AE4-1B26-469B-A9F5-659AF9959455",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "E8E43416-6AB0-4655-A2B2-240106911728",
+    "height": 17,
+    "width": 22,
+    "x": 65,
+    "y": 524
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "053-diamond",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

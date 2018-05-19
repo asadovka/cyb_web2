@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "079D6F15-0F55-45C3-8A57-DE7F9B2E09C8",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "362FD35A-4794-4491-8C37-FFFDFD59010F",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "E609E26A-A7A7-4D5C-AC6D-7FA71834B341",
+    "height": 106,
+    "width": 218,
+    "x": 1089,
+    "y": 20
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "notes/note",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "08F77A5A-D939-4011-9543-D9EB68FDC249",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "E24B8ABB-D90B-41D5-B5AA-3B1741E5EC2B",
+  "verticalSpacing": 0
+}

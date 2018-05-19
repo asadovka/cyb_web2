@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "DF120595-CD14-4315-AED3-1C9C00F23E10",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "8BA83306-8C78-449A-9110-F9BF2A5D1FDE",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "FE35D929-227E-43F5-B7D4-CF112CBBDD4C",
+    "height": 43,
+    "width": 45,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "45 BTC",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "1A2DF761-7BA5-498F-88F4-E5BEDB43A7BD",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "9EE96AD2-63BB-492B-8283-AFE12A4288A8",
+  "verticalSpacing": 0
+}

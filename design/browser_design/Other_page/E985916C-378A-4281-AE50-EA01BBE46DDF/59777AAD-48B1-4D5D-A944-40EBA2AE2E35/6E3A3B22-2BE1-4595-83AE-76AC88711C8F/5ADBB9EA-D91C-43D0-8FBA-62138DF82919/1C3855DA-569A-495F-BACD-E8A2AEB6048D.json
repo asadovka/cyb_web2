@@ -1,0 +1,72 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "1C3855DA-569A-495F-BACD-E8A2AEB6048D",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "B7D9783F-93B5-47AD-9069-B8F2705C9470",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "36B3DED3-F77E-4E9E-9343-235D2EFAD516",
+    "height": 106,
+    "width": 142,
+    "x": 112,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Tooltip - Dark Big",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "0D5C301E-E739-4054-BF73-EAF74A02A7C7/10C1B5A9-0E46-4C16-B8EB-D77193FB19C0_stringValue",
+      "value": "David Denman, Sutton Johnston, Boden Johnston"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "0D5C301E-E739-4054-BF73-EAF74A02A7C7/B05B3370-5BAC-45F5-AB3D-84403E4B7A83_symbolID",
+      "value": "C6ADFD39-D430-4B40-A037-67265D184C5C"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "0D5C301E-E739-4054-BF73-EAF74A02A7C7/06826B7B-5194-44A1-BA16-F7A7C7A7AE6E/36ED94EA-C769-4220-B7D5-1A7AD5D65FCF_stringValue",
+      "value": "This tooltip can\nbe enlarged to\nany size you want!"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "0D5C301E-E739-4054-BF73-EAF74A02A7C7/23D18B77-C7A4-4ADF-8AAB-C7B10E4A3AAA/36ED94EA-C769-4220-B7D5-1A7AD5D65FCF_stringValue",
+      "value": "This tooltip can\nhave an unlimited\namount of text!"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "0D5C301E-E739-4054-BF73-EAF74A02A7C7/0D468976-F77B-4EDE-8D8E-43436B166948_symbolID",
+      "value": "C6ADFD39-D430-4B40-A037-67265D184C5C"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "2DA4C41B-81EB-4F01-B726-B43A0124D33C",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "71EDB348-E7EC-4918-B426-C6F1EEC2C132",
+  "verticalSpacing": 0
+}
