@@ -652,6 +652,19 @@ Actions:
 
 ## 4. Tokens Page
 
+Token Table:
+
+Headers:
+
+- Name [string] - token name
+- Market cap [number + currency] - market cap of token (price * supply)
+- Price [number + currency] - weightrd price of token
+- Volume (24h) [number + currency] - 24h volume of token trades
+- Supply [number + token ticker] - number of tokens
+- Change (24h) [number + percent] - 24h chdnge of price
+- Price graph (7d) [img] - weekly price change 
+
+
 ### 4.1 Token Page
 
 ## 5. Exchanges Page
