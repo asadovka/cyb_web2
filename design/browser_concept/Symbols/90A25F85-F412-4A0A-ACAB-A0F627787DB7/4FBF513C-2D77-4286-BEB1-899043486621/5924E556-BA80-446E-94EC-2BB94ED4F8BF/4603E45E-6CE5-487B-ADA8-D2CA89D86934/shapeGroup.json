@@ -1,0 +1,85 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "4603E45E-6CE5-487B-ADA8-D2CA89D86934",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "A99C4123-84B1-4CF5-A01A-8D7F047BB91F",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "59A6F4DE-C1FA-4761-8664-2B1267D37124",
+    "height": 21.63553119012137,
+    "width": 20.10948905109491,
+    "x": 116.9323923357663,
+    "y": 35.63394568083955
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "37BA14B0-9D24-4579-9A9B-D4606A32AF72"
+    }
+  ],
+  "name": "Stroke 92",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "EF83D44D-3C61-4BB7-B683-B1579DAC2063",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 2,
+      "type": 0
+    },
+    "borderOptions": {
+      "_class": "borderOptions",
+      "dashPattern": [
+      ],
+      "do_objectID": "1809FFA9-B54F-4F00-8FEA-EFD3678AF677",
+      "isEnabled": false,
+      "lineCapStyle": 1,
+      "lineJoinStyle": 1
+    },
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.106,
+          "green": 0.522,
+          "red": 0.965
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "position": 0,
+        "thickness": 0.5
+      }
+    ],
+    "do_objectID": "58ABAA1B-115F-4C6C-B556-75E51791A876",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}

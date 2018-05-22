@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "65F1EDB7-037C-4ADA-B322-9C1770FEAE30",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "B0C2A5D2-8915-4BA5-A5A0-F216CD7C1D84",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "A7D4CB68-6262-4267-96EE-0598514B79F1",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "69250E8C-EE8C-4C1B-A0E3-2C84672DE557",
+    "height": 23,
+    "width": 22,
+    "x": 65,
+    "y": 774
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Help, Question, Mark, Faq, Support, Ui, Interface",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

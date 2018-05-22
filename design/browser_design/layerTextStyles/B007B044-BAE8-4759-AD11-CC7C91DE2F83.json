@@ -1,0 +1,41 @@
+{
+  "_class": "sharedStyle",
+  "do_objectID": "B007B044-BAE8-4759-AD11-CC7C91DE2F83",
+  "name": "Styleguides Extra / Section Capital Header Centered",
+  "value": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "sharedObjectID": "B007B044-BAE8-4759-AD11-CC7C91DE2F83",
+    "startDecorationType": 0,
+    "textStyle": {
+      "_class": "textStyle",
+      "encodedAttributes": {
+        "MSAttributedStringColorAttribute": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.7142857143,
+          "green": 0.7142857143,
+          "red": 0.7142857143
+        },
+        "MSAttributedStringFontAttribute": {
+          "_class": "fontDescriptor",
+          "attributes": {
+            "name": "SourceSansPro-Semibold",
+            "size": 10
+          }
+        },
+        "MSAttributedStringTextTransformAttribute": 1,
+        "kerning": 1,
+        "paragraphStyle": {
+          "_class": "paragraphStyle",
+          "alignment": 2,
+          "allowsDefaultTighteningForTruncation": 0,
+          "maximumLineHeight": 12,
+          "minimumLineHeight": 12
+        }
+      },
+      "verticalAlignment": 0
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "C1581B43-38FD-4F06-BB9A-F91F0A2D92B4",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "B3683FDF-E87C-4448-8F31-224EA51F4D35",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "D2705D00-B553-4735-900C-C9AB2C150D7B",
+    "height": 17,
+    "width": 39,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Little Dropdown",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "50585690-17C3-4239-8EE5-1F0A382658CE_stringValue",
+      "value": "Item"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "170625E1-D4A4-4E6D-B669-F20A50DA851C/E67E57DA-0FFD-4956-9C23-BFCE551F4F0F_stringValue",
+      "value": "User"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "8FE0EC7F-616C-4F21-B343-832C697C045C",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "313B147A-6E81-430E-83B0-D2BA17B35607",
+  "verticalSpacing": 0
+}

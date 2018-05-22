@@ -1,0 +1,76 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "attributedString",
+    "attributes": [
+      {
+        "_class": "stringAttribute",
+        "attributes": {
+          "MSAttributedStringColorAttribute": {
+            "_class": "color",
+            "alpha": 1,
+            "blue": 0.3215686275,
+            "green": 0.2509803922,
+            "red": 0.2078431373
+          },
+          "MSAttributedStringFontAttribute": {
+            "_class": "fontDescriptor",
+            "attributes": {
+              "name": "Play-Regular",
+              "size": 14
+            }
+          },
+          "paragraphStyle": {
+            "_class": "paragraphStyle",
+            "alignment": 0,
+            "allowsDefaultTighteningForTruncation": 0,
+            "maximumLineHeight": 21,
+            "minimumLineHeight": 21
+          }
+        },
+        "length": 5,
+        "location": 0
+      }
+    ],
+    "string": "3 BTC"
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "C20EBB9D-F354-4E59-B0B5-853C39846456",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "F3FE7563-43EE-4212-ACFF-49A9C7C969FF",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "66FF4839-4109-4A56-A775-D943819287E0",
+    "height": 21,
+    "width": 37,
+    "x": 0,
+    "y": 270
+  },
+  "glyphBounds": "{{1, 6}, {35, 11}}",
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "3 BTC",
+  "nameIsFixed": false,
+  "resizingConstraint": 47,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "DCBC156E-0157-4C42-9705-A6977A6791E7"
+  },
+  "textBehaviour": 0
+}

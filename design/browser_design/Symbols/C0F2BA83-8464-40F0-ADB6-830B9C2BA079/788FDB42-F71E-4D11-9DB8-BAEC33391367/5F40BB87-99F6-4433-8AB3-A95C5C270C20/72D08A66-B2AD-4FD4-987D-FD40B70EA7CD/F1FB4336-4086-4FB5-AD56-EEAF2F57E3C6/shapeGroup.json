@@ -1,0 +1,76 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "F1FB4336-4086-4FB5-AD56-EEAF2F57E3C6",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "AF27EE72-53D6-4F7B-8628-8F387D0BDE47",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "5F479609-A9E3-4549-9BE9-528AF80C18B5",
+    "height": 6.681250000000006,
+    "width": 15.67559922763355,
+    "x": 63.20146303368379,
+    "y": 96.73417968749999
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "B94F983C-07DD-4059-BD59-2C971C0A2005"
+    }
+  ],
+  "name": "Stroke 74",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "7C3AAE5B-6DCE-4893-B47D-D3582CE2AB0C",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 3.888,
+      "type": 0
+    },
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.08600000000000001,
+          "green": 0.239,
+          "red": 0.463
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "position": 0,
+        "thickness": 0.54
+      }
+    ],
+    "do_objectID": "BB046F9F-B60E-4CA8-8645-C67EF7669165",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}

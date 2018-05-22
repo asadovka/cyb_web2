@@ -1,0 +1,49 @@
+{
+  "_class": "bitmap",
+  "clippingMask": "{{0, 0}, {1, 1}}",
+  "do_objectID": "3545A181-C491-4CA3-BBA2-87B4D7465583",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "94B9F7ED-4F40-4C8C-A5A4-F2781C07F6B5",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "fillReplacesImage": false,
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "127C4E9A-2404-4889-B6EB-9943DF600612",
+    "height": 47,
+    "width": 111,
+    "x": 281,
+    "y": 32
+  },
+  "image": {
+    "_class": "MSJSONFileReference",
+    "_ref": "images/0d20ef1669f98f302c18f63b173a3ee19711f9fd.png",
+    "_ref_class": "MSImageData"
+  },
+  "intendedDPI": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "cyberfundlogo",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "70676360-5B05-4156-A24E-12A4F333B515",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

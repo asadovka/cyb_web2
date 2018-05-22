@@ -1,0 +1,108 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "attributedString",
+    "attributes": [
+      {
+        "_class": "stringAttribute",
+        "attributes": {
+          "MSAttributedStringColorAttribute": {
+            "_class": "color",
+            "alpha": 1,
+            "blue": 0.2588235294117647,
+            "green": 0.2196078431372549,
+            "red": 0.1803921568627451
+          },
+          "MSAttributedStringFontAttribute": {
+            "_class": "fontDescriptor",
+            "attributes": {
+              "name": "Play-Regular",
+              "size": 14
+            }
+          },
+          "MSAttributedStringTextTransformAttribute": 1,
+          "paragraphStyle": {
+            "_class": "paragraphStyle",
+            "alignment": 0,
+            "allowsDefaultTighteningForTruncation": 0,
+            "paragraphSpacing": 26
+          }
+        },
+        "length": 38,
+        "location": 0
+      }
+    ],
+    "string": "Fee:\nGas price:\nGas limit:\nGas used:\n "
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "D302A1DA-B5DC-4C24-8F63-AE276AB6A2E4",
+  "dontSynchroniseWithSymbol": false,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "4525C6CE-0241-4F52-87B9-EC41464D0627",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "199946B5-C796-44E1-A99F-40CBCDB45BFC",
+    "height": 149,
+    "width": 156,
+    "x": 57,
+    "y": 52
+  },
+  "glyphBounds": "{{0, 3}, {69, 178}}",
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 2,
+  "name": "Fee: Gas price: Gas",
+  "nameIsFixed": false,
+  "resizingConstraint": 47,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "F585906C-70FB-4E28-9921-B7641210AC2B",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "sharedObjectID": "EC288538-3FDF-448C-B81A-8D0659FC0AF4",
+    "startDecorationType": 0,
+    "textStyle": {
+      "_class": "textStyle",
+      "encodedAttributes": {
+        "MSAttributedStringColorAttribute": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.2588235294117647,
+          "green": 0.2196078431372549,
+          "red": 0.1803921568627451
+        },
+        "MSAttributedStringFontAttribute": {
+          "_class": "fontDescriptor",
+          "attributes": {
+            "name": "Play-Regular",
+            "size": 14
+          }
+        },
+        "MSAttributedStringTextTransformAttribute": 1,
+        "paragraphStyle": {
+          "_class": "paragraphStyle",
+          "alignment": 0,
+          "allowsDefaultTighteningForTruncation": 0,
+          "paragraphSpacing": 26
+        }
+      },
+      "verticalAlignment": 0
+    }
+  },
+  "textBehaviour": 2
+}

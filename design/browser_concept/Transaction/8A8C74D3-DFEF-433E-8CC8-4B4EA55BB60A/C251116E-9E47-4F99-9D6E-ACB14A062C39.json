@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "C251116E-9E47-4F99-9D6E-ACB14A062C39",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "2364AB77-F243-4F70-B5D3-80A73E62ACC0",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "5E1257F8-6406-4848-9282-B6D2034F4D5B",
+    "height": 109,
+    "width": 1111,
+    "x": 170,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Search_bar",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "F7BFC3EA-EAA6-4889-B019-7566607CE873",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "FBC73ED4-C62C-4035-88FC-CFDE983ACB0F",
+  "verticalSpacing": 0
+}

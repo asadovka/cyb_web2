@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "72EE5AA0-2936-4D8B-84EB-E851778BDB4E",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "DCE93AC5-6D7F-452D-ADA7-0CFD73F25DB6",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "7E3A72F5-1071-41E1-816B-9A257E80DE60",
+    "height": 24,
+    "width": 100,
+    "x": 0,
+    "y": 231
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Batton_table_blue",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "D46BA656-E7F7-4E19-B4FB-BBD43F3AA0AA",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "F4D40BC8-EC06-48C0-98C3-6161347360B4",
+  "verticalSpacing": 0
+}

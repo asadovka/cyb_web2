@@ -1,0 +1,85 @@
+{
+  "_class": "page",
+  "do_objectID": "3067D2CA-B99A-4DB3-AC1B-160CB33C48F1",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 300,
+    "width": 300,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": true,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": -840,
+    "guides": [
+    ]
+  },
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "artboard",
+      "id": "ACD06E85-1815-4ABC-BB78-3A00D94744B9"
+    },
+    {
+      "class": "artboard",
+      "id": "CE411036-FB1B-499E-8B51-7F9B080AEF0C"
+    },
+    {
+      "class": "artboard",
+      "id": "C333C416-C577-4958-ADA7-7BCCF616D6B9"
+    },
+    {
+      "class": "artboard",
+      "id": "8E579255-52FC-4318-B314-894FD144198A"
+    }
+  ],
+  "layout": {
+    "_class": "layoutGrid",
+    "columnWidth": 24,
+    "drawHorizontal": false,
+    "drawHorizontalLines": false,
+    "drawVertical": true,
+    "gutterHeight": 12,
+    "gutterWidth": 72,
+    "guttersOutside": false,
+    "horizontalOffset": 0,
+    "isEnabled": true,
+    "numberOfColumns": 12,
+    "rowHeightMultiplication": 5,
+    "totalWidth": 1080
+  },
+  "name": "Block",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": -520,
+    "guides": [
+    ]
+  }
+}

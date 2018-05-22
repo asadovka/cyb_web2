@@ -1,0 +1,96 @@
+{
+  "_class": "symbolMaster",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "green": 1,
+    "red": 1
+  },
+  "changeIdentifier": 3249,
+  "do_objectID": "F1056866-6256-475A-A7F4-7273E832E980",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 38,
+    "width": 300,
+    "x": 10851,
+    "y": 146
+  },
+  "hasBackgroundColor": false,
+  "hasClickThrough": true,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "guides": [
+    ]
+  },
+  "includeBackgroundColorInExport": true,
+  "includeBackgroundColorInInstance": false,
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isFlowHome": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "symbolInstance",
+      "id": "8A3BBE6D-F942-4D71-B9B3-FBEC7C1382F5"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "DC9E72F1-89EB-498D-AC86-E7749B3C2422"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "FE7EEA09-421A-4842-A55B-923504D1EF8C"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "81C5230D-C8B0-49EF-9289-DEE400509B80"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "CB93C8D0-7CDF-4F26-8790-2D6737796E7C"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "ABB97412-2216-44EE-AAD1-99280D3B8FB7"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "C9ECA6EB-3F83-4B3F-9816-F83D4DFF84E3"
+    }
+  ],
+  "name": "Calendar/Numbers Row/One Row",
+  "nameIsFixed": true,
+  "resizesContent": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "3EC1A58F-2ADB-450B-BB09-120CABA203DD",
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "guides": [
+    ]
+  }
+}

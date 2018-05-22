@@ -1,0 +1,52 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "EADC0790-DC26-4BC9-BB90-29AC0557385C",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "83B63CC0-BEEC-47FD-8672-12150A062AFE",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "B1A7A882-96B3-4FFE-869D-53B1F6990498",
+    "height": 100,
+    "width": 150,
+    "x": 748,
+    "y": 50
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Rectangle Copy 21",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "13CB3D5B-1751-4DCA-85C8-7BE795292DDC_stringValue",
+      "value": "step 4"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "841FD815-5B11-490A-B76F-6B3B4FE026B2",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "187B333D-F781-484A-8581-B2D1659CBF49",
+  "verticalSpacing": 0
+}

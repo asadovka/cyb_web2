@@ -1,0 +1,146 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "C8699F10-A2FE-41D7-A78C-4B74838EDCF4",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "ADEB07D6-6A2E-4E5A-9635-C6532E1D0D05",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "398F1E6F-CF5A-4D0A-B1A3-2F89767212B5",
+    "height": 12.35,
+    "width": 75.33500000000008,
+    "x": -3,
+    "y": 32
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "rectangle",
+      "id": "81D0EE36-C51B-46DD-939F-A3C94E1A6B6C"
+    }
+  ],
+  "name": "Rectangle 6",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 270,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "051BC13E-FA7A-482C-9FF5-5A8CC8FCD4A2",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 12.35,
+      "type": 0
+    },
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.592,
+          "green": 0.592,
+          "red": 0.592
+        },
+        "fillType": 0,
+        "isEnabled": false,
+        "position": 1,
+        "thickness": 1.235
+      }
+    ],
+    "do_objectID": "1DADAF0D-8FEB-4BF4-9DA1-572FC76D7D83",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.847,
+          "green": 0.847,
+          "red": 0.847
+        },
+        "fillType": 4,
+        "image": {
+          "_class": "MSJSONFileReference",
+          "_ref": "images/bf3d954d069a92776da0c33ad11d474d6af78460.pdf",
+          "_ref_class": "MSImageData"
+        },
+        "isEnabled": false,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1
+      },
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.9372549019607843,
+          "green": 0.5490196078431374,
+          "red": 0.2627450980392156
+        },
+        "fillType": 0,
+        "gradient": {
+          "_class": "gradient",
+          "elipseLength": 0,
+          "from": "{0.9713486963388871, -1.057714843128486}",
+          "gradientType": 0,
+          "stops": [
+            {
+              "_class": "gradientStop",
+              "color": {
+                "_class": "color",
+                "alpha": 1,
+                "blue": 0.8862745098039215,
+                "green": 0.6588235294117651,
+                "red": 0.3254901960784314
+              },
+              "position": 0
+            },
+            {
+              "_class": "gradientStop",
+              "color": {
+                "_class": "color",
+                "alpha": 1,
+                "blue": 0.984313725490196,
+                "green": 0.8666666666666669,
+                "red": 0.4627450980392157
+              },
+              "position": 1
+            }
+          ],
+          "to": "{0.13226562499999997, -1.0577148199081421}"
+        },
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 1,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}

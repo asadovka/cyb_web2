@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "910BB749-60BC-4D8E-99A6-D16ACF12DDD5",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "B453A3AF-82ED-47F8-906F-6CBB29BD7886",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "90BE4C89-DB27-4E36-8DF4-B3EC789DE165",
+    "height": 30,
+    "width": 24,
+    "x": 38,
+    "y": 368
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "56B1946A-CC6D-476F-8BC4-5BB9F3039D60"
+    }
+  ],
+  "name": "Hitbox",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "A8D5A168-E770-46E0-ADAA-F182BBB71E4A",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.6,
+      "type": 0
+    },
+    "do_objectID": "6BD5D63E-71B1-477E-9E01-6DC0F5007961",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "_class": "bitmap",
+  "clippingMask": "{{0, 0}, {1, 1}}",
+  "do_objectID": "6A32FCCD-9969-4687-A39C-D529DBD5C446",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "E5CFE5BC-C05F-46B8-90E6-4FEB744EED85",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "fillReplacesImage": false,
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "08A3FEE4-86EA-4758-BFAF-765F6E688279",
+    "height": 472.5,
+    "width": 354.1666666666661,
+    "x": -16,
+    "y": -189
+  },
+  "image": {
+    "_class": "MSJSONFileReference",
+    "_ref": "images/1122c6fd3847c532beba488e8fb0a4428f217efc.png",
+    "_ref_class": "MSImageData"
+  },
+  "intendedDPI": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "roman-semenenko-104-1",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "0206CE17-4B9E-44C3-BD9E-B7F6DA6A10CE",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

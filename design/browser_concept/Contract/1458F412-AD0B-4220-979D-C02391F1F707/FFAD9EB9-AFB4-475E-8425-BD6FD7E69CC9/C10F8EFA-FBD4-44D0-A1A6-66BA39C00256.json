@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "C10F8EFA-FBD4-44D0-A1A6-66BA39C00256",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "757913DB-2AF1-45BB-997A-BCC9D5DA46B2",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "83BEB7BC-A5DC-413F-A950-1B96CD14C36C",
+    "height": 130,
+    "width": 130,
+    "x": 438,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "il_robohash",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "F1C01F08-A094-44D6-8D56-3917BAF0EA25",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "F1EEBFE5-3660-4003-94B6-8785C1C29CA6",
+  "verticalSpacing": 0
+}

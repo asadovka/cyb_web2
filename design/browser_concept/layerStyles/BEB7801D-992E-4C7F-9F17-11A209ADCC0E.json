@@ -1,0 +1,30 @@
+{
+  "_class": "sharedStyle",
+  "do_objectID": "BEB7801D-992E-4C7F-9F17-11A209ADCC0E",
+  "name": "button-state-red",
+  "value": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.4196078431372549,
+          "green": 0.3176470588235294,
+          "red": 0.9568627450980393
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 0,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "sharedObjectID": "BEB7801D-992E-4C7F-9F17-11A209ADCC0E",
+    "startDecorationType": 0
+  }
+}

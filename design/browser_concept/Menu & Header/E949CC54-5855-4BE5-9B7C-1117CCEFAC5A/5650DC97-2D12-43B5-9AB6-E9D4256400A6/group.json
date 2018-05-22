@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "5650DC97-2D12-43B5-9AB6-E9D4256400A6",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "23CBC3C6-1205-45E5-B869-E5A4EA157C57",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "605FA4E2-365F-4646-9B55-6B2BBCBBAD47",
+    "height": 119,
+    "width": 102,
+    "x": 34,
+    "y": 38
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "3B3D5789-0677-4107-A04F-EED331E75E6F"
+    }
+  ],
+  "name": "buterin-02",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "9836DD1D-9667-4687-9C8A-F34B7E6FB4E7",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 11.38005,
+      "type": 0
+    },
+    "do_objectID": "0504369A-43CC-4E0F-8E49-DC7491E2A8C7",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

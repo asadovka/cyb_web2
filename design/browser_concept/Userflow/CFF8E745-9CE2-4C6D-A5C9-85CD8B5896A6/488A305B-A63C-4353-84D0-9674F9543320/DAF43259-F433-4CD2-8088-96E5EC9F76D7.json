@@ -1,0 +1,52 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "DAF43259-F433-4CD2-8088-96E5EC9F76D7",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "92ABB704-30AD-4638-A5E4-4A452B12CEEB",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "C25E904D-1593-4942-9D15-B305E4B028C5",
+    "height": 150,
+    "width": 120,
+    "x": 240,
+    "y": 369
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "tiles/main page",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "D85F24EF-EC64-4ECC-B04C-287DE1260226_stringValue",
+      "value": "News/Articles"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "46647D2B-A27C-46D4-AE62-E9DC1C9FF9C6",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "18738054-7DFF-4D3A-B4B3-B938AAF4ACBC",
+  "verticalSpacing": 0
+}

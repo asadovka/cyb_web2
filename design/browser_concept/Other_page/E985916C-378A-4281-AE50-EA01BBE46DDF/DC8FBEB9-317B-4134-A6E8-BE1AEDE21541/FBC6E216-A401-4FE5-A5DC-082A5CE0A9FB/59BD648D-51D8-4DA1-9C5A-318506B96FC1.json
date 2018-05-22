@@ -1,0 +1,122 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "59BD648D-51D8-4DA1-9C5A-318506B96FC1",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "4007AC86-A7F5-4E2F-8537-A0970615B8A5",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "6E4CBBD8-6356-4985-976B-D05BD936B869",
+    "height": 19,
+    "width": 141,
+    "x": 0,
+    "y": 95
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Radio Button - Selected Disabled",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "9AF43399-D90A-41DC-ABA3-FAC2459D9C25_symbolID",
+      "value": "F38EDDBF-4D64-4E61-99B6-E43E2B3FDD99"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FBC85553-CF5E-4BC1-B463-B86C37BD1D98/55AC227F-3D7F-4284-8D26-D500D71ABB91_symbolID",
+      "value": "C5C431D0-57D3-4DC9-AF1D-F53F49A96A1C"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FBC85553-CF5E-4BC1-B463-B86C37BD1D98/55AC227F-3D7F-4284-8D26-D500D71ABB91/410F5543-D1A5-48C3-A21E-FA3E5123C848_symbolID",
+      "value": "12A0F36E-D0FF-404E-9190-16428F3251F5"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "FBC85553-CF5E-4BC1-B463-B86C37BD1D98/DE32211C-13CB-430E-8129-CEB0B7AB18F3_symbolID",
+      "value": "863E04BE-55D5-4D72-A01F-2CBB406862F1"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "DA7BC7B1-7F9C-48F9-9F63-5A754251529B_symbolID",
+      "value": "F38EDDBF-4D64-4E61-99B6-E43E2B3FDD99"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "DA7BC7B1-7F9C-48F9-9F63-5A754251529B/0CF0489A-A3C3-49F9-AAB2-92431DF07BE0_stringValue",
+      "value": "Dis. Selected"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "DA7BC7B1-7F9C-48F9-9F63-5A754251529B/7A53BBA4-C19B-411E-8996-AAC1498FF91E_stringValue",
+      "value": "Dis. Selected"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "2E7165C8-9085-466B-852F-0C88717B41B8_symbolID",
+      "value": "DA634518-521C-4B52-AB41-8547270DF7A9"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "2E7165C8-9085-466B-852F-0C88717B41B8/BA2B83B6-4B63-4528-8C05-EC5B1AD93E52/410F5543-D1A5-48C3-A21E-FA3E5123C848_symbolID",
+      "value": "12A0F36E-D0FF-404E-9190-16428F3251F5"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "2E7165C8-9085-466B-852F-0C88717B41B8/8C99E184-0254-4D55-B96E-EBB90668DB89/410F5543-D1A5-48C3-A21E-FA3E5123C848_symbolID",
+      "value": "12A0F36E-D0FF-404E-9190-16428F3251F5"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "4C15E420-6391-4220-9C58-381C8DF7E3B8_symbolID",
+      "value": "F38EDDBF-4D64-4E61-99B6-E43E2B3FDD99"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "C48B5B59-4A02-449F-BAFB-FBD468D8DE69/8C99E184-0254-4D55-B96E-EBB90668DB89/A3400162-20B4-42B6-8092-8A264C252213_symbolID",
+      "value": "C3903B39-5BB0-4EA4-8779-97A06C425DDD"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "C48B5B59-4A02-449F-BAFB-FBD468D8DE69/8C99E184-0254-4D55-B96E-EBB90668DB89/410F5543-D1A5-48C3-A21E-FA3E5123C848_symbolID",
+      "value": "12A0F36E-D0FF-404E-9190-16428F3251F5"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "C48B5B59-4A02-449F-BAFB-FBD468D8DE69/3BEBD7C8-7A46-4E98-AB49-CC290AC867B9/BF971630-6968-4D74-B311-8F5B4DA1522B_symbolID",
+      "value": "2C399A91-67D0-42C5-AE4B-60ACD52D7950"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "C62B36D3-1078-43F9-98E0-B0B1CA8228C3_stringValue",
+      "value": "Active Disabled"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "A94F21C5-CC2C-4051-8B88-0B16B18D0DFF",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "B277A285-D3AA-4341-8E52-986FC8723315",
+  "verticalSpacing": 0
+}

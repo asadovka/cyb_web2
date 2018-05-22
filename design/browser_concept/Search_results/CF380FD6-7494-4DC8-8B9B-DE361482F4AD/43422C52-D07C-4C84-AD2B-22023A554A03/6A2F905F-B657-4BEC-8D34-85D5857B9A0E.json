@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "6A2F905F-B657-4BEC-8D34-85D5857B9A0E",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "4B5672C4-B347-42A0-86DD-C41E3B1FFC38",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "6F61793C-7B72-43F7-AC1D-5770D0B27B3D",
+    "height": 43,
+    "width": 129,
+    "x": 29,
+    "y": 46
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Finalis",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "A6541AD9-F9D9-42EA-8CEF-AD824B6045C3",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "7B5DB07F-0075-4FAE-88AE-3A56A3886628",
+  "verticalSpacing": 0
+}
