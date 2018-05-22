@@ -16,7 +16,7 @@ The main purpose of this document is to describe the key principles of design an
 
 - Focusing on developers and Metamask users
 - Developing in terms of web 3.0 principles
-- Full tokenization of economy processes (valuation, transfering data)
+- Full tokenization of economy processes (valuation, transfering data, payment channels)
 
 
 
@@ -28,15 +28,13 @@ We respect user's attitude and principles. So we offer 3 clear custom types of t
 
 - public activity [address + events tracking] - surep perk
 - private activity [only events + abstract address tracking] - simple perk
-- anonimous activity [no tracking at all]
+- anonymous activity [no tracking at all]
 
 For successful browser development we need to collect at least public and private data. Thus users of these 2 groups well be incentivized by giving nice perks.
 
 ### 3.2 Feeedback and bug collection
 
 We use user's feedback to make products better. So we provide options for bug reporting and feedback leaving on every page.
-
-
 
 ## 4. Design 
 
