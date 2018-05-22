@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "1C0409E8-7BC5-4241-BFD2-F75DE2FFCF57",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "05010DFE-4881-4E8D-917A-7B4B78C9F749",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "8F9E81A4-C835-4731-BA58-DA6CF82D3DA0",
+    "height": 180,
+    "width": 3,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "UI/Color/Flat/Blue",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "82FB3846-3462-4695-A8F8-70A7284D95AB",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "2BF5CA17-954D-4337-A305-4C7A9C821DE3",
+  "verticalSpacing": 0
+}

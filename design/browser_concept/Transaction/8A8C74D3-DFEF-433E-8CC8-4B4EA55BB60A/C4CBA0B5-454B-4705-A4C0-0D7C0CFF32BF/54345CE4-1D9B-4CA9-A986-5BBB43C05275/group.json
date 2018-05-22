@@ -1,0 +1,56 @@
+{
+  "_class": "group",
+  "do_objectID": "54345CE4-1D9B-4CA9-A986-5BBB43C05275",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "A5C047B1-D3FC-42CD-9C2E-664C04E5B1FF",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "752948F5-281C-44F2-AA92-B2582A4DD7AF",
+    "height": 220,
+    "width": 1001,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "B9153951-59D0-490E-BC49-8BBFC3D4CB10"
+    },
+    {
+      "class": "group",
+      "id": "D9C1B550-08F0-4AA4-8412-21EF152DCCB9"
+    },
+    {
+      "class": "text",
+      "id": "6228A115-DA45-48AD-B783-2DEB5F2E5469"
+    }
+  ],
+  "name": "Adresses",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "2F2448FF-82B6-437E-B5F2-1B1CA2FBF7DC",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

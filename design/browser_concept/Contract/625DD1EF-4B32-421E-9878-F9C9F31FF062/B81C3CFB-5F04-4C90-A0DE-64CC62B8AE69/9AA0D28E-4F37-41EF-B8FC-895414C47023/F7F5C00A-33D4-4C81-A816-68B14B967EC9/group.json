@@ -1,0 +1,56 @@
+{
+  "_class": "group",
+  "do_objectID": "F7F5C00A-33D4-4C81-A816-68B14B967EC9",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "F65B5686-0FB0-4B86-980A-3A7F38322F66",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "CBDB0C54-3FC7-4F21-BB15-4CA1DCE36C33",
+    "height": 219,
+    "width": 310,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "text",
+      "id": "89152B87-EF4B-4975-9EAA-8DF7E4FA582D"
+    },
+    {
+      "class": "text",
+      "id": "CBC93077-7F7D-4430-9189-2B3DD461116F"
+    },
+    {
+      "class": "text",
+      "id": "35C6079E-CAAE-4579-9BB9-8CA41EBFB9FF"
+    }
+  ],
+  "name": "Balance",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "BF7199B1-4A17-4DFE-BBC1-556C99BB8DB1",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

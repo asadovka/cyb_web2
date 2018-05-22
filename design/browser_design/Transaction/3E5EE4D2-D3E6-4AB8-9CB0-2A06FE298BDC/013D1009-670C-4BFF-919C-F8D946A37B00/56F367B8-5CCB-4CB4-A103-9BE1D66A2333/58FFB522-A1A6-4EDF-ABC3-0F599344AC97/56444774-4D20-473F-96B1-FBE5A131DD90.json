@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "56444774-4D20-473F-96B1-FBE5A131DD90",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "77A57150-D209-439C-909C-D4BEEC679783",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "F5BBA863-CD0D-4B06-B391-E0CB536CBFCC",
+    "height": 24,
+    "width": 99,
+    "x": 66,
+    "y": 76
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Mempool",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "DC51C540-B57C-47AF-A0A2-7BB808D3EEE8",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "6C009287-6234-40FA-9F9A-688A8D1A8B1C",
+  "verticalSpacing": 0
+}

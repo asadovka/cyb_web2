@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "845FC7E6-F816-4F82-B40B-A81F8D010254",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "33D2DA56-F45C-42CE-8F4F-82F11F415B41",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "BAD99D6D-AF13-4965-A926-A0B98558D21A",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "233F7EE9-F635-48B5-8974-C000AB86DD5E",
+    "height": 715,
+    "width": 1057,
+    "x": 223,
+    "y": 0
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": false,
+  "layerListExpandedType": 0,
+  "name": "Rectangle 6 Copy 2",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

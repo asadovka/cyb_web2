@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "C2F42F14-E7C9-4E3E-B76B-7256D3C9F3A2",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "F2F45855-708D-4805-9DFC-8E8DE007B0C5",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "25F360A2-F4B8-4762-A019-7E9D714568B0",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "F5709566-0633-4BAC-9D7F-A12D6CC16EB9",
+    "height": 35,
+    "width": 30,
+    "x": 20,
+    "y": 0
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "brain",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

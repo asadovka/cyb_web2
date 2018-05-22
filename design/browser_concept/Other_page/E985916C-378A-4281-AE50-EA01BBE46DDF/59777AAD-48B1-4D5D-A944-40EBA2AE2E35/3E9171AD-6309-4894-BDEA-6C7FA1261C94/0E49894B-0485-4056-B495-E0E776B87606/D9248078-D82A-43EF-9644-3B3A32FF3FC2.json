@@ -1,0 +1,57 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "D9248078-D82A-43EF-9644-3B3A32FF3FC2",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "06F92A69-59F4-4C06-8437-3EF771B4519D",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "600041E1-ED4A-4FEC-B9E8-67D24F3F76C5",
+    "height": 19,
+    "width": 90,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Inactive",
+  "nameIsFixed": true,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "D2279EB8-EEA4-434E-93B3-1846B34FF920/0CF0489A-A3C3-49F9-AAB2-92431DF07BE0_stringValue",
+      "value": "All Chapters"
+    },
+    {
+      "_class": "overrideValue",
+      "overrideName": "EF20D804-9445-40ED-971C-9D19EE7F5FEA_stringValue",
+      "value": "Longer Text"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "D18FEF70-995E-4594-B0A3-90A6363EA2EC",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "FEE567DC-0736-4B9A-8A7C-77894E3EC138",
+  "verticalSpacing": 0
+}

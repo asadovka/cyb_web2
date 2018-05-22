@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "21491C7B-B8B9-421A-BC45-959BBA9AF5B3",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "DCF995F9-F7C0-4EE1-BAA4-1425F945609D",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "CB35FA94-BDDD-4CF9-AC01-EEEB055633B5",
+    "height": 35,
+    "width": 30,
+    "x": 20,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "brain",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "9E3C5661-6507-4EE6-B32A-E7EECAA7A21F",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "6A385F02-691E-4539-BED5-CD1A61C9E469",
+  "verticalSpacing": 0
+}

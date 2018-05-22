@@ -1,0 +1,82 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "C76FBF34-01A4-4C11-B1CB-4EF86D6AB598",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "7AC614C8-5932-4CAE-BCA5-6A380D15CA7A",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "4A5D23F6-254C-4F53-8B7D-8CE9E5715E7B",
+    "height": 15.30622310914855,
+    "width": 9.060623706004142,
+    "x": 10.82628105590265,
+    "y": 8.210081238677958
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "BEEBB0CA-6994-4E8C-A930-9D84692057C6"
+    },
+    {
+      "class": "shapePath",
+      "id": "C1E0B48D-B2E6-4F22-93B4-990E70A21747"
+    }
+  ],
+  "name": "Shape",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "EDBE0F71-26F1-49FD-88CA-D6F9D223327E",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 16,
+      "type": 0
+    },
+    "do_objectID": "1785DC7A-8183-4459-BF64-1B361049B77F",
+    "endDecorationType": 0,
+    "fills": [
+      {
+        "_class": "fill",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0.796078431372549,
+          "green": 0.796078431372549,
+          "red": 0.796078431372549
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "noiseIndex": 0,
+        "noiseIntensity": 0,
+        "patternFillType": 1,
+        "patternTileScale": 1
+      }
+    ],
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 0
+}

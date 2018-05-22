@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "50566ACF-D511-4DBC-9E63-2223A00E9972",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "C9F2D1E4-DA4B-4D68-9413-130BCF539BF3",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "FD36CF6B-F281-4432-A4E2-48221FE5FE65",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "F2E5426F-4C1C-4585-95DC-0223B25C7AF3",
+    "height": 22,
+    "width": 22,
+    "x": 65,
+    "y": 332
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "059-puzzle",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

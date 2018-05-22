@@ -1,0 +1,52 @@
+{
+  "_class": "rectangle",
+  "booleanOperation": -1,
+  "do_objectID": "308780D7-90B9-43D3-B87C-9B08A2CDE26F",
+  "edited": true,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "E0A30B82-4BD1-418A-9AE9-786DBEC4BED3",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "fixedRadius": 2,
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "27795965-FB8C-44F4-8BA6-79F29226C35E",
+    "height": 2,
+    "width": 2,
+    "x": -1,
+    "y": -1
+  },
+  "hasConvertedToNewRoundCorners": true,
+  "isClosed": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Path",
+  "nameIsFixed": false,
+  "pointRadiusBehaviour": 0,
+  "points": [
+    {
+      "_class": "curvePoint",
+      "cornerRadius": 0,
+      "curveFrom": "{0.5, 0.5}",
+      "curveMode": 1,
+      "curveTo": "{0.5, 0.5}",
+      "hasCurveFrom": false,
+      "hasCurveTo": false,
+      "point": "{0.5, 0.5}"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

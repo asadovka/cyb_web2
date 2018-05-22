@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "C45E6EA9-49E2-4D72-9280-B34E15E63320",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "C2483DCD-4725-4523-B4D2-727F76CA97FC",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "B08E61F8-1732-4B2D-9D4E-65FF9CDA5186",
+    "height": 1224,
+    "width": 190,
+    "x": 0,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Sidebar",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "4C12254B-ADDD-4AC2-BFAE-E9153F7BE586",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "162CA1D4-CA7E-46AE-BFD8-F0A63D3210CE",
+  "verticalSpacing": 0
+}

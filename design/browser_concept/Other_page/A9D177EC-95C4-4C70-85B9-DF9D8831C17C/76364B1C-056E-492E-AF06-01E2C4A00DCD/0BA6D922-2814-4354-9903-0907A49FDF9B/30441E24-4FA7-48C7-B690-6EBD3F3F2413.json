@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "A468A219-6583-4699-9FF9-79A99609B4A5",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "30441E24-4FA7-48C7-B690-6EBD3F3F2413",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "1CCC1C1E-75A2-4DAD-BD05-1BC5F916A5F9",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "B6402CF0-9A24-45A0-BF32-972403CD8211",
+    "height": 23,
+    "width": 22,
+    "x": 65,
+    "y": 649
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "055-graph",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

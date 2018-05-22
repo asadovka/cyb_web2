@@ -1,0 +1,85 @@
+{
+  "_class": "group",
+  "do_objectID": "551F87D0-020C-4F00-8424-B49B4871CFDE",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "84A3E925-CB6D-4EDD-B782-660AF9859A7D",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "08C021AC-6B64-4ACF-884D-56ECA00F0A5B",
+    "height": 71,
+    "width": 50,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "676DAC36-4D90-45E7-BD6D-07FF5CA1BA24"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "19744EF4-FF35-4F61-A8CA-F0FCF503A68E"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "A87FAD7D-8A04-4726-964C-D8116716B73A"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "145137ED-9BFB-4F8B-80F7-65AD9051B181"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "D1F695C3-5917-4070-A259-F57EA56CB281"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "25E68372-51BB-4A53-8E4F-BF294A82F1B7"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "C1A8A2EF-ED0F-4231-AF94-C783B03BE941"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "41C47E88-CEA5-437D-99FC-7184E66A37E9"
+    }
+  ],
+  "name": "022-write",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "AE609C80-0F74-4923-88AF-B8DD715E6A87",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.864,
+      "type": 0
+    },
+    "do_objectID": "9F52C449-7EE4-4AE2-9F00-D1507B669607",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

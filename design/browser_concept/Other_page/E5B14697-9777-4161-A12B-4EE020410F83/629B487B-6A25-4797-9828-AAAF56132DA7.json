@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "8AFF27FD-A508-429F-9E5E-E44BA3FF76D9",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "629B487B-6A25-4797-9828-AAAF56132DA7",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "71B1FA8D-A737-47AC-BEF4-698010580771",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "4BD9C47F-2A5A-4ADA-A54D-A4911848023A",
+    "height": 22,
+    "width": 22,
+    "x": 27,
+    "y": 696
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Database",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

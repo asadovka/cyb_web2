@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "50DA371A-885C-47EF-B0C7-1E541836468F",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "DABBFE2C-782E-4D73-AF4F-82F748C185CB",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "4C383273-FB10-4C21-81B5-1E5F94984C26",
+    "height": 21.08333333333333,
+    "width": 22,
+    "x": 27,
+    "y": 696
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "841CCCE3-BEF4-429A-BBDC-7AA2BEF681D2"
+    }
+  ],
+  "name": "Database",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "DC9C01A5-A393-44DB-95B5-E8F30A5F6976",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.6,
+      "type": 0
+    },
+    "do_objectID": "DA046C61-8EB7-491A-85A3-CB53B0B674CA",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

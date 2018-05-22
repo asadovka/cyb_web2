@@ -1,0 +1,61 @@
+{
+  "_class": "group",
+  "do_objectID": "7B48A947-85D3-4ABF-A9F6-0651C46566E1",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "E9371F77-7EED-4142-A97F-657749865654",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "329A56F9-1006-429F-8DE0-6AB41E2FB8BA",
+    "height": 17,
+    "width": 28,
+    "x": 62,
+    "y": 9
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "113D3620-4AC1-4F17-A9CA-FE12BCBEF6CB"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "52699765-952A-4412-A658-57D501A15EB0"
+    }
+  ],
+  "name": "Stroke 166 + Stroke 167 Copy",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "7815A726-E135-4CD8-8472-F6DC2D100695",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 5,
+      "type": 0
+    },
+    "do_objectID": "31622AEA-3E7F-4478-A33F-404B62EE3AE1",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "_class": "artboard",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "51C6A7E2-A4C9-4ABB-8356-DECD1524B2CB",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "625DD1EF-4B32-421E-9878-F9C9F31FF062",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "AF1294B8-0305-446C-87AB-AB99D2CD7158",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      },
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "@2x",
+        "namingScheme": 0,
+        "scale": 2,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "C84F74BC-D5D4-4F97-83F3-CE0A73EEB611",
+    "height": 2383,
+    "width": 1280,
+    "x": -18192,
+    "y": -1455
+  },
+  "hasBackgroundColor": false,
+  "hasClickThrough": false,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "78EEE574-5C93-4146-B401-DC1D442F85DC",
+    "guides": [
+    ]
+  },
+  "includeBackgroundColorInExport": true,
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isFlowHome": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "67EF49D9-B267-4772-8C74-2A44C0AE5679"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "07A15E4D-9F69-4E7E-B396-026F78606A47"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "EF6224D0-B755-4AE7-BC81-E7FBB705A95B"
+    },
+    {
+      "class": "group",
+      "id": "691BFBFC-0C2E-445F-92EB-B284817CCF8E"
+    },
+    {
+      "class": "group",
+      "id": "2059F28A-A4A8-498F-BC34-9DBAD80CA764"
+    },
+    {
+      "class": "group",
+      "id": "6D94B480-67FF-41E5-9C21-333EEEB70AE3"
+    },
+    {
+      "class": "group",
+      "id": "B81C3CFB-5F04-4C90-A0DE-64CC62B8AE69"
+    }
+  ],
+  "layout": {
+    "_class": "layoutGrid",
+    "columnWidth": 24,
+    "do_objectID": "C0086A4D-CB60-44AF-A6E5-426928F28317",
+    "drawHorizontal": false,
+    "drawHorizontalLines": false,
+    "drawVertical": true,
+    "gutterHeight": 12,
+    "gutterWidth": 90.18181818181819,
+    "guttersOutside": false,
+    "horizontalOffset": 0,
+    "isEnabled": false,
+    "numberOfColumns": 12,
+    "rowHeightMultiplication": 5,
+    "totalWidth": 1280
+  },
+  "name": "Bitcoin_contract_(tab_2)",
+  "nameIsFixed": true,
+  "resizesContent": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "style": {
+    "_class": "style",
+    "do_objectID": "DA515AB9-6B79-4117-B05A-23F79943A153",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "io.magicsketch.mirror": {
+      "highestQuality": 2
+    }
+  },
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "303FE397-5601-493B-BEBE-A38FDA9BE708",
+    "guides": [
+    ]
+  }
+}
