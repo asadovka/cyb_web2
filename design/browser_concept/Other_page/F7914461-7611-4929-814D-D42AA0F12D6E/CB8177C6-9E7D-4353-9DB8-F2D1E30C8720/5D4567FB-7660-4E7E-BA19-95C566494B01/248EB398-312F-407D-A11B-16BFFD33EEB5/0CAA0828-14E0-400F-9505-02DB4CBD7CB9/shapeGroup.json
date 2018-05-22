@@ -1,0 +1,89 @@
+{
+  "_class": "shapeGroup",
+  "clippingMaskMode": 0,
+  "do_objectID": "0CAA0828-14E0-400F-9505-02DB4CBD7CB9",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "54B7C09B-B267-460A-8C1E-C54CFD852434",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "9DCC6D34-B60C-4657-BFBF-B4741AC8E53C",
+    "height": 0.984161931818182,
+    "width": 6.453425999999999,
+    "x": 7.274589,
+    "y": 14.38468465909091
+  },
+  "hasClickThrough": false,
+  "hasClippingMask": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 1,
+  "layers": [
+    {
+      "class": "shapePath",
+      "id": "B110AD7C-9F54-4B44-AEE6-6BD7403F62B2"
+    },
+    {
+      "class": "shapePath",
+      "id": "C1635B1F-6E5B-4A17-9D25-56461C180DF8"
+    }
+  ],
+  "name": "Stroke 44",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "504F69E3-F9FC-4DFB-BA8B-A95A405B4310",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 7,
+      "type": 0
+    },
+    "borderOptions": {
+      "_class": "borderOptions",
+      "dashPattern": [
+      ],
+      "do_objectID": "6CCE4416-8A85-483C-9E9F-25222468371B",
+      "isEnabled": false,
+      "lineCapStyle": 1,
+      "lineJoinStyle": 0
+    },
+    "borders": [
+      {
+        "_class": "border",
+        "color": {
+          "_class": "color",
+          "alpha": 1,
+          "blue": 0,
+          "green": 0,
+          "red": 0
+        },
+        "fillType": 0,
+        "isEnabled": true,
+        "position": 0,
+        "thickness": 0.5
+      }
+    ],
+    "do_objectID": "3EEACBA3-052A-4151-9A5C-294248E2A1D4",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "windingRule": 1
+}

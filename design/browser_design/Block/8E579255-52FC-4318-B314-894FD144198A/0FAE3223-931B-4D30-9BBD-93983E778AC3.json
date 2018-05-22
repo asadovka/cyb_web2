@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "0FAE3223-931B-4D30-9BBD-93983E778AC3",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "321BE3D7-714E-4536-A162-6DB726DB563E",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "E52F3FF2-8433-4D25-BDB5-18ADF0795612",
+    "height": 1224,
+    "width": 1091,
+    "x": 190,
+    "y": 0
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Background",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "9F16F8A5-A075-49D6-86F0-473A729F831F",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "9A7D2F7F-F81E-4617-B077-13A62915F8F4",
+  "verticalSpacing": 0
+}

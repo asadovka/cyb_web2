@@ -1,0 +1,52 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "19901D8D-84EE-4014-B8ED-887E57275338",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "5202A985-E454-4BC5-883E-5B9316FAECEE",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "4D34002E-4B54-4B09-8BA4-03BCDEF345E9",
+    "height": 86,
+    "width": 86,
+    "x": 1154,
+    "y": 436
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "tiles/question dotted",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "8B84726C-A635-4F65-8D7A-01394225F590_stringValue",
+      "value": "Can't log in?"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "4244C34F-D2EF-43E5-AA41-36F5EBBE525D",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "21C3630A-35A0-49B6-9D8F-4A7DEE3C25F1",
+  "verticalSpacing": 0
+}

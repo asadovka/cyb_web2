@@ -1,0 +1,68 @@
+{
+  "_class": "group",
+  "do_objectID": "2FD4402E-A1AC-44AD-839E-00099ED036EF",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "CFE61A65-ABEA-45A7-8783-309C56FF0B89",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "EAF99518-CE00-4BE2-81BF-C449028EDF85",
+    "height": 177,
+    "width": 253,
+    "x": 466,
+    "y": 450
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "61BBF74F-FF62-4DAE-9B8A-DC40989BE639"
+    },
+    {
+      "class": "group",
+      "id": "E6C4890E-7CC1-41C1-BBAA-441E6E4F0367"
+    },
+    {
+      "class": "group",
+      "id": "E963AA20-A5DA-4138-95A5-36245E03E1FC"
+    },
+    {
+      "class": "group",
+      "id": "6F1DD498-F027-4B7E-B4C8-F0CDE6F15D1F"
+    },
+    {
+      "class": "group",
+      "id": "AB4EA7CB-0F4C-4D8F-9DEE-DF9397BD588E"
+    },
+    {
+      "class": "text",
+      "id": "95A3395F-979D-4256-B9FC-C82C336A63D0"
+    }
+  ],
+  "name": "Progress Bars",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "7C452155-A236-41B6-8313-B101E4D30F21",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

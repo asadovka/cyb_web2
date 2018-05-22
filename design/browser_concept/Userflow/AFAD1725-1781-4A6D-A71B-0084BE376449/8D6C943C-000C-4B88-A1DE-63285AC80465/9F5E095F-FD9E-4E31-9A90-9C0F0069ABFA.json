@@ -1,0 +1,52 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "9F5E095F-FD9E-4E31-9A90-9C0F0069ABFA",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "56517B2F-E9B7-459C-87EE-A226602566A8",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "D4C78A48-E7BA-4C3C-B4CF-BB4D9BE3B35B",
+    "height": 150,
+    "width": 120,
+    "x": 719,
+    "y": 269
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "tiles/main page",
+  "nameIsFixed": false,
+  "overrideValues": [
+    {
+      "_class": "overrideValue",
+      "overrideName": "1193B5C3-8C81-4989-8542-D7A9ECCDC43B_stringValue",
+      "value": "Products Listing"
+    }
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "D8C559F8-82D4-41AC-BA00-574518FDB306",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "C96DD042-5A6D-457D-857A-D21E0B0849EF",
+  "verticalSpacing": 0
+}

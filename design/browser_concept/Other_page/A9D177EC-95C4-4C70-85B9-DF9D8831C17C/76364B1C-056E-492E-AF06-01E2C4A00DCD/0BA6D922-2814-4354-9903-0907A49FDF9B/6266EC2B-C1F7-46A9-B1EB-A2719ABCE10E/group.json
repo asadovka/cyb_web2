@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "6266EC2B-C1F7-46A9-B1EB-A2719ABCE10E",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "69B4770D-B7B1-43D6-B066-B76106BC4FAF",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "1513E5A0-3565-4AA3-A382-B8C4DE51E017",
+    "height": 22,
+    "width": 22,
+    "x": 65,
+    "y": 332
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "0B529FFA-A5E7-4178-82C5-4948C9511AD6"
+    }
+  ],
+  "name": "059-puzzle",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "0D4F07C5-C3C5-45F1-A862-15FFEF85591B",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.2,
+      "type": 0
+    },
+    "do_objectID": "48BE7759-1815-4FB4-B4DF-F21429E5D4BB",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

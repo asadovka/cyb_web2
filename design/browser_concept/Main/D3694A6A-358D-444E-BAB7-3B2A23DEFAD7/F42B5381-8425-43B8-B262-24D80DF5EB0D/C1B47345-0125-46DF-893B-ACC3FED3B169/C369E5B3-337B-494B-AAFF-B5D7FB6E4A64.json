@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "17D7BC45-0A8D-4B1F-89EF-1357A52F2DC9",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "C369E5B3-337B-494B-AAFF-B5D7FB6E4A64",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "76DBE4EB-F64E-4736-A017-F04A9CEC35B8",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "AAFEF4A2-A6B4-4151-AA6D-21011A6F25A3",
+    "height": 33,
+    "width": 36,
+    "x": 12.5,
+    "y": 0
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "route",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

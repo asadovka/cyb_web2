@@ -1,0 +1,58 @@
+{
+  "_class": "bitmap",
+  "clippingMask": "{{0, 0}, {1, 1}}",
+  "do_objectID": "FFD00683-538F-4974-84B3-D0B5C8C33317",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "38D156B4-E793-4142-9393-EDC5BD70CA5F",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "fillReplacesImage": false,
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "94465EF5-C236-4675-8AB1-3537815F3A98",
+    "height": 28.31033196568444,
+    "width": 40.00000000000001,
+    "x": 0,
+    "y": 248.8067885117493
+  },
+  "image": {
+    "_class": "MSJSONFileReference",
+    "_ref": "images/6127247d59f7afcc097a62e222f58ce56e461ce6.png",
+    "_ref_class": "MSImageData"
+  },
+  "intendedDPI": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "coinprism-logo-1500px",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "46E921BC-0E71-41DB-B1C0-E3114497FCF2",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.45,
+      "type": 0
+    },
+    "do_objectID": "77D5516F-77CE-4A16-A121-D82469D3C6C1",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

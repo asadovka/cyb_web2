@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "C7EAA6F0-EAD9-4CD0-91F3-620F1E220FA8",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "19D2A78E-FE32-4164-8ED6-E74975AAD9E9",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "689C6104-B56B-4F51-9F1E-69607C7CF08E",
+    "height": 17,
+    "width": 22,
+    "x": 65,
+    "y": 524.0946266539795
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "C2F8EDB6-36C9-4458-90BB-F3CB8312922E"
+    }
+  ],
+  "name": "053-diamond",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "87465F2C-BDE1-47A5-BB59-4E0413FABCB6",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.2,
+      "type": 0
+    },
+    "do_objectID": "F670F672-00B1-4DED-A82E-B3192D68E571",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

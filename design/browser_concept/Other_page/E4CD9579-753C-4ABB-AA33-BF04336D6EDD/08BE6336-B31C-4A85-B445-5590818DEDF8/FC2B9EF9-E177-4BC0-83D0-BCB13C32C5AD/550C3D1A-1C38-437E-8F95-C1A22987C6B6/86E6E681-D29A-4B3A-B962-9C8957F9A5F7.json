@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "C7E0C135-D23C-4C4B-ADF5-650884FC6C90",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "86E6E681-D29A-4B3A-B962-9C8957F9A5F7",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "7304D580-4D67-40ED-B90E-A18E677F3563",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "C2058E62-9CBB-4B43-940F-8CA78E214E63",
+    "height": 15,
+    "width": 15,
+    "x": 888,
+    "y": 48
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Search",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

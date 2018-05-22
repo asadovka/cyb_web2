@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "C72AE797-E49F-4506-9E35-6FE512064775",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "B307CB25-0CDA-48DC-9B9C-B85D10DC2A9B",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "99FA37AC-0172-487B-8777-91AB2D98CCFF",
+    "height": 17,
+    "width": 11,
+    "x": 7,
+    "y": 85
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "387DCC83-AA56-4105-8F2B-97B9BEDC8EE9"
+    }
+  ],
+  "name": "Ethereum",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "30A67933-4758-42A7-8643-089A4C51026E",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.3240000000000001,
+      "type": 0
+    },
+    "do_objectID": "E7D38FAE-615E-4434-A2B8-03E0E0D8DF3E",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

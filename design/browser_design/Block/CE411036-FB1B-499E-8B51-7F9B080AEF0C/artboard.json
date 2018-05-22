@@ -1,0 +1,142 @@
+{
+  "_class": "artboard",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "8E0531DF-15A5-4267-9404-C542775D4589",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "CE411036-FB1B-499E-8B51-7F9B080AEF0C",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "C3B13DBC-8DB5-46F3-AFE7-680CB2721A8E",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      },
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "@2x",
+        "namingScheme": 0,
+        "scale": 2,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "96F794A9-8D00-410F-9BDD-50B2782D2334",
+    "height": 2000,
+    "width": 1280,
+    "x": -1162,
+    "y": -879
+  },
+  "hasBackgroundColor": false,
+  "hasClickThrough": true,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "0D738982-5DFD-47D2-A673-418E4083CB80",
+    "guides": [
+    ]
+  },
+  "includeBackgroundColorInExport": true,
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isFlowHome": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "symbolInstance",
+      "id": "89F84F59-1FF4-4D5B-B7EC-0652A4055AF3"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "17ED2397-D6B7-4923-AF64-3660F7C8EB9E"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "8D21E9EC-EEB5-4614-9B9B-EA509A452412"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "CEB1B326-8FF2-4D0F-9B4F-88CB8AEBF85F"
+    },
+    {
+      "class": "group",
+      "id": "50CB96C8-A6B7-4A26-9503-6D9E2B7C27DD"
+    },
+    {
+      "class": "group",
+      "id": "E4CCA913-013B-4F9F-89B5-C48591255E4C"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "1208FE0F-CF5B-4801-9BBA-4B8C9723558D"
+    },
+    {
+      "class": "group",
+      "id": "E20B4A2E-FF31-4FCA-BB81-ADD64E33CE2B"
+    }
+  ],
+  "layout": {
+    "_class": "layoutGrid",
+    "columnWidth": 24,
+    "do_objectID": "22DF71DB-B7A8-444B-9A34-4B57293CC6C4",
+    "drawHorizontal": false,
+    "drawHorizontalLines": false,
+    "drawVertical": true,
+    "gutterHeight": 12,
+    "gutterWidth": 90.18181818181819,
+    "guttersOutside": false,
+    "horizontalOffset": 0,
+    "isEnabled": false,
+    "numberOfColumns": 12,
+    "rowHeightMultiplication": 5,
+    "totalWidth": 1280
+  },
+  "name": "Bitcoin__Block_(tab_2)",
+  "nameIsFixed": true,
+  "resizesContent": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "style": {
+    "_class": "style",
+    "do_objectID": "9D4D9A04-84EB-49C0-9FE3-24B8F3DB146F",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "io.magicsketch.mirror": {
+      "highestQuality": 2
+    }
+  },
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "FCFC5F35-4E2D-438A-AFCB-8D8C61FFE0FD",
+    "guides": [
+    ]
+  }
+}

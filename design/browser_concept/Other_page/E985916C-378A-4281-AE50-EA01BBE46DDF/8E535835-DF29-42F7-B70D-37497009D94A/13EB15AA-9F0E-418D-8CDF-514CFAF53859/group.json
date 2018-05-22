@@ -1,0 +1,60 @@
+{
+  "_class": "group",
+  "do_objectID": "13EB15AA-9F0E-418D-8CDF-514CFAF53859",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "086761FC-09B4-4AEB-9B49-1045125E5A79",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "CD7B152A-15A4-43AB-AA5E-AF8C315487AE",
+    "height": 170,
+    "width": 150,
+    "x": 120,
+    "y": 79
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "shapeGroup",
+      "id": "5BCF3B41-67B2-442E-80C9-87D7E3BD474E"
+    },
+    {
+      "class": "text",
+      "id": "8662A0C3-90D7-47CB-A60D-6DEA96424731"
+    },
+    {
+      "class": "text",
+      "id": "2975A55C-CEDF-4F1E-982A-E52D1F63098A"
+    },
+    {
+      "class": "shapeGroup",
+      "id": "494A682B-7082-4045-949D-20CD6C050005"
+    }
+  ],
+  "name": "Typography Image",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "347DA902-D651-48FF-AFAF-68535F641109",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "2825BED0-03EE-4DA3-A4C2-8C399D9CBD72",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "78EBF072-1B77-48F1-9329-B8304B4EFA72",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "2BD38F0B-AD8B-4F36-B9E9-D11320CB4D82",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "99654023-E56A-4D87-99C8-9CFA0241F04E",
+    "height": 6,
+    "width": 9,
+    "x": 403,
+    "y": 2024
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Ebene_1",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

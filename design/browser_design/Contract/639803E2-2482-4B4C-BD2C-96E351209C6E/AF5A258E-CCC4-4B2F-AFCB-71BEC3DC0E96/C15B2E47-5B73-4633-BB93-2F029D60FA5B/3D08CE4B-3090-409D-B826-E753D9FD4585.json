@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "3D08CE4B-3090-409D-B826-E753D9FD4585",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "D6FAEE29-657A-46DC-8E18-8BE54123DD23",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": true,
+    "do_objectID": "AD0726B3-FAB1-491B-9258-2FAFB023630D",
+    "height": 160,
+    "width": 160,
+    "x": 35,
+    "y": 76
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "Qr",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "3D079142-3B76-491A-A084-0E15C7330AD0",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "26C2F953-C8BA-41FA-BEF6-1561009694F4",
+  "verticalSpacing": 0
+}

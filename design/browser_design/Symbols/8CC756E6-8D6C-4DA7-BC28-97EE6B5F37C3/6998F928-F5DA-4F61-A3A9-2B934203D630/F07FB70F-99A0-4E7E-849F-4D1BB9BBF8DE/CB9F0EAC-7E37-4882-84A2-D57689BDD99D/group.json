@@ -1,0 +1,57 @@
+{
+  "_class": "group",
+  "do_objectID": "CB9F0EAC-7E37-4882-84A2-D57689BDD99D",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "6438CA78-37FB-4549-A4DC-8A869D8F54EC",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "7B6C113E-A94B-4079-8DF8-EC7B268AC508",
+    "height": 17,
+    "width": 12,
+    "x": 0,
+    "y": 0
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "group",
+      "id": "6999D3ED-D72B-4E93-B1A9-A5F90DE52B5F"
+    }
+  ],
+  "name": "Dollar",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "blur": {
+      "_class": "blur",
+      "center": "{0.5, 0.5}",
+      "do_objectID": "E558ED60-6FFA-4C37-BCCE-F9E5C1BF3A83",
+      "isEnabled": false,
+      "motionAngle": 0,
+      "radius": 0.3240000000000001,
+      "type": 0
+    },
+    "do_objectID": "2DEFC4F3-B26A-40ED-84A1-3B91C063E9CF",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  }
+}

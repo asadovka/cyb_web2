@@ -1,0 +1,47 @@
+{
+  "_class": "symbolInstance",
+  "do_objectID": "5631DEE0-5559-42AF-8A0A-186E707022A0",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "E8EFCA21-C8C5-4FC9-A85B-FE1578CF80B5",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "985A781E-F0CC-440C-B4B2-5D7D1FEB9E53",
+    "height": 16,
+    "width": 128,
+    "x": 2,
+    "y": 28
+  },
+  "horizontalSpacing": 0,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "BTC_block",
+  "nameIsFixed": false,
+  "overrideValues": [
+  ],
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "scale": 1,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "do_objectID": "917B23CB-5C00-4811-99A9-C0E2A29B30F3",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "symbolID": "7AE65727-E5C4-4490-876A-D292CDDA4D1E",
+  "verticalSpacing": 0
+}

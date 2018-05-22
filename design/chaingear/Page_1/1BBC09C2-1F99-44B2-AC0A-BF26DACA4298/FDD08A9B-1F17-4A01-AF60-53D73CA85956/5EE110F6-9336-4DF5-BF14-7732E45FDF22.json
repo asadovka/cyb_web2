@@ -1,0 +1,52 @@
+{
+  "_class": "slice",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "7ABA42DF-ECCB-49DB-8418-9810E710ECEA",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "5EE110F6-9336-4DF5-BF14-7732E45FDF22",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "5235D790-8D24-4FE9-BF49-0699DA2BF51A",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "svg",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "5FECEDD8-B9BE-47F1-946E-D0D0A4ABF4BD",
+    "height": 14,
+    "width": 14,
+    "x": 21,
+    "y": 21
+  },
+  "hasBackgroundColor": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "name": "ic_add_black_24px",
+  "nameIsFixed": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false
+}

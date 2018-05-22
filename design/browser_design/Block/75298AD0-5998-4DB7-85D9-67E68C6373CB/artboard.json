@@ -1,0 +1,142 @@
+{
+  "_class": "artboard",
+  "backgroundColor": {
+    "_class": "color",
+    "alpha": 1,
+    "blue": 1,
+    "do_objectID": "26BE848B-892C-46C8-AF74-5CD8DED2D2B4",
+    "green": 1,
+    "red": 1
+  },
+  "do_objectID": "75298AD0-5998-4DB7-85D9-67E68C6373CB",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "do_objectID": "866B0DD9-88D3-4C56-9DC7-BCEE72C0AD1A",
+    "exportFormats": [
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "",
+        "namingScheme": 0,
+        "scale": 1,
+        "visibleScaleType": 0
+      },
+      {
+        "_class": "exportFormat",
+        "absoluteSize": 0,
+        "fileFormat": "png",
+        "name": "@2x",
+        "namingScheme": 0,
+        "scale": 2,
+        "visibleScaleType": 0
+      }
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "do_objectID": "B5EEDF96-247C-436B-9AC5-CBAD101A27EE",
+    "height": 2326,
+    "width": 1280,
+    "x": 200,
+    "y": -879
+  },
+  "hasBackgroundColor": false,
+  "hasClickThrough": true,
+  "horizontalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "5116509A-B659-4B8D-AC5C-765CA05949BB",
+    "guides": [
+    ]
+  },
+  "includeBackgroundColorInExport": true,
+  "includeInCloudUpload": true,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isFlowHome": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 2,
+  "layers": [
+    {
+      "class": "symbolInstance",
+      "id": "53116AE0-6CCE-495A-ADC2-EC47253B3521"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "0FA99A48-CC1C-4ADE-8741-7F6277569481"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "F17499CA-697C-4FCE-BBE7-6D5230A3CF54"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "70DDD921-FB1D-4986-83B1-D9E36F6B90DB"
+    },
+    {
+      "class": "group",
+      "id": "AF837B0B-7926-4231-9797-E15F70860BCC"
+    },
+    {
+      "class": "group",
+      "id": "FA182310-77C0-44F7-A0C8-67BAD77AC336"
+    },
+    {
+      "class": "group",
+      "id": "C8FFD070-66F3-403A-A975-E028857A6667"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "BD774FCC-5522-4D7E-A47F-A1422CDB7577"
+    }
+  ],
+  "layout": {
+    "_class": "layoutGrid",
+    "columnWidth": 24,
+    "do_objectID": "283BA37F-9403-4471-8B8A-7AC365E46E0B",
+    "drawHorizontal": false,
+    "drawHorizontalLines": false,
+    "drawVertical": true,
+    "gutterHeight": 12,
+    "gutterWidth": 90.18181818181819,
+    "guttersOutside": false,
+    "horizontalOffset": 0,
+    "isEnabled": false,
+    "numberOfColumns": 12,
+    "rowHeightMultiplication": 5,
+    "totalWidth": 1280
+  },
+  "name": "Ethereum_Block",
+  "nameIsFixed": true,
+  "resizesContent": false,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": true,
+  "style": {
+    "_class": "style",
+    "do_objectID": "46C450D9-A77E-46C2-A11A-6D7E951B44AE",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "io.magicsketch.mirror": {
+      "highestQuality": 2
+    }
+  },
+  "verticalRulerData": {
+    "_class": "rulerData",
+    "base": 0,
+    "do_objectID": "F3771A15-6DFD-4B75-9C8B-065263C666C3",
+    "guides": [
+    ]
+  }
+}
