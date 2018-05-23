@@ -162,7 +162,7 @@ At the bottom of the page 5 project links are placed:
 - Menu placement?
 
 
-## Applucations
+## Applications
 
 1. Blockchain explorer
 
