@@ -29,9 +29,13 @@ Cyber browser - an entrance point to start working with blockchains.
 - Desktop version (Electron + React) 
 - Mobile web version
 
-# Browser Pages
+# Browser structure:
 
-## 0. Browser menu & Header
+
+## 0. Shell. 
+
+
+Search bar, App bar, State bar, Context bar.
 
 **Purpose:** list of all browser pages, navigation instrument. 
 
@@ -156,6 +160,19 @@ At the bottom of the page 5 project links are placed:
 - Plugs for developing functionality
 - Place transition to roadmap where users can donate for developing options
 - Menu placement?
+
+
+## Applucations
+
+1. Blockchain explorer
+
+- Bitcoin 
+- Bitcoin Cash
+- Ethereum
+- Ethereum Classic
+
+
+
 
 ## 2. Search Results Page
 
@@ -646,11 +663,13 @@ Actions:
 - Next & Previous buttons (top of the page)
 - Hash string - copy string in buffer 
 
-## 3. Blockchains Page
 
-### 3.1 Blockchain Page
 
-## 4. Tokens Page
+
+
+## 3. Blockchain Monitor
+
+## 4. Token Monitor
 
 Token Table:
 
@@ -665,13 +684,10 @@ Headers:
 - Price graph (7d) [img] - weekly price change 
 
 
-### 4.1 Token Page
 
-## 5. Exchanges Page
+## 5. Exchange Monitor
 
-### 5.1 Exchange page
-
-## 6. Chaingear Page
+## 6. Chaingear
 
 **Purpose:** provide easy integration with Chaingear. 
 **Design & UI  features:** simple UI, autoupdate register data, preview of changes.
@@ -691,10 +707,6 @@ Main functions of the page:
 7. Data import from smart contract
 
 
-## 7. Cybernode Page
+## 8. Labels 
 
-## 8. Labels Page
-
-## 9. Portfolio Page
-
-## 10. FAQ Page
+## 9. Portfolio
