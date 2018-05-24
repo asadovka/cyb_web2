@@ -1,4 +1,4 @@
-Tha main purpose of this document is to describe requirements and the structure of browser pages. With installed sketch application or using the online version you can open mockups and check the current state of work.
+Tha main purpose of this document is to describe requirements and the structure of platform and apps. With installed sketch application you can open mockups and check the current state of work.
 
 # Project description
 
