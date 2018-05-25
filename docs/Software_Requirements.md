@@ -1,4 +1,4 @@
-Tha main purpose of this document is to describe requirements and the structure of platform and apps. With installed sketch application you can open mockups and check the current state of work.
+Tha main purpose of this document is to describe requirements and the structure of cyb and apps.
 
 # Project description
 
@@ -10,7 +10,6 @@ Cyber browser - an entrance point to start working with blockchains.
 
 - Integration with Metamask 
 - IPFS integration
-- Avoid pagination in all tables (use scrolling instead)
 - Prefered type of data structure - tables
 
 ## 2. Common non-functional requirements 
@@ -32,17 +31,19 @@ Cyber browser - an entrance point to start working with blockchains.
 # Browser structure:
 
 
-## 0. Shell. 
-
+# 0 Shell. 
 
 Search bar, App bar, State bar, Context bar.
 
-**Purpose:** list of all browser pages, navigation instrument. 
 
-**Design & UI features:** logical navigation, currency selector.
+### 0.1 Search bar
 
 
-Browser menu:
+### 0.2 App bar:
+
+### 0.3 State bar:
+
+### 0.4 Context bar:
 
 
 1. Menu header:
@@ -162,7 +163,7 @@ At the bottom of the page 5 project links are placed:
 - Menu placement?
 
 
-## Applications
+# Applications
 
 1. Blockchain explorer
 
