@@ -1,4 +1,4 @@
-Tha main purpose of this document is to describe requirements and the structure of cyb and apps.
+Tha main purpose of this document is to describe requirements and the structure of cyb and apps for MVP.
 
 # Project description
 
@@ -36,17 +36,41 @@ Cyber browser - an entrance point to start working with blockchains.
 Search bar, App bar, State bar, Context bar.
 
 
-### 0.1 Search bar
+### 0.1 Search (Path) bar
 
+Top of the page
+
+- search in existing list of apps 
+- search in blockchain explorer app
+- search in token monitor app
+- search path
 
 ### 0.2 App bar:
 
+Left menu
+
+- list of installed apps (4 blockchain explorers, chaingear, token monitor)
+- add/delete app  
+
 ### 0.3 State bar:
+
+- desync state
+- metamask instelled state (Y/N)
+- tx processing state
 
 ### 0.4 Context bar:
 
+- account logo
+- account address
+- account balance
 
-1. Menu header:
+settings:
+
+- language
+- location
+- currency (USD/ETH/BTC)
+- activity type (private/anonymous/public)
+
 
 USE CASES:
 
@@ -54,35 +78,6 @@ USE CASES:
 - non auth user- log in metamask
 - auth user - account logo
 
-2. Menu list:
-
-Expanded view:
-
-menu string + logo
-
-- Main
-
-- Blockchains
-- Tokens
-- Exchanges
-
-- Chaingear (subpages: my registers, new register)
-- Dashboard
-- Labels (subpages: my labels, new label)
-- Portfolio (subpages: my portfolio, public portfolios)
-
-- Cybernode
-- FAQ
-
-- currency selector (USD-BTC-ETH) - symbols
-
-Collapsed view:
-
-logo only
-
-Header:
-
-- search panel (local/global search)
 
 
 ## 1. Main Page
