@@ -64,7 +64,7 @@ const BGDecorator = (storyFn) => (
 );
 
 
-storiesOf('Components', module)
+storiesOf('Components current', module)
 .addDecorator(BGDecorator)
 .add('Title', () => (
   <Container>

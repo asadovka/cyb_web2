@@ -6,12 +6,18 @@ import { storiesOf } from '@storybook/react';
 import { withState } from '@dump247/storybook-state';
 
 
+import { 
+  Head, Button,
+} from '../app/src/components/ItemsDetails/';
+
 import {
   Section,
   SectionContent,
   SectionTabs
 } from '../app/src/components/grid/';
 
+import Tabs, { Tab } from '../app/src/components/Tabs/';
+import { Title } from '../app/src/components/Title/';
 
 import Container from '../app/src/components/Container/';
 
@@ -31,7 +37,7 @@ const BGDecorator = (storyFn) => (
 
 storiesOf('Grid', module)
 .addDecorator(BGDecorator)
-.add('two section title with content', () => (
+.add('basic', () => (
   <Container>
     <Section>
       <SectionContent title='Blockshain'>
@@ -108,8 +114,74 @@ storiesOf('Grid', module)
     </Section>
 
   </Container>
-));
+))
+.add('tabs', () => (
+  <Container>
+
+    <Section title='Tabs sample'>
+      <SectionTabs>
+        <Tabs value={1}>
+          <Tab label='Transactions' value={1}>
+            Transactions
+          </Tab>
+          <Tab label='Operations' value={2}>
+            Operations
+          </Tab>
+        </Tabs>        
+      </SectionTabs>
+      <SectionContent >
+        Input data
+      </SectionContent>
+    </Section>
+
+  </Container>
+))
+.add('title', () => (
+  <Container>
+    <Title>Bitcoin contract</Title>
+    <Section title='General'>
+      <SectionContent >
+        <div>1</div>
+        <div>1</div>
+      </SectionContent>
+      <SectionContent>
+        <div>2</div>
+      </SectionContent>
+      <SectionContent>
+        <div>3</div>
+      </SectionContent>
+      <SectionContent>
+        <div>4</div>
+      </SectionContent>
+    </Section>
+  </Container>
+))
+.add('title with button', () => (
+  <Container>
+    <Head>
+      <Button >previous</Button>
+      <Title inline={true}>Ethereum Block #5000000</Title>
+      <Button >next</Button>
+    </Head>
+    <Section title='General'>
+      <SectionContent >
+        <div>1</div>
+        <div>1</div>
+      </SectionContent>
+      <SectionContent>
+        <div>2</div>
+      </SectionContent>
+      <SectionContent>
+        <div>3</div>
+      </SectionContent>
+      <SectionContent>
+        <div>4</div>
+      </SectionContent>
+    </Section>
+  </Container>
+))
 
 
+        
 
   
