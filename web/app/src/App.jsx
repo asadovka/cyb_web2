@@ -20,12 +20,12 @@ const AllApps = ({ apps, nav }) => (
 
 const getIndex = () => {
   return axios
-      .get('http://localhost:5000/state')
+      .get('http://localhost:3000/state')
       .then(response => response.data)
 }
 
 const search = (q) => {
-  return axios.post('http://localhost:5000/txs', { "type": "search", "keyword": q })
+  return axios.post('http://localhost:3000/txs', { "type": "search", "keyword": q })
       .then(() => getIndex())
       .then(data => {
         return Object.keys(data[q].links);        
@@ -33,7 +33,7 @@ const search = (q) => {
 }
 
 const linkMethod = (keyword, hash) => {
-  return axios.post('http://localhost:5000/txs', { "type": "link", "keyword": keyword, hash })
+  return axios.post('http://localhost:3000/txs', { "type": "link", "keyword": keyword, hash })
       .then(() => getIndex())
       .then(data => {
         return Object.keys(data[keyword].links);        
