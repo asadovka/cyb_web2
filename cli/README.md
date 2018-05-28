@@ -4,5 +4,5 @@
 #### How to run
 
 ```
-node index ../apps/test/
+node index ../apps/test/ test
 ```
