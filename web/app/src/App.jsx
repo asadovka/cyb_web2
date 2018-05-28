@@ -3,6 +3,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
+const AllApps = ({ apps, nav }) => (
+  <div>
+    <ul>
+      {apps.map(app => (
+        <li key={app.name}>
+          <a href='/' onClick={(e) => {
+            e.preventDefault();
+            nav(app)
+          }}>{app.name}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -10,6 +25,7 @@ class App extends Component {
       apps: [],
       currentPath: null
     }
+    this.nav = this.nav.bind(this);
   }
   componentDidMount() {
     axios
@@ -17,8 +33,7 @@ class App extends Component {
       .then(response => response.data)
       .then(apps => this.setState({ apps }));    
   }
-  nav(e, app) {
-    e.preventDefault();
+  nav(app) {    
     this.setState({
       currentPath: app.hash
     })
@@ -31,20 +46,17 @@ class App extends Component {
         <div>
           <input />
         </div>
-        <div>
-          <ul>
-            {apps.map(app => (
-              <li key={app.name}>
-                <a href='/' onClick={(e) => this.nav(e, app)}>{app.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
+        
+        {path ? <div>
           <iframe src={path} width="500" height="500" >
             iframe not supported!
          </iframe>
-        </div>
+        </div> : (
+          <AllApps
+            apps={apps}
+            nav={this.nav}
+          />
+        )}
       </div>
     );
   }
