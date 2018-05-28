@@ -115,7 +115,7 @@ module.exports = function (options = {}) {
     },
     plugins: createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_API}),
     devServer: {
-      port: 3000,
+      port: 4000,
       stats: {
         chunkModules: false,
         colors: true
