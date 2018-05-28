@@ -40,10 +40,15 @@ ipfs.add(files, function(e, r) {
 	console.log('error: ', e);
 
 request
-	.post('http://localhost:7000/api/app')
-	.send({ name: appName, hash: hash })
+	.post('http://localhost:5000/txs')
+	.send({ type: 'search', keyword: appName })
 	.end((err, res) => {
-		console.log('error: ', err);
+		request
+		.post('http://localhost:5000/txs')
+		.send({ type: 'link', keyword: appName, hash: hash })
+		.end((err, res) => {
+			console.log('ok')
+		})
 	})
 })
 

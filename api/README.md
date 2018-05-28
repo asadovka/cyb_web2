@@ -4,5 +4,5 @@
 #### How to run
 
 ```
-node server
+node server2
 ```
