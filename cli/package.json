@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ipfs-api": "22.0.0"
+    "ipfs-api": "22.0.0",
+    "superagent": "3.8.3"
   }
 }

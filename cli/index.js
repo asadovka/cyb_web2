@@ -4,12 +4,12 @@ const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 const fs = require('fs');
 const path = require('path');
-
+const request = require('superagent');
 
 const dirName = path.join(__dirname, process.argv[2]);
+const appName = process.argv[3];
 
-
-console.log('>> ', dirName);
+console.log('>> ', dirName, appName);
 
 
 
@@ -36,6 +36,15 @@ const files = fs.readdirSync(dirName).map(file => ({
 // ]
 
 ipfs.add(files, function(e, r) {
+	const hash = r[r.length - 1].hash
 	console.log('error: ', e);
-	console.log('result: ', r[r.length - 1]);
+
+request
+	.post('http://localhost:7000/api/app')
+	.send({ name: appName, hash: hash })
+	.end((err, res) => {
+		console.log('error: ', err);
+	})
 })
+
+

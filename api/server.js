@@ -14,18 +14,23 @@ app.use(bodyParser.json());
 
 const fs = require('fs')
 
+var Datastore = require('nedb');
+var db = new Datastore({filename : 'apps'});
+db.loadDatabase();
 
-var apps = [
- 	{ name: 'test', hash: 'QmVWVscvorUwah9x9GL2465pLFT97GQxXtJaVZQXvsBvaJ' },
-];
 
 app.get('/api/app', function(req, res) {
-	res.json(apps);
+	db.find({}, function (err, docs) {
+		res.json(docs)
+	});
 })
 
 app.post('/api/app', function(req, res) {
-	app.push(req.body);
-	res.json(apps);
+	// apps.push(req.body);
+	console.log(req.body)
+	db.update({name: req.body.name}, {name: req.body.name, hash: req.body.hash}, { upsert: true }, function(e, docs){
+		res.json(docs);		
+	});
 })
 
 const server = app.listen(7000, () => {

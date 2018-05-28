@@ -115,6 +115,7 @@ module.exports = function (options = {}) {
     },
     plugins: createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_API}),
     devServer: {
+      port: 3000,
       stats: {
         chunkModules: false,
         colors: true
@@ -123,8 +124,8 @@ module.exports = function (options = {}) {
       inline: false,
       proxy: {
         "/api": {
-          target: "http://search-api.cyber.fund",
-          pathRewrite: {"^/api": ""}
+          target: "http://localhost:7000"
+          //, pathRewrite: {"^/api": ""}
         }
       }
     }

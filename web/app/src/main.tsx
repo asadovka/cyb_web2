@@ -1,17 +1,18 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {Provider} from "react-redux";
-import {Root} from "./root";
+// import {Root} from "./root";
 import {configureStore} from "./configureStore";
 
 import "./global.less";
 
+import App from './App';
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root/>
+    <App/>
   </Provider>,
   document.getElementById("root")
 );
