@@ -1,4 +1,4 @@
-Tha main purpose of this document is to describe requirements and the structure of platform and apps. With installed sketch application you can open mockups and check the current state of work.
+Tha main purpose of this document is to describe requirements and the structure of cyb and apps for MVP.
 
 # Project description
 
@@ -10,7 +10,6 @@ Cyber browser - an entrance point to start working with blockchains.
 
 - Integration with Metamask 
 - IPFS integration
-- Avoid pagination in all tables (use scrolling instead)
 - Prefered type of data structure - tables
 
 ## 2. Common non-functional requirements 
@@ -32,20 +31,46 @@ Cyber browser - an entrance point to start working with blockchains.
 # Browser structure:
 
 
-## 0. Shell. 
-
+# 0 Shell. 
 
 Search bar, App bar, State bar, Context bar.
 
-**Purpose:** list of all browser pages, navigation instrument. 
 
-**Design & UI features:** logical navigation, currency selector.
+### 0.1 Search (Path) bar
 
+Top of the page
 
-Browser menu:
+- search in existing list of apps 
+- search in blockchain explorer app
+- search in token monitor app
+- search path
 
+### 0.2 App bar:
 
-1. Menu header:
+Left menu
+
+- list of installed apps (4 blockchain explorers, chaingear, token monitor)
+- add/delete app  
+
+### 0.3 State bar:
+
+- desync state
+- metamask instelled state (Y/N)
+- tx processing state
+
+### 0.4 Context bar:
+
+- account logo
+- account address
+- account balance
+
+settings:
+
+- language
+- location
+- currency (USD/ETH/BTC)
+- activity type (private/anonymous/public)
+
 
 USE CASES:
 
@@ -53,35 +78,6 @@ USE CASES:
 - non auth user- log in metamask
 - auth user - account logo
 
-2. Menu list:
-
-Expanded view:
-
-menu string + logo
-
-- Main
-
-- Blockchains
-- Tokens
-- Exchanges
-
-- Chaingear (subpages: my registers, new register)
-- Dashboard
-- Labels (subpages: my labels, new label)
-- Portfolio (subpages: my portfolio, public portfolios)
-
-- Cybernode
-- FAQ
-
-- currency selector (USD-BTC-ETH) - symbols
-
-Collapsed view:
-
-logo only
-
-Header:
-
-- search panel (local/global search)
 
 
 ## 1. Main Page
@@ -162,7 +158,7 @@ At the bottom of the page 5 project links are placed:
 - Menu placement?
 
 
-## Applications
+# Applications
 
 1. Blockchain explorer
 
