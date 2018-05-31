@@ -4,5 +4,7 @@
 #### How to run
 
 ```
-node index ../apps/test/ test
+npm install cyb -g
+
+cub add ../apps/test/ test
 ```
