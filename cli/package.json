@@ -1,6 +1,6 @@
 {
   "name": "cyb",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "",
   "main": "index.js",
   "preferGlobal": true,
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:cybercongress/cybjs.git"
+    "url": "git@github.com:cybercongress/cyb.git"
   },
   "author": "",
   "license": "ISC",
