@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import axios from 'axios';
 
 
 const AllApps = ({ apps, nav }) => (
@@ -18,27 +17,12 @@ const AllApps = ({ apps, nav }) => (
   </div>
 )
 
-const getIndex = () => {
-  return axios
-      .get('http://localhost:3000/state')
-      .then(response => response.data)
-}
+import axios from 'axios';
 
-const search = (q) => {
-  return axios.post('http://localhost:3000/txs', { "type": "search", "keyword": q })
-      .then(() => getIndex())
-      .then(data => {
-        return Object.keys(data[q].links);        
-      })
-}
 
-const linkMethod = (keyword, hash) => {
-  return axios.post('http://localhost:3000/txs', { "type": "link", "keyword": keyword, hash })
-      .then(() => getIndex())
-      .then(data => {
-        return Object.keys(data[keyword].links);        
-      })  
-}
+import Cyb from './utils/cyb';
+
+const cyb = new Cyb('http://localhost:3002');
 
 class App extends Component {
   constructor(props){
@@ -53,6 +37,11 @@ class App extends Component {
     this.link = this.link.bind(this);
   }
   componentDidMount() {
+    axios.post('http://localhost:3002/query', {
+      ['test']: 'links'
+    }).then(data => {
+      console.log(data)
+    })
       // getIndex()
       // .then(index => {
       //   this.setState({ index })
@@ -61,12 +50,12 @@ class App extends Component {
   link() {
     var q = this.refs.q.value; 
     var link = this.refs.link.value;
-    linkMethod(q, link)
+    cyb.linkMethod(q, link)
   }
   nav(e, link) {    
     e.preventDefault();
     var q = this.refs.q.value; 
-    linkMethod(q, link)
+    cyb.linkMethod(q, link)
       .then(() => {
         this.setState({
           currentPath: link
@@ -75,7 +64,7 @@ class App extends Component {
   }
   search() {
     var q = this.refs.q.value;
-    search(q)
+    cyb.search(q)
       .then(links => {
         this.setState({
           links
@@ -92,7 +81,7 @@ class App extends Component {
           <input ref='q'/><button onClick={this.search}>search</button>
           <ul>
           {links.map((link) =>(
-            <li>
+            <li key={link}>
               <a onClick={(e) => this.nav(e, link)}>{link}</a>
             </li>
           ))}
