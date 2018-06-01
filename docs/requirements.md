@@ -8,16 +8,16 @@ Cyber browser - an entrance point to start working with blockchains.
 
 ## 1. Common functional requirements
 
-- Integration with Metamask 
+- Integration with Metamask
 - IPFS integration
 - Prefered type of data structure - tables
 
-## 2. Common non-functional requirements 
+## 2. Common non-functional requirements
 
 - Simple and attractive design
 - Intuitive UI
 - Adaptive design for mobile devices
-- Display IPFS hash for all objects 
+- Display IPFS hash for all objects
 - All hashes should be easy to copy
 
 ## 3. System requirements
@@ -25,13 +25,13 @@ Cyber browser - an entrance point to start working with blockchains.
 - less than 1 second for loading page
 - less than 3 seconds for loading all data
 - Web version of browser (React)
-- Desktop version (Electron + React) 
+- Desktop version (Electron + React)
 - Mobile web version
 
 # Browser structure:
 
 
-# 0 Shell. 
+# 0 Shell.
 
 Search bar, App bar, State bar, Context bar.
 
@@ -40,7 +40,7 @@ Search bar, App bar, State bar, Context bar.
 
 Top of the page
 
-- search in existing list of apps 
+- search in existing list of apps
 - search in blockchain explorer app
 - search in token monitor app
 - search path
@@ -82,61 +82,61 @@ USE CASES:
 
 ## 1. Main Page
 
-**Purpose:** accent the user's attention to search function. 
+**Purpose:** accent the user's attention to search function.
 
 **Design & UI features:** simple and attractive design, hints to start usage of cyber products.
 
 There is a status text below search panel which describes technical information about cyber.Search products:
 
-**_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_** 
+**_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_**
 
 Where:
 
-1. Transactions [number] - number of all indexed transactions from all blockchains connected to Cybernode. 
+1. Transactions [number] - number of all indexed transactions from all blockchains connected to Cybernode.
 2. Blockchain systems [number] - all blockchains processed by Cybernode.
-3. Tokens [numger] - all unique tokens from all blockchains indexed. 
+3. Tokens [numger] - all unique tokens from all blockchains indexed.
 4. Database size [number + Gb] - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio. Their apperance depends on user type:
 
 1. User without Metamask
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
 
     _**Call to action:** install Metamask and transit to tokens page_.
-  
+
 - Chaingear registers [number] - number of created registers in Chaingear.
 
     _**Call to action:** install Metamask and transit to Chaingear page_.
-  
+
 - Portfolio volume [valuation in BTC] - volume of all user's portfolio.
 
     _**Call to action:** install Metamask and transit to Portfolio page_.
 
 2. User with Metamask (no activities in system)
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
 
     _**Call to action:** transit to tokens page_.
-  
+
 - Chaingear registers [number] - number of created registers in Chaingear.
 
     _**Call to action:** transit to Chaingear page, hint to create register or record_.
-  
+
 - Portfolio volume [valuation in BTC] - portfolio volume from metamask address.
 
     _**Call to action:** , transit to Portfolio page, hint to create full portfolio_.
 
 3. User with Metamask (no activities in system)
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
 
     _**Call to action:** transit to tokens page_.
-  
+
 - Chaingear registers [number] - number of created registers/records in Chaingear.
 
     _**Call to action:** Chaingear page_.
-  
+
 - Portfolio volume [valuation in BTC] - volume of user's portfolio.
 
     _**Call to action:** Portfolio page_.
@@ -162,7 +162,7 @@ At the bottom of the page 5 project links are placed:
 
 1. Blockchain explorer
 
-- Bitcoin 
+- Bitcoin
 - Bitcoin Cash
 - Ethereum
 - Ethereum Classic
@@ -174,9 +174,9 @@ At the bottom of the page 5 project links are placed:
 
 **Purpose:** provide easy and quick functionality for working with blockchain search.
 
-**Design & UI  features:** strictly logical UI, adaptive preferenses of filtration and sorting. 
+**Design & UI  features:** strictly logical UI, adaptive preferenses of filtration and sorting.
 
-#### Objects of search. 
+#### Objects of search.
 
 There are 2 types of search provided by browser:
 1. Global search (searching in whole ecosystem of indexed objects)
@@ -218,7 +218,7 @@ Search results in general are shown as a list of object preview. Each object pre
 
 - Time (finalization, or time of confirmation or "Mempool" status)
 - Hash
-- Value 
+- Value
 
 2. Block + number
 
@@ -243,7 +243,7 @@ Search results in general are shown as a list of object preview. Each object pre
 
 Each preview has clickable hash string, that leads to block/uncle, contract or transaction page.
 
-There is a infinite page scroll function on results page. 
+There is a infinite page scroll function on results page.
 
 ### 2.1 Contract Page
 
@@ -261,7 +261,7 @@ Displayed data:
 General
 
 - UTC Time [date] - time of contract getting into blockchain
-- Balance [number + currency] - BTC available to withdraw 
+- Balance [number + currency] - BTC available to withdraw
 - Hash [string] - hash of address
 
 Cashflow
@@ -309,10 +309,10 @@ Actions:
 - Address - show label of address
 
 2. Clicking
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 - Transaction row - expand transaction details (inputs and outputs)
 
-3. Labeling 
+3. Labeling
 - labeling via button "label it"
 
 #### 2.1.2 Ethereum contract
@@ -324,7 +324,7 @@ Displayed data:
 General:
 
 - UTC Time [date] - time of contract getting into blockchain
-- Balance [number + currency] - ETH available to withdraw 
+- Balance [number + currency] - ETH available to withdraw
 - Hash [string] - hash of address
 
 Cashflow:
@@ -394,7 +394,7 @@ Contract code:
 Source code - code of contract
 ABI - contract ABI
 Swarm code - link in ethereum swarm
- 
+
 Actions:
 
 1. Info by pointing:
@@ -402,9 +402,9 @@ Actions:
 - Address - show label of address
 
 2. Clicking
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
-3. Labeling 
+3. Labeling
 - labeling via button "label it"
 
 ### 2.2 Transaction Page
@@ -436,8 +436,8 @@ Blockchain specific
 Fees
 
 - Fee [number + currency] - accumulated fees in BTC
-- Fee per byte [number + satoshi/Byte] - fee/size 
-- Fee per weight unit [number + satoshi/WU] - fee/weight unit 
+- Fee per byte [number + satoshi/Byte] - fee/size
+- Fee per weight unit [number + satoshi/WU] - fee/weight unit
 
 Address table. Headers:
 
@@ -458,9 +458,9 @@ Actions:
 - Confirmations - first confirmation time minus mempool time
 
 2. Clicking
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
-3. Labeling 
+3. Labeling
 - labeling via button "label it"
 
 #### 2.2.2 Ethereum transaction
@@ -506,9 +506,9 @@ Actions:
 - Confirmations - first confirmation time minus mempool time
 
 2. Clicking
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
-3. Labeling 
+3. Labeling
 - labeling via button "label it"
 
 ### 2.3 Block Page
@@ -569,7 +569,7 @@ Actions:
 2. Clicking
 - Transaction table - expanding tx inputs and outputs by clicking on transaction row (like https://tradeblock.com/bitcoin/block/400000)
 - Next & Previous buttons (top of the page)
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
 #### 2.3.2 Ethereum block
 
@@ -632,7 +632,7 @@ Actions:
 
 2. Clicking
 - Next & Previous buttons (top of the page)
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
 #### 2.3.3 Ethereum uncle block
 
@@ -657,7 +657,7 @@ Actions:
 
 2. Clicking
 - Next & Previous buttons (top of the page)
-- Hash string - copy string in buffer 
+- Hash string - copy string in buffer
 
 
 
@@ -677,7 +677,7 @@ Headers:
 - Volume (24h) [number + currency] - 24h volume of token trades
 - Supply [number + token ticker] - number of tokens
 - Change (24h) [number + percent] - 24h chdnge of price
-- Price graph (7d) [img] - weekly price change 
+- Price graph (7d) [img] - weekly price change
 
 
 
@@ -685,7 +685,7 @@ Headers:
 
 ## 6. Chaingear
 
-**Purpose:** provide easy integration with Chaingear. 
+**Purpose:** provide easy integration with Chaingear.
 **Design & UI  features:** simple UI, autoupdate register data, preview of changes.
 
 All functionality is available after Metamask authorization.
@@ -703,6 +703,6 @@ Main functions of the page:
 7. Data import from smart contract
 
 
-## 8. Labels 
+## 8. Labels
 
 ## 9. Portfolio

@@ -1,6 +1,6 @@
 
 <h1 align="center">
-cyb 
+cyb
 </h1>
 
 
@@ -15,7 +15,7 @@ Cyb is a blockchain browser with integrated DApp platform. Browser consists of t
 
 1. Shell, which alows:
 
-- search in blockchains and Dapps, and IPFS content 
+- search in blockchains and Dapps, and IPFS content
 - deploy and manage Dapps for users
 - show desync state of user and blockchain
 - manage user's account data (sign transactions, create custom feed)
@@ -59,7 +59,7 @@ We use full tokenization of processes (data obtain and transfer, content generat
 We use user's feedback to make products better. So we provide options for bug reporting and feedback leaving on every page.
 
 
-## 2. Design 
+## 2. Design
 
 Cyb design process follows Web3 design principles
 
@@ -81,7 +81,7 @@ Blockchain data is too complicated and sometimes not obvious for people. Thus we
 
 1. Logical grouping for objects. Every app page has common groups of data (general, blockchain specific) for inheritance of views and better navigation or data observing.
 2. Classical accounting terms used for balance and cashflow operations. Blockahains use econimic principles for interaction between subjects thus we can describe such processes in established terms.
-3. Robohash logo for contracts entities. Contracts can act by themself, have and algorithms, so it's more natural to perceive them like robots instead of pieces of code. 
+3. Robohash logo for contracts entities. Contracts can act by themself, have and algorithms, so it's more natural to perceive them like robots instead of pieces of code.
 
 
 ## 3. Development
@@ -93,6 +93,3 @@ Blockchain data is too complicated and sometimes not obvious for people. Thus we
 ## 3.3 DApps deployment
 
 ## 3.4 DApps interaction
-
-
-
