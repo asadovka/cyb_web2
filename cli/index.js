@@ -34,20 +34,32 @@ program
 
 
 		ipfs.add(files, function(e, r) {
+			if (e) {
+				console.log(e);
+				return;
+			}
 			const hash = r[r.length - 1].hash
 			console.log('put folder in IPFS: ', hash);
-
-		request
-			.post(nodeUrl + '/txs')
-			.send({ type: 'search', keyword: appName })
-			.end((err, res) => {
-				request
+			console.log(r);
+			request
 				.post(nodeUrl + '/txs')
-				.send({ type: 'link', keyword: appName, hash: hash })
+				.send({ type: 'search', keyword: appName })
 				.end((err, res) => {
-					console.log('update cyberd index for: ', appName, hash, nodeUrl);
+					if (err) {
+						console.log(err)
+					} else {
+						request
+						.post(nodeUrl + '/txs')
+						.send({ type: 'link', keyword: appName, hash: hash })
+						.end((err, res) => {
+							if (err) {
+								console.log(err)
+							} else {
+								console.log('update cyberd index for: ', appName, hash, ' >> ', nodeUrl);
+							}
+						})					
+					}
 				})
-			})
 		})
   });
 

@@ -22,7 +22,9 @@ import axios from 'axios';
 
 import Cyb from './utils/cyb';
 
-const cyb = new Cyb('http://localhost:3002');
+// http://cyberd.network
+const cyb = new Cyb('http://35.204.133.75');
+// 'http://localhost:3002');
 
 class App extends Component {
   constructor(props){
@@ -37,11 +39,11 @@ class App extends Component {
     this.link = this.link.bind(this);
   }
   componentDidMount() {
-    axios.post('http://localhost:3002/query', {
-      ['test']: 'links'
-    }).then(data => {
-      console.log(data)
-    })
+    // axios.post('http://localhost:3002/query', {
+    //   ['test']: 'links'
+    // }).then(data => {
+    //   console.log(data)
+    // })
       // getIndex()
       // .then(index => {
       //   this.setState({ index })

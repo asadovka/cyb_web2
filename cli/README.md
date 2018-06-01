@@ -6,5 +6,5 @@
 ```
 npm install cyb -g
 
-cub add ../apps/test/ test
+cyb add ../apps/test/ test
 ```
