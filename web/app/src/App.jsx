@@ -19,6 +19,32 @@ const AllApps = ({ apps, nav }) => (
 
 import axios from 'axios';
 
+import {
+  Container,
+  BGWrapper,
+  TopPanel,
+  MetamaskLogo,
+  Legend,
+  Items,
+  Item,
+  LinkList,
+  LinkItem,
+  ItemTitle,
+  Image,
+  Arrow
+} from './components/home/';
+
+import {
+  SearchForm
+} from './components/SearchForm/'
+
+
+import {
+  Layout,
+  AppHeader,
+  AppContent,
+  AppMenu,
+} from './components/AppLayout/';
 
 import Cyb from './utils/cyb';
 
@@ -32,7 +58,8 @@ class App extends Component {
     this.state = {
       index: null,
       currentPath: null,
-      links: []
+      links: null,
+      q: null
     }
     this.nav = this.nav.bind(this);
     this.search = this.search.bind(this);
@@ -56,8 +83,8 @@ class App extends Component {
   }
   nav(e, link) {    
     e.preventDefault();
-    var q = this.refs.q.value; 
-    cyb.linkMethod(q, link)
+    // var q = this.refs.q.value; 
+    cyb.linkMethod(this.state.q, link)
       .then(() => {
         this.setState({
           currentPath: link
@@ -73,32 +100,110 @@ class App extends Component {
         })
       })
   }
+
+  onSubmit = (value) => {
+    cyb.search(value)
+      .then(links => {
+        this.setState({
+          links,
+          q: value,
+          currentPath: null
+        })
+      })
+    // browserHistory.push(`/search?q=${value}`);
+  }
+
   render() {
     const { apps, currentPath, links } = this.state;
     console.log(links);
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
+
+    if (links === null) {
     return (
-      <div>
-        <div>
-          <input ref='q'/><button onClick={this.search}>search</button>
-          <ul>
-          {links.map((link) =>(
-            <li key={link}>
-              <a onClick={(e) => this.nav(e, link)}>{link}</a>
-            </li>
-          ))}
-          </ul>
-          <div>
-            <input ref='link'/><button onClick={this.link}>link</button>
-          </div>
-        </div>
-        
-        {path && <div>
-          <iframe src={path} width="500" height="500" >
-            iframe not supported!
-         </iframe>
-        </div>}
-      </div>
+      <BGWrapper>
+        <TopPanel>
+          <Container>
+            <SearchForm onSubmit={this.onSubmit}/>
+          </Container>
+        </TopPanel>
+        <Container>
+          <Items>
+            <Item>
+              <ItemTitle>400 B USD</ItemTitle>
+              <span>Total market cap</span>
+              <Arrow />
+            </Item>
+            <Item>
+              <ItemTitle>37</ItemTitle>
+              <span>Chaingear registries</span>
+              <Arrow />
+            </Item>
+            <Item>
+              <ItemTitle>3.4 BTC</ItemTitle>
+              <span>Portfolio volume</span>
+              <Arrow />
+            </Item>
+          </Items>
+          <LinkList>
+            <LinkItem to='/' icon='github'>GitHub</LinkItem>
+            <LinkItem to='/' icon='roadmap'>Roadmap</LinkItem>
+            <LinkItem to='/' icon='cybernode'>Cybernode</LinkItem>
+            <LinkItem to='/' icon='dashboard'>Dashboard</LinkItem>
+            <LinkItem to='/' icon='knowledge'>Knowledge</LinkItem>
+          </LinkList>
+        </Container>
+      </BGWrapper>
+        );
+    }
+    // if (currentPath === null) {
+    //   return (
+    //     <div>
+    //       <div>
+    //         <input ref='q'/><button onClick={this.search}>search</button>
+    //         <ul>
+    //         {links.map((link) =>(
+    //           <li key={link}>
+    //             <a onClick={(e) => this.nav(e, link)}>{link}</a>
+    //           </li>
+    //         ))}
+    //         </ul>
+    //         <div>
+    //           <input ref='link'/><button onClick={this.link}>link</button>
+    //         </div>
+    //       </div>
+          
+    //       {path && <div>
+    //         <iframe src={path} width="500" height="500" >
+    //           iframe not supported!
+    //        </iframe>
+    //       </div>}
+    //     </div>
+    //   );
+    // }
+
+    return (
+      <Layout>
+        <AppHeader>
+          <SearchForm onSubmit={this.onSubmit}/>
+        </AppHeader>
+        <AppMenu>
+        </AppMenu>
+        <AppContent>
+          {currentPath === null ? (
+              <ul>
+                {links.map((link) =>(
+                  <li key={link}>
+                    <a onClick={(e) => this.nav(e, link)}>{link}</a>
+                  </li>
+                ))}
+                </ul>
+            ): (
+              <iframe src={path} width="100%" height="500" >
+                iframe not supported!
+             </iframe>
+            )}
+        </AppContent>
+      </Layout>
     );
   }
 }

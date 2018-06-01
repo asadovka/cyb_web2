@@ -34,7 +34,6 @@ storiesOf('home', module)
 .add('state1', withNotes(someMarkdownText)(() => 
   <BGWrapper>
     <TopPanel>
-      <MetamaskLogo />
       <Container>
         <SearchForm />
         <Legend>
