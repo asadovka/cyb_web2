@@ -82,64 +82,64 @@ USE CASES:
 
 ## 1. Main Page
 
-**Purpose:** accent the user's attention to search function.
+**Purpose:** accent the user's attention on all browser apps. 
 
 **Design & UI features:** simple and attractive design, hints to start usage of cyber products.
 
 There is a status text below search panel which describes technical information about cyber.Search products:
 
-**_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_**
+**_Search in 134 M transactions in 2 blockchain systems with 135 parsed tokens. Database size : 369 GBs_** 
 
 Where:
 
-1. Transactions [number] - number of all indexed transactions from all blockchains connected to Cybernode.
+1. Transactions [number] - number of all indexed transactions from all blockchains connected to Cybernode. 
 2. Blockchain systems [number] - all blockchains processed by Cybernode.
-3. Tokens [numger] - all unique tokens from all blockchains indexed.
+3. Tokens [numger] - all unique tokens from all blockchains indexed. 
 4. Database size [number + Gb] - size of Cassandra (index) database.
 
 There are 3 main widgets below the status string describing the cryptoeconomy, registers and portfolio. Their apperance depends on user type:
 
 1. User without Metamask
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
     _**Call to action:** install Metamask and transit to tokens page_.
-
+  
 - Chaingear registers [number] - number of created registers in Chaingear.
 
     _**Call to action:** install Metamask and transit to Chaingear page_.
+  
+- Apps [number] - number of browser apps.
 
-- Portfolio volume [valuation in BTC] - volume of all user's portfolio.
-
-    _**Call to action:** install Metamask and transit to Portfolio page_.
+    _**Call to action:** deploy app_.
 
 2. User with Metamask (no activities in system)
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
     _**Call to action:** transit to tokens page_.
-
+  
 - Chaingear registers [number] - number of created registers in Chaingear.
 
     _**Call to action:** transit to Chaingear page, hint to create register or record_.
+  
+- Apps [number] - number of browser apps.
 
-- Portfolio volume [valuation in BTC] - portfolio volume from metamask address.
-
-    _**Call to action:** , transit to Portfolio page, hint to create full portfolio_.
+    _**Call to action:** deploy app_.
 
 3. User with Metamask (no activities in system)
 
-- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD.
+- Total market cap [billions of USD] - is a summ of all token capitalizations, valuated in USD. 
 
     _**Call to action:** transit to tokens page_.
-
+  
 - Chaingear registers [number] - number of created registers/records in Chaingear.
 
     _**Call to action:** Chaingear page_.
+  
+- Apps [number] - number of browser apps.
 
-- Portfolio volume [valuation in BTC] - volume of user's portfolio.
-
-    _**Call to action:** Portfolio page_.
+    _**Call to action:** deploy app_.
 
 
 At the bottom of the page 5 project links are placed:
@@ -149,14 +149,44 @@ At the bottom of the page 5 project links are placed:
 4. Dashboard - a link user's custom dashboard []
 5. Knowledge - a link to knowledge database of cyber.Search project [cybersearch.io]
 
+## 2. App list
 
+**Purpose:** accent the user's attention on all browser apps. 
+
+**Design & UI features:** simple and attractive design, hints to start usage of apps.
+
+There is list of browser apps with categories (with brief overview):
+
+1. Blockchain explorers - Search in 135 million transactions in 4 blockchains
+
+- Ethereum Explorer
+- Ethereum Classic explorer
+- Bitcoin Explorer
+- Bitcoin Cash explorer
+
+2. Cybernomics - Watch and anayze 135 parsed tokens in 7 exchanges 
+
+- Token Monitor
+- Exchange Monitor
+- Blockchain Monitor
+
+3. Registers - Store your records in blockchains
+
+- Chaingear
+
+4. Accounting - Manage your cryptoassets
+
+- Portfolio
+
+There are 2 versions of apps:
+
+- stable released apps
+- developing apps
 
 **Proposals:**
 
-- Plugs for developing functionality
-- Place transition to roadmap where users can donate for developing options
-- Menu placement?
-
+- donation button for developing apps
+- install to App bar button (in app is not installed)
 
 # Applications
 
