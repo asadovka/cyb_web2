@@ -32,56 +32,55 @@ Cyber browser - an entrance point to start working with blockchains.
 # Browser structure:
 
 
-## 0. Shell. 
+# 0 Shell.
+
+Search bar, App bar, Context bar - header of the window
+
+State bar - bottom of the window
+
+### 0.1 Search (Path) bar
+
+Top of the page
+
+- search in existing list of apps
+- search in blockchain explorer app
+- search in token monitor app
+- search path
+
+### 0.2 App bar:
+
+Left menu
+
+- list of installed apps (4 blockchain explorers, chaingear, token monitor)
+- add/delete app  
+
+### 0.3 State bar:
+
+- number of IPFS connections
+- ethereum light client sync state (last block, or number of remained blocks)
+- cyberd sync state (last block, or number of remained blocks)
+- cybernode API state (if all ok - green, if some missed - red)
+
+### 0.4 Context bar:
+
+- account feed (+number of notifications)
+- account balance (ETH)
+- account logo (IMG)
 
 
-Search bar, App bar, State bar, Context bar.
+settings (separate window):
 
-**Purpose:** list of all browser pages, navigation instrument. 
+- language
+- location
+- currency (USD/ETH/BTC)
+- activity type (private/anonymous/public)
 
-**Design & UI features:** logical navigation, currency selector.
-
-
-Browser menu:
-
-
-1. Menu header:
 
 USE CASES:
 
 - no metamask - install metamask
 - non auth user- log in metamask
 - auth user - account logo
-
-2. Menu list:
-
-Expanded view:
-
-menu string + logo
-
-- Main
-
-- Blockchains
-- Tokens
-- Exchanges
-
-- Chaingear (subpages: my registers, new register)
-- Dashboard
-- Labels (subpages: my labels, new label)
-- Portfolio (subpages: my portfolio, public portfolios)
-
-- Cybernode
-- FAQ
-
-- currency selector (USD-BTC-ETH) - symbols
-
-Collapsed view:
-
-logo only
-
-Header:
-
-- search panel (local/global search)
 
 
 ## 1. Main Page
