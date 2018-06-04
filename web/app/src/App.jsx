@@ -14,20 +14,20 @@ import {
 } from './components/AppLayout/';
 
 
-import {
-  Container,
-  BGWrapper,
-  TopPanel,
-  MetamaskLogo,
-  Legend,
-  Items,
-  Item,
-  LinkList,
-  LinkItem,
-  ItemTitle,
-  Image,
-  Arrow
-} from './components/home/';
+// import {
+//   Container,
+//   BGWrapper,
+//   TopPanel,
+//   MetamaskLogo,
+//   Legend,
+//   Items,
+//   Item,
+//   LinkList,
+//   LinkItem,
+//   ItemTitle,
+//   Image,
+//   Arrow
+// } from './components/home/';
 
 
 
@@ -120,41 +120,47 @@ class App extends Component {
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
 
     if (links === null) {
-    return (
-      <BGWrapper>
-        <TopPanel>
-          <Container>
-            <SearchForm onSubmit={this.onSubmit}/>
-          </Container>
-        </TopPanel>
-        <Container>
-          <Items>
-            <Item>
-              <ItemTitle>400 B USD</ItemTitle>
-              <span>Total market cap</span>
-              <Arrow />
-            </Item>
-            <Item>
-              <ItemTitle>37</ItemTitle>
-              <span>Chaingear registries</span>
-              <Arrow />
-            </Item>
-            <Item>
-              <ItemTitle>3.4 BTC</ItemTitle>
-              <span>Portfolio volume</span>
-              <Arrow />
-            </Item>
-          </Items>
-          <LinkList>
-            <LinkItem to='/' icon='github'>GitHub</LinkItem>
-            <LinkItem to='/' icon='roadmap'>Roadmap</LinkItem>
-            <LinkItem to='/' icon='cybernode'>Cybernode</LinkItem>
-            <LinkItem to='/' icon='dashboard'>Dashboard</LinkItem>
-            <LinkItem to='/' icon='knowledge'>Knowledge</LinkItem>
-          </LinkList>
-        </Container>
-      </BGWrapper>
-        );
+    // return (
+    //   <BGWrapper>
+    //     <TopPanel>
+    //       <Container>
+    //         <SearchForm onSubmit={this.onSubmit}/>
+    //       </Container>
+    //     </TopPanel>
+    //     <Container>
+    //       <Items>
+    //         <Item>
+    //           <ItemTitle>400 B USD</ItemTitle>
+    //           <span>Total market cap</span>
+    //           <Arrow />
+    //         </Item>
+    //         <Item>
+    //           <ItemTitle>37</ItemTitle>
+    //           <span>Chaingear registries</span>
+    //           <Arrow />
+    //         </Item>
+    //         <Item>
+    //           <ItemTitle>3.4 BTC</ItemTitle>
+    //           <span>Portfolio volume</span>
+    //           <Arrow />
+    //         </Item>
+    //       </Items>
+    //       <LinkList>
+    //         <LinkItem to='/' icon='github'>GitHub</LinkItem>
+    //         <LinkItem to='/' icon='roadmap'>Roadmap</LinkItem>
+    //         <LinkItem to='/' icon='cybernode'>Cybernode</LinkItem>
+    //         <LinkItem to='/' icon='dashboard'>Dashboard</LinkItem>
+    //         <LinkItem to='/' icon='knowledge'>Knowledge</LinkItem>
+    //       </LinkList>
+    //     </Container>
+    //   </BGWrapper>
+    //     );
+
+      return (
+        <div>
+          <SearchForm onSubmit={this.onSubmit}/>
+        </div>
+      );
     }
 
 

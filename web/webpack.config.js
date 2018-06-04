@@ -38,7 +38,7 @@ module.exports = function (options = {}) {
         "react-dom"
       ],
       app: [
-        path.resolve(__dirname, "app", "src", "main.tsx")
+        path.resolve(__dirname, "app", "src", "main")
       ]
     },
     output: {
