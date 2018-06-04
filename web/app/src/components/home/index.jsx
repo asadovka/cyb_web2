@@ -7,7 +7,7 @@ const Link = (props) => {
   return <LinkRouter {...props} />
 };
 
-const styles = require("./home.less");
+const styles = require("./Home.less");
 
 export const Container = ({ children }) => (
   <div className={styles.container}>
