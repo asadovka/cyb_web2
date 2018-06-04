@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Link as LinkRouter} from 'react-router';
 
+const styles = require("./Home2.less");
+
 const Link = (props) => {
   if (/^https?:\/\//.test(props.to)) return <a href={props.to} {...props}/>
 
   return <LinkRouter {...props} />
 };
 
-const styles = require("./Home.less");
 
 export const Container = ({ children }) => (
   <div className={styles.container}>
