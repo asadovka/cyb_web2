@@ -59,7 +59,8 @@ class App extends Component {
       index: null,
       currentPath: null,
       links: null,
-      q: null
+      q: null,
+      loading: false
     }
     this.nav = this.nav.bind(this);
     this.search = this.search.bind(this);
@@ -102,19 +103,34 @@ class App extends Component {
   }
 
   onSubmit = (value) => {
+    debugger
+    this.setState({
+      q: value,
+      loading: true,
+      links: []
+    })
     cyb.search(value)
       .then(links => {
         this.setState({
           links,
           q: value,
-          currentPath: null
+          currentPath: null,
+          loading: false
         })
       })
     // browserHistory.push(`/search?q=${value}`);
   }
 
+  goMain = (e) => {
+    e.preventDefault();
+    this.setState({
+      links: null,
+      q: null
+    })
+  }
+
   render() {
-    const { apps, currentPath, links } = this.state;
+    const { apps, currentPath, links, q, loading } = this.state;
     console.log(links);
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
 
@@ -181,29 +197,62 @@ class App extends Component {
     //   );
     // }
 
-    return (
-      <Layout>
-        <AppHeader>
-          <SearchForm onSubmit={this.onSubmit}/>
-        </AppHeader>
-        <AppMenu>
-        </AppMenu>
-        <AppContent>
-          {currentPath === null ? (
-              <ul>
-                {links.map((link) =>(
-                  <li key={link}>
-                    <a onClick={(e) => this.nav(e, link)}>{link}</a>
-                  </li>
-                ))}
-                </ul>
-            ): (
+
+//#438cef
+
+    let content;
+
+    if (loading === false) {
+      if (currentPath === null) {
+        content = (
+          <ul style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0
+          }}>
+            {links.map((link) =>(
+              <li style={{
+                padding: 40,
+                borderBottom: '1px solid #ccc',
+                cursor: 'pointer'
+              }} key={link}>
+                <a onClick={(e) => this.nav(e, link)}>{link}</a>
+              </li>
+            ))}
+            </ul>
+        )        
+      } else {
+        content = (
               <iframe src={path} width="100%" height="500" >
                 iframe not supported!
              </iframe>
-            )}
-        </AppContent>
-      </Layout>
+            )
+      }
+
+    } else {
+      content = (
+        <div>
+          loading...
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <div style={{ 
+          background: '#438cef',
+          display: 'flex',
+          alignItems: 'center',
+          height: 110,
+          padding: 20
+        }}>
+          <a href='/' onClick={this.goMain} style={{ marginRight: 40 }}>Logo</a>
+          <SearchForm defaultValue={q} onSubmit={this.onSubmit}/>
+        </div>
+        <div style={{ width: '100%' }}>
+          {content}
+        </div>
+      </div>
     );
   }
 }
