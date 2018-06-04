@@ -47,41 +47,39 @@
 
 ### Added
 
--** Updated versions of Block, Transaction, Contract Pages:**
--- Documented requirements & features
--- Created mockups and graphic design
--- Implemented code
+Updated versions of Block, Transaction, Contract Pages:
+- Documented requirements & features
+- Created mockups and graphic design
+- Implemented code
 
 ### Changed
 
-** Implemented new process of browser development:**
--- Mockup process migrated to sketch
--- Created design library
--- Created project in Zeplin app for design reviewing
+Implemented new process of browser development:
+- Mockup process migrated to sketch
+- Created design library
+- Created project in Zeplin app for design reviewing
 
 
 ## Sprint 7-8:
 
 ### Added
 
--** Created Key Pages (Main Page, Search Results Page):**
--- Documented requirements & features
--- Created mockups and graphic design
--- Implemented code
--
--** Created initial version of Chaingear:**
--- Documented requirements & features
--- Created mockups and graphic design
--- Implemented code
--
--** Created initial version of Block, Transaction, Contract Pages:** 	
--- Documented requirements & features
--- Created mockups and graphic design
--- Implemented code
--
--** Initial browser deployment is done**
--
+Created Key Pages (Main Page, Search Results Page):
+- Documented requirements & features
+- Created mockups and graphic design
+- Implemented code
+
+Created initial version of Chaingear:
+- Documented requirements & features
+- Created mockups and graphic design
+- Implemented code
+
+Created initial version of Block, Transaction, Contract Pages:
+- Documented requirements & features
+- Created mockups and graphic design
+- Implemented code
+
+Initial browser deployment is done
 -  http://35.184.7.30/registers
--
--- Google Cloud deployment
--- Several names for domains choosed 	
+- Google Cloud deployment
+- Several names for domains choosed 	
