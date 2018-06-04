@@ -7,28 +7,28 @@ import {combineReducers} from "redux";
 import {combineEpics} from "redux-observable";
 
 import { reducer as formReducer } from "redux-form";
-import { reducer as cybernode } from './modules/cybernode';
-import { reducer as chaingear, epic as chaingearEpic } from './modules/chaingear';
-import { reducer as tokens } from './containers/Tokens/module';
-import { reducer as searchReducer, epic as searchEpic  } from './modules/search';
+// import { reducer as cybernode } from './modules/cybernode';
+// import { reducer as chaingear, epic as chaingearEpic } from './modules/chaingear';
+// import { reducer as tokens } from './containers/Tokens/module';
+// import { reducer as searchReducer, epic as searchEpic  } from './modules/search';
 
-import { reducer as tokensDetails, epic as tokensDetailsEpic } from './containers/TokensDetails/module';
-import { reducer as test } from './containers/Test/module';
+// import { reducer as tokensDetails, epic as tokensDetailsEpic } from './containers/TokensDetails/module';
+// import { reducer as test } from './containers/Test/module';
 
 export const combinedReducers = combineReducers({
-  cybernode,
-  chaingear,
-  search: searchReducer,
   form: formReducer,
-  tokens,
-  tokensDetails,
-  test
+  // cybernode,
+  // chaingear,
+  // search: searchReducer,
+  // tokens,
+  // tokensDetails,
+  // test
 });
 
 const rootEpic = combineEpics(
-  chaingearEpic,
-  searchEpic,
-  tokensDetailsEpic,
+  // chaingearEpic,
+  // searchEpic,
+  // tokensDetailsEpic,
 );
 
 export function configureStore() {

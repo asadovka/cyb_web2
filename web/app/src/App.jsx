@@ -2,22 +2,17 @@ import React, { Component } from 'react';
 
 
 
-const AllApps = ({ apps, nav }) => (
-  <div>
-    <ul>
-      {apps.map(app => (
-        <li key={app.name}>
-          <a href='/' onClick={(e) => {
-            e.preventDefault();
-            nav(app)
-          }}>{app.name}</a>
-        </li>
-      ))}
-    </ul>
-  </div>
-)
+import {
+  SearchForm
+} from './components/SearchForm/'
 
-import axios from 'axios';
+import {
+  Layout,
+  AppHeader,
+  AppContent,
+  AppMenu,
+} from './components/AppLayout/';
+
 
 import {
   Container,
@@ -34,17 +29,8 @@ import {
   Arrow
 } from './components/home/';
 
-import {
-  SearchForm
-} from './components/SearchForm/'
 
 
-import {
-  Layout,
-  AppHeader,
-  AppContent,
-  AppMenu,
-} from './components/AppLayout/';
 
 import Cyb from './utils/cyb';
 
@@ -103,7 +89,6 @@ class App extends Component {
   }
 
   onSubmit = (value) => {
-    debugger
     this.setState({
       q: value,
       loading: true,
@@ -171,34 +156,7 @@ class App extends Component {
       </BGWrapper>
         );
     }
-    // if (currentPath === null) {
-    //   return (
-    //     <div>
-    //       <div>
-    //         <input ref='q'/><button onClick={this.search}>search</button>
-    //         <ul>
-    //         {links.map((link) =>(
-    //           <li key={link}>
-    //             <a onClick={(e) => this.nav(e, link)}>{link}</a>
-    //           </li>
-    //         ))}
-    //         </ul>
-    //         <div>
-    //           <input ref='link'/><button onClick={this.link}>link</button>
-    //         </div>
-    //       </div>
-          
-    //       {path && <div>
-    //         <iframe src={path} width="500" height="500" >
-    //           iframe not supported!
-    //        </iframe>
-    //       </div>}
-    //     </div>
-    //   );
-    // }
 
-
-//#438cef
 
     let content;
 
