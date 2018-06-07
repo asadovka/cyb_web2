@@ -1,6 +1,29 @@
-Frontend (stateless web UI) for cyber-markets and cyber-search (blockchain browser).
 
-[![CircleCI](https://img.shields.io/circleci/project/github/cyberFund/cyber-browser.svg)](https://circleci.com/gh/cyberFund/cyber-browser)
+<h1 align="center">
+cyb
+</h1>
+
+
+<h3 align="center">
+Front door to blockchain universe
+</h3>
+
+# Overview
+
+Cyb is a blockchain browser with integrated DApp platform. Browser consists of two main parts:
+
+1. Shell, which:
+
+- can search in blockchains, Dapps, and IPFS content
+- can deploy and manage Dapps for users
+- shows desync state of user and blockchain
+- manages user's account data (sign transactions, create custom feed)
+
+2. DApps, which:
+
+- use cyber.Search services for data obtaining (cyber.Search, cyber.Markets, cybernode)
+- are stored in IPFS
+- can interract with user and each other
 
 ### Development
 
@@ -12,16 +35,16 @@ updates them as soon as they are edited.
 
 UI uses API endpoints, specified by the following environment variables:
 
-* [cyber-search](https://github.com/cyberFund/cyber-search) `CYBER_SEARCH_API`
-* [cyber-markets](https://github.com/cyberFund/cyber-markets) `CYBER_SEARCH_API`
-* [chaingear](https://github.com/cyberFund//chaingear-api) `CYBER_CHAINGEAR_API`
+* [cyber-search](https://github.com/cybercongress/cyber-search) `CYBER_SEARCH_API`
+* [cyber-markets](https://github.com/cybercongress/cyber-markets) `CYBER_SEARCH_API`
+* [chaingear](https://github.com/cybercomgress//chaingear-api) `CYBER_CHAINGEAR_API`
 
 #### Building raw static site
 
     npm run build
 
 This compiles all UI assets into static website, copied in `dist/`dir.
-API endpoints are configured in [config.js](https://github.com/cyberFund/cyber-ui/blob/master/config.js).
+API endpoints are configured in [config.js](https://github.com/cybercongress/cyber-ui/blob/master/config.js).
 
 #### Building container for deployment
 
@@ -55,4 +78,25 @@ To attach to container and/or remove it if needed:
 
 
 [http://browser.cybersearch.io/](http://browser.cybersearch.io/)
+
+
+## Issues
+
+If you have any problems with or questions about CYB, please contact us through a 
+[GitHub issue](https://github.com/cybercongress/cyb/issues).
+
+## Contribute
+
+You are invited to contribute new features, fixes, or updates, large or small; We are always thrilled to receive pull 
+requests, and do our best to process them as fast as We can. You can find detailed information in our 
+[contribution guide](./CONTRIBUTING.md).
+ 
+## Roadmap & Changelog
+
+Stay tuned with our [Changelog](./CHANGELOG.md) and [Roadmap](./ROADMAP.md).
+
+
+
+
+
 
