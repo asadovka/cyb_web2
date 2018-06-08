@@ -80,6 +80,9 @@ To attach to container and/or remove it if needed:
 [http://browser.cybersearch.io/](http://browser.cybersearch.io/)
 
 
+## Gitcoin Tasks
+
+
 ## Issues
 
 If you have any problems with or questions about CYB, please contact us through a 
