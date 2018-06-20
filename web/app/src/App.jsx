@@ -20,7 +20,6 @@ import {
   Container,
   BGWrapper,
   TopPanel,
-  MetamaskLogo,
   Legend,
   Items,
   Item,
@@ -31,9 +30,6 @@ import {
   Arrow
 } from './components/home/';
 
-import {
-  SearchForm
-} from './components/SearchForm/'
 
 import {
   SearchContainer,
@@ -42,13 +38,6 @@ import {
 } from './components/searchresults/';
 
 import IdBar from './components/idbar/';
-
-import {
-  Layout,
-  AppHeader,
-  AppContent,
-  AppMenu,
-} from './components/AppLayout/';
 
 import Cyb from './utils/cyb';
 
@@ -136,7 +125,7 @@ class App extends Component {
   }
 
   render() {
-    const { apps, currentPath, links, q, loading, open } = this.state;
+    const { currentPath, links, q, loading, open } = this.state;
 
     console.log(links);
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
