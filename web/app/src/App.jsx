@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 
 
 
-const AllApps = ({ apps, nav }) => (
-  <div>
-    <ul>
-      {apps.map(app => (
-        <li key={app.name}>
-          <a href='/' onClick={(e) => {
-            e.preventDefault();
-            nav(app)
-          }}>{app.name}</a>
-        </li>
-      ))}
-    </ul>
-  </div>
-)
 
-import axios from 'axios';
+import {
+  SearchForm
+} from './components/SearchForm/'
+
+import {
+  Layout,
+  AppHeader,
+  AppContent,
+  AppMenu,
+  Menu, MenuItem,
+} from './components/AppLayout/';
+
 
 import {
   Container,
@@ -38,6 +35,13 @@ import {
   SearchForm
 } from './components/SearchForm/'
 
+import {
+  SearchContainer,
+  Title,
+  SearchItem
+} from './components/searchresults/';
+
+import IdBar from './components/idbar/';
 
 import {
   Layout,
@@ -49,7 +53,7 @@ import {
 import Cyb from './utils/cyb';
 
 // http://cyberd.network
-const cyb = new Cyb('http://35.204.133.75');
+const cyb = new Cyb('http://cyberd.network');
 // 'http://localhost:3002');
 
 class App extends Component {
@@ -59,7 +63,10 @@ class App extends Component {
       index: null,
       currentPath: null,
       links: null,
-      q: null
+
+      q: null,
+      loading: false,
+      open: true
     }
     this.nav = this.nav.bind(this);
     this.search = this.search.bind(this);
@@ -113,8 +120,24 @@ class App extends Component {
     // browserHistory.push(`/search?q=${value}`);
   }
 
+
+  goMain = (e) => {
+    e.preventDefault();
+    this.setState({
+      links: null,
+      q: null
+    })
+  }
+
+  toggle = () => {
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
   render() {
-    const { apps, currentPath, links } = this.state;
+    const { apps, currentPath, links, q, loading, open } = this.state;
+
     console.log(links);
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
 
@@ -124,32 +147,39 @@ class App extends Component {
         <TopPanel>
           <Container>
             <SearchForm onSubmit={this.onSubmit}/>
+            <Legend>
+              Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
+              blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs
+            </Legend>
           </Container>
         </TopPanel>
         <Container>
           <Items>
             <Item>
-              <ItemTitle>400 B USD</ItemTitle>
-              <span>Total market cap</span>
+              <ItemTitle>App Store</ItemTitle>
+              <Image type='appStore'/>
               <Arrow />
             </Item>
             <Item>
-              <ItemTitle>37</ItemTitle>
-              <span>Chaingear registries</span>
+              <ItemTitle>Create Register</ItemTitle>
+              <Image type='createRegistry'/>
               <Arrow />
             </Item>
             <Item>
-              <ItemTitle>3.4 BTC</ItemTitle>
-              <span>Portfolio volume</span>
+              <ItemTitle>Create App</ItemTitle>
+              <Image type='createApp'/>
               <Arrow />
             </Item>
           </Items>
           <LinkList>
-            <LinkItem to='/' icon='github'>GitHub</LinkItem>
-            <LinkItem to='/' icon='roadmap'>Roadmap</LinkItem>
-            <LinkItem to='/' icon='cybernode'>Cybernode</LinkItem>
-            <LinkItem to='/' icon='dashboard'>Dashboard</LinkItem>
-            <LinkItem to='/' icon='knowledge'>Knowledge</LinkItem>
+
+            <LinkItem target="_blank" to='https://github.com/cybercongress' icon='github'>GitHub</LinkItem>
+            <LinkItem target="_blank" to='https://github.com/orgs/cybercongress/projects/1' icon='roadmap'>Roadmap</LinkItem>
+            <LinkItem target="_blank" to='http://cybersearch.live' icon='cybernode'>Cybernode</LinkItem>
+            <LinkItem target="_blank" to='/' icon='dashboard'>Dashboard</LinkItem>
+            <LinkItem target="_blank" to='http://cybersearch.io' icon='knowledge'>Knowledge</LinkItem>
+            <LinkItem target="_blank" to='https://medium.com/@cybercongress' icon='blog'>Blog</LinkItem>
+
           </LinkList>
         </Container>
       </BGWrapper>
@@ -181,29 +211,79 @@ class App extends Component {
     //   );
     // }
 
-    return (
-      <Layout>
-        <AppHeader>
-          <SearchForm onSubmit={this.onSubmit}/>
-        </AppHeader>
-        <AppMenu>
-        </AppMenu>
-        <AppContent>
-          {currentPath === null ? (
-              <ul>
-                {links.map((link) =>(
-                  <li key={link}>
-                    <a onClick={(e) => this.nav(e, link)}>{link}</a>
-                  </li>
-                ))}
-                </ul>
-            ): (
+
+
+    let content;
+
+    if (loading === false) {
+      if (currentPath === null) {
+        content = (
+          <SearchContainer>
+            <Title>Search result:</Title>
+          <ul style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0
+          }}>
+            {links.map((link) =>(
+              <SearchItem key={link}>
+                <a onClick={(e) => this.nav(e, link)}>{link}</a>
+              </SearchItem>
+            ))}
+            </ul>
+            </SearchContainer>
+        )        
+      } else {
+        content = (
               <iframe src={path} width="100%" height="500" >
                 iframe not supported!
              </iframe>
-            )}
-        </AppContent>
-      </Layout>
+            )
+      }
+
+    } else {
+      content = (
+        <div>
+          loading...
+        </div>
+      );
+    }
+    const ss = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      width: '100%'
+    }
+    return (
+      <Layout 
+          open={open}
+          onToggle={this.toggle}
+        >
+          <AppHeader>
+            <div style={ss}>
+              <div style={{ width: 750 }}>
+                <SearchForm defaultValue={q} onSubmit={this.onSubmit}/>
+                <Legend>
+                   Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
+                   blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs
+                </Legend>
+              </div>
+              <div>
+                <IdBar />
+              </div>
+            </div>             
+          </AppHeader>
+          <AppMenu onLogoClick={this.goMain}>
+            <Menu open={open} >
+              <MenuItem icon='explorer' to='/'>Etherium explorer</MenuItem>
+              <MenuItem icon='chaingear' to='/'>Chaingear</MenuItem>
+              <MenuItem icon='tokens' to='/'>Token Monitor</MenuItem>
+            </Menu>
+          </AppMenu>    
+          <AppContent>
+            {content}
+          </AppContent>
+        </Layout>
     );
   }
 }

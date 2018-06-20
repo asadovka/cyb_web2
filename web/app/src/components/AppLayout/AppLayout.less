@@ -5,10 +5,10 @@
 }
 
 .layoutSwitcher {
-  position: fixed;
+  position: absolute;
   top: 45px;
   left: 30px;
-  z-index: 2;
+  z-index: 3;
   // background: #438cef;
   // height: 109px;
   // width: 170px;
@@ -22,19 +22,28 @@
 
 .appHeader {
   position: fixed;
-  left: 0;
   right: 0;
   z-index: 1;
   background-color: #438cef;
   transition: left 0.3s ease-in-out, padding-left 0.3s ease-in-out;
   box-shadow: 4px 3px 11px 0 rgba(0, 0, 0, 0.08);
-  padding-left: 85px;
+  // padding-left: 85px;
+  left: 85px;
 }
 
 .appHeaderOpen {
-  padding-left: 170px;
+  // padding-left: 170px;
+  left: 190px;
 }
 
+.menuLogoContainer {
+  background: #242c33;
+  width: 100%;
+  height: 109px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: url('../AppLayout/logo.svg') no-repeat center center;
+}
 
 .appHeaderContainer {
   display: flex;
@@ -58,7 +67,7 @@
 
 
 .appContentOpen {
-  padding-left: 170px;
+  padding-left: 190px;
 }
 
 .appContent.appContentWithMenu  {
@@ -71,7 +80,6 @@
 
 .appMenu {
   position: fixed;
-  width: 170px;
   flex-shrink: 0;
   z-index: 2;
   box-shadow: 4px 3px 4px 0 rgba(0, 0, 0, 0.24);
@@ -87,12 +95,12 @@
   height: 100%;
   width: 85px;
   min-height: 100vh;
-  top: 109px;
+  top: 0;
   overflow: hidden;
 }
 
 .appMenuOpen {
-  width: 170px;
+  width: 190px;
 }
 
 
@@ -119,6 +127,6 @@
 }
 
 .appSecondMenuOpen {
-  left: 170px;  
+  left: 190px;  
 }
 
