@@ -47,7 +47,7 @@ const cyb = new Cyb('http://cyberd.network');
 
 
 const apps = {
-  chainger: 'QmToA27wQgKNoXqA39Q4WD6Y8kktzRBBDmMWxX5E1SmKM5',
+  chainger: 'QmYonnuMLpEuqDmnSqdFhJkmRktBKnRMg9PbRoH7Z6yKBu',
   tokens: 'QmXmhCQBV5bGAnSPR9KMXUj5MeywFpMpdUVXAgRvt2qx1f',
   ethexplorer: 'QmchRThL7at2eQmGKQVSv4FQsqjrYoaU4y7p2KxTVnzmkB',
   createapp: 'QmfTMXbrEyM1TB8BxF6pt3cXYZWLmyruCWUX9h4pvnGCWr'
@@ -179,7 +179,7 @@ class App extends Component {
         <Items>
           <Item to='https://metamask.io/' target="_blank">
             <Image type='appStore'/>
-            <ItemTitle>Please install<br/> metabask</ItemTitle>
+            <ItemTitle>Please use<br/> metamask</ItemTitle>
           </Item>
           <Item disabled={true}>
             <ItemTitle>Create Register</ItemTitle>
