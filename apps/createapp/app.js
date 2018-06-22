@@ -1,4 +1,4 @@
 setTimeout(function() {
-	alert('hello');
+	console.log('hello');
 }, 1000);
 

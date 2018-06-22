@@ -46,6 +46,13 @@ const cyb = new Cyb('http://cyberd.network');
 // 'http://localhost:3002');
 
 
+const apps = {
+  chainger: 'QmToA27wQgKNoXqA39Q4WD6Y8kktzRBBDmMWxX5E1SmKM5',
+  tokens: 'QmXmhCQBV5bGAnSPR9KMXUj5MeywFpMpdUVXAgRvt2qx1f',
+  ethexplorer: 'QmchRThL7at2eQmGKQVSv4FQsqjrYoaU4y7p2KxTVnzmkB',
+  createapp: 'QmfTMXbrEyM1TB8BxF6pt3cXYZWLmyruCWUX9h4pvnGCWr'
+}
+
 
 class App extends Component {
   constructor(props){
@@ -132,6 +139,15 @@ class App extends Component {
     })
   }
 
+  menuNavigate = (e, appName) => {
+    if (e) e.preventDefault();
+
+    this.setState({
+      links: [],
+      currentPath: apps[appName]
+    })
+  }
+
   render() {
     const { currentPath, links, q, loading, open, metamaskUse } = this.state;
 
@@ -140,17 +156,17 @@ class App extends Component {
 
     let buttons = (
       <Items>
-        <Item>
+        <Item onClick={(e) => this.menuNavigate(e, 'createapp')}>
           <ItemTitle>App Store</ItemTitle>
           <Image type='appStore'/>
           <Arrow />
         </Item>
-        <Item>
+        <Item onClick={(e) => this.menuNavigate(e, 'chainger')}>
           <ItemTitle>Create Register</ItemTitle>
           <Image type='createRegistry'/>
           <Arrow />
         </Item>
-        <Item>
+        <Item onClick={(e) => this.menuNavigate(e, 'chainger')}>
           <ItemTitle>Create App</ItemTitle>
           <Image type='createApp'/>
           <Arrow />
@@ -296,9 +312,9 @@ class App extends Component {
           </AppHeader>
           <AppMenu onLogoClick={this.goMain}>
             <Menu open={open} >
-              <MenuItem icon='explorer' to='/'>Etherium explorer</MenuItem>
-              <MenuItem icon='chaingear' to='/'>Chaingear</MenuItem>
-              <MenuItem icon='tokens' to='/'>Token Monitor</MenuItem>
+              <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >Etherium explorer</MenuItem>
+              <MenuItem onClick={(e) => this.menuNavigate(e, 'chainger')} icon='chaingear' >Chaingear</MenuItem>
+              <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Token Monitor</MenuItem>
             </Menu>
           </AppMenu>    
           <AppContent>

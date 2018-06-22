@@ -12,10 +12,10 @@ export const Menu = ({ children, open }) => (
   </ul>
 );
 
-export const MenuItem = ({ children, to, icon, open = true }) => (
+export const MenuItem = ({ children, to, icon, open = true, ...props }) => (
   <li className={styles.menuItem}>
-    <Link to={to} activeClassName={styles.menuItemActive} className={styles['menuItem_'+ icon] + ' ' + (open ? styles.menuItemActiveOpen: '')} >
+    {to ? (<Link to={to} activeClassName={styles.menuItemActive} className={styles['menuItem_'+ icon] + ' ' + (open ? styles.menuItemActiveOpen: '')} {...props} >
       {children}
-    </Link>
+    </Link>) : <a href='/' className={styles['menuItem_'+ icon] + ' ' + (open ? styles.menuItemActiveOpen: '')} {...props}>{children}</a>}
   </li>
 );

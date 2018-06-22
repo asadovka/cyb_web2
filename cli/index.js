@@ -50,26 +50,57 @@ program
 			// 	}
 			// 	console.log(res);
 			// })
+
+			// ipfs.key.gen(appName, {
+			//     type: 'rsa',
+			//     size: 2048
+			// }, (err, key) => console.log(err, key))
+
+			const publish = () => {
+				// ipfs.name.publish(hash, { key: appName }, function (err, res) {
+				// 	console.log('sdf ')
+				// 	if (err) {
+				// 		console.log(err)
+				// 	}
+				// 	console.log(res);
+					request
+					.post(nodeUrl + '/txs')
+					.send({ type: 'search', keyword: appName })
+					.end((err, res) => {
+						if (err) {
+							console.log(err)
+						} else {
+							request
+							.post(nodeUrl + '/txs')
+							.send({ type: 'link', keyword: appName, hash: hash })
+							.end((err, res) => {
+								if (err) {
+									console.log(err)
+								} else {
+									console.log('update cyberd index for: ', appName, hash, ' >> ', nodeUrl);
+								}
+							})					
+						}
+					})
+				// })
+			}
+
+			ipfs.key.list((err, keys) => {
+				console.log(keys)
+				if (!keys.some(x => x.name === appName)) {
+					ipfs.key.gen(appName, {
+					    type: 'rsa',
+					    size: 2048
+					}, (err, key) => {
+						publish();
+					})
+				} else {
+				
+					publish();
+				}
+			})
 			
-			request
-				.post(nodeUrl + '/txs')
-				.send({ type: 'search', keyword: appName })
-				.end((err, res) => {
-					if (err) {
-						console.log(err)
-					} else {
-						request
-						.post(nodeUrl + '/txs')
-						.send({ type: 'link', keyword: appName, hash: hash })
-						.end((err, res) => {
-							if (err) {
-								console.log(err)
-							} else {
-								console.log('update cyberd index for: ', appName, hash, ' >> ', nodeUrl);
-							}
-						})					
-					}
-				})
+			
 		})
   });
 
