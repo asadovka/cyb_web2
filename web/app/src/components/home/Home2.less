@@ -54,13 +54,18 @@
   padding-top: 30px;
   font-size: 14px;
   color: #000;
+  text-decoration: none;
+}
+
+[disabled].item * {
+  opacity: 0.3;
 }
 
 .item:last-child {
   border-right: none;
 }
 
-.item:hover {
+.item:hover:not([disabled]) {
   transform: scale(1.1);
   box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.21);
   background-color: #eff3f6;
@@ -81,6 +86,7 @@
   align-items: center;
   color: #000;
   box-sizing: content-box;
+  text-decoration: none;
 }
 
 .linkItem::before {
@@ -128,6 +134,7 @@
   font-size: 24px;
   color: #438cef;
   font-weight: bold;
+  text-align: center;
 }
 
 .itemTitleGray {

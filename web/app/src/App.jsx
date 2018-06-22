@@ -45,6 +45,8 @@ import Cyb from './utils/cyb';
 const cyb = new Cyb('http://cyberd.network');
 // 'http://localhost:3002');
 
+
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -55,7 +57,8 @@ class App extends Component {
 
       q: null,
       loading: false,
-      open: true
+      open: true,
+      metamaskUse: false
     }
     this.nav = this.nav.bind(this);
     this.search = this.search.bind(this);
@@ -70,7 +73,12 @@ class App extends Component {
       // getIndex()
       // .then(index => {
       //   this.setState({ index })
-      // });    
+      // });   
+      cyb.checkMetomask()
+        .then(metamaskUse => this.setState({
+          metamaskUse
+        }))
+      
   }
   link() {
     var q = this.refs.q.value; 
@@ -125,10 +133,51 @@ class App extends Component {
   }
 
   render() {
-    const { currentPath, links, q, loading, open } = this.state;
+    const { currentPath, links, q, loading, open, metamaskUse } = this.state;
 
     console.log(links);
     const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
+
+    let buttons = (
+      <Items>
+        <Item>
+          <ItemTitle>App Store</ItemTitle>
+          <Image type='appStore'/>
+          <Arrow />
+        </Item>
+        <Item>
+          <ItemTitle>Create Register</ItemTitle>
+          <Image type='createRegistry'/>
+          <Arrow />
+        </Item>
+        <Item>
+          <ItemTitle>Create App</ItemTitle>
+          <Image type='createApp'/>
+          <Arrow />
+        </Item>
+      </Items>
+    );
+
+    if (!metamaskUse) {
+      buttons = (
+        <Items>
+          <Item to='https://metamask.io/' target="_blank">
+            <Image type='appStore'/>
+            <ItemTitle>Please install<br/> metabask</ItemTitle>
+          </Item>
+          <Item disabled={true}>
+            <ItemTitle>Create Register</ItemTitle>
+            <Image type='createRegistry'/>
+            <Arrow />
+          </Item>
+          <Item disabled={true}>
+            <ItemTitle>Create App</ItemTitle>
+            <Image type='createApp'/>
+            <Arrow />
+          </Item>
+        </Items>
+      );
+    }
 
     if (links === null) {
     return (
@@ -143,29 +192,12 @@ class App extends Component {
           </Container>
         </TopPanel>
         <Container>
-          <Items>
-            <Item>
-              <ItemTitle>App Store</ItemTitle>
-              <Image type='appStore'/>
-              <Arrow />
-            </Item>
-            <Item>
-              <ItemTitle>Create Register</ItemTitle>
-              <Image type='createRegistry'/>
-              <Arrow />
-            </Item>
-            <Item>
-              <ItemTitle>Create App</ItemTitle>
-              <Image type='createApp'/>
-              <Arrow />
-            </Item>
-          </Items>
+          {buttons}
           <LinkList>
 
             <LinkItem target="_blank" to='https://github.com/cybercongress' icon='github'>GitHub</LinkItem>
             <LinkItem target="_blank" to='https://github.com/orgs/cybercongress/projects/1' icon='roadmap'>Roadmap</LinkItem>
             <LinkItem target="_blank" to='http://cybersearch.live' icon='cybernode'>Cybernode</LinkItem>
-            <LinkItem target="_blank" to='/' icon='dashboard'>Dashboard</LinkItem>
             <LinkItem target="_blank" to='http://cybersearch.io' icon='knowledge'>Knowledge</LinkItem>
             <LinkItem target="_blank" to='https://medium.com/@cybercongress' icon='blog'>Blog</LinkItem>
 
@@ -208,7 +240,7 @@ class App extends Component {
       if (currentPath === null) {
         content = (
           <SearchContainer>
-            <Title>Search result:</Title>
+            <Title>Search results:</Title>
           <ul style={{
             listStyle: 'none',
             padding: 0,

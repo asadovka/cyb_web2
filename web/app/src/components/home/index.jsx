@@ -47,10 +47,14 @@ export const Items = ({ children }) => (
 );
 
 
-export const Item = ({ children, to }) => (
-  <Link to={to} className={styles.item}>
+export const Item = ({ children, to, ...props }) => (
+  props.disabled ? (
+    <span className={styles.item} {...props}>{children}</span>
+    ) : (
+    <Link to={to} className={styles.item} {...props}>
     {children}
   </Link>
+  )
 );
 
 

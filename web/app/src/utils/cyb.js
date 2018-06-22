@@ -29,6 +29,17 @@ Cyb.prototype.linkMethod = function(keyword, hash) {
       })  
 }
 
+Cyb.prototype.checkMetomask = function() {
+  return new Promise(resolve => {
+    if (typeof web3 == 'undefined') {
+      resolve(false);
+    } else {
+      web3.eth.getAccounts(function(err, accounts){
+        resolve(err == null && accounts.length > 0)
+      })
+    }
+  })
+}
 
 
 export default Cyb;
