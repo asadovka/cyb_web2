@@ -80,13 +80,15 @@ To attach to container and/or remove it if needed:
 [http://browser.cybersearch.io/](http://browser.cybersearch.io/)
 
 
-## Gitcoin Tasks
-
-
 ## Issues
 
 If you have any problems with or questions about CYB, please contact us through a 
 [GitHub issue](https://github.com/cybercongress/cyb/issues).
+
+## Gitcoin Tasks
+<a href="https://gitcoin.co/explorer?q=cyber-browser">
+    <img src="https://gitcoin.co/funding/embed?repo=https://github.com/cybercongress/cyber-browser">
+</a>
 
 ## Contribute
 
