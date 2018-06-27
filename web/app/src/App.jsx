@@ -289,7 +289,7 @@ class App extends Component {
           </AppHeader>
           <AppMenu onLogoClick={this.goMain}>
             <Menu open={open} >
-              <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >explorer</MenuItem>
+              <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >Ethereum</MenuItem>
               <MenuItem onClick={(e) => this.menuNavigate(e, 'chainger')} icon='chaingear' >Chaingear</MenuItem>
               <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Token</MenuItem>
             </Menu>
