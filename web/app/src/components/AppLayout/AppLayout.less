@@ -28,12 +28,12 @@
   transition: left 0.3s ease-in-out, padding-left 0.3s ease-in-out;
   box-shadow: 4px 3px 11px 0 rgba(0, 0, 0, 0.08);
   // padding-left: 85px;
-  left: 85px;
+  left: 0;// 85px;
 }
 
 .appHeaderOpen {
   // padding-left: 170px;
-  left: 190px;
+  // left: 190px;
 }
 
 .menuLogoContainer {
@@ -63,11 +63,12 @@
   padding-left: 85px;
   box-sizing: border-box;
   // padding-bottom: 10px;
+  padding-left: 0;
 }
 
 
 .appContentOpen {
-  padding-left: 190px;
+  // padding-left: 190px;
 }
 
 .appContent.appContentWithMenu  {
@@ -89,7 +90,7 @@
   flex-shrink: 0;
   z-index: 2;
   box-shadow: 4px 3px 4px 0 rgba(0, 0, 0, 0.24);
-  display: flex;
+  // display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
@@ -97,12 +98,45 @@
   min-height: 100vh;
   top: 0;
   overflow: hidden;
+
+      top: 120px;
+    left: 10px;
+    height: 100px;
+    bottom: auto;
+    min-height: auto;
+    width: 300px;
+    display: none;
+    overflow: scroll;
+        padding: 20px;
+}
+
+.logoContainer {
+      position: absolute;
+    left: 100px;
+    top: 30px;
 }
 
 .appMenuOpen {
-  width: 190px;
+  // width: 190px;
+  display: flex;
 }
 
+.appMenuWrapper {
+  position: relative;
+}
+
+.appMenuWrapperOpen::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 14px solid #2e3842;
+    top: 106px;
+    z-index: 3;
+    left: 35px;
+}
 
 .logo {
   height: 46px;
