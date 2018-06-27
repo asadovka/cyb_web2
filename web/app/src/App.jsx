@@ -248,7 +248,7 @@ class App extends Component {
         )        
       } else {
         content = (
-              <iframe src={path} width="100%" height="500" >
+              <iframe src={path} width="100%" height="100%" >
                 iframe not supported!
              </iframe>
             )
@@ -291,7 +291,7 @@ class App extends Component {
             <Menu open={open} >
               <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >Ethereum</MenuItem>
               <MenuItem onClick={(e) => this.menuNavigate(e, 'chainger')} icon='chaingear' >Chaingear</MenuItem>
-              <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Token</MenuItem>
+              <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Tokens</MenuItem>
             </Menu>
           </AppMenu>    
           <AppContent>
