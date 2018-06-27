@@ -57,12 +57,12 @@ program
 			// }, (err, key) => console.log(err, key))
 
 			const publish = () => {
-				// ipfs.name.publish(hash, { key: appName }, function (err, res) {
+				// ipfs.name.publish(hash, function (err, res) {
 				// 	console.log('sdf ')
 				// 	if (err) {
 				// 		console.log(err)
 				// 	}
-				// 	console.log(res);
+					// console.log(res);
 					request
 					.post(nodeUrl + '/txs')
 					.send({ type: 'search', keyword: appName })

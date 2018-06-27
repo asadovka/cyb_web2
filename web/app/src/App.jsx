@@ -47,10 +47,10 @@ const cyb = new Cyb('http://cyberd.network');
 
 
 const apps = {
-  chainger: 'QmYonnuMLpEuqDmnSqdFhJkmRktBKnRMg9PbRoH7Z6yKBu',
-  tokens: 'QmXmhCQBV5bGAnSPR9KMXUj5MeywFpMpdUVXAgRvt2qx1f',
-  ethexplorer: 'QmchRThL7at2eQmGKQVSv4FQsqjrYoaU4y7p2KxTVnzmkB',
-  createapp: 'QmfTMXbrEyM1TB8BxF6pt3cXYZWLmyruCWUX9h4pvnGCWr'
+  chainger: 'ipns/QmSsT1RV6yZiCfCz5hamwTn2NxTJMoEJ8DkEgnUYtFVpsS',
+  tokens: 'ipfs/QmXmhCQBV5bGAnSPR9KMXUj5MeywFpMpdUVXAgRvt2qx1f',
+  ethexplorer: 'ipfs/QmchRThL7at2eQmGKQVSv4FQsqjrYoaU4y7p2KxTVnzmkB',
+  createapp: 'ipfs/QmfTMXbrEyM1TB8BxF6pt3cXYZWLmyruCWUX9h4pvnGCWr'
 }
 
 
@@ -72,21 +72,22 @@ class App extends Component {
     this.link = this.link.bind(this);
   }
   componentDidMount() {
-    // axios.post('http://localhost:3002/query', {
-    //   ['test']: 'links'
-    // }).then(data => {
-    //   console.log(data)
-    // })
-      // getIndex()
-      // .then(index => {
-      //   this.setState({ index })
-      // });   
+    // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
+    // find better solution
+    const check = () => {
       cyb.checkMetomask()
         .then(metamaskUse => this.setState({
           metamaskUse
         }))
-      
+    }
+    this.timer = setInterval(check, 2000)
+    check();
   }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   link() {
     var q = this.refs.q.value; 
     var link = this.refs.link.value;
@@ -98,7 +99,7 @@ class App extends Component {
     cyb.linkMethod(this.state.q, link)
       .then(() => {
         this.setState({
-          currentPath: link
+          currentPath: 'ipfs/' + link
         })        
       })
   }
@@ -152,7 +153,7 @@ class App extends Component {
     const { currentPath, links, q, loading, open, metamaskUse } = this.state;
 
     console.log(links);
-    const path = currentPath ? `https://ipfs.io/ipfs/${currentPath}/`: null;
+    const path = currentPath ? `http://ipfs.cyb.ai/${currentPath}/`: null;
 
     let buttons = (
       <Items>
@@ -222,32 +223,6 @@ class App extends Component {
       </BGWrapper>
         );
     }
-    // if (currentPath === null) {
-    //   return (
-    //     <div>
-    //       <div>
-    //         <input ref='q'/><button onClick={this.search}>search</button>
-    //         <ul>
-    //         {links.map((link) =>(
-    //           <li key={link}>
-    //             <a onClick={(e) => this.nav(e, link)}>{link}</a>
-    //           </li>
-    //         ))}
-    //         </ul>
-    //         <div>
-    //           <input ref='link'/><button onClick={this.link}>link</button>
-    //         </div>
-    //       </div>
-          
-    //       {path && <div>
-    //         <iframe src={path} width="500" height="500" >
-    //           iframe not supported!
-    //        </iframe>
-    //       </div>}
-    //     </div>
-    //   );
-    // }
-
 
 
     let content;
