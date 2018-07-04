@@ -47,10 +47,11 @@ const cyb = new Cyb('http://cyberd.network');
 
 
 const apps = {
-  chainger: 'ipns/QmSsT1RV6yZiCfCz5hamwTn2NxTJMoEJ8DkEgnUYtFVpsS',
-  tokens: 'ipfs/QmXmhCQBV5bGAnSPR9KMXUj5MeywFpMpdUVXAgRvt2qx1f',
-  ethexplorer: 'ipfs/QmchRThL7at2eQmGKQVSv4FQsqjrYoaU4y7p2KxTVnzmkB',
-  createapp: 'ipfs/QmfTMXbrEyM1TB8BxF6pt3cXYZWLmyruCWUX9h4pvnGCWr'
+  chainger: 'ipns/QmNSj3MXbP65VW8onJXULpZWXTGEypAW4AcAFrqzvYpA84/',
+  tokens: 'ipns/QmaKvs4z88cAcWxZWEqSE9Lb4hnUCqM2eP5rT8eBATRx3h/',
+  ethexplorer: 'ipns/QmPcCVuMsN5mSxyDjkf5hw9J2c4L5Qh556dTPoDuse4cRu/',
+  createapp: 'ipns/QmXxrgEojs1o23iztBYmcFtBCSGm1Cu4mnMz8p1fd17N4w/',
+  appstore: 'ipns/QmdghMauLPetefpnhFZ3QknR7bV2UiijMtAiPitBeBJxHm/'
 }
 
 
@@ -65,7 +66,8 @@ class App extends Component {
       q: null,
       loading: false,
       open: true,
-      metamaskUse: false
+      metamaskUse: false,
+      time: 0,
     }
     this.nav = this.nav.bind(this);
     this.search = this.search.bind(this);
@@ -140,30 +142,41 @@ class App extends Component {
     })
   }
 
-  menuNavigate = (e, appName) => {
+  menuNavigate = (e, appName, page) => {
     if (e) e.preventDefault();
 
     this.setState({
       links: [],
-      currentPath: apps[appName],
+      currentPath: apps[appName] + (page ? '#' + page : ''),
+      time: (new Date()).getTime(), 
       open: false
     })
   }
 
+  // componentDidUpdate = (prevProps, prevState, snapshot) => {
+  //   const { currentPath } = this.state;
+  //   if (currentPath !== prevState.currentPath) {
+  //     const path = currentPath ? `http://ipfs.cyb.ai/${currentPath}`: null;
+  //     this.refs.iframe.src = '';
+  //     this.refs.iframe.src = path;
+  //   }
+
+  // }
+
   render() {
-    const { currentPath, links, q, loading, open, metamaskUse } = this.state;
+    const { currentPath, links, q, loading, open, metamaskUse, time } = this.state;
 
     console.log(links);
-    const path = currentPath ? `http://ipfs.cyb.ai/${currentPath}/`: null;
+    const path = currentPath ? `http://ipfs.cyb.ai/${currentPath}`: null;
 
     let buttons = (
       <Items>
-        <Item onClick={(e) => this.menuNavigate(e, 'createapp')}>
+        <Item onClick={(e) => this.menuNavigate(e, 'appstore')}>
           <ItemTitle>App Store</ItemTitle>
           <Image type='appStore'/>
           <Arrow />
         </Item>
-        <Item onClick={(e) => this.menuNavigate(e, 'chainger')}>
+        <Item onClick={(e) => this.menuNavigate(e, 'chainger', '/new')}>
           <ItemTitle>Create Register</ItemTitle>
           <Image type='createRegistry'/>
           <Arrow />
@@ -248,7 +261,7 @@ class App extends Component {
         )        
       } else {
         content = (
-              <iframe src={path} width="100%" height="100%" >
+              <iframe key={time} src={path} width="100%" height="100%" >
                 iframe not supported!
              </iframe>
             )
