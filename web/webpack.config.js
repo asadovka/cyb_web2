@@ -50,7 +50,7 @@ module.exports = function (options = {}) {
       extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
     bail: false,
-    devtool: SOURCE_MAP,
+    // devtool: SOURCE_MAP,
     externals: {
       './config.js': "env"
     },
@@ -121,7 +121,7 @@ module.exports = function (options = {}) {
         colors: true
       },
       historyApiFallback: true,
-      inline: false,
+      inline: true,
       proxy: {
         "/api": {
           target: "http://localhost:7000"

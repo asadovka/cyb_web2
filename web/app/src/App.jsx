@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-
+// TODO: refactoring
 
 import {
   SearchForm
@@ -45,6 +45,13 @@ import Cyb from './utils/cyb';
 const cyb = new Cyb('http://cyberd.network');
 // 'http://localhost:3002');
 
+import { 
+  Panel, PanelLeft, PanelRight,
+  SearchFormPanel ,
+  Logo,
+  HamburgerMenu,
+  Loading
+} from './components/Test/';
 
 const apps = {
   chainger: 'ipns/QmNSj3MXbP65VW8onJXULpZWXTGEypAW4AcAFrqzvYpA84/',
@@ -54,6 +61,37 @@ const apps = {
   appstore: 'ipns/QmdghMauLPetefpnhFZ3QknR7bV2UiijMtAiPitBeBJxHm/'
 }
 
+
+
+import axios from 'axios';
+
+// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
+function bytesToSize(bytes) {
+   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+   if (bytes == 0) return '0 Byte';
+   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+}
+
+function nFormatter(num, digits) {
+  var si = [
+    { value: 1, symbol: "" },
+    { value: 1E3, symbol: " k" },
+    { value: 1E6, symbol: " M" },
+    { value: 1E9, symbol: " B" },
+    { value: 1E12, symbol: " T" },
+    { value: 1E15, symbol: " P" },
+    { value: 1E18, symbol: " E" }
+  ];
+  var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+  var i;
+  for (i = si.length - 1; i > 0; i--) {
+    if (num >= si[i].value) {
+      break;
+    }
+  }
+  return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
+}
 
 class App extends Component {
   constructor(props){
@@ -65,12 +103,17 @@ class App extends Component {
 
       q: null,
       loading: false,
-      open: true,
+      menuOpen: false,
       metamaskUse: false,
       time: 0,
+
+      transactionsCount: 1441341424,
+      blockchains: 2,
+      indexSizeBytes: 547722617454,
+
+      tokensCount: 0
     }
     this.nav = this.nav.bind(this);
-    this.search = this.search.bind(this);
     this.link = this.link.bind(this);
   }
   componentDidMount() {
@@ -84,6 +127,22 @@ class App extends Component {
     }
     this.timer = setInterval(check, 2000)
     check();
+
+    axios.get('http://api.cybersearch.io/search/stats')
+      .then(response => {
+        this.setState({
+          transactionsCount: response.data.transactionsCount,
+          blockchains: response.data.blockchains,
+          indexSizeBytes: response.data.indexSizeBytes
+        })
+      })
+
+    axios.get('http://api.cybermarkets.io/exchanges/tokens/count')
+      .then(response => {
+        this.setState({
+          tokensCount: response.data
+        })
+      })
   }
 
   componentWillUnmount() {
@@ -101,27 +160,27 @@ class App extends Component {
     cyb.linkMethod(this.state.q, link)
       .then(() => {
         this.setState({
-          currentPath: 'ipfs/' + link
+          currentPath: 'ipfs/' + link,
+          loading: true
         })        
       })
   }
-  search() {
-    var q = this.refs.q.value;
-    cyb.search(q)
-      .then(links => {
-        this.setState({
-          links
-        })
-      })
-  }
+
 
   onSubmit = (value) => {
+    this.setState({
+      links: [],
+      q: value,
+      loading: true
+    });
+
     cyb.search(value)
       .then(links => {
         this.setState({
           links,
           q: value,
-          currentPath: null
+          currentPath: null,
+          loading: false
         })
       })
     // browserHistory.push(`/search?q=${value}`);
@@ -138,7 +197,7 @@ class App extends Component {
 
   toggle = () => {
     this.setState({
-      open: !this.state.open
+      menuOpen: !this.state.menuOpen
     })
   }
 
@@ -149,7 +208,8 @@ class App extends Component {
       links: [],
       currentPath: apps[appName] + (page ? '#' + page : ''),
       time: (new Date()).getTime(), 
-      open: false
+      menuOpen: false,
+      loading: true
     })
   }
 
@@ -163,10 +223,15 @@ class App extends Component {
 
   // }
 
-  render() {
-    const { currentPath, links, q, loading, open, metamaskUse, time } = this.state;
+  onLoad = (e) => {
+    this.setState({
+      loading: false
+    })
+  }
 
-    console.log(links);
+  render() {
+    const { currentPath, links, loading, menuOpen, metamaskUse, time } = this.state;
+
     const path = currentPath ? `http://ipfs.cyb.ai/${currentPath}`: null;
 
     let buttons = (
@@ -181,7 +246,7 @@ class App extends Component {
           <Image type='createRegistry'/>
           <Arrow />
         </Item>
-        <Item onClick={(e) => this.menuNavigate(e, 'chainger')}>
+        <Item onClick={(e) => this.menuNavigate(e, 'createapp')}>
           <ItemTitle>Create App</ItemTitle>
           <Image type='createApp'/>
           <Arrow />
@@ -210,18 +275,10 @@ class App extends Component {
       );
     }
 
+    let content;
+
     if (links === null) {
-    return (
-      <BGWrapper>
-        <TopPanel>
-          <Container>
-            <SearchForm onSubmit={this.onSubmit}/>
-            <Legend>
-              Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
-              blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs
-            </Legend>
-          </Container>
-        </TopPanel>
+      content = (
         <Container>
           {buttons}
           <LinkList>
@@ -234,16 +291,12 @@ class App extends Component {
 
           </LinkList>
         </Container>
-      </BGWrapper>
-        );
-    }
+      )
+    } else {
 
-
-    let content;
-
-    if (loading === false) {
       if (currentPath === null) {
-        content = (
+        if (loading === false) {
+            content = (
           <SearchContainer>
             <Title>Search results:</Title>
           <ul style={{
@@ -258,60 +311,62 @@ class App extends Component {
             ))}
             </ul>
             </SearchContainer>
-        )        
+        ) 
+          } 
+               
       } else {
-        content = (
-              <iframe key={time} src={path} width="100%" height="100%" >
+        content = (              
+              <iframe style={{ boxSizing: 'border-box', minHeight: '100vh' }} key={time} src={path} onLoad={this.onLoad} width="100%" height="100%" >
                 iframe not supported!
              </iframe>
             )
       }
 
-    } else {
-      content = (
-        <div>
-          loading...
-        </div>
-      );
+         
     }
-    const ss = {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      width: '100%'
-    }
+
+    const { 
+      transactionsCount,
+      blockchains,
+      indexSizeBytes,
+      tokensCount
+    } = this.state;
+    
     return (
-      <Layout 
-          open={open}
-          onToggle={this.toggle}
-          onLogoClick={this.goMain}
-        >
-          <AppHeader>
-            <div style={ss}>
-              <div style={{ width: 750 }}>
-                <SearchForm defaultValue={q} onSubmit={this.onSubmit}/>
+      <div style={{ background: '#eff3f6', display: 'flex', minHeight: '100vh' }}>
+      <div style={{ position: 'absolute', left: 0, right: 0, minHeight: (links === null) ? 550 : 109 }}>
+      <Panel open={links !== null}>
+        
+          <PanelLeft>
+            <HamburgerMenu open={menuOpen} onClick={this.toggle}>
+              <Menu open={true} >
+                <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >Ethereum</MenuItem>
+                <MenuItem onClick={(e) => this.menuNavigate(e, 'chainger')} icon='chaingear' >Chaingear</MenuItem>
+                <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Tokens</MenuItem>
+              </Menu>
+            </HamburgerMenu>
+            <Logo onClick={this.goMain}>logo</Logo>
+          </PanelLeft>
+          <SearchFormPanel>
+          <SearchForm  onSubmit={this.onSubmit} />
                 <Legend>
-                   Search in <strong>134M</strong> transactions in <strong>2</strong>&nbsp;
-                   blockchains with <strong>135</strong> parsed tokens. Database size: <strong>369</strong> GBs
+                   Search in <strong>{nFormatter(transactionsCount, 1)}</strong>&nbsp; transactions in <strong>{blockchains}</strong>&nbsp;
+                   blockchains with <strong>{tokensCount}</strong> parsed tokens. Database size: <strong>{bytesToSize(indexSizeBytes)}</strong>
                 </Legend>
-              </div>
-              <div>
-                <IdBar />
-              </div>
-            </div>             
-          </AppHeader>
-          <AppMenu onLogoClick={this.goMain}>
-            <Menu open={open} >
-              <MenuItem onClick={(e) => this.menuNavigate(e, 'ethexplorer')} icon='explorer' >Ethereum</MenuItem>
-              <MenuItem onClick={(e) => this.menuNavigate(e, 'chainger')} icon='chaingear' >Chaingear</MenuItem>
-              <MenuItem onClick={(e) => this.menuNavigate(e, 'tokens')} icon='tokens' >Tokens</MenuItem>
-            </Menu>
-          </AppMenu>    
-          <AppContent>
-            {content}
-          </AppContent>
-        </Layout>
-    );
+          </SearchFormPanel>
+          <PanelRight>
+            <IdBar />
+          </PanelRight>
+ </Panel>
+ </div>
+  <div style={{ paddingTop: (links === null) ? 550 : 109, flexGrow: 1 }}>
+  {loading && <Loading />}
+  {content}
+  </div>
+  
+     </div>
+        );
+
   }
 }
 

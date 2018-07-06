@@ -7,6 +7,7 @@ import {configureStore} from "./configureStore";
 import "./global.less";
 
 import App from './App';
+import Test from './containers/Test/';
 
 const store = configureStore();
 
