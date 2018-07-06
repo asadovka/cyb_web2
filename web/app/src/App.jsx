@@ -333,8 +333,8 @@ class App extends Component {
     } = this.state;
     
     return (
-      <div style={{ background: '#eff3f6', display: 'flex', minHeight: '100vh' }}>
-      <div style={{ position: 'absolute', left: 0, right: 0, minHeight: (links === null) ? 550 : 109 }}>
+      <div style={{ background: '#eff3f6', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <div style={{  left: 0, right: 0, minHeight: (links === null) ? 550 : 109 }}>
       <Panel open={links !== null}>
         
           <PanelLeft>
@@ -359,7 +359,7 @@ class App extends Component {
           </PanelRight>
  </Panel>
  </div>
-  <div style={{ paddingTop: (links === null) ? 550 : 109, flexGrow: 1 }}>
+  <div style={{  flexGrow: 1 }}>
   {loading && <Loading />}
   {content}
   </div>

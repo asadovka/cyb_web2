@@ -27,6 +27,7 @@ program
   .command('add <dirName> <appName>')
   .description('Add a app')
   .action((dirName, appName) => {
+  		// console.log(' sdf ')
 		const files = fs.readdirSync(dirName).map(file => ({
 		  path: dirName.split('/')[dirName.split('/').length - 2] + '/' + file,
 		  content: fs.readFileSync(path.join(dirName, file))
@@ -35,58 +36,58 @@ program
 		// console.log(files)
 
 
-		// ipfs.add(files, function(e, r) {
-		// 	if (e) {
-		// 		console.log(e);
-		// 		return;
-		// 	}
-		// 	//console.log(' r ', r);
-		// 	const hash = r[r.length - 1].hash
-		// 	console.log('put folder in IPFS: ', hash);
-			//console.log(r);
-			// ipfs.name.publish(hash, { key: appName }, function (err, res) {
-			// 	if (err) {
-			// 		console.log(err)
-			// 	}
-			// 	console.log(res);
-			// })
+		ipfs.add(files, function(e, r) {
+			if (e) {
+				console.log(e);
+				return;
+			}
+			//console.log(' r ', r);
+			const hash = r[r.length - 1].hash
+			console.log('put folder in IPFS: ', hash);
+			// console.log(r);
+			ipfs.name.publish(hash, { key: appName }, function (err, res) {
+				if (err) {
+					console.log(err)
+				}
+				console.log(res);
+			})
 
 			// ipfs.key.gen(appName, {
 			//     type: 'rsa',
 			//     size: 2048
 			// }, (err, key) => console.log(err, key))
 
-			// const publish = () => {
-			// 	// , { key: appName }
-			// 	ipfs.name.publish(hash, { key: appName }, function (err, res) {
-			// 	// 	console.log('sdf ')
-			// 	// 	if (err) {
-			// 	// 		console.log(err)
-			// 	// 	}
-			// 		console.log(res);
-			// 		request
-			// 		.post(nodeUrl + '/txs')
-			// 		.send({ type: 'search', keyword: appName })
-			// 		.end((err, res) => {
-			// 			if (err) {
-			// 				console.log(err)
-			// 			} else {
-			// 				request
-			// 				.post(nodeUrl + '/txs')
-			// 				.send({ type: 'link', keyword: appName, hash: hash })
-			// 				.end((err, res) => {
-			// 					if (err) {
-			// 						console.log(err)
-			// 					} else {
-			// 						console.log('update cyberd index for: ', appName, hash, ' >> ', nodeUrl);
-			// 					}
-			// 				})					
-			// 			}
-			// 		})
-			// 	})
-			// }
+			const publish = () => {
+				// , { key: appName }
+				ipfs.name.publish(hash, { key: appName }, function (err, res) {
+				// 	console.log('sdf ')
+				// 	if (err) {
+				// 		console.log(err)
+				// 	}
+					console.log(res);
+					request
+					.post(nodeUrl + '/txs')
+					.send({ type: 'search', keyword: appName })
+					.end((err, res) => {
+						if (err) {
+							console.log(err)
+						} else {
+							request
+							.post(nodeUrl + '/txs')
+							.send({ type: 'link', keyword: appName, hash: hash })
+							.end((err, res) => {
+								if (err) {
+									console.log(err)
+								} else {
+									console.log('update cyberd index for: ', appName, hash, ' >> ', nodeUrl);
+								}
+							})					
+						}
+					})
+				})
+			}
 
-			// publish();
+			publish();
 			
 			ipfs.key.list((err, keys) => {
 				console.log(keys)
@@ -104,7 +105,7 @@ program
 			})
 			
 			
-		// })
+		})
   });
 
 program
