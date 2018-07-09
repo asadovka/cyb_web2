@@ -36,6 +36,20 @@ jobs:
                 docker push cybernode/cui-browser:$CIRCLE_TAG
              fi
 
+  deploy_staging_image_to_k8s:
+     working_directory: ~/build
+     docker:
+       - image: google/cloud-sdk
+     steps:
+       - run:
+           name: Deploy to GCE
+           command: |
+             echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
+             gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+             gcloud container clusters get-credentials $GCE_CLUSTER_NAME --zone $GCE_COMPUTE_ZONE --project $GCE_PROJECT_ID
+             # Force update of deployment https://github.com/kubernetes/kubernetes/issues/27081
+             kubectl patch deployment -n browser browser -p "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"date\":\"`date +'%s'`\"}}}}}"
+
   # deploy_stagin_image:
   #   working_directory: ~/build
   #   docker:
@@ -55,6 +69,10 @@ workflows:
     jobs:
       - build_and_push_staging_image:
           <<: *staging_filter
+      - deploy_staging_image_to_k8s:
+          <<: *staging_filter
+          requires:
+            - build_and_push_staging_image
       # - deploy_stagin_image:
       #     <<: *staging_filter
           # requires:
