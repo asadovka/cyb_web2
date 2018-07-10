@@ -7,7 +7,7 @@ about: Create a report to help us improve
 <!--
 Hi!
 
-Please use the template below for issue bugs found within Congress.
+Please use the template below for issue bugs found within cyb.
 
 Provide a general summary of the issue in the title above and use relevant fields below to define the problem.
 

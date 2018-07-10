@@ -20,7 +20,7 @@ Reference your issue to PR
 _Put an `x` in the boxes that are applied. You can also fill them out after creating the PR. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code._
 
 - [ ] I have opened an issue
-- [ ] I have read the [CONTRIBUTING](https://github.com/cybercongress/congress/blob/master/.github/CONTRIBUTING.md) doc
+- [ ] I have read the [CONTRIBUTING](https://github.com/cybercongress/cyb/blob/master/CONTRIBUTION.md) you can learn how to contribute to our project doc
 - [ ] I keep pull requests small so they can be easily reviewed
 - [ ] Lint and unit tests pass locally with my changes
 - [ ] I have added tests that prove that my fix is effective or my feature works

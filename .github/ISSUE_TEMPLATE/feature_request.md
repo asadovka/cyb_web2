@@ -7,7 +7,7 @@ about: Suggest an idea for this project
 <!--
 Hi!
 
-Please use the template below for issue bugs found within Congress.
+Please use the template below for issue bugs found within cyb.
 
 Provide a general summary of the issue in the title above and use relevant fields below to define the problem.
 
