@@ -45,7 +45,7 @@ import Cyb from './utils/cyb';
 const cyb = new Cyb('http://cyberd.network');
 // 'http://localhost:3002');
 
-import { 
+import {
   Panel, PanelLeft, PanelRight,
   SearchFormPanel ,
   Logo,
@@ -150,19 +150,19 @@ class App extends Component {
   }
 
   link() {
-    var q = this.refs.q.value; 
+    var q = this.refs.q.value;
     var link = this.refs.link.value;
     cyb.linkMethod(q, link)
   }
-  nav(e, link) {    
+  nav(e, link) {
     e.preventDefault();
-    // var q = this.refs.q.value; 
+    // var q = this.refs.q.value;
     cyb.linkMethod(this.state.q, link)
       .then(() => {
         this.setState({
           currentPath: 'ipfs/' + link,
           loading: true
-        })        
+        })
       })
   }
 
@@ -207,7 +207,7 @@ class App extends Component {
     this.setState({
       links: [],
       currentPath: apps[appName] + (page ? '#' + page : ''),
-      time: (new Date()).getTime(), 
+      time: (new Date()).getTime(),
       menuOpen: false,
       loading: true
     })
@@ -242,7 +242,7 @@ class App extends Component {
           <Arrow />
         </Item>
         <Item onClick={(e) => this.menuNavigate(e, 'chainger', '/new')}>
-          <ItemTitle>Create Register</ItemTitle>
+          <ItemTitle>Create Registry</ItemTitle>
           <Image type='createRegistry'/>
           <Arrow />
         </Item>
@@ -262,7 +262,7 @@ class App extends Component {
             <ItemTitle>Please use<br/> metamask</ItemTitle>
           </Item>
           <Item disabled={true}>
-            <ItemTitle>Create Register</ItemTitle>
+            <ItemTitle>Create Registry</ItemTitle>
             <Image type='createRegistry'/>
             <Arrow />
           </Item>
@@ -311,32 +311,32 @@ class App extends Component {
             ))}
             </ul>
             </SearchContainer>
-        ) 
-          } 
-               
+        )
+          }
+
       } else {
-        content = (              
+        content = (
               <iframe style={{ boxSizing: 'border-box', minHeight: '100vh' }} key={time} src={path} onLoad={this.onLoad} width="100%" height="100%" >
                 iframe not supported!
              </iframe>
             )
       }
 
-         
+
     }
 
-    const { 
+    const {
       transactionsCount,
       blockchains,
       indexSizeBytes,
       tokensCount
     } = this.state;
-    
+
     return (
       <div style={{ background: '#eff3f6', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <div style={{  left: 0, right: 0, minHeight: (links === null) ? 550 : 109 }}>
       <Panel open={links !== null}>
-        
+
           <PanelLeft>
             <HamburgerMenu open={menuOpen} onClick={this.toggle}>
               <Menu open={true} >
@@ -363,7 +363,7 @@ class App extends Component {
   {loading && <Loading />}
   {content}
   </div>
-  
+
      </div>
         );
 
