@@ -1,13 +1,11 @@
-<h1 align="center">
-Front door to blockchain universe
-</h1>
-
 
 <div align="center">
   <img src="/design/logo/readme.png"></a>
 </div>
 
-
+<h1 align="center">
+NEXT-GENERATION BROWSER & DAPP PLATFORM
+</h1>
 
 # Overview
 
