@@ -1,12 +1,13 @@
-
 <h1 align="center">
-cyb
+Front door to blockchain universe
 </h1>
 
 
-<h3 align="center">
-Front door to blockchain universe
-</h3>
+<div align="center">
+  <img src="/design/logo/readme.png"></a>
+</div>
+
+
 
 # Overview
 
