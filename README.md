@@ -18,8 +18,15 @@ NEXT-GENERATION BROWSER & DAPP PLATFORM
 <div align="center">
   <img src="https://img.shields.io/github/contributors/cybercongress/cyb.svg?style=flat-square&longCache=true" alt="">
    <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square&longCache=true" alt="" />
-   <a href="https://t.me/fuckgoogle"><img src="https://img.shields.io/badge/Join%20Us%20On-Telegram-2599D2.svg?style=flat-square&longCache=true" alt=""></a>
 </div> 
+
+<div align="center">
+  <sub>Built by
+  <a href="https://twitter.com/cyber_devs">cyber•Congress</a> and
+  <a href="https://github.com/cybercongress/chaingear/graphs/contributors">
+    contributors
+  </a>
+</div>
 
 # Overview
 
@@ -38,60 +45,42 @@ Cyb is a blockchain browser with integrated DApp platform. Browser consists of t
 - are stored in IPFS
 - can interract with user and each other
 
-### Development
+## Features
 
-    npm install yarn -g  # if not installed
-    npm start
+### Apps
 
-This starts local server that compiles all UI assets into memory and
-updates them as soon as they are edited.
+Integrated apps:
 
-UI uses API endpoints, specified by the following environment variables:
+- Multiblockchain explorer (Bitcoin & Ethereum)
+- Token monitor (Real-time statistics from cryptoexchanges)
+- Chaingear (Registry management system based on smart-contracts)
 
-* [cyber-search](https://github.com/cybercongress/cyber-search) `CYBER_SEARCH_API`
-* [cyber-markets](https://github.com/cybercongress/cyber-markets) `CYBER_SEARCH_API`
-* [chaingear](https://github.com/cybercomgress//chaingear-api) `CYBER_CHAINGEAR_API`
+### Search function
 
-#### Building raw static site
-
-    npm run build
-
-This compiles all UI assets into static website, copied in `dist/`dir.
-API endpoints are configured in [config.js](https://github.com/cybercongress/cyber-ui/blob/master/config.js).
-
-#### Building container for deployment
-
-    docker build -t cybernode/cui-browser -f ./devops/Dockerfile ./
-    
-To check that container works correctly, bring up backend API, pass
-their endpoint URLs as environment variables and run container:
-    
-    export CYBER_CHAINGEAR_API=http://127.0.0.1:32600
-    export CYBER_SEARCH_API=http://127.0.0.1:32700
-    export CYBER_MARKETS_API=http://127.0.0.1:32800
-    
-    docker run -e CYBER_CHAINGEAR_API -e CYBER_SEARCH_API -e CYBER_MARKETS_API --name frontend -d -p 127.0.0.1:32500:80 cybernode/cui-browser
-
-This command starts server on http://127.0.0.1:32500
-
-Checking container logs:
-
-    docker logs frontend
-
-To attach to container and/or remove it if needed:
-
-    docker exec -t -i frontend /bin/bash
-    docker stop frontend
-    docker rm frontend
-
-### Cybernode settings
-
-* **Image**: `cui-browser`
-* **Portmap**: 32500
+- search insede blockchains
+- search inside apps
+search in indexed IPS content
 
 
-[http://browser.cybersearch.io/](http://browser.cybersearch.io/)
+### Web3 integration
 
+- transparent tokenized economy
+- Metamask support
+- IPFS support for data store and sharing
+
+
+### Access to services
+
+- cyber.Search API
+- cyber.Markets API
+
+
+## Getting Start Useful Links
+
+* [Web version](http://cyb.ai/)
+* [Whitepaper](./docs/whitepaper.md)
+* [Staging](docs/staging.md)
+* [Design sources](./design/)
 
 ## Issues
 
@@ -108,13 +97,15 @@ If you have any problems with or questions about CYB, please contact us through 
 You are invited to contribute new features, fixes, or updates, large or small; We are always thrilled to receive pull 
 requests, and do our best to process them as fast as We can. You can find detailed information in our 
 [contribution guide](./CONTRIBUTING.md).
- 
+
 ## Roadmap & Changelog
 
 Stay tuned with our [Changelog](./CHANGELOG.md) and [Roadmap](./ROADMAP.md).
 
+## Join Us On Telegram
 
-
+If you're interested in using or developing Chaingear, come [join us on Telegram](https://t.me/fuckgoogle)
+ 
 
 
 
