@@ -10,6 +10,8 @@ NEXT-GENERATION BROWSER & DAPP PLATFORM
 
 <div align="center">
 <img src="https://img.shields.io/circleci/project/github/cybercongress/cyb.svg?style=flat-square&longCache=true">
+<img src="https://img.shields.io/github/release/cybercongress/cyb.svg?style=flat-square&longCache=true">
+  
 </div> 
 
 
