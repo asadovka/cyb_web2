@@ -96,7 +96,7 @@ If you have any problems with or questions about CYB, please contact us through 
 
 You are invited to contribute new features, fixes, or updates, large or small; We are always thrilled to receive pull 
 requests, and do our best to process them as fast as We can. You can find detailed information in our 
-[contribution guide](./CONTRIBUTING.md).
+[contribution guide](./CONTRIBUTION.md).
 
 ## Roadmap & Changelog
 
@@ -104,7 +104,7 @@ Stay tuned with our [Changelog](./CHANGELOG.md) and [Roadmap](https://github.com
 
 ## Join Us On Telegram
 
-If you're interested in using or developing Chaingear, come [join us on Telegram](https://t.me/fuckgoogle)
+If you're interested in using or developing CYB, come [join us on Telegram](https://t.me/fuckgoogle)
  
 
 
