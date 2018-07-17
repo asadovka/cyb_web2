@@ -57,14 +57,14 @@ Integrated apps:
 
 ### Search function
 
-- search insede blockchains
-- search inside apps
-search in indexed IPS content
+- Search inside blockchains
+- Search inside apps
+- Search in indexed IPFS content
 
 
 ### Web3 integration
 
-- transparent tokenized economy
+- Transparent tokenized economy
 - Metamask support
 - IPFS support for data store and sharing
 
@@ -100,7 +100,7 @@ requests, and do our best to process them as fast as We can. You can find detail
 
 ## Roadmap & Changelog
 
-Stay tuned with our [Changelog](./CHANGELOG.md) and [Roadmap](./ROADMAP.md).
+Stay tuned with our [Changelog](./CHANGELOG.md) and [Roadmap](https://github.com/orgs/cybercongress/projects/1).
 
 ## Join Us On Telegram
 
