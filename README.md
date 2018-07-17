@@ -11,9 +11,15 @@ NEXT-GENERATION BROWSER & DAPP PLATFORM
 <div align="center">
 <img src="https://img.shields.io/circleci/project/github/cybercongress/cyb.svg?style=flat-square&longCache=true">
 <img src="https://img.shields.io/github/release/cybercongress/cyb.svg?style=flat-square&longCache=true">
-  
+<img src="https://img.shields.io/github/license/cybercongress/cyb.svg?style=flat-square&longCache=true">
 </div> 
 
+
+<div align="center">
+  <img src="https://img.shields.io/github/contributors/cybercongress/cyb.svg?style=flat-square&longCache=true" alt="">
+   <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square&longCache=true" alt="" />
+   <a href="https://t.me/fuckgoogle"><img src="https://img.shields.io/badge/Join%20Us%20On-Telegram-2599D2.svg?style=flat-square&longCache=true" alt=""></a>
+</div> 
 
 # Overview
 
