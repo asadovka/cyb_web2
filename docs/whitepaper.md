@@ -98,3 +98,12 @@ Blockchain data is too complicated and sometimes not obvious for people. Thus we
 
 ## Address system
 
+## Apps
+
+Browser has 3 main integrated apps
+
+### 1. Blockchain explorers
+### 2. Chaingear
+### 3. Token monitor
+
+
