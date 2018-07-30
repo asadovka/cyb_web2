@@ -150,7 +150,8 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     }),
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/
-      { from: 'config.js' }
+      { from: 'config.js' },
+      { from: 'apps/' }
     ]) 
   ];
 

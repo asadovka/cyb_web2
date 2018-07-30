@@ -4,7 +4,7 @@ const styles = require("./SearchForm.less");
 
 
 let input;
-export const SearchForm = (props) => {
+export const SearchForm = ({ inputRef, ...props }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (props.onSubmit) props.onSubmit(input.value)
@@ -16,7 +16,8 @@ export const SearchForm = (props) => {
         type='text' 
         className={styles.input} 
         ref={node => {
-          input = node 
+          input = node;
+          if (inputRef) inputRef(node);
         }} 
       />
       <span className={styles.inputIcone}/>
