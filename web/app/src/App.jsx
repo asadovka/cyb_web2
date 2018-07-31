@@ -677,7 +677,11 @@ class App extends Component {
     color: '#fff',
     padding: '14px 30px',
     marginBottom: '5px',
-    fontSize: '24px'
+    fontSize: '24px',
+    width: 130,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }}>{app}</div>}
           <SearchForm defaultValue={search} inputRef={node => {
             this.input = node;

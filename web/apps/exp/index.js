@@ -37,6 +37,7 @@ class App extends React.Component {
     const { items } = this.state;
     return (
       <div>
+        <div>
         {items.map((item, index) => {
           const link = this.generateLink(item);
           if (!link) return null;
@@ -56,6 +57,7 @@ class App extends React.Component {
           </div>
         );
       })}
+        </div>
       </div>
     );
   }
