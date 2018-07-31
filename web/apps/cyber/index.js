@@ -23,11 +23,12 @@ var _search = function(q) {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+    this.state = { items: [], loading: true };
   }
   componentDidMount() {
+    this.setState({ loading: true })
     _search(getQueryStringValue('q'))
-      .then(items => this.setState({ items }));
+      .then(items => this.setState({ items, loading: false }));
   }
 
   nav = (url) => {
@@ -38,11 +39,22 @@ class App extends React.Component {
 //`http://ipfs.cyb.ai/ipns/QmNSj3MXbP65VW8onJXULpZWXTGEypAW4AcAFrqzvYpA84/`
 
   render() {
-    const { items } = this.state;
+    const { items, loading } = this.state;
+    if (loading) {
+      return (
+        <div>
+          loading...
+        </div>
+      );
+    }
     return (
       <div>
       <div>
-        {items.map(item => (
+        {(loading === false && items.length === 0) ? (
+            <div>
+              not founded
+            </div>
+          ) :items.map(item => (
           <div onClick={() => this.nav(item)}>
             <a href={'/ipns/?q=' + item}>
             {item}

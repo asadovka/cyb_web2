@@ -31,16 +31,18 @@ class App extends React.Component {
         <a href={`/bb/?q=${item.data.number}`} target="iframe">{item.data.number}</a>
       );
     }    
-    return (
-      <a href='#'>item</a>
-    );
+    return null
   }
   render() {
     const { items } = this.state;
     return (
       <div>
-        {items.map((item, index) => (
-          <div key={index}>
+        {items.map((item, index) => {
+          const link = this.generateLink(item);
+          if (!link) return null;
+
+          return (
+          <div key={index} style={{ borderTop: '1px solid #ccc'}}>
             <div>
               {item.chain}
             </div>
@@ -50,9 +52,10 @@ class App extends React.Component {
             <div>
               {JSON.stringify(item.data) }
             </div>
-            {this.generateLink(item)}
+            {link}
           </div>
-        ))}
+        );
+      })}
       </div>
     );
   }

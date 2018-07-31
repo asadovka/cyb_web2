@@ -526,7 +526,6 @@ class App extends Component {
 
 
     
-
     let newApp = innerWindow.location.pathname.replace(/apps\//g, '');
     newApp = newApp.replace(/\//g, '');
 
@@ -534,9 +533,11 @@ class App extends Component {
     newQ = newQ || '';
 
     if (newApp !== app || newQ !== search) {
+      let url = apps[newApp] || apps['cyber'];
       this.setState({
         app: newApp,
-        search: newQ
+        search: newQ,
+        url
       })
     }
 
@@ -583,6 +584,8 @@ class App extends Component {
 
 
     const { transactionsCount, blockchains, indexSizeBytes, tokensCount, metamaskUse } = this.state;
+
+    console.log(' src ', src);
 
     let buttons = (
       <Items>
