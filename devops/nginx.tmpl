@@ -2,6 +2,10 @@ server {
   listen 80;
 
   location / {
-      root /dist;
+    try_files $uri $uri/ /index.html;
+  }
+
+  location /apps/ {
+    root /dist;
   }
 }

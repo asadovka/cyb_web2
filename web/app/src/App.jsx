@@ -527,8 +527,9 @@ class App extends Component {
 
     
 
+    let newApp = innerWindow.location.pathname.replace(/apps\//g, '');
+    newApp = newApp.replace(/\//g, '');
 
-    const newApp = innerWindow.location.pathname.replace(/\//g, '');
     let newQ = decodeURIComponent(innerWindow.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent('q').replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
     newQ = newQ || '';
 
@@ -569,7 +570,7 @@ class App extends Component {
   render() {
     const { app, url, search, menuOpen } = this.state;
 
-    let src = `/${url}?q=${search}${window.location.hash}`;
+    let src = `/apps/${url}?q=${search}${window.location.hash}`;
     if (app === 'ipns') {
       src = `http://ipfs.cyb.ai/ipns/${search}${window.location.hash}`;
     }
