@@ -1,6 +1,8 @@
 server {
   listen 80;
 
+  root /dist;
+  
   location / {
     try_files $uri $uri/ /index.html;
   }
