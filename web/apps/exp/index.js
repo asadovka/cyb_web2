@@ -8,15 +8,16 @@ var _search = function(q) {
   .then(response => response.data)
 }
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+    this.state = { items: [], loading: true };
   }
   componentDidMount() {
     _search(getQueryStringValue('q'))
       .then(response => {
-        this.setState({ items: response.items })
+        this.setState({ items: response.items, loading: false })
       });
   }
   generateLink(item) {
@@ -33,30 +34,111 @@ class App extends React.Component {
     }    
     return null
   }
+
+  selectAllChain = (e) => {}
+
+  isAllChainSelected() {
+    return true;
+  }
+
+  selectAllTypes = (e) => {}
+
+  isAllTypesSelected() {
+    return true;
+  }
+
+  changeChain = () => {}
+  changeTypes = () => {}
+
   render() {
-    const { items } = this.state;
+
+    const chains = 'ethereum,bitcoin';
+    const types = 'block';
+
+    const { items, loading } = this.state;
+    if (loading) return (<Loading />);
     return (
-      <div>
-        <div>
+      <div className='app'>
+        <div className='app__menu'>
+          <h2 className='menu-title'>Show results for:</h2>
+
+          <RoundCheckbox 
+            onChange={this.selectAllChain}
+            checked={this.isAllChainSelected(chains)} 
+            label='Blockchain'  
+          />
+          <ul className='list'>
+          <li>
+            <RoundCheckbox 
+              onChange={() => this.changeChain('ethereum')} 
+              checked={!!chains.split(',').find(x => x === 'ethereum')} 
+              label='Ethereum' color={colors.ethereum} />
+          </li>
+          <li>
+            <RoundCheckbox 
+              onChange={() => this.changeChain('bitcoin')} 
+              checked={!!chains.split(',').find(x => x === 'bitcoin')} 
+              label='Bitcoin' 
+              color={colors.bitcoin} />
+          </li>
+        </ul>
+
+          <RoundCheckbox 
+          onChange={this.selectAllTypes}
+          checked={this.isAllTypesSelected(types)} 
+          label='Object'  
+        />        
+        <ul className='list'>
+          <li>
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('contract_summary')} 
+              checked={!!types.split(',').find(x => x === 'contract_summary')}  
+              label='Contract' color={colors.contract} />
+          </li>
+          <li>
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('block')} 
+              checked={!!types.split(',').find(x => x === 'block')} 
+              label='Block' color={colors.block} />
+          </li>
+          <li>
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('uncle')} 
+              checked={!!types.split(',').find(x => x === 'uncle')} 
+              label='Uncle block' 
+              color={colors.uncle} />
+          </li>
+          <li>
+            <RoundCheckbox  
+              onChange={() => this.changeTypes('tx')} 
+              checked={!!types.split(',').find(x => x === 'tx')}
+              label='Transaction' color={colors.transaction} />
+          </li>
+        </ul>
+
+        </div>
+        <div className='app__content'>
+          <div className='result-container'>
         {items.map((item, index) => {
           const link = this.generateLink(item);
-          if (!link) return null;
 
+          if (item.chain === 'ethereum' && item.entity === 'block')
           return (
-          <div key={index} style={{ borderTop: '1px solid #ccc'}}>
-            <div>
-              {item.chain}
-            </div>
-            <div>
-              {item.entity}
-            </div>
-            <div>
-              {JSON.stringify(item.data) }
-            </div>
-            {link}
-          </div>
-        );
+            <EthereumBlock
+              {...item.data}
+            />
+          );
+
+          if (item.chain === 'bitcoin' && item.entity === 'block')
+          return (
+            <BitcoinBlock
+              {...item.data}
+            />
+          );
+
+          return null;
       })}
+          </div>
         </div>
       </div>
     );

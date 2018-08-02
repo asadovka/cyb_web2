@@ -20,6 +20,7 @@ const Root = () => (
     <Route path={"/:q::app"} component={App}/>
     <Route path={"/::app"} component={App}/>
     <Route path={"/"} component={App}/>
+    <Route path={"/test"} component={Test}/>
   </Router>
 );
 

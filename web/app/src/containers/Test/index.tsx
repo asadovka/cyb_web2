@@ -133,7 +133,7 @@ import {
 
 
 import {
-  Container,
+  // Container,
   BGWrapper,
   TopPanel,
   Legend,
@@ -161,6 +161,10 @@ import {
   Menu, MenuItem,
 } from './../../components/AppLayout/';
 
+import { Container } from '../../components/SearchItems/';
+import EthereumBlock from '../search/SearchResultPage/items/EthereumBlock';
+
+
 class Test extends React.Component {
   state = {
     open: true
@@ -184,6 +188,7 @@ class Test extends React.Component {
   }
 
   render() {
+    /*
     const { open } = this.state;
 
     let buttons = (
@@ -271,6 +276,26 @@ class Test extends React.Component {
           </PanelRight>
         </Panel>
         {content}
+      </div>
+    );
+
+    */
+
+    return (
+      <div>
+      <div>
+        menu
+      </div>
+      <div>
+        <Container>
+          <EthereumBlock
+            number={42}
+            hash={'74d74553948545d4754462d28d3fa4f8efb6f35e08559616df1c5c72695ae0b6'}
+            tx_number={23}
+            timestamp={'2015-07-30T15:31:17.000Z'}
+          />
+        </Container>
+      </div>
       </div>
     );
   }
