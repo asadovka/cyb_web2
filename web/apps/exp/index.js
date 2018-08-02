@@ -53,7 +53,7 @@ class App extends React.Component {
   render() {
 
     const chains = 'ethereum,bitcoin';
-    const types = 'block';
+    const types = 'contract_summary,block,uncle,tx';
 
     const { items, loading } = this.state;
     if (loading) return (<Loading />);
@@ -135,6 +135,43 @@ class App extends React.Component {
               {...item.data}
             />
           );
+
+          if (item.chain === 'ethereum' && item.entity === 'tx')
+          return (
+            <EthereumTx
+              {...item.data}
+            />
+          );
+
+          if (item.chain === 'bitcoin' && item.entity === 'tx')
+          return (
+            <BitcoinTx
+              {...item.data}
+            />
+          );
+
+          if (item.chain === 'bitcoin' && item.entity === 'contract_summary')
+          return (
+            <BitcoinContract
+              {...item.data}
+            />
+          );
+
+          if (item.chain === 'ethereum' && item.entity === 'contract_summary')
+          return (
+            <EthereumContract
+              {...item.data}
+            />
+          );
+        
+          if (item.chain === 'ethereum' && item.entity === 'uncle')
+          return (
+            <EthereumUncle
+              {...item.data}
+            />
+          );
+        
+        //
 
           return null;
       })}

@@ -243,3 +243,127 @@ const BitcoinBlock = ({ number, hash, tx_number, timestamp }) => {
     </Item>
  );
 }
+
+
+const EthereumTx = ({ hash, value, block_time, from, to }) => {
+  return (
+   <Item line={colors.transaction}>
+     <ItemTitle bg={colors.ethereum}>Ethereum transaction</ItemTitle>
+     <ItemContainer>
+       <ItemContainerRow center width='33%' border='right'>
+          <Label>Finalization Time:</Label>
+          <Value>{dateFormat(block_time)}</Value>
+       </ItemContainerRow>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/apps/et?q=${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Value:</Label>
+          <Value>{value} ETH</Value>       
+       </ItemContainerRow>
+       {/*<ItemContainerRow width='50%' border='top'>
+         <Label>From:</Label>
+         <LinkAddress address={from} to={`/ethereum/contract/${from}`}/>
+       </ItemContainerRow>
+       <ItemContainerRow width='50%' border='top'>
+         <Label>To:</Label>
+         <LinkAddress address={to} to={`/ethereum/contract/${to}`}/>
+       </ItemContainerRow>*/}
+     </ItemContainer>
+   </Item>   
+  );
+}
+
+
+const BitcoinTx = ({ hash, total_output, block_time, from, to }) => {
+  return (
+   <Item line={colors.transaction}>
+     <ItemTitle bg={colors.bitcoin}>Ethereum transaction</ItemTitle>
+     <ItemContainer>
+       <ItemContainerRow center width='33%' border='right'>
+          <Label>Finalization Time:</Label>
+          <Value>{dateFormat(block_time)}</Value>
+       </ItemContainerRow>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/apps/bt?q=${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Value:</Label>
+          <Value>{total_output} BTC</Value>       
+       </ItemContainerRow>
+     </ItemContainer>
+   </Item>   
+  );
+}
+
+const BitcoinContract = ({ hash, confirmed_balance, first_activity_date, from, to }) => {
+  return (
+   <Item line={colors.contract}>
+     <ItemTitle bg={colors.bitcoin}>Bitcoint contract</ItemTitle>
+     <ItemContainer>
+       <ItemContainerRow center width='33%' border='right'>
+          <Label>Created:</Label>
+          <Value>{dateFormat(first_activity_date)}</Value>
+       </ItemContainerRow>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/apps/bc?q=${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Value:</Label>
+          <Value>{confirmed_balance} BTC</Value>       
+       </ItemContainerRow>
+     </ItemContainer>
+   </Item>   
+  );
+}
+
+
+const EthereumContract = ({ hash, confirmed_balance, first_activity_date, from, to }) => {
+  return (
+   <Item line={colors.contract}>
+     <ItemTitle bg={colors.ethereum}>Ethereum contract</ItemTitle>
+     <ItemContainer>
+       <ItemContainerRow center width='33%' border='right'>
+          <Label>Finalization Time:</Label>
+          <Value>{dateFormat(first_activity_date)}</Value>
+       </ItemContainerRow>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/apps/ec?q=${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Value:</Label>
+          <Value>{confirmed_balance} ETH</Value>       
+       </ItemContainerRow>
+     </ItemContainer>
+   </Item>   
+  );
+}
+
+
+const EthereumUncle = ({ hash, timestamp, position, from, to }) => {
+  return (
+   <Item line={colors.contract}>
+     <ItemTitle bg={colors.ethereum}>Ethereum uncle block</ItemTitle>
+     <ItemContainer>
+       <ItemContainerRow center width='33%' border='right'>
+          <Label>Mined on:</Label>
+          <Value>{dateFormat(timestamp)}</Value>
+       </ItemContainerRow>
+       <ItemContainerRow width='33%'>
+          <Label>Hash:</Label>
+          <LinkHash value={hash} to={`/apps/eu?q=${hash}`} />         
+       </ItemContainerRow>
+       <ItemContainerRow center width='33%' border='left'>
+          <Label>Uncle position:</Label>
+          <Value>{position}</Value>       
+       </ItemContainerRow>
+     </ItemContainer>
+   </Item>   
+  );
+}
+
+
