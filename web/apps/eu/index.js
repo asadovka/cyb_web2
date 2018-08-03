@@ -24,11 +24,73 @@ class App extends React.Component {
   render() {
     const { block } = this.state;
 
+    if (!block) return null;
+
     return (
-      <div>
-        <h1>eth uncle block</h1>
-        {block && <div>{JSON.stringify(block)}</div>}
-      </div>
+      <Container>
+        <Title>Ethereum uncle #{block.number}</Title>
+        <Section title='General'>
+          <SectionContent >
+            <Content>
+              <VerticalLabel>UTC time:</VerticalLabel>
+              <div>{(new Date(block.timestamp)).toLocaleString("en-US")}</div>
+            </Content>
+          </SectionContent>
+          <SectionContent>
+            <Content>
+              <VerticalLabel>Hash:</VerticalLabel>
+              <LinkHash value={block.hash}/>
+            </Content>
+          </SectionContent>
+          <SectionContent>
+            <Content>
+            <VerticalLabel>Parent block:</VerticalLabel>
+            <div><a href={'/apps/eb?q=' + block.blockNumber}>{block.blockNumber}</a></div>
+            </Content>
+          </SectionContent>
+          <SectionContent>
+            <Content>
+            <VerticalLabel>Parent hash:</VerticalLabel>
+            <LinkHash value={block.blockHash}/>
+            </Content>
+          </SectionContent>
+        </Section>
+
+        <Section>
+          <SectionContent title='Blockchain specific'>
+            <Details>
+              <DetailsRow>
+                <Label>level</Label>
+                <Value>{block.position}</Value>
+              </DetailsRow>
+            </Details>
+          </SectionContent>
+        </Section>
+
+        <Section>
+          <SectionContent title='Mining'>
+            <Details>
+              <DetailsRow>
+                <Label>miner</Label>
+                <Value><LinkHash value={block.miner}/></Value>
+              </DetailsRow>
+            </Details>
+             
+          </SectionContent>
+        </Section>
+
+        <Section>
+          <SectionContent title='Rewards'>
+            <Details>
+              <DetailsRow>
+                <Label>uncle inclusion reward</Label>
+                <Value>{block.uncleReward}</Value>
+              </DetailsRow>
+            </Details>
+          </SectionContent>
+        </Section>
+
+      </Container>
     );
   }
 }
