@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 import { withNotes, WithNotes } from '@storybook/addon-notes';
 import { Welcome } from '@storybook/react/demo';
-import someMarkdownText from '../README.md';
+// import someMarkdownText from '../README.md';
 
 import "../app/src/global.less";
 
@@ -31,7 +31,7 @@ import {
 
 
 storiesOf('home', module)
-.add('state1', withNotes(someMarkdownText)(() => 
+.add('state1', withNotes('dd')(() => 
   <BGWrapper>
     <TopPanel>
       <Container>
@@ -70,7 +70,7 @@ storiesOf('home', module)
     </Container>
   </BGWrapper>
 ))
-.add('state2', withNotes(someMarkdownText)(() => 
+.add('state2', withNotes('')(() => 
   <BGWrapper>
     <TopPanel>
       <MetamaskLogo />
