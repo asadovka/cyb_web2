@@ -11,9 +11,24 @@ import Test from './containers/Test/';
 
 const store = configureStore();
 
+
+import {Router, Route, browserHistory} from "react-router";
+
+
+const Root = () => (
+  <Router history={browserHistory}>
+    <Route path={"/:q::app"} component={App}/>
+    <Route path={"/::app"} component={App}/>
+    <Route path={"/"} component={App}/>
+    <Route path={"/test"} component={Test}/>
+  </Router>
+);
+
+    // 
+
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Root/>
   </Provider>,
   document.getElementById("root")
 );
