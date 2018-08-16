@@ -1,13 +1,4 @@
-
-<h1 align="center">
-cyb
-</h1>
-
-
-<h3 align="center">
-Front door to blockchain universe
-</h3>
-
+# Cyb: Front door to blockchain universe
 
 # Overview
 
@@ -29,12 +20,12 @@ Cyb is a blockchain browser with integrated DApp platform. Browser consists of t
 
 # Principles
 
-There are sereral key principles of cyb behavior, design and development.
+There are several key principles of cyb behavior, design and development.
 
 
 ## 1. Users
 
-We focus on developers and advanced blockchain users (Metamask users). But cyb is also friendly for everyone who wants to interract with blockchains and decentralized systems.
+We focus on developers and advanced blockchain users (Metamask users). But cyb is also friendly for everyone who wants to interact with consensus computers.
 
 ### 1.1. User activity types
 
