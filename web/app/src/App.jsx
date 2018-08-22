@@ -389,6 +389,7 @@ const apps = {
   ec: 'ec/',
   eu: 'eu/',
   tokens: 'tokens/',
+  token: 'token/',
   appstore: 'appstore/',
   createapp: 'createapp/',
   ipns: '-',

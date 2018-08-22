@@ -1,24 +1,55 @@
 
 function getQueryStringValue (key) {  
   return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-}  
+}
 
-// var _search = function(q) {
-//   return axios.get(`http://api.cybersearch.io/search?query=${q}`)
-//   .then(response => response.data)
-// }
+var getTokenList = function() {
+  return axios.get(`http://api.cybermarkets.io/exchanges/tokens`)
+    .then(response => response.data)
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+    this.state = {
+      tokens: [],
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ loading: true })
+
+    getTokenList()
+      .then(response => {
+        this.setState({  
+          tokens: response,
+          loading: false
+         })
+      });
   }
 
   render() {
-    const { items } = this.state;
+    const { tokens, loading } = this.state;
+
+    if (loading) {
+      return (
+        <div>Loading ... </div>
+        )
+    } 
+    
     return (
       <div>
-        tokens
+        <h1>Tokens</h1>
+
+        <ul>
+          {
+            tokens
+            .map( token => {
+              return (<li> <a href={`/token?q=${token.symbol}`}> {token.name} </a></li>)
+            }) 
+          }
+        </ul>
       </div>
     );
   }
