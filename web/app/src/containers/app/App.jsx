@@ -34,7 +34,6 @@ import {
 } from '../../components/searchresults/';
 
 import IdBar from '../../components/idbar/';
-
 import Cyb from '../../utils/cyb';
 
 const cyb = new Cyb('http://cyberd.network');
@@ -47,37 +46,17 @@ import {
   Loading
 } from '../../components/Test/';
 
-import axios from 'axios';
-
-// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
-function bytesToSize(bytes) {
-   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-   if (bytes == 0) return '0 Byte';
-   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-}
-
-function nFormatter(num, digits) {
-  var si = [
-    { value: 1, symbol: "" },
-    { value: 1E3, symbol: " k" },
-    { value: 1E6, symbol: " M" },
-    { value: 1E9, symbol: " B" },
-    { value: 1E12, symbol: " T" },
-    { value: 1E15, symbol: " P" },
-    { value: 1E18, symbol: " E" }
-  ];
-  var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-  var i;
-  for (i = si.length - 1; i > 0; i--) {
-    if (num >= si[i].value) {
-      break;
-    }
-  }
-  return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
-}
- 
+import axios from 'axios'; 
 import { browserHistory } from 'react-router'
+
+
+
+
+import SearchBox from './SearchBox'
+
+
+
+
 
 window.navigateBrowser = function(url) {
   alert(url)
@@ -125,13 +104,7 @@ class App extends Component {
       url: url,  
       menuOpen: false,    
 
-      metamaskUse: false,
-
-      transactionsCount: 1441341424,
-      blockchains: 2,
-      indexSizeBytes: 547722617454,
-
-      tokensCount: 0      
+      metamaskUse: false
     }
   }
 
@@ -175,22 +148,6 @@ class App extends Component {
     }
     this.timer = setInterval(check, 2000)
     check();
-
-    axios.get('http://api.cybersearch.io/search/stats')
-      .then(response => {
-        this.setState({
-          transactionsCount: response.data.transactionsCount,
-          blockchains: response.data.blockchains,
-          indexSizeBytes: response.data.indexSizeBytes
-        })
-      })
-
-    axios.get('http://api.cybermarkets.io/exchanges/tokens/count')
-      .then(response => {
-        this.setState({
-          tokensCount: response.data
-        })
-      })
   }
 
   componentWillUnmount() {
@@ -349,26 +306,7 @@ class App extends Component {
             <Logo onClick={(e) => { e.preventDefault(); this.search(); }}>logo</Logo>
           </PanelLeft>
           <SearchFormPanel>
-          <div style={{ display: 'flex'}}>
-          {app && <div style={{ 
-            background: 'rgba(255, 255, 255, 0.25)',
-    color: '#fff',
-    padding: '14px 30px',
-    marginBottom: '5px',
-    fontSize: '24px',
-    width: 130,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }}>{app}</div>}
-          <SearchForm defaultValue={search} inputRef={node => {
-            this.input = node;
-          }}  onSubmit={this.search} />
-          </div>
-                <Legend>
-                   Search in <strong>{nFormatter(transactionsCount, 1)}</strong>&nbsp; transactions in <strong>{blockchains}</strong>&nbsp;
-                   blockchains with <strong>{tokensCount}</strong> parsed tokens. Database size: <strong>{bytesToSize(indexSizeBytes)}</strong>
-                </Legend>
+            <SearchBox app={app} search={search} />
           </SearchFormPanel>
           <PanelRight>
             <IdBar />
@@ -382,7 +320,7 @@ class App extends Component {
 
      </div>
 );
-    
+
   }
 }
 
