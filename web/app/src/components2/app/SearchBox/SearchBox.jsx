@@ -10,10 +10,17 @@ export const Legend = ({ children }) => (
 
 let input;
 export const SearchForm = ({ inputRef, ...props }) => {
+  
   const onSubmit = (e) => {
     e.preventDefault();
     if (props.onSubmit) props.onSubmit(input.value)
   }
+
+  const onClick = (e) => {
+    e.preventDefault();
+    if (props.onSubmit) props.onSubmit(input.value)
+  }
+
   return (
     <form onSubmit={onSubmit} className={styles.inputContainer}>
       <input 
@@ -25,7 +32,7 @@ export const SearchForm = ({ inputRef, ...props }) => {
           if (inputRef) inputRef(node);
         }} 
       />
-      <span className={styles.inputIcone}/>
+      <span className={styles.inputIcone} onClick={onClick}/>
     </form>
   );
 }

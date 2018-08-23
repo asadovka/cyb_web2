@@ -133,21 +133,20 @@ class App extends Component {
       menuOpen: false
     })
 
-    this.input.value = search;
     browserHistory.push('/' + search + ':' + appName + (hash ? `#${hash}` : ''))
   } 
 
   componentDidMount() {
     // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
     // find better solution
-    const check = () => {
-      cyb.checkMetomask()
-        .then(metamaskUse => this.setState({
-          metamaskUse
-        }))
-    }
-    this.timer = setInterval(check, 2000)
-    check();
+    // const check = () => {
+    //   cyb.checkMetomask()
+    //     .then(metamaskUse => this.setState({
+    //       metamaskUse
+    //     }))
+    // }
+    // this.timer = setInterval(check, 2000)
+    // check();
   }
 
   componentWillUnmount() {
@@ -306,7 +305,7 @@ class App extends Component {
             <Logo onClick={(e) => { e.preventDefault(); this.search(); }}>logo</Logo>
           </PanelLeft>
           <SearchFormPanel>
-            <SearchBox app={app} search={search} />
+            <SearchBox app={app} inputText={search} onSearch={this.search} />
           </SearchFormPanel>
           <PanelRight>
             <IdBar />
