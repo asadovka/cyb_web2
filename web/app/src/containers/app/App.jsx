@@ -3,8 +3,7 @@ import {
   Layout,
   AppHeader,
   AppContent,
-  AppMenu,
-  Menu, MenuItem,
+  AppMenu
 } from '../../components/AppLayout/';
 
 
@@ -29,9 +28,7 @@ const cyb = new Cyb('http://cyberd.network');
 
 import {
   Panel, PanelLeft, PanelRight,
-  SearchFormPanel ,
-  Logo,
-  HamburgerMenu,
+  SearchFormPanel,
   Loading
 } from '../../components/Test/';
 
@@ -40,10 +37,9 @@ import { browserHistory } from 'react-router'
 
 
 
-
 import SearchBox from './SearchBox'
 import AppsPanel from './AppsPanel'
-
+import MenuAndLogo from './MenuAndLogo'
 
 
 
@@ -91,7 +87,6 @@ class App extends Component {
       search,
       app,
       url: url,  
-      menuOpen: false
     }
   }
 
@@ -100,8 +95,7 @@ class App extends Component {
       this.setState({
         search: '',
         app: null,
-        url: null,  
-        menuOpen: false,            
+        url: null  
       });
       //this.input.value = '';
       browserHistory.push('/')
@@ -116,8 +110,7 @@ class App extends Component {
     this.setState({
       search,
       app: appName,
-      url,
-      menuOpen: false
+      url
     })
 
     browserHistory.push('/' + search + ':' + appName + (hash ? `#${hash}` : ''))
@@ -131,8 +124,7 @@ class App extends Component {
     this.setState({
       search,
       app: appName,
-      url,
-      menuOpen: false
+      url
     })
 
     browserHistory.push('/' + search + ':' + appName)
@@ -168,14 +160,8 @@ class App extends Component {
     browserHistory.push('/' + newQ + ':' + newApp + window.location.hash);
   }
 
-  toggle = () => {
-    this.setState({
-      menuOpen: !this.state.menuOpen
-    })
-  }
-
   render() {
-    const { app, url, search, menuOpen } = this.state;
+    const { app, url, search } = this.state;
 
     let src = `/apps/${url}?q=${search}${window.location.hash}`;
     if (app === 'ipns') {
@@ -217,18 +203,11 @@ class App extends Component {
       <div style={{ background: '#eff3f6', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <div style={{  left: 0, right: 0, minHeight: (!extend) ? 550 : 109 }}>
       <Panel open={extend}>
-        
 
           <PanelLeft>
-            <HamburgerMenu open={menuOpen} onClick={this.toggle}>
-              <Menu open={true} >
-                <MenuItem onClick={(e) => { e.preventDefault(); this.search('42.exp') }} icon='explorer' >Ethereum</MenuItem>
-                <MenuItem onClick={(e) => { e.preventDefault(); this.search('.chainger') }} icon='chaingear' >Chaingear</MenuItem>
-                <MenuItem onClick={(e) => { e.preventDefault(); this.search('.tokens') }} icon='tokens' >Tokens</MenuItem>
-              </Menu>
-            </HamburgerMenu>
-            <Logo onClick={(e) => { e.preventDefault(); this.search(); }}>logo</Logo>
+            <MenuAndLogo search={this.search} />
           </PanelLeft>
+
           <SearchFormPanel>
             <SearchBox app={app} inputText={search} onSearch={this.search} />
           </SearchFormPanel>

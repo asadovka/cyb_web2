@@ -53,14 +53,8 @@ export const AppSecondMenu = ({ children, open }) => (
   </div>
 );
 
-
-
-
-
-export { Menu, MenuItem } from './Menu/';
 import { Switcher } from './Switcher/';
 export { Switcher };
-
 
 export const LayoutSwitcher = ({ children, open }) => (
   <div className={styles.layoutSwitcher + ' ' + (open ? styles.layoutSwitcherOpen : '')}>

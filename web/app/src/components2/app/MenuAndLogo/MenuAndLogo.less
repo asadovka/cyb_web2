@@ -1,0 +1,208 @@
+
+.menu {
+  padding-top: 60px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+}
+
+.menuItem a {
+  color: #cbcbcb;
+  font-size: 16px;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 65px;
+  position: relative;
+  width: 40px;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-decoration: none;
+
+  padding: 10px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.menuItem a::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: red;
+  position: absolute;
+  top: 10px;
+  left: 40%;
+  background: url(../MenuAndLogo/stratis.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;  
+}
+
+.menuItem .menuItem_omi::before {
+  background-image: url(../MenuAndLogo/omi.svg);
+}
+
+.menuItem .menuItem_stratis::before {
+  background-image: url(../MenuAndLogo/stratis.svg);  
+}
+
+.menuItem .menuItem_internet::before {
+  background-image: url(../MenuAndLogo/internet.svg);  
+}
+
+.menuItem .menuItem_refresh::before {
+  background-image: url(../MenuAndLogo/refresh.svg);  
+}
+
+.menuItem .menuItem_hitbox::before {
+  background-image: url(../MenuAndLogo/hitbox.svg);  
+}
+
+.menuItem .menuItem_mail::before {
+  background-image: url(../MenuAndLogo/mail.svg);  
+}
+
+.menuItem .menuItem_help::before {
+  background-image: url(../MenuAndLogo/help.svg);  
+}
+
+.menuItem .menuItem_chart::before {
+  background-image: url(../MenuAndLogo/chart.svg);  
+}
+
+.menuItem .menuItem_square-qube::before {
+  background-image: url(../MenuAndLogo/square-qube.svg);  
+}
+
+.menuItem .menuItem_explorer::before {
+  background-image: url(../MenuAndLogo/logo-1.svg);  
+}
+
+.menuItem .menuItem_chaingear::before {
+  background-image: url(../MenuAndLogo/logo-2.svg);  
+}
+
+.menuItem .menuItem_tokens::before {
+  background-image: url(../MenuAndLogo/logo-3.svg);  
+}
+
+.menuItem .menuItemActive {
+  color: #fff;
+}
+
+.menuItem .menuItemActive::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #438cef;
+    box-shadow: 4px 0px 11px 0 #4e99ff;
+}
+
+.menuItem a.menuItemActiveOpen {
+  width: auto;
+}
+
+.menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menuItem {
+
+}
+
+.popover {
+  top: 90px;
+  left: 0;
+  position: absolute;
+  background: #2e3842;
+  width: 328px;
+  min-height: 115px;
+  border-radius: 4px;
+  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.24);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s, opacity 0.5s;
+  padding: 20px;
+  z-index: 2;
+}
+
+.popover::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 26px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 14px solid #2e3842;  
+}
+
+.popoverOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hamburgerMenu {
+  width: 70px;
+  height: 70px;
+  // background: rgba(256, 256, 256, 0.2);
+  // border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.logo {
+  width: 54px;
+  height: 54px;
+  display: inline-block;
+  margin: 5px;
+  margin-left: 20px;
+  background: url(../MenuAndLogo/logo.svg) no-repeat center center;  
+  text-indent: -999999px;
+  cursor: pointer;
+  background-size: 54px 54px;
+}
+
+.switcher {
+  background: none;
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 26px 23px;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.switcherOpen {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.switcher span {
+  height: 2px;
+  display: block;
+  z-index: 2;
+  background: #fff;
+  transition: opacity 0.1s, transform 0.4s;
+  width: 100%;
+}
+
+.switcher span:nth-child(1) {
+  transform-origin: 0 0;
+  width: 100%;
+}
+
+.switcher span:nth-child(3) {
+  transform-origin: 0 100%;
+  width: 100%;
+}
