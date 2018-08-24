@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-
-import {
-  SearchForm
-} from '../../components/SearchForm/'
-
 import {
   Layout,
   AppHeader,
@@ -17,14 +12,8 @@ import {
   Container,
   BGWrapper,
   TopPanel,
-  Legend,
-  Items,
-  Item,
   LinkList,
-  LinkItem,
-  ItemTitle,
-  Image,
-  Arrow
+  LinkItem
 } from '../../components/home/';
 
 import {
@@ -53,7 +42,7 @@ import { browserHistory } from 'react-router'
 
 
 import SearchBox from './SearchBox'
-
+import AppsPanel from './AppsPanel'
 
 
 
@@ -102,9 +91,7 @@ class App extends Component {
       search,
       app,
       url: url,  
-      menuOpen: false,    
-
-      metamaskUse: false
+      menuOpen: false
     }
   }
 
@@ -116,7 +103,7 @@ class App extends Component {
         url: null,  
         menuOpen: false,            
       });
-      this.input.value = '';
+      //this.input.value = '';
       browserHistory.push('/')
 
       return;
@@ -135,24 +122,6 @@ class App extends Component {
 
     browserHistory.push('/' + search + ':' + appName + (hash ? `#${hash}` : ''))
   } 
-
-  componentDidMount() {
-    // https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md#ear-listening-for-selected-account-changes
-    // find better solution
-    // const check = () => {
-    //   cyb.checkMetomask()
-    //     .then(metamaskUse => this.setState({
-    //       metamaskUse
-    //     }))
-    // }
-    // this.timer = setInterval(check, 2000)
-    // check();
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer)
-  }
-
 
   menuNavigate = (e, appName, page) => {
     if (e) e.preventDefault();
@@ -219,53 +188,9 @@ class App extends Component {
 
     let loading = false;
 
-    const { transactionsCount, blockchains, indexSizeBytes, tokensCount, metamaskUse } = this.state;
-
-    let buttons = (
-      <Items>
-        <Item onClick={(e) => { e.preventDefault(); this.search('.appstore', '/new') }}>
-          <ItemTitle>App Store</ItemTitle>
-          <Image type='appStore'/>
-          <Arrow />
-        </Item>
-
-        <Item  onClick={(e) => { e.preventDefault(); this.search('.chainger', '/new') }}>
-          <ItemTitle>Create Register</ItemTitle>
-          <Image type='createRegistry'/>
-          <Arrow />
-        </Item>
-        <Item onClick={(e) => { e.preventDefault(); this.search('.createapp', '/new') }}>
-          <ItemTitle>Create App</ItemTitle>
-          <Image type='createApp'/>
-          <Arrow />
-        </Item>
-      </Items>
-    );
-
-    if (!metamaskUse) {
-      buttons = (
-        <Items>
-          <Item to='https://metamask.io/' target="_blank">
-            <Image type='appStore'/>
-            <ItemTitle>Please use<br/> metamask</ItemTitle>
-          </Item>
-          <Item disabled={true}>
-            <ItemTitle>Create Registry</ItemTitle>
-            <Image type='createRegistry'/>
-            <Arrow />
-          </Item>
-          <Item disabled={true}>
-            <ItemTitle>Create App</ItemTitle>
-            <Image type='createApp'/>
-            <Arrow />
-          </Item>
-        </Items>
-      );
-    }
-
     let content = (
       <Container>
-        {buttons}
+        <AppsPanel search={this.search} />
         <LinkList>
 
           <LinkItem target="_blank" to='https://github.com/cybercongress' icon='github'>GitHub</LinkItem>

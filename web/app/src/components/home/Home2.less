@@ -12,57 +12,9 @@
   box-sizing: content-box;
 }
 
-
-
-
-
-
-
-.items {
-  display: flex;
-  height: 356px;
-  margin-top: -140px;
-  position: relative;
-  box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.21);
-  margin-bottom: 100px;
-}
-
-
-.item {
-  width: 34%;
-  background-color: #fff;
-  cursor: pointer;
-  border-right: 1px solid #d6d6d6;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 50px;
-  padding-top: 30px;
-  font-size: 14px;
-  color: #000;
-  text-decoration: none;
-}
-
 [disabled].item * {
   opacity: 0.3;
 }
-
-.item:last-child {
-  border-right: none;
-}
-
-.item:hover:not([disabled]) {
-  transform: scale(1.1);
-  box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.21);
-  background-color: #eff3f6;
-  border-right: none;
-}
-
 
 .linkList {
   display: flex;
@@ -88,77 +40,6 @@
   padding-bottom: 12px;
 }
 
-.linkItemgithub::before {
-  background: url('../home/github.svg') no-repeat center center;
-}
-
-.linkItemroadmap::before {
-  background: url('../home/route.svg') no-repeat center center;
-}
-
-.linkItemcybernode::before {
-  background: url('../home/startup.svg') no-repeat center center;
-}
-
-.linkItemdashboard::before {
-  background: url('../home/projection.svg') no-repeat center center;
-}
-
-.linkItemknowledge::before {
-  background: url('../home/brain.svg') no-repeat center center;
-}
-
-.linkItemblog::before {
-  background: url('../home/contract.svg') no-repeat center center;
-}
-
-
-.arrow {
-  width: 16px;
-  height: 13px;
-  background: url('../home/arrow.svg') no-repeat center center;
-  display: block;
-}
-
-
-.itemTitle {
-  font-size: 24px;
-  color: #438cef;
-  font-weight: bold;
-  text-align: center;
-}
-
-.itemTitleGray {
-  color: #979797;
-  font-size: 26px;
-}
-
-
-.image {
-  width: 174px;
-  height: 155px;
-  margin-top: 10px;
-  flex-shrink: 0;
-  background-color: red;
-}
-
-
 // .imageregister {
 //   background: url('../home/entity.svg') no-repeat center center;
-// }
-
-.imageappStore {
-  background: url('../home/fox-portfolio.svg') no-repeat center center;
-}
-
-
-.imagecreateRegistry {
-  background: url('../home/fox-sleep.svg') no-repeat center center;
-}
-
-.imagecreateApp {
-  background: url('../home/metamask.svg') no-repeat center center;
-}
-
-
-
+// }s

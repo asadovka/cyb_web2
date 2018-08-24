@@ -40,14 +40,11 @@ class SearchBox extends Component {
 	      })
   	}
 
- 	componentWillReceiveProps(nextProps, nextState) {
-
- 		console.log(nextProps, this.props)
-
- 		if (this.props.inputText != nextProps.inputText) {
- 			this.input.value = nextProps.inputText
- 		}
- 	}
+ 	// componentWillReceiveProps(nextProps, nextState) {
+ 	// 	if (this.props.inputText != nextProps.inputText) {
+ 	// 		this.input.value = nextProps.inputText
+ 	// 	}
+ 	// }
 
 	render() {
 
@@ -66,16 +63,16 @@ class SearchBox extends Component {
 
 		return ( 
 			<div>
-          <div style={{ display: 'flex'}}>
-          {app && <AppPrefix>{app}</AppPrefix>}
-          <SearchForm defaultValue={inputText} inputRef={node => {
-            this.input = node;
-          }}  onSubmit={onSearch} />
-          </div>
-                <Legend>
-                   Search in <strong>{nFormatter(transactionsCount, 1)}</strong>&nbsp; transactions in <strong>{blockchains}</strong>&nbsp;
-                   blockchains with <strong>{tokensCount}</strong> parsed tokens. Database size: <strong>{bytesToSize(indexSizeBytes)}</strong>
-                </Legend>
+	          <div style={{ display: 'flex'}}>
+	          {app && <AppPrefix>{app}</AppPrefix>}
+	          <SearchForm defaultValue={inputText} inputRef={node => {
+	            this.input = node;
+	          }}  onSubmit={onSearch} />
+	          </div>
+	                <Legend>
+	                   Search in <strong>{nFormatter(transactionsCount, 1)}</strong>&nbsp; transactions in <strong>{blockchains}</strong>&nbsp;
+	                   blockchains with <strong>{tokensCount}</strong> parsed tokens. Database size: <strong>{bytesToSize(indexSizeBytes)}</strong>
+	                </Legend>
           	</div>
           )
 	}

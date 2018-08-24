@@ -1,4 +1,7 @@
 import * as React from 'react';
+
+const styles = require("./Home2.less");
+
 import { Link as LinkRouter} from 'react-router';
 
 const Link = (props) => {
@@ -6,8 +9,6 @@ const Link = (props) => {
 
   return <LinkRouter {...props} />
 };
-
-const styles = require("./Home2.less");
 
 export const Container = ({ children }) => (
   <div className={styles.container}>
@@ -31,59 +32,14 @@ export const TopPanel = ({ children }) => (
   </div>
 );
 
-
-
-export const Legend = ({ children }) => (
-  <span className={styles.legend}>
-    {children}
-  </span>
-);
-
-
-export const Items = ({ children }) => (
-  <div className={styles.items}>
-    {children}
-  </div>
-);
-
-
-export const Item = ({ children, to, ...props }) => (
-  props.disabled ? (
-    <span className={styles.item} {...props}>{children}</span>
-    ) : (
-    <Link to={to} className={styles.item} {...props}>
-    {children}
-  </Link>
-  )
-);
-
-
 export const LinkList = ({ children }) => (
   <nav className={styles.linkList}>
     {children}
   </nav>
 );
 
-
-
 export const LinkItem = ({ children, to, icon, ...props }) => (
   <Link to={to} className={styles.linkItem + ' ' + styles[`linkItem${icon}`]} {...props}>
     {children}
   </Link>
-);
-
-export const Arrow = () => (
-  <span className={styles.arrow}/>
-);
-
-
-export const ItemTitle = ({ children, gray }) => (
-  <span className={styles.itemTitle + ' ' + (gray ? styles.itemTitleGray : '')}>
-    {children}
-  </span>
-);
-
-export const Image = ({ type }) => (
-  <div className={styles.image + ' ' + styles[`image${type}`]}>
-  </div>
 );
