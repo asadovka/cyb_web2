@@ -1,31 +1,13 @@
 import React, { Component } from 'react';
-
-
-import {
-  Container
-} from '../../components/home/';
-
-
-import IdBar from '../../components/idbar/';
-
-
-import {
-  Panel, PanelLeft, PanelRight,
-  SearchFormPanel,
-  Loading
-} from '../../components/Test/';
-
 import { browserHistory } from 'react-router'
-
-
-
 import SearchBox from './SearchBox'
 import AppsPanel from './AppsPanel'
 import MenuAndLogo from './MenuAndLogo'
-import { LinkList, LinkItem } from '../../components2/app/NavigateLinks/NavigateLinks'
+import IdBar from './IdBar';
 
-
-
+import { LinkList, LinkItem } from '../../components/app/NavigateLinks/NavigateLinks'
+import { Container, Panel, PanelLeft, PanelRight, SearchFormPanel, AppIframe, AppContainer, AppHeader, AppContent } from '../../components/app/Layout/Layout'
+import Loading from '../../components/app/Loading/Loading';
 
 const apps = {
   cyber: 'cyber/',
@@ -100,8 +82,7 @@ class App extends Component {
   } 
 
 
-  onLoad = (e) => {
-    const innerWindow = this.refs.iframe.contentWindow;
+  onLoad = (innerWindow) => {
     //e.target.contentWindow;
     innerWindow.addEventListener('hashchange', () => {
       const hash = innerWindow.location.hash.replace(/#/, '');      
@@ -163,39 +144,39 @@ class App extends Component {
 
     if (extend) {
       content = (
-        <iframe name='iframe' onLoad={this.onLoad} ref='iframe'  style={{ boxSizing: 'border-box', minHeight: '100vh', border: 'none' }} src={src}  width="100%" height="100%" >
-                 iframe not supported!  
-        </iframe>
+        <AppIframe name='iframe' iframeOnLoad={this.onLoad} src={src}  width="100%" height="100%" >
+          iframe not supported!  
+        </AppIframe>
       );
     }
 
     return (
-      <div style={{ background: '#eff3f6', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <div style={{  left: 0, right: 0, minHeight: (!extend) ? 550 : 109 }}>
-      <Panel open={extend}>
+      <AppContainer>
+        <AppHeader open={extend}>
+          <Panel open={extend}>
+              <PanelLeft>
+                <MenuAndLogo search={this.search} />
+              </PanelLeft>
 
-          <PanelLeft>
-            <MenuAndLogo search={this.search} />
-          </PanelLeft>
+              <SearchFormPanel>
+                <SearchBox 
+                  app={app} 
+                  inputText={search} 
+                  onSearch={this.search} 
+                />
+              </SearchFormPanel>
+              <PanelRight>
+                <IdBar />
+              </PanelRight>
+          </Panel>
+        </AppHeader>
 
-          <SearchFormPanel>
-            <SearchBox 
-              app={app} 
-              inputText={search} 
-              onSearch={this.search} 
-            />
-          </SearchFormPanel>
-          <PanelRight>
-            <IdBar />
-          </PanelRight>
- </Panel>
- </div>
-  <div style={{  flexGrow: 1 }}>
-  {loading && <Loading />}
-  {content}
-  </div>
+        <AppContent>
+          {loading && <Loading />}
+          {content}
+        </AppContent>
 
-     </div>
+     </AppContainer>
 );
 
   }

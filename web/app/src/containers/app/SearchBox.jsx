@@ -5,7 +5,7 @@ import {
 	Legend,
 	SearchForm,
 	AppPrefix
-} from '../../components2/app/SearchBox/SearchBox'
+} from '../../components/app/SearchBox/SearchBox'
 
 import { bytesToSize, nFormatter } from '../../utils/format'
 

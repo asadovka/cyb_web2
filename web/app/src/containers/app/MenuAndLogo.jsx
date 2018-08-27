@@ -4,7 +4,7 @@ import {
   MenuItem, 
   Logo,
   HamburgerMenu
-} from '../../components2/app/MenuAndLogo/MenuAndLogo';
+} from '../../components/app/MenuAndLogo/MenuAndLogo';
 
 class MenuAndLogo extends Component {
 	state = {

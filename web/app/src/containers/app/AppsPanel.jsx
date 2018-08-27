@@ -6,7 +6,7 @@ import {
   ItemTitle,
   Image,
   Arrow
-} from '../../components2/app/AppsPanel/AppsPanel'; 
+} from '../../components/app/AppsPanel/AppsPanel'; 
 
 const cyb = new Cyb('http://cyberd.network');
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const styles = require("./idbar.less");
+const styles = require("./IdBar.less");
 
 
 const IdBar = (props) => (
