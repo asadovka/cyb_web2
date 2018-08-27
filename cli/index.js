@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-
 const program = require('commander');
 
 const IPFS = require('ipfs-api');
-var minimatch = require('minimatch')
-var mkdirp = require('mkdirp')
+const minimatch = require('minimatch')
+const mkdirp = require('mkdirp')
 
 const ipfs = new IPFS({ host: 'localhost', port: 5001, protocol: 'http' });
 
@@ -13,15 +12,9 @@ const fs = require('fs');
 const path = require('path');
 const request = require('superagent');
 
-// const dirName = path.join(__dirname, process.argv[2]);
-// const appName = process.argv[3];
-
-// console.log('>>');
-
 var MODE_0666 = parseInt('0666', 8)
 var MODE_0755 = parseInt('0755', 8)
 var TEMPLATE_DIR = path.join(__dirname, 'template')
-
 
 /**
  * Copy file from template directory.
@@ -174,7 +167,8 @@ program
 	    version: '0.0.0',
 	    private: true,
 	    scripts: {
-	      start: 'node_modules/http-server/bin/http-server'
+    		prestart: 'npm install',
+    		start: 'node_modules/http-server/bin/http-server'
 	    },
 	    dependencies: {
 	      'http-server': '0.11.1'
@@ -183,11 +177,7 @@ program
   	}
 
   	write(path.join(appName, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
-
   });
 
 
 program.parse(process.argv);
-
-
-
