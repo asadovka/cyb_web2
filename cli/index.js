@@ -4,6 +4,8 @@
 const program = require('commander');
 
 const IPFS = require('ipfs-api');
+var minimatch = require('minimatch')
+var mkdirp = require('mkdirp')
 
 const ipfs = new IPFS({ host: 'localhost', port: 5001, protocol: 'http' });
 
@@ -15,6 +17,57 @@ const request = require('superagent');
 // const appName = process.argv[3];
 
 // console.log('>>');
+
+var MODE_0666 = parseInt('0666', 8)
+var MODE_0755 = parseInt('0755', 8)
+var TEMPLATE_DIR = path.join(__dirname, 'template')
+
+
+/**
+ * Copy file from template directory.
+ */
+
+function copyTemplate (from, to) {
+  write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), 'utf-8'))
+}
+
+/**
+ * Copy multiple files from template directory.
+ */
+
+function copyTemplateMulti (fromDir, toDir, nameGlob) {
+  fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
+    .filter(minimatch.filter(nameGlob, { matchBase: true }))
+    .forEach(function (name) {
+      copyTemplate(path.join(fromDir, name), path.join(toDir, name))
+    })
+}
+
+/**
+ * Make the given dir relative to base.
+ *
+ * @param {string} base
+ * @param {string} dir
+ */
+
+function mkdir (base, dir) {
+  var loc = path.join(base, dir)
+
+  console.log('   \x1b[36mcreate\x1b[0m : ' + loc + path.sep)
+  mkdirp.sync(loc, MODE_0755)
+}
+
+/**
+ * echo str > file.
+ *
+ * @param {String} file
+ * @param {String} str
+ */
+
+function write (file, str, mode) {
+  fs.writeFileSync(file, str, { mode: mode || MODE_0666 })
+  console.log('   \x1b[36mcreate\x1b[0m : ' + file)
+}
 
 program
   .version('0.0.4')
@@ -112,7 +165,25 @@ program
   .command('init <appName>')
   .description('Create scelete of app')
   .action((appName) => {
-  	console.log('not implemented yet :-(')
+
+  	mkdir(appName, '')
+  	copyTemplateMulti('', appName, '*.*')
+
+  	var pkg = {
+	    name: appName,
+	    version: '0.0.0',
+	    private: true,
+	    scripts: {
+	      start: 'node_modules/http-server/bin/http-server'
+	    },
+	    dependencies: {
+	      'http-server': '0.11.1'
+	    }
+
+  	}
+
+  	write(path.join(appName, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
+
   });
 
 
