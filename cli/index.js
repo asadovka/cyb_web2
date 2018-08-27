@@ -12,6 +12,8 @@ const fs = require('fs');
 const path = require('path');
 const request = require('superagent');
 
+const cliPkg = require('./package.json')
+
 var MODE_0666 = parseInt('0666', 8)
 var MODE_0755 = parseInt('0755', 8)
 var TEMPLATE_DIR = path.join(__dirname, 'template')
@@ -63,7 +65,7 @@ function write (file, str, mode) {
 }
 
 program
-  .version('0.0.4')
+  .version(cliPkg.version)
   .description('cli tool for add app in cyb env')
 
 
