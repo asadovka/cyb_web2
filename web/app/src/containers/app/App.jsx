@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
-import {
-  Layout,
-  AppHeader,
-  AppContent,
-  AppMenu
-} from '../../components/AppLayout/';
 
 
 import {
   Container,
-  BGWrapper,
-  TopPanel,
   LinkList,
   LinkItem
 } from '../../components/home/';
 
-import {
-  SearchContainer,
-  Title,
-  SearchItem
-} from '../../components/searchresults/';
 
 import IdBar from '../../components/idbar/';
-import Cyb from '../../utils/cyb';
 
-const cyb = new Cyb('http://cyberd.network');
 
 import {
   Panel, PanelLeft, PanelRight,
@@ -32,7 +17,6 @@ import {
   Loading
 } from '../../components/Test/';
 
-import axios from 'axios'; 
 import { browserHistory } from 'react-router'
 
 
@@ -43,9 +27,6 @@ import MenuAndLogo from './MenuAndLogo'
 
 
 
-window.navigateBrowser = function(url) {
-  alert(url)
-}
 
 const apps = {
   cyber: 'cyber/',
@@ -90,14 +71,14 @@ class App extends Component {
     }
   }
 
-  search = (value, hash) => {
+  search = (value, hash, input) => {
     if (!value) {
       this.setState({
         search: '',
         app: null,
         url: null  
       });
-      //this.input.value = '';
+      if (input) input.value = '';
       browserHistory.push('/')
 
       return;
@@ -105,6 +86,9 @@ class App extends Component {
     const search = value.split('.')[0];
     let appName = (value.split('.')[1] || 'CYBER').toLowerCase();
     if (!apps[appName]) appName = 'cyber';
+    
+
+    if (input) input.value = search;
 
     let url = apps[appName] || apps['cyber'];
     this.setState({
@@ -116,19 +100,6 @@ class App extends Component {
     browserHistory.push('/' + search + ':' + appName + (hash ? `#${hash}` : ''))
   } 
 
-  menuNavigate = (e, appName, page) => {
-    if (e) e.preventDefault();
-
-    const search = '';
-    let url = apps[appName] || apps['cyber'];
-    this.setState({
-      search,
-      app: appName,
-      url
-    })
-
-    browserHistory.push('/' + search + ':' + appName)
-  }
 
   onLoad = (e) => {
     const innerWindow = this.refs.iframe.contentWindow;
@@ -209,7 +180,11 @@ class App extends Component {
           </PanelLeft>
 
           <SearchFormPanel>
-            <SearchBox app={app} inputText={search} onSearch={this.search} />
+            <SearchBox 
+              app={app} 
+              inputText={search} 
+              onSearch={this.search} 
+            />
           </SearchFormPanel>
           <PanelRight>
             <IdBar />

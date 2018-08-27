@@ -40,12 +40,6 @@ class SearchBox extends Component {
 	      })
   	}
 
- 	// componentWillReceiveProps(nextProps, nextState) {
- 	// 	if (this.props.inputText != nextProps.inputText) {
- 	// 		this.input.value = nextProps.inputText
- 	// 	}
- 	// }
-
 	render() {
 
 		const {
@@ -58,16 +52,17 @@ class SearchBox extends Component {
 		const {
 			app,
 			inputText,
-			onSearch
+      onSearch
 		} = this.props;
 
 		return ( 
 			<div>
 	          <div style={{ display: 'flex'}}>
 	          {app && <AppPrefix>{app}</AppPrefix>}
-	          <SearchForm defaultValue={inputText} inputRef={node => {
-	            this.input = node;
-	          }}  onSubmit={onSearch} />
+	          <SearchForm 
+              defaultValue={inputText} 
+              onSubmit={onSearch} 
+            />
 	          </div>
 	                <Legend>
 	                   Search in <strong>{nFormatter(transactionsCount, 1)}</strong>&nbsp; transactions in <strong>{blockchains}</strong>&nbsp;
