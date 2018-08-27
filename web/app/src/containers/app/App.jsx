@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 
 import {
-  Container,
-  LinkList,
-  LinkItem
+  Container
 } from '../../components/home/';
 
 
@@ -24,6 +22,7 @@ import { browserHistory } from 'react-router'
 import SearchBox from './SearchBox'
 import AppsPanel from './AppsPanel'
 import MenuAndLogo from './MenuAndLogo'
+import { LinkList, LinkItem } from '../../components2/app/NavigateLinks/NavigateLinks'
 
 
 

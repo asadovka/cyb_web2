@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import {Provider} from "react-redux";
 import "./global.less";
 import App from './containers/app/App';
 import {Router, Route, browserHistory} from "react-router";
