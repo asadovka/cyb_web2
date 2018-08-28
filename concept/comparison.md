@@ -6,3 +6,26 @@ Variants to fork:
 - VScode
 - Electron based
 
+| |Parity  | Mist  | Beaker  | VScode  | Electron  |
+|---|---|---|---|---|---|
+| Wallet  |   |   |   |   |   |
+|  App Store |   |   |   |   |   |
+|  App deployer |   |   |   |   |   |
+|  Keystore |   |   |   |   |   |
+| Tx Status  |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
+|   |   |   |   |   |   |
