@@ -13,7 +13,7 @@ Variants to fork:
 |  App deployer |   |   |   |   |   |
 |  Keystore |   |   |   |   |   |
 | Tx Status  |   |   |   |   |   |
-|   |   |   |   |   |   |
+| App permissions  |   |   |   |   |   |
 |   |   |   |   |   |   |
 |   |   |   |   |   |   |
 |   |   |   |   |   |   |
