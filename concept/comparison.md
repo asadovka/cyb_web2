@@ -102,3 +102,55 @@ Variants to fork:
 - **+** Permission and security features for users
 - **+** In active development and releasing by Parity Tech
 - **-** Non stable working 
+
+### `Beaker`
+
+**Features**:
+- Working web2 browser
+- DAT support
+- Electron based
+- Released for all platforms
+- Built in editor
+
+**Pros**:
+- Fully functional UI (navigation,core apps: history, settings)
+- Custom project/website publisher
+- DAT support (network status, seed options)
+
+**Cons**:
+- No wallet
+- No app store
+- No frequent releases 
+- Weak community
+
+**Totals**:
+- Stable UI
+- Core apps
+- DAT support
+- No blockchain integration
+
+**Extracts**:
+
+### `VScode`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
+**Extracts**:
+
+### `Atom`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
+**Extracts**:
+
+### `Electron`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
+**Extracts**:
