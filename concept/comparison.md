@@ -6,34 +6,20 @@ Variants to fork:
 - VScode
 - Electron based
 
-| |Parity  | Mist  | Beaker  | VScode  | Electron  | Atom | 
+| |Parity  | Mist  | Beaker  | VScode  | Electron  | Atom |
 |---|---|---|---|---|---|---|
 | Wallet  |   |   |   |   |   |   |
-|  App Store |   |   |   |   |   |   |
-|  App deployer |   |   |   |   |   |   |
-|  Keystore |   |   |   |   |   |   |
-| Tx Status  |   |   |   |   |   |   |
+| App Store |   |   |   |   |   |   |
+| App publisher |   |   |   |   |   |   |
 | App permissions  |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
-|   |   |   |   |   |   |   |
+| Core apps |   |   |   |   |   |   |
+| Node monitor |   |   |   |   |   |   |
 
-### `Mist (Ethereum Foundation)` 
+
+### `Mist (Ethereum Foundation)`
 
 **Features**:
-- Web2/dapps browsing page browsing 
+- Web2/dapps browsing page browsing
 - Wallet
 - Contracts deploying, watching
 - Light/Remotes nodes support
@@ -51,13 +37,13 @@ Variants to fork:
 - Non functional wallet at all
 - Bad transaction fee management
 - Proposed as non-secure by default
-- Don't have permissions 
-- dapps browsing not stable and functional, actually not work 
+- Don't have permissions
+- dapps browsing not stable and functional, actually not work
 - Buggy user experience
 - working only with Geth from box
 - Use remote Infura nodes
-- There are no any big features set delivery since 2016 
-- Not frequent releases 
+- There are no any big features set delivery since 2016
+- Not frequent releases
 - There is no community
 - Used Meteor (migrates to react in progress)
 
@@ -71,7 +57,7 @@ Variants to fork:
 ### `Shell (Parity)`
 
 **Features**:
-- Wallet 
+- Wallet
 - Core dapps integration
 - Contracts deploying, watching
 - Basic marketplace from box
@@ -101,7 +87,7 @@ Variants to fork:
 - **+** Function wallet and good first steps to web3 browser
 - **+** Permission and security features for users
 - **+** In active development and releasing by Parity Tech
-- **-** Non stable working 
+- **-** Non stable working
 
 ### `Beaker`
 
@@ -120,7 +106,7 @@ Variants to fork:
 **Cons**:
 - No wallet
 - No app store
-- No frequent releases 
+- No frequent releases
 - Weak community
 
 **Totals**:
@@ -161,7 +147,7 @@ Variants to fork:
 - Way to build wallet/browser/app from scratch
 
 **Cons**:
-- Very hard to build wallet/browser/app from scratch 
+- Very hard to build wallet/browser/app from scratch
 
 **Extracts**:
 There is also [Muon](https://github.com/brave/muon), but there is the question about their future and maintenance
