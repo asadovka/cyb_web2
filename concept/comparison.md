@@ -129,28 +129,39 @@ Variants to fork:
 - DAT support
 - No blockchain integration
 
-**Extracts**:
-
 ### `VScode`
 
-**Features**:
 **Pros**:
+- Editor
+- A lot of users
+- Good UI
+
 **Cons**:
-**Totals**:
-**Extracts**:
+- Development and support by Microsoft
+- Need to build wallet/browser/app as plugins from scratch
 
 ### `Atom`
 
-**Features**:
 **Pros**:
+- Very good editor
+- Huge community
+- Huge amount of users
+- Development and support by Github
+- Good plugin system
+- Tons of goods (plugins)
+- Good UI
+- Stable working
+
 **Cons**:
-**Totals**:
-**Extracts**:
+- Development and support by Github (Microsoft owns GitHub)
+- Need to build wallet/browser/app as plugins from scratch
 
-### `Electron`
-
-**Features**:
+### `Raw Electron`
 **Pros**:
+- Way to build wallet/browser/app from scratch
+
 **Cons**:
-**Totals**:
+- Very hard to build wallet/browser/app from scratch 
+
 **Extracts**:
+There is also [Muon](https://github.com/brave/muon), but there is the question about their future and maintenance
