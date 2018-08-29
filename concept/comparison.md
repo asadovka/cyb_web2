@@ -86,8 +86,8 @@ Variants to fork:
 - Built in editor
 
 **Pros**:
-- fully functional UI (navigation,core apps: history, settings)
-- custom project/website publisher
+- Fully functional UI (navigation,core apps: history, settings)
+- Custom project/website publisher
 - DAT support (network status, seed options)
 
 **Cons**:
@@ -101,4 +101,29 @@ Variants to fork:
 - Core apps
 - DAT support
 - No blockchain integration
+
+**Extracts**:
+
+### `VScode`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
+**Extracts**:
+
+### `Atom`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
+**Extracts**:
+
+### `Electron`
+
+**Features**:
+**Pros**:
+**Cons**:
+**Totals**:
 **Extracts**:
