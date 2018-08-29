@@ -8,12 +8,12 @@ Variants to fork:
 
 | |Parity  | Mist  | Beaker  | VScode  | Electron  | Atom |
 |---|---|---|---|---|---|---|
-| Wallet  |   |   |   |   |   |   |
-| App Store |   |   |   |   |   |   |
-| App publisher |   |   |   |   |   |   |
-| App permissions  |   |   |   |   |   |   |
-| Core apps |   |   |   |   |   |   |
-| Node monitor |   |   |   |   |   |   |
+| Wallet  | +  | +  |   |   |   |   |
+| App Store | +  |   |   |   |   |   |
+| App publisher |  + |   | +  |   |   |   |
+| App permissions  | +  |   |   |   |   |   |
+| Core apps |   |   | +  |   |   |   |
+| Node monitor | +  | +  |   |   |   |   |
 
 
 ### `Mist (Ethereum Foundation)`
