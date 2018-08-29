@@ -30,7 +30,7 @@ Variants to fork:
 |   |   |   |   |   |   |   |
 |   |   |   |   |   |   |   |
 
-### `Mist` 
+### `Mist (Ethereum Foundation)` 
 
 **Features**:
 - Web2/dapps browsing page browsing 
@@ -62,16 +62,43 @@ Variants to fork:
 - Used Meteor (migrates to react in progress)
 
 **Totals**:
-- In general not developed and maintained
-- Non functional and buggy
+- **-** In general not developed and maintained
+- **-** Non functional and buggy
 
 **Extracts**:
 - with `parity --geth` Mist works with parity node (maybe)
 
-### `Parity`
+### `Shell (Parity)`
 
 **Features**:
+- Wallet 
+- Core dapps integration
+- Contracts deploying, watching
+- Basic marketplace from box
+- Permissions for applications
+- Light/Remotes nodes support
+- Electron based
+- Released for all platforms
+
 **Pros**:
+- Functional wallet
+- Good account management
+- Address book
+- Active development and releases
+- Permissions and dapps sandboxing
+- Development and support by Parity tech
+- Light client support
+- Set of core dapps
+- Notification
+- Open marketplace
+- Extra security (generated wallpapers)
+
 **Cons**:
+- Buggy
+- Non stable working, sometimes
+
 **Totals**:
-**Extracts**:
+- **+** Function wallet and good first steps to web3 browser
+- **+** Permission and security features for users
+- **+** In active development and releasing by Parity Tech
+- **-** Non stable working 
