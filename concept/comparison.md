@@ -75,3 +75,24 @@ Variants to fork:
 **Cons**:
 **Totals**:
 **Extracts**:
+
+### `Beaker`
+
+**Features**:
+- working web2 browser
+- DAT support
+- Electron based
+- Released for all platforms
+- Built in editor
+
+**Pros**:
+- fully functional UI (navigation, history, settings)
+- custom project/website publisher
+- DAT support (network status, seed options)
+
+**Cons**:
+- no wallet
+- no apps/plugins
+
+**Totals**:
+**Extracts**:
