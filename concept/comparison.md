@@ -79,20 +79,26 @@ Variants to fork:
 ### `Beaker`
 
 **Features**:
-- working web2 browser
+- Working web2 browser
 - DAT support
 - Electron based
 - Released for all platforms
 - Built in editor
 
 **Pros**:
-- fully functional UI (navigation, history, settings)
+- fully functional UI (navigation,core apps: history, settings)
 - custom project/website publisher
 - DAT support (network status, seed options)
 
 **Cons**:
-- no wallet
-- no apps/plugins
+- No wallet
+- No app store
+- No frequent releases 
+- Weak community
 
 **Totals**:
+- Stable UI
+- Core apps
+- DAT support
+- No blockchain integration
 **Extracts**:
