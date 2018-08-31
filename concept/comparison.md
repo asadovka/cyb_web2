@@ -6,14 +6,21 @@ Variants to fork:
 - VScode
 - Electron based
 
-| |Parity  | Mist  | Beaker  | VScode  | Electron  | Atom |
-|---|---|---|---|---|---|---|
-| Wallet  | +  | +  |   |   |   |   |
-| App Store | +  |   |   |   |   |   |
-| App publisher |  + |   | +  |   |   |   |
-| App permissions  | +  |   |   |   |   |   |
-| Core apps |   |   | +  |   |   |   |
-| Node monitor | +  | +  |   |   |   |   |
+|                           |Parity | Mist | Beaker | Electron |
+|---                        |---    |---    |---    |---       |
+|Wallet                     |only ETH|only ETH(not safe)|no (metamask can be integrated)|no (metamask can be integrated)|
+|IPFS integration           |no|no|no|no|
+|User interface             |4/10|7/10|9/10|9/10|
+|App developfriendly        |7/10|2/10|6/10| - |
+|App deploy tool            |yes|no|yes(deploy using dat)|no|
+|Web2 support               |no|yes|yes|yes|
+|Core browser functionality |no|yes|yes|no|
+|Community                  |3/10|6-7/10|7-8/10|7/10|
+|Easy source code           |5/10|7/10|7/10|10/10|
+|Project mission matching   |8/10|6/10|4/10|-|
+|Web3 standart impl         |???|yes|no|no|
+|UI framework               |React|React|co / yo yo|React|
+
 
 
 ### `Mist (Ethereum Foundation)`
