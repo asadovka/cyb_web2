@@ -21,7 +21,45 @@ Variants to fork:
 |Web3 standart impl         |???|yes|no|no|
 |UI framework               |React|React|co / yo yo|React|
 
+### `Shell (Parity)`
 
+**Features**:
+- Wallet
+- Core dapps integration
+- Contracts deploying, watching
+- Basic marketplace from box
+- Permissions for applications
+- Light/Remotes nodes support
+- Electron based
+- Released for all platforms
+
+**Pros**:
+- Functional wallet
+- Good account management
+- Address book
+- Permissions and dapps sandboxing (not work using official guidelines)
+- Development and support by Parity tech (community)
+- Light client support
+- Set of core dapps
+- Notification
+- Open marketplace
+- Extra security (generated wallpapers)
+- uses ReactJS framework
+
+**Cons**:
+- Buggy
+- Non stable working, sometimes
+- web2 not supported
+- ipfs not supported
+- work only with ETH and parity
+
+**Totals**:
+- **+** Function wallet and good first steps to web3 browser
+- **+** Permission and security features for users
+- **-** Non stable working
+- **-** Web2 logic not implemented (history, bookmarks, downloads, http browsing)
+- **-** not use web3 standart api (custom parity api implemented)
+- **-** a lot of code
 
 ### `Mist (Ethereum Foundation)`
 
@@ -60,41 +98,6 @@ Variants to fork:
 
 **Extracts**:
 - with `parity --geth` Mist works with parity node (maybe)
-
-### `Shell (Parity)`
-
-**Features**:
-- Wallet
-- Core dapps integration
-- Contracts deploying, watching
-- Basic marketplace from box
-- Permissions for applications
-- Light/Remotes nodes support
-- Electron based
-- Released for all platforms
-
-**Pros**:
-- Functional wallet
-- Good account management
-- Address book
-- Active development and releases
-- Permissions and dapps sandboxing
-- Development and support by Parity tech
-- Light client support
-- Set of core dapps
-- Notification
-- Open marketplace
-- Extra security (generated wallpapers)
-
-**Cons**:
-- Buggy
-- Non stable working, sometimes
-
-**Totals**:
-- **+** Function wallet and good first steps to web3 browser
-- **+** Permission and security features for users
-- **+** In active development and releasing by Parity Tech
-- **-** Non stable working
 
 ### `Beaker`
 
