@@ -48,6 +48,12 @@ $statusHeight: 2.75em;
   .warning {
     background: red;
     display: block;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 39px;
+    z-index: 2;
   }
 }
 

@@ -164,7 +164,7 @@ module.exports = {
       new WebpackErrorNotificationPlugin(),
       new ExtractTextPlugin({
         filename: `${isEmbed ? 'embed' : 'bundle'}.css`
-      }),
+      })
     );
 
     if (!isEmbed) {
@@ -238,7 +238,7 @@ module.exports = {
         new ServiceWorkerWebpackPlugin({
           entry: path.join(__dirname, '../src/serviceWorker.js'),
           publicPath: path.join(__dirname, '../.build/')
-        }),
+        })
       );
     }
 

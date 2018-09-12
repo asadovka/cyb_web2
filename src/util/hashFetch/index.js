@@ -261,9 +261,9 @@ export default class HashFetch {
    * @return {Promise} A Promise that resolves with the path to the file or directory
    */
   fetch (api, hash, expected) {
-    hash = hash.toLowerCase();
+    //hash = hash.toLowerCase();
 
-    if (!/^[0-9a-z]{64}$/.test(hash)) { return Promise.reject(`${hash} isn't a valid hash.`); }
+    //if (!/^[0-9a-z]{64}$/.test(hash)) { return Promise.reject(`${hash} isn't a valid hash.`); }
 
     return this.initialize.then(() => {
       const filePath = path.join(getHashFetchPath(), 'files', hash);
@@ -278,4 +278,43 @@ export default class HashFetch {
       return this.promises[hash];
     });
   }
+
+  download (url, appName, fileName, zip = false) {
+    const tempAppDirPath = path.join(getHashFetchPath(), 'downloads', appName);
+    const tempFilePath = path.join(tempAppDirPath, zip ? 'content.zip' : fileName);
+    const finalPath = path.join(getHashFetchPath(), 'files', appName, fileName);
+
+    if (!fs.existsSync(tempAppDirPath)) {
+      fs.mkdirSync(tempAppDirPath);
+    }
+
+    return download(url, tempFilePath).then(() => {
+      if (!zip) {
+        return move(tempFilePath, finalPath);
+      } else {
+        const extractPath = path.join(getHashFetchPath(), 'partial-extract', 'content.zip');
+
+        return unzipThroughTo(tempFilePath, extractPath, finalPath);
+      }
+    }).then(() => finalPath);
+  }
+
+  downloadRemoteApp (appDefinition) {
+    const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
+
+    if (!(appDefinition.name in this.promises)) {
+      console.log(finalPath)
+      if (fs.existsSync(finalPath)) {
+        console.log('1');
+        this.promises[appDefinition.name] = Promise.resolve(finalPath);
+      } else {
+        console.log('2');
+        this.promises[appDefinition.name] = this.download(appDefinition.contentUrl, appDefinition.name, '', true)
+          .then(() => this.download(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
+          .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
+      }
+    }
+    return this.promises[appDefinition.name];
+  }
+
 }

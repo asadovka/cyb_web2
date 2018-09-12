@@ -25,8 +25,17 @@ import HashFetch from '../util/hashFetch';
 const LS_KEY_DISPLAY = 'displayApps';
 const LS_KEY_EXTERNAL_ACCEPT = 'acceptExternal';
 const BUILTIN_APPS_KEY = 'BUILTIN_APPS_KEY';
+const path = require('path');
 
 let instance = null;
+
+const util = require('util');
+
+require('util.promisify').shim();
+
+const fs = require('fs');
+
+const fsReadFile = util.promisify(fs.readFile);
 
 export default class DappsStore extends EventEmitter {
   @observable apps = [];
@@ -122,7 +131,7 @@ export default class DappsStore extends EventEmitter {
           return app;
         }
 
-        return this.fetchRegistryApp(dappReg, id, true);
+        return this.fetchChaingerAppDefinitionById(id).then(definition => this.fetchChaingearApp(definition));
       })
       .then((app) => {
         if (app.type === 'network') {
@@ -154,8 +163,9 @@ export default class DappsStore extends EventEmitter {
 
     return Promise
       .all([
-        this.loadLocalApps(),
-        this.fetchRegistryApps(dappReg).then((apps) => this.addApps(apps))
+        // this.loadLocalApps(),
+        // this.fetchRegistryApps(dappReg).then((apps) => this.addApps(apps)),
+        this.fetchChaingearApps().then(apps => this.addApps(apps, true))
       ])
       .then(this.writeDisplayApps);
   }
@@ -232,6 +242,55 @@ export default class DappsStore extends EventEmitter {
       });
 
     return Promise.resolve(this._cachedApps[appId]);
+  }
+
+  fetchChaingearApps () {
+    return this.fetchChaingearAppIds()
+      .then(ids => Promise.all(
+        ids.map(this.fetchChaingerAppDefinitionById)
+        )
+      )
+      .then(appDefArr => {
+        return Promise.all(appDefArr.map(this.fetchChaingearApp))
+      })
+  }
+
+  fetchChaingearAppIds () {
+    return Promise.resolve(['AppStoreId']);
+  }
+
+  fetchChaingerAppDefinitionById (id) {
+    return Promise.resolve({
+      name: 'ApplicationStore',
+      iconUrl: 'https://github.com/vstavetski/Application-Store/raw/master/icon.jpg',
+      contentUrl: 'https://github.com/vstavetski/Application-Store/blob/master/build.zip?raw=true'
+    });
+  }
+
+  fetchChaingearApp (appDefinition) {
+    return HashFetch.get().downloadRemoteApp(appDefinition).then((appPath) => {
+      const manifestPath = path.join(appPath, 'manifest.json');
+
+      return fsReadFile(manifestPath)
+        .then(manifestJson => JSON.parse(manifestJson))
+        .then(manifest => {
+          const { author, description, name, version } = manifest;
+
+          return {
+            author: author,
+            description: description,
+            id: 'id1234',
+            contentHash: appDefinition.name,
+            image: `file://${appPath}/icon.png`,
+            name: name,
+            type: 'network',
+            version: version,
+            visible: true
+          };
+        });
+    }).catch(e => {
+      console.log('fetchChaingearApp error ->', e);
+    });
   }
 
   fetchRegistryApps (dappReg) {
