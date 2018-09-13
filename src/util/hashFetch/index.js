@@ -303,14 +303,12 @@ export default class HashFetch {
     const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
 
     if (!(appDefinition.name in this.promises)) {
-      console.log(finalPath)
       if (fs.existsSync(finalPath)) {
-        console.log('1');
         this.promises[appDefinition.name] = Promise.resolve(finalPath);
       } else {
-        console.log('2');
         this.promises[appDefinition.name] = this.download(appDefinition.contentUrl, appDefinition.name, '', true)
           .then(() => this.download(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
+          .thenå(() => finalPath)
           .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
       }
     }

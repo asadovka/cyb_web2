@@ -18,6 +18,8 @@ import EventEmitter from 'eventemitter3';
 import { action, computed, observable, transaction } from 'mobx';
 import store from 'store';
 
+import { range } from 'lodash';
+
 import Contracts from '@parity/shared/lib/contracts';
 import { fetchBuiltinApps, fetchLocalApps, fetchRegistryAppIds, fetchRegistryApp, subscribeToChanges } from '../util/dapps';
 import HashFetch from '../util/hashFetch';
@@ -36,6 +38,10 @@ require('util.promisify').shim();
 const fs = require('fs');
 
 const fsReadFile = util.promisify(fs.readFile);
+
+const applicationAbi = require('./applications.json');
+const applicationContract = '0xafd809e95c67892d0b973dcc3216ae9a00309b0f';
+
 
 export default class DappsStore extends EventEmitter {
   @observable apps = [];
@@ -125,6 +131,7 @@ export default class DappsStore extends EventEmitter {
     return this
       .loadLocalApps()
       .then(() => {
+
         const app = this.apps.find((app) => app.id === id);
 
         if (app) {
@@ -159,13 +166,13 @@ export default class DappsStore extends EventEmitter {
   }
 
   loadAllApps () {
-    const { dappReg } = Contracts.get(this._api);
+    // const { dappReg } = Contracts.get(this._api);
 
     return Promise
       .all([
-        // this.loadLocalApps(),
+        this.loadLocalApps(),
         // this.fetchRegistryApps(dappReg).then((apps) => this.addApps(apps)),
-        this.fetchChaingearApps().then(apps => this.addApps(apps, true))
+        this.fetchChaingearApps().then(apps => this.addApps(apps))
       ])
       .then(this.writeDisplayApps);
   }
@@ -247,24 +254,44 @@ export default class DappsStore extends EventEmitter {
   fetchChaingearApps () {
     return this.fetchChaingearAppIds()
       .then(ids => Promise.all(
-        ids.map(this.fetchChaingerAppDefinitionById)
+        ids.map(id => this.fetchChaingerAppDefinitionById(id))
         )
       )
       .then(appDefArr => {
-        return Promise.all(appDefArr.map(this.fetchChaingearApp))
+        return Promise.all(appDefArr.map(def => this.fetchChaingearApp(def)))
       })
   }
 
   fetchChaingearAppIds () {
-    return Promise.resolve(['AppStoreId']);
+    //Promise.resolve(['ApplicationStore']);
+    return new Promise(resolve => {
+      const applications = this._api.newContract(applicationAbi, applicationContract);
+      applications.instance.entriesAmount.call().then(d => {
+
+          const ids = range(0, d.toNumber());
+          resolve(ids);
+      })
+    })
   }
 
   fetchChaingerAppDefinitionById (id) {
-    return Promise.resolve({
-      name: 'ApplicationStore',
-      iconUrl: 'https://github.com/vstavetski/Application-Store/raw/master/icon.jpg',
-      contentUrl: 'https://github.com/vstavetski/Application-Store/blob/master/build.zip?raw=true'
-    });
+    // return Promise.resolve({
+    //   name: 'ApplicationStore',
+    //   iconUrl: 'https://github.com/cybercongress/Application-Store/raw/master/icon.jpg',
+    //   contentUrl: 'https://github.com/cybercongress/Application-Store/blob/master/build.zip?raw=true'
+    // });
+    return new Promise(resolve => {
+      const applications = this._api.newContract(applicationAbi, applicationContract);
+      applications.instance.entryInfo.call({}, [id]).then(arr => {
+          const obj = {
+            name: arr[0],
+            iconUrl: arr[1],
+            contentUrl: arr[2],
+          }
+          console.log(' >> ', obj);
+          resolve(obj);
+      })
+    })
   }
 
   fetchChaingearApp (appDefinition) {
@@ -275,11 +302,11 @@ export default class DappsStore extends EventEmitter {
         .then(manifestJson => JSON.parse(manifestJson))
         .then(manifest => {
           const { author, description, name, version } = manifest;
-
+          console.log( ' appDefinition ', appDefinition)
           return {
             author: author,
             description: description,
-            id: 'id1234',
+            id: name, // ????
             contentHash: appDefinition.name,
             image: `file://${appPath}/icon.png`,
             name: name,
