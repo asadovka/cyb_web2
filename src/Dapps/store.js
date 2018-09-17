@@ -40,7 +40,7 @@ const fs = require('fs');
 const fsReadFile = util.promisify(fs.readFile);
 
 const applicationAbi = require('./applications.json');
-const applicationContract = '0xafd809e95c67892d0b973dcc3216ae9a00309b0f';
+const applicationContract = '0x0429d25167f0c27b530960ba53caa9b7811e2907';
 
 
 export default class DappsStore extends EventEmitter {
@@ -287,6 +287,7 @@ export default class DappsStore extends EventEmitter {
             name: arr[0],
             iconUrl: arr[1],
             contentUrl: arr[2],
+            id
           }
           console.log(' >> ', obj);
           resolve(obj);
@@ -306,7 +307,7 @@ export default class DappsStore extends EventEmitter {
           return {
             author: author,
             description: description,
-            id: name, // ????
+            id: appDefinition.id, // ????
             contentHash: appDefinition.name,
             image: `file://${appPath}/icon.png`,
             name: name,

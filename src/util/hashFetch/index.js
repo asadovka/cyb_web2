@@ -308,7 +308,7 @@ export default class HashFetch {
       } else {
         this.promises[appDefinition.name] = this.download(appDefinition.contentUrl, appDefinition.name, '', true)
           .then(() => this.download(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
-          .thenå(() => finalPath)
+          .then(() => finalPath)
           .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
       }
     }
