@@ -279,8 +279,8 @@ export default class HashFetch {
     });
   }
 
-  download (url, appName, fileName, zip = false) {
-    const tempAppDirPath = path.join(getHashFetchPath(), 'downloads', appName);
+  _downloadFile (url, appName, fileName, zip = false) {
+    const tempAppDirPath = path.join(getHashFetchPath(), 'partial', appName);
     const tempFilePath = path.join(tempAppDirPath, zip ? 'content.zip' : fileName);
     const finalPath = path.join(getHashFetchPath(), 'files', appName, fileName);
 
@@ -300,19 +300,20 @@ export default class HashFetch {
   }
 
   downloadRemoteApp (appDefinition) {
-    const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
+    return this.initialize.then(() => {
+      const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
 
-    if (!(appDefinition.name in this.promises)) {
-      if (fs.existsSync(finalPath)) {
-        this.promises[appDefinition.name] = Promise.resolve(finalPath);
-      } else {
-        this.promises[appDefinition.name] = this.download(appDefinition.contentUrl, appDefinition.name, '', true)
-          .then(() => this.download(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
-          .then(() => finalPath)
-          .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
+      if (!(appDefinition.name in this.promises)) {
+        if (fs.existsSync(finalPath)) {
+          this.promises[appDefinition.name] = Promise.resolve(finalPath);
+        } else {
+          this.promises[appDefinition.name] = this._downloadFile(appDefinition.contentUrl, appDefinition.name, '', true)
+            .then(() => this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
+            .then(() => finalPath)
+            .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
+        }
       }
-    }
-    return this.promises[appDefinition.name];
+      return this.promises[appDefinition.name];
+    });
   }
-
 }
