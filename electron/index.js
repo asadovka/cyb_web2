@@ -47,7 +47,10 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 800,
     width: 1200,
-    webPreferences: { nodeIntegrationInWorker: true }
+    webPreferences: {
+      nodeIntegrationInWorker: true,
+      webSecurity: !cli.uiDev // fix images for dev
+    }
   });
 
   if (cli.uiDev === true) {

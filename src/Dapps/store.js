@@ -289,7 +289,7 @@ export default class DappsStore extends EventEmitter {
             contentUrl: arr[2],
             id
           }
-          console.log(' >> ', obj);
+          // console.log(' >> ', obj);
           resolve(obj);
       })
     })
@@ -303,11 +303,11 @@ export default class DappsStore extends EventEmitter {
         .then(manifestJson => JSON.parse(manifestJson))
         .then(manifest => {
           const { author, description, name, version } = manifest;
-          console.log( ' appDefinition ', appDefinition)
+          // console.log( ' appDefinition ', appDefinition)
           return {
             author: author,
             description: description,
-            id: appDefinition.id, // ????
+            id: "" + appDefinition.id, // ????
             contentHash: appDefinition.name,
             image: `file://${appPath}/icon.png`,
             name: name,
