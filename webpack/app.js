@@ -202,7 +202,12 @@ module.exports = {
                   if (!fs.existsSync(dir)) {
                     return null;
                   }
-
+                  if (fs.existsSync(path.join(dir, 'distribution'))) {
+                    return {
+                      from: path.join(dir, 'distribution'),
+                      to: `dapps/${dapp.id}/`
+                    };
+                  }
                   if (!fs.existsSync(path.join(dir, 'dist'))) {
                     rimraf.sync(path.join(dir, 'node_modules'));
 
