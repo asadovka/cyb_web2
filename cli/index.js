@@ -11,6 +11,7 @@ const ipfs = new IPFS({host: 'localhost', port: 5001, protocol: 'http'});
 const fs = require('fs');
 const path = require('path');
 const request = require('superagent');
+const {exec} = require('child_process');
 
 const cliPkg = require('./package.json')
 
@@ -22,19 +23,19 @@ var TEMPLATE_DIR = path.join(__dirname, 'template')
  * Copy file from template directory.
  */
 
-function copyTemplate(from, to) {
-    write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), 'utf-8'))
+function copyTemplate(from, to, encoding) {
+    write(to, fs.readFileSync(path.join(TEMPLATE_DIR, from), encoding))
 }
 
 /**
  * Copy multiple files from template directory.
  */
 
-function copyTemplateMulti(fromDir, toDir, nameGlob) {
+function copyTemplateMulti(fromDir, toDir, nameGlob, encoding) {
     fs.readdirSync(path.join(TEMPLATE_DIR, fromDir))
         .filter(minimatch.filter(nameGlob, {matchBase: true}))
         .forEach(function (name) {
-            copyTemplate(path.join(fromDir, name), path.join(toDir, name))
+            copyTemplate(path.join(fromDir, name), path.join(toDir, name), encoding)
         })
 }
 
@@ -166,10 +167,12 @@ program
         mkdir(appName, 'app/src');
         mkdir(appName, 'app/src/containers');
 
-        copyTemplateMulti('', appName, '*.*');
-        copyTemplateMulti('app', path.join(appName, 'app'), '*.*');
-        copyTemplateMulti('app/src', path.join(appName, 'app/src'), '*.*');
-        copyTemplateMulti('app/src/containers', path.join(appName, 'app/src/containers'), '*.*');
+        copyTemplateMulti('', appName, '*.*', 'utf8');
+        copyTemplateMulti('', appName, '*.png');
+        copyTemplateMulti('app', path.join(appName, 'app'), '*.*', 'utf8');
+        copyTemplateMulti('app', path.join(appName, 'app'), '*.png');
+        copyTemplateMulti('app/src', path.join(appName, 'app/src'), '*.*', 'utf8');
+        copyTemplateMulti('app/src/containers', path.join(appName, 'app/src/containers'), '*.*', 'utf8');
 
         var pkg = {
             "name": appName,
@@ -230,8 +233,45 @@ program
             "license": "MIT"
         };
 
-        write(path.join(appName, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
+        write(path.join(appName, 'package.json'), JSON.stringify(pkg, null, 2) + '\n');
+
+        var manifest = {
+            "id": appName,
+            "name": appName,
+            "iconUrl": "icon.png",
+            "description": "Description of test app",
+            "version": "0.0.1",
+            "author": "cybercongress",
+            "localUrl": "http://localhost:5600"
+        };
+
+        write(path.join(appName, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
     });
 
+program
+    .command('link')
+    .description('Link local app to browser local apps')
+    .action(() => {
+
+        const manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
+
+        //todo: commands for linux and windows
+        const command = `ln -s $PWD/ $HOME/Library/Application\\ Support/parity-ui/dapps/${manifest.name}`;
+
+        exec(command);
+    });
+
+program
+    .command('unlink')
+    .description('Unlink local app from browser local apps')
+    .action(() => {
+
+        const manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
+
+        //todo: commands for linux and windows
+        const command = `unlink $HOME/Library/Application\\ Support/parity-ui/dapps/${manifest.name}`;
+
+        exec(command);
+    });
 
 program.parse(process.argv);
