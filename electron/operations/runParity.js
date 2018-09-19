@@ -56,6 +56,10 @@ module.exports = {
         const logStream = fs.createWriteStream(logFile, { flags: 'a' });
         let logLastLine = ''; // Always contains last line of the logFile
 
+        // set default network to kovan
+        if (parityArgv.length === 0) {
+          parityArgv.concat([ '--chain=kovan', '--jsonrpc-cors=*', '--jsonrpc-apis=all' ]);
+        }
         // Run an instance of parity with the correct args
         parity = spawn(parityPath(), parityArgv);
 
