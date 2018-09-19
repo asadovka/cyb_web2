@@ -221,7 +221,7 @@ program
             },
             "scripts": {
                 "prestart": "npm install",
-                "start": "webpack-dev-server",
+                "start": "NODE_ENV=development webpack-dev-server",
                 "build": "webpack --env.NODE_ENV production --env.SOURCE_MAP source-map",
                 "serve": "serve -s distribution"
             },
