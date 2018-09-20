@@ -98,7 +98,9 @@ function unzipThroughTo (tempPath, extractPath, finalPath) {
             .then(() => remove(extractPath));
       } else {
         // No root folder: extractPath contains the dapp
-        return move(extractPath, finalPath);
+        return Promise.all(files.map(file => {
+          move(file.filePath, path.join(finalPath, file.filename));
+        }));
       }
     });
 }
@@ -222,6 +224,7 @@ export default class HashFetch {
   static instance = null;
   initialize = null; // Initialization promise
   promises = {}; // Unsettled or resolved HashFetch#fetch promises only
+  iconPromises = {};
 
   static get () {
     if (!HashFetch.instance) {
@@ -299,16 +302,34 @@ export default class HashFetch {
     }).then(() => finalPath);
   }
 
+  fetchRemoteApp (appDefinition) {
+    return this.initialize.then(() => {
+      const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
+
+      if (!(appDefinition.name in this.iconPromises)) {
+        if (fs.existsSync(finalPath)) {
+          this.iconPromises[appDefinition.name] = Promise.resolve(finalPath);
+        } else {
+          this.iconPromises[appDefinition.name] = this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png')
+            .then(() => finalPath)
+            .catch(e => { delete this.iconPromises[appDefinition.name]; throw e; });
+        }
+      }
+      return this.iconPromises[appDefinition.name];
+    });
+  }
+
   downloadRemoteApp (appDefinition) {
     return this.initialize.then(() => {
       const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
 
       if (!(appDefinition.name in this.promises)) {
-        if (fs.existsSync(finalPath)) {
+
+        if (fs.existsSync(path.join(finalPath, 'manifest.json'))) {
           this.promises[appDefinition.name] = Promise.resolve(finalPath);
         } else {
           this.promises[appDefinition.name] = this._downloadFile(appDefinition.contentUrl, appDefinition.name, '', true)
-            .then(() => this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
+            //.then(() => this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
             .then(() => finalPath)
             .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
         }
