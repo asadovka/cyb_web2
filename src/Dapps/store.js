@@ -39,9 +39,10 @@ const fs = require('fs');
 
 const fsReadFile = util.promisify(fs.readFile);
 
-const applicationAbi = require('./applications.json');
-const applicationContract = '0x0429d25167f0c27b530960ba53caa9b7811e2907';
-
+const entryCoreAbi = require('./entryCoreAbi.json');
+const registryAbi = require('./entryBaseAbi.json');
+const entryCoreContractAddr = '0xbbe0efe6ac55f5b1f7a8d83611f3fcd11258f1cb';
+const registryContractAddr = '0x57f231060fcbaa17b31c2438ef72cd50ce1940ba';
 
 export default class DappsStore extends EventEmitter {
   @observable apps = [];
@@ -121,6 +122,35 @@ export default class DappsStore extends EventEmitter {
     );
   }
 
+  deployApp (app, name, iconUrl, contentUrl, manifestUrl) {
+    return new Promise(resolve => {
+
+     const entryCoreContract = this._api.newContract(entryCoreAbi, entryCoreContractAddr);
+      const registryContract = this._api.newContract(registryAbi, registryContractAddr);
+
+      const appDeployedCallback = (e, events) => {
+        const entryId = events[0].params.entryID.value.toNumber();
+        entryCoreContract.instance.updateEntry.postTransaction({ }, [entryId, name, iconUrl, contentUrl, manifestUrl])
+          .then((data) => {
+            console.log('entry udated', data);
+          });
+      }
+
+      registryContract.instance.getEntryCreationFee.call({}, []).then(data => {
+        var fee = data.toNumber();
+        var event = registryContract.instance.EntryCreated;
+
+        event.subscribe({skipInitFetch: true}, appDeployedCallback, false);
+
+        registryContract.instance.createEntry.postTransaction({ value: fee }, []).then(data => {
+          console.log('entry created, data ->', data);
+        });
+
+      });
+
+    });
+  }
+
   /**
    * Try to find the app from the local (local or builtin)
    * apps, else fetch from the node
@@ -131,7 +161,6 @@ export default class DappsStore extends EventEmitter {
     return this
       .loadLocalApps()
       .then(() => {
-
         const app = this.apps.find((app) => app.id === id);
 
         if (app) {
@@ -258,20 +287,20 @@ export default class DappsStore extends EventEmitter {
         )
       )
       .then(appDefArr => {
-        return Promise.all(appDefArr.map(def => this.fetchChaingearApp(def)))
-      })
+        return Promise.all(appDefArr.map(def => this.fetchChaingearApp(def)));
+      });
   }
 
   fetchChaingearAppIds () {
-    //Promise.resolve(['ApplicationStore']);
     return new Promise(resolve => {
-      const applications = this._api.newContract(applicationAbi, applicationContract);
-      applications.instance.entriesAmount.call().then(d => {
+      const applications = this._api.newContract(entryCoreAbi, entryCoreContractAddr);
 
-          const ids = range(0, d.toNumber());
-          resolve(ids);
-      })
-    })
+      applications.instance.entriesAmount.call().then(d => {
+        const ids = range(0, d.toNumber());
+
+        resolve(ids);
+      });
+    });
   }
 
   fetchChaingerAppDefinitionById (id) {
@@ -281,18 +310,20 @@ export default class DappsStore extends EventEmitter {
     //   contentUrl: 'https://github.com/cybercongress/Application-Store/blob/master/build.zip?raw=true'
     // });
     return new Promise(resolve => {
-      const applications = this._api.newContract(applicationAbi, applicationContract);
+      const applications = this._api.newContract(entryCoreAbi, entryCoreContractAddr);
+
       applications.instance.entryInfo.call({}, [id]).then(arr => {
-          const obj = {
-            name: arr[0],
-            iconUrl: arr[1],
-            contentUrl: arr[2],
-            id
-          }
+        const obj = {
+          name: arr[0],
+          iconUrl: arr[1],
+          contentUrl: arr[2],
+          id
+        };
           // console.log(' >> ', obj);
-          resolve(obj);
-      })
-    })
+
+        resolve(obj);
+      });
+    });
   }
 
   fetchChaingearApp (appDefinition) {
@@ -304,10 +335,11 @@ export default class DappsStore extends EventEmitter {
         .then(manifest => {
           const { author, description, name, version } = manifest;
           // console.log( ' appDefinition ', appDefinition)
+
           return {
             author: author,
             description: description,
-            id: "" + appDefinition.id, // ????
+            id: '' + appDefinition.id, // ????
             contentHash: appDefinition.name,
             image: `file://${appPath}/icon.png`,
             name: name,

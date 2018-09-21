@@ -30,10 +30,15 @@ export default class DappCard extends Component {
     availability: PropTypes.string.isRequired,
     className: PropTypes.string,
     onPin: PropTypes.func,
-    pinned: PropTypes.bool
+    pinned: PropTypes.bool,
+    onDeployApp: PropTypes.func
   };
 
   handlePin = () => this.props.onPin(this.props.app.id)
+
+  handleDeploy = () => {
+    this.props.onDeployApp(this.props.app);
+  }
 
   render () {
     const { app, availability, className, pinned } = this.props;
@@ -51,6 +56,13 @@ export default class DappCard extends Component {
           className={ [styles.pin, pinned && styles.pinned].join(' ') }
           onClick={ this.handlePin }
         />
+
+        { app.type === 'local' && <Button
+            circular
+            onClick={ this.handleDeploy }
+          > Deploy </Button>
+        }
+
         <div className={ styles.content }>
           <Link to={ app.url === 'web' ? '/web' : `/${app.id}` } >
             <DappIcon

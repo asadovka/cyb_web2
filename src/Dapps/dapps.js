@@ -19,6 +19,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Modal from '../Modal';
 
 import Checkbox from '@parity/ui/lib/Form/Checkbox';
 import Page from '@parity/ui/lib/Page';
@@ -38,6 +39,10 @@ class Dapps extends Component {
   static propTypes = {
     availability: PropTypes.string.isRequired
   };
+  state = {
+    showDeployModal: false,
+    deployedApp: null
+  };
 
   store = DappsStore.get(this.context.api);
 
@@ -53,6 +58,32 @@ class Dapps extends Component {
     }
   }
 
+  onModalClose = () => {
+    this.setState({
+      showDeployModal: false
+    });
+  }
+
+  onModalConfirm = () => {
+    const name = this.refs.name.value;
+    const iconUrl = this.refs.iconUrl.value;
+    const contentUrl = this.refs.contentUrl.value;
+    const manifestUrl = this.refs.manifestUrl.value;
+
+    this.store.deployApp(this.state.deployedApp, name, iconUrl, contentUrl, manifestUrl).then(() => {
+      this.setState({
+        showDeployModal: false
+      });
+    });
+  }
+
+  deployApp = (app) => {
+    this.setState({
+      showDeployModal: true,
+      deployedApp: app
+    });
+  }
+
   renderSection = (apps) => (
     apps && apps.length > 0 &&
     <div className={ styles.dapps }>
@@ -65,6 +96,7 @@ class Dapps extends Component {
             className={ styles.dapp }
             key={ `${index}_${app.id}` }
             onPin={ this.handlePin }
+            onDeployApp={ this.deployApp }
           />
         ))
       }
@@ -72,6 +104,13 @@ class Dapps extends Component {
   )
 
   render () {
+    const actions = [
+      { type: 'close', label: 'No, Cancel' },
+      { type: 'confirm', label: 'Yes, Register', warning: true }
+    ];
+
+    const { showDeployModal } = this.state;
+
     return (
       <Page className={ styles.layout }>
         {this.renderSection(this.store.pinnedApps)}
@@ -102,6 +141,34 @@ class Dapps extends Component {
             </div>
           )
         }
+        { showDeployModal &&
+          <Modal
+            actions={ actions }
+            header='Deploy application'
+            onClose={ this.onModalClose }
+            onConfirm={ this.onModalConfirm }
+            secondary
+          >
+
+            <div>
+              Name
+              <input ref='name' />
+            </div>
+            <div>
+              Icon Url
+              <input ref='iconUrl' />
+            </div>
+            <div>
+              Content Url
+              <input ref='contentUrl' />
+            </div>
+            <div>
+              Manifest Url
+              <input ref='manifestUrl' />
+            </div>
+          </Modal>
+        }
+
       </Page>
     );
   }
