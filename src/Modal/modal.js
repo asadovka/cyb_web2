@@ -107,10 +107,8 @@ export default class Modal extends Component {
           return (
             <Button
               key={ action.type }
-              label={ action.label }
-              warning={ action.warning }
               onClick={ onClick }
-            />
+            >{action.label}</Button>
           );
         }) }
       </div>

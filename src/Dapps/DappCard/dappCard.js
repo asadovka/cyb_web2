@@ -52,13 +52,15 @@ export default class DappCard extends Component {
         <Button
           size='mini'
           icon='pin'
-          circular
+          circular={true}
           className={ [styles.pin, pinned && styles.pinned].join(' ') }
           onClick={ this.handlePin }
         />
 
         { app.type === 'local' && <Button
+            size='mini'
             circular
+            className={ styles.deploy }
             onClick={ this.handleDeploy }
           > Deploy </Button>
         }

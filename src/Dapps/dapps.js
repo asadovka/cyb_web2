@@ -30,6 +30,9 @@ import DappCard from './DappCard';
 
 import styles from './dapps.css';
 
+import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
+
+
 @observer
 class Dapps extends Component {
   static contextTypes = {
@@ -69,7 +72,6 @@ class Dapps extends Component {
     const iconUrl = this.refs.iconUrl.value;
     const contentUrl = this.refs.contentUrl.value;
     const manifestUrl = this.refs.manifestUrl.value;
-
     this.store.deployApp(this.state.deployedApp, name, iconUrl, contentUrl, manifestUrl).then(() => {
       this.setState({
         showDeployModal: false
@@ -105,7 +107,7 @@ class Dapps extends Component {
 
   render () {
     const actions = [
-      { type: 'close', label: 'No, Cancel' },
+      { type: 'close', label: 'No, Cancel', warning: false },
       { type: 'confirm', label: 'Yes, Register', warning: true }
     ];
 
@@ -147,25 +149,25 @@ class Dapps extends Component {
             header='Deploy application'
             onClose={ this.onModalClose }
             onConfirm={ this.onModalConfirm }
-            secondary
           >
-
-            <div>
-              Name
+            <Form>
+            <Form.Field>
+              <label>Name</label>
               <input ref='name' />
-            </div>
-            <div>
-              Icon Url
+            </Form.Field>
+            <Form.Field>
+              <label>Icon Url</label>
               <input ref='iconUrl' />
-            </div>
-            <div>
-              Content Url
-              <input ref='contentUrl' />
-            </div>
-            <div>
-              Manifest Url
+            </Form.Field>
+            <Form.Field>
+              <label>Content Url</label>
+              <input  ref='contentUrl' />
+            </Form.Field>
+            <Form.Field>
+              <label>Manifest Url</label>
               <input ref='manifestUrl' />
-            </div>
+            </Form.Field>
+            </Form>
           </Modal>
         }
 

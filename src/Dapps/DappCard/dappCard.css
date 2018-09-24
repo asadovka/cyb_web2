@@ -27,6 +27,13 @@
     z-index: 1;
   }
 
+  .deploy {
+    position: absolute;
+    top: 0;
+    left: 1.6em;
+    z-index: 1;
+  }
+
   .pin.pinned {
     display: block;
     transform: rotate(45deg);
