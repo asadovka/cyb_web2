@@ -15,47 +15,16 @@
 /* along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-.card {
-  position: relative;
-  margin-top: 3em;
+$blue: rgb(41, 128, 185);
+$disabled-bg: #aaa;
+$warning-bg: #e44;
+$modal-bg: rgba(40, 40, 40, 0.75);
 
-  .pin {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 1.6em;
-    z-index: 1;
-  }
+$background-color: #eee;
+$text-color: #333;
+$loading-color: #999;
 
-  .deploy {
-    position: absolute;
-    top: 0;
-    left: 1.6em;
-    z-index: 1;
-  }
-
-  .pin.pinned {
-    display: block;
-    transform: rotate(45deg);
-  }
-
-  &:hover {
-    .pin {
-      display: block;
-    }
-  }
-
-  .content {
-    display: block;
-    padding-top: 1em;
-
-    .title {
-      margin-top: 0.8em;
-    }
-
-    .image {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-}
+$code-bg: #002b36;
+$code-color: #b58900;
+$code-title-bg: #073642;
+$code-title-color: #859900;

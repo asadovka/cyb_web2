@@ -19,6 +19,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Modal from '../Modal';
 
 import Checkbox from '@parity/ui/lib/Form/Checkbox';
 import Page from '@parity/ui/lib/Page';
@@ -29,6 +30,9 @@ import DappCard from './DappCard';
 
 import styles from './dapps.css';
 
+import Form from 'semantic-ui-react/dist/commonjs/collections/Form';
+
+
 @observer
 class Dapps extends Component {
   static contextTypes = {
@@ -37,6 +41,10 @@ class Dapps extends Component {
 
   static propTypes = {
     availability: PropTypes.string.isRequired
+  };
+  state = {
+    showDeployModal: false,
+    deployedApp: null
   };
 
   store = DappsStore.get(this.context.api);
@@ -53,6 +61,31 @@ class Dapps extends Component {
     }
   }
 
+  onModalClose = () => {
+    this.setState({
+      showDeployModal: false
+    });
+  }
+
+  onModalConfirm = () => {
+    const name = this.refs.name.value;
+    const iconUrl = this.refs.iconUrl.value;
+    const contentUrl = this.refs.contentUrl.value;
+    const manifestUrl = this.refs.manifestUrl.value;
+    this.store.deployApp(this.state.deployedApp, name, iconUrl, contentUrl, manifestUrl).then(() => {
+      this.setState({
+        showDeployModal: false
+      });
+    });
+  }
+
+  deployApp = (app) => {
+    this.setState({
+      showDeployModal: true,
+      deployedApp: app
+    });
+  }
+
   renderSection = (apps) => (
     apps && apps.length > 0 &&
     <div className={ styles.dapps }>
@@ -65,6 +98,7 @@ class Dapps extends Component {
             className={ styles.dapp }
             key={ `${index}_${app.id}` }
             onPin={ this.handlePin }
+            onDeployApp={ this.deployApp }
           />
         ))
       }
@@ -72,6 +106,13 @@ class Dapps extends Component {
   )
 
   render () {
+    const actions = [
+      { type: 'close', label: 'No, Cancel', warning: false },
+      { type: 'confirm', label: 'Yes, Register', warning: true }
+    ];
+
+    const { showDeployModal } = this.state;
+
     return (
       <Page className={ styles.layout }>
         {this.renderSection(this.store.pinnedApps)}
@@ -102,6 +143,34 @@ class Dapps extends Component {
             </div>
           )
         }
+        { showDeployModal &&
+          <Modal
+            actions={ actions }
+            header='Deploy application'
+            onClose={ this.onModalClose }
+            onConfirm={ this.onModalConfirm }
+          >
+            <Form>
+            <Form.Field>
+              <label>Name</label>
+              <input ref='name' />
+            </Form.Field>
+            <Form.Field>
+              <label>Icon Url</label>
+              <input ref='iconUrl' />
+            </Form.Field>
+            <Form.Field>
+              <label>Content Url</label>
+              <input  ref='contentUrl' />
+            </Form.Field>
+            <Form.Field>
+              <label>Manifest Url</label>
+              <input ref='manifestUrl' />
+            </Form.Field>
+            </Form>
+          </Modal>
+        }
+
       </Page>
     );
   }

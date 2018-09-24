@@ -54,7 +54,7 @@
     "test:coverage": "cross-env NODE_ENV=test istanbul cover _mocha -- 'src/**/*.spec.js'"
   },
   "devDependencies": {
-    "@cybercongress/chaingear": "0.1.0",
+    "@cybercongress/chaingear": "0.1.4",
     "@parity/dapp-dapp-methods": "github:js-dist-paritytech/dapp-dapp-methods#14c85948eb2036658f3d269ed435a9bb079d23f8",
     "@parity/dapp-develop": "js-dist-paritytech/dapp-develop#3bb84c11bd40687586de6ec758759d9019805d4e",
     "@parity/dapp-status": "github:js-dist-paritytech/dapp-status#4d4ee40f30d8fc5f83c2d04ed8b19aa893826f7d",
