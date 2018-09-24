@@ -99,7 +99,7 @@ function unzipThroughTo (tempPath, extractPath, finalPath) {
       } else {
         // No root folder: extractPath contains the dapp
         return Promise.all(files.map(file => {
-          move(file.filePath, path.join(finalPath, file.filename));
+          move(file.filePath, path.join(finalPath, file.filename), true);
         }));
       }
     });
@@ -224,7 +224,7 @@ export default class HashFetch {
   static instance = null;
   initialize = null; // Initialization promise
   promises = {}; // Unsettled or resolved HashFetch#fetch promises only
-  iconPromises = {};
+  appDefinitionPromises = {};
 
   static get () {
     if (!HashFetch.instance) {
@@ -306,16 +306,17 @@ export default class HashFetch {
     return this.initialize.then(() => {
       const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
 
-      if (!(appDefinition.name in this.iconPromises)) {
+      if (!(appDefinition.name in this.appDefinitionPromises)) {
         if (fs.existsSync(finalPath)) {
-          this.iconPromises[appDefinition.name] = Promise.resolve(finalPath);
+          this.appDefinitionPromises[appDefinition.name] = Promise.resolve(finalPath);
         } else {
-          this.iconPromises[appDefinition.name] = this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png')
+          this.appDefinitionPromises[appDefinition.name] = this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png')
+            .then(() => this._downloadFile(appDefinition.manifestUrl, appDefinition.name, 'manifest.json'))
             .then(() => finalPath)
-            .catch(e => { delete this.iconPromises[appDefinition.name]; throw e; });
+            .catch(e => { delete this.appDefinitionPromises[appDefinition.name]; throw e; });
         }
       }
-      return this.iconPromises[appDefinition.name];
+      return this.appDefinitionPromises[appDefinition.name];
     });
   }
 
@@ -325,11 +326,10 @@ export default class HashFetch {
 
       if (!(appDefinition.name in this.promises)) {
 
-        if (fs.existsSync(path.join(finalPath, 'manifest.json'))) {
+        if (fs.existsSync(path.join(finalPath, 'index.html'))) {
           this.promises[appDefinition.name] = Promise.resolve(finalPath);
         } else {
           this.promises[appDefinition.name] = this._downloadFile(appDefinition.contentUrl, appDefinition.name, '', true)
-            //.then(() => this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
             .then(() => finalPath)
             .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
         }

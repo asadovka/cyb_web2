@@ -162,9 +162,6 @@ export default class DappsStore extends EventEmitter {
    * apps, else fetch from the node
    */
   loadApp (id) {
-
-    //debugger;
-
     return this
       .loadLocalApps()
       .then(() => {
@@ -178,36 +175,14 @@ export default class DappsStore extends EventEmitter {
           .then(definition => {
             return HashFetch.get().downloadRemoteApp(definition)
               .then(appPath => {
-                const manifestPath = path.join(appPath, 'manifest.json');
 
-                return fsReadFile(manifestPath)
-                  .then(manifestJson => JSON.parse(manifestJson))
-                  .then(manifest => {
-                    const { author, description, name, version } = manifest;
-                    // console.log( ' appDefinition ', appDefinition)
-                    const downloadedApp = {
-                      author: author,
-                      description: description,
-                      id: '' + definition.id, // ????
-                      contentHash: definition.name,
-                      localUrl: `file://${appPath}/index.html`,
-                      image: `file://${appPath}/icon.png`,
-                      name: name,
-                      type: 'network',
-                      version: version,
-                      visible: true
-                    };
-                    transaction(() => {
-                      this.apps = this.apps.map(app => {
-                        if (app.id === id) {
-                          return downloadedApp;
-                        } else {
-                          return app;
-                        }
-                      });
-                    });
-                    return downloadedApp;
-                  });
+                const downloadedApp = Object.assign(app, {
+                  contentHash: definition.name,
+                  localUrl: `file://${appPath}/index.html`,
+                });
+
+                this.updateApp(downloadedApp);
+                return downloadedApp;
               })
               .catch(e => {
                 console.error(`Error loading dapp ${id}`, e);
@@ -314,7 +289,9 @@ export default class DappsStore extends EventEmitter {
   fetchChaingearApps () {
     return this.fetchChaingearAppIds()
       .then(ids => Promise.all(
-        ids.map(id => this.fetchChaingerAppDefinitionById(id))
+        ids
+          .filter(id => !this.getAppById(id))
+          .map(id => this.fetchChaingerAppDefinitionById(id))
         )
       )
       .then(appDefArr => {
@@ -335,11 +312,6 @@ export default class DappsStore extends EventEmitter {
   }
 
   fetchChaingerAppDefinitionById (id) {
-    // return Promise.resolve({
-    //   name: 'ApplicationStore',
-    //   iconUrl: 'https://github.com/cybercongress/Application-Store/raw/master/icon.jpg',
-    //   contentUrl: 'https://github.com/cybercongress/Application-Store/blob/master/build.zip?raw=true'
-    // });
     return new Promise(resolve => {
       const applications = this._api.newContract(entryCoreAbi, entryCoreContractAddr);
 
@@ -348,6 +320,7 @@ export default class DappsStore extends EventEmitter {
           name: arr[0],
           iconUrl: arr[1],
           contentUrl: arr[2],
+          manifestUrl: arr[3],
           id
         };
         // console.log(' >> ', obj);
@@ -359,24 +332,13 @@ export default class DappsStore extends EventEmitter {
   fetchChaingearApp (appDefinition) {
     console.log(' ---> fetchChaingearApp: ', appDefinition.name);
 
+    const app = this.getAppById(appDefinition.id.toString());
+    if (app) {
+      return Promise.resolve(app);
+    }
+
     return HashFetch.get().fetchRemoteApp(appDefinition).then((appPath) => {
-
-      return Promise.resolve({
-        author: '',
-        description: '',
-        id: '' + appDefinition.id,
-        image: `file://${appPath}/icon.png`,
-        name: appDefinition.name,
-        type: 'network',
-        version: '',
-        visible: true
-      });
-    }).catch(e => {
-      console.log('fetchChaingearApp error ->', e);
-    });
-
-  /*    return HashFetch.get().downloadRemoteApp(appDefinition).then((appPath) => {
-        const manifestPath = path.join(appPath, 'manifest.json');
+      const manifestPath = path.join(appPath, 'manifest.json');
 
       return fsReadFile(manifestPath)
         .then(manifestJson => JSON.parse(manifestJson))
@@ -386,8 +348,7 @@ export default class DappsStore extends EventEmitter {
           return {
             author: author,
             description: description,
-            id: "" + appDefinition.id, // ????
-            contentHash: appDefinition.name,
+            id: '' + appDefinition.id,
             image: `file://${appPath}/icon.png`,
             name: name,
             type: 'network',
@@ -501,6 +462,14 @@ export default class DappsStore extends EventEmitter {
   @action setDisplayApps = (displayApps) => {
     this.displayApps = Object.assign({}, this.displayApps, displayApps);
   };
+
+  @action updateApp = (appForUpdate) => {
+    transaction(() => {
+      this.apps = this.apps
+        .filter((app) => app.id !== appForUpdate.id)
+        .concat([appForUpdate]);
+    });
+  }
 
   @action addApps = (_apps = [], _local = false) => {
     transaction(() => {
