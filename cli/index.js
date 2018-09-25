@@ -256,7 +256,7 @@ program
         const manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
 
         //todo: commands for linux and windows
-        const command = `ln -s $PWD/ $HOME/Library/Application\\ Support/parity-ui/dapps/${manifest.name}`;
+        const command = `ln -s $PWD/ $HOME/Library/Application\\ Support/cyb/dapps/${manifest.name}`;
 
         exec(command);
     });
@@ -269,7 +269,7 @@ program
         const manifest = JSON.parse(fs.readFileSync('./manifest.json', 'utf8'));
 
         //todo: commands for linux and windows
-        const command = `unlink $HOME/Library/Application\\ Support/parity-ui/dapps/${manifest.name}`;
+        const command = `unlink $HOME/Library/Application\\ Support/cyb/dapps/${manifest.name}`;
 
         exec(command);
     });
