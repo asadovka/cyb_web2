@@ -130,7 +130,7 @@ export function fetchBuiltinApps () {
 
 export function fetchLocalApps () {
   const dappsPath = getLocalDappsPath();
-
+console.log(' dappsPath ', dappsPath)
   return fsEnsureDir(dappsPath)
     .then(() => fsReaddir(dappsPath)) // List files
     .then(filenames => // Gather info about files

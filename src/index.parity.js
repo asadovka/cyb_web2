@@ -35,6 +35,9 @@ import { retrieveToken } from './util/token';
 import Application from './Application';
 import Dapp from './Dapp';
 import Dapps from './Dapps';
+import Home from './containers/Home/';
+import Help from './containers/Help/';
+
 import { setupProviderFilters } from './DappRequests';
 // import { injectExternalScript } from './ShellExtend';
 import SecureApi from './secureApi';
@@ -81,9 +84,11 @@ function renderUI (token) {
       <Router history={ hashHistory }>
         <Route path='/' component={ Application }>
           <Redirect from='/auth' to='/' />
+          <Route path='/apps' component={ Dapps } />
+          <Route path='/help' component={ Help } />
           <Route path='/:id' component={ Dapp } />
           <Route path='/:id/:details' component={ Dapp } />
-          <IndexRoute component={ Dapps } />
+          <IndexRoute component={ Home } />
         </Route>
       </Router>
     </ContextProvider>,
