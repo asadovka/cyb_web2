@@ -21,7 +21,13 @@ import store from 'store';
 import { range } from 'lodash';
 
 import Contracts from '@parity/shared/lib/contracts';
-import { fetchBuiltinApps, fetchLocalApps, fetchRegistryAppIds, fetchRegistryApp, subscribeToChanges } from '../util/dapps';
+import {
+  fetchBuiltinApps,
+  fetchLocalApps,
+  fetchRegistryAppIds,
+  fetchRegistryApp,
+  subscribeToChanges
+} from '../util/dapps';
 import HashFetch from '../util/hashFetch';
 
 const LS_KEY_DISPLAY = 'displayApps';
@@ -156,29 +162,31 @@ export default class DappsStore extends EventEmitter {
    * apps, else fetch from the node
    */
   loadApp (id) {
-    const { dappReg } = Contracts.get(this._api);
-
     return this
       .loadLocalApps()
       .then(() => {
         const app = this.apps.find((app) => app.id === id);
 
-        if (app) {
+        if (app && !!app.contentHash) {
           return app;
-        }
+        } else { // it's not downloaded app from chaingear
+          return this.fetchChaingerAppDefinitionById(app.chaingearId)
+            .then(definition => {
+              return HashFetch.get().downloadAppContent(definition)
+                .then(appPath => {
+                  const downloadedApp = Object.assign(app, {
+                    contentHash: definition.name,
+                    localUrl: `file://${appPath}/index.html`,
+                  });
 
-        return this.fetchChaingerAppDefinitionById(id).then(definition => this.fetchChaingearApp(definition));
-      })
-      .then((app) => {
-        if (app.type === 'network') {
-          return HashFetch.get().fetch(this._api, app.contentHash, 'dapp')
-            .then(appPath => {
-              app.localUrl = `file://${appPath}/index.html`;
-              return app;
-            })
-            .catch(e => { console.error(`Error loading dapp ${id}`, e); });
-        }
-        return app;
+                this.updateApp(downloadedApp);
+                  return downloadedApp;
+                })
+                .catch(e => {
+                  console.error(`Error loading dapp ${id}`, e);
+                });
+            });
+      }
       })
       .then((app) => {
         this.emit('loaded', app);
@@ -195,12 +203,9 @@ export default class DappsStore extends EventEmitter {
   }
 
   loadAllApps () {
-    // const { dappReg } = Contracts.get(this._api);
-
     return Promise
       .all([
         this.loadLocalApps(),
-        // this.fetchRegistryApps(dappReg).then((apps) => this.addApps(apps)),
         this.fetchChaingearApps().then(apps => this.addApps(apps))
       ])
       .then(this.writeDisplayApps);
@@ -283,7 +288,9 @@ export default class DappsStore extends EventEmitter {
   fetchChaingearApps () {
     return this.fetchChaingearAppIds()
       .then(ids => Promise.all(
-        ids.map(id => this.fetchChaingerAppDefinitionById(id))
+        ids
+          .filter(id => !this.getAppById(id))
+          .map(id => this.fetchChaingerAppDefinitionById(id))
         )
       )
       .then(appDefArr => {
@@ -304,11 +311,6 @@ export default class DappsStore extends EventEmitter {
   }
 
   fetchChaingerAppDefinitionById (id) {
-    // return Promise.resolve({
-    //   name: 'ApplicationStore',
-    //   iconUrl: 'https://github.com/cybercongress/Application-Store/raw/master/icon.jpg',
-    //   contentUrl: 'https://github.com/cybercongress/Application-Store/blob/master/build.zip?raw=true'
-    // });
     return new Promise(resolve => {
       const applications = this._api.newContract(entryCoreAbi, entryCoreContractAddr);
 
@@ -317,17 +319,25 @@ export default class DappsStore extends EventEmitter {
           name: arr[0],
           iconUrl: arr[1],
           contentUrl: arr[2],
+          manifestUrl: arr[3],
           id
         };
-          // console.log(' >> ', obj);
-
+        // console.log(' >> ', obj);
         resolve(obj);
       });
     });
   }
 
   fetchChaingearApp (appDefinition) {
-    return HashFetch.get().downloadRemoteApp(appDefinition).then((appPath) => {
+    console.log('-> fetching app from chaingear: ', appDefinition.name);
+
+    const app = this.getAppById(appDefinition.id.toString());
+    if (app) {
+      console.log('-> app already resolved, return definition: ', appDefinition.name);
+      return Promise.resolve(app);
+    }
+
+    return HashFetch.get().downloadAppIconAndManifest(appDefinition).then((appPath) => {
       const manifestPath = path.join(appPath, 'manifest.json');
 
       return fsReadFile(manifestPath)
@@ -335,12 +345,11 @@ export default class DappsStore extends EventEmitter {
         .then(manifest => {
           const { author, description, name, version } = manifest;
           // console.log( ' appDefinition ', appDefinition)
-
           return {
             author: author,
             description: description,
-            id: '' + appDefinition.id, // ????
-            contentHash: appDefinition.name,
+            id: '' + appDefinition.name,
+            chaingearId: appDefinition.id,
             image: `file://${appPath}/icon.png`,
             name: name,
             type: 'network',
@@ -349,7 +358,7 @@ export default class DappsStore extends EventEmitter {
           };
         });
     }).catch(e => {
-      console.log('fetchChaingearApp error ->', e);
+      console.log('-> cannot fetch app from chaingear error ->', e);
     });
   }
 
@@ -454,6 +463,14 @@ export default class DappsStore extends EventEmitter {
   @action setDisplayApps = (displayApps) => {
     this.displayApps = Object.assign({}, this.displayApps, displayApps);
   };
+
+  @action updateApp = (appForUpdate) => {
+    transaction(() => {
+      this.apps = this.apps
+        .filter((app) => app.id !== appForUpdate.id)
+        .concat([appForUpdate]);
+    });
+  }
 
   @action addApps = (_apps = [], _local = false) => {
     transaction(() => {

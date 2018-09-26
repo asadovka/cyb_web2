@@ -98,7 +98,9 @@ function unzipThroughTo (tempPath, extractPath, finalPath) {
             .then(() => remove(extractPath));
       } else {
         // No root folder: extractPath contains the dapp
-        return move(extractPath, finalPath);
+        return Promise.all(files.map(file => {
+          move(file.filePath, path.join(finalPath, file.filename), true);
+        }));
       }
     });
 }
@@ -222,6 +224,7 @@ export default class HashFetch {
   static instance = null;
   initialize = null; // Initialization promise
   promises = {}; // Unsettled or resolved HashFetch#fetch promises only
+  appDefinitionPromises = {};
 
   static get () {
     if (!HashFetch.instance) {
@@ -261,9 +264,9 @@ export default class HashFetch {
    * @return {Promise} A Promise that resolves with the path to the file or directory
    */
   fetch (api, hash, expected) {
-    //hash = hash.toLowerCase();
+    // hash = hash.toLowerCase();
 
-    //if (!/^[0-9a-z]{64}$/.test(hash)) { return Promise.reject(`${hash} isn't a valid hash.`); }
+    // if (!/^[0-9a-z]{64}$/.test(hash)) { return Promise.reject(`${hash} isn't a valid hash.`); }
 
     return this.initialize.then(() => {
       const filePath = path.join(getHashFetchPath(), 'files', hash);
@@ -279,36 +282,71 @@ export default class HashFetch {
     });
   }
 
-  _downloadFile (url, appName, fileName, zip = false) {
-    const tempAppDirPath = path.join(getHashFetchPath(), 'partial', appName);
-    const tempFilePath = path.join(tempAppDirPath, zip ? 'content.zip' : fileName);
-    const finalPath = path.join(getHashFetchPath(), 'files', appName, fileName);
-
-    if (!fs.existsSync(tempAppDirPath)) {
-      fs.mkdirSync(tempAppDirPath);
+  _createDirIfNotExist (path) {
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path);
     }
+  }
+
+  _downloadAndExtractZipFile (url, appName) {
+    const tempAppDirPath = path.join(getHashFetchPath(), 'partial', appName);
+    const tempFilePath = path.join(tempAppDirPath, 'content.zip');
+    const finalPath = path.join(getHashFetchPath(), 'files', appName);
+
+    this._createDirIfNotExist(tempAppDirPath);
 
     return download(url, tempFilePath).then(() => {
-      if (!zip) {
-        return move(tempFilePath, finalPath);
-      } else {
-        const extractPath = path.join(getHashFetchPath(), 'partial-extract', 'content.zip');
+      const extractPath = path.join(getHashFetchPath(), 'partial-extract', 'content.zip');
 
-        return unzipThroughTo(tempFilePath, extractPath, finalPath);
-      }
+      return unzipThroughTo(tempFilePath, extractPath, finalPath);
     }).then(() => finalPath);
   }
 
-  downloadRemoteApp (appDefinition) {
+  _downloadFile (url, appName, fileName) {
+    const tempAppDirPath = path.join(getHashFetchPath(), 'partial', appName);
+    const tempFilePath = path.join(tempAppDirPath, fileName);
+    const finalPath = path.join(getHashFetchPath(), 'files', appName, fileName);
+
+    this._createDirIfNotExist(tempAppDirPath);
+
+    return download(url, tempFilePath).then(() => {
+      return move(tempFilePath, finalPath);
+    }).then(() => finalPath);
+  }
+
+  downloadAppIconAndManifest (appDefinition) {
+    console.log('-> checking for icon and manifest for: ', appDefinition.name);
+    return this.initialize.then(() => {
+      const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
+
+      if (!(appDefinition.name in this.appDefinitionPromises)) {
+        if (fs.existsSync(finalPath)) {
+          this.appDefinitionPromises[appDefinition.name] = Promise.resolve(finalPath);
+          console.log('-> icon and manifest already downloaded: ', appDefinition.name);
+        } else {
+          console.log('-> downloading icon and manifest for: ', appDefinition.name);
+          this.appDefinitionPromises[appDefinition.name] = this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png')
+            .then(() => this._downloadFile(appDefinition.manifestUrl, appDefinition.name, 'manifest.json'))
+            .then(() => finalPath)
+            .catch(e => { delete this.appDefinitionPromises[appDefinition.name]; throw e; });
+        }
+      }
+      return this.appDefinitionPromises[appDefinition.name];
+    });
+  }
+
+  downloadAppContent (appDefinition) {
+    console.log('-> checking for content for: ', appDefinition.name);
     return this.initialize.then(() => {
       const finalPath = path.join(getHashFetchPath(), 'files', appDefinition.name);
 
       if (!(appDefinition.name in this.promises)) {
-        if (fs.existsSync(finalPath)) {
+        if (fs.existsSync(path.join(finalPath, 'index.html'))) {
           this.promises[appDefinition.name] = Promise.resolve(finalPath);
+          console.log('-> content already downloaded: ', appDefinition.name);
         } else {
-          this.promises[appDefinition.name] = this._downloadFile(appDefinition.contentUrl, appDefinition.name, '', true)
-            .then(() => this._downloadFile(appDefinition.iconUrl, appDefinition.name, 'icon.png'))
+          console.log('-> downloading content for: ', appDefinition.name);
+          this.promises[appDefinition.name] = this._downloadAndExtractZipFile(appDefinition.contentUrl, appDefinition.name)
             .then(() => finalPath)
             .catch(e => { delete this.promises[appDefinition.name]; throw e; }); // Don't prevent retries if the fetch failed
         }
