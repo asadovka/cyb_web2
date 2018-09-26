@@ -20,7 +20,8 @@ const noop = require('lodash/noop');
 const { spawn } = require('child_process');
 const util = require('util');
 
-const { cli, parityArgv } = require('../cli');
+const { cli } = require('../cli');
+let { parityArgv } = require('../cli');
 const handleError = require('./handleError');
 const parityPath = require('../utils/parityPath');
 
@@ -58,7 +59,7 @@ module.exports = {
 
         // set default network to kovan
         if (parityArgv.length === 0) {
-          parityArgv.concat([ '--chain=kovan', '--jsonrpc-cors=*', '--jsonrpc-apis=all' ]);
+          parityArgv = parityArgv.concat([ '--chain=kovan', '--jsonrpc-cors=*', '--jsonrpc-apis=all' ]);
         }
         // Run an instance of parity with the correct args
         parity = spawn(parityPath(), parityArgv);

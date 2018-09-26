@@ -1,0 +1,47 @@
+.linkList {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+
+.linkItem {
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  box-sizing: content-box;
+  text-decoration: none;
+}
+
+.linkItem::before {
+  display: block;
+  content: '';
+  width: 35px;
+  height: 35px;
+  padding-bottom: 12px;
+}
+
+.linkItemgithub::before {
+  background: url('../NavigateLinks/github.svg') no-repeat center center;
+}
+
+.linkItemroadmap::before {
+  background: url('../NavigateLinks//route.svg') no-repeat center center;
+}
+
+.linkItemcybernode::before {
+  background: url('../NavigateLinks//startup.svg') no-repeat center center;
+}
+
+.linkItemdashboard::before {
+  background: url('../NavigateLinks//projection.svg') no-repeat center center;
+}
+
+.linkItemknowledge::before {
+  background: url('../NavigateLinks//brain.svg') no-repeat center center;
+}
+
+.linkItemblog::before {
+  background: url('../NavigateLinks//contract.svg') no-repeat center center;
+}

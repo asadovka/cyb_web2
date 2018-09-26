@@ -17,7 +17,7 @@
     "category": "public.app-category.productivity",
     "icon": "./assets/icon/small-white-512x512.png",
     "target": [
-      "pkg"
+      "dmg"
     ]
   },
   "nsis": {
@@ -25,14 +25,10 @@
     "oneClick": true,
     "perMachine": true
   },
-  "pkg": {
-    "allowAnywhere": false,
-    "allowCurrentUserHome": false
-  },
-  "productName": "Parity UI",
+  "productName": "Cyb",
   "win": {
     "icon": "./assets/icon/small-white-512x512.png",
-    "publisherName": "Parity Technologies (UK) Ltd.",
+    "publisherName": "cybercongress",
     "target": "nsis"
   }
 }

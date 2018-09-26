@@ -1,0 +1,16 @@
+
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pending {
+  font-size: 20px;
+  color: #fff;
+}
+
+.defaultAccount {
+  font-size: 37px;
+}

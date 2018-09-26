@@ -34,11 +34,21 @@ import Requests from '../Requests';
 import Snackbar from '../Snackbar';
 import Status from '../Status';
 import UpgradeParity from '../UpgradeParity';
+import { Link } from 'react-router';
 
 import { appLogoDark as parityLogo } from '../config';
 import styles from './application.css';
 
 const inFrame = window.parent !== window && window.parent.frames.length !== 0;
+
+import { Container, Panel, PanelLeft, PanelRight, SearchFormPanel, AppIframe, AppContainer, AppHeader, AppContent } from '../components/Layout/Layout'
+
+
+import SearchBox from './SearchBox'
+// import AppsPanel from './AppsPanel'
+import MenuAndLogo from './MenuAndLogo'
+import IdBar from './IdBar';
+
 
 @observer
 class Application extends Component {
@@ -73,14 +83,65 @@ class Application extends Component {
       );
     }
 
+    // return (
+    //   <div className={ styles.application }>
+    //     <img src={ parityLogo } className={ styles.logo } />
+    //     {
+    //       blockNumber
+    //         ? <Status upgradeStore={ this.upgradeStore } />
+    //         : null
+    //     }
+    //     {
+    //       isMinimized
+    //         ? this.renderMinimized()
+    //         : this.renderApp()
+    //     }
+    //     <Connection />
+    //     <DappRequests />
+    //     {
+    //       (pinMatrixRequest.length > 0)
+    //         ? (
+    //           <PinMatrix
+    //             device={ pinMatrixRequest[0] }
+    //             store={ this.hwstore }
+    //           />
+    //         )
+    //         : null
+    //     }
+    //     <Requests />
+    //     <ParityBar
+    //       alwaysHidden
+    //       dapp={ isMinimized }
+    //     />
+    //   </div>
+    // );
+
     return (
-      <div className={ styles.application }>
-        <img src={ parityLogo } className={ styles.logo } />
-        {
+      <AppContainer >
+        {/*<img src={ parityLogo } className={ styles.logo } />*/}
+        {/*
           blockNumber
             ? <Status upgradeStore={ this.upgradeStore } />
             : null
-        }
+        */}
+        <AppHeader open={isMinimized}>
+          <Panel open={isMinimized}>
+            <PanelLeft>
+              <MenuAndLogo />
+            </PanelLeft>
+            <SearchFormPanel>
+              <SearchBox />
+            </SearchFormPanel>
+            <PanelRight>
+              {
+                blockNumber
+                  ? <IdBar upgradeStore={ this.upgradeStore } />
+                  : null
+              }
+            </PanelRight>
+
+          </Panel>
+        </AppHeader>
         {
           isMinimized
             ? this.renderMinimized()
@@ -103,7 +164,10 @@ class Application extends Component {
           alwaysHidden
           dapp={ isMinimized }
         />
-      </div>
+        <Connection />
+        <DappRequests />
+        <Requests />
+      </AppContainer>
     );
   }
 
@@ -129,10 +193,15 @@ class Application extends Component {
     const { children } = this.props;
 
     return (
-      <div key='content' className={ styles.content }>
+      <AppContent>
         {children}
-      </div>
+      </AppContent>
     );
+    // return (
+    //   <div key='content' className={ styles.content }>
+    //     {children}
+    //   </div>
+    // );
   }
 }
 
