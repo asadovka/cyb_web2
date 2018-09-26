@@ -169,25 +169,24 @@ export default class DappsStore extends EventEmitter {
 
         if (app && !!app.contentHash) {
           return app;
-        }
-
-        return this.fetchChaingerAppDefinitionById(id)
-          .then(definition => {
-            return HashFetch.get().downloadRemoteApp(definition)
-              .then(appPath => {
-
-                const downloadedApp = Object.assign(app, {
-                  contentHash: definition.name,
-                  localUrl: `file://${appPath}/index.html`,
-                });
+        } else { // it's not downloaded app from chaingear
+          return this.fetchChaingerAppDefinitionById(app.chaingearId)
+            .then(definition => {
+              return HashFetch.get().downloadAppContent(definition)
+                .then(appPath => {
+                  const downloadedApp = Object.assign(app, {
+                    contentHash: definition.name,
+                    localUrl: `file://${appPath}/index.html`,
+                  });
 
                 this.updateApp(downloadedApp);
-                return downloadedApp;
-              })
-              .catch(e => {
-                console.error(`Error loading dapp ${id}`, e);
-              });
-          });
+                  return downloadedApp;
+                })
+                .catch(e => {
+                  console.error(`Error loading dapp ${id}`, e);
+                });
+            });
+      }
       })
       .then((app) => {
         this.emit('loaded', app);
@@ -330,14 +329,15 @@ export default class DappsStore extends EventEmitter {
   }
 
   fetchChaingearApp (appDefinition) {
-    console.log(' ---> fetchChaingearApp: ', appDefinition.name);
+    console.log('-> fetching app from chaingear: ', appDefinition.name);
 
     const app = this.getAppById(appDefinition.id.toString());
     if (app) {
+      console.log('-> app already resolved, return definition: ', appDefinition.name);
       return Promise.resolve(app);
     }
 
-    return HashFetch.get().fetchRemoteApp(appDefinition).then((appPath) => {
+    return HashFetch.get().downloadAppIconAndManifest(appDefinition).then((appPath) => {
       const manifestPath = path.join(appPath, 'manifest.json');
 
       return fsReadFile(manifestPath)
@@ -348,7 +348,8 @@ export default class DappsStore extends EventEmitter {
           return {
             author: author,
             description: description,
-            id: '' + appDefinition.id,
+            id: '' + appDefinition.name,
+            chaingearId: appDefinition.id,
             image: `file://${appPath}/icon.png`,
             name: name,
             type: 'network',
@@ -357,7 +358,7 @@ export default class DappsStore extends EventEmitter {
           };
         });
     }).catch(e => {
-      console.log('fetchChaingearApp error ->', e);
+      console.log('-> cannot fetch app from chaingear error ->', e);
     });
   }
 
