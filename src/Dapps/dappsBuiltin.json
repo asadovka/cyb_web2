@@ -2,7 +2,7 @@
   {
     "id": "v1",
     "name": "Parity Wallet",
-    "package": "@parity/dapp-wallet",
+    "package": "@cybercongress/dapp-wallet",
     "description": "Parity Wallet and Account management tools",
     "author": "Parity Team <admin@parity.io>",
     "version": "1.10.1",

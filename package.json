@@ -58,7 +58,6 @@
     "@parity/dapp-dapp-methods": "github:js-dist-paritytech/dapp-dapp-methods#14c85948eb2036658f3d269ed435a9bb079d23f8",
     "@parity/dapp-develop": "js-dist-paritytech/dapp-develop#3bb84c11bd40687586de6ec758759d9019805d4e",
     "@parity/dapp-status": "github:js-dist-paritytech/dapp-status#4d4ee40f30d8fc5f83c2d04ed8b19aa893826f7d",
-    "@parity/dapp-wallet": "github:js-dist-paritytech/dapp-wallet#bdcaa0a94bc669b74103fce9073e5216d29e2f3e",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
     "babel-eslint": "7.1.1",
@@ -150,6 +149,7 @@
     "yauzl": "2.9.1"
   },
   "dependencies": {
+    "@cybercongress/dapp-wallet": "0.0.2",
     "@parity/api": "2.1.24",
     "@parity/mobx": "1.1.2",
     "@parity/plugin-signer-account": "github:parity-js/plugin-signer-account#05294dce59b7cd7c4f1b26dc604fc6a04dd02bc8",
