@@ -167,7 +167,7 @@ export default class DappsStore extends EventEmitter {
       .then(() => {
         const app = this.apps.find((app) => app.id === id);
 
-        if (app && !!app.contentHash) {
+        if (app && ((app.type === 'local' || app.type === 'builtin') || !!app.contentHash)) {
           return app;
         } else { // it's not downloaded app from chaingear
           return this.fetchChaingerAppDefinitionById(app.chaingearId)
