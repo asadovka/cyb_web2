@@ -32,7 +32,7 @@ NEXT-GENERATION BROWSER & DAPP PLATFORM
 
 Cyb is a blockchain browser with integrated DApp platform. Browser consists of two main parts:
 
-1. Shell, which:
+1. Core, which:
 
 - can search in blockchains, Dapps, and IPFS content
 - can deploy and manage Dapps for users
