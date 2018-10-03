@@ -9,6 +9,10 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/LG-common.css" rel="stylesheet">
+    <link href="css/LG-rings.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,8 +21,105 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
   <body>
-    <h1>Hello, world!</h1>
+    <div id="big-outer-ring-1"></div>
+    <div id="big-inner-ring-1"></div>
+    <div id="small-outer-ring-1"></div>
+    <div id="small-inner-ring-1"></div>
+
+    <!--LG visible header-->
+    <div class="container-fluid visible-lg">
+      <div class="row row-rel">
+        <div class="col-lg-5 col-lg-offset-1 sphere-lg">
+          <img src="img/sphere-lg.png" class="img-responsive">
+        </div>
+        <div class="col-lg-2 logo-lg">
+          <img src="img/logo-lg.png" class="img-responsive">
+        </div>
+        <div class="col-lg-5 title-lg text-uppercase">
+          <h1>Web3 browser</h1>
+          <a class="btn-get btn-lg btn btn-default text-uppercase" href="https://github.com/cybercongress/cyb/releases" role="button">Get browser</a>
+        </div>
+      </div>
+    </div>
+    <!--LG visible features-->
+    <div class="container-fluid visible-lg features visible-lg">
+      <div class="row row-rel">
+        <div class="col-lg-12 text-center text-uppercase k-feat-lg">
+          Key features
+        </div>
+        <div class="col-lg-12 text-center text-uppercase k-feat-lg-2">
+          Key features
+        </div>
+        <div class="col-lg-12 text-center text-uppercase k-feat-lg-3">
+          Key features
+        </div>
+      </div><!--FEATURES-->
+      <div class="row feat-box">
+        <div class="col-lg-5 col-lg-offset-1 text-right web3">
+          <p class="feat-name">Web3 integration </p>
+          <p class="feat-text">Convenient, secure and fast tool for exploring the new web</p>
+          <p class="feat-text">Fully transparent tokenized ecomonics</p>
+          <p class="feat-text">Decentralized backend powered by Cybernodes</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/web-3.svg" alt="web3-integration" class="feat-img">
+        </div>
+      </div><!--Web3 integration-->
+      <div class="row feat-box">
+        <div class="col-lg-4 col-lg-offset-2">
+          <img src="img/dapp-lg.png" alt="dapp-store" class="feat-img">
+        </div>
+        <div class="col-lg-5">
+          <p class="feat-name">Dapp store</p>
+          <p class="feat-text">Discover apps integrated into the browser:  </p>
+          <p class="feat-text">-  Multiblockchain Wallet</p>
+          <p class="feat-text">-  Chaingear [Registers based on smart-contracts]</p>
+          <p class="feat-text">-  Token Monitor [Realtime statistics from cryptoexchanges]</p>
+          <p class="feat-text">-  Multiblockchain Explorer</p>
+          <p class="feat-text">-  Smart Contract Development Tool</p>
+          <p class="feat-text">-  Cybernode Connection Manager</p>
+        </div>
+      </div><!--Dapp store-->
+      <div class="row feat-box">
+        <div class="col-lg-5 col-lg-offset-1 text-right dapp-dev">
+          <p class="feat-name">Dapp development</p>
+          <p class="feat-text">Create your own apps via Dapp Developer Tool</p>
+          <p class="feat-text">and publish them into the Dapp Store</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/app-lg.png" alt="web3-integration" class="feat-img">
+        </div>
+      </div><!--Dapp development-->
+      <div class="row feat-box">
+        <div class="col-lg-4 col-lg-offset-2">
+          <img src="img/dapp-lg.png" alt="dapp-store" class="feat-img">
+        </div>
+        <div class="col-lg-5 ipfs">
+          <p class="feat-name">IPFS support</p>
+          <p class="feat-text">Store and share data using decentralized technologies</p>
+          <p class="feat-text">Search and discover content via IPFS </p>
+        </div>
+      </div>
+      <div class="row feat-box">
+        <div class="col-lg-5 col-lg-offset-1 text-right dapp-dev">
+          <p class="feat-name">Open source</p>
+          <p class="feat-text">Take part in improvement  of CYB infrastructure</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/open-source-lg.png" alt="web3-integration" class="feat-img">
+        </div>
+      </div><!--Open source-->
+    </div>
+    <!--Footer-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 text-center footer">
+          <p>Do What The Fuck You Want To Public License (WTFPL)</p>
+        </div>
+      </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
