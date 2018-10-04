@@ -3,6 +3,7 @@ body {
   overflow-x: hidden;
   width: 100vw;
   font-family: Play;
+  height: 90%;
 }
 
 .row-rel {
@@ -133,54 +134,4 @@ body {
   margin-top: 20vw;
   margin-bottom: 5vw;
   font-size: calc(0.4vw + 0.4vh + 0.2vmin);
-}
-
-#big-outer-ring-1 {
-  position: absolute;
-  top: 55vw;
-  left: -9vw;
-  width: 118vw;
-  height: 118vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: -4;
-}
-
-#big-inner-ring-1 {
-  position: absolute;
-  top: 59vw;
-  left: -5vw;
-	width: 110vw;
-	height: 110vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50%;
-  z-index: -3;
-}
-
-#small-outer-ring-1 {
-  position: absolute;
-  top: 80vw;
-  left: 15vw;
-  width: 70vw;
-	height: 70vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: -2;
-}
-
-#small-inner-ring-1 {
-  position: absolute;
-  top: 87.5vw;
-  left: 22.5vw;
-	width: 55vw;
-	height: 55vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50%;
-  z-index: -1;
 }
