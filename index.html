@@ -10,7 +10,9 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/LG-common.css" rel="stylesheet">
+    <link href="css/SM-common.css" rel="stylesheet">
     <link href="css/LG-rings.css" rel="stylesheet">
+    <link href="css/SM-rings.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
 
 
@@ -23,7 +25,8 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+    <!--LG visible rings 1-->
+    <div class="container-fluid visible-lg">
       <div class="row">
         <div id="big-outer-ring-1"></div>
         <div id="big-inner-ring-1"></div>
@@ -32,6 +35,15 @@
       </div>
     </div>
 
+    <!--SM visible rings 1-->
+    <div class="container-fluid visible-sm visible-md">
+      <div class="row">
+        <div id="big-outer-ring-1-sm"></div>
+        <div id="big-inner-ring-1-sm"></div>
+        <div id="small-outer-ring-1-sm"></div>
+        <div id="small-inner-ring-1-sm"></div>
+      </div>
+    </div>
 
     <!--LG visible header-->
     <div class="container-fluid visible-lg">
@@ -48,6 +60,114 @@
         </div>
       </div>
     </div>
+
+    <!-- SM MD visible header-->
+    <div class="container-fluid visible-md visible-sm">
+      <div class="row">
+        <div class="col-sm-12 sphere-sm">
+          <img src="img/sphere-sm.png" alt="sphere" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 logo-sm">
+          <img src="img/logo-sm.png" alt="logo" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 title-web3-sm">
+          <h1 class="title-txt-sm text-uppercase">Web3</h1>
+        </div>
+        <div class="col-sm-12 title-browser-sm">
+          <h1 class="title-txt-sm text-uppercase">browser</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <a class="btn-get-sm btn-sm btn btn-default text-uppercase" href="https://github.com/cybercongress/cyb/releases" role="button">Get browser</a>
+        </div>
+      </div>
+    </div>
+
+    <!--SM MD visible features-->
+    <div class="container-fluid features-sm visible-md visible-sm">
+      <div class="row row-rel">
+        <div class="col-sm-12 text-center text-uppercase k-feat-sm">
+          Key features
+        </div>
+        <div class="col-sm-12 text-center text-uppercase k-feat-sm-2">
+          Key features
+        </div>
+        <div class="col-sm-12 text-center text-uppercase k-feat-sm-3">
+          Key features
+        </div>
+      </div>
+      <!--Web3 integration-->
+      <div class="row feat-box-sm">
+        <div class="col-sm-6 text-right web3-sm">
+          <p class="feat-name-sm text-uppercase">Web3 integration </p>
+          <p class="feat-text-sm">Convenient, secure and fast tool for exploring the new web</p>
+          <p class="feat-text-sm">Fully transparent tokenized ecomonics</p>
+          <p class="feat-text-sm">Decentralized backend powered by Cybernodes</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="img/web-3.svg" alt="web3-integration" class="web3-img-sm">
+        </div>
+      </div>
+      <!-------------------->
+      <!--DAPP Store-->
+      <div class="row feat-box-sm">
+        <div class="col-sm-4">
+          <img src="img/dapp-sm.png" alt="dapp-store" class="dapp-st-img-sm">
+        </div>
+        <div class="col-sm-8 dapp-st-sm">
+          <p class="feat-name-sm text-uppercase">Dapp store</p>
+          <p class="feat-text-sm">Discover apps integrated into the browser:  </p>
+          <p class="feat-text-sm">-  Multiblockchain Wallet</p>
+          <p class="feat-text-sm">-  Chaingear [Registers based on smart-contracts]</p>
+          <p class="feat-text-sm">-  Token Monitor [Realtime statistics from cryptoexchanges]</p>
+          <p class="feat-text-sm">-  Multiblockchain Explorer</p>
+          <p class="feat-text-sm">-  Smart Contract Development Tool</p>
+          <p class="feat-text-sm">-  Cybernode Connection Manager</p>
+        </div>
+        <!------------------>
+      </div>
+      <!--Dapp development-->
+      <div class="row feat-box-sm">
+        <div class="col-sm-7 text-right dapp-dev-sm">
+          <p class="feat-name-sm text-uppercase">Dapp development</p>
+          <p class="feat-text-sm">Create your own apps via Dapp Developer Tool</p>
+          <p class="feat-text-sm">and publish them into the Dapp Store</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="img/app-sm.png" alt="dapp-development" class="dapp-dev-img-sm">
+        </div>
+      </div>
+      <!-------------------->
+      <!--IPFS-->
+      <div class="row feat-box-sm">
+        <div class="col-sm-4">
+          <img src="img/ipfs-sm.png" alt="ipfs-support" class="ipfs-img-sm">
+        </div>
+        <div class="col-sm-8 ipfs-sm">
+          <p class="feat-name-sm">IPFS support</p>
+          <p class="feat-text-sm">Store and share data using decentralized technologies</p>
+          <p class="feat-text-sm">Search and discover content via IPFS </p>
+        </div>
+      </div>
+      <!---------->
+      <!--Open source-->
+      <div class="row feat-box-sm">
+        <div class="col-sm-8 text-right open-s-sm">
+          <p class="feat-name-sm">Open source</p>
+          <p class="feat-text-sm">Take part in improvement  of CYB infrastructure</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="img/open-source-sm.png" alt="open source" class="open-s-img-sm">
+        </div>
+      </div>
+      <!--------------->
+    </div>
+
     <!--LG visible features-->
     <div class="container-fluid visible-lg features visible-lg">
       <div class="row row-rel">
@@ -61,6 +181,7 @@
           Key features
         </div>
       </div><!--FEATURES-->
+      <!--Web3 integration-->
       <div class="row feat-box">
         <div class="col-lg-5 col-lg-offset-1 text-right web3">
           <p class="feat-name">Web3 integration </p>
@@ -71,7 +192,9 @@
         <div class="col-lg-4">
           <img src="img/web-3.svg" alt="web3-integration" class="feat-img">
         </div>
-      </div><!--Web3 integration-->
+      </div>
+      <!---------------------->
+      <!--Dapp store-->
       <div class="row feat-box">
         <div class="col-lg-4 col-lg-offset-2 dapp-st">
           <img src="img/dapp-lg.png" alt="dapp-store" class="feat-img">
@@ -86,7 +209,9 @@
           <p class="feat-text">-  Smart Contract Development Tool</p>
           <p class="feat-text">-  Cybernode Connection Manager</p>
         </div>
-      </div><!--Dapp store-->
+      </div>
+      <!----------------------->
+      <!--Dapp development-->
       <div class="row feat-box">
         <div class="col-lg-5 col-lg-offset-1 text-right dapp-dev">
           <p class="feat-name">Dapp development</p>
@@ -96,10 +221,12 @@
         <div class="col-lg-4">
           <img src="img/app-lg.png" alt="web3-integration" class="feat-img">
         </div>
-      </div><!--Dapp development-->
+      </div>
+      <!-------------------->
+      <!--IPFS support-->
       <div class="row feat-box">
         <div class="col-lg-4 col-lg-offset-2">
-          <img src="img/dapp-lg.png" alt="dapp-store" class="feat-img">
+          <img src="img/ipfs-lg.png" alt="dapp-store" class="feat-img">
         </div>
         <div class="col-lg-5 ipfs">
           <p class="feat-name">IPFS support</p>
@@ -107,6 +234,8 @@
           <p class="feat-text">Search and discover content via IPFS </p>
         </div>
       </div>
+      <!------------------->
+      <!--Open source-->
       <div class="row feat-box">
         <div class="col-lg-5 col-lg-offset-1 text-right dapp-dev">
           <p class="feat-name">Open source</p>
@@ -115,10 +244,12 @@
         <div class="col-lg-4">
           <img src="img/open-source-lg.png" alt="web3-integration" class="feat-img">
         </div>
-      </div><!--Open source-->
+      </div>
+      <!--------------->
     </div>
-    <!--Footer-->
-    <div class="container-fluid">
+
+    <!--LG visible footer-->
+    <div class="container-fluid visible-lg">
       <div class="row">
         <div class="col-lg-12 text-center footer">
           <p>Do What The Fuck You Want To Public License (WTFPL)</p>
@@ -126,12 +257,32 @@
       </div>
     </div>
 
-    <div class="container-fluid rings2">
+    <!--SM visible footer-->
+    <div class="container-fluid visible-sm visible-md">
+      <div class="row">
+        <div class="col-lg-12 text-center footer-sm">
+          <p>Do What The Fuck You Want To Public License (WTFPL)</p>
+        </div>
+      </div>
+    </div>
+
+    <!--LG visible rings 2-->
+    <div class="container-fluid rings2 visible-lg">
       <div class="row">
         <div id="big-outer-ring-1"></div>
         <div id="big-inner-ring-1"></div>
         <div id="small-outer-ring-1"></div>
         <div id="small-inner-ring-1"></div>
+      </div>
+    </div>
+
+    <!--SM visible rings 2-->
+    <div class="container-fluid rings2-sm visible-sm visible-md">
+      <div class="row">
+        <div id="big-outer-ring-1-sm"></div>
+        <div id="big-inner-ring-1-sm"></div>
+        <div id="small-outer-ring-1-sm"></div>
+        <div id="small-inner-ring-1-sm"></div>
       </div>
     </div>
 

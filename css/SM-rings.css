@@ -1,26 +1,26 @@
-.rings2 {
+.rings2-sm {
   position: absolute;
-  top: 128vw;
-  height: 500px;
+  top: 220vw;
+
 }
 
-#big-outer-ring-1 {
+#big-outer-ring-1-sm {
   position: absolute;
-  top: 55vw;
-  left: -9vw;
-  width: 118vw;
-  height: 118vw;
+  top: 130vw;
+  left: -50vw;
+  width: 200vw;
+  height: 200vw;
 	background-color: #37404a;
 	border-radius: 50%;
   z-index: -4;
 }
 
-#big-inner-ring-1 {
+#big-inner-ring-1-sm {
   position: absolute;
-  top: 59vw;
-  left: -5vw;
-	width: 110vw;
-	height: 110vw;
+  top: 135vw;
+  left: -45vw;
+	width: 190vw;
+	height: 190vw;
   background-color: #2b3239;
   border-radius: 50%;
 	-moz-border-radius: 50px;
@@ -29,23 +29,23 @@
   z-index: -3;
 }
 
-#small-outer-ring-1 {
+#small-outer-ring-1-sm {
   position: absolute;
-  top: 80vw;
-  left: 15vw;
-  width: 70vw;
-	height: 70vw;
+  top: 172vw;
+  left: -5vw;
+  width: 110vw;
+	height: 110vw;
 	background-color: #37404a;
 	border-radius: 50%;
   z-index: -2;
 }
 
-#small-inner-ring-1 {
+#small-inner-ring-1-sm {
   position: absolute;
-  top: 87.5vw;
-  left: 22.5vw;
-	width: 55vw;
-	height: 55vw;
+  top: 182.5vw;
+  left: 4.5vw;
+	width: 90vw;
+	height: 90vw;
   background-color: #2b3239;
   border-radius: 50%;
 	-moz-border-radius: 50px;
