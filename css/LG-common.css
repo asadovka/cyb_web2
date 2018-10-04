@@ -1,7 +1,8 @@
 body {
   background-color: #2b3239;
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
+  font-family: Play;
 }
 
 .row-rel {
@@ -9,29 +10,31 @@ body {
 }
 
 .sphere-lg {
-  width: 50%;
-  padding: 5%;
+  width: 48.7vw;
+  margin-top: 6vh;
+  margin-left: 15.8vw;
   padding-bottom: 0;
 }
 
 .title-lg {
   position: absolute;
-  top: 38%;
-  left: 49%;
-  font-family: Play;
-  font-size: 44px;
+  top: 40%;
+  left: 56vw;
+}
+
+.title-txt-lg {
+  font-size: calc(1.5vw + 1.5vh + 2vmin);
   color: #ffffff;
 }
 
 .logo-lg {
-  width: 20%;
+  width: 17vw;
   position: absolute;
-  top: 40%;
-  left: 24%;
+  top: 42%;
+  left: 31.5%;
 }
 
 .btn-lg {
-  font-family: Play;
   width: 163px;
   box-shadow: 1px 6px 11px 0 rgba(0, 0, 0, 0.15);
   border: solid 1.2px #f2f2f2;
@@ -46,14 +49,13 @@ body {
 
 .btn-get {
   position: absolute;
-  top: 100%;
-  left: 1%;
+  top: 10vh;
+  left: 2vw;
 }
 
 .k-feat-lg {
   color: #ffffff;
-  font-family: Play;
-  font-size: 48px;
+  font-size: calc(1.5vw + 1.5vh + 2vmin);
   z-index: 2;
 }
 
@@ -62,8 +64,7 @@ body {
   top: -3px;
   left: -3px;
   color: #51dcd4;
-  font-family: Play;
-  font-size: 48px;
+  font-size: calc(1.5vw + 1.5vh + 2vmin);
 }
 
 .k-feat-lg-3 {
@@ -71,16 +72,15 @@ body {
   top: 3px;
   left: 3px;
   color: #c73dbc;
-  font-family: Play;
-  font-size: 48px;
+  font-size: calc(1.5vw + 1.5vh + 2vmin);
 }
 
 .features {
-  margin-top: 15%;
+  margin-top: 15vh;
 }
 
 .feat-box {
-  padding-top: 10%;
+  margin-top: 10vh;
 }
 
 .feat-img {
@@ -88,9 +88,8 @@ body {
 }
 
 .feat-name {
-  padding-bottom: 3%;
-  font-family: Play;
-  font-size: 30px;
+  padding-bottom: 3vh;
+  font-size: calc(1vw + 1vh + 2vmin);
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -100,9 +99,8 @@ body {
 }
 
 .feat-text {
-  padding-bottom: 1%;
-  font-family: Play;
-  font-size: 16px;
+  padding-bottom: 1vh;
+  font-size: calc(0.6vw + 0.6vh + 0.1vmin);
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -111,23 +109,29 @@ body {
   color: #ffffff;
 }
 
+.dapp-st {
+  margin-top: 7vh;
+  margin-left: 20vw;
+}
+
 .web3 {
-  padding-top: 4%;
-  padding-right: 3%;
+  margin-top: 2vh;
+  margin-left: 9vw;
 }
 
 .dapp-dev {
-  padding-top: 5%;
-  padding-right: 3%;
+  margin-top: 5vh;
+  margin-right: 3vw;
 }
 
 .ipfs {
-  padding-top: 6.5%;
+  margin-top: 3.5vh;
 }
 
 .footer {
   color: #ffffff;
-  padding-top: 5%;
+  margin-top: 20vh;
+  margin-bottom: 5vh;
 }
 
 #big-outer-ring-1 {
