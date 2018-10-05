@@ -1,7 +1,6 @@
-body {
+html, body {
   background-color: #2b3239;
   overflow-x: hidden;
-  width: 100vw;
   margin: 0;
   font-family: Play;
 }
@@ -59,34 +58,35 @@ body {
 }
 
 .k-feat-sm {
-  position: absolute;
+  text-align: center;
   color: #ffffff;
-  font-size: calc(1.5vw + 1.5vh + 2vmin);
+  font-size: calc(1.4vw + 1.4vh + 1vmin);
   z-index: 2;
 }
 
 .k-feat-sm-2 {
   position: absolute;
-  top: -3px;
-  left: -3px;
+  left: -0.2vw;
+  top: -0.2vw;
   color: #51dcd4;
-  font-size: calc(1.5vw + 1.5vh + 2vmin);
+  font-size: calc(1.4vw + 1.4vh + 1vmin);
 }
 
 .k-feat-sm-3 {
   position: absolute;
-  top: 3px;
-  left: 3px;
+  left: 0.2vw;
+  top: 0.2vw;
   color: #c73dbc;
-  font-size: calc(1.5vw + 1.5vh + 2vmin);
+  font-size: calc(1.4vw + 1.4vh + 1vmin);
 }
 
 .features-sm {
-  margin-top: 40vw;
+  margin-top: 34vw;
 }
 
 .feat-box-sm {
-  margin-top: 24vw;
+  margin-top: 15vw;
+  display: flex;
 }
 
 .feat-name-sm {
@@ -102,7 +102,7 @@ body {
 
 .feat-text-sm {
   padding-bottom: 1vw;
-  font-size: calc(0.6vw + 0.6vh + 0.5vmin);
+  font-size: calc(0.6vw + 0.6vh + 0.6vmin);
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -113,61 +113,51 @@ body {
 
 
 .web3-sm {
-  margin-top: 2vw;
-  margin-left: 9vw;
+  margin: auto;
 }
 
 .web3-img-sm {
-  width: 59vw;
-  position: absolute;
-  right: 
-  top: -11vw;
+  width: 53.1vw;
+  margin-left: 5vw;
 }
 
 .dapp-st-sm {
-  margin-left: 50vw;
+  margin: auto;
+  padding-left: 10vw;
 }
 
 .dapp-st-img-sm {
-  width: 59vw;
-  position: absolute;
-  top: -6vw;
-  left: -15vw;
+  width: 53.1vw;
+  margin-left: -16vw;
 }
 
 .dapp-dev-sm {
-  margin-top: 5vw;
-  margin-right: 1vw;
+  margin: auto;
 }
 
 .dapp-dev-img-sm {
-  width: 60vw;
-  position: absolute;
-  top: -12vw;
-  left: 0vw;
+  width: 53.1vw;
+  margin-left: 5vw;
+
 }
 
 .ipfs-sm {
-  margin-top: 7.5vw;
+  margin: auto;
+  padding-left: 7vw;
 }
 
 .ipfs-img-sm {
-  width: 50vw;
-  position: absolute;
-  top: 0vw;
-  left: -19vw;
+  width: 53.1vw;
+  margin-left: -21vw;
 }
 
 .open-s-sm {
-  margin-top: 5vw;
-  margin-right: 1vw;
+  margin: auto;
 }
 
 .open-s-img-sm {
-  width: 42vw;
-  position: absolute;
-  top: -21vw;
-  left: 71vw;
+  width: 53.1vw;
+  margin-left: 5vw;
 }
 
 .footer-sm {

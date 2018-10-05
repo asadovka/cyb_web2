@@ -1,18 +1,13 @@
-.rings2 {
-  position: absolute;
-  top: 128vw;
-  height: 500px;
-}
-
 #big-outer-ring-1 {
   position: absolute;
   top: 55vw;
-  left: -9vw;
   width: 118vw;
   height: 118vw;
+  margin-left: -9vw;
 	background-color: #37404a;
 	border-radius: 50%;
-  z-index: -4;
+  z-index: 0;
+
 }
 
 #big-inner-ring-1 {
@@ -23,10 +18,9 @@
 	height: 110vw;
   background-color: #2b3239;
   border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
 	border-radius: 50%;
-  z-index: -3;
+  z-index: 0;
+  overflow-x: hidden;
 }
 
 #small-outer-ring-1 {
@@ -37,7 +31,8 @@
 	height: 70vw;
 	background-color: #37404a;
 	border-radius: 50%;
-  z-index: -2;
+  z-index: 0;
+  overflow-x: hidden;
 }
 
 #small-inner-ring-1 {
@@ -48,8 +43,54 @@
 	height: 55vw;
   background-color: #2b3239;
   border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+#big-outer-ring-2 {
+  position: absolute;
+  top: 200vw;
+  width: 118vw;
+  height: 118vw;
+  margin-left: -9vw;
+	background-color: #37404a;
 	border-radius: 50%;
-  z-index: -1;
+  z-index: 0;
+
+}
+
+#big-inner-ring-2 {
+  position: absolute;
+  top: 204vw;
+  left: -5vw;
+	width: 110vw;
+	height: 110vw;
+  background-color: #2b3239;
+	border-radius: 50%;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+#small-outer-ring-2 {
+  position: absolute;
+  top: 230vw;
+  left: 15vw;
+  width: 70vw;
+	height: 70vw;
+	background-color: #37404a;
+	border-radius: 50%;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+#small-inner-ring-2 {
+  position: absolute;
+  top: 237.5vw;
+  left: 22.5vw;
+	width: 55vw;
+	height: 55vw;
+  background-color: #2b3239;
+	border-radius: 50%;
+  z-index: 0;
+  overflow-x: hidden;
 }

@@ -1,7 +1,8 @@
-body {
+html, body {
   background-color: #2b3239;
   overflow-x: hidden;
   width: 100vw;
+  height: 250vw;
   margin: 0;
   font-family: Play;
 }
@@ -112,17 +113,17 @@ body {
 
 .dapp-st {
   margin-top: 6vw;
-  margin-left: 20vw;
+  padding-left: 20vw;
 }
 
 .web3 {
   margin-top: 2vw;
-  margin-left: 9vw;
+  padding-left: 9vw;
 }
 
 .dapp-dev {
   margin-top: 5vw;
-  margin-right: 3vw;
+  padding-right: 3vw;
 }
 
 .ipfs {
