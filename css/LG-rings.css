@@ -51,46 +51,28 @@
   position: absolute;
   top: 200vw;
   width: 118vw;
-  height: 118vw;
+  height: 59vw;
   margin-left: -9vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: 0;
-
-}
-
-#big-inner-ring-2 {
-  position: absolute;
-  top: 204vw;
-  left: -5vw;
-	width: 110vw;
-	height: 110vw;
-  background-color: #2b3239;
-	border-radius: 50%;
+  border-radius: 118vw 118vw 0 0;
+  border-top: 5vw solid #37404a;
+  border-left: 5vw solid #37404a;
+  border-right: 5vw solid #37404a;
   z-index: 0;
   overflow-x: hidden;
 }
 
 #small-outer-ring-2 {
+  margin-top: 50vw;
   position: absolute;
-  top: 230vw;
+  top: 180vw;
   left: 15vw;
   width: 70vw;
 	height: 70vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-#small-inner-ring-2 {
-  position: absolute;
-  top: 237.5vw;
-  left: 22.5vw;
-	width: 55vw;
-	height: 55vw;
-  background-color: #2b3239;
-	border-radius: 50%;
+  border-radius: 70vw 70vw 70vw 70vw;
+  border-top: 9vw solid #37404a;
+  border-left: 9vw solid #37404a;
+  border-right: 9vw solid #37404a;
+  border-bottom: 9vw solid #37404a;
   z-index: 0;
   overflow-x: hidden;
 }

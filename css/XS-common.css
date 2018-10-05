@@ -1,5 +1,4 @@
 body {
-  background-color: #2b3239;
   overflow-x: hidden;
   width: 100vw;
   margin: 0;
@@ -8,6 +7,11 @@ body {
 
 .row-rel {
   position: relative;
+}
+
+.head-box-xs {
+  position: absolute;
+  top: 0vw;
 }
 
 .sphere-xs {
@@ -91,7 +95,7 @@ body {
 
 .feat-name-xs {
   padding-bottom: 3vw;
-  font-size: calc(0.8vw + 0.8vh + 1vmin);
+  font-size: calc(1vw + 1vh + 1vmin);
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -102,7 +106,7 @@ body {
 
 .feat-text-xs {
   padding-bottom: 1vw;
-  font-size: calc(0.6vw + 0.6vh + 0.5vmin);
+  font-size: calc(0.8vw + 0.8vh + 0.8vmin);
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
