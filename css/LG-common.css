@@ -2,8 +2,8 @@ body {
   background-color: #2b3239;
   overflow-x: hidden;
   width: 100vw;
+  margin: 0;
   font-family: Play;
-  height: 90%;
 }
 
 .row-rel {
