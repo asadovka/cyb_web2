@@ -1,27 +1,16 @@
-html, body {
-  overflow-x: hidden;
-  width: 100vw;
-  margin: 0;
-  font-family: Play;
-}
-
-.row-rel {
-  position: relative;
-}
-
 .sphere-sm {
   padding: 10vw;
 }
 
 .title-web3-sm {
   position: absolute;
-  top: 80vw;
+  top: -20vw;
   left: 25vw;
 }
 
 .title-browser-sm {
   position: absolute;
-  top: 88vw;
+  top: -14vw;
   left: 34vw;
 }
 
@@ -32,8 +21,8 @@ html, body {
 
 .logo-sm {
   position: absolute;
-  top: 38vw;
-  left: 34vw;
+  top: -60vw;
+  left: 35vw;
   width: 32vw;
 
 }
@@ -162,7 +151,7 @@ html, body {
 
 .footer-sm {
   color: #ffffff;
-  margin-top: 20vw;
+  margin-top: 12vw;
   margin-bottom: 5vw;
   font-size: calc(0.4vw + 0.4vh + 0.2vmin);
 }

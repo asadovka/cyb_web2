@@ -1,13 +1,21 @@
-body {
+html {
   overflow-x: hidden;
   width: 100vw;
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
   margin: 0;
   font-family: Play;
   background-color: #2b3239;
+  overflow-x: hidden;
 }
 
 .row-rel {
   position: relative;
+  width: 100vw;
 }
 
 .sphere-lg {
@@ -19,8 +27,8 @@ body {
 
 .title-lg {
   position: absolute;
-  top: 20vw;
-  left: 57vw;
+  top: 15vw;
+  left: 55vw;
 }
 
 .title-txt-lg {
@@ -54,7 +62,7 @@ body {
 
 .btn-get {
   position: absolute;
-  top: 7vw;
+  top: 12vw;
   left: 2vw;
 }
 
@@ -82,6 +90,7 @@ body {
 
 .features {
   margin-top: 15vw;
+  width: 100vw;
 }
 
 .feat-box {
@@ -116,7 +125,6 @@ body {
 
 .dapp-st {
   margin-top: 6vw;
-  padding-left: 20vw;
 }
 
 .web3 {
@@ -135,7 +143,7 @@ body {
 
 .footer {
   color: #ffffff;
-  margin-top: 20vw;
-  margin-bottom: 5vw;
+  margin-top: 10vw;
+  margin-bottom: 2vw;
   font-size: calc(0.4vw + 0.4vh + 0.2vmin);
 }

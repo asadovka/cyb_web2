@@ -1,14 +1,3 @@
-body {
-  overflow-x: hidden;
-  width: 100vw;
-  margin: 0;
-  font-family: Play;
-}
-
-.row-rel {
-  position: relative;
-}
-
 .head-box-xs {
   position: absolute;
   top: 0vw;
@@ -20,13 +9,13 @@ body {
 
 .title-web3-xs {
   position: absolute;
-  top: 100vw;
+  top: -10vw;
   left: 25vw;
 }
 
 .title-browser-xs {
   position: absolute;
-  top: 108vw;
+  top: -2vw;
   left: 34vw;
 }
 
@@ -36,9 +25,10 @@ body {
 }
 
 .logo-xs {
+  margin: 0;
   position: absolute;
-  top: 43vw;
-  left: 27vw;
+  top: -60vw;
+  left: 28vw;
   width: 46vw;
 
 }
@@ -90,7 +80,7 @@ body {
 }
 
 .feat-box-xs {
-  margin-top: 24vw;
+  margin-top: 13vw;
 }
 
 .feat-name-xs {
@@ -126,7 +116,7 @@ margin-top: 8vw;
 
 .footer-xs {
   color: #ffffff;
-  margin-top: 20vw;
+  margin-top: 7vw;
   margin-bottom: 5vw;
-  font-size: calc(0.5vw + 0.5vh + 0.5vmin);
+  font-size: calc(0.4vw + 0.4vh + 0.4vmin);
 }

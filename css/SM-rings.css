@@ -1,55 +1,60 @@
-.rings2-sm {
+#big-ring-top-sm {
   position: absolute;
-  top: 220vw;
-
+  top: -9vw;
+  width: 180vw;
+  height: 180vw;
+  margin-left: -40vw;
+  border-radius: 180vw 180vw 180vw 180vw;
+  border-top: 4vw solid #37404a;
+  border-left: 4vw solid #37404a;
+  border-right: 4vw solid #37404a;
+  border-bottom: 4vw solid #37404a;
+  z-index: 0;
 }
 
-#big-outer-ring-1-sm {
+#small-ring-top-sm {
   position: absolute;
-  top: 130vw;
-  left: -50vw;
-  width: 200vw;
-  height: 200vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: -4;
+  top: 27vw;
+  left: -2vw;
+  width: 104vw;
+	height: 104vw;
+  border-radius: 104vw 104vw 104vw 104vw;
+  border-top: 10vw solid #37404a;
+  border-left: 10vw solid #37404a;
+  border-right: 10vw solid #37404a;
+  border-bottom: 10vw solid #37404a;
+  z-index: 0;
+  overflow-x: hidden;
 }
 
-#big-inner-ring-1-sm {
+#big-ring-bottom-sm {
+  margin-bottom: -64vw;
   position: absolute;
-  top: 135vw;
-  left: -45vw;
-	width: 190vw;
-	height: 190vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50%;
-  z-index: -3;
-}
-
-#small-outer-ring-1-sm {
-  position: absolute;
-  top: 172vw;
-  left: -5vw;
-  width: 110vw;
-	height: 110vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: -2;
-}
-
-#small-inner-ring-1-sm {
-  position: absolute;
-  top: 182.5vw;
-  left: 4.5vw;
-	width: 90vw;
-	height: 90vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50%;
+  top: -96vw;
+  width: 180vw;
+  height: 180vw;
+  margin-left: -40vw;
+  border-radius: 180vw 180vw 180vw 180vw;
+  border-top: 4vw solid #37404a;
+  border-left: 4vw solid #37404a;
+  border-right: 4vw solid #37404a;
+  border-bottom: 4vw solid #37404a;
   z-index: -1;
+  overflow-x: hidden;
+}
+
+#small-ring-bottom-sm {
+  position: absolute;
+  margin-bottom: -22vw;
+  top: -62vw;
+  left: -2vw;
+  width: 104vw;
+	height: 104vw;
+  border-radius: 104vw 104vw 104vw 104vw;
+  border-top: 10vw solid #37404a;
+  border-left: 10vw solid #37404a;
+  border-right: 10vw solid #37404a;
+  border-bottom: 10vw solid #37404a;
+  z-index: -1;
+  overflow-x: hidden;
 }

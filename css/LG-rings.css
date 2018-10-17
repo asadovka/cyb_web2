@@ -1,78 +1,60 @@
-#big-outer-ring-1 {
+#big-ring-top {
   position: absolute;
-  top: 55vw;
-  width: 118vw;
-  height: 118vw;
-  margin-left: -9vw;
-	background-color: #37404a;
-	border-radius: 50%;
+  top: -9vw;
+  width: 124vw;
+  height: 124vw;
+  margin-left: -12vw;
+  border-radius: 124vw 124vw 124vw 124vw;
+  border-top: 3vw solid #37404a;
+  border-left: 3vw solid #37404a;
+  border-right: 3vw solid #37404a;
+  border-bottom: 3vw solid #37404a;
   z-index: 0;
-
 }
 
-#big-inner-ring-1 {
+#small-ring-top {
   position: absolute;
-  top: 59vw;
-  left: -5vw;
-	width: 110vw;
-	height: 110vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-	border-radius: 50%;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-#small-outer-ring-1 {
-  position: absolute;
-  top: 80vw;
-  left: 15vw;
-  width: 70vw;
-	height: 70vw;
-	background-color: #37404a;
-	border-radius: 50%;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-#small-inner-ring-1 {
-  position: absolute;
-  top: 87.5vw;
-  left: 22.5vw;
-	width: 55vw;
-	height: 55vw;
-  background-color: #2b3239;
-  border-radius: 50%;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-#big-outer-ring-2 {
-  position: absolute;
-  top: 200vw;
-  width: 118vw;
-  height: 59vw;
-  margin-left: -9vw;
-  border-radius: 118vw 118vw 0 0;
-  border-top: 5vw solid #37404a;
-  border-left: 5vw solid #37404a;
-  border-right: 5vw solid #37404a;
-  z-index: 0;
-  overflow-x: hidden;
-}
-
-#small-outer-ring-2 {
-  margin-top: 50vw;
-  position: absolute;
-  top: 180vw;
+  top: 15vw;
   left: 15vw;
   width: 70vw;
 	height: 70vw;
   border-radius: 70vw 70vw 70vw 70vw;
-  border-top: 9vw solid #37404a;
-  border-left: 9vw solid #37404a;
-  border-right: 9vw solid #37404a;
-  border-bottom: 9vw solid #37404a;
+  border-top: 7vw solid #37404a;
+  border-left: 7vw solid #37404a;
+  border-right: 7vw solid #37404a;
+  border-bottom: 7vw solid #37404a;
   z-index: 0;
+  overflow-x: hidden;
+}
+
+#big-ring-bottom {
+  margin-bottom: -47vw;
+  position: absolute;
+  top: -57vw;
+  width: 124vw;
+  height: 124vw;
+  margin-left: -12vw;
+  border-radius: 124vw 124vw 124vw 124vw;
+  border-top: 3vw solid #37404a;
+  border-left: 3vw solid #37404a;
+  border-right: 3vw solid #37404a;
+  border-bottom: 3vw solid #37404a;
+  z-index: -1;
+  overflow-x: hidden;
+}
+
+#small-ring-bottom {
+  position: absolute;
+  margin-bottom: -20vw;
+  top: -36vw;
+  left: 15vw;
+  width: 70vw;
+	height: 70vw;
+  border-radius: 70vw 70vw 70vw 70vw;
+  border-top: 7vw solid #37404a;
+  border-left: 7vw solid #37404a;
+  border-right: 7vw solid #37404a;
+  border-bottom: 7vw solid #37404a;
+  z-index: -1;
   overflow-x: hidden;
 }
