@@ -21,6 +21,7 @@ Current state of web3 experience is non satisfactory. Still [we did not meet]() 
 - `.cyber`: cyberd node manager and app for link chains
 - `.ipfs`: ipfs node manager and ux
 - `.eth`: ethereum node manager + ens resolver
+- `.cyb`: origianl web3 appstore
 - `.wallet`: universal wallet ux
 - `.help`: educational content library
 - `.dev`: web3 development tool with support of contracts
