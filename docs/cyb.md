@@ -1,49 +1,42 @@
 # Cyb: web3 browser
 
 
-## Overview
+## Abstract
 
-Cyb is simply a [web3](cyb/docs/web3-vision.md) browser.
+Cyb is a friendly software robot who helps you explore an universes. Put it simply it just a [web3](cyb/docs/web3-vision.md) browser. At the very beginning cyb is focusing on developers and advanced blockchain users who is able to work with private keys and transactions. But we see how Cyb become friendly for everyone who wants to interact with consensus computers in a web of the third generation. Web3 is designed to free developers from outdated things such as html and v8. So developers will be free to use any markup, execution and rendering engine they want. That is why we don't focus on implementation of mentioned things. Instead this paper discuss implementation agnostic concepts of browser that are simple enough to be adopted by web3 developers. Initially we design Cyb for conventional desktop browsing. But suggested concepts can be easily being used for mobile, voice, vr and robotics implementations.
 
-## Principle of respect to agent
+## Introduction
 
-In web3 this is the most fundamental principle. We focus on developers and advanced blockchain users who is able to work with private keys and transaction. But Cyb is also friendly for everyone who wants to interact with consensus computers in a web of third generation.
+Current state of web3 experience is non satisfactory. Still [we did not meet]() any piece of software that is able to deliver deep, emotional web3 experience. So we decide to bring to the table one contender that strictly follows [web3 principles]() defined by ourselves ;-) In a rush for this passion we define the following web3 apps which we believe together implement the full web3 vision in the context of a browsing for web3 agents and app developers:
 
-We respect agent attitude and principles. So we offer 3 clear custom types of user behaviour:
+- `.main`: main page for every joe
+- `.path`: navigation bar and its backend
+- `.connect`: connection manager and state widget
+- `.keys`: keystore interface and id widget
+- `.pins`: favourites backend and application bar
+- `.sign`: phishing resistant signer for messages and transactions with scheduler
+- `.crr`: Cyb implementation of a root registry concept from web3 vision
+- `.access`: Permission manager that respects agents' resources
+- `.feed`: Notification backend and feed app.
+- `.cyber`: cyberd node manager and app for link chains
+- `.ipfs`: ipfs node manager and ux
+- `.eth`: ethereum node manager + ens resolver
+- `.wallet`: universal wallet ux
+- `.help`: educational content library
+- `.dev`: web3 development tool with support of contracts
+- `.cg`: all the things chaingearable
 
-- anonymous activity [no tracking at all]
-- private activity [abstract ID + events tracking ]
-- public activity [address + events tracking by web 3 provider]
+All this apps are considered as core apps and is included in every Cyb distribution. Let us describe in details every app ass a pure concept.
 
-By default all activity is anonymous. Others must be explicitly asks permissions.
-For successful browser development application developers need to collect at least public and private data. Thus users of these 2 groups will be incentivized by giving nice perks from dapp developers.
+## .main
 
-## Cyb concepts
-
-Cyb consists of the following concepts:
-
-- Main page
-- Navigation bar
-- State bar
-- ID bar
-- App bar
-- Signer
-- Root registry
-- Permissions
-- Notifications
-- Core apps
-
-Let us describe in details every concept.
-
-## Main Page
-
-Main page of the browser consists of three main elements:
+Purpose of the `main` app is to make agent happier in a moment she returns to surfing and between experiences. Main page of the browser consists of three main elements:
 
 - search bar: provides all search functions
 - relevance bar: the most relevant cyberlinks for a particular agent
 - footer: cyberlinks to ecosystem resources which are important for education and contribution
 
-## Navigation bar
+## .path
 
 Navigation bar in Cyb is based on the following elements:
 
@@ -53,8 +46,6 @@ Navigation bar in Cyb is based on the following elements:
 - forward button - brings user to the future state based on Cyb prediction
 
 Search bar is used to browse web3. With the help of DURA with knowledge of application involved (<content-address>.<app>) it can get content across different content addressing protocols such as IPFS, DAT, SWARM, and inside blockchains, tangles and dags thus forming heterogeneous environment of web3. In [web3 vision doc](cyb/docs/web3-vision.md) we describe in details a concept of web3 browsing based on DURA specs.
-
-It happens then agent knows some content address but have no idea in which network it can be retrieved as well as what app can deal with it. That is why Cyb has default integration with cyber [CYBER] protocol. Cyb append `.cyber` app for all request without a dot. `.cyber` is an app that has simple interface to cyberd, which returns prediction of related cyberlinks thus agent can get required resource directly through peer-to-peer network. Cyb has a setting of default search engine, thus an agent can plug a search she wants.
 
 That is, in web3 appending "dot" works very different in comparison with web3. Dot is literally a search query to a particular app that is also has a content address in heterogeneous network. All symbols after "dot" is a map with content address of an app in root registry, and all data before "dot" is a query parameter to an app.
 
@@ -68,9 +59,9 @@ Empty query always leads to the main page. `.` query returns a root registry tha
 
 <api-definition>
 
-All cyberlinks that was requested by agent can be accessed using `past` app that is integral part of Cyb experience.
+All cyberlinks that was requested by agent can be accessed using `path` app that is integral part of Cyb experience.
 
-## State bar
+## .connect
 
 In web3 all data has the state, so it become easier to navigate through it and make agent experience better. To be sure that you are working with actual state Cyb needs to manage connection to web3 providers.
 
@@ -84,7 +75,7 @@ Cyb is hiding all complexities of web3 connections under one colourful indicator
 
 Ultimate purpose of `connect` is to remove necessity of agents to manually switch between networks. Agent do not need to think about switching across networks. It is a goal of app developers and browser vendors to define an approach that allow seamless interaction during web3 experience with all network magic happens underneath. Cyb is developing in a way that allow async interactions with several peer-to-peer networks in an app context.
 
-## Id bar
+## .id
 
 Purpose of id bar is to enable the concept of identity. Using identity an agent is able to authenticate messages and sign transactions in web3. Cyb assumes that an agent interacting with web3 is using active identity, but offers ability to change id of a signed transaction during signing.
 
@@ -110,6 +101,7 @@ subtype: String
 ```
 
 The following API is being used to programmatically interact with id bar:
+
 ```
 setDefaultId(addressIndex: Number): Promise <Boolean>
 sign(transactionObject: Object): Promise <String>
@@ -117,20 +109,26 @@ signMessage(messageObject: Object): Promise <String>
 verifyMessage(verificationObject: Object): Promise <Boolean>
 ```
 
-## App bar
+## .cyber
+
+It happens then agent knows some content address but have no idea in which network it can be retrieved as well as what app can deal with it. That is why Cyb has default integration with cyber [CYBER] protocol. Cyb append `.cyber` app for all request without a dot. `.cyber` is an app that has simple interface to cyberd, which returns prediction of related cyberlinks thus agent can get required resource directly through peer-to-peer network. Cyb has a setting of default search engine, thus an agent can plug a search she wants.
+
+
+
+## Apps
 
 App bar is a place where user can quickly get access to most used web3 objects. User can pin such objects by clicking on button "favorite" on navigation bar and then it will appear in app bar. Cyberlink manager is an attached app that allow agents to group and tag pins.
 
-## Signer
+## Sign
 
-Signer allows users to sign messages and transactions in a way that brings web3 experience to the whole new level.
+`Sign` allows users to sign messages and transactions in a way that brings web3 experience to the whole new level.
 
 Browser use own app for signing transactions so user can be always sure that transaction details are valid. Thus we decrease probability of phishing. Also browser has it's own key for signing big lists of transactions.
 
 
 ## Root registry
 
-Root registry of Cyb is a hard mix between top-level domains and file extensions.
+Root registry or `rr` of Cyb is a hard mix between top-level domains and file extensions.
 
 Programming languages:
 500 (200) (domains of language developers) https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760
@@ -153,25 +151,16 @@ Symbols
 
 Web3 apps should strictly limited in computational resources. We describe detailed specifications [here](cyb/docs/dapp-guidelines.md).
 
-## Notifications
+## Feed
 
 Notification panel displaying all pending transactions and web3 events corresponding to certain account.
 Settings button leads to settings page where user can manage connection to IPFS, Ethereum and Cyber nodes (local or remote ways).
 
-
-## Core apps
-
+## App store
 We understand that it is very hard to bootstrap awesome agent experience
 For good initial experience we develop core browser apps such as:
 
-- App store
-- Cyberd search app
-- Ethereum wallet
-- Connection manager
-- Help app
-- Contract development tool
-- Signer with transaction queue
-- Permission management
+
 
 These apps are delivered with every browser build.
 
@@ -186,3 +175,17 @@ We have our vision of how to develop browser and what kind of features develop f
 ## Feedback and bug collection
 
 We use user's feedback to make products better. So we provide options for bug reporting and feedback leaving on every page.
+
+
+## Saga on privacy and anonymity
+
+In web3 Principle of respect to agent the most fundamental principle. Respect agents as you would love to agents respect you. So we offer 3 clear custom types of user behaviour:
+
+- anonymous activity [no tracking is possible]
+- private activity [abstract ID + events tracking ]
+- public activity [address + events tracking by web 3 provider]
+
+By default all activity is anonymous. Others must be explicitly asks permissions. Worth to note that some neighbours in some segments of web3 will want to compromise you anonymity during peer-to-peer interactions. It
+For successful browser development application developers need to collect at least public and private data. Thus users of these 2 groups will be incentivized by giving nice perks from dapp developers.
+
+## On censorship resistance
