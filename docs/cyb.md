@@ -15,9 +15,9 @@ Current state of web3 experience is non satisfactory. Still [we did not meet]() 
 - `.keys`: keystore interface and id widget
 - `.pins`: favourites backend and application bar
 - `.sign`: phishing resistant signer for messages and transactions with scheduler
-- `.crr`: Cyb implementation of a root registry concept from web3 vision
-- `.access`: Permission manager that respects agents' resources
-- `.feed`: Notification backend and feed app.
+- `.crr`: cyb implementation of a root registry concept from web3 vision
+- `.access`: permission manager that respects agents' resources
+- `.feed`: notification backend and feed app.
 - `.cyber`: cyberd node manager and app for link chains
 - `.ipfs`: ipfs node manager and ux
 - `.eth`: ethereum node manager + ens resolver
@@ -49,7 +49,9 @@ Search bar is used to browse web3. With the help of DURA with knowledge of appli
 
 That is, in web3 appending "dot" works very different in comparison with web3. Dot is literally a search query to a particular app that is also has a content address in heterogeneous network. All symbols after "dot" is a map with content address of an app in root registry, and all data before "dot" is a query parameter to an app.
 
+```
 <illustration>
+```
 
 For example:
 
@@ -57,7 +59,9 @@ For example:
 
 Empty query always leads to the main page. `.` query returns a root registry that is being used by default in Cyb.
 
+```
 <api-definition>
+```
 
 All cyberlinks that was requested by agent can be accessed using `path` app that is integral part of Cyb experience.
 
@@ -67,11 +71,15 @@ In web3 all data has the state, so it become easier to navigate through it and m
 
 Our purpose is to build web3 browser that is agnostic from addressing, identity and consensus protocols. But currently we use ipfs, parity-light and cyberd nodes to show off possible experience at early stage of web3 development without necessity to connect to web3 provider at all (be your own web3 provider) for basic needs such as popular static content surfing and simple transfers of tokens.
 
+```
 <illustration>
+```
 
 Cyb is hiding all complexities of web3 connections under one colourful indicator that range from green to red. Ideally it works like indicator of internet connection we all are use to.  Connection indicator cyberlinked to a `connect` app that is integral part of id bar. It gives an ability for an agent to understand status of connections and chose web3 providers.
 
+```
 <api-definition>
+```
 
 Ultimate purpose of `connect` is to remove necessity of agents to manually switch between networks. Agent do not need to think about switching across networks. It is a goal of app developers and browser vendors to define an approach that allow seamless interaction during web3 experience with all network magic happens underneath. Cyb is developing in a way that allow async interactions with several peer-to-peer networks in an app context.
 
@@ -81,7 +89,9 @@ Purpose of id bar is to enable the concept of identity. Using identity an agent 
 
 Agent understand which id is active using identicon. Cyb computes unique and deterministic identicons for every id, but offer agent to set any identicon for local pleasure. Clicking on id bar allow agent to choose active identity from a `keys` app.
 
+```
 <illustration>
+```
 
 Keys app is inherent component of id bar and embedded in Cyb. This app allows to store cryptographic secrets. Think of it as lastpass you don't need to trust that is able to compute different addresses, one time passwords and signatures in the context of an app.
 
@@ -113,7 +123,9 @@ verifyMessage(verificationObject: Object): Promise <Boolean>
 
 It happens then agent knows some content address but have no idea in which network it can be retrieved as well as what app can deal with it. That is why Cyb has default integration with cyber [CYBER] protocol. Cyb append `.cyber` app for all request without a dot. `.cyber` is an app that has simple interface to cyberd, which returns prediction of related cyberlinks thus agent can get required resource directly through peer-to-peer network. Cyb has a setting of default search engine, thus an agent can plug a search she wants.
 
-
+```
+<api-definition>
+```
 
 ## Apps
 
