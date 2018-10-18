@@ -9,18 +9,31 @@
 
 .title-web3-xs {
   position: absolute;
-  top: -10vw;
-  left: 25vw;
+  top: -18vw;
+  left: 18vw;
+  font-size: 5vw;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+
 }
 
 .title-browser-xs {
   position: absolute;
-  top: -2vw;
-  left: 34vw;
+  top: -5vw;
+  left: 24vw;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+
 }
 
 .title-txt-xs {
-  font-size: calc(2vw + 2vh + 2vmin);
+  font-size: calc(2vw + 2vh + 6vmin);
   color: #ffffff;
 }
 
@@ -28,8 +41,8 @@
   margin: 0;
   position: absolute;
   top: -60vw;
-  left: 28vw;
-  width: 46vw;
+  left: 25vw;
+  width: 50vw;
 
 }
 
@@ -57,6 +70,7 @@
   color: #ffffff;
   font-size: calc(1.5vw + 1.5vh + 2vmin);
   z-index: 2;
+  font-weight: bold;
 }
 
 .k-feat-xs-2 {
@@ -65,6 +79,7 @@
   left: -1px;
   color: #51dcd4;
   font-size: calc(1.5vw + 1.5vh + 2vmin);
+  font-weight: bold;
 }
 
 .k-feat-xs-3 {
@@ -73,6 +88,7 @@
   left: 1px;
   color: #c73dbc;
   font-size: calc(1.5vw + 1.5vh + 2vmin);
+  font-weight: bold;
 }
 
 .features-xs {
@@ -80,7 +96,7 @@
 }
 
 .feat-box-xs {
-  margin-top: 13vw;
+  margin-top: 20vw;
 }
 
 .feat-name-xs {
@@ -107,16 +123,16 @@
 
 
 .feat-xs {
-margin-top: 8vw;
+margin-top: 10vw;
 }
 
 .feat-img-xs {
-  width: 50%;
+  width: 70%;
+  margin-bottom: -9vw;
 }
 
 .footer-xs {
   color: #ffffff;
-  margin-top: 7vw;
-  margin-bottom: 5vw;
+  margin-top: 10vw;
   font-size: calc(0.4vw + 0.4vh + 0.4vmin);
 }

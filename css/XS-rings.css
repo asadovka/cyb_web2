@@ -32,13 +32,12 @@
   position: absolute;
   top: -170vw;
   width: 240vw;
-  height: 240vw;
+  height: 120vw;
   margin-left: -70vw;
-  border-radius: 240vw 240vw 240vw 240vw;
+  border-radius: 240vw 240vw 0 0;
   border-top: 6vw solid #37404a;
   border-left: 6vw solid #37404a;
   border-right: 6vw solid #37404a;
-  border-bottom: 6vw solid #37404a;
   z-index: -1;
   overflow-x: hidden;
 }

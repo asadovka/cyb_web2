@@ -154,4 +154,5 @@
   margin-top: 12vw;
   margin-bottom: 5vw;
   font-size: calc(0.4vw + 0.4vh + 0.2vmin);
+  object-fit: cover;
 }

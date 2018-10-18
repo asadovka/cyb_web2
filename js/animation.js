@@ -55,7 +55,7 @@
     fnACos = Math.acos;
     fnSin = Math.sin;
     // Sphere Settings
-    iRadiusSphere = 180;
+    iRadiusSphere = 187;
     iProjSphereX = 100;
     iProjSphereY = 100;
     // Particle Settings
@@ -89,8 +89,8 @@
     fnSetSize = function() {
       nCanvasRender.width = w = window.innerWidth;
       nCanvasRender.height = h = window.innerHeight;
-      iProjSphereX = w / 2.5;
-      iProjSphereY = h / 2.5;
+      iProjSphereX = w / 2.48;
+      iProjSphereY = h / 2.2;
       return {
         w: w,
         h: h

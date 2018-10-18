@@ -25,7 +25,7 @@ body {
 .title-lg {
   display: none;
   position: absolute;
-  top: 13vw;
+  top: 8vw;
   left: 55vw;
 }
 
@@ -112,6 +112,7 @@ body {
 }
 
 .features {
+  margin-top: 20vw;
   display: none;
   width: 100vw;
 }

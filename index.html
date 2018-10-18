@@ -27,7 +27,7 @@
     new WOW().init();
     setTimeout(function(){
       document.body.classList.add("loaded");
-    }, 5000)
+    }, 100)
     </script>
 
 
@@ -91,7 +91,7 @@
         </div>
       </div>
       <div class="row row-rel">
-        <div class="col-xs-12 logo-xs">
+        <div class="col-xs-12 logo-xs text-center">
           <img src="img/logo-xs.png" alt="logo" class="img-responsive">
         </div>
       </div>
@@ -361,22 +361,30 @@
     </div>
 
     <!--LG visible footer-->
-    <div class="container-fluid visible-lg">
+    <div class="container-fluid visible-lg footer">
       <div class="row row-rel">
-        <div id="big-ring-bottom"></div>
-        <div id="small-ring-bottom"></div>
-        <div class="col-lg-12 text-center footer">
+        <div class="col-lg-12" id="big-ring-bottom"></div>
+        <div class="col-lg-12" id="small-ring-bottom"></div>
+        <div class="col-lg-12 text-center ">
           <p>Do What The Fuck You Want To Public License (WTFPL)</p>
         </div>
       </div>
     </div>
 
     <!--SM visible footer-->
-    <div class="container-fluid visible-sm visible-md">
+    <div class="container-fluid visible-sm visible-md footer-sm">
       <div class="row row-rel">
-        <div id="big-ring-bottom-sm"></div>
-        <div id="small-ring-bottom-sm"></div>
-        <div class="col-lg-12 text-center footer-sm">
+        <div class="col-lg-12">
+          <div id="big-ring-bottom-sm"></div>
+        </div>
+      </div>
+      <div class="row row-rel">
+        <div class="col-lg-12">
+          <div id="small-ring-bottom-sm"></div>
+        </div>
+      </div>
+      <div class="row row-rel">
+        <div class="col-lg-12 text-center ">
           <p>Do What The Fuck You Want To Public License (WTFPL)</p>
         </div>
       </div>
