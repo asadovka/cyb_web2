@@ -1,4 +1,5 @@
 #big-ring-top {
+  display: none;
   position: absolute;
   top: -9vw;
   width: 124vw;
@@ -12,7 +13,12 @@
   z-index: 0;
 }
 
+.loaded #big-ring-top {
+  display: block;
+}
+
 #small-ring-top {
+  display: none;
   position: absolute;
   top: 15vw;
   left: 15vw;
@@ -27,7 +33,12 @@
   overflow-x: hidden;
 }
 
+.loaded #small-ring-top {
+  display: block;
+}
+
 #big-ring-bottom {
+  display: none;
   margin-bottom: -53vw;
   position: absolute;
   top: -57vw;
@@ -43,7 +54,12 @@
   overflow-x: hidden;
 }
 
+.loaded #big-ring-bottom {
+  display: block;
+}
+
 #small-ring-bottom {
+  display: none;
   position: absolute;
   margin-bottom: -20vw;
   top: -36vw;
@@ -57,4 +73,8 @@
   border-bottom: 7vw solid #37404a;
   z-index: -1;
   overflow-x: hidden;
+}
+
+.loaded #small-ring-bottom {
+  display: block;
 }

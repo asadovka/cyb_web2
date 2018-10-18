@@ -15,7 +15,20 @@
     <link href="css/LG-rings.css" rel="stylesheet">
     <link href="css/SM-rings.css" rel="stylesheet">
     <link href="css/XS-rings.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
+    <!--Sphere animation-->
+    <script src="js/animation.js"></script>
+    <script src='js/anim.js'></script>
+    <!-- wow script-->
+    <script src="js/wow.min.js"></script>
+    <script>
+    new WOW().init();
+    setTimeout(function(){
+      document.body.classList.add("loaded");
+    }, 500)
+    </script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,15 +43,15 @@
     <!--LG visible header-->
     <div class="container-fluid visible-lg">
       <div class="row row-rel">
-        <div class="col-lg-6 sphere-lg">
-          <img src="img/sphere-lg.png" class="img-responsive">
+        <div class="col-lg-12 sphere-lg">
+          <canvas id="nCanvasRender"></canvas>
         </div>
-        <div class="col-lg-2 logo-lg">
+        <div class="col-lg-2 logo-lg wow fadeIn zoomIn" data-wow-duration="3s" data-wow-delay="1s">
           <img src="img/logo-lg.png" class="img-responsive">
         </div>
-        <div class="col-lg-5 title-lg text-uppercase">
+        <div class="col-lg-5 title-lg text-uppercase wow fadeIn" data-wow-duration="3s" data-wow-delay="2s">
           <h1 class="title-txt-lg"><p>Web3</p> browser</h1>
-          <a class="btn-get btn-lg btn btn-default text-uppercase" href="https://github.com/cybercongress/cyb/releases" role="button">Get browser</a>
+          <a class="btn-get btn-lg btn btn-default text-uppercase wow fadeIn" data-wow-duration="3s" data-wow-delay="3s" href="https://github.com/cybercongress/cyb/releases" role="button">Get browser</a>
         </div>
       </div>
     </div>
@@ -214,7 +227,7 @@
           <img src="img/dapp-sm.png" alt="dapp-store" class="dapp-st-img-sm">
         </div>
         <div class="col-sm-8 dapp-st-sm te">
-          <p class="feat-name-sm text-uppercase">App store</p>   
+          <p class="feat-name-sm text-uppercase">App store</p>
           <p class="feat-text-sm">Discover apps integrated into the browser:  </p>
           <p class="feat-text-sm">Ethereum Wallet</p>
           <p class="feat-text-sm">Chaingear</p>
@@ -223,7 +236,7 @@
           <p class="feat-text-sm">Cybernode Connection Manager</p>
           <p class="feat-text-sm">App Permission Manager</p>
           <p class="feat-text-sm">Help App</p>
-          
+
         </div>
         <!------------------>
       </div>
@@ -267,8 +280,8 @@
     <!--LG visible features-->
     <div class="container-fluid visible-lg features">
       <div class="row row-rel">
-        <div class="col-lg-12" id="big-ring-top"></div>
-        <div id="small-ring-top"></div>
+        <div class="col-lg-12 wow fadeIn" id="big-ring-top" data-wow-delay="5s"></div>
+        <div class="wow fadeIn" id="small-ring-top" data-wow-delay="5s"></div>
         <div class="col-lg-12 text-center text-uppercase k-feat-lg">
           Key features
         </div>
@@ -381,7 +394,7 @@
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>

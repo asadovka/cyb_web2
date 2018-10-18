@@ -19,28 +19,36 @@ body {
 }
 
 .sphere-lg {
-  width: 48.7vw;
-  margin-top: 2vw;
-  margin-left: 15.8vw;
-  padding-bottom: 0;
+  width: 100vw;
 }
 
 .title-lg {
+  display: none;
   position: absolute;
-  top: 15vw;
+  top: 13vw;
   left: 55vw;
+}
+
+.loaded .title-lg {
+  display: block;
 }
 
 .title-txt-lg {
   font-size: calc(1.5vw + 1.5vh + 2vmin);
   color: #ffffff;
+  font-weight:
 }
 
 .logo-lg {
+  display: none;
   width: 17vw;
   position: absolute;
-  top: 20vw;
-  left: 32vw;
+  top: 30vh;
+  left: 33vw;
+}
+
+.loaded .logo-lg {
+  display: block;
 }
 
 .head-box {
@@ -62,17 +70,23 @@ body {
 
 .btn-get {
   position: absolute;
-  top: 12vw;
+  top: 10vw;
   left: 2vw;
 }
 
 .k-feat-lg {
+  display: none;
   color: #ffffff;
   font-size: calc(1.5vw + 1.5vh + 2vmin);
   z-index: 2;
 }
 
+.loaded .k-feat-lg {
+  display: block;
+}
+
 .k-feat-lg-2 {
+  display: none;
   position: absolute;
   top: -3px;
   left: -3px;
@@ -80,7 +94,12 @@ body {
   font-size: calc(1.5vw + 1.5vh + 2vmin);
 }
 
+.loaded .k-feat-lg-2 {
+  display: block;
+}
+
 .k-feat-lg-3 {
+  display: none;
   position: absolute;
   top: 3px;
   left: 3px;
@@ -88,13 +107,26 @@ body {
   font-size: calc(1.5vw + 1.5vh + 2vmin);
 }
 
+.loaded .k-feat-lg-3 {
+  display: block;
+}
+
 .features {
-  margin-top: 15vw;
+  display: none;
   width: 100vw;
 }
 
+.loaded .features {
+  display: block;
+}
+
 .feat-box {
+  display: none;
   margin-top: 10vw;
+}
+
+.loaded .feat-box {
+  display: block;
 }
 
 .feat-img {
@@ -142,8 +174,13 @@ body {
 }
 
 .footer {
+  display: none;
   color: #ffffff;
   margin-top: 10vw;
   margin-bottom: 2vw;
   font-size: calc(0.4vw + 0.4vh + 0.2vmin);
+}
+
+.loaded .footer {
+  display: block;
 }
