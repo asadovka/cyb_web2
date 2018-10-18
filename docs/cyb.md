@@ -13,17 +13,17 @@ Current state of web3 experience is non satisfactory. Still [we did not meet]() 
 - `.path`: navigation bar and its backend
 - `.connect`: connection manager and state widget
 - `.keys`: keystore interface and id widget
+- `.cyber`: cyberd node manager and app for link chains
 - `.pins`: favourites backend and application bar
 - `.sign`: phishing resistant signer for messages and transactions with scheduler
 - `.crr`: cyb implementation of a root registry concept from web3 vision
 - `.access`: permission manager that respects agents' resources
-- `.feed`: notification backend and feed app.
-- `.cyber`: cyberd node manager and app for link chains
-- `.ipfs`: ipfs node manager and ux
+- `.feed`: notification backend and feed app
+- `.ipfs`: ipfs node manager and agent experience
 - `.eth`: ethereum node manager + ens resolver
 - `.cyb`: origianl web3 appstore
 - `.wallet`: universal wallet ux
-- `.help`: educational content library
+- `.help`: cyb educational library and feedback mechanism
 - `.dev`: web3 development tool with support of contracts
 - `.cg`: all the things chaingearable
 
@@ -84,7 +84,7 @@ Cyb is hiding all complexities of web3 connections under one colourful indicator
 
 Ultimate purpose of `connect` is to remove necessity of agents to manually switch between networks. Agent do not need to think about switching across networks. It is a goal of app developers and browser vendors to define an approach that allow seamless interaction during web3 experience with all network magic happens underneath. Cyb is developing in a way that allow async interactions with several peer-to-peer networks in an app context.
 
-## .id
+## .keys
 
 Purpose of id bar is to enable the concept of identity. Using identity an agent is able to authenticate messages and sign transactions in web3. Cyb assumes that an agent interacting with web3 is using active identity, but offers ability to change id of a signed transaction during signing.
 
@@ -128,22 +128,23 @@ It happens then agent knows some content address but have no idea in which netwo
 <api-definition>
 ```
 
-## Apps
+## .pins
 
-App bar is a place where user can quickly get access to most used web3 objects. User can pin such objects by clicking on button "favorite" on navigation bar and then it will appear in app bar. Cyberlink manager is an attached app that allow agents to group and tag pins.
+App bar is a place where user can quickly get access to most used web3 objects. User can pin such objects by clicking on button "favourite" on navigation bar and then it will appear in app bar. Cyberlink manager is an attached app that allow agents to group and tag pins.
 
-## Sign
+## .sign
 
-`Sign` allows users to sign messages and transactions in a way that brings web3 experience to the whole new level.
+`.sign` allows users to sign messages and transactions in a way that brings web3 experience to the whole new level.
 
-Browser use own app for signing transactions so user can be always sure that transaction details are valid. Thus we decrease probability of phishing. Also browser has it's own key for signing big lists of transactions.
+Browser use embedded app for signing transactions so user can be always sure that transaction details are valid. In a web2 there is no inherent mechanism to be sure that overlay of an app is produced by a browser and not an app itself. Cyb solves this problem deterministically generating background and sound of overlay window in a way that an underlying app cannot know the seed for generating desired sound and visual pattern. The user need to remember its unique pattern once to safely interacting with different apps including not so trusted.
 
+Another problem we are approach to solve with `.sign` is deferred transactions. Cyb has its own address for which an agent can delegate some rights. Using this API app developer can create a logic that allow create and execute complex sequences of transactions client side. Since inception of Ethereum we sign thousands of transactions and miss even more. That is why we believe this feature is critical for awesome web3 experience.
 
 ## .crr
 
-According to 3 rules of root registry every developer can deliver best possible experience for their agents. That is why we want to mix the best from every word in our worlds in our implementation of root registry. To bring better user experience about 3k of records will be cybersquatted to align interests of existing app developers and agents who look for a beautiful, simple and trustful experience.
+According to [3 rules of root registry]() every developer can deliver best possible experience for their agents. That is why we want to mix the best from every word in our worlds in our implementation of root registry. To bring better user experience about 3k of records will be cybersquatted to align interests of existing app developers and agents who look for a beautiful, simple and trustful experience.
 
-`.crr` is a potpourri of the most well known concepts consolidated under one namespace! Let me introduce that is included in the shake:
+`.crr` is a potpourri of the most well known concepts consolidated under one namespace! Let me introduce what is included in the shake:
 
 - [programming languages](https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760): up to 200 names
 - [common programs](https://fileinfo.com/filetypes/common): up to 100 names
@@ -158,35 +159,50 @@ Top english words and urf symbols will be distributed using competitions, grants
 
 Initially unregistered names in `.crr` will be distributed under flat fee for cyb root registry owner in Chaingear. We are going to start from 1 ETH for every name and will see will it be enough to protect from abusive squatting or not. It is possible that we will switch to auction form of distribution in a future.
 
-## Permissions
+## .access
 
 Web3 apps should strictly limited in computational resources. We describe detailed specifications [here](cyb/docs/dapp-guidelines.md).
 
-## Feed
+...
+
+## .feed
 
 Notification panel displaying all pending transactions and web3 events corresponding to certain account.
 Settings button leads to settings page where user can manage connection to IPFS, Ethereum and Cyber nodes (local or remote ways).
 
-## App store
-We understand that it is very hard to bootstrap awesome agent experience
-For good initial experience we develop core browser apps such as:
+## .ipfs
 
+...
 
+## .eth
 
-These apps are delivered with every browser build.
+...
 
-## Contributions,
+## .cyb
+
+...
+
+## .wallet
+
+...
+
+## .dev
+
+...
+
+## .cg
+
+...
+
+## .help
+
+Help is a two way help application. Using this app cyb helps agents to use itself. Using `.help` agents help Cyb evolve.
 
 As an open source project we are welcome for contributions. Gitcoin is an excellent instrument that we use for delegating tasks for community a processing payments for completed ones.
 
-## Feature development
-
 We have our vision of how to develop browser and what kind of features develop first. But we give an opportunity for community to decide and vote with tokens what kind of browser we need to see in near future. Our product [Chaingear](https://github.com/cybercongress/chaingear) is also made for this.
 
-## Feedback and bug collection
-
 We use user's feedback to make products better. So we provide options for bug reporting and feedback leaving on every page.
-
 
 ## Saga on privacy and anonymity
 
