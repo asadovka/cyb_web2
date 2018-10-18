@@ -139,26 +139,24 @@ App bar is a place where user can quickly get access to most used web3 objects. 
 Browser use own app for signing transactions so user can be always sure that transaction details are valid. Thus we decrease probability of phishing. Also browser has it's own key for signing big lists of transactions.
 
 
-## Root registry
+## .crr
 
-Root registry or `rr` of Cyb is a hard mix between top-level domains and file extensions.
+According to 3 rules of root registry every developer can deliver best possible experience for their agents. That is why we want to mix the best from every word in our worlds in our implementation of root registry. To bring better user experience about 3k of records will be cybersquatted to align interests of existing app developers and agents who look for a beautiful, simple and trustful experience.
 
-Programming languages:
-500 (200) (domains of language developers) https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760
+`.crr` is a potpourri of the most well known concepts consolidated under one namespace! Let me introduce that is included in the shake:
 
-Common programs:
-500 (100) (domains of app developers) https://fileinfo.com/filetypes/common https://github.com/dyne/file-extension-list https://www.computerhope.com/issues/ch001789.htm
+- [programming languages](https://gist.github.com/aymen-mouelhi/82c93fbcd25f091f2c13faa5e0d61760): up to 200 names
+- [common programs](https://fileinfo.com/filetypes/common): up to 100 names
+- [tokens](https://coinmarketcap.com/): Up to 1k names
+- [top-level domains](https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains): up to 300 names
+- [top english words](https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-no-swears.txt): up to 1k names
+- [utf symbols](https://www.compart.com/en/unicode/category/So): up to 300 names
 
-Top english words:
-1000 (300) (grants, competitions. community feedback) https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-no-swears.txt
+Initially cyber•Congress will own all this cybersquatted records. In order to improve probability of adoption of `.crr` cyber•Congres will distribute this names to original app developers based on proof of dns mechanism. That is, names for programming languages, common programs, tokens and top-level domains will be distributed based on a proof of dns according to verified registry produced by cyber•Congress.
 
-Tokens:
-1000 (100) (domain based distribution) https://coinmarketcap.com/
+Top english words and urf symbols will be distributed using competitions, grants and awards produced by cyber•Congress.
 
-Tlds:
-1000 (100) Write a program that is able to display web2 sites. Map all iana tlds to this programm https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains http://data.iana.org/TLD/tlds-alpha-by-domain.txt
-
-Symbols
+Initially unregistered names in `.crr` will be distributed under flat fee for cyb root registry owner in Chaingear. We are going to start from 1 ETH for every name and will see will it be enough to protect from abusive squatting or not. It is possible that we will switch to auction form of distribution in a future.
 
 ## Permissions
 
