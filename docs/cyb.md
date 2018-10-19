@@ -8,7 +8,7 @@ Cyb is a friendly software robot who helps you explore the universes. Put it sim
 
 ## Introduction
 
-Current state of web3 experience is non satisfactory. Still [we did not meet]() any piece of software that is able to deliver deep, emotional web3 experience. So we decide to bring to the table one contender that strictly follows [web3 principles]() defined by ourselves ;-) In a rush for this passion we define the following web3 apps which we believe together implement the full web3 vision in the context of a browsing for web3 agents and app developers:
+Current state of web3 experience is non satisfactory. Still [we did not meet](cyb/docs/comparison.md) any piece of software that is able to deliver deep, emotional web3 experience. So we decide to bring to the table one contender that strictly follows web3 principles defined by ourselves ;-) In a rush for this passion we define the following web3 apps which we believe together implement the full web3 vision in the context of a browsing for web3 agents and app developers:
 
 - `.main`: main page for every joe
 - `.path`: navigation bar and its backend
@@ -28,11 +28,11 @@ Current state of web3 experience is non satisfactory. Still [we did not meet]() 
 - `.dev`: web3 development tool with support of contracts
 - `.cg`: all the things chaingearable
 
-All this apps are considered as core apps and is included in every Cyb distribution. Let us describe in details every app ass a pure concept.
+All this apps are considered as core apps and are included in every Cyb distribution. Let us describe in details every app as a pure concept.
 
 ## .main
 
-Purpose of the `main` app is to make agent happier in a moment she returns to surfing and between experiences. Main page of the browser consists of three main elements:
+Purpose of the `main` app is to make agent happier in a moment it returns for surfing and between experiences. Main page of the browser consists of three main elements:
 
 - search bar: provides all search functions
 - relevance bar: the most relevant cyberlinks for a particular agent
@@ -47,9 +47,9 @@ Navigation bar in Cyb is based on the following elements:
 - star button - allow users to pin cyberlinks
 - forward button - brings user to the future state based on Cyb prediction
 
-Search bar is used to browse web3. With the help of DURA with knowledge of application involved (<content-address>.<app>) it can get content across different content addressing protocols such as IPFS, DAT, SWARM, and inside blockchains, tangles and dags thus forming heterogeneous environment of web3. In [web3 vision doc](cyb/docs/web3-vision.md) we describe in details a concept of web3 browsing based on DURA specs.
+Search bar is used to browse web3. With the help of DURA with knowledge of application involved (<content-address>.<app>) it can get content across different content addressing protocols such as IPFS, DAT, SWARM, and inside blockchains, tangles and DAGs thus forming heterogeneous environment of web3. In [web3 vision doc](cyb/docs/web3-vision.md) we describe in details a concept of web3 browsing based on DURA specs.
 
-That is, in web3 appending "dot" works very different in comparison with web3. Dot is literally a search query to a particular app that is also has a content address in heterogeneous network. All symbols after "dot" is a map with content address of an app in root registry, and all data before "dot" is a query parameter to an app.
+That is, in web3 appending "dot" works very different in comparison with web2. Dot is literally a search query to a particular app that also has a content address in heterogeneous network. All symbols after "dot" make a map with content address of an app in root registry, and all data before "dot" is a query parameter to an app.
 
 ```
 <illustration>
@@ -77,7 +77,7 @@ Our purpose is to build web3 browser that is agnostic from addressing, identity 
 <illustration>
 ```
 
-Cyb is hiding all complexities of web3 connections under one colourful indicator that range from green to red. Ideally it works like indicator of internet connection we all are use to.  Connection indicator cyberlinked to a `connect` app that is integral part of id bar. It gives an ability for an agent to understand status of connections and chose web3 providers.
+Cyb is hiding all complexities of web3 connections under one colorful indicator that range from green to red. Ideally it works like indicator of internet connection we all used to see in smartphones.  Connection indicator cyberlinked to a `connect` app that is integral part of id bar. It gives an ability for an agent to understand status of connections and chose web3 providers.
 
 ```
 <api-definition>
