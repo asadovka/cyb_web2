@@ -1,9 +1,10 @@
 # Cyb: web3 browser
 
+@xhipster @asadovka
 
 ## Abstract
 
-Cyb is a friendly software robot who helps you explore an universes. Put it simply it just a [web3](cyb/docs/web3-vision.md) browser. At the very beginning cyb is focusing on developers and advanced blockchain users who is able to work with private keys and transactions. But we see how Cyb become friendly for everyone who wants to interact with consensus computers in a web of the third generation. Web3 is designed to free developers from outdated things such as html and v8. So developers will be free to use any markup, execution and rendering engine they want. That is why we don't focus on implementation of mentioned things. Instead this paper discuss implementation agnostic concepts of browser that are simple enough to be adopted by web3 developers. Initially we design Cyb for conventional desktop browsing. But suggested concepts can be easily being used for mobile, voice, vr and robotics implementations.
+Cyb is a friendly software robot who helps you explore the universes. Put it simply it just a [web3](cyb/docs/web3-vision.md) browser. At the very beginning cyb is focusing on developers and advanced blockchain users who are able to work with private keys and transactions. But we see how Cyb becomes friendly for everyone who wants to interact with consensus computers in a web of the third generation. This new web is designed to free developers from outdated things such as html and v8. So developers can use any markup, execution and rendering engine they wish. That is why we don't focus on implementation of mentioned things. Instead this paper discuss implementation agnostic concepts of browser that are simple enough to be adopted by web3 developers. Initially we design Cyb for conventional desktop browsing. But suggested concepts can be easily being used for mobile, voice, vr and robotics implementations.
 
 ## Introduction
 
