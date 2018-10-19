@@ -155,15 +155,23 @@ According to [3 rules of root registry]() every developer can deliver best possi
 
 Initially cyber•Congress will own all this cybersquatted records. In order to improve probability of adoption of `.crr` cyber•Congres will distribute this names to original app developers based on proof of dns mechanism. That is, names for programming languages, common programs, tokens and top-level domains will be distributed based on a proof of dns according to verified registry produced by cyber•Congress.
 
-Top english words and urf symbols will be distributed using competitions, grants and awards produced by cyber•Congress.
+Top english words and utf symbols will be distributed using competitions, grants and awards produced by cyber•Congress.
 
 Initially unregistered names in `.crr` will be distributed under flat fee for cyb root registry owner in Chaingear. We are going to start from 1 ETH for every name and will see will it be enough to protect from abusive squatting or not. It is possible that we will switch to auction form of distribution in a future.
 
 ## .access
 
-Web3 apps should strictly limited in computational resources. We describe detailed specifications [here](cyb/docs/dapp-guidelines.md).
+Permission management is of paramount importance in the process of safe application distribution. We want to improve upon 3 critical aspects of permission management in web:
 
-...
+- app authentication
+- resource management
+- dynamic permissions
+
+*App authentication* is hard in web2. You need somehow know the origin and this is practically hard in a face of government level adversaries, than you must compute hash of received file and compare it with a file hash received from origin. Due to practical complexity nobody do that. In web3 if you know that address is correct authentication is done automagically. That is why browser can easily verify that permission is granted for expected app and not malicious.
+
+*Resource management* was not in place. In web2 all permission systems was primarily build around a concept of granting access to a particular data which browser has access to. While this approach find itself useful it just not enough to run any application from untrusted developers. Computing resources has fundamental value now, thus must be carefully managed and metered. In web3 its weird that any untrusted app can eat all resources of a machine in no time. Moreover, if an application is executed in a sandbox all we need to feel ourselves safe (in addition to authenticated permissions) is ensure that app do not eat more resources than expected. Libraries that help app developers to mine some proof-of-work algorithms using visitor machine become ubiquitous. Practically that means that in addition to shity ads web2 users will experience even more worse web experience: greedy, slow and battery consuming apps are coming. The answer to this upcoming problem in a browser permission system which is able to produce bounds on apps consumption of fundamental resources such as cpu, gpu, ram, storage and broadband. We believe that resource management must be in the core of web3 application engine. We are currently doing research on how that can be implemented: containerisation seems to be low hanging fruit that can be embedded right into web experience.
+
+*Permission affordances*. Current permission systems are static in a sense that browser provide limited set of predefined apis. Cookies, location, camera, microphone, sound and notifications: that is very limited set of things browsers can afford. Permissions of a third party developers are not native for a browsers either. Browser just don't care about what data with which apps agent want to share. We ask ourselves what if a browser can ask apps what kind of permissions they can provide thus exposing this permission to any other apps? We believe this approach will allow web3 developers provide experience inaccessible for previous architectures.
 
 ## .feed
 
