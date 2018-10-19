@@ -1,10 +1,16 @@
-Variants to fork:
+# Web3 browser market analysis
+
+The purpose of this document is to provide comparison and description of current software that can deliver web3 experiense.
+
+## Possible candidates for web3 browser:
 - Parity shell
 - Mist
 - Beaker
 - Atom
 - VScode
 - Electron based
+
+## Brief comparison table
 
 |                           |Parity | Mist | Beaker | Electron |
 |---                        |---    |---    |---    |---       |
@@ -20,6 +26,8 @@ Variants to fork:
 |Project mission matching   |8/10|6/10|4/10|-|
 |Web3 standart impl         |???|yes|no|no|
 |UI framework               |React|React|co / yo yo|React|
+
+## Detailed analysis
 
 ### `Shell (Parity)`
 
