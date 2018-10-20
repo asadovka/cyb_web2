@@ -2,9 +2,13 @@
 
 @xhipster @asadovka
 
+Work in Progress.
+
+[Current implementation](https://github.com/cybercongress/cyb) is not in comply with spec yet
+
 ## Abstract
 
-Cyb is a friendly software robot who helps you explore the universes. Put it simply it just a [web3](cyb/docs/web3-vision.md) browser. At the very beginning cyb is focusing on developers and advanced blockchain users who are able to work with private keys and transactions. But we see how Cyb becomes friendly for everyone who wants to interact with consensus computers in a web of the third generation. This new web is designed to free developers from outdated things such as html and v8. So developers can use any markup, execution and rendering engine they wish. That is why we don't focus on implementation of mentioned things. Instead this paper discuss implementation agnostic concepts of browser that are simple enough to be adopted by web3 developers. Initially we design Cyb for conventional desktop browsing. But suggested concepts can be easily being used for mobile, voice, vr and robotics implementations.
+Cyb is a friendly software robot who helps you explore the universes. Put it simply it just a [web3](cyb://QmXHiEVCFTN8hda93qZN6ay5bXJ1ZkaLCV68AefXPs1pXg.ipfs) browser. At the very beginning cyb is focusing on developers and advanced blockchain users who are able to work with private keys and transactions. But we see how Cyb becomes friendly for everyone who wants to interact with consensus computers in a web of the third generation. This new web is designed to free developers from outdated things such as html and v8. So developers can use any markup, execution and rendering engine they wish. That is why we don't focus on implementation of mentioned things. Instead this paper discuss implementation agnostic concepts of browser that are simple enough to be adopted by web3 developers. Initially we design Cyb for conventional desktop browsing. But suggested concepts can be easily used for mobile, voice, vr and robotics implementations.
 
 ## Introduction
 
@@ -17,16 +21,17 @@ Current state of web3 experience is non satisfactory. Still [we did not meet]() 
 - `.cyber`: cyberd node manager and app for link chains
 - `.pins`: favourites backend and application bar
 - `.sign`: phishing resistant signer for messages and transactions with scheduler
-- `.crr`: cyb implementation of a root registry concept from web3 vision
+- `.crr`: cyb root registry
+- `.cyb`: origianl web3 appstore
 - `.access`: permission manager that respects agents' resources
 - `.feed`: notification backend and feed app
 - `.ipfs`: ipfs node manager and agent experience
 - `.eth`: ethereum node manager + ens resolver
-- `.cyb`: origianl web3 appstore
 - `.wallet`: universal wallet ux
 - `.help`: cyb educational library and feedback mechanism
 - `.dev`: web3 development tool with support of contracts
 - `.cg`: all the things chaingearable
+- `.settings`: cyb settings
 
 All this apps are considered as core apps and is included in every Cyb distribution. Let us describe in details every app ass a pure concept.
 
@@ -160,6 +165,14 @@ Top english words and utf symbols will be distributed using competitions, grants
 
 Initially unregistered names in `.crr` will be distributed under flat fee for cyb root registry owner in Chaingear. We are going to start from 1 ETH for every name and will see will it be enough to protect from abusive squatting or not. It is possible that we will switch to auction form of distribution in a future.
 
+## .cyb
+
+Extension over `.crr`.
+
+Added fields: logo, tagline, manifest, meta, code, crr.
+
+As result it become suitable to be an app store for browser. Appstore treats pinned apps as installed if at leas one permission is granted.
+
 ## .access
 
 Permission management is of paramount importance in the process of safe application distribution. We want to improve upon 3 critical aspects of permission management in web:
@@ -172,7 +185,7 @@ Permission management is of paramount importance in the process of safe applicat
 
 *Resource management* was not in place. In web2 all permission systems was primarily build around a concept of granting access to a particular data which browser has access to. While this approach find itself useful it just not enough to run any application from untrusted developers. Computing resources has fundamental value now, thus must be carefully managed and metered. In web3 its weird that any untrusted app can eat all resources of a machine in no time. Moreover, if an application is executed in a sandbox all we need to feel ourselves safe (in addition to authenticated permissions) is ensure that app do not eat more resources than expected. Libraries that help app developers to mine some proof-of-work algorithms using visitor machine become ubiquitous. Practically that means that in addition to shity ads web2 users will experience even more worse web experience: greedy, slow and battery consuming apps are coming. The answer to this upcoming problem in a browser permission system which is able to produce bounds on apps consumption of fundamental resources such as cpu, gpu, ram, storage and broadband. We believe that resource management must be in the core of web3 application engine. We are currently doing research on how that can be implemented: containerisation seems to be low hanging fruit that can be embedded right into web experience.
 
-*Permission affordances*. Current permission systems are static in a sense that browser provide limited set of predefined apis. Cookies, location, camera, microphone, sound and notifications: that is very limited set of things browsers can afford. Permissions of a third party developers are not native for a browsers either. Browser just don't care about what data with which apps agent want to share. We ask ourselves what if a browser can ask apps what kind of permissions they can provide thus exposing this permission to any other apps? We believe this approach will allow web3 developers provide experience inaccessible for previous architectures.
+*Permission affordances*. Current permission systems are static in a sense that browser provide limited set of predefined apis. Cookies, location, camera, microphone, sound and notifications: that is very limited set of things browsers can afford. Permissions of a third party developers are not native for a browsers either. Browser just don't care about what data with which apps agent want to share. We ask ourselves what if a browser can ask apps what kind of permissions they can provide thus exposing this permission system to any other apps? We believe this approach will allow web3 developers provide experience inaccessible for previous architectures.
 
 ## .feed
 
@@ -181,27 +194,23 @@ Settings button leads to settings page where user can manage connection to IPFS,
 
 ## .ipfs
 
-...
+This app is a third party app developed by IPFS Shipyard. This is very basic app for interacting with ipfs.
 
 ## .eth
 
-...
-
-## .cyb
-
-...
+Simple app which ger DURI requests and route requests to ethereum node (contracts, transactions and blocks). Else resolve ENS.
 
 ## .wallet
 
-...
+We believe that transfer of tokens is very basic experience in a web3 thus want to provide embedded in browser wallet app as soon as possible. Thus we consider either to develop our own bicycle or partner with some 3d party wallet developer.
 
 ## .dev
 
-...
+Developers experience is critical for the whole web3 adoption. This app helps to develop and publish web3 apps.
 
 ## .cg
 
-...
+[Chaingear](https://github.com/cybercongress/chaingear) is an app that help developers create ethereum based CRUD databases. We believe it will help developers to adopt web3 easier the same they MySQL helped to site developers in the very beginning of web.
 
 ## .help
 
@@ -213,15 +222,14 @@ We have our vision of how to develop browser and what kind of features develop f
 
 We use user's feedback to make products better. So we provide options for bug reporting and feedback leaving on every page.
 
+## .settings
+
+Cyb settings
+
 ## Saga on privacy and anonymity
 
-In web3 Principle of respect to agent the most fundamental principle. Respect agents as you would love to agents respect you. So we offer 3 clear custom types of user behaviour:
-
-- anonymous activity [no tracking is possible]
-- private activity [abstract ID + events tracking ]
-- public activity [address + events tracking by web 3 provider]
-
-By default all activity is anonymous. Others must be explicitly asks permissions. Worth to note that some neighbours in some segments of web3 will want to compromise you anonymity during peer-to-peer interactions. It
-For successful browser development application developers need to collect at least public and private data. Thus users of these 2 groups will be incentivized by giving nice perks from dapp developers.
+...
 
 ## On censorship resistance
+
+...
