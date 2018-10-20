@@ -29,28 +29,24 @@ Original protocols of the Internet such as TCP/IP, DNS, URL and HTTPS brought a 
 
 ### Mesh ready
 
-Current internet paradigm is based on 1 internet provider paradigm. That is basicaly a bad shit, because in general even if you have 2 or more internet connection like wifi and lte your device and/or operation system don't allow you to get the full possibilities of connectivity enforcing you to use only one connection at a time. Another major bad shit in current internet architecture is that your device is treated as leech by default. Every device keeps data necessary to being useful for surround devices. Huge portion of our network traffic goes not from origin server but from isp cache. That means that changing a paradigm we can get to very different topology where our neighbours are our web3 providers. 
+Current internet paradigm is based on 1 internet provider paradigm. That is basicaly a bad shit, because in general even if you have 2 or more internet connection like wifi and lte your device and/or operation system don't allow you to get the full possibilities of connectivity enforcing you to use only one connection at a time. Another major bad shit in current internet architecture is that your device is treated as leech by default. Every device keeps data necessary to being useful for surround devices. Huge portion of our network traffic goes not from origin server but from isp cache. That means that changing a paradigm we can get to very different topology where our neighbours are our web3 providers.
 
 ## Roles
+- Apps
 - Agents
-- Dapps
-- Web3 provider
+- Providers
 
-### Web3 providers
+### Apps
 
-Any neigbour node can be web3 provider
-
-### Dapps
-
-Any content hash is dapp
+Any content hash is app
 
 ### Agents
 
-Agents are dapps who can change it's state using signed transaction.
+Agents are apps who can change it's state using signed transaction
 
-### Contracts
+### Providers
 
-Contracts are agents who don't have will.
+Any neighbour node can be web3 provider
 
 ## Key concepts
 
@@ -58,7 +54,7 @@ Contracts are agents who don't have will.
 - digital signatures
 - consensus computing
 
-### Content adrreses
+### Content addresses
 
 To understand why they so important we need to understand a difference in foundational concept of Web3 and web3
 
@@ -66,29 +62,32 @@ Web2: Where => what-how. Instead of location based paradigm is based on content 
 
 Web3: What => How. Register with simple map between input and hash of an app. If no input return self
 
-### Digital signatures
+### Identities
 
 Saying that any particular blockchain or even all blockchains altogether is web3 is like saying that databases is world wide web. Yes databases technology contributed to a development of www, but without several protocols this databases would not become interconnected through billions of web sites. That is, in order to implement a vision of full web3 potential we need to find drop-in replacement for IP, TCP, HTTPS and DNS. None of currently deployed blockchain technologies don't have necessary properties to directly replace dinosaurs. I would say that distributed ledger technology ...
 
 ### Consensus computers
 
-A notion of consensus computers is ... 
+A notion of consensus computers is ...
 
 ## DURA
 
 Distributed Unified Resource Address
 
 ```
-[local-handler]://[content-address].[root-registry-name]//[app-navigation]
+[local-handler]://[content-address].[root-registry-name]/[app-navigation]
 ```
 
 ### Local handler
-cyb:// - is local handler that every os can handle. Being fully optional it can be very important in the very begining of web3
-The most important part in this expression is the dot
+
+``cyb://``
+
+Is local handler that every os can handle. Being fully optional it can be very important in the very begining of web3
 
 ### Content address
+
 ```
-cyb://QmQLXHs7K98JNQdWrBB2cQLJahPhmupbDjRuH1b9ibmwVa.ipfs//files/explorer
+QmQLXHs7K98JNQdWrBB2cQLJahPhmupbDjRuH1b9ibmwVa
 ```
 
 ### Root registry
@@ -122,20 +121,16 @@ One of the implementation is a [cyb](QmQLXHs7K98JNQdWrBB2cQLJahPhmupbDjRuH1b9ibm
 
 ### App navigation
 
-Traditionally its up to developers is how to structure navigation within an app. We believe that in dapp movement we 
-
+Traditionally its up to developers define how to structure navigation within an app.
 
 ### Root keyword
 - . is the thing
 
 Examples:
-- cybernode.ai 0x1ec498ae753774989b7fd3ac6f84054385bb98d21e98ef5d524a9e77c941cf51.ethtx
-- cybernode.eth
-
-New approach for paths in web3:
-- local file paths ~~versus~~ are global paths. Merge filesystem paths and internet paths
-- thinking how to get resource, not where. file extensions and 1 level tlds are the same things
-- right segment explains how to parse left segment. Maps in chaingear.
+```
+- cybernode.ai
+- 0x1ec498ae753774989b7fd3ac6f84054385bb98d21e98ef5d524a9e77c941cf51.eth
+```
 
 ### DURA Extensions
 
@@ -186,7 +181,7 @@ https://avc.com/2018/07/the-web-3-stack/
 
 https://blog.stephantual.com/web-3-0-revisited-part-one-across-chains-and-across-protocols-4282b01054c5
 
-Worth to note that this links covers some aspects but do note catch the whole thing. 
+Worth to note that this links covers some aspects but do note catch the whole thing.
 
 https://tools.ietf.org/search/rfc6454
 http://127.0.0.1:8080/ipfs/QmR7GSQM93Cx5eAg6a6yRzNde1FQv7uL6X1o4k7zrJa3LX/ipfs.draft3.pdf

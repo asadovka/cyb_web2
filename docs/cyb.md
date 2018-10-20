@@ -2,7 +2,7 @@
 
 @xhipster @asadovka
 
-Work in Progress.
+Concept. Definitions are work in progress. 
 
 [Current implementation](https://github.com/cybercongress/cyb) is not in comply with spec yet
 
